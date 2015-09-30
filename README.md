@@ -1,2 +1,2 @@
 # Nappy-the-ingenious
-This is our projekct for softwareengineering
+This is our project for softwareengineering
