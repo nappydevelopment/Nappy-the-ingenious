@@ -1,5 +1,5 @@
 //### 
-package application.util;
+package nappydevelopment.nappy_the_ingenious.util;
 
 //### IMPORTS ##############################################################################################################################
 

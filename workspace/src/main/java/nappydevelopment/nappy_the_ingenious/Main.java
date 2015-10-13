@@ -1,13 +1,12 @@
-package application;
+package nappydevelopment.nappy_the_ingenious;
 
 //### IMPORTS ##############################################################################################################################
 import javafx.application.Application;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.gui.MainStage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import java.io.File;
-
-import application.stages.MainStage;
 
 public class Main extends Application {
 

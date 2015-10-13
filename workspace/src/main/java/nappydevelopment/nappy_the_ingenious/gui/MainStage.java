@@ -1,15 +1,12 @@
 //### MainStage.java #######################################################################################################################
 
-package application.stages;
+package nappydevelopment.nappy_the_ingenious.gui;
 
 //### IMPORTS ##############################################################################################################################
 
 import java.util.LinkedList;
 import java.util.List;
 
-import application.Main;
-import application.data.WikiCharacter;
-import application.scenes.GameScene;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,6 +23,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.Main;
+import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.event.Event;

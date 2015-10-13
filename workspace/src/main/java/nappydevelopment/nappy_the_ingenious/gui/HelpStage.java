@@ -1,12 +1,12 @@
-package application.stages;
+package nappydevelopment.nappy_the_ingenious.gui;
 
-import application.Main;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.Main;
 
 public class HelpStage extends Stage {
 	
