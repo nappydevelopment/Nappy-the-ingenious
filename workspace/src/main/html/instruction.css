@@ -1,0 +1,6 @@
+
+@font-face {
+  font-family:'Sans Serif';
+  src: url("ms_sans_serif.TTF");
+}
+h1 {color:#FF0000;font-family:"Sans Serif";font-size:32px;}
