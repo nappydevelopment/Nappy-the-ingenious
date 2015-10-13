@@ -1,13 +1,11 @@
 //### WikiStage.java #######################################################################################################################
-package application.stages;
+package nappydevelopment.nappy_the_ingenious.gui;
 
 //### IMPORTS ##############################################################################################################################
 import java.awt.RenderingHints;
 import java.util.List;
 import java.util.ListIterator;
 
-import application.data.WikiCharacter;
-import application.util.Utils;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -27,6 +25,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 /* WikiStage [class]: Class that represent the wiki-window *//**
  * 

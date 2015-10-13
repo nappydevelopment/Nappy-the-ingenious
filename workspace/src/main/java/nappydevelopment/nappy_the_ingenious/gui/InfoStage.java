@@ -1,7 +1,5 @@
-package application.stages;
+package nappydevelopment.nappy_the_ingenious.gui;
 
-//### IMPORTS ##############################################################################################################################
-import application.Main;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,6 +14,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 //### IMPORTS ##############################################################################################################################
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.Main;
 
 /* InfoStage [class]: Stage for the info-window *//**
  * 
