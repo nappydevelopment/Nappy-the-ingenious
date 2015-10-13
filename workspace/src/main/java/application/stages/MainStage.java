@@ -121,7 +121,7 @@ public class MainStage extends Stage {
 			public void handle(ActionEvent e) {
 				Object src = e.getSource();
 				
-				if(e.getSource() == MainStage.this.mniWiki) {
+				if(src == MainStage.this.mniWiki || src == MainStage.this.btnWiki) {
 					MainStage.this.showWikiStage();
 				}
 				
