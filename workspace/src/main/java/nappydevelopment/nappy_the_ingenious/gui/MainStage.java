@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Main;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import javafx.event.EventHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 
@@ -118,12 +119,33 @@ public class MainStage extends Stage {
 			@Override
 			/* handle [method]: Method that handle the occurred events:*/
 			public void handle(ActionEvent e) {
+				
 				Object src = e.getSource();
 				
-				if(src == MainStage.this.mniWiki || src == MainStage.this.btnWiki) {
+				if(src == MainStage.this.mniNewGame || src == MainStage.this.btnNewGame) {
+					MainStage.this.showGameMode1Scene();
+				}
+				else if(src == MainStage.this.mniAbrotGame) {
+					//Abort current Game
+				}
+				else if(src == MainStage.this.mniStatistic || src == MainStage.this.btnStatistic) {
+					MainStage.this.showStatisticStage();
+				}
+				else if(src == MainStage.this.mniSettings) {
+					MainStage.this.showSettingsStage();
+				}
+				else if(src == MainStage.this.mniExit) {
+					Platform.exit();
+				}
+				else if (src == MainStage.this.mniHelp || src == MainStage.this.btnHelp) {
+					MainStage.this.showHelpStage();
+				}
+				else if(src == MainStage.this.mniWiki || src == MainStage.this.btnWiki) {
 					MainStage.this.showWikiStage();
 				}
-				
+				else if(src == MainStage.this.mniInfo) {
+					MainStage.this.showInfoStage();
+				}
 			}
 			
 		};
@@ -163,17 +185,26 @@ public class MainStage extends Stage {
 		this.mnuGame = new Menu("Spiel");
 		this.mniNewGame = new MenuItem("Neues Spiel", 
 				                        new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/new_game.png"))));
+		this.mniNewGame.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		this.mniAbrotGame = new MenuItem("Spiel abbrechen", 
 										new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/abort_game.png"))));
 		this.mniAbrotGame.setDisable(true);
+		this.mniAbrotGame.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		this.smiGame1 = new SeparatorMenuItem();
 		this.mniStatistic = new MenuItem("Statistik", 
 				                         new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/statistic.png"))));
+		this.mniStatistic.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		this.mniSettings = new MenuItem("Einstellungen", 
 				                         new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/settings.png"))));
+		this.mniSettings.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		this.smiGame2 = new SeparatorMenuItem();
 		this.mniExit = new MenuItem("Beenden", 
 									 new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/exit.png"))));
+		this.mniExit.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		//Add items to the menu:
 		this.mnuGame.getItems().addAll(this.mniNewGame, this.mniAbrotGame, this.smiGame1, this.mniStatistic, this.mniSettings, 
@@ -182,6 +213,7 @@ public class MainStage extends Stage {
 		this.mnuHelp = new Menu("Hilfe");
 		this.mniHelp = new MenuItem("Spielanleitung", 
 									 new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/help.png"))));
+		this.mniHelp.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.mniWiki = new MenuItem("Wiki", new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/wiki.png"))));
 		this.mniWiki.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
@@ -189,14 +221,8 @@ public class MainStage extends Stage {
 		this.smiHelp1 = new SeparatorMenuItem();
 		this.mniInfo = new MenuItem("Info", 
 									 new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/info.png"))));
-		this.mniInfo.setOnAction((EventHandler<ActionEvent>) (ActionEvent even) -> {
-			this.infoStage = new InfoStage();
-			
-			//Nesessary that this stage waits till the wiki stage is closed:
-			this.infoStage.initModality(Modality.WINDOW_MODAL);
-			this.infoStage.initOwner(this);
-			this.infoStage.show();
-		});
+		this.mniInfo.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		//Add items to the menu:
 		this.mnuHelp.getItems().addAll(this.mniHelp, this.mniWiki, this.smiHelp1, this.mniInfo);
 		
@@ -213,34 +239,26 @@ public class MainStage extends Stage {
 		this.btnNewGame.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/new_game.png"))));
 		this.btnNewGame.setPrefSize(150, 40);
 		this.btnNewGame.setAlignment(Pos.BASELINE_LEFT);
-		this.btnNewGame.setOnAction((EventHandler<ActionEvent>) (ActionEvent even) -> {
-		
-			this.showGameMode();
-		});
+		this.btnNewGame.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+
 		this.sepSVCP1 = new Separator();
 		this.btnStatistic = new Button("Statistik");
 		this.btnStatistic.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/statistic.png"))));
 		this.btnStatistic.setPrefSize(150, 40);
 		this.btnStatistic.setAlignment(Pos.BASELINE_LEFT);
+		this.btnStatistic.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		this.btnWiki = new Button("Wiki");
 		this.btnWiki.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/wiki.png"))));
 		this.btnWiki.setPrefSize(150, 40);
 		this.btnWiki.setAlignment(Pos.BASELINE_LEFT);
-		this.btnWiki.setOnAction((EventHandler<ActionEvent>) (ActionEvent even) -> {this.showWikiStage();});
+		this.btnWiki.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
+		
 		this.btnHelp = new Button("Spielanleitung");
 		this.btnHelp.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/help.png"))));
 		this.btnHelp.setAlignment(Pos.BASELINE_LEFT);
 		this.btnHelp.setPrefSize(150, 40);
-		this.btnHelp.setOnAction((EventHandler<ActionEvent>) (ActionEvent even) -> {
-			this.helpStage = new HelpStage();
-			
-			//Nesessary that this stage waits till the wiki stage is closed:
-			//this.helpStage.initModality(Modality.WINDOW_MODAL);
-			//this.helpStage.initOwner(this);
-			
-			this.helpStage.show();
-			
-		});
+		this.btnHelp.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.gdpStartViewContentPane.add(this.btnNewGame, 0, 0);
 		this.gdpStartViewContentPane.add(this.sepSVCP1, 0, 1);
@@ -270,36 +288,11 @@ public class MainStage extends Stage {
 	
 	//### Show other stages (windows) ##########################################
 	
-	private void showHelpStage() {
+	private void showStartScene() {
 		
 	}
 	
-	private void showWikiStage() {
-		
-		this.wikiStage = new WikiStage(this.characters);
-		
-		//Necessary that this stage waits till the wiki stage is closed:
-		this.wikiStage.initOwner(this);
-		this.wikiStage.initModality(Modality.WINDOW_MODAL);
-		
-		this.wikiStage.show();
-	}
-	
-	private void showInfoStage() {
-		
-	}
-	
-	private void showStatisticStage() {
-		
-	}
-	
-	private void showSettingsStage() {
-		
-	}
-	
-	//### Show other scenes (game-screens) #####################################
-	
-	private void showGameMode() {
+	private void showGameMode1Scene() {
 		
 		this.hbxButtons = new HBox();
 		this.gdpButtons = new GridPane();
@@ -322,8 +315,52 @@ public class MainStage extends Stage {
 		//Add menu-bar to the root-pane:
 		this.bdpRootPane.setTop(this.mnbMenuBar);
 		this.bdpRootPane.setBottom(this.gdpButtons);
+		
+		//Menu
+		this.mniAbrotGame.setDisable(false);
+		
 		this.setScene(new Scene(this.bdpRootPane, 300, 400));
+		
 	}
+	
+	private void showHelpStage() {
+		
+		this.helpStage = new HelpStage();
+		this.helpStage.show();
+	}
+	
+	private void showWikiStage() {
+		
+		this.wikiStage = new WikiStage(this.characters);
+		
+		//Necessary that this stage waits till the wiki stage is closed:
+		this.wikiStage.initOwner(this);
+		this.wikiStage.initModality(Modality.WINDOW_MODAL);
+		
+		this.wikiStage.show();
+	}
+	
+	private void showInfoStage() {
+		
+		this.infoStage = new InfoStage();
+		
+		//Necessary that this stage waits till the wiki stage is closed:
+		this.infoStage.initModality(Modality.WINDOW_MODAL);
+		this.infoStage.initOwner(this);
+		this.infoStage.show();
+	}
+	
+	private void showStatisticStage() {
+		this.statisticStage = new StatisticStage();
+		this.statisticStage.show();	
+	}
+	
+	private void showSettingsStage() {
+		this.settingsStage = new SettingsStage();
+		this.settingsStage.show();
+	}
+	
+	//### Show other scenes (game-screens) #####################################
 	
 }
 //### EOF ##################################################################################################################################
