@@ -26,7 +26,7 @@ public class HelpStage extends Stage {
 		this.setTitle("Nappy, the ingenious - Spielanleitung");
 		this.getIcons().add(new Image(Main.ICONS_PATH + "16x16/game.png"));
 		this.setResizable(true);
-		this.show();
     }
 	
 }
+//### EOF #####################################################################
