@@ -6,11 +6,16 @@ package nappydevelopment.nappy_the_ingenious.gui;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -126,7 +131,7 @@ public class MainStage extends Stage {
 					MainStage.this.showGameMode1Scene();
 				}
 				else if(src == MainStage.this.mniAbrotGame) {
-					//Abort current Game
+					MainStage.this.showGameAbrotDialog();
 				}
 				else if(src == MainStage.this.mniStatistic || src == MainStage.this.btnStatistic) {
 					MainStage.this.showStatisticStage();
@@ -289,7 +294,9 @@ public class MainStage extends Stage {
 	//### Show other stages (windows) ##########################################
 	
 	private void showStartScene() {
-		
+		this.mniAbrotGame.setDisable(true);
+		this.bdpRootPane.setCenter(this.gdpStartViewContentPane);
+		this.bdpRootPane.setBottom(null);
 	}
 	
 	private void showGameMode1Scene() {
@@ -311,15 +318,16 @@ public class MainStage extends Stage {
 		this.gdpButtons.add(this.btnDontKnow, 0, 1, 2, 1);
 		
 		//this.hbxButtons.getChildren().add(this.gdpButtons);
-		this.bdpRootPane = new BorderPane();
+		//this.bdpRootPane = new BorderPane();
 		//Add menu-bar to the root-pane:
-		this.bdpRootPane.setTop(this.mnbMenuBar);
+		//this.bdpRootPane.setTop(this.mnbMenuBar);
+		this.bdpRootPane.setCenter(null);
 		this.bdpRootPane.setBottom(this.gdpButtons);
 		
 		//Menu
 		this.mniAbrotGame.setDisable(false);
 		
-		this.setScene(new Scene(this.bdpRootPane, 300, 400));
+		//this.setScene(new Scene(this.bdpRootPane, 300, 400));
 		
 	}
 	
@@ -361,6 +369,26 @@ public class MainStage extends Stage {
 	}
 	
 	//### Show other scenes (game-screens) #####################################
+	
+	private void showGameAbrotDialog() {
+		
+		ButtonType bttCancel = new ButtonType("Abbrechen");
+		ButtonType bttApply = new ButtonType("Spiel abbrechen");
+		
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Nappy, the ingenious");
+		alert.setHeaderText("Spiel abbrechen?");
+		alert.setContentText("Möchten Sie das aktuelle Spiel wirklich abbrechen?");
+		alert.getButtonTypes().setAll(bttApply, bttCancel);
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		
+		if (result.get() == bttApply){
+		    this.showStartScene();
+		} else {
+		    // ... user chose CANCEL or closed the dialog
+		}
+	}
 	
 }
 //### EOF ##################################################################################################################################
