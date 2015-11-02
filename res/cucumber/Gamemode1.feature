@@ -1,4 +1,6 @@
-Feature: Play Gamemode 1
+Feature: Gamemode 1
+  as a User
+  The User will play the first gamemode.
 
   Scenario: Start Gamemode 1 / Mainscreen
     Given The user is on the "Mainscreen"

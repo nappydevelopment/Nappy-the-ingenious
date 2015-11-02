@@ -1,4 +1,6 @@
 Feature: Play Gamemode 2
+  as a User
+  The User will play the first gamemode.
 
   Scenario: Start Gamemode 2
     Given The user finished "Gamemode 1"

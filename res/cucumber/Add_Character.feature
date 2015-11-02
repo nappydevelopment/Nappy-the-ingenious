@@ -1,4 +1,6 @@
-Feature: Add a Character
+Feature: Add Character
+  as a User
+  The User can add new characters to our database to extend the database.
 
   Scenario: Start Add_Character / Wiki
     Given The user is on the "Wiki Screen"
