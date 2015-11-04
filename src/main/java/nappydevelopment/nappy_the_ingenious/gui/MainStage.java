@@ -26,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Main;
@@ -87,16 +88,11 @@ public class MainStage extends Stage {
 	private Button btnWiki;
 	private Button btnHelp;
 	
-	private Scene gameScene;
-	
-	private HBox hbxAnswerButtons;
-	private Button btnAnswerYes;
-	private Button btnAnswerNo;
-	
 	//##################################
-	private HBox hbxButtons;
 	private GridPane gdpButtons;
 	
+	private VBox vbxNappy;
+	private ImageView imvNappy;
 	private Button btnYes;
 	private Button btnNo;
 	private Button btnDontKnow;
@@ -283,7 +279,12 @@ public class MainStage extends Stage {
 		this.startScene = new Scene(this.bdpRootPane, 300, 400);
 		this.setScene(this.startScene);
 		this.setTitle("Nappy, the ingenious");
-		this.getIcons().add(new Image(Main.ICONS_PATH + "16x16/game.png"));
+		this.getIcons().addAll(new Image(Main.ICONS_PATH + "16x16/icon.png"),
+							   new Image(Main.ICONS_PATH + "32x32/icon.png"),
+							   new Image(Main.ICONS_PATH + "48x48/icon.png"),
+							   new Image(Main.ICONS_PATH + "64x64/icon.png"),
+							   new Image(Main.ICONS_PATH + "128x128/icon.png"),
+							   new Image(Main.ICONS_PATH + "256x256/icon.png"));
 		this.setResizable(true);
 		this.show();
 		
@@ -297,38 +298,6 @@ public class MainStage extends Stage {
 		this.mniAbrotGame.setDisable(true);
 		this.bdpRootPane.setCenter(this.gdpStartViewContentPane);
 		this.bdpRootPane.setBottom(null);
-	}
-	
-	private void showGameMode1Scene() {
-		
-		this.hbxButtons = new HBox();
-		this.gdpButtons = new GridPane();
-		this.gdpButtons.setPadding(new Insets(10,10,10,10));
-	
-		//this.gdpButtons.setGridLinesVisible(true);
-		this.btnYes = new Button("Ja");
-		this.btnYes.setPrefSize(Integer.MAX_VALUE, 40);
-		this.btnNo = new Button("Nein");
-		this.btnNo.setPrefSize(Integer.MAX_VALUE, 40);
-		this.btnDontKnow = new Button("Ich weiﬂ nicht");
-		this.btnDontKnow.setPrefSize(Integer.MAX_VALUE, 40);
-		
-		this.gdpButtons.add(this.btnYes, 0, 0);
-		this.gdpButtons.add(this.btnNo, 1, 0);
-		this.gdpButtons.add(this.btnDontKnow, 0, 1, 2, 1);
-		
-		//this.hbxButtons.getChildren().add(this.gdpButtons);
-		//this.bdpRootPane = new BorderPane();
-		//Add menu-bar to the root-pane:
-		//this.bdpRootPane.setTop(this.mnbMenuBar);
-		this.bdpRootPane.setCenter(null);
-		this.bdpRootPane.setBottom(this.gdpButtons);
-		
-		//Menu
-		this.mniAbrotGame.setDisable(false);
-		
-		//this.setScene(new Scene(this.bdpRootPane, 300, 400));
-		
 	}
 	
 	private void showHelpStage() {
@@ -369,6 +338,43 @@ public class MainStage extends Stage {
 	}
 	
 	//### Show other scenes (game-screens) #####################################
+	
+	private void showGameMode1Scene() {
+		
+		this.gdpButtons = new GridPane();
+		this.gdpButtons.setPadding(new Insets(10,10,10,10));
+	
+		//this.gdpButtons.setGridLinesVisible(true);
+		this.btnYes = new Button("Ja");
+		this.btnYes.setPrefSize(Integer.MAX_VALUE, 40);
+		this.btnNo = new Button("Nein");
+		this.btnNo.setPrefSize(Integer.MAX_VALUE, 40);
+		this.btnDontKnow = new Button("Ich weiﬂ nicht");
+		this.btnDontKnow.setPrefSize(Integer.MAX_VALUE, 40);
+		
+		this.gdpButtons.add(this.btnYes, 0, 0);
+		this.gdpButtons.add(this.btnNo, 1, 0);
+		this.gdpButtons.add(this.btnDontKnow, 0, 1, 2, 1);
+		
+		this.imvNappy = new ImageView(new Image(Main.IMAGES_PATH + "general/nappy.png"));
+		 
+		this.vbxNappy = new VBox();
+		this.vbxNappy.setPadding(new Insets(10,10,10,10));
+		this.vbxNappy.getChildren().add(this.imvNappy);
+		this.imvNappy.setFitHeight(100);
+		this.imvNappy.setFitWidth(50);
+		
+		this.bdpRootPane.setCenter(this.vbxNappy);
+		this.bdpRootPane.setBottom(this.gdpButtons);
+		
+		//Menu
+		this.mniAbrotGame.setDisable(false);
+		
+		//this.setScene(new Scene(this.bdpRootPane, 300, 400));
+		
+	}
+	
+	//### Show dialogs #########################################################
 	
 	private void showGameAbrotDialog() {
 		
