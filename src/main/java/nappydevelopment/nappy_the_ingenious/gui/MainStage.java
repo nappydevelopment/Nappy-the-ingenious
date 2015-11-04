@@ -34,6 +34,7 @@ import javafx.event.EventHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import nappydevelopment.nappy_the_ingenious.util.MatchInformation;
 
 
 /* MainStage [class]: Represent the main window of the application *//**
