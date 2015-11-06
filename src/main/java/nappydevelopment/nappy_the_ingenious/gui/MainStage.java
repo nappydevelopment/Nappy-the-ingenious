@@ -155,26 +155,7 @@ public class MainStage extends Stage {
 	
 	private void initAttributes() {
 		this.characters = new LinkedList<WikiCharacter>();
-		this.characters.add(new WikiCharacter("Abraham Simpson", "Abe", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/abraham_simpson.png"))));
-		this.characters.add(new WikiCharacter("Agnes Skinner", "Mrs. Skinner", "Agnes Skinner ist die Mutter von Seymour Skinner dem Grundschulrektor von Springfield. Sie zeigt in Bezug auf ihren Sohn einen starkten Kontrollzwang und verbietet im jegliche sozialen Kontakte. Zudem behandelt sie ihn als wäre er immernoch ein kleines Kind.", new Image(MainStage.class.getResourceAsStream("/images/wiki/agnes_skinner.png"))));
-		this.characters.add(new WikiCharacter("Anthony d'Amico", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/anthony_d'amico.png"))));
-		this.characters.add(new WikiCharacter("Apu Nahasapeemapetilon", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/apu_nahasapeemapetilon.png"))));
-		this.characters.add(new WikiCharacter("Arnold Pye", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/arnold_pye.png"))));
-		this.characters.add(new WikiCharacter("Artie Ziff", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/artie_ziff.png"))));
-		this.characters.add(new WikiCharacter("Barney Gumble", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/barney_gumble.png"))));
-		this.characters.add(new WikiCharacter("Barry Duffman", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/barry_duffman.png"))));
-		this.characters.add(new WikiCharacter("Bart Simpson", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/bart_simpson.png"))));
-		this.characters.add(new WikiCharacter("Bernice Hibbert", "", "Bernice Hibbert ist offenbar eine starke Alkoholikerin. Sie muss bei der Polizei einen Film gegen Trunkenheit am Steuer anschauen und fällt in Ohnmacht, als sie liest, dass die Prohibition wieder eingeführt wird. Herheiratet ist sie mit dem Arzt Julius Hibbert.", new Image(MainStage.class.getResourceAsStream("/images/wiki/bernice_hibbert.png"))));
-		this.characters.add(new WikiCharacter("Brandine Spuckler", "", "Brandine Spuckler verkörpert zusammen mit ihrem Mann das typische Bild von Hinterwäldlern. Sie ist ungepflegt, Analphabetin und sehr einfältig. Sie hat 50 Kinder und ist mit ihrem eigenen Bruder Cletus verheiratet. Cletus ist offenbar nur der Vater von zwei Kindern.", new Image(MainStage.class.getResourceAsStream("/images/wiki/brandine_spuckler.png"))));
-		this.characters.add(new WikiCharacter("Carl Carlson", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/carl_carlson.png"))));
-		this.characters.add(new WikiCharacter("Cecile Terwilliger", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/cecile_terwilliger.png"))));	
-		this.characters.add(new WikiCharacter("Charles Montgomery Burns", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/charles_montgomery_burns.png"))));
-		this.characters.add(new WikiCharacter("Chester J. Lampwick", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/chester_j._lampwick.png"))));
-		this.characters.add(new WikiCharacter("Chester Turley", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/chester_turley.png"))));
-		this.characters.add(new WikiCharacter("Clancy Bouvier", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/clancy_bouvier.png"))));
-		this.characters.add(new WikiCharacter("Clancy Wiggum", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/clancy_wiggum.png"))));
-		this.characters.add(new WikiCharacter("Cletus Spuckler", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/cletus_spuckler.png"))));
-		this.characters.add(new WikiCharacter("Dewey Largo", "", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/images/wiki/dewey_largo.png"))));
+		this.characters.add(new WikiCharacter("Abraham Simpson", "Abe", "Beschreibung", new Image(MainStage.class.getResourceAsStream("/main/images/wiki/abraham_simpson.png"))));
 	}
 	
 	private void initComponents() {
@@ -186,26 +167,26 @@ public class MainStage extends Stage {
 		//First menu:
 		this.mnuGame = new Menu("Spiel");
 		this.mniNewGame = new MenuItem("Neues Spiel", 
-				                        new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/new_game.png"))));
+				                        new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/new_game.png"))));
 		this.mniNewGame.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.mniAbrotGame = new MenuItem("Spiel abbrechen", 
-										new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/abort_game.png"))));
+										new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/abort_game.png"))));
 		this.mniAbrotGame.setDisable(true);
 		this.mniAbrotGame.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.smiGame1 = new SeparatorMenuItem();
 		this.mniStatistic = new MenuItem("Statistik", 
-				                         new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/statistic.png"))));
+				                         new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/statistic.png"))));
 		this.mniStatistic.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.mniSettings = new MenuItem("Einstellungen", 
-				                         new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/settings.png"))));
+				                         new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/settings.png"))));
 		this.mniSettings.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.smiGame2 = new SeparatorMenuItem();
 		this.mniExit = new MenuItem("Beenden", 
-									 new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/exit.png"))));
+									 new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/exit.png"))));
 		this.mniExit.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		//Add items to the menu:
@@ -214,15 +195,15 @@ public class MainStage extends Stage {
 		//Second menu:
 		this.mnuHelp = new Menu("Hilfe");
 		this.mniHelp = new MenuItem("Spielanleitung", 
-									 new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/help.png"))));
+									 new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/help.png"))));
 		this.mniHelp.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
-		this.mniWiki = new MenuItem("Wiki", new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/wiki.png"))));
+		this.mniWiki = new MenuItem("Wiki", new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/wiki.png"))));
 		this.mniWiki.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.smiHelp1 = new SeparatorMenuItem();
 		this.mniInfo = new MenuItem("Info", 
-									 new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/16x16/info.png"))));
+									 new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/16x16/info.png"))));
 		this.mniInfo.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		//Add items to the menu:
@@ -238,26 +219,26 @@ public class MainStage extends Stage {
 		this.gdpStartViewContentPane.setVgap(15);
 		
 		this.btnNewGame = new Button("Neues Spiel");
-		this.btnNewGame.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/new_game.png"))));
+		this.btnNewGame.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/32x32/new_game.png"))));
 		this.btnNewGame.setPrefSize(150, 40);
 		this.btnNewGame.setAlignment(Pos.BASELINE_LEFT);
 		this.btnNewGame.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 
 		this.sepSVCP1 = new Separator();
 		this.btnStatistic = new Button("Statistik");
-		this.btnStatistic.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/statistic.png"))));
+		this.btnStatistic.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/32x32/statistic.png"))));
 		this.btnStatistic.setPrefSize(150, 40);
 		this.btnStatistic.setAlignment(Pos.BASELINE_LEFT);
 		this.btnStatistic.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.btnWiki = new Button("Wiki");
-		this.btnWiki.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/wiki.png"))));
+		this.btnWiki.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/32x32/wiki.png"))));
 		this.btnWiki.setPrefSize(150, 40);
 		this.btnWiki.setAlignment(Pos.BASELINE_LEFT);
 		this.btnWiki.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
 		
 		this.btnHelp = new Button("Spielanleitung");
-		this.btnHelp.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/help.png"))));
+		this.btnHelp.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/main/icons/32x32/help.png"))));
 		this.btnHelp.setAlignment(Pos.BASELINE_LEFT);
 		this.btnHelp.setPrefSize(150, 40);
 		this.btnHelp.addEventHandler(ActionEvent.ACTION, this.evhActionEvents);
