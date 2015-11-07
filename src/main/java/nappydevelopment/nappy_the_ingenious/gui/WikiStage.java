@@ -3,9 +3,12 @@ package nappydevelopment.nappy_the_ingenious.gui;
 
 //### IMPORTS ##############################################################################################################################
 import java.awt.RenderingHints;
+import java.io.IOException;
 import java.util.List;
 import java.util.ListIterator;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -26,6 +29,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.gui.fxml.AddCharacterStage;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 /* WikiStage [class]: Class that represent the wiki-window *//**
@@ -93,6 +97,18 @@ public class WikiStage extends Stage {
 		this.sepSearchBar1.setOrientation(Orientation.VERTICAL);
 		this.btnAddNewCharacter = new Button();
 		this.btnAddNewCharacter.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/add_character.png"))));
+		this.btnAddNewCharacter.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                AddCharacterStage s = new AddCharacterStage();
+                try {
+					s.init();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+                s.show();
+            }
+        });;
 		this.hbxSearchBar.getChildren().addAll(this.imvSearchIcon, this.txfSearchField, this.sepSearchBar1, this.btnAddNewCharacter);
 		//######################################################################
 		

@@ -57,7 +57,7 @@ public class MainStage extends Stage {
 	
 //### PRIVATE COMPONENTS ###################################################################################################################	
 
-	//Start scene that shows the program-start-view:
+	//Scene of the stage:
 	private Scene startScene;
 	
 	//Root pane (container) that contains all GUI-components:
