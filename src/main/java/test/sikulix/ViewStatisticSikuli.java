@@ -20,7 +20,7 @@ public class ViewStatisticSikuli {
         try{
             s.exists("/res/test/images/mainstage.png");
             s.exists("/res/test/images/icon.png");
-            s.click("/res/test/images/statistic_button.png");
+            s.click("/res/test/images/main_statistic_button.png");
             s.exists("/res/test/images/statistic_title.png");
         }
         catch(FindFailed e){
@@ -34,7 +34,7 @@ public class ViewStatisticSikuli {
             s.exists("/res/test/images/menu.png");
             s.click("/res/test/images/menu_spiel_button.png");
             s.exists("/res/test/images/menu_spiel.png");
-            s.click("/res/test/images/statistic_menu.png");
+            s.click("/res/test/images/menu_spiel_statistic_button.png");
             s.exists("/res/test/images/statistic_title.png");
         }
         catch(FindFailed e){
@@ -45,6 +45,7 @@ public class ViewStatisticSikuli {
     //Scenario3: The user will close the statistic screen
     private static void Scenario3(Screen s){
         try{
+            //überprüfung ob es ein aktives spiel gibt -- ja zurück zum spielbildschrim -- ansonsten Mainscreen
             s.exists("/res/test/images/statistic_title.png");
             s.click("/res/test/images/close.png");
             s.exists("/res/test/images/mainstage.png");
