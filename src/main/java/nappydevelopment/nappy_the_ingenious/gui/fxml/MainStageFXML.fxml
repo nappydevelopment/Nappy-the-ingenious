@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Spiel">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Neues Spiel" />
+                  <MenuItem mnemonicParsing="false" text="Spiel abbrechen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Statistik" />
+                  <MenuItem mnemonicParsing="false" text="Einstellungen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Beenden" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Hilfe">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Spielanleitung">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        	<image>
+                        		 <Image url="@./../../../../../../../res/main/icons/16x16/help.png"/> 
+                        	</image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Wiki" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Info" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
