@@ -32,8 +32,8 @@ public class ViewStatisticSikuli {
     private static void Scenario2(Screen s){
         try{
             s.exists("/res/test/images/menu.png");
-            s.click("/res/test/images/menu_spiel_button.png");
-            s.exists("/res/test/images/menu_spiel.png");
+                s.click("/res/test/images/menu_spiel_button.png");
+                s.exists("/res/test/images/menu_spiel.png");
             s.click("/res/test/images/menu_spiel_statistic_button.png");
             s.exists("/res/test/images/statistic_title.png");
         }
