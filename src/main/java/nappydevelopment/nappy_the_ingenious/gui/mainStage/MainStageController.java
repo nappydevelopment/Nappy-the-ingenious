@@ -19,7 +19,7 @@ public class MainStageController {
 	//Class that represents the main-stage-view:
 	private MainStageView view;
 	private MainStageResources res;
-	private ViewActionEventHandler viewActionEventHandler;
+	private ViewActionEventHandler aeh;
 	
 //### CONSTRUCTORS #########################################################################################################################
 	
@@ -41,9 +41,9 @@ public class MainStageController {
 		//Initialize the resources for the view:
 		this.res = new MainStageResources();
 		//Initialize the action-event-handler for the view-components:
-		this.viewActionEventHandler = new ViewActionEventHandler();
+		this.aeh = new ViewActionEventHandler();
 		//Initialize the view:
-		this.view = new MainStageView(this.res, this.viewActionEventHandler);
+		this.view = new MainStageView(this.res, this.aeh);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 		
@@ -75,7 +75,6 @@ public class MainStageController {
 		this.view.btnIdontKnow.textProperty().bind(this.res.btnIdontKnow);
 	}
 
-	
 //### EVENT HANDLER ########################################################################################################################
 	
 	//Event-Handler that handles all ActionEvents of the view

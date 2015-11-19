@@ -3,7 +3,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 import java.awt.RenderingHints;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,7 +25,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.Main;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.gui.components.VerticalProgressBar;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
@@ -97,7 +96,7 @@ public class MainStageView extends Stage {
 	Button btnNo;
 	Button btnIdontKnow;
 	
-	//### Content of the Gamemode1 View ############################################################
+	//### Content of the Gamemode2 View ############################################################
 	
 	
 //### CONSTRUCTORS #########################################################################################################################
@@ -377,12 +376,12 @@ public class MainStageView extends Stage {
 		this.setTitle("Nappy, the ingenious");
 		
 		this.getIcons().addAll(
-			new Image(Main.ICONS_PATH + "16x16/icon.png"),
-			new Image(Main.ICONS_PATH + "32x32/icon.png"),
-			new Image(Main.ICONS_PATH + "48x48/icon.png"),
-			new Image(Main.ICONS_PATH + "64x64/icon.png"),
-			new Image(Main.ICONS_PATH + "128x128/icon.png"),
-			new Image(Main.ICONS_PATH + "256x256/icon.png")
+			new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "48x48/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "64x64/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "128x128/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "256x256/icon.png")
 		);
 		this.setResizable(false);
 	}

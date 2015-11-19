@@ -1,13 +1,15 @@
 package nappydevelopment.nappy_the_ingenious.gui.components;
 
+//### IMPORTS ##############################################################################################################################
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 
-//### IMPORTS ##############################################################################################################################
+
 public class VerticalProgressBar {
+	
 	private ProgressBar progressBar    = new ProgressBar();
     private Group       progressHolder = new Group(progressBar);
 
@@ -26,5 +28,6 @@ public class VerticalProgressBar {
     public Group getProgressHolder() {
         return progressHolder;
     }
+
 }
 //### EOF ##################################################################################################################################

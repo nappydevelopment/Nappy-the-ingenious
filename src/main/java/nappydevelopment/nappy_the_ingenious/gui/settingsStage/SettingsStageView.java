@@ -15,7 +15,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.Main;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 //### IMPORTS ##############################################################################################################################
 public class SettingsStageView extends Stage {
@@ -162,12 +162,12 @@ public class SettingsStageView extends Stage {
 		this.setScene(this.scene);
 		
 		this.getIcons().addAll(
-			new Image(Main.ICONS_PATH + "16x16/icon.png"),
-			new Image(Main.ICONS_PATH + "32x32/icon.png"),
-			new Image(Main.ICONS_PATH + "48x48/icon.png"),
-			new Image(Main.ICONS_PATH + "64x64/icon.png"),
-			new Image(Main.ICONS_PATH + "128x128/icon.png"),
-			new Image(Main.ICONS_PATH + "256x256/icon.png")
+			new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "48x48/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "64x64/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "128x128/icon.png"),
+			new Image(GlobalReferences.ICONS_PATH + "256x256/icon.png")
 		);
 		
 		this.setMinWidth(200);

@@ -15,11 +15,8 @@ public class Program extends Application {
 	
 	private MainStageController mainStageController;
 	private SettingsStageController settingsStageController;
-
-//### GETTER / SETTER ######################################################################################################################	
 	
-	
-//### PUBLIC METHODS #######################################################################################################################
+//### JAVA-FX-APPLICATION METHODS ##########################################################################################################
 	
 	//Method that is called before the start-method is called:
 	@Override
@@ -29,6 +26,7 @@ public class Program extends Application {
 		//Init the stage-controller:
 		this.mainStageController = new MainStageController(this);
 		this.settingsStageController = new SettingsStageController(this);
+
 	}
 	
 	//Method that starts the JavaFX-Application:
@@ -38,11 +36,10 @@ public class Program extends Application {
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
 		this.settingsStageController.initView();
-		
-		
 		//Set the language of the main stage to English:
 		this.mainStageController.changeLanguageToEnglish();
 		SettingsStageRessources.setTextsToGerman();
+		
 		
 		//Show the main-stage-window:
 		this.mainStageController.showStartView();
@@ -54,7 +51,7 @@ public class Program extends Application {
 		System.out.println("JavaFX-Application - Stop");
 	}
 	
-//########################################
+//### PUBLIC METHODS #######################################################################################################################
 	
 	public void showSettingsStage(Stage owner) {
 		this.settingsStageController.show(owner);
@@ -81,6 +78,7 @@ public class Program extends Application {
     	//Start JavaFX-Platform with the JavaFX-Application class gui:
     	Application.launch(args);
     }
-    
+  
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################
