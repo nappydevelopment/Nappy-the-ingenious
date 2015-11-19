@@ -6,7 +6,7 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import nappydevelopment.nappy_the_ingenious.Main;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 /* MainStageResources [class]: Contains the resources for the main-stage like images, component-texts etc.: *//**
  * 
@@ -105,29 +105,29 @@ public class MainStageResources {
 		
 		//### Images for the menu-bar ##################################################################
 		
-		this.mniNewGameIcon = new Image(Main.ICONS_PATH + "16x16/new_game.png");
-		this.mniAbortGameIcon = new Image(Main.ICONS_PATH + "16x16/abort_game.png");
-		this.mniStatisticIcon = new Image(Main.ICONS_PATH + "16x16/statistic.png");
-		this.mniSettingsIcon = new Image(Main.ICONS_PATH + "16x16/settings.png");
-		this.mniExitIcon = new Image(Main.ICONS_PATH + "16x16/exit.png");
+		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/new_game.png");
+		this.mniAbortGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/abort_game.png");
+		this.mniStatisticIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/statistic.png");
+		this.mniSettingsIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/settings.png");
+		this.mniExitIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/exit.png");
 		
-		this.mniHelpIcon = new Image(Main.ICONS_PATH + "16x16/help.png");
-		this.mniWikiIcon = new Image(Main.ICONS_PATH + "16x16/wiki.png");
-		this.mniInfoIcon = new Image(Main.ICONS_PATH + "16x16/info.png");
+		this.mniHelpIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/help.png");
+		this.mniWikiIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/wiki.png");
+		this.mniInfoIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/info.png");
 		
 		//### Images for the buttons ###################################################################
 		
-		this.btnNewGameIcon = new Image(Main.ICONS_PATH + "32x32/new_game.png");
-		this.btnStatistikIcon = new Image(Main.ICONS_PATH + "32x32/statistic.png");
-		this.btnWikiIcon = new Image(Main.ICONS_PATH + "32x32/wiki.png");
-		this.btnHelpIcon = new Image(Main.ICONS_PATH + "32x32/help.png");
+		this.btnNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/new_game.png");
+		this.btnStatistikIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/statistic.png");
+		this.btnWikiIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/wiki.png");
+		this.btnHelpIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/help.png");
 		
 		//### Images ###################################################################################
 		
-		this.imvNoOfQuestIcon = new Image(Main.ICONS_PATH + "32x32/counter.png");
-		this.imvKnowledgeIcon = new Image(Main.ICONS_PATH + "32x32/knowledge.png");
+		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/counter.png");
+		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
 		
-		this.imvNappyImage = new Image(Main.IMAGES_PATH + "general/nappy_no_border.png");
+		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
