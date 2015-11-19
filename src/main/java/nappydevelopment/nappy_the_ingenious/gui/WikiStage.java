@@ -29,7 +29,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
-import nappydevelopment.nappy_the_ingenious.gui.fxml.AddCharacterStage;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 /* WikiStage [class]: Class that represent the wiki-window *//**
@@ -90,25 +89,13 @@ public class WikiStage extends Stage {
 		this.hbxSearchBar.setSpacing(10);
 		this.hbxSearchBar.setAlignment(Pos.CENTER_LEFT);
 		this.hbxSearchBar.getStyleClass().add("hbox");	
-		this.imvSearchIcon = new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/search.png")));
+		//this.imvSearchIcon = new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/search.png")));
 		this.txfSearchField = new TextField();
 		this.txfSearchField.setPrefWidth(500);
 		this.sepSearchBar1 = new Separator();
 		this.sepSearchBar1.setOrientation(Orientation.VERTICAL);
 		this.btnAddNewCharacter = new Button();
-		this.btnAddNewCharacter.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/add_character.png"))));
-		this.btnAddNewCharacter.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                AddCharacterStage s = new AddCharacterStage();
-                try {
-					s.init();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-                s.show();
-            }
-        });;
+		//this.btnAddNewCharacter.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/add_character.png"))));
 		this.hbxSearchBar.getChildren().addAll(this.imvSearchIcon, this.txfSearchField, this.sepSearchBar1, this.btnAddNewCharacter);
 		//######################################################################
 		
@@ -185,10 +172,10 @@ public class WikiStage extends Stage {
 		//Create the window-scene with the root-pane and a fix size:
 		this.wikiScene = new Scene(this.bdpRootPane, 550, 700);
 		//Include the stylesheet:
-		this.wikiScene.getStylesheets().add(MainStage.class.getResource("WikiStage.css").toExternalForm());
+		//this.wikiScene.getStylesheets().add(MainStage.class.getResource("WikiStage.css").toExternalForm());
 		this.setScene(this.wikiScene);
 		this.setTitle("Nappy, the ingenious - Wiki");
-		this.getIcons().add(new Image(MainStage.class.getResourceAsStream("/icons/16x16/wiki.png")));
+		//this.getIcons().add(new Image(MainStage.class.getResourceAsStream("/icons/16x16/wiki.png")));
 		this.setResizable(true);
 	}
 	
