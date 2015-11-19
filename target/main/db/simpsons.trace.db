@@ -1,0 +1,44 @@
+2015-11-12 09:31:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "DESCRIBE[*] TABLE SIMPSONS "; erwartet "DELETE, DROP, DECLARE, DEALLOCATE, {"
+Syntax error in SQL statement "DESCRIBE[*] TABLE SIMPSONS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+describe table SIMPSONS [42001-190]
+2015-11-12 09:31:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "EXPLAIN TABLE[*] SIMPSONS "; erwartet "ANALYZE, PLAN, SELECT, FROM, (, DELETE, UPDATE, INSERT, MERGE, WITH"
+Syntax error in SQL statement "EXPLAIN TABLE[*] SIMPSONS "; expected "ANALYZE, PLAN, SELECT, FROM, (, DELETE, UPDATE, INSERT, MERGE, WITH"; SQL statement:
+explain table SIMPSONS [42001-190]
+2015-11-12 09:32:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "DESCRIBE[*] SIMPSONS "; erwartet "DELETE, DROP, DECLARE, DEALLOCATE, {"
+Syntax error in SQL statement "DESCRIBE[*] SIMPSONS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+describe SIMPSONS [42001-190]
+2015-11-12 09:32:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "DESC[*] SIMPSONS "; erwartet "DELETE, DROP, DECLARE, DEALLOCATE, {"
+Syntax error in SQL statement "DESC[*] SIMPSONS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc SIMPSONS [42001-190]
+2015-11-12 09:32:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "DESC[*] SIMPSONS "; erwartet "DELETE, DROP, DECLARE, DEALLOCATE, {"
+Syntax error in SQL statement "DESC[*] SIMPSONS "; expected "DELETE, DROP, DECLARE, DEALLOCATE, {"; SQL statement:
+desc SIMPSONS [42001-190]
+2015-11-12 09:34:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "SELECT [*]"; erwartet "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"
+Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show SIMPSONS [42001-190]
+2015-11-12 09:34:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "SELECT [*]"; erwartet "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"
+Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show SIMPSONS [42001-190]
+2015-11-12 09:34:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "SELECT [*]"; erwartet "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"
+Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show table SIMPSONS [42001-190]
+2015-11-12 09:34:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "SELECT [*]"; erwartet "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"
+Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show table SIMPSONS [42001-190]
+2015-11-12 09:34:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "SELECT [*]"; erwartet "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"
+Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show COLUMS FROM SIMPSONS [42001-190]
+2015-11-12 09:41:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "EXPAIN[*] SELECT * FROM SIMPSONS "; erwartet "EXPLAIN, EXECUTE, {"
+Syntax error in SQL statement "EXPAIN[*] SELECT * FROM SIMPSONS "; expected "EXPLAIN, EXECUTE, {"; SQL statement:
+expain SELECT * FROM SIMPSONS [42001-190]
