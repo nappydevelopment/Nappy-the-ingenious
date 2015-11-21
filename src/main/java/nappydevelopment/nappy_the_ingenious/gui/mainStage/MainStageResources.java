@@ -45,6 +45,14 @@ public class MainStageResources {
 	StringProperty btnNoText;
 	StringProperty btnIdontKnow;
 	
+	//### Abort Dialog Texts #######################################################################
+	
+	String abortGameDialogTitle;
+	String abortGameDialogHeaderText;
+	String abortGameDialogContentText;
+	String abortGameDialogBtnApplyText;
+	String abortGameDialogBtnCancelText;
+	
 	//### Images for the menu-bar ##################################################################
 	
 	Image mniNewGameIcon;
@@ -68,12 +76,16 @@ public class MainStageResources {
 	
 	Image imvNoOfQuestIcon;
 	Image imvKnowledgeIcon;
-	
 	Image imvNappyImage;
 	
+//### CONSTRUCTORS #########################################################################################################################
+	
+	/* MainStageResources [constructor]: Constructor that creates a new resource-object for the main-stage-view *//**
+	 * 
+	 */
 //### CONSTRUCTORS #########################################################################################################################	
 	
-	public MainStageResources() {
+	MainStageResources() {
 
 		//### Texts for general components #############################################################
 		
@@ -126,61 +138,87 @@ public class MainStageResources {
 		
 		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/counter.png");
 		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
-		
 		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
+		
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
 	
-	public void setTextsToEnglish() {
+//### PUBLIC METHODS #######################################################################################################################
+	
+	
+	/* setTextsToEnglish [method]: Method that sets all texts of the main-stage-view to English *//**
+	 * 
+	 */
+	void setTextsToEnglish() {
 		
 		//Menu-Texts:
-		mnuGameText.setValue("Game");
-		mniNewGameText.setValue("New Game");
-		mniAbortGameText.setValue("Abort Game");
-		mniStatisticText.setValue("Statistic");
-		mniSettingsText.setValue("Settings");
-		mniExitText.setValue("Exit");
-		mnuHelpText.setValue("Help");
-		mniHelpText.setValue("Help");
-		mniWikiText.setValue("Wiki");
-		mniInfoText.setValue("Info");
+		this.mnuGameText.setValue("Game");
+		this.mniNewGameText.setValue("New Game");
+		this.mniAbortGameText.setValue("Abort Game");
+		this.mniStatisticText.setValue("Statistic");
+		this.mniSettingsText.setValue("Settings");
+		this.mniExitText.setValue("Exit");
+		this.mnuHelpText.setValue("Help");
+		this.mniHelpText.setValue("Help");
+		this.mniWikiText.setValue("Wiki");
+		this.mniInfoText.setValue("Info");
 		
 		//Button-Texts:
-		btnNewGameText.setValue("New Game");
-		btnStatisticText.setValue("Statistic");
-		btnWikiText.setValue("Wiki");
-		btnHelpText.setValue("Help");
+		this.btnNewGameText.setValue("New Game");
+		this.btnStatisticText.setValue("Statistic");
+		this.btnWikiText.setValue("Wiki");
+		this.btnHelpText.setValue("Help");
+		this.btnYesText.setValue("Yes");
+		this.btnNoText.setValue("No");
+		this.btnIdontKnow.setValue("I don't know");
 		
-		btnYesText.setValue("Yes");
-		btnNoText.setValue("No");
-		btnIdontKnow.setValue("I don't know");
+		//Abort-Dialog-Texts:
+		this.abortGameDialogTitle = "Nappy, the ingenious";
+		this.abortGameDialogHeaderText = "Abort game?";
+		this.abortGameDialogContentText = "Do you really want to abort the current game?\n" 
+										+ "Notice: Aborted games will not listed in the statistic!\n\n";
+		this.abortGameDialogBtnApplyText = "Abort game";
+		this.abortGameDialogBtnCancelText = "Cancel";
 	}
 	
-	public void setTextsToGerman() {
+	
+	/* setTextsToGerman [method]: Method that sets all texts of the main-stage-view to German *//**
+	 * 
+	 */
+	void setTextsToGerman() {
 		
 		//Menu-Texts:
-		mnuGameText.setValue("Spiel");
-		mniNewGameText.setValue("Neues Spiel");
-		mniAbortGameText.setValue("Spiel Abbrechen");
-		mniStatisticText.setValue("Statistik");
-		mniSettingsText.setValue("Einstellungen");
-		mniExitText.setValue("Beenden");
-		mnuHelpText.setValue("Hilfe");
-		mniHelpText.setValue("Spielanleitung");
-		mniWikiText.setValue("Wiki");
-		mniInfoText.setValue("Info");
+		this.mnuGameText.setValue("Spiel");
+		this.mniNewGameText.setValue("Neues Spiel");
+		this.mniAbortGameText.setValue("Spiel Abbrechen");
+		this.mniStatisticText.setValue("Statistik");
+		this.mniSettingsText.setValue("Einstellungen");
+		this.mniExitText.setValue("Beenden");
+		this.mnuHelpText.setValue("Hilfe");
+		this.mniHelpText.setValue("Spielanleitung");
+		this.mniWikiText.setValue("Wiki");
+		this.mniInfoText.setValue("Info");
 		
 		//Button-Texts:
-		btnNewGameText.setValue("Neues Spiel");
-		btnStatisticText.setValue("Statistik");
-		btnWikiText.setValue("Wiki");
-		btnHelpText.setValue("Spielanleitung");
+		this.btnNewGameText.setValue("Neues Spiel");
+		this.btnStatisticText.setValue("Statistik");
+		this.btnWikiText.setValue("Wiki");
+		this.btnHelpText.setValue("Spielanleitung");
+		this.btnYesText.setValue("Ja");
+		this.btnNoText.setValue("Nein");
+		this.btnIdontKnow.setValue("Ich weiß nicht");
 		
-		btnYesText.setValue("Ja");
-		btnNoText.setValue("Nein");
-		btnIdontKnow.setValue("Ich weiß nicht");
+		//Abort-Dialog-Texts:
+		this.abortGameDialogTitle = "Nappy, the ingenious";
+		this.abortGameDialogHeaderText = "Spiel abbrechen?";
+		this.abortGameDialogContentText = "Möchten Sie das aktuelle Spiel wirklich abbrechen?\n"
+										+ "Hinweis: Abgebrochene Spiele werden nicht in die Statistik aufgenommen!\n\n";
+		this.abortGameDialogBtnApplyText = "Spiel abbrechen";
+		this.abortGameDialogBtnCancelText = "Abbrechen";
+		
 	}
+
 
 //##########################################################################################################################################
 }

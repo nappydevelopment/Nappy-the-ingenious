@@ -7,7 +7,7 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
-import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageRessources;
+import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageResources;
 
 public class Program extends Application {
 	
@@ -37,8 +37,8 @@ public class Program extends Application {
 		this.mainStageController.initView();
 		this.settingsStageController.initView();
 		//Set the language of the main stage to English:
-		this.mainStageController.changeLanguageToEnglish();
-		SettingsStageRessources.setTextsToGerman();
+		this.mainStageController.changeLanguageToGerman();
+		SettingsStageResources.setTextsToGerman();
 		
 		
 		//Show the main-stage-window:
@@ -57,6 +57,10 @@ public class Program extends Application {
 		this.settingsStageController.show(owner);
 	}
 	
+	public void abortCurrentGame() {
+		this.mainStageController.showStartView();
+	}
+	
 	public void applySettings() {
 		
 		if(Settings.getLanguage() == Language.GERMAN) {
@@ -69,6 +73,7 @@ public class Program extends Application {
 		}
 		
 	}
+	
 	
 //### MAIN METHOD ##########################################################################################################################
 	

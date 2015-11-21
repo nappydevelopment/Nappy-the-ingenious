@@ -3,9 +3,13 @@
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 //### IMPORTS ##############################################################################################################################
+import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import nappydevelopment.nappy_the_ingenious.Program;
 
 //Class that handles the interactions of the main-stage with the program-logic:
@@ -93,6 +97,7 @@ public class MainStageController {
 			else if(src == view.mniAbortGame) {
 				//Abort the current game!
 				System.out.println("Abort the current game");
+				MainStageController.this.showAbortGameDialog();
 			}
 			else if(src == view.mniStatistic || src == view.btnStatistic) {
 				//Show the statistic-stage!
@@ -129,6 +134,33 @@ public class MainStageController {
 		
 	}
 	
+//### PRIVATE METHODS ######################################################################################################################
+	
+	//Method that creates a Dialog where the user must confirm the game abortion:
+	private void showAbortGameDialog() {
+		
+		//Create dialog:
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		
+		//Create the dialog buttons:
+		ButtonType bttApply = new ButtonType(this.res.abortGameDialogBtnApplyText);
+		ButtonType bttCancel = new ButtonType(this.res.abortGameDialogBtnCancelText);
+		
+		//Set porperties of the dialog:
+		alert.setTitle(this.res.abortGameDialogTitle);
+		alert.setHeaderText(this.res.abortGameDialogHeaderText);
+		alert.setContentText(this.res.abortGameDialogContentText);
+		alert.getButtonTypes().setAll(bttApply, bttCancel);
+		
+		//Show dialog and read out the result:
+		Optional<ButtonType> result = alert.showAndWait();
+		
+		//If the user confirm the game abortion:
+		if (result.get() == bttApply){
+		    this.program.abortCurrentGame();
+		}
+	}
+	
 //### PUBLIC METHODS #######################################################################################################################
 	
 	/* showStartView [method]: *//**
@@ -139,7 +171,9 @@ public class MainStageController {
 		//Disable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(true);
 		//Set the start-view-pane to the root-pane:
+		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
 		this.view.bdpRootPane.setCenter(this.view.gdpStartViewContentPane);
+		this.view.bdpRootPane.setBottom(null);
 		//Show the stage:
 		this.view.show();
 		
@@ -166,7 +200,7 @@ public class MainStageController {
 	public void showGamemode2View() {
 		
 	}
-	
+
 	/* changeLanguageToGerman [method]: *//**
 	 * 
 	 */
@@ -180,5 +214,7 @@ public class MainStageController {
 	public void changeLanguageToEnglish() {
 		this.res.setTextsToEnglish();
 	}
+
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################

@@ -2,6 +2,7 @@
 
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
+//### IMPORTS ##############################################################################################################################
 import java.awt.RenderingHints;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,8 +30,11 @@ import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.gui.components.VerticalProgressBar;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
-//### IMPORTS ##############################################################################################################################
-
+/* MainStageView [class]: Class the represents the main-stage-view so the whole window with all gui-components *//**
+ * 
+ * @author Manuel Bothner
+ *
+ */
 public class MainStageView extends Stage {
 
 //### COMPONENTS ###########################################################################################################################
@@ -101,6 +105,11 @@ public class MainStageView extends Stage {
 	
 //### CONSTRUCTORS #########################################################################################################################
 	
+	/* MainStageView [constructor]: Constructor that creates a new main-stage-view with all gui-components *//**
+	 * 
+	 * @param res
+	 * @param aeh
+	 */
 	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh) {
 		this.initComponents(res, aeh);
 		this.structureComponents();
@@ -385,9 +394,7 @@ public class MainStageView extends Stage {
 		);
 		this.setResizable(false);
 	}
-	
-//### PUBLIC METHODS #######################################################################################################################
-	
 
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################
