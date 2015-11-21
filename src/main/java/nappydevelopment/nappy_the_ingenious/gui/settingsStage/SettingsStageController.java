@@ -43,19 +43,19 @@ public class SettingsStageController {
 	//Method that binds properties to the gui-components:
 	private void initViewBindings() {
 		
-		this.view.titleProperty().bind(SettingsStageRessources.stageTitleText);
+		this.view.titleProperty().bind(SettingsStageResources.stageTitleText);
 		
-		this.view.lblLanguage.textProperty().bind(SettingsStageRessources.lblLanguageText);
-		this.view.rdbGerman.textProperty().bind(SettingsStageRessources.rdbGerman);
-		this.view.rdbEnglish.textProperty().bind(SettingsStageRessources.rdbEnglish);
-		this.view.lblColorScheme.textProperty().bind(SettingsStageRessources.lblColorScheme);
-		this.view.rdbBright.textProperty().bind(SettingsStageRessources.rdbBright);
-		this.view.rdbDark.textProperty().bind(SettingsStageRessources.rdbDark);
-		this.view.lblGameMode.textProperty().bind(SettingsStageRessources.lblGameMode);
-		this.view.rdbBothModes.textProperty().bind(SettingsStageRessources.rdbBothModes);
-		this.view.rdbOnlyMode1.textProperty().bind(SettingsStageRessources.rdbOnlyMode1);
-		this.view.btnApply.textProperty().bind(SettingsStageRessources.btnApply);
-		this.view.btnAbort.textProperty().bind(SettingsStageRessources.btnAbort);
+		this.view.lblLanguage.textProperty().bind(SettingsStageResources.lblLanguageText);
+		this.view.rdbGerman.textProperty().bind(SettingsStageResources.rdbGerman);
+		this.view.rdbEnglish.textProperty().bind(SettingsStageResources.rdbEnglish);
+		this.view.lblColorScheme.textProperty().bind(SettingsStageResources.lblColorScheme);
+		this.view.rdbBright.textProperty().bind(SettingsStageResources.rdbBright);
+		this.view.rdbDark.textProperty().bind(SettingsStageResources.rdbDark);
+		this.view.lblGameMode.textProperty().bind(SettingsStageResources.lblGameMode);
+		this.view.rdbBothModes.textProperty().bind(SettingsStageResources.rdbBothModes);
+		this.view.rdbOnlyMode1.textProperty().bind(SettingsStageResources.rdbOnlyMode1);
+		this.view.btnApply.textProperty().bind(SettingsStageResources.btnApply);
+		this.view.btnAbort.textProperty().bind(SettingsStageResources.btnAbort);
 	}
 	
 //### INNER CLASSES ########################################################################################################################
@@ -157,11 +157,11 @@ public class SettingsStageController {
 	}
 	
 	public void changeLanguageToGerman() {
-		SettingsStageRessources.setTextsToGerman();
+		SettingsStageResources.setTextsToGerman();
 	}
 	
 	public void changeLanguageToEnglish() {
-		SettingsStageRessources.setTextsToEnglish();
+		SettingsStageResources.setTextsToEnglish();
 	}
 	
 }
