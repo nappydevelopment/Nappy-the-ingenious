@@ -42,3 +42,1232 @@ show COLUMS FROM SIMPSONS [42001-190]
 org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "EXPAIN[*] SELECT * FROM SIMPSONS "; erwartet "EXPLAIN, EXECUTE, {"
 Syntax error in SQL statement "EXPAIN[*] SELECT * FROM SIMPSONS "; expected "EXPLAIN, EXECUTE, {"; SQL statement:
 expain SELECT * FROM SIMPSONS [42001-190]
+2015-11-16 11:13:18 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "INSERT INTO SIMPSONS VALUES
+(01,'Eleanor Abernathy','Katzenfrau',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'crazy',,[*]FALSE,FALSE,NULL),
+(02,'Martha Quimby',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','major',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'hat'),
+(03,'Luann van Houten',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','firefighter',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,TRUE,FALSE,TRUE,'sane',,FALSE,FALSE,'glasses'),
+(04,'Brandine Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,FALSE,'yellow','gelb','orange','orange',FALSE,TRUE,FALSE,TRUE,TRUE,'crazy',,FALSE,FALSE,NULL),
+(05,'Helen Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','grey','grau',TRUE,FALSE,FALSE,TRUE,TRUE,'gossip',,FALSE,FALSE,NULL),
+(06,'Bernice Hibbert',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'alcoholic',,FALSE,FALSE,'necklace'),
+(07,'Manjula Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'sane',,TRUE,FALSE,NULL),
+(08,'Elizabeth Hoover',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'frustrated',,FALSE,FALSE,'glasses'),
+(09,'Doris Peterson','Friedman',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,NULL),
+(10,'Edna Krabappel',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'grumpy',,TRUE,FALSE,NULL),
+(11,'Judith Underdunk',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,TRUE,'evil',,FALSE,FALSE,'necklace'),
+(12,'Agnes Skinner',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'temperament',,FALSE,FALSE,'wig'),
+(13,'Patty Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,TRUE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace'),
+(14,'Selma Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace'),
+(15,'Marge Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'necklace'),
+(16,'Jacqueline Bouvier','Jackie',NULL,NULL,FALSE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'necklace'),
+(17,'Shary Bobbins',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','nanny',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat'),
+(18,'Maude Flanders',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','orange','orange',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,NULL),
+(19,'Jessica Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow'),
+(20,'Greta Wolfcastle',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blonde','blond',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(21,'Ling Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'white','weiß','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,'bow'),
+(22,'Maggie Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow'),
+(23,'Lisa Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'necklace'),
+(24,'Kodos',NULL,NULL,NULL,FALSE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL),
+(25,'Schneeball 2',NULL,NULL,NULL,FALSE,FALSE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'lazy',,FALSE,FALSE,NULL),
+
+(26,'Jeff Albertson','Comic book guy',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sarcastic',,TRUE,TRUE,NULL),
+(27,'Barry Duffman','Duffman',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,TRUE,'yellow','gelb','blonde','blond',FALSE,FALSE,TRUE,FALSE,TRUE,'athletic',,FALSE,FALSE,'glasses'),
+(28,'Rex Banner',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'serious',,FALSE,FALSE,'hat'),
+(29,'Jasper Beardley',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',TRUE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard'),
+(30,'Clancy Bouvier',NULL,NULL,NULL,TRUE,TRUE,FALSE,TRUE,'adult','erwachsen','flightattendant',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL),
+(31,'Kent Brockman',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','white','weiß',TRUE,TRUE,FALSE,TRUE,TRUE,'opportunism',,FALSE,TRUE,NULL),
+(32,'Charles Montgomery Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','akw',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(33,'Carl Carlson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,TRUE,FALSE,FALSE,'silent',,TRUE,FALSE,NULL),
+(34,'Gary Chalmers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'wig'),
+(35,'Pedro Chespirito','Bienenmann',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'dark','dunkel','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'democrat',,FALSE,TRUE,'hat'),
+(36,'Ned Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,TRUE,'overprotective',,FALSE,FALSE,'glasses'),
+(37,'Lothar Folkman','Luigi Risotto',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,TRUE,'hat'),
+(38,'John Frink Junior',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,TRUE,FALSE,'glasses'),
+(39,'Frank Grimes',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'glasses'),
+(40,'Matt Groening',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses'),
+(41,'Barney Gumble',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,TRUE,'alcoholic',,TRUE,TRUE,NULL),
+(42,'Gil Gunderson',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,FALSE,NULL),
+(43,'Herman Hermann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','red','rot',FALSE,TRUE,FALSE,FALSE,FALSE,'crazy',,FALSE,FALSE,NULL),
+(44,'Julius Hibbert',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL),
+(45,'Herschel Krustofski','Krusty',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'white','weiß','green','grün',FALSE,TRUE,FALSE,FALSE,FALSE,'grumpy',,FALSE,TRUE,NULL),
+(46,'Chester J. Lampwick',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat'),
+(47,'Dewey Largo',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL),
+(48,'Lenny Leonard',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL),
+(49,'Timothy Lovejoy',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,TRUE,'yellow','gelb','black','schwarz',TRUE,FALSE,FALSE,TRUE,TRUE,'stingy',,FALSE,FALSE,NULL),
+(50,'William MacMoran',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,'beard'),
+(51,'Otto Mann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','black','schwarz',FALSE,TRUE,TRUE,TRUE,FALSE,'cool',,FALSE,FALSE,'hat'),
+(52,'Herbert Powell','Herb',NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','retailer',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL),
+(53,'Horatio McCallister',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,TRUE,'honest',,FALSE,TRUE,'hat'),
+(54,'Ralph Melish','Hans Maulwurf',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses'),
+(55,'Apu Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'honest',,TRUE,FALSE,'wig'),
+(56,'Sanjay Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(57,'Tom O''Flanagan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','bar',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(58,'Arnold Pye',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'glasses'),
+(59,'Joseph Quimby','Joe',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','major',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,NULL),
+(60,'Nick Riviera','Dr. Nick',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'corrupt',,FALSE,FALSE,'beard'),
+(61,'Hank Scorpio',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'beard'),
+(62,'Abraham Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,FALSE,TRUE,'glasses'),
+(63,'Homer Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,TRUE,TRUE,NULL),
+(64,'Seymour Skinner',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL),
+(65,'Waylon Smithers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,TRUE,TRUE,FALSE,'exactly',,FALSE,FALSE,'glasses'),
+(66,'Roy Snyder',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard'),
+(67,'Cletus Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','farmer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,FALSE,FALSE,NULL),
+(68,'Moe Szyslak',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','bar',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'grumpy',,FALSE,FALSE,NULL),
+(69,'Drederick Tatum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','sport',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL),
+(70,'Cecile Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL),
+(71,'Robert Terwilliger','Tingeltangel Bob',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL),
+(72,'Rich Texan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','retailer',,TRUE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'republican',,FALSE,TRUE,'hat'),
+(73,'Chester Turley','Snake',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(74,'Melvin van Horne',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'conceited ',,FALSE,FALSE,'bone'),
+(75,'Kirk van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','unemployed',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,TRUE,'glasses'),
+(76,'Clancy Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,'hat'),
+(77,'Anthony D''Amico','Fat Tony',NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','grey','grey',FALSE,TRUE,FALSE,FALSE,TRUE,'evil',,FALSE,TRUE,NULL),
+(78,'Rainier Wolfcastle',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,NULL),
+(79,'Artie Ziff',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'conceited ',,FALSE,FALSE,'glasses'),
+(80,'Larry Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','white','weiß',FALSE,FALSE,FALSE,TRUE,TRUE,'lazy',,FALSE,TRUE,NULL),
+(81,'Freddy Quimby',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','press',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(82,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(83,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(84,'Kinder der Fam. Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL),
+(85,'Kinder der Fam. Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL),
+(86,'Jeremy Peterson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','assistent',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,FALSE,NULL),
+(87,'Gino Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL),
+(88,'Bart Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'bold',,TRUE,FALSE,NULL),
+(89,'Ralph Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,TRUE,NULL),
+(90,'Kearney Zzyzwicz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','bald','kahl',FALSE,TRUE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL),
+(91,'Jimbo Jones',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'hat'),
+(92,'Nelson Muntz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL),
+(93,'Rod Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','red','rot',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL),
+(94,'Todd Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL),
+(95,'Martin Prince',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,TRUE,NULL),
+(96,'Dolphin Starbeam','Dolph',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(97,'Milhouse van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'irritating',,FALSE,FALSE,'glasses'),
+(98,'Itchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'blue','blau','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(99,'Joseph Teeny','Mr. Teeny',NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'brown','braun','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'bold',,FALSE,FALSE,'hat'),
+(100,'Scratchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'black','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'victim',,FALSE,FALSE,NULL),
+(101,'Knecht Ruprecht',NULL,NULL,NULL,TRUE,FALSE,TRUE,TRUE,'adult','erwachsen',NULL,NULL,FALSE,'brown','braun','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'loyal',,FALSE,FALSE,NULL),
+(102,'Kang',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL), "; erwartet "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"
+Syntax error in SQL statement "INSERT INTO SIMPSONS VALUES
+(01,'Eleanor Abernathy','Katzenfrau',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'crazy',,[*]FALSE,FALSE,NULL),
+(02,'Martha Quimby',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','major',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'hat'),
+(03,'Luann van Houten',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','firefighter',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,TRUE,FALSE,TRUE,'sane',,FALSE,FALSE,'glasses'),
+(04,'Brandine Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,FALSE,'yellow','gelb','orange','orange',FALSE,TRUE,FALSE,TRUE,TRUE,'crazy',,FALSE,FALSE,NULL),
+(05,'Helen Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','grey','grau',TRUE,FALSE,FALSE,TRUE,TRUE,'gossip',,FALSE,FALSE,NULL),
+(06,'Bernice Hibbert',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'alcoholic',,FALSE,FALSE,'necklace'),
+(07,'Manjula Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'sane',,TRUE,FALSE,NULL),
+(08,'Elizabeth Hoover',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'frustrated',,FALSE,FALSE,'glasses'),
+(09,'Doris Peterson','Friedman',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,NULL),
+(10,'Edna Krabappel',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'grumpy',,TRUE,FALSE,NULL),
+(11,'Judith Underdunk',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,TRUE,'evil',,FALSE,FALSE,'necklace'),
+(12,'Agnes Skinner',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'temperament',,FALSE,FALSE,'wig'),
+(13,'Patty Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,TRUE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace'),
+(14,'Selma Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace'),
+(15,'Marge Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'necklace'),
+(16,'Jacqueline Bouvier','Jackie',NULL,NULL,FALSE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'necklace'),
+(17,'Shary Bobbins',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','nanny',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat'),
+(18,'Maude Flanders',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','orange','orange',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,NULL),
+(19,'Jessica Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow'),
+(20,'Greta Wolfcastle',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blonde','blond',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(21,'Ling Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'white','weiß','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,'bow'),
+(22,'Maggie Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow'),
+(23,'Lisa Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'necklace'),
+(24,'Kodos',NULL,NULL,NULL,FALSE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL),
+(25,'Schneeball 2',NULL,NULL,NULL,FALSE,FALSE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'lazy',,FALSE,FALSE,NULL),
+
+(26,'Jeff Albertson','Comic book guy',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sarcastic',,TRUE,TRUE,NULL),
+(27,'Barry Duffman','Duffman',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,TRUE,'yellow','gelb','blonde','blond',FALSE,FALSE,TRUE,FALSE,TRUE,'athletic',,FALSE,FALSE,'glasses'),
+(28,'Rex Banner',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'serious',,FALSE,FALSE,'hat'),
+(29,'Jasper Beardley',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',TRUE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard'),
+(30,'Clancy Bouvier',NULL,NULL,NULL,TRUE,TRUE,FALSE,TRUE,'adult','erwachsen','flightattendant',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL),
+(31,'Kent Brockman',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','white','weiß',TRUE,TRUE,FALSE,TRUE,TRUE,'opportunism',,FALSE,TRUE,NULL),
+(32,'Charles Montgomery Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','akw',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(33,'Carl Carlson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,TRUE,FALSE,FALSE,'silent',,TRUE,FALSE,NULL),
+(34,'Gary Chalmers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'wig'),
+(35,'Pedro Chespirito','Bienenmann',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'dark','dunkel','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'democrat',,FALSE,TRUE,'hat'),
+(36,'Ned Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,TRUE,'overprotective',,FALSE,FALSE,'glasses'),
+(37,'Lothar Folkman','Luigi Risotto',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,TRUE,'hat'),
+(38,'John Frink Junior',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,TRUE,FALSE,'glasses'),
+(39,'Frank Grimes',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'glasses'),
+(40,'Matt Groening',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses'),
+(41,'Barney Gumble',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,TRUE,'alcoholic',,TRUE,TRUE,NULL),
+(42,'Gil Gunderson',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,FALSE,NULL),
+(43,'Herman Hermann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','red','rot',FALSE,TRUE,FALSE,FALSE,FALSE,'crazy',,FALSE,FALSE,NULL),
+(44,'Julius Hibbert',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL),
+(45,'Herschel Krustofski','Krusty',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'white','weiß','green','grün',FALSE,TRUE,FALSE,FALSE,FALSE,'grumpy',,FALSE,TRUE,NULL),
+(46,'Chester J. Lampwick',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat'),
+(47,'Dewey Largo',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL),
+(48,'Lenny Leonard',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL),
+(49,'Timothy Lovejoy',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,TRUE,'yellow','gelb','black','schwarz',TRUE,FALSE,FALSE,TRUE,TRUE,'stingy',,FALSE,FALSE,NULL),
+(50,'William MacMoran',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,'beard'),
+(51,'Otto Mann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','black','schwarz',FALSE,TRUE,TRUE,TRUE,FALSE,'cool',,FALSE,FALSE,'hat'),
+(52,'Herbert Powell','Herb',NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','retailer',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL),
+(53,'Horatio McCallister',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,TRUE,'honest',,FALSE,TRUE,'hat'),
+(54,'Ralph Melish','Hans Maulwurf',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses'),
+(55,'Apu Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'honest',,TRUE,FALSE,'wig'),
+(56,'Sanjay Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(57,'Tom O''Flanagan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','bar',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(58,'Arnold Pye',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'glasses'),
+(59,'Joseph Quimby','Joe',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','major',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,NULL),
+(60,'Nick Riviera','Dr. Nick',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'corrupt',,FALSE,FALSE,'beard'),
+(61,'Hank Scorpio',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'beard'),
+(62,'Abraham Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,FALSE,TRUE,'glasses'),
+(63,'Homer Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,TRUE,TRUE,NULL),
+(64,'Seymour Skinner',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL),
+(65,'Waylon Smithers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,TRUE,TRUE,FALSE,'exactly',,FALSE,FALSE,'glasses'),
+(66,'Roy Snyder',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard'),
+(67,'Cletus Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','farmer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,FALSE,FALSE,NULL),
+(68,'Moe Szyslak',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','bar',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'grumpy',,FALSE,FALSE,NULL),
+(69,'Drederick Tatum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','sport',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL),
+(70,'Cecile Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL),
+(71,'Robert Terwilliger','Tingeltangel Bob',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL),
+(72,'Rich Texan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','retailer',,TRUE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'republican',,FALSE,TRUE,'hat'),
+(73,'Chester Turley','Snake',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(74,'Melvin van Horne',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'conceited ',,FALSE,FALSE,'bone'),
+(75,'Kirk van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','unemployed',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,TRUE,'glasses'),
+(76,'Clancy Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,'hat'),
+(77,'Anthony D''Amico','Fat Tony',NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','grey','grey',FALSE,TRUE,FALSE,FALSE,TRUE,'evil',,FALSE,TRUE,NULL),
+(78,'Rainier Wolfcastle',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,NULL),
+(79,'Artie Ziff',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'conceited ',,FALSE,FALSE,'glasses'),
+(80,'Larry Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','white','weiß',FALSE,FALSE,FALSE,TRUE,TRUE,'lazy',,FALSE,TRUE,NULL),
+(81,'Freddy Quimby',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','press',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(82,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(83,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL),
+(84,'Kinder der Fam. Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL),
+(85,'Kinder der Fam. Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL),
+(86,'Jeremy Peterson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','assistent',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,FALSE,NULL),
+(87,'Gino Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL),
+(88,'Bart Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'bold',,TRUE,FALSE,NULL),
+(89,'Ralph Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,TRUE,NULL),
+(90,'Kearney Zzyzwicz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','bald','kahl',FALSE,TRUE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL),
+(91,'Jimbo Jones',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'hat'),
+(92,'Nelson Muntz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL),
+(93,'Rod Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','red','rot',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL),
+(94,'Todd Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL),
+(95,'Martin Prince',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,TRUE,NULL),
+(96,'Dolphin Starbeam','Dolph',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(97,'Milhouse van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'irritating',,FALSE,FALSE,'glasses'),
+(98,'Itchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'blue','blau','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL),
+(99,'Joseph Teeny','Mr. Teeny',NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'brown','braun','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'bold',,FALSE,FALSE,'hat'),
+(100,'Scratchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'black','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'victim',,FALSE,FALSE,NULL),
+(101,'Knecht Ruprecht',NULL,NULL,NULL,TRUE,FALSE,TRUE,TRUE,'adult','erwachsen',NULL,NULL,FALSE,'brown','braun','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'loyal',,FALSE,FALSE,NULL),
+(102,'Kang',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL), "; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"; SQL statement:
+Insert Into simpsons values
+(01,'Eleanor Abernathy','Katzenfrau',null,null,false,true,true,false,'adult','erwachsen',null,null,false,'yellow','gelb','grey','grau',false,true,false,true,false,'crazy',,false,false,null),
+(02,'Martha Quimby',null,null,null,false,true,true,false,'adult','erwachsen','major',,false,'yellow','gelb','black','schwarz',false,false,false,true,true,'sane',,false,false,'hat'),
+(03,'Luann van Houten',null,null,null,false,true,true,false,'adult','erwachsen','firefighter',,false,'yellow','gelb','blue','blau',false,false,true,false,true,'sane',,false,false,'glasses'),
+(04,'Brandine Spuckler',null,null,null,false,true,true,false,'adult','erwachsen','mascot',,false,'yellow','gelb','orange','orange',false,true,false,true,true,'crazy',,false,false,null),
+(05,'Helen Lovejoy',null,null,null,false,true,true,false,'adult','erwachsen','church',,false,'yellow','gelb','grey','grau',true,false,false,true,true,'gossip',,false,false,null),
+(06,'Bernice Hibbert',null,null,null,false,true,true,false,'adult','erwachsen','wife',,false,'dark','dunkel','black','schwarz',false,false,false,true,true,'alcoholic',,false,false,'necklace'),
+(07,'Manjula Nahasapeemapetilon',null,null,null,false,true,true,false,'adult','erwachsen','wife',,false,'dark','dunkel','black','schwarz',false,false,false,false,true,'sane',,true,false,null),
+(08,'Elizabeth Hoover',null,null,null,false,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'frustrated',,false,false,'glasses'),
+(09,'Doris Peterson','Friedman',null,null,false,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'grumpy',,false,true,null),
+(10,'Edna Krabappel',null,null,null,false,true,false,false,'adult','erwachsen','school',,false,'yellow','gelb','brown','braun',false,true,false,true,true,'grumpy',,true,false,null),
+(11,'Judith Underdunk',null,null,null,false,true,true,false,'adult','erwachsen','wife',,true,'yellow','gelb','grey','grau',false,false,false,false,true,'evil',,false,false,'necklace'),
+(12,'Agnes Skinner',null,null,null,false,true,true,false,'old','alt','pensioner',,false,'yellow','gelb','grey','grau',false,false,false,true,false,'temperament',,false,false,'wig'),
+(13,'Patty Bouvier',null,null,null,false,true,true,true,'adult','erwachsen','driving',,false,'yellow','gelb','blue','blau',false,true,true,true,false,'grumpy',,false,true,'necklace'),
+(14,'Selma Bouvier',null,null,null,false,true,true,true,'adult','erwachsen','driving',,false,'yellow','gelb','blue','blau',false,true,false,true,false,'grumpy',,false,true,'necklace'),
+(15,'Marge Simpson',null,null,null,false,true,true,true,'adult','erwachsen','wife',,false,'yellow','gelb','blue','blau',true,false,false,true,true,'sane',,false,false,'necklace'),
+(16,'Jacqueline Bouvier','Jackie',null,null,false,true,true,true,'old','alt','pensioner',,false,'yellow','gelb','grey','grau',false,true,false,true,false,'sane',,false,false,'necklace'),
+(17,'Shary Bobbins',null,null,null,false,true,false,false,'adult','erwachsen','nanny',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'sane',,false,false,'hat'),
+(18,'Maude Flanders',null,null,null,false,true,false,false,'adult','erwachsen','wife',,false,'yellow','gelb','orange','orange',true,false,false,true,true,'sane',,false,false,null),
+(19,'Jessica Lovejoy',null,null,null,false,true,true,false,'young','jung','student',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'smart',,false,false,'bow'),
+(20,'Greta Wolfcastle',null,null,null,false,true,true,false,'young','jung','student',,false,'yellow','gelb','blonde','blond',false,false,false,false,false,'sane',,false,false,null),
+(21,'Ling Bouvier',null,null,null,false,true,true,true,'young','jung',null,null,false,'white','weiß','black','schwarz',false,false,false,false,false,'sane',,false,false,'bow'),
+(22,'Maggie Simpson',null,null,null,false,true,true,true,'young','jung',null,null,false,'yellow','gelb','yellow','gelb',false,false,false,true,false,'smart',,false,false,'bow'),
+(23,'Lisa Simpson',null,null,null,false,true,true,true,'young','jung','student',,false,'yellow','gelb','yellow','gelb',false,false,false,true,false,'smart',,false,false,'necklace'),
+(24,'Kodos',null,null,null,false,false,true,false,'adult','erwachsen',null,null,true,'green','grün','bald','kahl',false,false,false,false,false,'evil',,false,true,null),
+(25,'Schneeball 2',null,null,null,false,false,true,true,'young','jung',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'lazy',,false,false,null),
+
+(26,'Jeff Albertson','Comic book guy',null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'sarcastic',,true,true,null),
+(27,'Barry Duffman','Duffman',null,null,true,true,true,false,'adult','erwachsen','mascot',,true,'yellow','gelb','blonde','blond',false,false,true,false,true,'athletic',,false,false,'glasses'),
+(28,'Rex Banner',null,null,null,true,true,false,false,'adult','erwachsen','police',,true,'yellow','gelb','brown','braun',false,false,false,true,false,'serious',,false,false,'hat'),
+(29,'Jasper Beardley',null,null,null,true,true,true,false,'old','alt','pensioner',,false,'yellow','gelb','bald','kahl',true,false,false,true,false,'sane',,false,true,'beard'),
+(30,'Clancy Bouvier',null,null,null,true,true,false,true,'adult','erwachsen','flightattendant',,false,'yellow','gelb','brown','braun',false,true,false,true,true,'sane',,false,true,null),
+(31,'Kent Brockman',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','white','weiß',true,true,false,true,true,'opportunism',,false,true,null),
+(32,'Charles Montgomery Burns',null,null,null,true,true,true,false,'old','alt','akw',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'evil',,false,false,null),
+(33,'Carl Carlson',null,null,null,true,true,true,false,'adult','erwachsen','akw',,false,'dark','dunkel','black','schwarz',false,false,true,false,false,'silent',,true,false,null),
+(34,'Gary Chalmers',null,null,null,true,true,true,false,'old','alt','school',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,false,'wig'),
+(35,'Pedro Chespirito','Bienenmann',null,null,true,true,true,false,'adult','erwachsen','tv',,true,'dark','dunkel','brown','braun',false,false,false,false,false,'democrat',,false,true,'hat'),
+(36,'Ned Flanders',null,null,null,true,true,true,false,'adult','erwachsen','church',,false,'yellow','gelb','brown','braun',true,false,false,true,true,'overprotective',,false,false,'glasses'),
+(37,'Lothar Folkman','Luigi Risotto',null,null,true,true,true,false,'adult','erwachsen','restaurant',,false,'yellow','gelb','grey','grau',false,false,false,false,false,'sane',,false,true,'hat'),
+(38,'John Frink Junior',null,null,null,true,true,true,false,'adult','erwachsen','scientist',,true,'yellow','gelb','brown','braun',false,false,false,true,true,'crazy',,true,false,'glasses'),
+(39,'Frank Grimes',null,null,null,true,true,false,false,'adult','erwachsen','akw',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'evil',,false,false,'glasses'),
+(40,'Matt Groening',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,true,'glasses'),
+(41,'Barney Gumble',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','brown','braun',false,false,false,false,true,'alcoholic',,true,true,null),
+(42,'Gil Gunderson',null,null,null,true,true,false,false,'adult','erwachsen','retailer',,false,'yellow','gelb','grey','grau',false,false,false,true,false,'failure',,false,false,null),
+(43,'Herman Hermann',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','red','rot',false,true,false,false,false,'crazy',,false,false,null),
+(44,'Julius Hibbert',null,null,null,true,true,true,false,'adult','erwachsen','doctor',,true,'dark','dunkel','black','schwarz',false,false,false,true,true,'sane',,false,true,null),
+(45,'Herschel Krustofski','Krusty',null,null,true,true,true,false,'old','alt','tv',,true,'white','weiß','green','grün',false,true,false,false,false,'grumpy',,false,true,null),
+(46,'Chester J. Lampwick',null,null,null,true,true,true,false,'old','alt','tv',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,false,'hat'),
+(47,'Dewey Largo',null,null,null,true,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,true,null),
+(48,'Lenny Leonard',null,null,null,true,true,true,false,'adult','erwachsen','akw',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'sane',,true,false,null),
+(49,'Timothy Lovejoy',null,null,null,true,true,true,false,'adult','erwachsen','church',,true,'yellow','gelb','black','schwarz',true,false,false,true,true,'stingy',,false,false,null),
+(50,'William MacMoran',null,null,null,true,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','red','rot',false,false,false,false,false,'athletic',,false,false,'beard'),
+(51,'Otto Mann',null,null,null,true,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','black','schwarz',false,true,true,true,false,'cool',,false,false,'hat'),
+(52,'Herbert Powell','Herb',null,null,true,true,true,true,'adult','erwachsen','retailer',,true,'yellow','gelb','brown','braun',false,true,false,true,false,'sane',,false,true,null),
+(53,'Horatio McCallister',null,null,null,true,true,true,false,'old','alt','restaurant',,false,'yellow','gelb','grey','grau',false,true,false,true,true,'honest',,false,true,'hat'),
+(54,'Ralph Melish','Hans Maulwurf',null,null,true,true,true,false,'old','alt','pensioner',,false,'yellow','gelb','bald','kahl',false,false,false,true,false,'sane',,false,true,'glasses'),
+(55,'Apu Nahasapeemapetilon',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'dark','dunkel','black','schwarz',false,false,false,false,true,'honest',,true,false,'wig'),
+(56,'Sanjay Nahasapeemapetilon',null,null,null,true,true,true,false,'adult','erwachsen',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'sane',,false,false,null),
+(57,'Tom O''Flanagan',null,null,null,true,true,true,false,'old','alt','bar',,false,'yellow','gelb','grey','grau',false,false,false,false,false,'sane',,false,false,null),
+(58,'Arnold Pye',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','brown','braun',false,false,false,true,false,'sane',,false,false,'glasses'),
+(59,'Joseph Quimby','Joe',null,null,true,true,true,false,'young','jung','major',,true,'yellow','gelb','brown','braun',false,false,false,true,true,'corrupt',,false,true,null),
+(60,'Nick Riviera','Dr. Nick',null,null,true,true,true,false,'adult','erwachsen','doctor',,true,'yellow','gelb','black','schwarz',false,false,false,true,false,'corrupt',,false,false,'beard'),
+(61,'Hank Scorpio',null,null,null,true,true,true,false,'adult','erwachsen','criminal',,true,'yellow','gelb','brown','braun',false,true,false,true,false,'evil',,false,false,'beard'),
+(62,'Abraham Simpson',null,null,null,true,true,true,true,'old','alt','pensioner',,false,'yellow','gelb','yellow','gelb',false,false,false,true,true,'crazy',,false,true,'glasses'),
+(63,'Homer Simpson',null,null,null,true,true,true,true,'adult','erwachsen','akw',,false,'yellow','gelb','bald','kahl',false,false,false,true,true,'dumb',,true,true,null),
+(64,'Seymour Skinner',null,null,null,true,true,true,false,'adult','erwachsen','school',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,true,false,null),
+(65,'Waylon Smithers',null,null,null,true,true,true,false,'adult','erwachsen','akw',,false,'yellow','gelb','grey','grau',false,false,true,true,false,'exactly',,false,false,'glasses'),
+(66,'Roy Snyder',null,null,null,true,true,true,false,'adult','erwachsen','police',,true,'dark','dunkel','black','schwarz',false,false,false,true,false,'sane',,false,true,'beard'),
+(67,'Cletus Spuckler',null,null,null,true,true,true,false,'adult','erwachsen','farmer',,false,'yellow','gelb','brown','braun',false,false,false,true,true,'dumb',,false,false,null),
+(68,'Moe Szyslak',null,null,null,true,true,true,false,'adult','erwachsen','bar',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'grumpy',,false,false,null),
+(69,'Drederick Tatum',null,null,null,true,true,true,false,'adult','erwachsen','sport',,true,'dark','dunkel','black','schwarz',false,false,false,true,false,'evil',,false,true,null),
+(70,'Cecile Terwilliger',null,null,null,true,true,true,false,'adult','erwachsen','scientist',,false,'yellow','gelb','brown','braun',false,false,false,false,false,'evil',,false,false,null),
+(71,'Robert Terwilliger','Tingeltangel Bob',null,null,true,true,true,false,'adult','erwachsen','criminal',,true,'yellow','gelb','red','rot',false,false,false,false,false,'evil',,false,false,null),
+(72,'Rich Texan',null,null,null,true,true,true,false,'old','alt','retailer',,true,'yellow','gelb','grey','grau',false,true,false,true,false,'republican',,false,true,'hat'),
+(73,'Chester Turley','Snake',null,null,true,true,true,false,'adult','erwachsen','criminal',,true,'yellow','gelb','brown','braun',false,false,false,true,false,'evil',,false,false,null),
+(74,'Melvin van Horne',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','blue','blau',true,false,false,true,true,'conceited ',,false,false,'bone'),
+(75,'Kirk van Houten',null,null,null,true,true,true,false,'adult','erwachsen','unemployed',,false,'yellow','gelb','blue','blau',false,false,false,true,false,'failure',,false,true,'glasses'),
+(76,'Clancy Wiggum',null,null,null,true,true,true,false,'adult','erwachsen','police',,true,'yellow','gelb','brown','braun',false,true,false,true,true,'corrupt',,false,true,'hat'),
+(77,'Anthony D''Amico','Fat Tony',null,null,true,true,false,false,'adult','erwachsen','criminal',,true,'yellow','gelb','grey','grey',false,true,false,false,true,'evil',,false,true,null),
+(78,'Rainier Wolfcastle',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','brown','braun',false,false,false,false,false,'athletic',,false,false,null),
+(79,'Artie Ziff',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'conceited ',,false,false,'glasses'),
+(80,'Larry Burns',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','white','weiß',false,false,false,true,true,'lazy',,false,true,null),
+(81,'Freddy Quimby',null,null,null,true,true,true,false,'young','jung','press',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'evil',,false,false,null),
+(82,'Kinder der Fam. Nahasapeemapetilon',null,null,null,true,true,true,false,'young','jung',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'sane',,false,false,null),
+(83,'Kinder der Fam. Nahasapeemapetilon',null,null,null,false,true,true,false,'young','jung',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'sane',,false,false,null),
+(84,'Kinder der Fam. Spuckler',null,null,null,true,true,true,false,'young','jung',null,null,false,'yellow','gelb','orange','orange',false,false,false,true,false,'sane',,false,false,null),
+(85,'Kinder der Fam. Spuckler',null,null,null,false,true,true,false,'young','jung',null,null,false,'yellow','gelb','orange','orange',false,false,false,true,false,'sane',,false,false,null),
+(86,'Jeremy Peterson',null,null,null,true,true,true,false,'young','jung','assistent',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'dumb',,false,false,null),
+(87,'Gino Terwilliger',null,null,null,true,true,true,false,'young','jung',null,null,false,'yellow','gelb','red','rot',false,false,false,false,false,'evil',,false,false,null),
+(88,'Bart Simpson',null,null,null,true,true,true,true,'young','jung','student',,false,'yellow','gelb','yellow','gelb',false,false,false,true,false,'bold',,true,false,null),
+(89,'Ralph Wiggum',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'dumb',,false,true,null),
+(90,'Kearney Zzyzwicz',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','bald','kahl',false,true,false,false,false,'evil',,false,true,null),
+(91,'Jimbo Jones',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',true,true,false,true,false,'evil',,false,false,'hat'),
+(92,'Nelson Muntz',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'evil',,false,true,null),
+(93,'Rod Flanders',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','red','rot',true,false,false,true,false,'overprotective',,false,false,null),
+(94,'Todd Flanders',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',true,false,false,true,false,'overprotective',,false,false,null),
+(95,'Martin Prince',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'smart',,false,true,null),
+(96,'Dolphin Starbeam','Dolph',null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'evil',,false,false,null),
+(97,'Milhouse van Houten',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','blue','blau',false,false,false,true,false,'irritating',,false,false,'glasses'),
+(98,'Itchy',null,null,null,true,false,true,false,'old','alt','tv',,true,'blue','blau','blue','blau',false,false,false,true,false,'evil',,false,false,null),
+(99,'Joseph Teeny','Mr. Teeny',null,null,true,false,true,false,'adult','erwachsen','tv',,true,'brown','braun','brown','braun',false,true,false,true,false,'bold',,false,false,'hat'),
+(100,'Scratchy',null,null,null,true,false,true,false,'old','alt','tv',,true,'black','dunkel','black','schwarz',false,false,false,true,false,'victim',,false,false,null),
+(101,'Knecht Ruprecht',null,null,null,true,false,true,true,'adult','erwachsen',null,null,false,'brown','braun','brown','braun',false,false,false,true,false,'loyal',,false,false,null),
+(102,'Kang',null,null,null,true,false,true,false,'adult','erwachsen',null,null,true,'green','grün','bald','kahl',false,false,false,false,false,'evil',,false,true,null), [42001-190]
+2015-11-16 11:16:29 jdbc[6]: null
+org.h2.message.DbException: Die Datenbank-Verbindung wurde nicht explizit geschlossen (jetzt in der Müllabfuhr)
+The connection was not closed by the application and is garbage collected [90018-190]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:91)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:735)
+	at org.h2.server.web.WebApp.login(WebApp.java:955)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:133)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.h2.jdbc.JdbcSQLException: Die Datenbank-Verbindung wurde nicht explizit geschlossen (jetzt in der Müllabfuhr)
+The connection was not closed by the application and is garbage collected [90018-190]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 14 more
+2015-11-16 11:21:43 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "INSERT INTO SIMPSONS VALUES
+(01,'Eleanor Abernathy','Katzenfrau',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'crazy','verrückt',FALSE,FALSE,NULL,NULL),
+(02,'Martha Quimby',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','major',,[*]FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'hat',),
+(03,'Luann van Houten',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','firefighter',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,TRUE,FALSE,TRUE,'sane',,FALSE,FALSE,'glasses',),
+(04,'Brandine Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,FALSE,'yellow','gelb','orange','orange',FALSE,TRUE,FALSE,TRUE,TRUE,'crazy',,FALSE,FALSE,NULL,),
+(05,'Helen Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','grey','grau',TRUE,FALSE,FALSE,TRUE,TRUE,'gossip',,FALSE,FALSE,NULL,),
+(06,'Bernice Hibbert',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'alcoholic',,FALSE,FALSE,'necklace',),
+(07,'Manjula Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'sane',,TRUE,FALSE,NULL,),
+(08,'Elizabeth Hoover',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'frustrated',,FALSE,FALSE,'glasses',),
+(09,'Doris Peterson','Friedman',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,NULL,),
+(10,'Edna Krabappel',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'grumpy',,TRUE,FALSE,NULL,),
+(11,'Judith Underdunk',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,TRUE,'evil',,FALSE,FALSE,'necklace',),
+(12,'Agnes Skinner',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'temperament',,FALSE,FALSE,'wig',),
+(13,'Patty Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,TRUE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace',),
+(14,'Selma Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace',),
+(15,'Marge Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'necklace',),
+(16,'Jacqueline Bouvier','Jackie',NULL,NULL,FALSE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'necklace',),
+(17,'Shary Bobbins',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','nanny',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat',),
+(18,'Maude Flanders',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','orange','orange',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,NULL,),
+(19,'Jessica Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow',),
+(20,'Greta Wolfcastle',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blonde','blond',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(21,'Ling Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'white','weiß','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,'bow',),
+(22,'Maggie Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow',),
+(23,'Lisa Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'necklace',),
+(24,'Kodos',NULL,NULL,NULL,FALSE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(25,'Schneeball 2',NULL,NULL,NULL,FALSE,FALSE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'lazy',,FALSE,FALSE,NULL,),
+
+(26,'Jeff Albertson','Comic book guy',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sarcastic',,TRUE,TRUE,NULL,),
+(27,'Barry Duffman','Duffman',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,TRUE,'yellow','gelb','blonde','blond',FALSE,FALSE,TRUE,FALSE,TRUE,'athletic',,FALSE,FALSE,'glasses',),
+(28,'Rex Banner',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'serious',,FALSE,FALSE,'hat',),
+(29,'Jasper Beardley',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',TRUE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard',),
+(30,'Clancy Bouvier',NULL,NULL,NULL,TRUE,TRUE,FALSE,TRUE,'adult','erwachsen','flightattendant',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL,),
+(31,'Kent Brockman',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','white','weiß',TRUE,TRUE,FALSE,TRUE,TRUE,'opportunism',,FALSE,TRUE,NULL,),
+(32,'Charles Montgomery Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','akw',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(33,'Carl Carlson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,TRUE,FALSE,FALSE,'silent',,TRUE,FALSE,NULL,),
+(34,'Gary Chalmers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'wig',),
+(35,'Pedro Chespirito','Bienenmann',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'dark','dunkel','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'democrat',,FALSE,TRUE,'hat',),
+(36,'Ned Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,TRUE,'overprotective',,FALSE,FALSE,'glasses',),
+(37,'Lothar Folkman','Luigi Risotto',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,TRUE,'hat',),
+(38,'John Frink Junior',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,TRUE,FALSE,'glasses',),
+(39,'Frank Grimes',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'glasses',),
+(40,'Matt Groening',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses',),
+(41,'Barney Gumble',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,TRUE,'alcoholic',,TRUE,TRUE,NULL,),
+(42,'Gil Gunderson',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,FALSE,NULL,),
+(43,'Herman Hermann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','red','rot',FALSE,TRUE,FALSE,FALSE,FALSE,'crazy',,FALSE,FALSE,NULL,),
+(44,'Julius Hibbert',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL,),
+(45,'Herschel Krustofski','Krusty',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'white','weiß','green','grün',FALSE,TRUE,FALSE,FALSE,FALSE,'grumpy',,FALSE,TRUE,NULL,),
+(46,'Chester J. Lampwick',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat',),
+(47,'Dewey Largo',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL,),
+(48,'Lenny Leonard',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL,),
+(49,'Timothy Lovejoy',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,TRUE,'yellow','gelb','black','schwarz',TRUE,FALSE,FALSE,TRUE,TRUE,'stingy',,FALSE,FALSE,NULL,),
+(50,'William MacMoran',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,'beard',),
+(51,'Otto Mann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','black','schwarz',FALSE,TRUE,TRUE,TRUE,FALSE,'cool',,FALSE,FALSE,'hat',),
+(52,'Herbert Powell','Herb',NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','retailer',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL,),
+(53,'Horatio McCallister',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,TRUE,'honest',,FALSE,TRUE,'hat',),
+(54,'Ralph Melish','Hans Maulwurf',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses',),
+(55,'Apu Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'honest',,TRUE,FALSE,'wig',),
+(56,'Sanjay Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(57,'Tom O''Flanagan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','bar',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(58,'Arnold Pye',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'glasses',),
+(59,'Joseph Quimby','Joe',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','major',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,NULL,),
+(60,'Nick Riviera','Dr. Nick',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'corrupt',,FALSE,FALSE,'beard',),
+(61,'Hank Scorpio',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'beard',),
+(62,'Abraham Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,FALSE,TRUE,'glasses',),
+(63,'Homer Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,TRUE,TRUE,NULL,),
+(64,'Seymour Skinner',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL,),
+(65,'Waylon Smithers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,TRUE,TRUE,FALSE,'exactly',,FALSE,FALSE,'glasses',),
+(66,'Roy Snyder',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard',),
+(67,'Cletus Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','farmer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,FALSE,FALSE,NULL,),
+(68,'Moe Szyslak',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','bar',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'grumpy',,FALSE,FALSE,NULL,),
+(69,'Drederick Tatum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','sport',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(70,'Cecile Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(71,'Robert Terwilliger','Tingeltangel Bob',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(72,'Rich Texan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','retailer',,TRUE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'republican',,FALSE,TRUE,'hat',),
+(73,'Chester Turley','Snake',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(74,'Melvin van Horne',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'conceited ',,FALSE,FALSE,'bone',),
+(75,'Kirk van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','unemployed',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,TRUE,'glasses',),
+(76,'Clancy Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,'hat',),
+(77,'Anthony D''Amico','Fat Tony',NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','grey','grey',FALSE,TRUE,FALSE,FALSE,TRUE,'evil',,FALSE,TRUE,NULL,),
+(78,'Rainier Wolfcastle',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,NULL,),
+(79,'Artie Ziff',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'conceited ',,FALSE,FALSE,'glasses',),
+(80,'Larry Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','white','weiß',FALSE,FALSE,FALSE,TRUE,TRUE,'lazy',,FALSE,TRUE,NULL,),
+(81,'Freddy Quimby',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','press',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(82,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(83,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(84,'Kinder der Fam. Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(85,'Kinder der Fam. Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(86,'Jeremy Peterson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','assistent',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,FALSE,NULL,),
+(87,'Gino Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(88,'Bart Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'bold',,TRUE,FALSE,NULL,),
+(89,'Ralph Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,TRUE,NULL,),
+(90,'Kearney Zzyzwicz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','bald','kahl',FALSE,TRUE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(91,'Jimbo Jones',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'hat',),
+(92,'Nelson Muntz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(93,'Rod Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','red','rot',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL,),
+(94,'Todd Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL,),
+(95,'Martin Prince',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,TRUE,NULL,),
+(96,'Dolphin Starbeam','Dolph',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(97,'Milhouse van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'irritating',,FALSE,FALSE,'glasses',),
+(98,'Itchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'blue','blau','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(99,'Joseph Teeny','Mr. Teeny',NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'brown','braun','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'bold',,FALSE,FALSE,'hat',),
+(100,'Scratchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'black','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'victim',,FALSE,FALSE,NULL,),
+(101,'Knecht Ruprecht',NULL,NULL,NULL,TRUE,FALSE,TRUE,TRUE,'adult','erwachsen',NULL,NULL,FALSE,'brown','braun','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'loyal',,FALSE,FALSE,NULL,),
+(102,'Kang',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL,), "; erwartet "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"
+Syntax error in SQL statement "INSERT INTO SIMPSONS VALUES
+(01,'Eleanor Abernathy','Katzenfrau',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'crazy','verrückt',FALSE,FALSE,NULL,NULL),
+(02,'Martha Quimby',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','major',,[*]FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'hat',),
+(03,'Luann van Houten',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','firefighter',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,TRUE,FALSE,TRUE,'sane',,FALSE,FALSE,'glasses',),
+(04,'Brandine Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,FALSE,'yellow','gelb','orange','orange',FALSE,TRUE,FALSE,TRUE,TRUE,'crazy',,FALSE,FALSE,NULL,),
+(05,'Helen Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','grey','grau',TRUE,FALSE,FALSE,TRUE,TRUE,'gossip',,FALSE,FALSE,NULL,),
+(06,'Bernice Hibbert',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'alcoholic',,FALSE,FALSE,'necklace',),
+(07,'Manjula Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'sane',,TRUE,FALSE,NULL,),
+(08,'Elizabeth Hoover',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'frustrated',,FALSE,FALSE,'glasses',),
+(09,'Doris Peterson','Friedman',NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,NULL,),
+(10,'Edna Krabappel',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'grumpy',,TRUE,FALSE,NULL,),
+(11,'Judith Underdunk',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'adult','erwachsen','wife',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,TRUE,'evil',,FALSE,FALSE,'necklace',),
+(12,'Agnes Skinner',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'temperament',,FALSE,FALSE,'wig',),
+(13,'Patty Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,TRUE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace',),
+(14,'Selma Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','driving',,FALSE,'yellow','gelb','blue','blau',FALSE,TRUE,FALSE,TRUE,FALSE,'grumpy',,FALSE,TRUE,'necklace',),
+(15,'Marge Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,'necklace',),
+(16,'Jacqueline Bouvier','Jackie',NULL,NULL,FALSE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'necklace',),
+(17,'Shary Bobbins',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','nanny',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat',),
+(18,'Maude Flanders',NULL,NULL,NULL,FALSE,TRUE,FALSE,FALSE,'adult','erwachsen','wife',,FALSE,'yellow','gelb','orange','orange',TRUE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,FALSE,NULL,),
+(19,'Jessica Lovejoy',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow',),
+(20,'Greta Wolfcastle',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blonde','blond',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(21,'Ling Bouvier',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'white','weiß','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,'bow',),
+(22,'Maggie Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'bow',),
+(23,'Lisa Simpson',NULL,NULL,NULL,FALSE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,FALSE,'necklace',),
+(24,'Kodos',NULL,NULL,NULL,FALSE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(25,'Schneeball 2',NULL,NULL,NULL,FALSE,FALSE,TRUE,TRUE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'lazy',,FALSE,FALSE,NULL,),
+
+(26,'Jeff Albertson','Comic book guy',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sarcastic',,TRUE,TRUE,NULL,),
+(27,'Barry Duffman','Duffman',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','mascot',,TRUE,'yellow','gelb','blonde','blond',FALSE,FALSE,TRUE,FALSE,TRUE,'athletic',,FALSE,FALSE,'glasses',),
+(28,'Rex Banner',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'serious',,FALSE,FALSE,'hat',),
+(29,'Jasper Beardley',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',TRUE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard',),
+(30,'Clancy Bouvier',NULL,NULL,NULL,TRUE,TRUE,FALSE,TRUE,'adult','erwachsen','flightattendant',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL,),
+(31,'Kent Brockman',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','white','weiß',TRUE,TRUE,FALSE,TRUE,TRUE,'opportunism',,FALSE,TRUE,NULL,),
+(32,'Charles Montgomery Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','akw',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(33,'Carl Carlson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,TRUE,FALSE,FALSE,'silent',,TRUE,FALSE,NULL,),
+(34,'Gary Chalmers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'wig',),
+(35,'Pedro Chespirito','Bienenmann',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'dark','dunkel','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'democrat',,FALSE,TRUE,'hat',),
+(36,'Ned Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,TRUE,'overprotective',,FALSE,FALSE,'glasses',),
+(37,'Lothar Folkman','Luigi Risotto',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,TRUE,'hat',),
+(38,'John Frink Junior',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,TRUE,FALSE,'glasses',),
+(39,'Frank Grimes',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'glasses',),
+(40,'Matt Groening',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses',),
+(41,'Barney Gumble',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,TRUE,'alcoholic',,TRUE,TRUE,NULL,),
+(42,'Gil Gunderson',NULL,NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,FALSE,NULL,),
+(43,'Herman Hermann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','red','rot',FALSE,TRUE,FALSE,FALSE,FALSE,'crazy',,FALSE,FALSE,NULL,),
+(44,'Julius Hibbert',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,TRUE,'sane',,FALSE,TRUE,NULL,),
+(45,'Herschel Krustofski','Krusty',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'white','weiß','green','grün',FALSE,TRUE,FALSE,FALSE,FALSE,'grumpy',,FALSE,TRUE,NULL,),
+(46,'Chester J. Lampwick',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','tv',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'hat',),
+(47,'Dewey Largo',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL,),
+(48,'Lenny Leonard',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL,),
+(49,'Timothy Lovejoy',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','church',,TRUE,'yellow','gelb','black','schwarz',TRUE,FALSE,FALSE,TRUE,TRUE,'stingy',,FALSE,FALSE,NULL,),
+(50,'William MacMoran',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,'beard',),
+(51,'Otto Mann',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,FALSE,'yellow','gelb','black','schwarz',FALSE,TRUE,TRUE,TRUE,FALSE,'cool',,FALSE,FALSE,'hat',),
+(52,'Herbert Powell','Herb',NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','retailer',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,NULL,),
+(53,'Horatio McCallister',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','restaurant',,FALSE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,TRUE,'honest',,FALSE,TRUE,'hat',),
+(54,'Ralph Melish','Hans Maulwurf',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','pensioner',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'glasses',),
+(55,'Apu Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,TRUE,'honest',,TRUE,FALSE,'wig',),
+(56,'Sanjay Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(57,'Tom O''Flanagan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','bar',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(58,'Arnold Pye',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,'glasses',),
+(59,'Joseph Quimby','Joe',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','major',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,NULL,),
+(60,'Nick Riviera','Dr. Nick',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','doctor',,TRUE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'corrupt',,FALSE,FALSE,'beard',),
+(61,'Hank Scorpio',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'beard',),
+(62,'Abraham Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'old','alt','pensioner',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,TRUE,'crazy',,FALSE,TRUE,'glasses',),
+(63,'Homer Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','bald','kahl',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,TRUE,TRUE,NULL,),
+(64,'Seymour Skinner',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','school',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,TRUE,FALSE,NULL,),
+(65,'Waylon Smithers',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','akw',,FALSE,'yellow','gelb','grey','grau',FALSE,FALSE,TRUE,TRUE,FALSE,'exactly',,FALSE,FALSE,'glasses',),
+(66,'Roy Snyder',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,TRUE,'beard',),
+(67,'Cletus Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','farmer',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,TRUE,'dumb',,FALSE,FALSE,NULL,),
+(68,'Moe Szyslak',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','bar',,TRUE,'yellow','gelb','grey','grau',FALSE,FALSE,FALSE,TRUE,FALSE,'grumpy',,FALSE,FALSE,NULL,),
+(69,'Drederick Tatum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','sport',,TRUE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(70,'Cecile Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','scientist',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(71,'Robert Terwilliger','Tingeltangel Bob',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(72,'Rich Texan',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'old','alt','retailer',,TRUE,'yellow','gelb','grey','grau',FALSE,TRUE,FALSE,TRUE,FALSE,'republican',,FALSE,TRUE,'hat',),
+(73,'Chester Turley','Snake',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(74,'Melvin van Horne',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','blue','blau',TRUE,FALSE,FALSE,TRUE,TRUE,'conceited ',,FALSE,FALSE,'bone',),
+(75,'Kirk van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','unemployed',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'failure',,FALSE,TRUE,'glasses',),
+(76,'Clancy Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','police',,TRUE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,TRUE,'corrupt',,FALSE,TRUE,'hat',),
+(77,'Anthony D''Amico','Fat Tony',NULL,NULL,TRUE,TRUE,FALSE,FALSE,'adult','erwachsen','criminal',,TRUE,'yellow','gelb','grey','grey',FALSE,TRUE,FALSE,FALSE,TRUE,'evil',,FALSE,TRUE,NULL,),
+(78,'Rainier Wolfcastle',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,FALSE,FALSE,'athletic',,FALSE,FALSE,NULL,),
+(79,'Artie Ziff',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'conceited ',,FALSE,FALSE,'glasses',),
+(80,'Larry Burns',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'adult','erwachsen','retailer',,FALSE,'yellow','gelb','white','weiß',FALSE,FALSE,FALSE,TRUE,TRUE,'lazy',,FALSE,TRUE,NULL,),
+(81,'Freddy Quimby',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','press',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(82,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(83,'Kinder der Fam. Nahasapeemapetilon',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'dark','dunkel','black','schwarz',FALSE,FALSE,FALSE,FALSE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(84,'Kinder der Fam. Spuckler',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(85,'Kinder der Fam. Spuckler',NULL,NULL,NULL,FALSE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','orange','orange',FALSE,FALSE,FALSE,TRUE,FALSE,'sane',,FALSE,FALSE,NULL,),
+(86,'Jeremy Peterson',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','assistent',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,FALSE,NULL,),
+(87,'Gino Terwilliger',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung',NULL,NULL,FALSE,'yellow','gelb','red','rot',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(88,'Bart Simpson',NULL,NULL,NULL,TRUE,TRUE,TRUE,TRUE,'young','jung','student',,FALSE,'yellow','gelb','yellow','gelb',FALSE,FALSE,FALSE,TRUE,FALSE,'bold',,TRUE,FALSE,NULL,),
+(89,'Ralph Wiggum',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'dumb',,FALSE,TRUE,NULL,),
+(90,'Kearney Zzyzwicz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','bald','kahl',FALSE,TRUE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(91,'Jimbo Jones',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,'hat',),
+(92,'Nelson Muntz',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'evil',,FALSE,TRUE,NULL,),
+(93,'Rod Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','red','rot',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL,),
+(94,'Todd Flanders',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',TRUE,FALSE,FALSE,TRUE,FALSE,'overprotective',,FALSE,FALSE,NULL,),
+(95,'Martin Prince',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'smart',,FALSE,TRUE,NULL,),
+(96,'Dolphin Starbeam','Dolph',NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(97,'Milhouse van Houten',NULL,NULL,NULL,TRUE,TRUE,TRUE,FALSE,'young','jung','student',,FALSE,'yellow','gelb','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'irritating',,FALSE,FALSE,'glasses',),
+(98,'Itchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'blue','blau','blue','blau',FALSE,FALSE,FALSE,TRUE,FALSE,'evil',,FALSE,FALSE,NULL,),
+(99,'Joseph Teeny','Mr. Teeny',NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen','tv',,TRUE,'brown','braun','brown','braun',FALSE,TRUE,FALSE,TRUE,FALSE,'bold',,FALSE,FALSE,'hat',),
+(100,'Scratchy',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'old','alt','tv',,TRUE,'black','dunkel','black','schwarz',FALSE,FALSE,FALSE,TRUE,FALSE,'victim',,FALSE,FALSE,NULL,),
+(101,'Knecht Ruprecht',NULL,NULL,NULL,TRUE,FALSE,TRUE,TRUE,'adult','erwachsen',NULL,NULL,FALSE,'brown','braun','brown','braun',FALSE,FALSE,FALSE,TRUE,FALSE,'loyal',,FALSE,FALSE,NULL,),
+(102,'Kang',NULL,NULL,NULL,TRUE,FALSE,TRUE,FALSE,'adult','erwachsen',NULL,NULL,TRUE,'green','grün','bald','kahl',FALSE,FALSE,FALSE,FALSE,FALSE,'evil',,FALSE,TRUE,NULL,), "; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"; SQL statement:
+Insert Into simpsons values
+(01,'Eleanor Abernathy','Katzenfrau',null,null,false,true,true,false,'adult','erwachsen',null,null,false,'yellow','gelb','grey','grau',false,true,false,true,false,'crazy','verrückt',false,false,null,null),
+(02,'Martha Quimby',null,null,null,false,true,true,false,'adult','erwachsen','major',,false,'yellow','gelb','black','schwarz',false,false,false,true,true,'sane',,false,false,'hat',),
+(03,'Luann van Houten',null,null,null,false,true,true,false,'adult','erwachsen','firefighter',,false,'yellow','gelb','blue','blau',false,false,true,false,true,'sane',,false,false,'glasses',),
+(04,'Brandine Spuckler',null,null,null,false,true,true,false,'adult','erwachsen','mascot',,false,'yellow','gelb','orange','orange',false,true,false,true,true,'crazy',,false,false,null,),
+(05,'Helen Lovejoy',null,null,null,false,true,true,false,'adult','erwachsen','church',,false,'yellow','gelb','grey','grau',true,false,false,true,true,'gossip',,false,false,null,),
+(06,'Bernice Hibbert',null,null,null,false,true,true,false,'adult','erwachsen','wife',,false,'dark','dunkel','black','schwarz',false,false,false,true,true,'alcoholic',,false,false,'necklace',),
+(07,'Manjula Nahasapeemapetilon',null,null,null,false,true,true,false,'adult','erwachsen','wife',,false,'dark','dunkel','black','schwarz',false,false,false,false,true,'sane',,true,false,null,),
+(08,'Elizabeth Hoover',null,null,null,false,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'frustrated',,false,false,'glasses',),
+(09,'Doris Peterson','Friedman',null,null,false,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'grumpy',,false,true,null,),
+(10,'Edna Krabappel',null,null,null,false,true,false,false,'adult','erwachsen','school',,false,'yellow','gelb','brown','braun',false,true,false,true,true,'grumpy',,true,false,null,),
+(11,'Judith Underdunk',null,null,null,false,true,true,false,'adult','erwachsen','wife',,true,'yellow','gelb','grey','grau',false,false,false,false,true,'evil',,false,false,'necklace',),
+(12,'Agnes Skinner',null,null,null,false,true,true,false,'old','alt','pensioner',,false,'yellow','gelb','grey','grau',false,false,false,true,false,'temperament',,false,false,'wig',),
+(13,'Patty Bouvier',null,null,null,false,true,true,true,'adult','erwachsen','driving',,false,'yellow','gelb','blue','blau',false,true,true,true,false,'grumpy',,false,true,'necklace',),
+(14,'Selma Bouvier',null,null,null,false,true,true,true,'adult','erwachsen','driving',,false,'yellow','gelb','blue','blau',false,true,false,true,false,'grumpy',,false,true,'necklace',),
+(15,'Marge Simpson',null,null,null,false,true,true,true,'adult','erwachsen','wife',,false,'yellow','gelb','blue','blau',true,false,false,true,true,'sane',,false,false,'necklace',),
+(16,'Jacqueline Bouvier','Jackie',null,null,false,true,true,true,'old','alt','pensioner',,false,'yellow','gelb','grey','grau',false,true,false,true,false,'sane',,false,false,'necklace',),
+(17,'Shary Bobbins',null,null,null,false,true,false,false,'adult','erwachsen','nanny',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'sane',,false,false,'hat',),
+(18,'Maude Flanders',null,null,null,false,true,false,false,'adult','erwachsen','wife',,false,'yellow','gelb','orange','orange',true,false,false,true,true,'sane',,false,false,null,),
+(19,'Jessica Lovejoy',null,null,null,false,true,true,false,'young','jung','student',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'smart',,false,false,'bow',),
+(20,'Greta Wolfcastle',null,null,null,false,true,true,false,'young','jung','student',,false,'yellow','gelb','blonde','blond',false,false,false,false,false,'sane',,false,false,null,),
+(21,'Ling Bouvier',null,null,null,false,true,true,true,'young','jung',null,null,false,'white','weiß','black','schwarz',false,false,false,false,false,'sane',,false,false,'bow',),
+(22,'Maggie Simpson',null,null,null,false,true,true,true,'young','jung',null,null,false,'yellow','gelb','yellow','gelb',false,false,false,true,false,'smart',,false,false,'bow',),
+(23,'Lisa Simpson',null,null,null,false,true,true,true,'young','jung','student',,false,'yellow','gelb','yellow','gelb',false,false,false,true,false,'smart',,false,false,'necklace',),
+(24,'Kodos',null,null,null,false,false,true,false,'adult','erwachsen',null,null,true,'green','grün','bald','kahl',false,false,false,false,false,'evil',,false,true,null,),
+(25,'Schneeball 2',null,null,null,false,false,true,true,'young','jung',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'lazy',,false,false,null,),
+
+(26,'Jeff Albertson','Comic book guy',null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'sarcastic',,true,true,null,),
+(27,'Barry Duffman','Duffman',null,null,true,true,true,false,'adult','erwachsen','mascot',,true,'yellow','gelb','blonde','blond',false,false,true,false,true,'athletic',,false,false,'glasses',),
+(28,'Rex Banner',null,null,null,true,true,false,false,'adult','erwachsen','police',,true,'yellow','gelb','brown','braun',false,false,false,true,false,'serious',,false,false,'hat',),
+(29,'Jasper Beardley',null,null,null,true,true,true,false,'old','alt','pensioner',,false,'yellow','gelb','bald','kahl',true,false,false,true,false,'sane',,false,true,'beard',),
+(30,'Clancy Bouvier',null,null,null,true,true,false,true,'adult','erwachsen','flightattendant',,false,'yellow','gelb','brown','braun',false,true,false,true,true,'sane',,false,true,null,),
+(31,'Kent Brockman',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','white','weiß',true,true,false,true,true,'opportunism',,false,true,null,),
+(32,'Charles Montgomery Burns',null,null,null,true,true,true,false,'old','alt','akw',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'evil',,false,false,null,),
+(33,'Carl Carlson',null,null,null,true,true,true,false,'adult','erwachsen','akw',,false,'dark','dunkel','black','schwarz',false,false,true,false,false,'silent',,true,false,null,),
+(34,'Gary Chalmers',null,null,null,true,true,true,false,'old','alt','school',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,false,'wig',),
+(35,'Pedro Chespirito','Bienenmann',null,null,true,true,true,false,'adult','erwachsen','tv',,true,'dark','dunkel','brown','braun',false,false,false,false,false,'democrat',,false,true,'hat',),
+(36,'Ned Flanders',null,null,null,true,true,true,false,'adult','erwachsen','church',,false,'yellow','gelb','brown','braun',true,false,false,true,true,'overprotective',,false,false,'glasses',),
+(37,'Lothar Folkman','Luigi Risotto',null,null,true,true,true,false,'adult','erwachsen','restaurant',,false,'yellow','gelb','grey','grau',false,false,false,false,false,'sane',,false,true,'hat',),
+(38,'John Frink Junior',null,null,null,true,true,true,false,'adult','erwachsen','scientist',,true,'yellow','gelb','brown','braun',false,false,false,true,true,'crazy',,true,false,'glasses',),
+(39,'Frank Grimes',null,null,null,true,true,false,false,'adult','erwachsen','akw',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'evil',,false,false,'glasses',),
+(40,'Matt Groening',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,true,'glasses',),
+(41,'Barney Gumble',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','brown','braun',false,false,false,false,true,'alcoholic',,true,true,null,),
+(42,'Gil Gunderson',null,null,null,true,true,false,false,'adult','erwachsen','retailer',,false,'yellow','gelb','grey','grau',false,false,false,true,false,'failure',,false,false,null,),
+(43,'Herman Hermann',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','red','rot',false,true,false,false,false,'crazy',,false,false,null,),
+(44,'Julius Hibbert',null,null,null,true,true,true,false,'adult','erwachsen','doctor',,true,'dark','dunkel','black','schwarz',false,false,false,true,true,'sane',,false,true,null,),
+(45,'Herschel Krustofski','Krusty',null,null,true,true,true,false,'old','alt','tv',,true,'white','weiß','green','grün',false,true,false,false,false,'grumpy',,false,true,null,),
+(46,'Chester J. Lampwick',null,null,null,true,true,true,false,'old','alt','tv',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,false,'hat',),
+(47,'Dewey Largo',null,null,null,true,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,false,true,null,),
+(48,'Lenny Leonard',null,null,null,true,true,true,false,'adult','erwachsen','akw',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'sane',,true,false,null,),
+(49,'Timothy Lovejoy',null,null,null,true,true,true,false,'adult','erwachsen','church',,true,'yellow','gelb','black','schwarz',true,false,false,true,true,'stingy',,false,false,null,),
+(50,'William MacMoran',null,null,null,true,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','red','rot',false,false,false,false,false,'athletic',,false,false,'beard',),
+(51,'Otto Mann',null,null,null,true,true,true,false,'adult','erwachsen','school',,false,'yellow','gelb','black','schwarz',false,true,true,true,false,'cool',,false,false,'hat',),
+(52,'Herbert Powell','Herb',null,null,true,true,true,true,'adult','erwachsen','retailer',,true,'yellow','gelb','brown','braun',false,true,false,true,false,'sane',,false,true,null,),
+(53,'Horatio McCallister',null,null,null,true,true,true,false,'old','alt','restaurant',,false,'yellow','gelb','grey','grau',false,true,false,true,true,'honest',,false,true,'hat',),
+(54,'Ralph Melish','Hans Maulwurf',null,null,true,true,true,false,'old','alt','pensioner',,false,'yellow','gelb','bald','kahl',false,false,false,true,false,'sane',,false,true,'glasses',),
+(55,'Apu Nahasapeemapetilon',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'dark','dunkel','black','schwarz',false,false,false,false,true,'honest',,true,false,'wig',),
+(56,'Sanjay Nahasapeemapetilon',null,null,null,true,true,true,false,'adult','erwachsen',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'sane',,false,false,null,),
+(57,'Tom O''Flanagan',null,null,null,true,true,true,false,'old','alt','bar',,false,'yellow','gelb','grey','grau',false,false,false,false,false,'sane',,false,false,null,),
+(58,'Arnold Pye',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','brown','braun',false,false,false,true,false,'sane',,false,false,'glasses',),
+(59,'Joseph Quimby','Joe',null,null,true,true,true,false,'young','jung','major',,true,'yellow','gelb','brown','braun',false,false,false,true,true,'corrupt',,false,true,null,),
+(60,'Nick Riviera','Dr. Nick',null,null,true,true,true,false,'adult','erwachsen','doctor',,true,'yellow','gelb','black','schwarz',false,false,false,true,false,'corrupt',,false,false,'beard',),
+(61,'Hank Scorpio',null,null,null,true,true,true,false,'adult','erwachsen','criminal',,true,'yellow','gelb','brown','braun',false,true,false,true,false,'evil',,false,false,'beard',),
+(62,'Abraham Simpson',null,null,null,true,true,true,true,'old','alt','pensioner',,false,'yellow','gelb','yellow','gelb',false,false,false,true,true,'crazy',,false,true,'glasses',),
+(63,'Homer Simpson',null,null,null,true,true,true,true,'adult','erwachsen','akw',,false,'yellow','gelb','bald','kahl',false,false,false,true,true,'dumb',,true,true,null,),
+(64,'Seymour Skinner',null,null,null,true,true,true,false,'adult','erwachsen','school',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'sane',,true,false,null,),
+(65,'Waylon Smithers',null,null,null,true,true,true,false,'adult','erwachsen','akw',,false,'yellow','gelb','grey','grau',false,false,true,true,false,'exactly',,false,false,'glasses',),
+(66,'Roy Snyder',null,null,null,true,true,true,false,'adult','erwachsen','police',,true,'dark','dunkel','black','schwarz',false,false,false,true,false,'sane',,false,true,'beard',),
+(67,'Cletus Spuckler',null,null,null,true,true,true,false,'adult','erwachsen','farmer',,false,'yellow','gelb','brown','braun',false,false,false,true,true,'dumb',,false,false,null,),
+(68,'Moe Szyslak',null,null,null,true,true,true,false,'adult','erwachsen','bar',,true,'yellow','gelb','grey','grau',false,false,false,true,false,'grumpy',,false,false,null,),
+(69,'Drederick Tatum',null,null,null,true,true,true,false,'adult','erwachsen','sport',,true,'dark','dunkel','black','schwarz',false,false,false,true,false,'evil',,false,true,null,),
+(70,'Cecile Terwilliger',null,null,null,true,true,true,false,'adult','erwachsen','scientist',,false,'yellow','gelb','brown','braun',false,false,false,false,false,'evil',,false,false,null,),
+(71,'Robert Terwilliger','Tingeltangel Bob',null,null,true,true,true,false,'adult','erwachsen','criminal',,true,'yellow','gelb','red','rot',false,false,false,false,false,'evil',,false,false,null,),
+(72,'Rich Texan',null,null,null,true,true,true,false,'old','alt','retailer',,true,'yellow','gelb','grey','grau',false,true,false,true,false,'republican',,false,true,'hat',),
+(73,'Chester Turley','Snake',null,null,true,true,true,false,'adult','erwachsen','criminal',,true,'yellow','gelb','brown','braun',false,false,false,true,false,'evil',,false,false,null,),
+(74,'Melvin van Horne',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','blue','blau',true,false,false,true,true,'conceited ',,false,false,'bone',),
+(75,'Kirk van Houten',null,null,null,true,true,true,false,'adult','erwachsen','unemployed',,false,'yellow','gelb','blue','blau',false,false,false,true,false,'failure',,false,true,'glasses',),
+(76,'Clancy Wiggum',null,null,null,true,true,true,false,'adult','erwachsen','police',,true,'yellow','gelb','brown','braun',false,true,false,true,true,'corrupt',,false,true,'hat',),
+(77,'Anthony D''Amico','Fat Tony',null,null,true,true,false,false,'adult','erwachsen','criminal',,true,'yellow','gelb','grey','grey',false,true,false,false,true,'evil',,false,true,null,),
+(78,'Rainier Wolfcastle',null,null,null,true,true,true,false,'adult','erwachsen','tv',,true,'yellow','gelb','brown','braun',false,false,false,false,false,'athletic',,false,false,null,),
+(79,'Artie Ziff',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'conceited ',,false,false,'glasses',),
+(80,'Larry Burns',null,null,null,true,true,true,false,'adult','erwachsen','retailer',,false,'yellow','gelb','white','weiß',false,false,false,true,true,'lazy',,false,true,null,),
+(81,'Freddy Quimby',null,null,null,true,true,true,false,'young','jung','press',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'evil',,false,false,null,),
+(82,'Kinder der Fam. Nahasapeemapetilon',null,null,null,true,true,true,false,'young','jung',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'sane',,false,false,null,),
+(83,'Kinder der Fam. Nahasapeemapetilon',null,null,null,false,true,true,false,'young','jung',null,null,false,'dark','dunkel','black','schwarz',false,false,false,false,false,'sane',,false,false,null,),
+(84,'Kinder der Fam. Spuckler',null,null,null,true,true,true,false,'young','jung',null,null,false,'yellow','gelb','orange','orange',false,false,false,true,false,'sane',,false,false,null,),
+(85,'Kinder der Fam. Spuckler',null,null,null,false,true,true,false,'young','jung',null,null,false,'yellow','gelb','orange','orange',false,false,false,true,false,'sane',,false,false,null,),
+(86,'Jeremy Peterson',null,null,null,true,true,true,false,'young','jung','assistent',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'dumb',,false,false,null,),
+(87,'Gino Terwilliger',null,null,null,true,true,true,false,'young','jung',null,null,false,'yellow','gelb','red','rot',false,false,false,false,false,'evil',,false,false,null,),
+(88,'Bart Simpson',null,null,null,true,true,true,true,'young','jung','student',,false,'yellow','gelb','yellow','gelb',false,false,false,true,false,'bold',,true,false,null,),
+(89,'Ralph Wiggum',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','black','schwarz',false,false,false,true,false,'dumb',,false,true,null,),
+(90,'Kearney Zzyzwicz',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','bald','kahl',false,true,false,false,false,'evil',,false,true,null,),
+(91,'Jimbo Jones',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',true,true,false,true,false,'evil',,false,false,'hat',),
+(92,'Nelson Muntz',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',false,true,false,true,false,'evil',,false,true,null,),
+(93,'Rod Flanders',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','red','rot',true,false,false,true,false,'overprotective',,false,false,null,),
+(94,'Todd Flanders',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',true,false,false,true,false,'overprotective',,false,false,null,),
+(95,'Martin Prince',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'smart',,false,true,null,),
+(96,'Dolphin Starbeam','Dolph',null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','brown','braun',false,false,false,true,false,'evil',,false,false,null,),
+(97,'Milhouse van Houten',null,null,null,true,true,true,false,'young','jung','student',,false,'yellow','gelb','blue','blau',false,false,false,true,false,'irritating',,false,false,'glasses',),
+(98,'Itchy',null,null,null,true,false,true,false,'old','alt','tv',,true,'blue','blau','blue','blau',false,false,false,true,false,'evil',,false,false,null,),
+(99,'Joseph Teeny','Mr. Teeny',null,null,true,false,true,false,'adult','erwachsen','tv',,true,'brown','braun','brown','braun',false,true,false,true,false,'bold',,false,false,'hat',),
+(100,'Scratchy',null,null,null,true,false,true,false,'old','alt','tv',,true,'black','dunkel','black','schwarz',false,false,false,true,false,'victim',,false,false,null,),
+(101,'Knecht Ruprecht',null,null,null,true,false,true,true,'adult','erwachsen',null,null,false,'brown','braun','brown','braun',false,false,false,true,false,'loyal',,false,false,null,),
+(102,'Kang',null,null,null,true,false,true,false,'adult','erwachsen',null,null,true,'green','grün','bald','kahl',false,false,false,false,false,'evil',,false,true,null,), [42001-190]
+2015-11-16 11:30:13 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Feld "HAIRCOLOR" nicht gefunden
+Column "HAIRCOLOR" not found; SQL statement:
+SELECT distinct haircolor FROM SIMPSONS [42122-190]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.Select.prepare(Select.java:835)
+	at org.h2.command.Parser.prepareCommand(Parser.java:246)
+	at org.h2.engine.Session.prepareLocal(Session.java:460)
+	at org.h2.engine.Session.prepareCommand(Session.java:402)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1388)
+	at org.h2.server.web.WebApp.query(WebApp.java:1061)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1023)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1010)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+2015-11-19 10:09:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; erwartet "("
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; expected "("; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY,
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, human BOOL, alive BOOL, simpson BOOL,
+	FOREIGN KEY age	REFERENCES AGE_QUESTIONS(ID),
+	job VARCHAR, famous BOOL, skincolor VARCHAR, haircolor VARCHAR, religous BOOL, smokes BOOL, homosexual BOOL, american BOOL, married BOOL, character VARCHAR, moes_bar BOOL, fat BOOL, wearings VARCHAR) [42001-190]
+2015-11-19 10:10:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; erwartet "("
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; expected "("; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY,
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, human BOOL, alive BOOL, simpson BOOL,
+	FOREIGN KEY age	REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, famous BOOL, skincolor VARCHAR, haircolor VARCHAR, religous BOOL, smokes BOOL, homosexual BOOL, american BOOL, married BOOL, character VARCHAR, moes_bar BOOL, fat BOOL, wearings VARCHAR) [42001-190]
+2015-11-19 10:10:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; erwartet "("
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; expected "("; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY,
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, human BOOL, alive BOOL, simpson BOOL,
+	FOREIGN KEY age	REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, famous BOOL, skincolor VARCHAR, haircolor VARCHAR, religous BOOL, smokes BOOL, homosexual BOOL, american BOOL, married BOOL, character VARCHAR, moes_bar BOOL, fat BOOL, wearings VARCHAR) [42001-190]
+2015-11-19 10:11:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; erwartet "("
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY,
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, HUMAN BOOL, ALIVE BOOL, SIMPSON BOOL,
+	FOREIGN KEY AGE[*]	REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FAMOUS BOOL, SKINCOLOR VARCHAR, HAIRCOLOR VARCHAR, RELIGOUS BOOL, SMOKES BOOL, HOMOSEXUAL BOOL, AMERICAN BOOL, MARRIED BOOL, CHARACTER VARCHAR, MOES_BAR BOOL, FAT BOOL, WEARINGS VARCHAR) "; expected "("; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY,
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, human BOOL, alive BOOL, simpson BOOL,
+	FOREIGN KEY age	REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, famous BOOL, skincolor VARCHAR, haircolor VARCHAR, religous BOOL, smokes BOOL, homosexual BOOL, american BOOL, married BOOL, character VARCHAR, moes_bar BOOL, fat BOOL, wearings VARCHAR) [42001-190]
+2015-11-19 10:11:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Feld "AGE" nicht gefunden
+Column "AGE" not found; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY,
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, human BOOL, alive BOOL, simpson BOOL,
+	FOREIGN KEY (age) REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, famous BOOL, skincolor VARCHAR, haircolor VARCHAR, religous BOOL, smokes BOOL, homosexual BOOL, american BOOL, married BOOL, character VARCHAR, moes_bar BOOL, fat BOOL, wearings VARCHAR) [42122-190]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:660)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:197)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:171)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:253)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1388)
+	at org.h2.server.web.WebApp.query(WebApp.java:1061)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1023)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1010)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Unknown Source)
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "AGE_QUESTIONS" besteht bereits
+Table "AGE_QUESTIONS" already exists; SQL statement:
+CREATE TABLE AGE_QUESTIONS( ID VARCHAR PRIMARY KEY, q1_en VARCHAR, q1_de VARCHAR) [42101-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "MALE_QUESTIONS" nicht gefunden
+Table "MALE_QUESTIONS" not found; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, FOREIGN KEY (male) REFERENCES public.MALE_QUESTIONS(ID),
+	human BOOL, FOREIGN KEY (human) REFERENCES public.HUMAN_QUESTIONS(ID),
+	alive BOOL, FOREIGN KEY (alive) REFERENCES public.ALIVE_QUESTIONS(ID),
+	simpson BOOL, FOREIGN KEY (simpson) REFERENCES public.SIMPSON_QUESTIONS(ID),
+	age VARCHAR, FOREIGN KEY (age) REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, FOREIGN KEY (job) REFERENCES public.JOB_QUESTIONS(ID),
+	famous BOOL, FOREIGN KEY (famous) REFERENCES public.FAMOUS_QUESTIONS(ID),
+	skincolor VARCHAR, FOREIGN KEY (skincolor) REFERENCES public.SKINCOLOR_QUESTIONS(ID),
+	haircolor VARCHAR, FOREIGN KEY (haircolor) REFERENCES public.HAIRCOLOR_QUESTIONS(ID),
+	religous BOOL, FOREIGN KEY (religous) REFERENCES public.RELIGOUS_QUESTIONS(ID),
+	smokes BOOL, FOREIGN KEY (smokes) REFERENCES public.SMOKES_QUESTIONS(ID),
+	homosexual BOOL, FOREIGN KEY (homosexual) REFERENCES public.HOMOSEXUAL_QUESTIONS(ID),
+	american BOOL, FOREIGN KEY (american) REFERENCES public.AMERICAN_QUESTIONS(ID),
+	married BOOL, FOREIGN KEY (married) REFERENCES public.MARRIED_QUESTIONS(ID),
+	character VARCHAR, FOREIGN KEY (character) REFERENCES public.CHARACTER_QUESTIONS(ID),
+	moes_bar BOOL, FOREIGN KEY (moes_bar) REFERENCES public.MOESBAR_QUESTIONS(ID),
+	fat BOOL, FOREIGN KEY (fat) REFERENCES public.FAT_QUESTIONS(ID),
+	wearings VARCHAR) [42102-190]
+2015-11-19 10:19:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "FOREIGN[*] KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID), "; erwartet "FROM, {"
+Syntax error in SQL statement "FOREIGN[*] KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID), "; expected "FROM, {"; SQL statement:
+FOREIGN KEY (wearings) REFERENCES public.WEARINGS_QUESTIONS(ID), [42001-190]
+2015-11-19 10:20:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "FOREIGN[*] KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID), "; erwartet "FROM, {"
+Syntax error in SQL statement "FOREIGN[*] KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID), "; expected "FROM, {"; SQL statement:
+FOREIGN KEY (wearings) REFERENCES public.WEARINGS_QUESTIONS(ID), [42001-190]
+2015-11-19 10:21:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "FOREIGN[*] KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID) "; erwartet "FROM, {"
+Syntax error in SQL statement "FOREIGN[*] KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID) "; expected "FROM, {"; SQL statement:
+FOREIGN KEY (wearings) REFERENCES public.WEARINGS_QUESTIONS(ID) [42001-190]
+2015-11-19 10:21:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID),
+	HUMAN BOOL, FOREIGN KEY (HUMAN) REFERENCES PUBLIC.HUMAN_QUESTIONS(ID),
+	ALIVE BOOL, FOREIGN KEY (ALIVE) REFERENCES PUBLIC.ALIVE_QUESTIONS(ID),
+	SIMPSON BOOL, FOREIGN KEY (SIMPSON) REFERENCES PUBLIC.SIMPSON_QUESTIONS(ID),
+	AGE VARCHAR, FOREIGN KEY (AGE) REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FOREIGN KEY (JOB) REFERENCES PUBLIC.JOB_QUESTIONS(ID),
+	FAMOUS BOOL, FOREIGN KEY (FAMOUS) REFERENCES PUBLIC.FAMOUS_QUESTIONS(ID),
+	SKINCOLOR VARCHAR, FOREIGN KEY (SKINCOLOR) REFERENCES PUBLIC.SKINCOLOR_QUESTIONS(ID),
+	HAIRCOLOR VARCHAR, FOREIGN KEY (HAIRCOLOR) REFERENCES PUBLIC.HAIRCOLOR_QUESTIONS(ID),
+	RELIGOUS BOOL, FOREIGN KEY (RELIGOUS) REFERENCES PUBLIC.RELIGOUS_QUESTIONS(ID),
+	SMOKES BOOL, FOREIGN KEY (SMOKES) REFERENCES PUBLIC.SMOKES_QUESTIONS(ID),
+	HOMOSEXUAL BOOL, FOREIGN KEY (HOMOSEXUAL) REFERENCES PUBLIC.HOMOSEXUAL_QUESTIONS(ID),
+	AMERICAN BOOL, FOREIGN KEY (AMERICAN) REFERENCES PUBLIC.AMERICAN_QUESTIONS(ID),
+	MARRIED BOOL, FOREIGN KEY (MARRIED) REFERENCES PUBLIC.MARRIED_QUESTIONS(ID),
+	CHARACTER VARCHAR, FOREIGN KEY (CHARACTER) REFERENCES PUBLIC.CHARACTER_QUESTIONS(ID),
+	MOES_BAR BOOL, FOREIGN KEY (MOES_BAR) REFERENCES PUBLIC.MOESBAR_QUESTIONS(ID),
+	FAT BOOL, FOREIGN KEY (FAT) REFERENCES PUBLIC.FAT_QUESTIONS(ID),
+	WEARINGS VARCHAR),[*] FOREIGN KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID) "
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID),
+	HUMAN BOOL, FOREIGN KEY (HUMAN) REFERENCES PUBLIC.HUMAN_QUESTIONS(ID),
+	ALIVE BOOL, FOREIGN KEY (ALIVE) REFERENCES PUBLIC.ALIVE_QUESTIONS(ID),
+	SIMPSON BOOL, FOREIGN KEY (SIMPSON) REFERENCES PUBLIC.SIMPSON_QUESTIONS(ID),
+	AGE VARCHAR, FOREIGN KEY (AGE) REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FOREIGN KEY (JOB) REFERENCES PUBLIC.JOB_QUESTIONS(ID),
+	FAMOUS BOOL, FOREIGN KEY (FAMOUS) REFERENCES PUBLIC.FAMOUS_QUESTIONS(ID),
+	SKINCOLOR VARCHAR, FOREIGN KEY (SKINCOLOR) REFERENCES PUBLIC.SKINCOLOR_QUESTIONS(ID),
+	HAIRCOLOR VARCHAR, FOREIGN KEY (HAIRCOLOR) REFERENCES PUBLIC.HAIRCOLOR_QUESTIONS(ID),
+	RELIGOUS BOOL, FOREIGN KEY (RELIGOUS) REFERENCES PUBLIC.RELIGOUS_QUESTIONS(ID),
+	SMOKES BOOL, FOREIGN KEY (SMOKES) REFERENCES PUBLIC.SMOKES_QUESTIONS(ID),
+	HOMOSEXUAL BOOL, FOREIGN KEY (HOMOSEXUAL) REFERENCES PUBLIC.HOMOSEXUAL_QUESTIONS(ID),
+	AMERICAN BOOL, FOREIGN KEY (AMERICAN) REFERENCES PUBLIC.AMERICAN_QUESTIONS(ID),
+	MARRIED BOOL, FOREIGN KEY (MARRIED) REFERENCES PUBLIC.MARRIED_QUESTIONS(ID),
+	CHARACTER VARCHAR, FOREIGN KEY (CHARACTER) REFERENCES PUBLIC.CHARACTER_QUESTIONS(ID),
+	MOES_BAR BOOL, FOREIGN KEY (MOES_BAR) REFERENCES PUBLIC.MOESBAR_QUESTIONS(ID),
+	FAT BOOL, FOREIGN KEY (FAT) REFERENCES PUBLIC.FAT_QUESTIONS(ID),
+	WEARINGS VARCHAR),[*] FOREIGN KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID) "; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, FOREIGN KEY (male) REFERENCES public.MALE_QUESTIONS(ID),
+	human BOOL, FOREIGN KEY (human) REFERENCES public.HUMAN_QUESTIONS(ID),
+	alive BOOL, FOREIGN KEY (alive) REFERENCES public.ALIVE_QUESTIONS(ID),
+	simpson BOOL, FOREIGN KEY (simpson) REFERENCES public.SIMPSON_QUESTIONS(ID),
+	age VARCHAR, FOREIGN KEY (age) REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, FOREIGN KEY (job) REFERENCES public.JOB_QUESTIONS(ID),
+	famous BOOL, FOREIGN KEY (famous) REFERENCES public.FAMOUS_QUESTIONS(ID),
+	skincolor VARCHAR, FOREIGN KEY (skincolor) REFERENCES public.SKINCOLOR_QUESTIONS(ID),
+	haircolor VARCHAR, FOREIGN KEY (haircolor) REFERENCES public.HAIRCOLOR_QUESTIONS(ID),
+	religous BOOL, FOREIGN KEY (religous) REFERENCES public.RELIGOUS_QUESTIONS(ID),
+	smokes BOOL, FOREIGN KEY (smokes) REFERENCES public.SMOKES_QUESTIONS(ID),
+	homosexual BOOL, FOREIGN KEY (homosexual) REFERENCES public.HOMOSEXUAL_QUESTIONS(ID),
+	american BOOL, FOREIGN KEY (american) REFERENCES public.AMERICAN_QUESTIONS(ID),
+	married BOOL, FOREIGN KEY (married) REFERENCES public.MARRIED_QUESTIONS(ID),
+	character VARCHAR, FOREIGN KEY (character) REFERENCES public.CHARACTER_QUESTIONS(ID),
+	moes_bar BOOL, FOREIGN KEY (moes_bar) REFERENCES public.MOESBAR_QUESTIONS(ID),
+	fat BOOL, FOREIGN KEY (fat) REFERENCES public.FAT_QUESTIONS(ID),
+	wearings VARCHAR), FOREIGN KEY (wearings) REFERENCES public.WEARINGS_QUESTIONS(ID) [42000-190]
+2015-11-19 10:22:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID), [*]"; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID), [*]"; expected "identifier"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, FOREIGN KEY (male) REFERENCES public.MALE_QUESTIONS(ID), [42001-190]
+2015-11-19 10:23:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID) [*]"; erwartet "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID) [*]"; expected "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, FOREIGN KEY (male) REFERENCES public.MALE_QUESTIONS(ID) [42001-190]
+2015-11-19 10:24:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID) [*]"; erwartet "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID) [*]"; expected "INDEX, ON, NOT, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, FOREIGN KEY (male) REFERENCES public.MALE_QUESTIONS(ID) [42001-190]
+2015-11-19 10:25:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	JOB VARCHAR, FOREIGN KEY (JOB) REFERENCES PUBLIC.JOB_QUESTIONS(ID), [*]"; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	JOB VARCHAR, FOREIGN KEY (JOB) REFERENCES PUBLIC.JOB_QUESTIONS(ID), [*]"; expected "identifier"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	job VARCHAR, FOREIGN KEY (job) REFERENCES public.JOB_QUESTIONS(ID), [42001-190]
+2015-11-19 10:25:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR, [42001-190]
+2015-11-19 10:25:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR, [42001-190]
+2015-11-19 10:25:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR, [42001-190]
+2015-11-19 10:25:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR, [42001-190]
+2015-11-19 10:26:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID),
+	HUMAN BOOL, FOREIGN KEY (HUMAN) REFERENCES PUBLIC.HUMAN_QUESTIONS(ID),
+	ALIVE BOOL, FOREIGN KEY (ALIVE) REFERENCES PUBLIC.ALIVE_QUESTIONS(ID),
+	SIMPSON BOOL, FOREIGN KEY (SIMPSON) REFERENCES PUBLIC.SIMPSON_QUESTIONS(ID),
+	AGE VARCHAR, FOREIGN KEY (AGE) REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FOREIGN KEY (JOB) REFERENCES PUBLIC.JOB_QUESTIONS(ID),
+	FAMOUS BOOL, FOREIGN KEY (FAMOUS) REFERENCES PUBLIC.FAMOUS_QUESTIONS(ID),
+	SKINCOLOR VARCHAR, FOREIGN KEY (SKINCOLOR) REFERENCES PUBLIC.SKINCOLOR_QUESTIONS(ID),
+	HAIRCOLOR VARCHAR, FOREIGN KEY (HAIRCOLOR) REFERENCES PUBLIC.HAIRCOLOR_QUESTIONS(ID),
+	RELIGOUS BOOL, FOREIGN KEY (RELIGOUS) REFERENCES PUBLIC.RELIGOUS_QUESTIONS(ID),
+	SMOKES BOOL, FOREIGN KEY (SMOKES) REFERENCES PUBLIC.SMOKES_QUESTIONS(ID),
+	HOMOSEXUAL BOOL, FOREIGN KEY (HOMOSEXUAL) REFERENCES PUBLIC.HOMOSEXUAL_QUESTIONS(ID),
+	AMERICAN BOOL, FOREIGN KEY (AMERICAN) REFERENCES PUBLIC.AMERICAN_QUESTIONS(ID),
+	MARRIED BOOL, FOREIGN KEY (MARRIED) REFERENCES PUBLIC.MARRIED_QUESTIONS(ID),
+	CHARACTER VARCHAR, FOREIGN KEY (CHARACTER) REFERENCES PUBLIC.CHARACTER_QUESTIONS(ID),
+	MOES_BAR BOOL, FOREIGN KEY (MOES_BAR) REFERENCES PUBLIC.MOESBAR_QUESTIONS(ID),
+	FAT BOOL, FOREIGN KEY (FAT) REFERENCES PUBLIC.FAT_QUESTIONS(ID),
+	WEARINGS VARCHAR),[*] FOREIGN KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID)) "
+Syntax error in SQL statement "CREATE TABLE SIMPSONS(
+	ID INT PRIMARY KEY, 
+	NAME VARCHAR,
+	NICKNAME VARCHAR,
+	DESCRIPTION_EN VARCHAR,
+	DESCRIPTION_DE VARCHAR,
+	MALE BOOL, FOREIGN KEY (MALE) REFERENCES PUBLIC.MALE_QUESTIONS(ID),
+	HUMAN BOOL, FOREIGN KEY (HUMAN) REFERENCES PUBLIC.HUMAN_QUESTIONS(ID),
+	ALIVE BOOL, FOREIGN KEY (ALIVE) REFERENCES PUBLIC.ALIVE_QUESTIONS(ID),
+	SIMPSON BOOL, FOREIGN KEY (SIMPSON) REFERENCES PUBLIC.SIMPSON_QUESTIONS(ID),
+	AGE VARCHAR, FOREIGN KEY (AGE) REFERENCES PUBLIC.AGE_QUESTIONS(ID),
+	JOB VARCHAR, FOREIGN KEY (JOB) REFERENCES PUBLIC.JOB_QUESTIONS(ID),
+	FAMOUS BOOL, FOREIGN KEY (FAMOUS) REFERENCES PUBLIC.FAMOUS_QUESTIONS(ID),
+	SKINCOLOR VARCHAR, FOREIGN KEY (SKINCOLOR) REFERENCES PUBLIC.SKINCOLOR_QUESTIONS(ID),
+	HAIRCOLOR VARCHAR, FOREIGN KEY (HAIRCOLOR) REFERENCES PUBLIC.HAIRCOLOR_QUESTIONS(ID),
+	RELIGOUS BOOL, FOREIGN KEY (RELIGOUS) REFERENCES PUBLIC.RELIGOUS_QUESTIONS(ID),
+	SMOKES BOOL, FOREIGN KEY (SMOKES) REFERENCES PUBLIC.SMOKES_QUESTIONS(ID),
+	HOMOSEXUAL BOOL, FOREIGN KEY (HOMOSEXUAL) REFERENCES PUBLIC.HOMOSEXUAL_QUESTIONS(ID),
+	AMERICAN BOOL, FOREIGN KEY (AMERICAN) REFERENCES PUBLIC.AMERICAN_QUESTIONS(ID),
+	MARRIED BOOL, FOREIGN KEY (MARRIED) REFERENCES PUBLIC.MARRIED_QUESTIONS(ID),
+	CHARACTER VARCHAR, FOREIGN KEY (CHARACTER) REFERENCES PUBLIC.CHARACTER_QUESTIONS(ID),
+	MOES_BAR BOOL, FOREIGN KEY (MOES_BAR) REFERENCES PUBLIC.MOESBAR_QUESTIONS(ID),
+	FAT BOOL, FOREIGN KEY (FAT) REFERENCES PUBLIC.FAT_QUESTIONS(ID),
+	WEARINGS VARCHAR),[*] FOREIGN KEY (WEARINGS) REFERENCES PUBLIC.WEARINGS_QUESTIONS(ID)) "; SQL statement:
+CREATE TABLE Simpsons(
+	ID INT PRIMARY KEY, 
+	name VARCHAR,
+	nickname VARCHAR,
+	description_en VARCHAR,
+	description_de VARCHAR,
+	male BOOL, FOREIGN KEY (male) REFERENCES public.MALE_QUESTIONS(ID),
+	human BOOL, FOREIGN KEY (human) REFERENCES public.HUMAN_QUESTIONS(ID),
+	alive BOOL, FOREIGN KEY (alive) REFERENCES public.ALIVE_QUESTIONS(ID),
+	simpson BOOL, FOREIGN KEY (simpson) REFERENCES public.SIMPSON_QUESTIONS(ID),
+	age VARCHAR, FOREIGN KEY (age) REFERENCES public.AGE_QUESTIONS(ID),
+	job VARCHAR, FOREIGN KEY (job) REFERENCES public.JOB_QUESTIONS(ID),
+	famous BOOL, FOREIGN KEY (famous) REFERENCES public.FAMOUS_QUESTIONS(ID),
+	skincolor VARCHAR, FOREIGN KEY (skincolor) REFERENCES public.SKINCOLOR_QUESTIONS(ID),
+	haircolor VARCHAR, FOREIGN KEY (haircolor) REFERENCES public.HAIRCOLOR_QUESTIONS(ID),
+	religous BOOL, FOREIGN KEY (religous) REFERENCES public.RELIGOUS_QUESTIONS(ID),
+	smokes BOOL, FOREIGN KEY (smokes) REFERENCES public.SMOKES_QUESTIONS(ID),
+	homosexual BOOL, FOREIGN KEY (homosexual) REFERENCES public.HOMOSEXUAL_QUESTIONS(ID),
+	american BOOL, FOREIGN KEY (american) REFERENCES public.AMERICAN_QUESTIONS(ID),
+	married BOOL, FOREIGN KEY (married) REFERENCES public.MARRIED_QUESTIONS(ID),
+	character VARCHAR, FOREIGN KEY (character) REFERENCES public.CHARACTER_QUESTIONS(ID),
+	moes_bar BOOL, FOREIGN KEY (moes_bar) REFERENCES public.MOESBAR_QUESTIONS(ID),
+	fat BOOL, FOREIGN KEY (fat) REFERENCES public.FAT_QUESTIONS(ID),
+	wearings VARCHAR), FOREIGN KEY (wearings) REFERENCES public.WEARINGS_QUESTIONS(ID)) [42000-190]
