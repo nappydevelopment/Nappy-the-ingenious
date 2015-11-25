@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="cucumber">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/res/gherkin/cucumber/lib/cucumber.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
