@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Jira">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../3. Semester/02 Software Engineering/Jira" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../3. Semester/02 Software Engineering/Jira" recursive="false" />
+  </library>
+</component>

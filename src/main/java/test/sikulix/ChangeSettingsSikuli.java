@@ -10,10 +10,9 @@ public class ChangeSettingsSikuli {
     private static final String TEST_IMAGES_PATH = "res/test/images/";
 
     public static void main(String[] args) {
-        Debug.setDebugLevel(3);
         Screen s = new Screen();
-        Scenario1(s);
-        //Scenario2(s);
+        //Scenario1(s);
+        Scenario2(s);
         Scenario3(s);
         //Scenario4(s);
         //Scenario5(s);
@@ -37,6 +36,7 @@ public class ChangeSettingsSikuli {
 
     //Scenario2: The User changes the language to German
     private static void Scenario2(Screen s){
+        Scenario1(s);
         try {
             s.exists(TEST_IMAGES_PATH + "settings_title.png");
             s.click(TEST_IMAGES_PATH + "settings_opt_de.png");
@@ -49,6 +49,7 @@ public class ChangeSettingsSikuli {
 
     //Scenario3: The User changes the language to English
     private static void Scenario3(Screen s){
+        Scenario1(s);
         try {
             s.exists(TEST_IMAGES_PATH + "settings_title.png");
             s.click(TEST_IMAGES_PATH + "settings_opt_en.png");
@@ -61,26 +62,12 @@ public class ChangeSettingsSikuli {
 
     //Scenario4: The User changes the color-theme to bright
     private static void Scenario4(Screen s){
-        try {
-            s.exists(TEST_IMAGES_PATH + "settings_title.png");
-            s.click(TEST_IMAGES_PATH + "settings_opt_bright.png");
-            s.click(TEST_IMAGES_PATH + "settings_btn_apply.png");
-            s.exists(TEST_IMAGES_PATH + "main.png");
-        }catch (FindFailed e){
-            e.printStackTrace();
-        }
+        //next Semester
     }
 
     //Scenario5: The User changes the color-theme to dark
     private static void Scenario5(Screen s){
-        try {
-            s.exists(TEST_IMAGES_PATH + "settings_title.png");
-            s.click(TEST_IMAGES_PATH + "settings_opt_dark.png");
-            s.click(TEST_IMAGES_PATH + "settings_btn_apply.png");
-            //s.exists(main_dark)
-        }catch (FindFailed e){
-            e.printStackTrace();
-        }
+        //next Semester
     }
 
     //Scenario6: The User changes the playmode: Play complete game
