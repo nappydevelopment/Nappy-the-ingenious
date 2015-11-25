@@ -34,27 +34,27 @@ public class ChangeSettingsSikuli {
         }
     }
 
-    //Scenario2: The User changes the language to German
+    //Scenario3: The User changes the language to English
     private static void Scenario2(Screen s){
         Scenario1(s);
         try {
             s.exists(TEST_IMAGES_PATH + "settings_title.png");
-            s.click(TEST_IMAGES_PATH + "settings_opt_de.png");
-            s.click(TEST_IMAGES_PATH + "settings_btn_apply.png");
-            s.exists(TEST_IMAGES_PATH + "main_en.png");
+            s.click(TEST_IMAGES_PATH + "settings_opt_en.png");
+            s.click(TEST_IMAGES_PATH + "settings_btn_apply_de.png");
+            s.exists(TEST_IMAGES_PATH + "main.png");
         }catch (FindFailed e){
             e.printStackTrace();
         }
     }
 
-    //Scenario3: The User changes the language to English
+    //Scenario2: The User changes the language to German
     private static void Scenario3(Screen s){
         Scenario1(s);
         try {
             s.exists(TEST_IMAGES_PATH + "settings_title.png");
-            s.click(TEST_IMAGES_PATH + "settings_opt_en.png");
-            s.click(TEST_IMAGES_PATH + "settings_btn_apply.png");
-            s.exists(TEST_IMAGES_PATH + "main.png");
+            s.click(TEST_IMAGES_PATH + "settings_opt_de.png");
+            s.click(TEST_IMAGES_PATH + "settings_btn_apply_en.png");
+            s.exists(TEST_IMAGES_PATH + "main_en.png");
         }catch (FindFailed e){
             e.printStackTrace();
         }
