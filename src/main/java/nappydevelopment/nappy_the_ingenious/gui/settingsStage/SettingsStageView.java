@@ -1,5 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.settingsStage;
 
+//### IMPORTS ##############################################################################################################################
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -9,16 +10,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
-//### IMPORTS ##############################################################################################################################
+/* SettingsStageView [class]: *//**
+ * 
+ * @author Manuel Bothner
+ *
+ */
 public class SettingsStageView extends Stage {
+
+//### GUI COMPONENTS #######################################################################################################################
 	
 	Scene scene;
 	
@@ -31,7 +36,6 @@ public class SettingsStageView extends Stage {
 	ToggleGroup tggLanguage;
 	RadioButton rdbGerman;
 	RadioButton rdbEnglish;
-	
 	
 	GridPane gdpColorScheme;
 	Label lblColorScheme;
@@ -53,16 +57,16 @@ public class SettingsStageView extends Stage {
 	
 //### CONSTRUCTORS #########################################################################################################################
 	
-	public SettingsStageView(EventHandler<ActionEvent> aeh) {
-		this.initComponents(aeh);
+	public SettingsStageView(SettingsStageResources res, EventHandler<ActionEvent> aeh) {
+		this.initComponents(res, aeh);
 		this.structureComponents();
-		this.initStage();
+		this.initStage(res);
 	}
 			
-	
 //### INITAL METHODS #######################################################################################################################
 	
-	private void initComponents(EventHandler<ActionEvent> aeh) {
+	//Method that initialize the gui-components:
+	private void initComponents(SettingsStageResources res, EventHandler<ActionEvent> aeh) {
 		
 		this.bdpRootPane = new BorderPane();
 		
@@ -127,6 +131,7 @@ public class SettingsStageView extends Stage {
 		
 	}
 	
+	//Method that structure (add components to their parent node) the gui-components:
 	private void structureComponents() {
 		
 		this.gdpLanguage.add(this.lblLanguage, 0, 0, 2, 1);
@@ -156,19 +161,13 @@ public class SettingsStageView extends Stage {
 		this.bdpRootPane.autosize();
 	}
 	
-	private void initStage() {
+	//Method that initialize the stage (window) settings:
+	private void initStage(SettingsStageResources res) {
 		
 		this.scene = new Scene(this.bdpRootPane, 350, 307);
 		this.setScene(this.scene);
 		
-		this.getIcons().addAll(
-			new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"),
-			new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"),
-			new Image(GlobalReferences.ICONS_PATH + "48x48/icon.png"),
-			new Image(GlobalReferences.ICONS_PATH + "64x64/icon.png"),
-			new Image(GlobalReferences.ICONS_PATH + "128x128/icon.png"),
-			new Image(GlobalReferences.ICONS_PATH + "256x256/icon.png")
-		);
+		this.getIcons().addAll(res.stageIcon16x16, res.stageIcon32x32);
 		
 		this.setMinWidth(200);
 		this.setMinHeight(200);
@@ -177,5 +176,6 @@ public class SettingsStageView extends Stage {
 		this.setResizable(true);
 	}
 
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################

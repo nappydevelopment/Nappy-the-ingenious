@@ -1,5 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.settingsStage;
 
+//### IMPORTS ##############################################################################################################################
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
@@ -10,8 +11,11 @@ import nappydevelopment.nappy_the_ingenious.data.settings.GameMode;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 
-
-//### IMPORTS ##############################################################################################################################
+/* SettingsStageController [class] *//**
+ * 
+ * @author Manuel Bothner
+ *
+ */
 public class SettingsStageController {
 
 //### ATTRIBUTES ###########################################################################################################################
@@ -19,7 +23,8 @@ public class SettingsStageController {
 	private Program program;
 	
 	private SettingsStageView view;
-	private ViewActionEventHandler viewActionEventHandler;
+	private SettingsStageResources res;
+	private ViewActionEventHandler aeh;
 
 //### CONSTRUCTORS #########################################################################################################################
 	
@@ -29,12 +34,15 @@ public class SettingsStageController {
 	
 //### INITIAL METHODS ######################################################################################################################
 	
+	//Initialize the view:
 	public void initView() {
 		
+		//Initialize the resources for the view:
+		this.res = new SettingsStageResources();
 		//Initialize the action-event-handler for the view-components:
-		this.viewActionEventHandler = new ViewActionEventHandler();
+		this.aeh = new ViewActionEventHandler();
 		//Initialize the view:
-		this.view = new SettingsStageView(this.viewActionEventHandler);
+		this.view = new SettingsStageView(this.res, this.aeh);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 		
@@ -43,19 +51,19 @@ public class SettingsStageController {
 	//Method that binds properties to the gui-components:
 	private void initViewBindings() {
 		
-		this.view.titleProperty().bind(SettingsStageResources.stageTitleText);
+		this.view.titleProperty().bind(this.res.stageTitleText);
 		
-		this.view.lblLanguage.textProperty().bind(SettingsStageResources.lblLanguageText);
-		this.view.rdbGerman.textProperty().bind(SettingsStageResources.rdbGerman);
-		this.view.rdbEnglish.textProperty().bind(SettingsStageResources.rdbEnglish);
-		this.view.lblColorScheme.textProperty().bind(SettingsStageResources.lblColorScheme);
-		this.view.rdbBright.textProperty().bind(SettingsStageResources.rdbBright);
-		this.view.rdbDark.textProperty().bind(SettingsStageResources.rdbDark);
-		this.view.lblGameMode.textProperty().bind(SettingsStageResources.lblGameMode);
-		this.view.rdbBothModes.textProperty().bind(SettingsStageResources.rdbBothModes);
-		this.view.rdbOnlyMode1.textProperty().bind(SettingsStageResources.rdbOnlyMode1);
-		this.view.btnApply.textProperty().bind(SettingsStageResources.btnApply);
-		this.view.btnAbort.textProperty().bind(SettingsStageResources.btnAbort);
+		this.view.lblLanguage.textProperty().bind(this.res.lblLanguageText);
+		this.view.rdbGerman.textProperty().bind(this.res.rdbGerman);
+		this.view.rdbEnglish.textProperty().bind(this.res.rdbEnglish);
+		this.view.lblColorScheme.textProperty().bind(this.res.lblColorScheme);
+		this.view.rdbBright.textProperty().bind(this.res.rdbBright);
+		this.view.rdbDark.textProperty().bind(this.res.rdbDark);
+		this.view.lblGameMode.textProperty().bind(this.res.lblGameMode);
+		this.view.rdbBothModes.textProperty().bind(this.res.rdbBothModes);
+		this.view.rdbOnlyMode1.textProperty().bind(this.res.rdbOnlyMode1);
+		this.view.btnApply.textProperty().bind(this.res.btnApply);
+		this.view.btnAbort.textProperty().bind(this.res.btnAbort);
 	}
 	
 //### INNER CLASSES ########################################################################################################################
@@ -153,16 +161,24 @@ public class SettingsStageController {
 		}
 		
 		this.loadSettings();
+		
+		//Disable not implemented settings:
+		this.view.rdbBright.setDisable(true);
+		this.view.rdbDark.setDisable(true);
+		this.view.rdbBothModes.setDisable(true);
+		this.view.rdbOnlyMode1.setDisable(true);
+		
 		this.view.show();
 	}
 	
 	public void changeLanguageToGerman() {
-		SettingsStageResources.setTextsToGerman();
+		this.res.setTextsToGerman();
 	}
 	
 	public void changeLanguageToEnglish() {
-		SettingsStageResources.setTextsToEnglish();
+		this.res.setTextsToEnglish();
 	}
-	
+
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################

@@ -1,18 +1,26 @@
+//### InfoStageView.java ###################################################################################################################
+
 package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 
 //### IMPORTS ##############################################################################################################################
+import java.awt.RenderingHints;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
-public class InfoStageView {
+public class InfoStageView extends Stage {
 
 //### COMPONENTS ###########################################################################################################################
 
@@ -24,14 +32,11 @@ public class InfoStageView {
 	
 	GridPane gdpContentPane;
 	
-	GridPane gdpTop;
 	Label lblTitle;
 	Label lblDescription;
 	ImageView imvLogo;
 	
-	GridPane gdpBottom;
-	
-	Label lblDeveloptBy;
+	Label lblDevelopedBy;
 	
 	Circle cirPic1;
 	Circle cirPic2;
@@ -54,8 +59,12 @@ public class InfoStageView {
 
 //### CONSTRUCTORS #########################################################################################################################
 	
-	public InfoStageView(InfoStageResources res, EventHandler<ActionEvent> aeh) {
-		
+	/* InfoStageView [constructor]: Constructor that creates a new info-stage-view with all gui-components *//**
+	 * 
+	 * @param res
+	 * @param aeh
+	 */
+	public InfoStageView(InfoStageResources res, EventHandler<ActionEvent> aeh) {	
 		this.initComponents(res, aeh);
 		this.structureComponents();
 		this.initStage();
@@ -64,19 +73,78 @@ public class InfoStageView {
 	
 //### INITIAL METHODS ######################################################################################################################
 	
+	//Method that initialize the gui-components:
 	private void initComponents(InfoStageResources res, EventHandler<ActionEvent> aeh) {
 		
 		this.bdpRootPane = new BorderPane();
 		
+		this.gdpContentPane = new GridPane();
+		this.gdpContentPane.setGridLinesVisible(true);
+		this.gdpContentPane.setHgap(5);
+		this.gdpContentPane.setVgap(10);
+		this.gdpContentPane.setPadding(new Insets(15, 15, 15, 15));
+		
+		this.lblTitle = new Label();
+		this.lblDescription = new Label();
+	
+		this.lblDevelopedBy = new Label();
+		this.cirPic1 = new Circle();
+		this.cirPic1.setRadius(16);
+		this.cirPic2 = new Circle();
+		this.cirPic2.setRadius(16);
+		this.cirPic3 = new Circle();
+		this.cirPic3.setRadius(16);
+		this.cirPic4 = new Circle();
+		this.cirPic4.setRadius(16);
+		this.impPic1 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/manu.png"));
+		this.impPic2 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/marc.png"));
+		this.impPic3 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/marvin.png"));
+		this.impPic4 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/ali.png"));
+		this.cirPic1.setFill(this.impPic1);
+		this.cirPic2.setFill(this.impPic2);
+		this.cirPic3.setFill(this.impPic3);
+		this.lblName1 = new Label();
+		this.lblName2 = new Label();
+		this.lblName3 = new Label();
+		this.lblName4 = new Label();
+		
+		this.imvLogo = new ImageView(Utils.getScaledInstance(res.imvLogoImage, 200, 200, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.75, true));
+		
+		this.lblNappyDevelopment = new Label();
+		this.lblOurBlog = new Label();
+		this.lblBlog = new Label();
+		this.lblOurEmail = new Label();
+		this.lblEmail = new Label();
 		
 	}
 	
+	
 	private void structureComponents() {
+		
+		this.gdpContentPane.add(this.lblTitle, 0, 0, 3, 1);
+		this.gdpContentPane.add(this.lblDescription, 0, 1, 3, 1);
+		this.gdpContentPane.add(this.imvLogo, 4, 0);
+		this.gdpContentPane.add(this.lblDevelopedBy, 0, 3, 2, 1);
+		this.gdpContentPane.add(this.cirPic1, 0, 4);
+		this.gdpContentPane.add(this.cirPic2, 0, 5);
+		this.gdpContentPane.add(this.cirPic3, 0, 6);
+		this.gdpContentPane.add(this.cirPic4, 0, 7);
+		this.gdpContentPane.add(this.lblName1, 1, 4);
+		this.gdpContentPane.add(this.lblName2, 1, 5);
+		this.gdpContentPane.add(this.lblName3, 1, 6);
+		this.gdpContentPane.add(this.lblName4, 1, 7);
+		this.gdpContentPane.add(this.lblNappyDevelopment, 3, 4);
+		this.gdpContentPane.add(this.lblOurBlog, 3, 5);
+		this.gdpContentPane.add(this.lblBlog, 4, 5);
+		
+		
+		this.bdpRootPane.setCenter(this.gdpContentPane);
 		
 	}
 	
 	private void initStage() {
-		
+		this.scene = new Scene(this.bdpRootPane, 350, 307);
+		this.setScene(this.scene);
 	}
 	
 //##########################################################################################################################################

@@ -10,12 +10,16 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import nappydevelopment.nappy_the_ingenious.Program;
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
 	
 //### ATTRIBUTES ###########################################################################################################################
+	
+	private boolean initialShowing;
 	
 	//Reference to the program-logic:
 	private Program program;
@@ -29,6 +33,9 @@ public class MainStageController {
 	
 	//Default Constructor:
 	public MainStageController(Program prog) {
+		
+		//Init the flag for the initial showing:
+		this.initialShowing = false;
 		
 		//Set reference to program-logic:
 		this.program = prog;
@@ -77,6 +84,9 @@ public class MainStageController {
 		this.view.btnYes.textProperty().bind(this.res.btnYesText);
 		this.view.btnNo.textProperty().bind(this.res.btnNoText);
 		this.view.btnIdontKnow.textProperty().bind(this.res.btnIdontKnow);
+		
+		//Stage-Properties:
+		this.view.titleProperty().bind(this.res.stageTitleText);
 	}
 
 //### EVENT HANDLER ########################################################################################################################
@@ -102,6 +112,7 @@ public class MainStageController {
 			else if(src == view.mniStatistic || src == view.btnStatistic) {
 				//Show the statistic-stage!
 				System.out.println("Show the statistic stage");
+				MainStageController.this.program.showStatisticStage(MainStageController.this.view);
 			}
 			else if(src == view.mniSettings) {
 				//Show the settings-stage!
@@ -117,14 +128,17 @@ public class MainStageController {
 			else if (src == view.mniHelp || src == view.btnHelp) {
 				//Show the help-stage!
 				System.out.println("Show the help stage");
+				MainStageController.this.program.showHelpStage(MainStageController.this.view);
 			}
 			else if(src == view.mniWiki || src == view.btnWiki) {
 				//Show the wiki-stage!
 				System.out.println("Show the wiki stage");
+				MainStageController.this.program.showWikiStage(MainStageController.this.view);
 			}
 			else if(src == view.mniInfo) {
 				//Show the info-stage!
 				System.out.println("Show the info stage");
+				MainStageController.this.program.showInfoStage(MainStageController.this.view);
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
@@ -146,7 +160,7 @@ public class MainStageController {
 		ButtonType bttApply = new ButtonType(this.res.abortGameDialogBtnApplyText);
 		ButtonType bttCancel = new ButtonType(this.res.abortGameDialogBtnCancelText);
 		
-		//Set porperties of the dialog:
+		//Set properties of the dialog:
 		alert.setTitle(this.res.abortGameDialogTitle);
 		alert.setHeaderText(this.res.abortGameDialogHeaderText);
 		alert.setContentText(this.res.abortGameDialogContentText);
@@ -168,14 +182,51 @@ public class MainStageController {
 	 */
 	public void showStartView() {
 		
+		//If the main-stage shown for the first time:
+		if(!this.initialShowing) {
+			
+			/*************************************************
+			 * This Code adds all views and gui-components   *
+			 * to a stack-pane (some visible some invisible) *
+			 * this stack-pane is set as root-pane of the    *
+			 * stage! This is necessary because apart from   *
+			 * that it's not possible to read out the size   *
+			 * of components that are not on the start-view  *
+			 * and get shown later on the stage!             * 
+			 *************************************************/
+			
+			StackPane skpRoot = new StackPane();
+			
+			BorderPane bdpRootPane1 = new BorderPane();
+			BorderPane bdpRootPane2 = new BorderPane();
+			
+			bdpRootPane1.setTop(this.view.mnbMenuBar);
+			bdpRootPane1.setCenter(this.view.gdpStartViewContentPane);
+			
+			bdpRootPane2.setCenter(this.view.gdpProgressBarPic);
+			bdpRootPane2.setBottom(this.view.gdpButtons);
+			
+			skpRoot.getChildren().addAll(bdpRootPane2, bdpRootPane1);
+			skpRoot.getChildren().get(0).setVisible(false);
+			
+			this.view.getScene().setRoot(skpRoot);
+			
+			this.initialShowing = true;
+		}
+		else {
+			
+			//Set the start-view-pane to the root-pane:
+			this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
+			this.view.bdpRootPane.setCenter(this.view.gdpStartViewContentPane);
+			this.view.bdpRootPane.setBottom(null);
+			this.view.getScene().setRoot(this.view.bdpRootPane);
+		}
+		
 		//Disable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(true);
-		//Set the start-view-pane to the root-pane:
-		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
-		this.view.bdpRootPane.setCenter(this.view.gdpStartViewContentPane);
-		this.view.bdpRootPane.setBottom(null);
 		//Show the stage:
 		this.view.show();
+		
 		
 	}
 	
@@ -190,8 +241,10 @@ public class MainStageController {
 		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
 		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);
 		this.view.bdpRootPane.setBottom(this.view.gdpButtons);
+		this.view.getScene().setRoot(this.view.bdpRootPane);
 		//Show the stage:
-		//this.view.show();	Not needed main-stage is always shown after the call of showStartView!
+		this.view.show();
+		System.out.println(this.view.gdpQuestion.getWidth());
 	}
 	
 	/* showGamemode2View [method]: *//**
