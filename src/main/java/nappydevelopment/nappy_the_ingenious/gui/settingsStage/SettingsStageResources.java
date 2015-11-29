@@ -2,25 +2,30 @@ package nappydevelopment.nappy_the_ingenious.gui.settingsStage;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 //### IMPORTS ##############################################################################################################################
 public class SettingsStageResources {
 	
-	static StringProperty stageTitleText = new SimpleStringProperty();
+	StringProperty stageTitleText;
 	
 	//Setting-Components-Text:
-	static StringProperty lblLanguageText = new SimpleStringProperty();
-	static StringProperty rdbGerman = new SimpleStringProperty();
-	static StringProperty rdbEnglish = new SimpleStringProperty();
-	static StringProperty lblColorScheme = new SimpleStringProperty();
-	static StringProperty rdbBright = new SimpleStringProperty();
-	static StringProperty rdbDark = new SimpleStringProperty();
-	static StringProperty lblGameMode = new SimpleStringProperty();
-	static StringProperty rdbBothModes = new SimpleStringProperty();
-	static StringProperty rdbOnlyMode1 = new SimpleStringProperty();
+	StringProperty lblLanguageText;
+	StringProperty rdbGerman;
+	StringProperty rdbEnglish;
+	StringProperty lblColorScheme;
+	StringProperty rdbBright;
+	StringProperty rdbDark;
+	StringProperty lblGameMode;
+	StringProperty rdbBothModes;
+	StringProperty rdbOnlyMode1;
 	//Button-Texts:
-	static StringProperty btnAbort = new SimpleStringProperty();
-	static StringProperty btnApply = new SimpleStringProperty();
+	StringProperty btnAbort;
+	StringProperty btnApply;
+	//Icon:
+	Image stageIcon16x16;
+	Image stageIcon32x32;
 	
 //### CONSTANTS ############################################################################################################################
 
@@ -29,7 +34,29 @@ public class SettingsStageResources {
 //### COMPONENTS ###########################################################################################################################
 
 //### CONSTRUCTORS #########################################################################################################################
-
+	
+	SettingsStageResources() {
+		
+		this.stageTitleText = new SimpleStringProperty();
+		
+		//Setting-Components-Text:
+		this.lblLanguageText = new SimpleStringProperty();
+		this.rdbGerman = new SimpleStringProperty();
+		this.rdbEnglish = new SimpleStringProperty();
+		this.lblColorScheme = new SimpleStringProperty();
+		this.rdbBright = new SimpleStringProperty();
+		this.rdbDark = new SimpleStringProperty();
+		this.lblGameMode = new SimpleStringProperty();
+		this.rdbBothModes = new SimpleStringProperty();
+		this.rdbOnlyMode1 = new SimpleStringProperty();
+		//Button-Texts:
+		this.btnAbort = new SimpleStringProperty();
+		this.btnApply = new SimpleStringProperty();
+		//Icon:
+		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/settings.png");
+		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/settings.png");
+	}
+	
 //### INITIAL METHODS ######################################################################################################################
 
 //### INNER CLASSES ########################################################################################################################
@@ -37,36 +64,37 @@ public class SettingsStageResources {
 //### GETTER/SETTER ########################################################################################################################
 
 //### METHODS ##############################################################################################################################
-	public static void setTextsToEnglish() {
+	
+	void setTextsToEnglish() {
 		
-		stageTitleText.setValue("Nappy, the ingenious - Settings");
-		lblLanguageText.setValue("Language");
-		rdbGerman.setValue("German");
-		rdbEnglish.setValue("English");
-		lblColorScheme.setValue("Colorscheme");
-		rdbBright.setValue("Bright");
-		rdbDark.setValue("Dark");
-		lblGameMode.setValue("Gamemode");
-		rdbBothModes.setValue("Both modes");
-		rdbOnlyMode1.setValue("Only mode 1");
-		btnAbort.setValue("Abort");
-		btnApply.setValue("Apply");
+		this.stageTitleText.setValue("Nappy, the ingenious - Settings");
+		this.lblLanguageText.setValue("Language");
+		this.rdbGerman.setValue("German");
+		this.rdbEnglish.setValue("English");
+		this.lblColorScheme.setValue("Colorscheme");
+		this.rdbBright.setValue("Bright");
+		this.rdbDark.setValue("Dark");
+		this.lblGameMode.setValue("Gamemode");
+		this.rdbBothModes.setValue("Both modes");
+		this.rdbOnlyMode1.setValue("Only mode 1");
+		this.btnAbort.setValue("Abort");
+		this.btnApply.setValue("Apply");
 	}
 	
-	public static void setTextsToGerman() {
+	void setTextsToGerman() {
 		
-		stageTitleText.setValue("Nappy, the ingenious - Einstellungen");
-		lblLanguageText.setValue("Sprache");
-		rdbGerman.setValue("Deutsch");
-		rdbEnglish.setValue("Englisch");
-		lblColorScheme.setValue("Farbschema");
-		rdbBright.setValue("Hell");
-		rdbDark.setValue("Dunkel");
-		lblGameMode.setValue("Spielmodus");
-		rdbBothModes.setValue("Beide Modi");
-		rdbOnlyMode1.setValue("Nur Spielmodus 1");
-		btnAbort.setValue("Abbrechen");
-		btnApply.setValue("Übernehmen");
+		this.stageTitleText.setValue("Nappy, the ingenious - Einstellungen");
+		this.lblLanguageText.setValue("Sprache");
+		this.rdbGerman.setValue("Deutsch");
+		this.rdbEnglish.setValue("Englisch");
+		this.lblColorScheme.setValue("Farbschema");
+		this.rdbBright.setValue("Hell");
+		this.rdbDark.setValue("Dunkel");
+		this.lblGameMode.setValue("Spielmodus");
+		this.rdbBothModes.setValue("Beide Modi");
+		this.rdbOnlyMode1.setValue("Nur Spielmodus 1");
+		this.btnAbort.setValue("Abbrechen");
+		this.btnApply.setValue("Übernehmen");
 	}
 	
 }

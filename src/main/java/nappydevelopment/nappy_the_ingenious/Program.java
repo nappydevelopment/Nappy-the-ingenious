@@ -5,27 +5,40 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
+import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
+import nappydevelopment.nappy_the_ingenious.gui.infoStage.InfoStageController;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
-import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageResources;
+import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
+import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 
 public class Program extends Application {
 	
 //### STAGES ###############################################################################################################################
 	
 	private MainStageController mainStageController;
+	private StatisticStageController statisticStageController;
 	private SettingsStageController settingsStageController;
+	private HelpStageController helpStageController;
+	private WikiStageController wikiStageController;
+	private InfoStageController infoStageController;
 	
 //### JAVA-FX-APPLICATION METHODS ##########################################################################################################
 	
 	//Method that is called before the start-method is called:
 	@Override
 	public void init() {
+		
 		System.out.println("JavaFX-Application - Init");
 		
 		//Init the stage-controller:
 		this.mainStageController = new MainStageController(this);
+		this.statisticStageController = new StatisticStageController(this);
 		this.settingsStageController = new SettingsStageController(this);
+		this.helpStageController = new HelpStageController(this);
+		this.wikiStageController = new WikiStageController(this);
+		this.infoStageController = new InfoStageController(this);
+		
 
 	}
 	
@@ -35,14 +48,23 @@ public class Program extends Application {
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
+		this.statisticStageController.initView();
 		this.settingsStageController.initView();
+		this.helpStageController.initView();
+		this.wikiStageController.initView();
+		this.infoStageController.initView();
+		
 		//Set the language of the main stage to English:
 		this.mainStageController.changeLanguageToGerman();
-		SettingsStageResources.setTextsToGerman();
-		
+		this.statisticStageController.changeLanguageToGerman();
+		this.settingsStageController.changeLanguageToGerman();
+		this.helpStageController.changeLanguageToGerman();
+		this.wikiStageController.changeLanguageToGerman();
+		this.infoStageController.changeLanguageToGerman();
 		
 		//Show the main-stage-window:
 		this.mainStageController.showStartView();
+		
 	}
 	
 	//Method that is called when the JavaFX-Application is shutdown:
@@ -53,9 +75,29 @@ public class Program extends Application {
 	
 //### PUBLIC METHODS #######################################################################################################################
 	
+	//### Show stages ##############################################################################
+	
+	public void showStatisticStage(Stage owner) {
+		this.statisticStageController.show(owner);
+	}
+	
 	public void showSettingsStage(Stage owner) {
 		this.settingsStageController.show(owner);
 	}
+	
+	public void showHelpStage(Stage owner) {
+		this.helpStageController.show(owner);
+	}
+	
+	public void showWikiStage(Stage owner) {
+		this.wikiStageController.show(owner);
+	}
+	
+	public void showInfoStage(Stage owner) {
+		this.infoStageController.show(owner);
+	}
+	
+	//##############################################################################################
 	
 	public void abortCurrentGame() {
 		this.mainStageController.showStartView();
@@ -73,8 +115,7 @@ public class Program extends Application {
 		}
 		
 	}
-	
-	
+		
 //### MAIN METHOD ##########################################################################################################################
 	
 	//Main-method that starts the JavaFX-Platform:

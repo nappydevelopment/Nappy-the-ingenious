@@ -17,6 +17,8 @@ public class MainStageResources {
 
 //### ATTRIBUTES ###########################################################################################################################
 	
+	StringProperty stageTitleText;
+	
 	//### Texts for general components #############################################################
 	
 	//Menu-Texts:
@@ -83,10 +85,13 @@ public class MainStageResources {
 	/* MainStageResources [constructor]: Constructor that creates a new resource-object for the main-stage-view *//**
 	 * 
 	 */
+	
 //### CONSTRUCTORS #########################################################################################################################	
 	
 	MainStageResources() {
-
+		
+		this.stageTitleText = new SimpleStringProperty("Nappy, the ingenious");
+		
 		//### Texts for general components #############################################################
 		
 		//Menu-Texts:
@@ -147,6 +152,7 @@ public class MainStageResources {
 //### PUBLIC METHODS #######################################################################################################################
 	
 	
+
 	/* setTextsToEnglish [method]: Method that sets all texts of the main-stage-view to English *//**
 	 * 
 	 */
@@ -181,6 +187,7 @@ public class MainStageResources {
 		this.abortGameDialogBtnApplyText = "Abort game";
 		this.abortGameDialogBtnCancelText = "Cancel";
 	}
+	
 	
 	
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage-view to German *//**
