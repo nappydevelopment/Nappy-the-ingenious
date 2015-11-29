@@ -33,7 +33,7 @@ public class DatabaseProvider{
 			);
 			if(!st.getResultSet().next()){
 				// empty database
-				initDatabase();
+				fillDatabase();
 			}else{
 				System.out.println("db exists");
 			}
@@ -44,12 +44,11 @@ public class DatabaseProvider{
 		return;
 	}
 
-	private static void initDatabase(){
+	private static void fillDatabase(){
 		try{
 			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/main/db/simpsons.sql");
 			java.util.Scanner s = new java.util.Scanner(initScriptStream).useDelimiter("\\A");
-			String initScript = s.hasNext() ? s.next() : "";
-			String[] initScriptArray = initScript.split(";"); // split into multiple statements because jdbc is stupid
+			String[] initScriptArray = s.next().split(";");
 			Statement st = dbConn.createStatement();
 			for(String sa: initScriptArray){
 				st.execute(sa);
@@ -65,5 +64,13 @@ public class DatabaseProvider{
 			createConnection();
 		}
 		return dbConn;
+	}
+
+	public static boolean initDatabase(){
+		if(dbConn == null){
+			createConnection();
+			return true;
+		}
+		return false;
 	}
 }
