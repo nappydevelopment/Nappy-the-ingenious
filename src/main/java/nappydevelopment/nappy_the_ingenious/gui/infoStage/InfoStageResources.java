@@ -1,3 +1,4 @@
+//### InfoStageResources.java ##############################################################################################################
 
 package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 
@@ -7,10 +8,18 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
-
+/* InfoStageResources [class]: Contains the resources for the info-stage like images, component-texts etc.: *//**
+ * 
+ * @author Manuel Bothner
+ *
+ */
 public class InfoStageResources {
 	
 	StringProperty stageTitleText;
+	
+	//Stage icon:
+	Image stageIcon16x16;
+	Image stageIcon32x32;
 	
 	StringProperty lblTitleText;
 	StringProperty lblDescriptionText;
@@ -34,9 +43,16 @@ public class InfoStageResources {
 	
 //### CONSTRUCTORS #########################################################################################################################
 	
-	public InfoStageResources() {
+	/* InfoStageResources [constructor]: Default constructor to create a InfoStageResources-object *//**
+	 * 
+	 */
+	InfoStageResources() {
 		
 		this.stageTitleText = new SimpleStringProperty("Nappy, the ingenious - Info");
+		
+		//Icon:
+		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/info.png");
+		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/info.png");
 		
 		this.lblTitleText = new SimpleStringProperty("Nappy, the ingenious");
 		this.lblDescriptionText = new SimpleStringProperty();
@@ -57,7 +73,10 @@ public class InfoStageResources {
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
-
+	
+	/* setTextsToEnglish [method]: Method that sets all texts of the info-stage to English *//**
+	 * 
+	 */
 	void setTextsToEnglish() {
 		this.lblDescriptionText.setValue("A Simpsons quiz game");
 		this.lblDevelopedByText.setValue("Developed by");
@@ -65,6 +84,9 @@ public class InfoStageResources {
 		this.lblOurEmailText.setValue("Our email-adress");
 	}
 	
+	/* setTextsToGerman [method]: Method that sets all texts of the info-stage to German *//**
+	 * 
+	 */
 	void setTextsToGerman() {
 		this.lblDescriptionText.setValue("Ein Simpsons Quiz");
 		this.lblDevelopedByText.setValue("Entwickelt von");
@@ -72,5 +94,6 @@ public class InfoStageResources {
 		this.lblOurEmailText.setValue("Unsere E-Mail-Adresse");
 	}
 	
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################

@@ -80,14 +80,11 @@ public class MainStageResources {
 	Image imvKnowledgeIcon;
 	Image imvNappyImage;
 	
-//### CONSTRUCTORS #########################################################################################################################
-	
-	/* MainStageResources [constructor]: Constructor that creates a new resource-object for the main-stage-view *//**
-	 * 
-	 */
-	
 //### CONSTRUCTORS #########################################################################################################################	
 	
+	/* MainStageResources [constructor]: Default constructor to create a MainStageResources-object *//**
+	 * 
+	 */
 	MainStageResources() {
 		
 		this.stageTitleText = new SimpleStringProperty("Nappy, the ingenious");
@@ -146,14 +143,10 @@ public class MainStageResources {
 		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
 		
 	}
-	
+		
 //### PUBLIC METHODS #######################################################################################################################
 	
-//### PUBLIC METHODS #######################################################################################################################
-	
-	
-
-	/* setTextsToEnglish [method]: Method that sets all texts of the main-stage-view to English *//**
+	/* setTextsToEnglish [method]: Method that sets all texts of the main-stage to English *//**
 	 * 
 	 */
 	void setTextsToEnglish() {
@@ -166,7 +159,7 @@ public class MainStageResources {
 		this.mniSettingsText.setValue("Settings");
 		this.mniExitText.setValue("Exit");
 		this.mnuHelpText.setValue("Help");
-		this.mniHelpText.setValue("Help");
+		this.mniHelpText.setValue("Instructions");
 		this.mniWikiText.setValue("Wiki");
 		this.mniInfoText.setValue("Info");
 		
@@ -174,7 +167,7 @@ public class MainStageResources {
 		this.btnNewGameText.setValue("New Game");
 		this.btnStatisticText.setValue("Statistic");
 		this.btnWikiText.setValue("Wiki");
-		this.btnHelpText.setValue("Help");
+		this.btnHelpText.setValue("Instructions");
 		this.btnYesText.setValue("Yes");
 		this.btnNoText.setValue("No");
 		this.btnIdontKnow.setValue("I don't know");
@@ -188,9 +181,7 @@ public class MainStageResources {
 		this.abortGameDialogBtnCancelText = "Cancel";
 	}
 	
-	
-	
-	/* setTextsToGerman [method]: Method that sets all texts of the main-stage-view to German *//**
+	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
 	 * 
 	 */
 	void setTextsToGerman() {
@@ -225,7 +216,6 @@ public class MainStageResources {
 		this.abortGameDialogBtnCancelText = "Abbrechen";
 		
 	}
-
 
 //##########################################################################################################################################
 }

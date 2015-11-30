@@ -1,11 +1,18 @@
+//### SettingsStageResources.java ##########################################################################################################
+
 package nappydevelopment.nappy_the_ingenious.gui.settingsStage;
 
+//### IMPORTS ##############################################################################################################################
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
-//### IMPORTS ##############################################################################################################################
+/* SettingsStageResources [class]: Contains the resources for the settings-stage like images, component-texts etc.: *//**
+ * 
+ * @author Manuel Bothner
+ *
+ */
 public class SettingsStageResources {
 	
 	StringProperty stageTitleText;
@@ -27,14 +34,11 @@ public class SettingsStageResources {
 	Image stageIcon16x16;
 	Image stageIcon32x32;
 	
-//### CONSTANTS ############################################################################################################################
-
-//### ATTRIBUTES ###########################################################################################################################
-
-//### COMPONENTS ###########################################################################################################################
-
 //### CONSTRUCTORS #########################################################################################################################
 	
+	/* SettingsStageResources [constructor]: Default constructor to create a SettingsStageResources-object *//**
+	 * 
+	 */
 	SettingsStageResources() {
 		
 		this.stageTitleText = new SimpleStringProperty();
@@ -56,15 +60,12 @@ public class SettingsStageResources {
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/settings.png");
 		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/settings.png");
 	}
+
+//### PUBLIC METHODS #######################################################################################################################
 	
-//### INITIAL METHODS ######################################################################################################################
-
-//### INNER CLASSES ########################################################################################################################
-
-//### GETTER/SETTER ########################################################################################################################
-
-//### METHODS ##############################################################################################################################
-	
+	/* setTextsToEnglish [method]: Method that sets all texts of the settings-stage to English *//**
+	 * 
+	 */
 	void setTextsToEnglish() {
 		
 		this.stageTitleText.setValue("Nappy, the ingenious - Settings");
@@ -81,6 +82,9 @@ public class SettingsStageResources {
 		this.btnApply.setValue("Apply");
 	}
 	
+	/* setTextsToGerman [method]: Method that sets all texts of the settings-stage to German *//**
+	 * 
+	 */
 	void setTextsToGerman() {
 		
 		this.stageTitleText.setValue("Nappy, the ingenious - Einstellungen");
@@ -96,6 +100,7 @@ public class SettingsStageResources {
 		this.btnAbort.setValue("Abbrechen");
 		this.btnApply.setValue("Übernehmen");
 	}
-	
+
+//##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################
