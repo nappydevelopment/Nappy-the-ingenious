@@ -107,11 +107,19 @@ public class Program extends Application {
 		
 		if(Settings.getLanguage() == Language.GERMAN) {
 			this.mainStageController.changeLanguageToGerman();
+			this.statisticStageController.changeLanguageToGerman();
 			this.settingsStageController.changeLanguageToGerman();
+			this.helpStageController.changeLanguageToGerman();
+			this.wikiStageController.changeLanguageToGerman();
+			this.infoStageController.changeLanguageToGerman();
 		}
 		else {
 			this.mainStageController.changeLanguageToEnglish();
+			this.statisticStageController.changeLanguageToEnglish();
 			this.settingsStageController.changeLanguageToEnglish();
+			this.helpStageController.changeLanguageToEnglish();
+			this.wikiStageController.changeLanguageToEnglish();
+			this.infoStageController.changeLanguageToEnglish();
 		}
 		
 	}

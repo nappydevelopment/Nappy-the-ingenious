@@ -67,7 +67,7 @@ public class InfoStageView extends Stage {
 	public InfoStageView(InfoStageResources res, EventHandler<ActionEvent> aeh) {	
 		this.initComponents(res, aeh);
 		this.structureComponents();
-		this.initStage();
+		this.initStage(res);
 		
 	}
 	
@@ -142,9 +142,12 @@ public class InfoStageView extends Stage {
 		
 	}
 	
-	private void initStage() {
+	private void initStage(InfoStageResources res) {
+		
+		this.getIcons().addAll(res.stageIcon16x16, res.stageIcon32x32);
 		this.scene = new Scene(this.bdpRootPane, 350, 307);
 		this.setScene(this.scene);
+		
 	}
 	
 //##########################################################################################################################################
