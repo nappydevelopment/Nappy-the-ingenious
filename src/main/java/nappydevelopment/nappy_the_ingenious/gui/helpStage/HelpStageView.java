@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 //### IMPORTS ##############################################################################################################################
 public class HelpStageView extends Stage {
@@ -16,6 +19,10 @@ public class HelpStageView extends Stage {
 	Scene scene;
 		
 	BorderPane bdpRootPane;
+	
+    WebView browser;
+    
+    WebEngine webEngine; 
 		
 //### CONSTRUCTORS #########################################################################################################################
 		
@@ -31,26 +38,27 @@ public class HelpStageView extends Stage {
 	private void initComponents(HelpStageResources res, EventHandler<ActionEvent> aeh) {
 			
 		this.bdpRootPane = new BorderPane();
+		
+        this.browser = new WebView();
+        this.webEngine = browser.getEngine();
+        //load the instructions-html-file;
+        webEngine.load(GlobalReferences.HTML_PATH + "instruction.html");
 	}
 		
 	//Method that structure (add components to their parent node) the gui-components:
 	private void structureComponents() {
-			
+		this.bdpRootPane.setCenter(this.browser);
 	}
 		
 	//Method that initialize the stage (window) settings:
 	private void initStage(HelpStageResources res) {
 			
-		this.scene = new Scene(this.bdpRootPane, 350, 307);
+		this.scene = new Scene(this.bdpRootPane, 500, 500);
 		this.setScene(this.scene);
 			
 		this.getIcons().addAll(res.stageIcon16x16, res.stageIcon32x32);
-			
-		this.setMinWidth(200);
-		this.setMinHeight(200);
-		this.setMaxWidth(500);
-		this.setMaxHeight(500);
-		this.setResizable(true);
+		this.setResizable(false);
+		
 	}
 
 //##########################################################################################################################################

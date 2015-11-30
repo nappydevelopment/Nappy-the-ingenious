@@ -1,10 +1,13 @@
 package nappydevelopment.nappy_the_ingenious.gui.wikiStage;
 
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 
 
 //### IMPORTS ##############################################################################################################################
@@ -28,14 +31,14 @@ public class WikiStageController {
 //### INITIAL METHODS ######################################################################################################################
 			
 	//Initialize the view:
-	public void initView() {
+	public void initView(List<WikiCharacter> chars) {
 				
 		//Initialize the resources for the view:
 		this.res = new WikiStageResources();
 		//Initialize the action-event-handler for the view-components:
 		this.aeh = new ViewActionEventHandler();
 		//Initialize the view:
-		this.view = new WikiStageView(this.res, this.aeh);
+		this.view = new WikiStageView(this.res, this.aeh, chars);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 				

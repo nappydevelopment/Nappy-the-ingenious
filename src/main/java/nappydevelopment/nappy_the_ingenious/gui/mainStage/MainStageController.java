@@ -224,6 +224,9 @@ public class MainStageController {
 		
 		//Disable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(true);
+		//Disable the "new game" menu-item:
+		this.view.mniNewGame.setDisable(false);
+		
 		//Show the stage:
 		this.view.show();
 		
@@ -237,6 +240,8 @@ public class MainStageController {
 		
 		//Enable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(false);
+		//Disable the "new game" menu-item:
+		this.view.mniNewGame.setDisable(true);
 		//Set the needed panes to the root-pane:
 		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
 		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);
