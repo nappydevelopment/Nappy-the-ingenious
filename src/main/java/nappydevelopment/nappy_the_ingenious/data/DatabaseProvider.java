@@ -73,4 +73,12 @@ public class DatabaseProvider{
 		}
 		return false;
 	}
+
+	public static void closeDatabase(){
+		try{
+			dbConn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }
