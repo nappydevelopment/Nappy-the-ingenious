@@ -14,7 +14,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 //### IMPORTS ##############################################################################################################################
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.Main;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 /* InfoStage [class]: Stage for the info-window *//**
  * 
@@ -84,7 +84,7 @@ public class InfoStage extends Stage {
 		
 		this.hbxImage = new HBox();
 		this.hbxImage.setAlignment(Pos.BASELINE_RIGHT);
-		this.imvNappy = new ImageView(new Image(Main.IMAGES_PATH + "general/nappy_small.png"));
+		this.imvNappy = new ImageView(new Image(GlobalReferences.IMAGES_PATH + "general/nappy_small.png"));
 		this.hbxImage.getChildren().add(this.imvNappy);
 		
 		this.gdpDeveloptBy = new GridPane();
@@ -101,10 +101,10 @@ public class InfoStage extends Stage {
 		this.cirPic3.setRadius(16);
 		this.cirPic4 = new Circle();
 		this.cirPic4.setRadius(16);
-		this.impPic1 = new ImagePattern(new Image(Main.IMAGES_PATH + "team/manu.png"));
-		this.impPic2 = new ImagePattern(new Image(Main.IMAGES_PATH + "team/marc.png"));
-		this.impPic3 = new ImagePattern(new Image(Main.IMAGES_PATH + "team/marvin.png"));
-		this.impPic4 = new ImagePattern(new Image(Main.IMAGES_PATH + "team/ali.png"));
+		this.impPic1 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/manu.png"));
+		this.impPic2 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/marc.png"));
+		this.impPic3 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/marvin.png"));
+		this.impPic4 = new ImagePattern(new Image(GlobalReferences.IMAGES_PATH + "team/ali.png"));
 		this.cirPic1.setFill(this.impPic1);
 		this.cirPic2.setFill(this.impPic2);
 		this.cirPic3.setFill(this.impPic3);
@@ -143,7 +143,7 @@ public class InfoStage extends Stage {
 	
 	private void initStage() {		
 		this.setTitle("Nappy, the ingenious - Info");
-		this.getIcons().add(new Image(Main.ICONS_PATH + "16x16/info.png"));
+		this.getIcons().add(new Image(GlobalReferences.ICONS_PATH + "16x16/info.png"));
 		this.startScene = new Scene(this.gdpRootPane);
 		this.setScene(this.startScene);
 		this.setResizable(false);
