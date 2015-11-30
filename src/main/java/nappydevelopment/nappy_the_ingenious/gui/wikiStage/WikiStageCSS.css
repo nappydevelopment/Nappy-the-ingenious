@@ -1,7 +1,28 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-#lblQuestion {
-	-fx-font-weight: bold;
+#hbxEntry1 {
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
+	-fx-padding: 2;
+	-fx-background-color: #2f4f4f;
+	-fx-background-radius: 5;
+}
+
+.hbox {
+    -fx-background-color: #2f4f4f;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.hbxEntry1 {
+	-fx-background-color: #8EADAD;
+	-fx-background-radius: 5;
+}
+
+.hbxEntry2 {
+	-fx-background-color: #A9CCCC;
+	-fx-background-radius: 5;
+}
+
+.lblName {
 	-fx-font-size: 16px;
-	-fx-text-fill: white;
 }
