@@ -1,5 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
 
@@ -64,9 +65,16 @@ public class DatabaseProvider{
 
 	public static boolean resetDatabase(){
 		try{
-			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/main/db/simpsons.sql");
+			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/db/simpsons.sql");
+			//InputStream initScriptStream = new FileInputStream("res/main/db/simpsons.sql");
+			
+			if(initScriptStream == null) {
+				System.out.println("InputStream = null!");
+			}
+			
 			java.util.Scanner s = new java.util.Scanner(initScriptStream).useDelimiter("\\A");
 			String[] initScriptArray = s.next().split(";");
+			//System.out.println("Hallo " + initScriptArray.toString());
 			Statement st = dbConn.createStatement();
 			for(String sa: initScriptArray){
 				st.execute(sa);

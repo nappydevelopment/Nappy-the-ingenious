@@ -33,7 +33,7 @@ public class CharacterProvider{
 				//InputStream image = res.getBinaryStream("image");
 				String description_en = res.getString("description_en");
 				String description_de = res.getString("description_de");
-
+				System.out.println(description_de);
 				Image img = null;
 				/*try{
 					BufferedImage bImg = ImageIO.read(image);
