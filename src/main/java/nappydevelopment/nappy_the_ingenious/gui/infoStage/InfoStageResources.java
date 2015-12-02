@@ -52,7 +52,6 @@ public class InfoStageResources {
 		
 		//Icon:
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/info.png");
-		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/info.png");
 		
 		this.lblTitleText = new SimpleStringProperty("Nappy, the ingenious");
 		this.lblDescriptionText = new SimpleStringProperty();

@@ -56,7 +56,7 @@ public class HelpStageView extends Stage {
 		this.scene = new Scene(this.bdpRootPane, 500, 500);
 		this.setScene(this.scene);
 			
-		this.getIcons().addAll(res.stageIcon16x16, res.stageIcon32x32);
+		this.getIcons().addAll(res.stageIcon16x16);
 		this.setResizable(false);
 		
 	}
