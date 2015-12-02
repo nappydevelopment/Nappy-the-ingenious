@@ -171,7 +171,7 @@ public class WikiStageView extends Stage {
 		this.scene.getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
 		this.setScene(this.scene);
 				
-		this.getIcons().addAll(res.stageIcon16x16, res.stageIcon32x32);
+		this.getIcons().addAll(res.stageIcon16x16);
 				
 		
 	}

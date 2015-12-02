@@ -33,7 +33,6 @@ public class WikiStageResources {
 		this.stageTitleText = new SimpleStringProperty("Nappy, the ingenious - Wiki");
 		//Icon:
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/wiki.png");
-		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/wiki.png");
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################

@@ -167,7 +167,7 @@ public class SettingsStageView extends Stage {
 		this.scene = new Scene(this.bdpRootPane, 350, 307);
 		this.setScene(this.scene);
 		
-		this.getIcons().addAll(res.stageIcon16x16, res.stageIcon32x32);
+		this.getIcons().addAll(res.stageIcon16x16);
 		
 		this.setMinWidth(200);
 		this.setMinHeight(200);
