@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
@@ -52,8 +53,11 @@ public class Program extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		List<WikiCharacter> chars = new LinkedList<WikiCharacter>();
-		chars.add(new WikiCharacter("Homer Simpson", "Homy", "Homer Simpson...", new Image(GlobalReferences.IMAGES_PATH + "wiki/homer_simpson.png")));
+		List<WikiCharacter> chars = CharacterProvider.getCharacters(Language.GERMAN);
+		if(chars == null) {
+			System.out.println("Null!");
+		}
+		
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
