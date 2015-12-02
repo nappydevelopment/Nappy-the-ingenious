@@ -1,13 +1,8 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,11 +25,10 @@ public class CharacterProvider{
 			while(res.next()){
 				String name = res.getString("name");
 				String nickname = res.getString("nickname");
-				//InputStream image = res.getBinaryStream("image");
 				String description_en = res.getString("description_en");
 				String description_de = res.getString("description_de");
-				System.out.println(description_de);
 				Image img = null;
+				//Image img = res.getObject("image", javafx.scene.image.Image.class); // probably bullshit and broken
 				/*try{
 					BufferedImage bImg = ImageIO.read(image);
 					img = SwingFXUtils.toFXImage(bImg, null);
@@ -42,12 +36,10 @@ public class CharacterProvider{
 					e.printStackTrace();
 				}*/
 
-				WikiCharacter chr;
-				if(lang.equals(Language.GERMAN)){ //TODO:fix condition
-					// description==de
+				WikiCharacter chr = null;
+				if(lang.equals(Language.GERMAN)){
 					chr = new WikiCharacter(name, nickname, description_de, img);
-				}else{
-					// description==en
+				}else if(lang.equals(Language.ENGLISH)){
 					chr = new WikiCharacter(name, nickname, description_en, img);
 				}
 				out.add(chr);
@@ -55,6 +47,7 @@ public class CharacterProvider{
 			st.close();
 			return out;
 		}catch(SQLException e){
+			System.out.println("SQL Exception in Character Provider");
 			e.printStackTrace();
 		}
 		return null;
