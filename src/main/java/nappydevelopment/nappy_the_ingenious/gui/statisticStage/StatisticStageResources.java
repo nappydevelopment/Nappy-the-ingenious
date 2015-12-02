@@ -33,7 +33,6 @@ public class StatisticStageResources {
 		this.stageTitleText = new SimpleStringProperty();
 		
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/statistic.png");
-		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/statistic.png");
 		
 	}
 	
