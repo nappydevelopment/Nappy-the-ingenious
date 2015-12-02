@@ -33,7 +33,6 @@ public class HelpStageResources {
 		this.stageTitleText = new SimpleStringProperty();
 		//Icon:
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/help.png");
-		this.stageIcon32x32 = new Image(GlobalReferences.ICONS_PATH + "32x32/help.png");
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
