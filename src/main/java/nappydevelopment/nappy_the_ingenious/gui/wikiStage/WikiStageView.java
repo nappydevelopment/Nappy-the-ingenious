@@ -25,6 +25,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
@@ -120,7 +121,8 @@ public class WikiStageView extends Stage {
             //Set-up vertical box that contains the name and description labels:
         	VBox vbxBox = new VBox();
         	//Set-up image-pattern for the rectangle:
-        	ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+        	//ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+        	ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(new Image(GlobalReferences.IMAGES_PATH + "wiki/homer_simpson.png"), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
         	//Set-up rectangle that contains the character-image:
         	Rectangle imgRec = new Rectangle();
     		imgRec.setWidth(90);
@@ -134,7 +136,10 @@ public class WikiStageView extends Stage {
     		hbxImage.getChildren().add(imgRec);
     		//Set-up labels for name and description:
     		Label lblName = null;
-    		if(!curCharacter.getNickname().equals("")) {
+    		if(curCharacter.getNickname() == null) {
+    			lblName = new Label(curCharacter.getName());
+    		}
+    		else if(!curCharacter.getNickname().equals("")) {
     			lblName = new Label(curCharacter.getName() + " (" + curCharacter.getNickname() + ")");
     		}
     		else {

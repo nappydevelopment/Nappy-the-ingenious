@@ -119,7 +119,7 @@ public class MainStageResources {
 		
 		//### Images for the menu-bar ##################################################################
 		
-		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/new_game.png");
+		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/help.png");
 		this.mniAbortGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/abort_game.png");
 		this.mniStatisticIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/statistic.png");
 		this.mniSettingsIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/settings.png");
@@ -138,9 +138,9 @@ public class MainStageResources {
 		
 		//### Images ###################################################################################
 		
-		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/help.png");
-		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/help.png");
-		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy.png");
+		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/counter.png");
+		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
+		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
 		
 	}
 		
