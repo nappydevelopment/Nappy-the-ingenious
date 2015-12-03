@@ -1,12 +1,12 @@
 package nappydevelopment.nappy_the_ingenious.util.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
+import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.stream.IntStream;
 
 public class QuestionGenerator{
 
@@ -44,10 +44,18 @@ public class QuestionGenerator{
 		System.out.println(p.getQuestion(Language.GERMAN));
 		p.setAnswer(false);
 		System.out.println(p.getQuestion(Language.ENGLISH));
+		System.out.println(p.getQuestion(Language.ENGLISH));
 		p.setAnswer(true);
+		System.out.println(p.isSure());
 		System.out.println(p.getQuestion(Language.GERMAN));
 		p.setAnswer(false);
 		System.out.println(p.getQuestion(Language.ENGLISH));
+		System.out.println(p.isSure());
+	}
+
+	public WikiCharacter getCharacter(){
+		Statement st = DatabaseProvider.getStatement();
+		return null;
 	}
 
     public void setAnswer(boolean answer){
@@ -58,18 +66,32 @@ public class QuestionGenerator{
     }
 
     public boolean isSure(){
+		if(true){
+			return false;
+		}
 		Statement st = DatabaseProvider.getStatement();
+		String select = "Select count(0) FROM SIMPSONS WHERE";
+		boolean first = true;
 		for(int i = 0; i < column.length; i++){
 			if(column[i] == null){
 				break;
 			}
-			//st.execute(""); //TODO: gen query
 		}
-        return false;
+		//st.execute(""); //TODO: gen query
+		ResultSet res = null;
+		try{
+			res = st.getResultSet();
+			res.next();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
     }
 
     public String getQuestion(Language lang){
-		//???
+		if(activeQuestion != -1){
+			return null;
+		}
 		float localMax;
 		float max = 0;
 		int maxNr = -1;
@@ -87,17 +109,18 @@ public class QuestionGenerator{
 			}
 		}
 		if(maxNr == -1 || max <= 0){
+			System.out.println(maxNr +" "+ max);
 			return null;
 		}
 		activeQuestion = maxNr;
 		return giveQuestion(column[maxNr], lang);
     }
 
-	private String giveQuestion(String column, Language lang){
+	private String giveQuestion(String columnName, Language lang){
 		String ques = null;
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute("SELECT * from "+ column +"_QUESTIONS ");
+			st.execute("SELECT * from "+ columnName +"_QUESTIONS ");
 			ResultSet res = st.getResultSet();
 			res.next();
 			if(lang.equals(Language.GERMAN)){
@@ -114,7 +137,22 @@ public class QuestionGenerator{
 	private float tryQuestion(String columnName){
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute("SELECT count(0) as C FROM SIMPSONS GROUP BY " + columnName);
+			String select = "SELECT count(0) as C FROM SIMPSONS GROUP BY "+ columnName;
+			if(activeQuestion != -1){
+				select += " WHERE ";
+				boolean f = true;
+				for(int i = 0; i < column.length; i++){
+					if(ans != null){
+						if(!f){
+							select += "AND ";
+						}else{
+							f=false;
+						}
+						select += "SIMPSONS."+ column[i] +"="+ column[i] +"_QUESTIONS.ID ";
+					}
+				}
+			}
+			st.execute(select);
 			ResultSet res = st.getResultSet();
 			float max = 0;
 			float sum = 0;
@@ -127,7 +165,7 @@ public class QuestionGenerator{
 			}
 			float ret = max / sum;
 			if(ret > 0.5){
-				ret -= 0.5;
+				ret = 1 - ret;
 			}
 			return ret;
 		}catch(SQLException e){
