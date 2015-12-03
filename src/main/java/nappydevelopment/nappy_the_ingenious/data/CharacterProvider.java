@@ -28,7 +28,10 @@ public class CharacterProvider{
 				String nickname = res.getString("nickname");
 				String description_en = res.getString("description_en");
 				String description_de = res.getString("description_de");
-				Image img = new Image(GlobalReferences.IMAGES_PATH +"/wiki/"+ name.toLowerCase().replace(" ", "_") +".png");
+				
+				String x = name.toLowerCase().replace(" ", "_") +".png";
+				System.out.println("x: " + x);
+				Image img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + x);
 
 				WikiCharacter chr = null;
 				if(lang.equals(Language.GERMAN)){
