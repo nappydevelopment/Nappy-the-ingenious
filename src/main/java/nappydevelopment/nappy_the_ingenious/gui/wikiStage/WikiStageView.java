@@ -122,17 +122,16 @@ public class WikiStageView extends Stage {
         	VBox vbxBox = new VBox();
         	//Set-up image-pattern for the rectangle:
         	
-        	//ImagePattern imgPat = null;
+        	ImagePattern imgPat = null;
         	
-        	/*if(curCharacter.getWikiImage() == null) {
+        	if(curCharacter.getWikiImage() == null) {
         		System.out.println("Image Null");
         	}
         	else {
         		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-            	
-        	}*/
+        	}
         	//ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-        	ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(new Image(GlobalReferences.IMAGES_PATH + "wiki/homer_simpson.png"), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+        	//ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(new Image(GlobalReferences.IMAGES_PATH + "wiki/homer_simpson.png"), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
         	//Set-up rectangle that contains the character-image:
         	Rectangle imgRec = new Rectangle();
     		imgRec.setWidth(90);
