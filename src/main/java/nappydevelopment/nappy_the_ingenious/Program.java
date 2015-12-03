@@ -54,6 +54,7 @@ public class Program extends Application {
 	public void start(Stage stage) throws Exception {
 		
 		List<WikiCharacter> chars = CharacterProvider.getCharacters(Language.GERMAN);
+		//List<WikiCharacter> chars = new LinkedList<WikiCharacter>();
 		if(chars == null) {
 			System.out.println("Null!");
 		}
