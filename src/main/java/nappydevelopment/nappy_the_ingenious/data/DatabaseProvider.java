@@ -64,7 +64,7 @@ public class DatabaseProvider{
 
 	public static boolean resetDatabase(){
 		try{
-			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/main/db/simpsons2.sql");
+			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/db/simpsons.sql");
 			java.util.Scanner s = new java.util.Scanner(initScriptStream).useDelimiter("\\A");
 			String[] initScriptArray = s.next().split(";");
 			Statement st = dbConn.createStatement();
