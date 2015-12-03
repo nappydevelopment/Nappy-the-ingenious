@@ -12,7 +12,7 @@ public class QuestionGenerator{
 
     private String[] column = new String[40];
     private Boolean[] ans = new Boolean[40];
-	private int activeQuestion;
+	private int activeQuestion = -1;
 
     public QuestionGenerator(){
 		try{
@@ -42,14 +42,29 @@ public class QuestionGenerator{
 	public static void main(String[] args){
 		QuestionGenerator p = new QuestionGenerator();
 		System.out.println(p.getQuestion(Language.GERMAN));
+		p.setAnswer(false);
+		System.out.println(p.getQuestion(Language.ENGLISH));
+		p.setAnswer(true);
+		System.out.println(p.getQuestion(Language.GERMAN));
+		p.setAnswer(false);
+		System.out.println(p.getQuestion(Language.ENGLISH));
 	}
 
-    public void setAnswer(){
+    public void setAnswer(boolean answer){
+		if(activeQuestion != -1){
+			ans[activeQuestion] = answer;
+			activeQuestion = -1;
+		}
     }
 
     public boolean isSure(){
 		Statement st = DatabaseProvider.getStatement();
-		//st.execute(""); //TODO: gen query
+		for(int i = 0; i < column.length; i++){
+			if(column[i] == null){
+				break;
+			}
+			//st.execute(""); //TODO: gen query
+		}
         return false;
     }
 
@@ -62,6 +77,9 @@ public class QuestionGenerator{
 			if(column[i] == null){
 				break;
 			}
+			if(ans[i] != null){
+				continue;
+			}
 			localMax = tryQuestion(column[i]);
 			if(localMax >= max){
 				max = localMax;
@@ -69,8 +87,6 @@ public class QuestionGenerator{
 			}
 		}
 		if(maxNr == -1 || max <= 0){
-			System.out.println("FUCK");
-			System.out.println(maxNr + ", " + max);
 			return null;
 		}
 		activeQuestion = maxNr;
@@ -81,9 +97,7 @@ public class QuestionGenerator{
 		String ques = null;
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute(
-				"SELECT * from "+ column +"_QUESTIONS "
-			);
+			st.execute("SELECT * from "+ column +"_QUESTIONS ");
 			ResultSet res = st.getResultSet();
 			res.next();
 			if(lang.equals(Language.GERMAN)){
@@ -91,8 +105,6 @@ public class QuestionGenerator{
 			}else if(lang.equals(Language.ENGLISH)){
 				ques = res.getString("Q1_EN");
 			}
-
-			System.out.println(column);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -117,7 +129,6 @@ public class QuestionGenerator{
 			if(ret > 0.5){
 				ret -= 0.5;
 			}
-			System.out.println(columnName+": "+ret);
 			return ret;
 		}catch(SQLException e){
 			e.printStackTrace();
