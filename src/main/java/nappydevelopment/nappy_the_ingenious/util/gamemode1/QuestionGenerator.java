@@ -1,5 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.util.gamemode1;
 
+import javafx.scene.image.Image;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
@@ -12,6 +14,7 @@ public class QuestionGenerator{
 
     private String[] column = new String[40];
     private Boolean[] ans = new Boolean[40];
+	private String[] question = new String[40];
 	private int activeQuestion = -1;
 
     public QuestionGenerator(){
@@ -48,13 +51,60 @@ public class QuestionGenerator{
 		p.setAnswer(true);
 		System.out.println(p.isSure());
 		System.out.println(p.getQuestion(Language.GERMAN));
+		//System.out.println(p.getCharacter(Language.GERMAN));
 		p.setAnswer(false);
 		System.out.println(p.getQuestion(Language.ENGLISH));
+		p.setAnswer(false);
 		System.out.println(p.isSure());
+		p.getQuestion(Language.ENGLISH);
+		p.setAnswer(false);
+		System.out.println(p.isSure());
+		p.getQuestion(Language.ENGLISH);
+		p.setAnswer(false);
+		System.out.println(p.isSure());
+		p.getQuestion(Language.ENGLISH);
+		p.setAnswer(false);
+		System.out.println(p.isSure());
+		System.out.println(p.getCharacter(Language.ENGLISH));
 	}
 
-	public WikiCharacter getCharacter(){
+	public WikiCharacter getCharacter(Language lang){
 		Statement st = DatabaseProvider.getStatement();
+		String select = "SELECT name, nickname, description_en, description_de FROM SIMPSONS WHERE ";
+		boolean first = true;
+		for(int i = 0; i < column.length; i++){
+			if(column[i] != null & question[i] != null & ans[i] != null){
+				if(!first){
+					select += "AND ";
+				}else{
+					first = false;
+				}
+				select +=  column[i] +"='"+ question[i] +"' ";
+			}
+		}
+		try{
+			st.execute(select);
+			ResultSet res = st.getResultSet();
+			res.next();
+			if(lang.equals(Language.GERMAN)){
+				return new WikiCharacter(
+					res.getString("name"),
+					res.getString("nickname"),
+					res.getString("description_de"),
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+				);
+			}else if(lang.equals(Language.ENGLISH)){
+				return new WikiCharacter(
+					res.getString("name"),
+					res.getString("nickname"),
+					res.getString("description_en"),
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+				);
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -66,23 +116,28 @@ public class QuestionGenerator{
     }
 
     public boolean isSure(){
-		if(true){
-			return false;
-		}
 		Statement st = DatabaseProvider.getStatement();
-		String select = "Select count(0) FROM SIMPSONS WHERE";
+		String select = "Select count(0) as C FROM SIMPSONS WHERE ";
 		boolean first = true;
 		for(int i = 0; i < column.length; i++){
-			if(column[i] == null){
-				break;
+			if(ans[i] == null){
+				continue;
 			}
+			if(!first){
+				select += "AND ";
+			}else{
+				first = false;
+			}
+			select +=  column[i] +"='"+ question[i] +"' ";
 		}
-		//st.execute(""); //TODO: gen query
-		ResultSet res = null;
 		try{
-			res = st.getResultSet();
+			st.execute(select);
+			ResultSet res = st.getResultSet();
 			res.next();
-		}catch(SQLException e){
+			if(res.getInt("C") == 1){
+				return true;
+			}
+		}catch(Throwable e){
 			e.printStackTrace();
 		}
 		return false;
@@ -102,7 +157,7 @@ public class QuestionGenerator{
 			if(ans[i] != null){
 				continue;
 			}
-			localMax = tryQuestion(column[i]);
+			localMax = tryQuestion(i);
 			if(localMax >= max){
 				max = localMax;
 				maxNr = i;
@@ -134,19 +189,19 @@ public class QuestionGenerator{
 		return ques;
 	}
 
-	private float tryQuestion(String columnName){
+	private float tryQuestion(int columnID){
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			String select = "SELECT count(0) as C FROM SIMPSONS GROUP BY "+ columnName;
+			String select = "SELECT count(0) as C, "+ column[columnID] +" FROM SIMPSONS GROUP BY "+ column[columnID];
 			if(activeQuestion != -1){
 				select += " WHERE ";
-				boolean f = true;
+				boolean first = true;
 				for(int i = 0; i < column.length; i++){
 					if(ans != null){
-						if(!f){
+						if(!first){
 							select += "AND ";
 						}else{
-							f=false;
+							first = false;
 						}
 						select += "SIMPSONS."+ column[i] +"="+ column[i] +"_QUESTIONS.ID ";
 					}
@@ -160,6 +215,7 @@ public class QuestionGenerator{
 				float val = res.getInt("C");
 				if(val > max){
 					max = val;
+					question[columnID] = res.getString(column[columnID]);
 				}
 				sum += val;
 			}
