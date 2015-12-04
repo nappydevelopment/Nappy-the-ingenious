@@ -39,6 +39,10 @@ public class WikiCharacter {
 	public Image getWikiImage() {
 		return wikiImage;
 	}
-	
+
+	@Override
+	public String toString(){
+		return this.name;
+	}
 }
 //### EOF ##################################################################################################################################
