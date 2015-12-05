@@ -1,6 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
 import javafx.scene.image.Image;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 import java.sql.ResultSet;
@@ -27,14 +28,8 @@ public class CharacterProvider{
 				String nickname = res.getString("nickname");
 				String description_en = res.getString("description_en");
 				String description_de = res.getString("description_de");
-				Image img = null;
-				//Image img = res.getObject("image", javafx.scene.image.Image.class); // probably bullshit and broken
-				/*try{
-					BufferedImage bImg = ImageIO.read(image);
-					img = SwingFXUtils.toFXImage(bImg, null);
-				}catch(IOException e){
-					e.printStackTrace();
-				}*/
+
+				Image img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + name.toLowerCase().replace(" ", "_") +".png");
 
 				WikiCharacter chr = null;
 				if(lang.equals(Language.GERMAN)){
