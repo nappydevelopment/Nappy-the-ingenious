@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: nappydevelopment.nappy_the_ingenious.data.DatabaseProvider
