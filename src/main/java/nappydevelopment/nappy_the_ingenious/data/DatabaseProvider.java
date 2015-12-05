@@ -19,7 +19,7 @@ public class DatabaseProvider{
 	private static void createConnection(){
 		try{
 			Class.forName("org.h2.Driver").newInstance();
-			dbConn = DriverManager.getConnection("jdbc:h2:./nappy;TRACE_LEVEL_SYSTEM_OUT=0");
+			dbConn = DriverManager.getConnection("jdbc:h2:./nappy;TRACE_LEVEL_FILE=0");
 
 			Statement st = dbConn.createStatement();
 			st.execute(
