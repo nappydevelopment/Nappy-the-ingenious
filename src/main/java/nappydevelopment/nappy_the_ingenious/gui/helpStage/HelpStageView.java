@@ -42,7 +42,7 @@ public class HelpStageView extends Stage {
         this.browser = new WebView();
         this.webEngine = browser.getEngine();
         //load the instructions-html-file;
-        webEngine.load(GlobalReferences.HTML_PATH + "instruction_de.html");
+        //webEngine.load(GlobalReferences.HTML_PATH + "instruction_de.html");
 	}
 		
 	//Method that structure (add components to their parent node) the gui-components:
