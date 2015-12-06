@@ -15,6 +15,8 @@ public class QuestionGenerator{
     private String[] column = new String[40];
     private Boolean[] ans = new Boolean[40];
 	private String[] question = new String[40];
+	private boolean[] dunno = new boolean[40];
+	private int numDunno = 0;
 	private int activeQuestion = -1;
 
     public QuestionGenerator(){
@@ -45,14 +47,14 @@ public class QuestionGenerator{
 	public static void main(String[] args){
 		QuestionGenerator p = new QuestionGenerator();
 		System.out.println(p.getQuestion(Language.GERMAN));
-		p.setAnswer(false);
+		p.setAnswer(true);
 		System.out.println(p.getQuestion(Language.ENGLISH));
 		System.out.println(p.getQuestion(Language.ENGLISH));
 		p.setAnswer(true);
 		System.out.println(p.isSure());
 		System.out.println(p.getQuestion(Language.GERMAN));
 		//System.out.println(p.getCharacter(Language.GERMAN));
-		p.setAnswer(false);
+		p.setAnswer(true);
 		System.out.println(p.getQuestion(Language.ENGLISH));
 		p.setAnswer(false);
 		System.out.println(p.isSure());
@@ -60,7 +62,8 @@ public class QuestionGenerator{
 		p.setAnswer(false);
 		System.out.println(p.isSure());
 		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(false);
+		p.setAnswer(null);
+		System.out.println(p.getNumDunno());
 		System.out.println(p.isSure());
 		p.getQuestion(Language.ENGLISH);
 		p.setAnswer(false);
@@ -79,10 +82,15 @@ public class QuestionGenerator{
 				}else{
 					first = false;
 				}
-				select +=  column[i] +"='"+ question[i] +"' ";
+				if(ans[i]){
+					select += column[i] + "='" + question[i] + "' ";
+				}else{
+					select += column[i] + "!='" + question[i] + "' ";
+				}
 			}
 		}
 		try{
+			System.out.println(select);
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			res.next();
@@ -91,28 +99,36 @@ public class QuestionGenerator{
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_de"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					null//new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
 				);
 			}else if(lang.equals(Language.ENGLISH)){
 				return new WikiCharacter(
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_en"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					null//new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
 				);
 			}
-
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-    public void setAnswer(boolean answer){
+    public void setAnswer(Boolean answer){
 		if(activeQuestion != -1){
-			ans[activeQuestion] = answer;
+			if(answer == null){
+				dunno[activeQuestion] = true;
+				numDunno++;
+			}else{
+				ans[activeQuestion] = answer;
+			}
 			activeQuestion = -1;
 		}
+    }
+
+    public int getNumDunno(){
+		return numDunno;
     }
 
     public boolean isSure(){
@@ -128,7 +144,14 @@ public class QuestionGenerator{
 			}else{
 				first = false;
 			}
-			select +=  column[i] +"='"+ question[i] +"' ";
+			if(ans[i]){
+				select += column[i] + "='" + question[i] + "' ";
+			}else{
+				select += column[i] + "!='" + question[i] + "' ";
+			}
+		}
+		if(select.endsWith("WHERE ")){
+			return false;
 		}
 		try{
 			st.execute(select);
@@ -144,7 +167,7 @@ public class QuestionGenerator{
     }
 
     public String getQuestion(Language lang){
-		if(activeQuestion != -1){
+		if(activeQuestion != -1 || isSure()){
 			return null;
 		}
 		float localMax;
@@ -154,7 +177,7 @@ public class QuestionGenerator{
 			if(column[i] == null){
 				break;
 			}
-			if(ans[i] != null){
+			if(ans[i] != null || dunno[i]){
 				continue;
 			}
 			localMax = tryQuestion(i);
