@@ -53,21 +53,23 @@ public class QuestionGenerator{
 		p.setAnswer(true);
 		System.out.println(p.isSure());
 		System.out.println(p.getQuestion(Language.GERMAN));
-		//System.out.println(p.getCharacter(Language.GERMAN));
 		p.setAnswer(true);
+		p.getQuestion(Language.ENGLISH);
+		p.setAnswer(false);
+		System.out.println(p.isSure());
+		p.getQuestion(Language.ENGLISH);
+		p.setAnswer(false);
+		System.out.println(p.isSure());
 		System.out.println(p.getQuestion(Language.ENGLISH));
-		p.setAnswer(false);
-		System.out.println(p.isSure());
-		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(false);
-		System.out.println(p.isSure());
-		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(null);
+		p.setAnswer(true);
 		System.out.println(p.getNumDunno());
 		System.out.println(p.isSure());
 		p.getQuestion(Language.ENGLISH);
 		p.setAnswer(false);
+		p.getQuestion(Language.ENGLISH);
+		p.setAnswer(true);
 		System.out.println(p.isSure());
+		System.out.println(p.getSureness());
 		System.out.println(p.getCharacter(Language.ENGLISH));
 	}
 
@@ -90,10 +92,12 @@ public class QuestionGenerator{
 			}
 		}
 		try{
-			System.out.println(select);
 			st.execute(select);
 			ResultSet res = st.getResultSet();
-			res.next();
+			if(!res.next()){
+				// not a valid character :O
+				return null;
+			}
 			if(lang.equals(Language.GERMAN)){
 				return new WikiCharacter(
 					res.getString("name"),
@@ -131,7 +135,7 @@ public class QuestionGenerator{
 		return numDunno;
     }
 
-    public boolean isSure(){
+	public float getSureness(){
 		Statement st = DatabaseProvider.getStatement();
 		String select = "Select count(0) as C FROM SIMPSONS WHERE ";
 		boolean first = true;
@@ -151,19 +155,21 @@ public class QuestionGenerator{
 			}
 		}
 		if(select.endsWith("WHERE ")){
-			return false;
+			return 0;
 		}
 		try{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			res.next();
-			if(res.getInt("C") == 1){
-				return true;
-			}
+			return (1 / res.getFloat("C"));
 		}catch(Throwable e){
 			e.printStackTrace();
 		}
-		return false;
+		return -1;
+	}
+
+    public boolean isSure(){
+		return this.getSureness()==1;
     }
 
     public String getQuestion(Language lang){
@@ -187,7 +193,6 @@ public class QuestionGenerator{
 			}
 		}
 		if(maxNr == -1 || max <= 0){
-			System.out.println(maxNr +" "+ max);
 			return null;
 		}
 		activeQuestion = maxNr;
