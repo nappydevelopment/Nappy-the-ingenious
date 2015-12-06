@@ -4,13 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
 //### IMPORTS ##############################################################################################################################
 public class HelpStageController {
 
 //### ATTRIBUTES ###########################################################################################################################
+	
+	private Language curLang;
 	
 	private Program program;
 		
@@ -22,6 +26,7 @@ public class HelpStageController {
 		
 	public HelpStageController(Program prog) {
 		this.program = prog;
+		this.curLang = null;
 	}
 		
 //### INITIAL METHODS ######################################################################################################################
@@ -69,15 +74,25 @@ public class HelpStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
-			
+		
+		if(this.curLang == Language.GERMAN) {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de.html");
+		}
+		else if(this.curLang == Language.ENGLISH) {
+			System.out.println("English");
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en.html");
+		}
+		
 		this.view.show();
 	}
 		
 	public void changeLanguageToGerman() {
+		this.curLang = Language.GERMAN;
 		this.res.setTextsToGerman();
 	}
 		
 	public void changeLanguageToEnglish() {
+		this.curLang = Language.ENGLISH;
 		this.res.setTextsToEnglish();	
 	}
 		

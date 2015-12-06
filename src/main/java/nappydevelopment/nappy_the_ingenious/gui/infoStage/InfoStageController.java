@@ -6,8 +6,10 @@ import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 public class InfoStageController {
+	
 	
 	//Reference to the program-logic:
 	private Program program;
@@ -95,7 +97,7 @@ public class InfoStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
-		
+
 		this.view.show();
 	}
 	
@@ -103,6 +105,7 @@ public class InfoStageController {
 	 * 
 	 */
 	public void changeLanguageToGerman() {
+		
 		this.res.setTextsToGerman();
 	}
 	
