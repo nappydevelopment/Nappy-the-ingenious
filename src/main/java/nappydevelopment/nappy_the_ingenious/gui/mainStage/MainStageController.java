@@ -227,6 +227,9 @@ public class MainStageController {
 		//Disable the "new game" menu-item:
 		this.view.mniNewGame.setDisable(false);
 		
+		this.view.mniStatistic.setDisable(true);
+		this.view.btnStatistic.setDisable(true);
+		
 		//Show the stage:
 		this.view.show();
 		

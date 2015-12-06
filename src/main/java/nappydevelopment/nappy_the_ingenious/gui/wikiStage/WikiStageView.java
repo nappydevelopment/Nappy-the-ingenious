@@ -87,7 +87,7 @@ public class WikiStageView extends Stage {
 		this.hbxSearchBar.getStyleClass().add("hbox");	
 		this.imvSearchIcon = new ImageView(new Image(WikiStageView.class.getResourceAsStream("/icons/32x32/search.png")));
 		this.txfSearchField = new TextField();
-		this.txfSearchField.setPrefWidth(500);
+		this.txfSearchField.setPrefWidth(1000);
 		this.sepSearchBar1 = new Separator();
 		this.sepSearchBar1.setOrientation(Orientation.VERTICAL);
 		this.btnAddNewCharacter = new Button();
@@ -181,7 +181,7 @@ public class WikiStageView extends Stage {
 	//Method that initialize the stage (window) settings:
 	private void initStage(WikiStageResources res) {
 				
-		this.scene = new Scene(this.bdpRootPane, 350, 307);
+		this.scene = new Scene(this.bdpRootPane, 750, 750);
 		this.scene.getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
 		this.setScene(this.scene);
 				

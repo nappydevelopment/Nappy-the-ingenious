@@ -17,6 +17,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageView;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
@@ -79,13 +80,15 @@ public class InfoStageView extends Stage {
 		this.bdpRootPane = new BorderPane();
 		
 		this.gdpContentPane = new GridPane();
-		this.gdpContentPane.setGridLinesVisible(true);
+		//this.gdpContentPane.setGridLinesVisible(true);
 		this.gdpContentPane.setHgap(5);
 		this.gdpContentPane.setVgap(10);
 		this.gdpContentPane.setPadding(new Insets(15, 15, 15, 15));
 		
 		this.lblTitle = new Label();
+		this.lblTitle.setId("lblTitle");
 		this.lblDescription = new Label();
+		this.lblDescription.setId("lblDescription");
 	
 		this.lblDevelopedBy = new Label();
 		this.cirPic1 = new Circle();
@@ -121,9 +124,9 @@ public class InfoStageView extends Stage {
 	
 	private void structureComponents() {
 		
-		this.gdpContentPane.add(this.lblTitle, 0, 0, 3, 1);
-		this.gdpContentPane.add(this.lblDescription, 0, 1, 3, 1);
-		this.gdpContentPane.add(this.imvLogo, 4, 0);
+		this.gdpContentPane.add(this.lblTitle, 0, 0, 4, 1);
+		this.gdpContentPane.add(this.lblDescription, 0, 1, 4, 1);
+		this.gdpContentPane.add(this.imvLogo, 4, 0, 1, 3);
 		this.gdpContentPane.add(this.lblDevelopedBy, 0, 3, 2, 1);
 		this.gdpContentPane.add(this.cirPic1, 0, 4);
 		this.gdpContentPane.add(this.cirPic2, 0, 5);
@@ -133,10 +136,11 @@ public class InfoStageView extends Stage {
 		this.gdpContentPane.add(this.lblName2, 1, 5);
 		this.gdpContentPane.add(this.lblName3, 1, 6);
 		this.gdpContentPane.add(this.lblName4, 1, 7);
-		this.gdpContentPane.add(this.lblNappyDevelopment, 3, 4);
-		this.gdpContentPane.add(this.lblOurBlog, 3, 5);
+		this.gdpContentPane.add(this.lblNappyDevelopment, 4, 4);
+		//this.gdpContentPane.add(this.lblOurBlog, 3, 5);
 		this.gdpContentPane.add(this.lblBlog, 4, 5);
-		
+		//this.gdpContentPane.add(this.lblOurEmail, 3, 6);
+		this.gdpContentPane.add(this.lblEmail, 4, 6);
 		
 		this.bdpRootPane.setCenter(this.gdpContentPane);
 		
@@ -145,8 +149,10 @@ public class InfoStageView extends Stage {
 	private void initStage(InfoStageResources res) {
 		
 		this.getIcons().addAll(res.stageIcon16x16);
-		this.scene = new Scene(this.bdpRootPane, 350, 307);
+		this.scene = new Scene(this.bdpRootPane, 508, 426);
+		this.scene.getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
 		this.setScene(this.scene);
+		this.setResizable(true);
 		
 	}
 	
