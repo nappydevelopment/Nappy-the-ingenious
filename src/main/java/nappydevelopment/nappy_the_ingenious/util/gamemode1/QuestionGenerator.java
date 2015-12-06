@@ -84,7 +84,7 @@ public class QuestionGenerator{
 				}else{
 					first = false;
 				}
-				if(ans[i]){
+				if(!ans[i]){
 					select += column[i] + "='" + question[i] + "' ";
 				}else{
 					select += column[i] + "!='" + question[i] + "' ";
@@ -148,7 +148,7 @@ public class QuestionGenerator{
 			}else{
 				first = false;
 			}
-			if(ans[i]){
+			if(!ans[i]){
 				select += column[i] + "='" + question[i] + "' ";
 			}else{
 				select += column[i] + "!='" + question[i] + "' ";
