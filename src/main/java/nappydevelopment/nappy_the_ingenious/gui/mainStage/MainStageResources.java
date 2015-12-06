@@ -119,7 +119,7 @@ public class MainStageResources {
 		
 		//### Images for the menu-bar ##################################################################
 		
-		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/help.png");
+		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/new_game.png");
 		this.mniAbortGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/abort_game.png");
 		this.mniStatisticIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/statistic.png");
 		this.mniSettingsIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/settings.png");

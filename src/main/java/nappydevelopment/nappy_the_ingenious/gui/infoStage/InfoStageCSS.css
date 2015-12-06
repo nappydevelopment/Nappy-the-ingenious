@@ -1,7 +1,13 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-#lblQuestion {
+#lblTitle {
+	-fx-font-weight: bold;
+	-fx-font-size: 24px;
+	-fx-text-fill: black;
+}
+
+#lblDescription {
 	-fx-font-weight: bold;
 	-fx-font-size: 16px;
-	-fx-text-fill: white;
+	-fx-text-fill: black;
 }

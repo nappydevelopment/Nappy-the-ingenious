@@ -76,11 +76,11 @@ public class HelpStageController {
 		}
 		
 		if(this.curLang == Language.GERMAN) {
-			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de.html");
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_de.html");
 		}
 		else if(this.curLang == Language.ENGLISH) {
 			System.out.println("English");
-			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en.html");
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_en.html");
 		}
 		
 		this.view.show();

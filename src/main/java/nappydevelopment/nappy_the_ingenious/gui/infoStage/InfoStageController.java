@@ -97,7 +97,7 @@ public class InfoStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
-
+		
 		this.view.show();
 	}
 	
