@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
@@ -18,8 +19,13 @@ import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageContr
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageView;
+import nappydevelopment.nappy_the_ingenious.util.gamemode1.QuestionGenerator;
 
 public class Program extends Application {
+
+//### ATTRIBUTES ###########################################################################################################################
+	
+	private QuestionGenerator questGen;
 	
 //### STAGES ###############################################################################################################################
 	
@@ -37,6 +43,8 @@ public class Program extends Application {
 	public void init() {
 		
 		System.out.println("JavaFX-Application - Init");
+		
+		this.questGen = null;
 		
 		//Init the stage-controller:
 		this.mainStageController = new MainStageController(this);
@@ -113,7 +121,42 @@ public class Program extends Application {
 	
 	//##############################################################################################
 	
+	public void startCurrentGame() {
+		this.questGen = new QuestionGenerator();
+	}
+	
+	public String getCurrentQuestion() {
+		return this.questGen.getQuestion(Settings.getLanguage());
+	}
+	
+	public double getKnowledge() {
+		if(this.questGen.isSure()) {
+			return 1.0;
+		}
+		else {
+			return 0.2;
+		}
+	}
+	
+	public String getCharacter() {
+		return this.questGen.getCharacter(Settings.getLanguage()).getName();
+	}
+	
+	public void setCurrentAnswer(Answer answer) {
+		
+		if(answer == Answer.YES) {
+			this.questGen.setAnswer(true);
+		}
+		else if(answer == Answer.NO) {
+			this.questGen.setAnswer(false);
+		}
+		/*else if(answer == Answer.DONT_KNOW) {
+			this.questGen.setAnswer(null);
+		}*/
+	}
+	
 	public void abortCurrentGame() {
+		this.questGen = null;
 		this.mainStageController.showStartView();
 	}
 	

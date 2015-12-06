@@ -13,6 +13,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.Answer;
+import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
+import nappydevelopment.nappy_the_ingenious.util.gamemode1.QuestionGenerator;
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
@@ -140,6 +143,21 @@ public class MainStageController {
 				System.out.println("Show the info stage");
 				MainStageController.this.program.showInfoStage(MainStageController.this.view);
 			}
+			else if(src == view.btnYes) {
+				System.out.println("Clicked the Yes-Button");
+				MainStageController.this.program.setCurrentAnswer(Answer.YES);
+				MainStageController.this.showNextQuestion();
+			}
+			else if(src == view.btnNo) {
+				System.out.println("Clicked the No-Button");
+				MainStageController.this.program.setCurrentAnswer(Answer.NO);
+				MainStageController.this.showNextQuestion();
+			}
+			else if(src == view.btnIdontKnow) {
+				System.out.println("Clicked the I don't Know Button");
+				MainStageController.this.program.setCurrentAnswer(Answer.DONT_KNOW);
+				MainStageController.this.showNextQuestion();
+			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
 			}
@@ -173,6 +191,14 @@ public class MainStageController {
 		if (result.get() == bttApply){
 		    this.program.abortCurrentGame();
 		}
+	}
+	
+	private void showNextQuestion() {
+		this.view.pgbKnowledge.getProgressBar().setProgress(this.program.getKnowledge());
+		if(this.program.getKnowledge() >= 0.9) {
+			System.out.println(this.program.getCharacter());
+		}
+		this.view.lblQuestion.setText(this.program.getCurrentQuestion());
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
@@ -241,6 +267,9 @@ public class MainStageController {
 	 */
 	public void showGamemode1View() {
 		
+		//Start a new Game:
+		this.program.startCurrentGame();
+		
 		//Enable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(false);
 		//Disable the "new game" menu-item:
@@ -250,6 +279,8 @@ public class MainStageController {
 		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);
 		this.view.bdpRootPane.setBottom(this.view.gdpButtons);
 		this.view.getScene().setRoot(this.view.bdpRootPane);
+		
+		this.view.lblQuestion.setText(this.program.getCurrentQuestion());
 		//Show the stage:
 		this.view.show();
 		System.out.println(this.view.gdpQuestion.getWidth());

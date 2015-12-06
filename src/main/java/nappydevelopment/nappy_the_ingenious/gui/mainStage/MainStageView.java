@@ -292,14 +292,17 @@ public class MainStageView extends Stage {
 		//this.btnYes.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/yes.png"))));
 		this.btnYes.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnYes.setAlignment(Pos.CENTER);
+		this.btnYes.setOnAction(aeh);
 		this.btnNo = new Button();
 		//this.btnNo.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/no.png"))));
 		this.btnNo.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnNo.setAlignment(Pos.CENTER);
+		this.btnNo.setOnAction(aeh);
 		this.btnIdontKnow = new Button();
 		//this.btnIdontKnow.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/dont_know.png"))));
 		this.btnIdontKnow.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnIdontKnow.setAlignment(Pos.CENTER);
+		this.btnNo.setOnAction(aeh);
 		
 	}
 	
