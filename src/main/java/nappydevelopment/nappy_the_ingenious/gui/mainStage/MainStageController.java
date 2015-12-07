@@ -194,8 +194,8 @@ public class MainStageController {
 	}
 	
 	private void showNextQuestion() {
-		this.view.pgbKnowledge.getProgressBar().setProgress(this.program.getKnowledge());
-		if(this.program.getKnowledge() >= 0.9) {
+		this.view.pgbKnowledge.getProgressBar().setProgress(this.program.getSureness());
+		if(this.program.getIsSure()) {
 			System.out.println(this.program.getCharacter());
 		}
 		this.view.lblQuestion.setText(this.program.getCurrentQuestion());

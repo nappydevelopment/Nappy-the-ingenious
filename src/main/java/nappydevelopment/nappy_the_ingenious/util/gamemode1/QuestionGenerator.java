@@ -84,7 +84,7 @@ public class QuestionGenerator{
 				}else{
 					first = false;
 				}
-				if(!ans[i]){
+				if(ans[i]){
 					select += column[i] + "='" + question[i] + "' ";
 				}else{
 					select += column[i] + "!='" + question[i] + "' ";
@@ -103,14 +103,14 @@ public class QuestionGenerator{
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_de"),
-					null//new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
 				);
 			}else if(lang.equals(Language.ENGLISH)){
 				return new WikiCharacter(
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_en"),
-					null//new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
 				);
 			}
 		}catch(Exception e){
@@ -148,7 +148,7 @@ public class QuestionGenerator{
 			}else{
 				first = false;
 			}
-			if(!ans[i]){
+			if(ans[i]){
 				select += column[i] + "='" + question[i] + "' ";
 			}else{
 				select += column[i] + "!='" + question[i] + "' ";
@@ -169,7 +169,37 @@ public class QuestionGenerator{
 	}
 
     public boolean isSure(){
-		return this.getSureness()==1;
+		Statement st = DatabaseProvider.getStatement();
+		String select = "Select count(0) as C FROM SIMPSONS WHERE ";
+		boolean first = true;
+		for(int i = 0; i < column.length; i++){
+			if(ans[i] == null){
+				continue;
+			}
+			if(!first){
+				select += "AND ";
+			}else{
+				first = false;
+			}
+			if(ans[i] || (question[i] == "TRUE")){
+				select += column[i] + "='" + question[i] + "' ";
+			}else{
+				select += column[i] + "!='" + question[i] + "' ";
+			}
+		}
+		if(select.endsWith("WHERE ")){
+			return false;
+		}
+		System.out.println(select);
+		try{
+			st.execute(select);
+			ResultSet res = st.getResultSet();
+			res.next();
+			return res.getFloat("C") == 1;
+		}catch(Throwable e){
+			e.printStackTrace();
+		}
+		return false;
     }
 
     public String getQuestion(Language lang){
@@ -180,10 +210,7 @@ public class QuestionGenerator{
 		float max = 0;
 		int maxNr = -1;
 		for(int i = 0; i < column.length; i++){
-			if(column[i] == null){
-				break;
-			}
-			if(ans[i] != null || dunno[i]){
+			if(column[i] == null || ans[i] != null || dunno[i]){
 				continue;
 			}
 			localMax = tryQuestion(i);
@@ -196,6 +223,7 @@ public class QuestionGenerator{
 			return null;
 		}
 		activeQuestion = maxNr;
+		System.out.println(question[maxNr]);
 		return giveQuestion(column[maxNr], lang);
     }
 
@@ -203,7 +231,8 @@ public class QuestionGenerator{
 		String ques = null;
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute("SELECT * from "+ columnName +"_QUESTIONS ");
+			st.execute("SELECT * from " + columnName + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
+			//System.out.println("SELECT * from " + columnName +"_QUESTIONS ");
 			ResultSet res = st.getResultSet();
 			res.next();
 			if(lang.equals(Language.GERMAN)){
@@ -214,6 +243,7 @@ public class QuestionGenerator{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+		System.out.println(ques);
 		return ques;
 	}
 
