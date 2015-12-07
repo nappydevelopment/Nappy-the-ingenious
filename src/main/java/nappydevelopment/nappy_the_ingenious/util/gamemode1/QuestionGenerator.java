@@ -190,7 +190,7 @@ public class QuestionGenerator{
 		if(select.endsWith("WHERE ")){
 			return false;
 		}
-		System.out.println(select);
+		//System.out.println(select);
 		try{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
@@ -223,7 +223,7 @@ public class QuestionGenerator{
 			return null;
 		}
 		activeQuestion = maxNr;
-		System.out.println(question[maxNr]);
+		//System.out.println(question[maxNr]);
 		return giveQuestion(column[maxNr], lang);
     }
 
@@ -243,7 +243,7 @@ public class QuestionGenerator{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		System.out.println(ques);
+		//System.out.println(ques);
 		return ques;
 	}
 
