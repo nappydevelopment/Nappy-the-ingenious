@@ -129,16 +129,16 @@ public class Program extends Application {
 		return this.questGen.getQuestion(Settings.getLanguage());
 	}
 	
-	public double getKnowledge() {
-		if(this.questGen.isSure()) {
-			return 1.0;
-		}
-		else {
-			return 0.2;
-		}
+	public boolean getIsSure() {
+		return this.questGen.isSure();
 	}
-	
+
+	public double getSureness() {
+		return this.questGen.getSureness();
+	}
+
 	public String getCharacter() {
+		System.out.println(this.questGen.getCharacter(Language.GERMAN));
 		return this.questGen.getCharacter(Settings.getLanguage()).getName();
 	}
 	
