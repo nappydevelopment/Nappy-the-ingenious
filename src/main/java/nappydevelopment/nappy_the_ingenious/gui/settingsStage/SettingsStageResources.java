@@ -9,14 +9,14 @@ import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 /* SettingsStageResources [class]: Contains the resources for the settings-stage like images, component-texts etc.: *//**
- * 
+ *
  * @author Manuel Bothner
  *
  */
 public class SettingsStageResources {
-	
+
 	StringProperty stageTitleText;
-	
+
 	//Setting-Components-Text:
 	StringProperty lblLanguageText;
 	StringProperty rdbGerman;
@@ -33,16 +33,16 @@ public class SettingsStageResources {
 	//Icon:
 	Image stageIcon16x16;
 	Image stageIcon32x32;
-	
+
 //### CONSTRUCTORS #########################################################################################################################
-	
+
 	/* SettingsStageResources [constructor]: Default constructor to create a SettingsStageResources-object *//**
-	 * 
+	 *
 	 */
 	SettingsStageResources() {
-		
+
 		this.stageTitleText = new SimpleStringProperty();
-		
+
 		//Setting-Components-Text:
 		this.lblLanguageText = new SimpleStringProperty();
 		this.rdbGerman = new SimpleStringProperty();
@@ -61,12 +61,12 @@ public class SettingsStageResources {
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
-	
+
 	/* setTextsToEnglish [method]: Method that sets all texts of the settings-stage to English *//**
-	 * 
+	 *
 	 */
 	void setTextsToEnglish() {
-		
+
 		this.stageTitleText.setValue("Nappy, the ingenious - Settings");
 		this.lblLanguageText.setValue("Language");
 		this.rdbGerman.setValue("German");
@@ -80,12 +80,12 @@ public class SettingsStageResources {
 		this.btnAbort.setValue("Abort");
 		this.btnApply.setValue("Apply");
 	}
-	
+
 	/* setTextsToGerman [method]: Method that sets all texts of the settings-stage to German *//**
-	 * 
+	 *
 	 */
 	void setTextsToGerman() {
-		
+
 		this.stageTitleText.setValue("Nappy, the ingenious - Einstellungen");
 		this.lblLanguageText.setValue("Sprache");
 		this.rdbGerman.setValue("Deutsch");
@@ -97,7 +97,7 @@ public class SettingsStageResources {
 		this.rdbBothModes.setValue("Beide Modi");
 		this.rdbOnlyMode1.setValue("Nur Spielmodus 1");
 		this.btnAbort.setValue("Abbrechen");
-		this.btnApply.setValue("Übernehmen");
+		this.btnApply.setValue("Ãœbernehmen");
 	}
 
 //##########################################################################################################################################
