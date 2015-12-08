@@ -214,7 +214,7 @@ public class QuestionGenerator{
 			System.out.println("SELECT * from " + columnName + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			e.printStackTrace();
 		}
-		//System.out.println(ques);
+		System.out.println(ques);
 		return ques;
 	}
 
@@ -249,6 +249,7 @@ public class QuestionGenerator{
 				sum += val;
 			}
 			float ret = max / sum;
+			ret += Math.random()*0.2;
 			if(ret > 0.5){
 				ret = 1 - ret;
 			}
