@@ -123,6 +123,15 @@ public class Program extends Application {
 	
 	//##############################################################################################
 	
+	public boolean existsAnActiveGame() {
+		if(this.questGen == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
 	public void startCurrentGame() {
 		this.questGen = new QuestionGenerator();
 	}

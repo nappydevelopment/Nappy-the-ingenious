@@ -21,6 +21,7 @@ public class MainStageResources {
 	
 	//### Texts for general components #############################################################
 	
+	
 	//Menu-Texts:
 	StringProperty mnuGameText;
 	StringProperty mniNewGameText;
@@ -205,12 +206,12 @@ public class MainStageResources {
 		this.btnHelpText.setValue("Spielanleitung");
 		this.btnYesText.setValue("Ja");
 		this.btnNoText.setValue("Nein");
-		this.btnIdontKnow.setValue("Ich weiß nicht");
+		this.btnIdontKnow.setValue("Ich weiï¿½ nicht");
 		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
 		this.abortGameDialogHeaderText = "Spiel abbrechen?";
-		this.abortGameDialogContentText = "Möchten Sie das aktuelle Spiel wirklich abbrechen?\n"
+		this.abortGameDialogContentText = "Mï¿½chten Sie das aktuelle Spiel wirklich abbrechen?\n"
 										+ "Hinweis: Abgebrochene Spiele werden nicht in die Statistik aufgenommen!\n\n";
 		this.abortGameDialogBtnApplyText = "Spiel abbrechen";
 		this.abortGameDialogBtnCancelText = "Abbrechen";
