@@ -173,7 +173,7 @@ public class QuestionGenerator{
 		if(isSure()){
 			return null;
 		}
-		if(activeQuestion != -1 && column[activeQuestion] != "null"){
+		if(activeQuestion != -1){
 			return giveQuestion(column[activeQuestion], lang);
 		}
 		float localMax;
@@ -211,15 +211,13 @@ public class QuestionGenerator{
 				ques = res.getString("Q1_EN");
 			}
 		}catch(SQLException e){
-			System.out.println("SELECT * from " + columnName + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			e.printStackTrace();
 		}
-		System.out.println(ques);
+		//System.out.println(ques);
 		return ques;
 	}
 
 	private float tryQuestion(int columnID){
-		try{
 			Statement st = DatabaseProvider.getStatement();
 			String select = "SELECT count(0) as C, "+ column[columnID] +" FROM SIMPSONS GROUP BY "+ column[columnID];
 			if(activeQuestion != -1){
@@ -236,27 +234,27 @@ public class QuestionGenerator{
 					}
 				}
 			}
+		float max = 0;
+		float sum = 0;
+		float ret = 0;
+		try{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
-			float max = 0;
-			float sum = 0;
 			while(res.next()){
 				float val = res.getInt("C");
-				if(val + Math.random()*100 > max){
+				if(val + Math.random()*100  > max){
 					max = val;
 					question[columnID] = res.getString(column[columnID]);
 				}
 				sum += val;
 			}
-			float ret = max / sum;
-			ret += Math.random();
+			ret = max / sum;
 			if(ret > 0.5){
 				ret = 1 - ret;
 			}
-			return ret;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return -1;
+		return ret;
 	}
 }
