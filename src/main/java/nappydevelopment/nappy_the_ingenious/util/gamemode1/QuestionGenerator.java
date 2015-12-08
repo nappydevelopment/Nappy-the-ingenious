@@ -44,35 +44,6 @@ public class QuestionGenerator{
 		}
     }
 
-	public static void main(String[] args){
-		QuestionGenerator p = new QuestionGenerator();
-		System.out.println(p.getQuestion(Language.GERMAN));
-		p.setAnswer(true);
-		System.out.println(p.getQuestion(Language.ENGLISH));
-		System.out.println(p.getQuestion(Language.ENGLISH));
-		p.setAnswer(true);
-		System.out.println(p.isSure());
-		System.out.println(p.getQuestion(Language.GERMAN));
-		p.setAnswer(true);
-		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(false);
-		System.out.println(p.isSure());
-		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(false);
-		System.out.println(p.isSure());
-		System.out.println(p.getQuestion(Language.ENGLISH));
-		p.setAnswer(true);
-		System.out.println(p.getNumDunno());
-		System.out.println(p.isSure());
-		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(false);
-		p.getQuestion(Language.ENGLISH);
-		p.setAnswer(true);
-		System.out.println(p.isSure());
-		System.out.println(p.getSureness());
-		System.out.println(p.getCharacter(Language.ENGLISH));
-	}
-
 	public WikiCharacter getCharacter(Language lang){
 		Statement st = DatabaseProvider.getStatement();
 		String select = "SELECT name, nickname, description_en, description_de FROM SIMPSONS WHERE ";
@@ -202,7 +173,7 @@ public class QuestionGenerator{
 		if(isSure()){
 			return null;
 		}
-		if(activeQuestion != -1){
+		if(activeQuestion != -1 && column[activeQuestion] != "null"){
 			return giveQuestion(column[activeQuestion], lang);
 		}
 		float localMax;
@@ -213,7 +184,7 @@ public class QuestionGenerator{
 				continue;
 			}
 			localMax = tryQuestion(i);
-			if(localMax >= max){
+			if(localMax > max){
 				max = localMax;
 				maxNr = i;
 			}
@@ -240,6 +211,7 @@ public class QuestionGenerator{
 				ques = res.getString("Q1_EN");
 			}
 		}catch(SQLException e){
+			System.out.println("SELECT * from " + columnName + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			e.printStackTrace();
 		}
 		//System.out.println(ques);
