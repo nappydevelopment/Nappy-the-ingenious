@@ -194,11 +194,20 @@ public class MainStageController {
 	}
 	
 	private void showNextQuestion() {
+		
 		this.view.pgbKnowledge.getProgressBar().setProgress(this.program.getSureness());
+		this.view.lblKnowledge.setText("" + (int)(this.program.getSureness() * 100) + "%");
+		this.view.pgbNoOfQuest.getProgressBar().setProgress(this.program.getNoOfQuestionsPercent());
+		this.view.lblNoOfQuest.setText("" + this.program.getNoOfQuestions());
+		
 		if(this.program.getIsSure()) {
 			System.out.println(this.program.getCharacter());
+			this.view.lblQuestion.setText("Ich denke an:\n" + this.program.getCharacter());
+			this.view.btnIdontKnow.setDisable(true);
 		}
-		this.view.lblQuestion.setText(this.program.getCurrentQuestion());
+		else {
+			this.view.lblQuestion.setText(this.program.getCurrentQuestion());
+		}
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################

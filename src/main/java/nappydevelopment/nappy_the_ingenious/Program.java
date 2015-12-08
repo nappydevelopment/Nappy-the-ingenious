@@ -25,6 +25,7 @@ public class Program extends Application {
 
 //### ATTRIBUTES ###########################################################################################################################
 	
+	private int noOfQuestions;
 	private QuestionGenerator questGen;
 	
 //### STAGES ###############################################################################################################################
@@ -44,6 +45,7 @@ public class Program extends Application {
 		
 		System.out.println("JavaFX-Application - Init");
 		
+		this.noOfQuestions = 0;
 		this.questGen = null;
 		
 		//Init the stage-controller:
@@ -126,6 +128,7 @@ public class Program extends Application {
 	}
 	
 	public String getCurrentQuestion() {
+		this.noOfQuestions += 0.05;
 		return this.questGen.getQuestion(Settings.getLanguage());
 	}
 	
@@ -150,12 +153,14 @@ public class Program extends Application {
 		else if(answer == Answer.NO) {
 			this.questGen.setAnswer(false);
 		}
-		/*else if(answer == Answer.DONT_KNOW) {
+		else if(answer == Answer.DONT_KNOW) {
 			this.questGen.setAnswer(null);
-		}*/
+		}
+		this.noOfQuestions++;
 	}
 	
 	public void abortCurrentGame() {
+		this.noOfQuestions = 0;
 		this.questGen = null;
 		this.mainStageController.showStartView();
 	}
@@ -180,7 +185,15 @@ public class Program extends Application {
 		}
 		
 	}
-		
+	
+	public int getNoOfQuestions() {
+		return this.noOfQuestions;
+	}
+	
+	public float getNoOfQuestionsPercent() {
+		return ((float)this.noOfQuestions * 0.05F);
+	}
+	
 //### MAIN METHOD ##########################################################################################################################
 	
 	//Main-method that starts the JavaFX-Platform:
