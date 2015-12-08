@@ -303,7 +303,7 @@ public class MainStageView extends Stage {
 		//this.btnIdontKnow.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/dont_know.png"))));
 		this.btnIdontKnow.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnIdontKnow.setAlignment(Pos.CENTER);
-		this.btnNo.setOnAction(aeh);
+		this.btnIdontKnow.setOnAction(aeh);
 		
 	}
 	
