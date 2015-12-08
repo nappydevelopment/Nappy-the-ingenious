@@ -161,7 +161,11 @@ public class QuestionGenerator{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			res.next();
-			return (1 / res.getFloat("C"));
+			float num = res.getFloat("C");
+			if(num == 0){
+				return -2;
+			}
+			return (1 / num);
 		}catch(Throwable e){
 			e.printStackTrace();
 		}
@@ -169,35 +173,9 @@ public class QuestionGenerator{
 	}
 
     public boolean isSure(){
-		Statement st = DatabaseProvider.getStatement();
-		String select = "Select count(0) as C FROM SIMPSONS WHERE ";
-		boolean first = true;
-		for(int i = 0; i < column.length; i++){
-			if(ans[i] == null){
-				continue;
-			}
-			if(!first){
-				select += "AND ";
-			}else{
-				first = false;
-			}
-			if(ans[i] || (question[i] == "TRUE")){
-				select += column[i] + "='" + question[i] + "' ";
-			}else{
-				select += column[i] + "!='" + question[i] + "' ";
-			}
-		}
-		if(select.endsWith("WHERE ")){
-			return false;
-		}
-		//System.out.println(select);
-		try{
-			st.execute(select);
-			ResultSet res = st.getResultSet();
-			res.next();
-			return res.getFloat("C") == 1;
-		}catch(Throwable e){
-			e.printStackTrace();
+		float sureness = this.getSureness();
+		if(sureness == 1){
+			return true;
 		}
 		return false;
     }
