@@ -6,16 +6,6 @@ import java.sql.*;
 public class DatabaseProvider{
 	private static Connection dbConn;
 
-	//tests
-	public static void main(String[] args) throws SQLException,ClassNotFoundException,InstantiationException,IllegalAccessException{
-		Statement st = DatabaseProvider.getStatement();
-		st.execute("SELECT * FROM SIMPSONS;");
-		ResultSet res = st.getResultSet();
-		res.next();
-		System.out.println(res.getString("name"));
-		return;
-	}
-
 	private static void createConnection(){
 		try{
 			Class.forName("org.h2.Driver").newInstance();

@@ -11,9 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CharacterProvider{
-	public static void main(String[] args){
-		System.out.println(CharacterProvider.getCharacters(Language.GERMAN).get(2).getName());
-	}
 
 	public static List<WikiCharacter> getCharacters(Language lang){
 		Statement st = DatabaseProvider.getStatement();
