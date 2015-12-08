@@ -135,7 +135,7 @@ public class QuestionGenerator{
 		return numDunno;
     }
 
-	public float getSureness(){
+	private float sureness(){
 		Statement st = DatabaseProvider.getStatement();
 		String select = "Select count(0) as C FROM SIMPSONS WHERE ";
 		boolean first = true;
@@ -172,10 +172,21 @@ public class QuestionGenerator{
 		return -1;
 	}
 
-    public boolean isSure(){
-		float sureness = this.getSureness();
+	public float getSureness(){
+		float sureness = this.sureness();
+		if(sureness < 0){
+			return 0;
+		}
+		return sureness;
+	}
+
+    public Boolean isSure(){
+		float sureness = this.sureness();
 		if(sureness == 1){
 			return true;
+		}
+		if(sureness < 0){
+			return null;
 		}
 		return false;
     }
