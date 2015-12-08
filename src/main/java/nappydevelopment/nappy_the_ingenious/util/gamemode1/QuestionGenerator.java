@@ -242,14 +242,14 @@ public class QuestionGenerator{
 			float sum = 0;
 			while(res.next()){
 				float val = res.getInt("C");
-				if(val > max){
+				if(val + Math.random()*100 > max){
 					max = val;
 					question[columnID] = res.getString(column[columnID]);
 				}
 				sum += val;
 			}
 			float ret = max / sum;
-			ret += Math.random()*0.2;
+			ret += Math.random();
 			if(ret > 0.5){
 				ret = 1 - ret;
 			}
