@@ -191,9 +191,19 @@ public class QuestionGenerator{
 		return false;
     }
 
-    public String getQuestion(Language lang){
+	public boolean isActive(){
 		if(activeQuestion != -1 || isSure()){
+			return true;
+		}
+		return false;
+	}
+
+    public String getQuestion(Language lang){
+		if(isSure()){
 			return null;
+		}
+		if(activeQuestion != -1){
+			return giveQuestion(column[activeQuestion], lang);
 		}
 		float localMax;
 		float max = 0;
