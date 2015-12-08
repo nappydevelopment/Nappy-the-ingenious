@@ -106,6 +106,7 @@ public class InfoStageView extends Stage {
 		this.cirPic1.setFill(this.impPic1);
 		this.cirPic2.setFill(this.impPic2);
 		this.cirPic3.setFill(this.impPic3);
+		this.cirPic4.setFill(this.impPic4);
 		this.lblName1 = new Label();
 		this.lblName2 = new Label();
 		this.lblName3 = new Label();
