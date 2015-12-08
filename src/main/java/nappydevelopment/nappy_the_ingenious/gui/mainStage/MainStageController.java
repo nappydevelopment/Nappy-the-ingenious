@@ -210,21 +210,24 @@ public class MainStageController {
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(this.program.getNoOfQuestionsPercent());
 		this.view.lblNoOfQuest.setText("" + this.program.getNoOfQuestions());
 		
-		if(this.program.getIsSure() == true  && this.program.getSureness() >= 0) {
+		if(this.program.getIsSure()) {
 			System.out.println(this.program.getCharacter());
 			this.view.lblQuestion.setText("Ich denke an:\n" + this.program.getCharacter());
 			this.view.btnIdontKnow.setDisable(true);
 			this.gameIsFinished = true;
 		}
-		else if(this.program.getSureness() < 0) {
-			this.view.lblQuestion.setText("Ich kenne deinen Charakter nicht");
-			this.view.btnIdontKnow.setDisable(true);
-			this.view.btnYes.setDisable(true);
-			this.view.btnNo.setDisable(true);
-			this.gameIsFinished = true;
-		}
-		else {
-			this.view.lblQuestion.setText(this.program.getCurrentQuestion());
+		else{
+			if(this.program.getSureness() < 0) {
+				this.view.lblQuestion.setText("Ich kenne deinen Charakter nicht");
+	
+				this.view.btnIdontKnow.setDisable(true);
+				this.view.btnYes.setDisable(true);
+				this.view.btnNo.setDisable(true);
+				this.gameIsFinished = true;
+			}
+			else {
+				this.view.lblQuestion.setText(this.program.getCurrentQuestion());
+			}
 		}
 	}
 	
