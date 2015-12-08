@@ -141,8 +141,17 @@ public class Program extends Application {
 		return this.questGen.getQuestion(Settings.getLanguage());
 	}
 	
-	public boolean getIsSure() {
-		return this.questGen.isSure();
+	public Answer getIsSure() {
+		
+		if(this.questGen.isSure() == null) {
+			return Answer.DONT_KNOW;
+		}
+		else if (this.questGen.isSure() == false) {
+			return Answer.NO;
+		}
+		else {
+			return Answer.YES;
+		}
 	}
 
 	public double getSureness() {

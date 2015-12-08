@@ -210,25 +210,24 @@ public class MainStageController {
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(this.program.getNoOfQuestionsPercent());
 		this.view.lblNoOfQuest.setText("" + this.program.getNoOfQuestions());
 		
-		if(this.program.getIsSure()) {
+		if(this.program.getIsSure() == Answer.YES) {
 			System.out.println(this.program.getCharacter());
-			this.view.lblQuestion.setText("Ich denke an:\n" + this.program.getCharacter());
+			this.view.lblQuestion.setText(this.res.iThinkItIsText.get() + "\n" + this.program.getCharacter());
 			this.view.btnIdontKnow.setDisable(true);
 			this.gameIsFinished = true;
 		}
-		else{
-			if(this.program.getSureness() < 0) {
-				this.view.lblQuestion.setText("Ich kenne deinen Charakter nicht");
+		else if(this.program.getIsSure() == Answer.DONT_KNOW) {
+			this.view.lblQuestion.setText(this.res.iDontKnowYourCharacterText.get());
 	
-				this.view.btnIdontKnow.setDisable(true);
-				this.view.btnYes.setDisable(true);
-				this.view.btnNo.setDisable(true);
-				this.gameIsFinished = true;
-			}
-			else {
-				this.view.lblQuestion.setText(this.program.getCurrentQuestion());
-			}
+			this.view.btnIdontKnow.setDisable(true);
+			this.view.btnYes.setDisable(true);
+			this.view.btnNo.setDisable(true);
+			this.gameIsFinished = true;
 		}
+		else if (this.program.getIsSure() == Answer.NO){
+			this.view.lblQuestion.setText(this.program.getCurrentQuestion());
+		}
+	
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
@@ -282,6 +281,7 @@ public class MainStageController {
 		this.view.mniAbortGame.setDisable(true);
 		//Disable the "new game" menu-item:
 		this.view.mniNewGame.setDisable(false);
+		this.view.mniSettings.setDisable(false);
 		
 		this.view.mniStatistic.setDisable(true);
 		this.view.btnStatistic.setDisable(true);
@@ -304,13 +304,16 @@ public class MainStageController {
 		this.view.mniAbortGame.setDisable(false);
 		//Disable the "new game" menu-item:
 		this.view.mniNewGame.setDisable(true);
+		this.view.mniSettings.setDisable(true);
+		
 		//Reset view of old game:
 		this.view.btnIdontKnow.setDisable(false);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
-		
+		this.view.btnYes.setDisable(false);
+		this.view.btnNo.setDisable(false);
 		//Set the needed panes to the root-pane:
 		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
 		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);
