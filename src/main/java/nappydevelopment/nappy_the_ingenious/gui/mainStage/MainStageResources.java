@@ -46,6 +46,9 @@ public class MainStageResources {
 	StringProperty btnYesText;
 	StringProperty btnNoText;
 	StringProperty btnIdontKnow;
+	
+	StringProperty iThinkItIsText;
+	StringProperty iDontKnowYourCharacterText;
 
 	//### Abort Dialog Texts #######################################################################
 
@@ -116,6 +119,9 @@ public class MainStageResources {
 		this.btnYesText = new SimpleStringProperty();
 		this.btnNoText = new SimpleStringProperty();
 		this.btnIdontKnow = new SimpleStringProperty();
+		
+		this.iThinkItIsText = new SimpleStringProperty();
+		this.iDontKnowYourCharacterText = new SimpleStringProperty();
 
 		//### Images for the menu-bar ##################################################################
 
@@ -171,7 +177,10 @@ public class MainStageResources {
 		this.btnYesText.setValue("Yes");
 		this.btnNoText.setValue("No");
 		this.btnIdontKnow.setValue("I don't know");
-
+		
+		this.iDontKnowYourCharacterText.setValue("I don't know your character");
+		this.iThinkItIsText.setValue("I think your character is");
+		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
 		this.abortGameDialogHeaderText = "Abort game?";
@@ -206,7 +215,10 @@ public class MainStageResources {
 		this.btnYesText.setValue("Ja");
 		this.btnNoText.setValue("Nein");
 		this.btnIdontKnow.setValue("Ich weiß nicht");
-
+		
+		this.iDontKnowYourCharacterText.setValue("Ich kenne deinen Charakter nicht");
+		this.iThinkItIsText.setValue("Ich denke dein Charakter ist");
+		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
 		this.abortGameDialogHeaderText = "Spiel abbrechen?";
