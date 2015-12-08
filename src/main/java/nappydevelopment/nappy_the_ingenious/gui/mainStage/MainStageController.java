@@ -14,8 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
-import nappydevelopment.nappy_the_ingenious.util.gamemode1.QuestionGenerator;
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
@@ -23,6 +21,8 @@ public class MainStageController {
 //### ATTRIBUTES ###########################################################################################################################
 	
 	private boolean initialShowing;
+	
+	private boolean gameIsFinished;
 	
 	//Reference to the program-logic:
 	private Program program;
@@ -145,13 +145,23 @@ public class MainStageController {
 			}
 			else if(src == view.btnYes) {
 				System.out.println("Clicked the Yes-Button");
-				MainStageController.this.program.setCurrentAnswer(Answer.YES);
-				MainStageController.this.showNextQuestion();
+				if(MainStageController.this.gameIsFinished) {
+					MainStageController.this.program.abortCurrentGame();
+				}
+				else {
+					MainStageController.this.program.setCurrentAnswer(Answer.YES);
+					MainStageController.this.showNextQuestion();
+				}
 			}
 			else if(src == view.btnNo) {
 				System.out.println("Clicked the No-Button");
-				MainStageController.this.program.setCurrentAnswer(Answer.NO);
-				MainStageController.this.showNextQuestion();
+				if(MainStageController.this.gameIsFinished) {
+					MainStageController.this.program.abortCurrentGame();
+				}
+				else {
+					MainStageController.this.program.setCurrentAnswer(Answer.NO);
+					MainStageController.this.showNextQuestion();
+				}
 			}
 			else if(src == view.btnIdontKnow) {
 				System.out.println("Clicked the I don't Know Button");
@@ -200,10 +210,18 @@ public class MainStageController {
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(this.program.getNoOfQuestionsPercent());
 		this.view.lblNoOfQuest.setText("" + this.program.getNoOfQuestions());
 		
-		if(this.program.getIsSure()) {
+		if(this.program.getIsSure() == true  && this.program.getSureness() >= 0) {
 			System.out.println(this.program.getCharacter());
 			this.view.lblQuestion.setText("Ich denke an:\n" + this.program.getCharacter());
 			this.view.btnIdontKnow.setDisable(true);
+			this.gameIsFinished = true;
+		}
+		else if(this.program.getSureness() < 0) {
+			this.view.lblQuestion.setText("Ich kenne deinen Charakter nicht");
+			this.view.btnIdontKnow.setDisable(true);
+			this.view.btnYes.setDisable(true);
+			this.view.btnNo.setDisable(true);
+			this.gameIsFinished = true;
 		}
 		else {
 			this.view.lblQuestion.setText(this.program.getCurrentQuestion());
@@ -278,11 +296,18 @@ public class MainStageController {
 		
 		//Start a new Game:
 		this.program.startCurrentGame();
-		
+		this.gameIsFinished = false;
 		//Enable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(false);
 		//Disable the "new game" menu-item:
 		this.view.mniNewGame.setDisable(true);
+		//Reset view of old game:
+		this.view.btnIdontKnow.setDisable(false);
+		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
+		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
+		this.view.lblNoOfQuest.setText("0");
+		this.view.lblKnowledge.setText("0%");
+		
 		//Set the needed panes to the root-pane:
 		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
 		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);

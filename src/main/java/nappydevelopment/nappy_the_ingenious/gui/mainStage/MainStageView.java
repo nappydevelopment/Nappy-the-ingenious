@@ -286,6 +286,7 @@ public class MainStageView extends Stage {
 	    this.pgbKnowledge.getProgressBar().setProgress(0.0);
 	    this.imvKnowledge = new ImageView(res.imvKnowledgeIcon);
 	    
+	    
 		this.gdpButtons = new GridPane();
 		this.gdpButtons.setPadding(new Insets(10,10,10,10));
 		this.btnYes = new Button();
