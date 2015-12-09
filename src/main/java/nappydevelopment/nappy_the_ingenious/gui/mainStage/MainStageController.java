@@ -2,18 +2,22 @@
 
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
+import java.awt.RenderingHints;
 //### IMPORTS ##############################################################################################################################
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.ImagePattern;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
+import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
@@ -212,7 +216,17 @@ public class MainStageController {
 		
 		if(this.program.getIsSure() == Answer.YES) {
 			System.out.println(this.program.getCharacter());
-			this.view.lblQuestion.setText(this.res.iThinkItIsText.get() + "\n" + this.program.getCharacter());
+			//this.view.lblQuestion.setText(this.res.iThinkItIsText.get() + "\n" + this.program.getCharacter().getName());
+			this.view.lblQuestion.setText("");
+			this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(this.program.getCharacter().getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+			this.view.recCharacter.setFill(this.view.impCharacter);
+			this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
+			//this.view.gdpQuestion.getChildren().
+			//this.view.gdpQuestion.setGridLinesVisible(true);
+			this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+			this.view.hbxQuestion.getChildren().add(this.view.hbxCharacter);
+			this.view.gdpQuestion.setAlignment(Pos.CENTER);
+			this.view.gdpQuestion.add(this.view.hbxQuestion, 1, 1);
 			this.view.btnIdontKnow.setDisable(true);
 			this.gameIsFinished = true;
 		}
