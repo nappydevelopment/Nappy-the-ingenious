@@ -31,7 +31,7 @@ public class WikiCharacter {
 		this.description_en = description_en;
 		this.wikiImage = wikiImage;
 	}
-	
+
 //### GETTER/SETTER ########################################################################################################################
 	
 	public String getName() {
@@ -45,9 +45,7 @@ public class WikiCharacter {
 	public String getDescription() {
 		return description;
 	}
-	public String getDescription_de() {
-		return description_de;
-	}
+	public String getDescription_de() {	return description_de; }
 	public String getDescription_en() {	return description_en; }
 
 	public Image getWikiImage() {
