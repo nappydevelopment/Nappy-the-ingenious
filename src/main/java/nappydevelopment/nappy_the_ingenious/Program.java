@@ -158,9 +158,9 @@ public class Program extends Application {
 		return this.questGen.getSureness();
 	}
 
-	public String getCharacter() {
+	public WikiCharacter getCharacter() {
 		System.out.println(this.questGen.getCharacter(Language.GERMAN));
-		return this.questGen.getCharacter(Settings.getLanguage()).getName();
+		return this.questGen.getCharacter(Settings.getLanguage());
 	}
 	
 	public void setCurrentAnswer(Answer answer) {

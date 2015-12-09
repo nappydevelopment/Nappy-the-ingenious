@@ -21,9 +21,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
@@ -82,8 +85,14 @@ public class MainStageView extends Stage {
 	ImageView imvNappy;
 	
 	GridPane gdpQuestion;
+	HBox hbxQuestion;
 	//Text txtQuestion;
 	Label lblQuestion;
+	
+	HBox hbxCharacter;
+	Rectangle recCharacter;
+	ImagePattern impCharacter;
+	
 	
 	VBox vbxNoOfQuest;
 	Label lblNoOfQuest;
@@ -229,6 +238,7 @@ public class MainStageView extends Stage {
 	    this.lblNoOfQuest = new Label("0");
 	    this.pgbNoOfQuest = new VerticalProgressBar(20, 440);
 	    this.pgbNoOfQuest.getProgressBar().setProgress(0.0);
+	    this.pgbNoOfQuest.getProgressBar().setStyle("-fx-accent: #A2232C");
 	    this.imvNoOfQuest = new ImageView(res.imvNoOfQuestIcon);
 	    
 	    this.skpPicText = new StackPane();
@@ -242,12 +252,20 @@ public class MainStageView extends Stage {
 	    this.lblQuestion.setWrapText(true);
 	    this.lblQuestion.setTextAlignment(TextAlignment.JUSTIFY);
 	    this.lblQuestion.setText("Ist dein Charakter zwischen 20 und 60 Jahre alt?");
-	    //this.lblQuestion.setPadding(new Insets(300,110,0,110));
-	    //this.lblQuestion.setStyle("-fx-border-color: white;");
+	    
+	    this.hbxCharacter = new HBox();
+	    this.hbxCharacter.setId("hbxCharacter");
+	    //this.impCharacter = new ImagePattern(null);
+    	this.recCharacter = new Rectangle();
+		this.recCharacter.setWidth(110);
+		this.recCharacter.setHeight(110);
+		this.recCharacter.setArcHeight(8);
+		this.recCharacter.setArcWidth(8);
+		
+	    this.hbxQuestion = new HBox();
+	    this.hbxQuestion.setAlignment(Pos.CENTER);
 	    
 	    this.gdpQuestion = new GridPane();
-	    //this.gdpQuestion.setPrefSize(524, 340);
-	    //this.gdpQuestion.setGridLinesVisible(true);
 	    //Set the column-rate:
 	    ColumnConstraints gdpQuestionCol1 = new ColumnConstraints();
 	    gdpQuestionCol1.setPercentWidth(28);
@@ -257,9 +275,9 @@ public class MainStageView extends Stage {
 	    gdpQuestionCol3.setPercentWidth(31);
 	    
 	    RowConstraints gdpQuestionRow1 = new RowConstraints();
-	    gdpQuestionRow1.setPercentHeight(73.5);
+	    gdpQuestionRow1.setPercentHeight(73);
 	    RowConstraints gdpQuestionRow2 = new RowConstraints();
-	    gdpQuestionRow2.setPercentHeight(22.5);
+	    gdpQuestionRow2.setPercentHeight(23);
 	    RowConstraints gdpQuestionRow3 = new RowConstraints();
 	    gdpQuestionRow3.setPercentHeight(4);
 	    
@@ -284,6 +302,7 @@ public class MainStageView extends Stage {
 	    this.lblKnowledge = new Label("0%");
 	    this.pgbKnowledge = new VerticalProgressBar(20, 440);
 	    this.pgbKnowledge.getProgressBar().setProgress(0.0);
+	    this.pgbKnowledge.getProgressBar().setStyle("-fx-accent: #A2232C");
 	    this.imvKnowledge = new ImageView(res.imvKnowledgeIcon);
 	    
 	    

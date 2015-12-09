@@ -2,6 +2,13 @@
 
 #lblQuestion {
 	-fx-font-weight: bold;
-	-fx-font-size: 16px;
-	-fx-text-fill: yellow;
+	-fx-font-size: 15px;
+	-fx-text-fill: white;
+}
+
+#hbxCharacter {
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
+	-fx-padding: 5;
+	-fx-background-color: #FFD90F;
+	-fx-background-radius: 5;
 }
