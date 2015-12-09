@@ -379,7 +379,7 @@ public class MainStageView extends Stage {
 		);
 		
 		//this.hbxQuestions.getChildren().add(this.lblQusetion);
-		this.gdpQuestion.add(this.lblQuestion, 1, 1);
+		//this.gdpQuestion.add(this.lblQuestion, 1, 1);
 		this.skpPicText.getChildren().addAll(this.imvNappy, this.gdpQuestion);
 		//this.skpPicText.getChildren().addAll(this.imvNappy, this.lblQuestion);
 		

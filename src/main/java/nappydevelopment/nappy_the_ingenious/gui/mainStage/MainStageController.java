@@ -320,6 +320,9 @@ public class MainStageController {
 		this.view.mniNewGame.setDisable(true);
 		this.view.mniSettings.setDisable(true);
 		
+		this.view.gdpQuestion.getChildren().remove(this.view.hbxQuestion);
+		this.view.gdpQuestion.add(this.view.lblQuestion, 1, 1);
+		
 		//Reset view of old game:
 		this.view.btnIdontKnow.setDisable(false);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
