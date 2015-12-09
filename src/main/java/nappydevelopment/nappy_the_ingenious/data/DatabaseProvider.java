@@ -88,7 +88,7 @@ public class DatabaseProvider{
 		return st;
 	}
 
-	public static void closeDatabase(){
+	public void closeDatabase(){
 		try{
 			dbConn.close();
 		}catch(Exception e){
