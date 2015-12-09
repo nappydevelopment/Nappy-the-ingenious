@@ -20,4 +20,5 @@
 *.iws
 
 /out/
+/target/**
 
