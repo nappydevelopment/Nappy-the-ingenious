@@ -220,10 +220,12 @@ public class MainStageController {
 			this.view.lblQuestion.setText("");
 			this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(this.program.getCharacter().getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
 			this.view.recCharacter.setFill(this.view.impCharacter);
+			this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
 			this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
 			//this.view.gdpQuestion.getChildren().
 			//this.view.gdpQuestion.setGridLinesVisible(true);
 			this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+			this.view.hbxQuestion.getChildren().remove(this.view.hbxCharacter);
 			this.view.hbxQuestion.getChildren().add(this.view.hbxCharacter);
 			this.view.gdpQuestion.setAlignment(Pos.CENTER);
 			this.view.gdpQuestion.add(this.view.hbxQuestion, 1, 1);
@@ -321,6 +323,7 @@ public class MainStageController {
 		this.view.mniSettings.setDisable(true);
 		
 		this.view.gdpQuestion.getChildren().remove(this.view.hbxQuestion);
+		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
 		this.view.gdpQuestion.add(this.view.lblQuestion, 1, 1);
 		
 		//Reset view of old game:
