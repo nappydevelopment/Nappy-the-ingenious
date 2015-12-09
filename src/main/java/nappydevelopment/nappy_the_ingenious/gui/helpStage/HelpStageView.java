@@ -53,7 +53,7 @@ public class HelpStageView extends Stage {
 	//Method that initialize the stage (window) settings:
 	private void initStage(HelpStageResources res) {
 			
-		this.scene = new Scene(this.bdpRootPane, 500, 500);
+		this.scene = new Scene(this.bdpRootPane, 700, 700);
 		this.setScene(this.scene);
 			
 		this.getIcons().addAll(res.stageIcon16x16);
