@@ -218,22 +218,22 @@ public class QuestionGenerator{
 	}
 
 	private float tryQuestion(int columnID){
-			Statement st = DatabaseProvider.getStatement();
-			String select = "SELECT count(0) as C, "+ column[columnID] +" FROM SIMPSONS GROUP BY "+ column[columnID];
-			if(activeQuestion != -1){
-				select += " WHERE ";
-				boolean first = true;
-				for(int i = 0; i < column.length; i++){
-					if(ans != null){
-						if(!first){
-							select += "AND ";
-						}else{
-							first = false;
-						}
-						select += "SIMPSONS."+ column[i] +"="+ column[i] +"_QUESTIONS.ID ";
+		Statement st = DatabaseProvider.getStatement();
+		String select = "SELECT count(0) as C, "+ column[columnID] +" FROM SIMPSONS GROUP BY "+ column[columnID];
+		if(activeQuestion != -1){
+			select += " WHERE ";
+			boolean first = true;
+			for(int i = 0; i < column.length; i++){
+				if(ans != null){
+					if(!first){
+						select += "AND ";
+					}else{
+						first = false;
 					}
+					select += "SIMPSONS."+ column[i] +"="+ column[i] +"_QUESTIONS.ID ";
 				}
 			}
+		}
 		float max = 0;
 		float sum = 0;
 		float ret = 0;
