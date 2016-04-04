@@ -12,12 +12,15 @@ import java.sql.Statement;
 
 public class QuestionGenerator{
 
-    private String[] column = new String[40];
+	private String[] column = new String[40];
+	private boolean[] columnBool = new boolean[40];
     private Boolean[] ans = new Boolean[40];
 	private String[] question = new String[40];
 	private boolean[] dunno = new boolean[40];
 	private int numDunno = 0;
 	private int activeQuestion = -1;
+	private boolean determinisic = false;
+	private boolean firstQuestion = true;
 
     public QuestionGenerator(){
 		try{
@@ -34,6 +37,7 @@ public class QuestionGenerator{
 			int i = 0;
 			while(res.next()){
 				column[i] = res.getString("COLUMN_NAME");
+				columnBool[i] = res.getString("TYPE_NAME") == "BOOLEAN";
 				ans[i] = null;
 				i++;
 			}
@@ -43,6 +47,10 @@ public class QuestionGenerator{
 			e.printStackTrace();
 		}
     }
+	public QuestionGenerator(boolean det){
+		super();
+		determinisic = det;
+	}
 
 	public WikiCharacter getCharacter(Language lang){
 		Statement st = DatabaseProvider.getStatement();
@@ -99,6 +107,7 @@ public class QuestionGenerator{
 				ans[activeQuestion] = answer;
 			}
 			activeQuestion = -1;
+			firstQuestion = false;
 		}
     }
 
@@ -174,7 +183,7 @@ public class QuestionGenerator{
 			return null;
 		}
 		if(activeQuestion != -1){
-			return giveQuestion(column[activeQuestion], lang);
+			return giveQuestion(activeQuestion, lang);
 		}
 		float localMax;
 		float max = 0;
@@ -184,6 +193,7 @@ public class QuestionGenerator{
 				continue;
 			}
 			localMax = tryQuestion(i);
+			System.out.println("C: "+ i + " MAX: " + localMax);
 			if(localMax > max){
 				max = localMax;
 				maxNr = i;
@@ -194,17 +204,19 @@ public class QuestionGenerator{
 		}
 		activeQuestion = maxNr;
 		//System.out.println(question[maxNr]);
-		return giveQuestion(column[maxNr], lang);
+		return giveQuestion(maxNr, lang);
     }
 
-	private String giveQuestion(String columnName, Language lang){
+	private String giveQuestion(int columnNr, Language lang){
 		String ques = null;
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute("SELECT * from " + columnName + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
-			//System.out.println("SELECT * from " + columnName +"_QUESTIONS ");
+			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			ResultSet res = st.getResultSet();
 			res.next();
+			if(columnBool[columnNr] && (Math.random() >= 0.5 && determinisic)){
+				res.next();
+			}
 			if(lang.equals(Language.GERMAN)){
 				ques = res.getString("Q1_DE");
 			}else if(lang.equals(Language.ENGLISH)){
@@ -219,30 +231,42 @@ public class QuestionGenerator{
 
 	private float tryQuestion(int columnID){
 		Statement st = DatabaseProvider.getStatement();
-		String select = "SELECT count(0) as C, "+ column[columnID] +" FROM SIMPSONS GROUP BY "+ column[columnID];
-		if(activeQuestion != -1){
-			select += " WHERE ";
+		String where = " WHERE ";
+		if(firstQuestion == false){
 			boolean first = true;
 			for(int i = 0; i < column.length; i++){
-				if(ans != null){
+				if(ans[i] != null && column[i] != null){
 					if(!first){
-						select += "AND ";
+						where += "AND ";
 					}else{
 						first = false;
 					}
-					select += "SIMPSONS."+ column[i] +"="+ column[i] +"_QUESTIONS.ID ";
+					where += "SIMPSONS." + column[i];
+					if(ans[i]){
+						where += "='" + question[i] + "' ";
+					}else{
+						where += "!='" + question[i] + "' ";
+					}
 				}
 			}
 		}
+		if(where == " WHERE "){
+			where = "";
+		}
+		String select = "SELECT count(0) as C, " + column[columnID] + " FROM SIMPSONS" + where + " GROUP BY " + column[columnID];
 		float max = 0;
 		float sum = 0;
 		float ret = 0;
 		try{
+			System.out.print("   " + select);
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			while(res.next()){
 				float val = res.getInt("C");
-				if(val + Math.random()*100  > max){
+				if(!determinisic){
+					val += Math.random()*30;
+				}
+				if(val > max){
 					max = val;
 					question[columnID] = res.getString(column[columnID]);
 				}
