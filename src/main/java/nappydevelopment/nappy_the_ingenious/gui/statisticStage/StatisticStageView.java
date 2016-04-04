@@ -3,8 +3,11 @@ package nappydevelopment.nappy_the_ingenious.gui.statisticStage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.gui.components.TitledBorderPane;
 
 //### IMPORTS ##############################################################################################################################
 public class StatisticStageView extends Stage {
@@ -16,6 +19,16 @@ public class StatisticStageView extends Stage {
 	Scene scene;
 	
 	BorderPane bdpRootPane;
+	
+	VBox vbxContent;
+	
+	TitledBorderPane tbpTopFivePlayer;
+	BorderPane bdpTopFivePlayer;
+	
+	TitledBorderPane tbpTopFiveCharacter;
+	BorderPane bdpTopFivePlayerCharacter;
+	
+	Button btnOk;
 	
 //### CONSTRUCTORS #########################################################################################################################
 	
@@ -31,11 +44,23 @@ public class StatisticStageView extends Stage {
 	private void initComponents(StatisticStageResources res, EventHandler<ActionEvent> aeh) {
 		
 		this.bdpRootPane = new BorderPane();
+		this.vbxContent = new VBox(10);
+		
+		this.bdpTopFivePlayer = new BorderPane();
+		this.tbpTopFivePlayer = new TitledBorderPane("Top Five Player", this.bdpTopFivePlayer);
+		
+		this.bdpTopFivePlayerCharacter = new BorderPane();
+		this.tbpTopFiveCharacter = new TitledBorderPane("Top Five Character", this.bdpTopFivePlayerCharacter);
+		
+		
+		
 	}
 	
 	//Method that structure (add components to their parent node) the gui-components:
 	private void structureComponents() {
 		
+		this.vbxContent.getChildren().addAll(this.tbpTopFivePlayer, this.tbpTopFiveCharacter);
+		this.bdpRootPane.setCenter(this.vbxContent);
 	}
 	
 	//Method that initialize the stage (window) settings:

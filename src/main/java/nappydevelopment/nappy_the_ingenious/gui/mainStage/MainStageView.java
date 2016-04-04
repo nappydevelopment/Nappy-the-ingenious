@@ -402,6 +402,7 @@ public class MainStageView extends Stage {
 	//Method that initialize the stage (window) settings:
 	private void initStage() {
 		
+		
 		this.scene = new Scene(this.bdpRootPane, 445, 680);
 		this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
 		this.setScene(this.scene);
