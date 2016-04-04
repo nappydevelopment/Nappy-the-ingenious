@@ -14,7 +14,7 @@ public class QuestionGenerator{
 
 	private String[] column = new String[40];
 	private boolean[] columnBool = new boolean[40];
-    private Boolean[] ans = new Boolean[40];
+	private Boolean[] ans = new Boolean[40];
 	private String[] question = new String[40];
 	private boolean[] dunno = new boolean[40];
 	private int numDunno = 0;
