@@ -82,14 +82,14 @@ public class QuestionGenerator{
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_de"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
 				);
 			}else if(lang.equals(Language.ENGLISH)){
 				return new WikiCharacter(
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_en"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
 				);
 			}
 		}catch(Exception e){
@@ -123,16 +123,17 @@ public class QuestionGenerator{
 			if(ans[i] == null){
 				continue;
 			}
-			if(!first){
-				select += "AND ";
-			}else{
+			if(first){
 				first = false;
-			}
-			if(ans[i]){
-				select += column[i] + "='" + question[i] + "' ";
 			}else{
-				select += column[i] + "!='" + question[i] + "' ";
+				select += "AND ";
 			}
+
+			select += column[i];
+			if(!ans[i]){
+				select += "!";
+			}
+			select += "='" + question[i] + "' ";
 		}
 		if(select.endsWith("WHERE ")){
 			return 0;
@@ -141,11 +142,11 @@ public class QuestionGenerator{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			res.next();
-			float num = res.getFloat("C");
-			if(num == 0){
+			float count = res.getFloat("C");
+			if(count == 0){
 				return -2;
 			}
-			return (1 / num);
+			return (1 / count);
 		}catch(Throwable e){
 			e.printStackTrace();
 		}
@@ -172,10 +173,7 @@ public class QuestionGenerator{
     }
 
 	public boolean isActive(){
-		if(activeQuestion != -1 || isSure()){
-			return true;
-		}
-		return false;
+		return activeQuestion != -1;
 	}
 
     public String getQuestion(Language lang){
@@ -193,7 +191,6 @@ public class QuestionGenerator{
 				continue;
 			}
 			localMax = tryQuestion(i);
-			System.out.println("C: "+ i + " MAX: " + localMax);
 			if(localMax > max){
 				max = localMax;
 				maxNr = i;
@@ -203,7 +200,6 @@ public class QuestionGenerator{
 			return null;
 		}
 		activeQuestion = maxNr;
-		//System.out.println(question[maxNr]);
 		return giveQuestion(maxNr, lang);
     }
 
@@ -214,9 +210,6 @@ public class QuestionGenerator{
 			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			ResultSet res = st.getResultSet();
 			res.next();
-			if(columnBool[columnNr] && (Math.random() >= 0.5 && determinisic)){
-				res.next();
-			}
 			if(lang.equals(Language.GERMAN)){
 				ques = res.getString("Q1_DE");
 			}else if(lang.equals(Language.ENGLISH)){
@@ -225,7 +218,6 @@ public class QuestionGenerator{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		//System.out.println(ques);
 		return ques;
 	}
 
@@ -236,17 +228,16 @@ public class QuestionGenerator{
 			boolean first = true;
 			for(int i = 0; i < column.length; i++){
 				if(ans[i] != null && column[i] != null){
-					if(!first){
-						where += "AND ";
-					}else{
+					if(first){
 						first = false;
+					}else{
+						where += "AND ";
 					}
 					where += "SIMPSONS." + column[i];
-					if(ans[i]){
-						where += "='" + question[i] + "' ";
-					}else{
-						where += "!='" + question[i] + "' ";
+					if(!ans[i]){
+						where += " !";
 					}
+					where += "= '" + question[i] + "' ";
 				}
 			}
 		}
@@ -258,7 +249,6 @@ public class QuestionGenerator{
 		float sum = 0;
 		float ret = 0;
 		try{
-			System.out.print("   " + select);
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			while(res.next()){
