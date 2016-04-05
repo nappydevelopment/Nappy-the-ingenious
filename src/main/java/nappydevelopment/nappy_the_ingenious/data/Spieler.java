@@ -9,7 +9,7 @@ public class Spieler {
     private int gesamtPunktzahl;
 
 
-    Spieler(String anzeigename, int gesamtpunktzahl) {
+    public Spieler(String anzeigename, int gesamtpunktzahl) {
         this.anzeigeName = anzeigename;
         this.gesamtPunktzahl = gesamtpunktzahl;
     }
