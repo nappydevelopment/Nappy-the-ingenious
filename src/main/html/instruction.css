@@ -24,7 +24,7 @@
 
 html, body {
   font-family: 'simpsons';
-  background-color: #ffffff;
+  background-color: #FFD90F;
   font-weight: 900;
 }
 
@@ -86,7 +86,7 @@ dt:hover {
 dd {
   color: black;
   display: none;
-  background: #c7cfd8;
+  background: #FFD90F;
   margin: 0 0 15px 0;
   float: left;
   width: 520px;
