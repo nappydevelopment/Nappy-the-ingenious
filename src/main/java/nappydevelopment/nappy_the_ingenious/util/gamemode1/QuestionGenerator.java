@@ -12,12 +12,15 @@ import java.sql.Statement;
 
 public class QuestionGenerator{
 
-    private String[] column = new String[40];
-    private Boolean[] ans = new Boolean[40];
+	private String[] column = new String[40];
+	private boolean[] columnBool = new boolean[40];
+	private Boolean[] ans = new Boolean[40];
 	private String[] question = new String[40];
 	private boolean[] dunno = new boolean[40];
 	private int numDunno = 0;
 	private int activeQuestion = -1;
+	private boolean determinisic = false;
+	private boolean firstQuestion = true;
 
     public QuestionGenerator(){
 		try{
@@ -34,6 +37,7 @@ public class QuestionGenerator{
 			int i = 0;
 			while(res.next()){
 				column[i] = res.getString("COLUMN_NAME");
+				columnBool[i] = res.getString("TYPE_NAME") == "BOOLEAN";
 				ans[i] = null;
 				i++;
 			}
@@ -43,6 +47,10 @@ public class QuestionGenerator{
 			e.printStackTrace();
 		}
     }
+	public QuestionGenerator(boolean det){
+		super();
+		determinisic = det;
+	}
 
 	public WikiCharacter getCharacter(Language lang){
 		Statement st = DatabaseProvider.getStatement();
@@ -74,14 +82,14 @@ public class QuestionGenerator{
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_de"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
 				);
 			}else if(lang.equals(Language.ENGLISH)){
 				return new WikiCharacter(
 					res.getString("name"),
 					res.getString("nickname"),
 					res.getString("description_en"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") +".png")
+					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
 				);
 			}
 		}catch(Exception e){
@@ -99,6 +107,7 @@ public class QuestionGenerator{
 				ans[activeQuestion] = answer;
 			}
 			activeQuestion = -1;
+			firstQuestion = false;
 		}
     }
 
@@ -114,16 +123,17 @@ public class QuestionGenerator{
 			if(ans[i] == null){
 				continue;
 			}
-			if(!first){
-				select += "AND ";
-			}else{
+			if(first){
 				first = false;
-			}
-			if(ans[i]){
-				select += column[i] + "='" + question[i] + "' ";
 			}else{
-				select += column[i] + "!='" + question[i] + "' ";
+				select += "AND ";
 			}
+
+			select += column[i];
+			if(!ans[i]){
+				select += "!";
+			}
+			select += "='" + question[i] + "' ";
 		}
 		if(select.endsWith("WHERE ")){
 			return 0;
@@ -132,11 +142,11 @@ public class QuestionGenerator{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			res.next();
-			float num = res.getFloat("C");
-			if(num == 0){
+			float count = res.getFloat("C");
+			if(count == 0){
 				return -2;
 			}
-			return (1 / num);
+			return (1 / count);
 		}catch(Throwable e){
 			e.printStackTrace();
 		}
@@ -163,10 +173,7 @@ public class QuestionGenerator{
     }
 
 	public boolean isActive(){
-		if(activeQuestion != -1 || isSure()){
-			return true;
-		}
-		return false;
+		return activeQuestion != -1;
 	}
 
     public String getQuestion(Language lang){
@@ -174,7 +181,7 @@ public class QuestionGenerator{
 			return null;
 		}
 		if(activeQuestion != -1){
-			return giveQuestion(column[activeQuestion], lang);
+			return giveQuestion(activeQuestion, lang);
 		}
 		float localMax;
 		float max = 0;
@@ -193,16 +200,14 @@ public class QuestionGenerator{
 			return null;
 		}
 		activeQuestion = maxNr;
-		//System.out.println(question[maxNr]);
-		return giveQuestion(column[maxNr], lang);
+		return giveQuestion(maxNr, lang);
     }
 
-	private String giveQuestion(String columnName, Language lang){
+	private String giveQuestion(int columnNr, Language lang){
 		String ques = null;
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute("SELECT * from " + columnName + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
-			//System.out.println("SELECT * from " + columnName +"_QUESTIONS ");
+			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			ResultSet res = st.getResultSet();
 			res.next();
 			if(lang.equals(Language.GERMAN)){
@@ -213,27 +218,33 @@ public class QuestionGenerator{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		//System.out.println(ques);
 		return ques;
 	}
 
 	private float tryQuestion(int columnID){
 		Statement st = DatabaseProvider.getStatement();
-		String select = "SELECT count(0) as C, "+ column[columnID] +" FROM SIMPSONS GROUP BY "+ column[columnID];
-		if(activeQuestion != -1){
-			select += " WHERE ";
+		String where = " WHERE ";
+		if(firstQuestion == false){
 			boolean first = true;
 			for(int i = 0; i < column.length; i++){
-				if(ans != null){
-					if(!first){
-						select += "AND ";
-					}else{
+				if(ans[i] != null && column[i] != null){
+					if(first){
 						first = false;
+					}else{
+						where += "AND ";
 					}
-					select += "SIMPSONS."+ column[i] +"="+ column[i] +"_QUESTIONS.ID ";
+					where += "SIMPSONS." + column[i];
+					if(!ans[i]){
+						where += " !";
+					}
+					where += "= '" + question[i] + "' ";
 				}
 			}
 		}
+		if(where == " WHERE "){
+			where = "";
+		}
+		String select = "SELECT count(0) as C, " + column[columnID] + " FROM SIMPSONS" + where + " GROUP BY " + column[columnID];
 		float max = 0;
 		float sum = 0;
 		float ret = 0;
@@ -242,7 +253,10 @@ public class QuestionGenerator{
 			ResultSet res = st.getResultSet();
 			while(res.next()){
 				float val = res.getInt("C");
-				if(val + Math.random()*100  > max){
+				if(!determinisic){
+					val += Math.random()*30;
+				}
+				if(val > max){
 					max = val;
 					question[columnID] = res.getString(column[columnID]);
 				}

@@ -1,31 +1,75 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Spielanleitung</title>
-		<link type="text/css" rel="stylesheet" href="instruction.css"/>
-	</head>
-	<body>
-	<div id="ueberschrift">
-		<span class="box">Spielanleitung</span>
-	</div>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Spielanleitung</title>
 
+	<script type="text/javascript" src="jquery-2.2.0.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="instruction.css"/>
+</head>
+<body>
+<div id="ueberschrift">
+	<span class="box">Die Spielanleitung</span>
+</div>
 
+<div id="textteil">
+	<p class="box">
 
-	<div id="textteil">
-		<p class="box">
-			Bei "Nappy the ingenious" handelt es sich um einen genialen Kombinationskünstler.<br/>
-			Er ist in der Lage, einen Charakter der Simpsons zu erraten und dies ausschließlich über sehr simple Fragen.<br/>
-			Es ist sehr einfach! Ihr denkt euch einen Charakter aus dem Simpsons Universum.<br/>
-			Anschließend wird Nappy euch fragen stellen, die ihr mit "Ja", "Nein" oder "Ich weiß nicht" beantworten könnt.<br/>
-			Wenn sich Nappy sicher ist, wird er auflösen und hoffentlich Recht haben.<br/>
-			Doch dies ist nicht alles:<br/>
-			Für den zweiten Spielmodus könnt ihr den Spies herumdrehen. Somit wird Nappy sich einen Charakter aussuchen.<br/>
-			Diesen Charakter gilt es daraufhin zu erraten. Ihr habt dafür einen Fragenkatalog zur Auswahl.<br/>
-			Euer Ziel sollte es sein, so wenige Fragen wie nur möglich zu nutzen, denn nur so könnt ihr Nappy besiegen.<br/>
-			Gewinner ist der, der am Ende den Charakter richtig erraten und dafür die wenigsten Fragen benötigt hat.<br/>
-		</p>
-	</div>
+		Bei "Nappy the ingenious" handelt es sich um einen genialen Kombinationskünstler.<br/>
+		Er ist in der Lage, einen Charakter der Simpsons zu erraten und dies ausschließlich mit Hilfe von charakterspezifischen Fragen.<br/>
 
-	</body>
+		<div id="container">
+			<dl>
+				<dt>Erster Spielmodus <a href="#" id="button" class="closed">Details</a></dt>
+				<dd>
+					Zunächst denkt Ihr an einen Charakter aus dem Universum der Fernsehsendung Simpsons.
+					Anschließend wird Nappy euch fragen zu Eurem Charakter stellen, die ihr mit "Ja", "Nein" oder "Ich weiß nicht" beantworten könnt.<br/><br/>
+
+					Wenn sich Nappy sicher ist, wird er auflösen und hoffentlich Recht haben.
+				</dd>
+
+				<dt>Zweiter Spielmodus <a href="#" id="button" class="closed">Details</a></dt>
+				<dd>
+					Für den zweiten Spielmodus könnt ihr den Spieß umdrehen. Somit wird Nappy sich einen Charakter aussuchen.<br/>
+					Diesen Charakter gilt es daraufhin zu erraten. Ihr habt dafür einen Fragenkatalog zur Auswahl.<br/><br/>
+
+					Euer Ziel sollte es sein, so wenige Fragen wie nur möglich zu nutzen, denn nur so könnt ihr Nappy besiegen.<br/>
+					Gewinner ist der, der am Ende den Charakter richtig erraten und dafür die wenigsten Fragen benötigt hat.<br/>
+				</dd>
+
+				<dt>Statistik <a href="#" id="button" class="closed">Details</a></dt>
+				<dd>
+					In der Statistik sind die besten 5 Spieler aufgelistet. Um in dieser Liste aufzutauchen müsst ihr Nappy schlagen.<br/><br/>
+
+					Des Weiteren werden die 5 meistgespielten Charaktere gelistet.
+				</dd>
+
+				<dt>Wiki <a href="#" id="button" class="closed">Details</a></dt>
+				<dd>
+					Im Wiki könnt Ihr Informationen über alle spielbaren Charaktere abgreifen. Für die schnelle Suche stehen Euch Such- und Filterfunktionen zur Verfügung.
+				</dd>
+
+				<dt>Einstellungen <a href="#" id="button" class="closed">Details</a></dt>
+				<dd>
+					In den Einstellungen stehen euch zunächst 3 Optionen zur Verfügung.<br/>
+
+					Ihr könnt zwischen den Sprachen Deutsch und Englisch wählen.<br/>
+					Zudem ist es möglich das Farbschema der Applikation zu ändern.<br/>
+					Abschließend könnt Ihr einstellen, dass der zweite Spielmodus übersprungen wird (ACHTUNG: Dadurch werden keine Spiele in die Statistik übernommen).
+				</dd>
+			</dl>
+		</div>
+
+	</p>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("dt").click(function(){ // trigger
+			$(this).next("dd").slideToggle("fast"); // blendet beim Klick auf "dt" die nächste "dd" ein.
+			$(this).children("a").toggleClass("closed open"); // wechselt beim Klick auf "dt" die Klasse des enthaltenen a-Tags von "closed" zu "open".
+		});
+	});
+</script>
+</body>
 </html>
