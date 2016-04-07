@@ -244,7 +244,7 @@ public class MainStageView extends Stage {
 
 	    this.skpPicText = new StackPane();
 	    this.skpPicText.setAlignment(Pos.CENTER);
-	    this.imvNappy = new ImageView(Utils.getScaledInstance(res.imvNappyImage, 524, 340, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.75, true));
+	    this.imvNappy = new ImageView(res.imvNappyImage);
 	    this.imvNappy.setFitHeight(524);
 	    this.imvNappy.setFitWidth(340);
 
