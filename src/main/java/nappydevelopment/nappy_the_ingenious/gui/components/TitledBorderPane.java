@@ -1,5 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.components;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ public class TitledBorderPane extends StackPane {
 //### COMPONENTS ###########################################################################################################################
 	
 	Label lblTitle;
+	StackPane skpContent;
 	Node nodContent;
 	
 //### CONSTRUCTORS #########################################################################################################################
@@ -36,7 +38,25 @@ public class TitledBorderPane extends StackPane {
                           "-fx-border-color: black;" +
 		    			  "-fx-border-width: 2;");
 		    this.getChildren().addAll(lblTitle, contentPane);
-		  }
+	}
+	
+	public TitledBorderPane() {
+		
+		this.lblTitle = new Label("  No Title  ");
+		this.lblTitle.setFont(Font.font(this.lblTitle.getFont().getName(), 14));
+		this.lblTitle.setStyle("-fx-translate-y: -12; -fx-background-color: #F4F4F4; -fx-translate-x: +12;");
+		StackPane.setAlignment(lblTitle, Pos.TOP_LEFT);
+		
+		this.skpContent = new StackPane();
+		this.skpContent.setPadding(new Insets(10, 10, 10, 10));
+		
+	    this.setStyle("-fx-content-display: top;" +
+  			          "-fx-border-insets: 20 15 15 15;" +
+                      "-fx-border-color: black;" +
+  			          "-fx-border-width: 2;");
+        this.getChildren().addAll(lblTitle, this.skpContent);
+        
+	}
 	
 //### INITIAL METHODS ######################################################################################################################
 
@@ -44,9 +64,17 @@ public class TitledBorderPane extends StackPane {
 
 //### GETTER/SETTER ########################################################################################################################
   
-	public void setTitle(String title) {
-	   this.lblTitle.setText("  " + title + "  ");
+	public void setTitleText(String text) {
+	   this.lblTitle.setText("  " + text + "  ");
    }
+	
+	public void setContent(Node content) {
+		this.nodContent = content;
+	}
+	
+	public void setTitlePosition(Pos pos) {
+		
+	}
 	
 //### METHODS ##############################################################################################################################}
 }
