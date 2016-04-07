@@ -31,8 +31,10 @@ public class TopFiveGenerator {
                  /* TODO
             * Nötige Dinge anhand Absprache aus dem RS auslesen */
                 String name = res.getString("spieler_name");
+                int nappy_fragen = res.getInt("");
+                int spieler_fragen = res.getInt("");
                 int punktzahl = res.getInt("gesamtpunktzahl");
-                topFiveList.add(new Spieler(name, punktzahl));
+                topFiveList.add(new Spieler(name, nappy_fragen, spieler_fragen, punktzahl));
             }
             res.close();
             st.close();
@@ -45,10 +47,10 @@ public class TopFiveGenerator {
             * Comparator anhand zu ermittelnder Kriterien erweitern */
             @Override
             public int compare(Spieler spieler1, Spieler spieler2) {
-                if(spieler1.getGesamtpunktzahl()<spieler2.getGesamtpunktzahl()){
+                if(spieler1.getGesamtPunktzahl()<spieler2.getGesamtPunktzahl()){
                     return 0;
                 }
-                if(spieler1.getGesamtpunktzahl()>spieler2.getGesamtpunktzahl()){
+                if(spieler1.getGesamtPunktzahl()>spieler2.getGesamtPunktzahl()){
                     return 1;
                 }
                 return 0;
