@@ -15,9 +15,29 @@ import java.util.Comparator;
  */
 public class TopFiveGenerator {
 
-    ArrayList<Spieler> topFiveList = new ArrayList<Spieler>();
+
 
     public TopFiveGenerator(){
+
+
+//        topFiveList.sort(new Comparator<Spieler>() {
+            /* TODO
+            * Comparator anhand zu ermittelnder Kriterien erweitern */
+//            @Override
+//            public int compare(Spieler spieler1, Spieler spieler2) {
+//                if(spieler1.getGesamtPunktzahl()<spieler2.getGesamtPunktzahl()){
+//                    return 0;
+//                }
+//                if(spieler1.getGesamtPunktzahl()>spieler2.getGesamtPunktzahl()){
+//                    return 1;
+//                }
+//                return 0;
+//            }
+//        });
+    }
+
+    public ArrayList<Spieler> getTopFivePlayers() {
+        ArrayList<Spieler> topFiveList = new ArrayList<Spieler>();
         try{
             Statement st = DatabaseProvider.getStatement();
             st.execute(
@@ -42,24 +62,9 @@ public class TopFiveGenerator {
             e.printStackTrace();
         }
 
-//        topFiveList.sort(new Comparator<Spieler>() {
-            /* TODO
-            * Comparator anhand zu ermittelnder Kriterien erweitern */
-//            @Override
-//            public int compare(Spieler spieler1, Spieler spieler2) {
-//                if(spieler1.getGesamtPunktzahl()<spieler2.getGesamtPunktzahl()){
-//                    return 0;
-//                }
-//                if(spieler1.getGesamtPunktzahl()>spieler2.getGesamtPunktzahl()){
-//                    return 1;
-//                }
-//                return 0;
-//            }
-//        });
-    }
-
-    public ArrayList<Spieler> getTopFiveList() {
         return topFiveList;
     }
+
+
 
 }
