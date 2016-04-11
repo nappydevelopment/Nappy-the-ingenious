@@ -19,47 +19,15 @@ public class StatisticStageResources {
     
 	StringProperty tbpTopFivePlayerText;
 	
-	StringProperty lblP1PositionText;
-	StringProperty lblP1NameText;
-	StringProperty lblP1ValueText;
-	
-	StringProperty lblP2PositionText;
-	StringProperty lblP2NameText;
-	StringProperty lblP2ValueText;
-	
-	StringProperty lblP3PositionText;
-	StringProperty lblP3NameText;
-	StringProperty lblP3ValueText;
-	
-	StringProperty lblP4PositionText;
-	StringProperty lblP4NameText;
-	StringProperty lblP4ValueText;
-	
-	StringProperty lblP5PositionText;
-	StringProperty lblP5NameText;
-	StringProperty lblP5ValueText;
+	StringProperty lblPlayerPositionTexts[];
+	StringProperty lblPlayerNameTexts[];
+	StringProperty lblPlayerValueTexts[];
 	
 	StringProperty tbpTopFiveCharacterText;
 	
-	StringProperty lblC1PositionText;
-	StringProperty lblC1NameText;
-	StringProperty lblC1CounterText;
-	
-	StringProperty lblC2PositionText;
-	StringProperty lblC2NameText;
-	StringProperty lblC2CounterText;
-	
-	StringProperty lblC3PositionText;
-	StringProperty lblC3NameText;
-	StringProperty lblC3CounterText;
-	
-	StringProperty lblC4PositionText;
-	StringProperty lblC4NameText;
-	StringProperty lblC4CounterText;
-	
-	StringProperty lblC5PositionText;
-	StringProperty lblC5NameText;
-	StringProperty lblC5CounterText;
+	StringProperty lblCharacterPositionTexts[];
+	StringProperty lblCharacterNameTexts[];
+	StringProperty lblCharacterCounterTexts[];
 	
 	StringProperty btnOkText;
 	
@@ -77,38 +45,26 @@ public class StatisticStageResources {
 	StatisticStageResources() {
         
 		this.tbpTopFivePlayerText = new SimpleStringProperty();
-		this.lblP1PositionText = new SimpleStringProperty();
-		this.lblP1NameText = new SimpleStringProperty();
-		this.lblP1ValueText = new SimpleStringProperty();
-		this.lblP2PositionText = new SimpleStringProperty();
-		this.lblP2NameText = new SimpleStringProperty();
-		this.lblP2ValueText = new SimpleStringProperty();
-		this.lblP3PositionText = new SimpleStringProperty();
-		this.lblP3NameText = new SimpleStringProperty();
-		this.lblP3ValueText = new SimpleStringProperty();
-		this.lblP4PositionText = new SimpleStringProperty();
-		this.lblP4NameText = new SimpleStringProperty();
-		this.lblP4ValueText = new SimpleStringProperty();
-		this.lblP5PositionText = new SimpleStringProperty();
-		this.lblP5NameText = new SimpleStringProperty();
-		this.lblP5ValueText = new SimpleStringProperty();
+		this.lblPlayerPositionTexts = new SimpleStringProperty[5];
+		this.lblPlayerNameTexts = new SimpleStringProperty[5];
+		this.lblPlayerValueTexts = new SimpleStringProperty[5];
+		
+		for( int i = 0; i < 5; i++ ) {
+			lblPlayerPositionTexts[i] = new SimpleStringProperty();
+			lblPlayerNameTexts[i] = new SimpleStringProperty();
+			lblPlayerValueTexts[i] = new SimpleStringProperty();
+		}
 		
 		this.tbpTopFiveCharacterText = new SimpleStringProperty();
-		this.lblC1PositionText = new SimpleStringProperty();
-		this.lblC1NameText = new SimpleStringProperty();
-		this.lblC1CounterText = new SimpleStringProperty();
-		this.lblC2PositionText = new SimpleStringProperty();
-		this.lblC2NameText = new SimpleStringProperty();
-		this.lblC2CounterText = new SimpleStringProperty();
-		this.lblC3PositionText = new SimpleStringProperty();
-		this.lblC3NameText = new SimpleStringProperty();
-		this.lblC3CounterText = new SimpleStringProperty();
-		this.lblC4PositionText = new SimpleStringProperty();
-		this.lblC4NameText = new SimpleStringProperty();
-		this.lblC4CounterText = new SimpleStringProperty();
-		this.lblC5PositionText = new SimpleStringProperty();
-		this.lblC5NameText = new SimpleStringProperty();
-		this.lblC5CounterText = new SimpleStringProperty();
+		this.lblCharacterPositionTexts = new SimpleStringProperty[5];
+		this.lblCharacterNameTexts = new SimpleStringProperty[5];
+		this.lblCharacterCounterTexts = new SimpleStringProperty[5];
+		
+		for( int i = 0; i < 5; i++ ) {
+			lblCharacterPositionTexts[i] = new SimpleStringProperty();
+			lblCharacterNameTexts[i] = new SimpleStringProperty();
+			lblCharacterCounterTexts[i] = new SimpleStringProperty();
+		}
 		
 		this.btnOkText = new SimpleStringProperty();
 		
@@ -123,37 +79,17 @@ public class StatisticStageResources {
 	
 	void setUniversalTexts() {
 		
-		this.lblP1PositionText.setValue("1.");
-		this.lblP1NameText.setValue("-");
-		this.lblP1ValueText.setValue("-");
-		this.lblP2PositionText.setValue("2.");
-		this.lblP2NameText.setValue("-");
-		this.lblP2ValueText.setValue("-");
-		this.lblP3PositionText.setValue("3.");
-		this.lblP3NameText.setValue("-");
-		this.lblP3ValueText.setValue("-");
-		this.lblP4PositionText.setValue("4.");
-		this.lblP4NameText.setValue("-");
-		this.lblP4ValueText.setValue("-");
-		this.lblP5PositionText.setValue("5.");
-		this.lblP5NameText.setValue("-");
-		this.lblP5ValueText.setValue("-");
-		
-		this.lblC1PositionText.setValue("1.");
-		this.lblC1NameText.setValue("-");
-		this.lblC1CounterText.setValue("-");
-		this.lblC2PositionText.setValue("2.");
-		this.lblC2NameText.setValue("-");
-		this.lblC2CounterText.setValue("-");
-		this.lblC3PositionText.setValue("3.");
-		this.lblC3NameText.setValue("-");
-		this.lblC3CounterText.setValue("-");
-		this.lblC4PositionText.setValue("4.");
-		this.lblC4NameText.setValue("-");
-		this.lblC4CounterText.setValue("-");
-		this.lblC5PositionText.setValue("5.");
-		this.lblC5NameText.setValue("-");
-		this.lblC5CounterText.setValue("-");
+		for(int i = 0; i < 5; i++) {
+			this.lblPlayerPositionTexts[i].setValue("1.");
+			this.lblPlayerNameTexts[i].setValue("-");
+			this.lblPlayerValueTexts[i].setValue("-");
+		}
+
+		for(int i = 0; i < 5; i++) {
+			this.lblCharacterPositionTexts[i].setValue("1.");
+			this.lblCharacterNameTexts[i].setValue("-");
+			this.lblCharacterCounterTexts[i].setValue("-");
+		}
 		
 		this.btnOkText.setValue("Ok");
 	}

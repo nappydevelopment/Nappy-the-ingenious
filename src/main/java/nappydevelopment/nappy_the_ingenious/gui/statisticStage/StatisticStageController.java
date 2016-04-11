@@ -49,38 +49,38 @@ public class StatisticStageController {
 		
 		this.view.tbpTopFivePlayer.bindTitleText(this.res.tbpTopFivePlayerText);
 		
-		this.view.lblP1Position.textProperty().bind(this.res.lblP1PositionText);
-		this.view.lblP1Name.textProperty().bind(this.res.lblP1NameText);
-		this.view.lblP1Value.textProperty().bind(this.res.lblP1ValueText);
-		this.view.lblP2Position.textProperty().bind(this.res.lblP2PositionText);
-		this.view.lblP2Name.textProperty().bind(this.res.lblP2NameText);
-		this.view.lblP2Value.textProperty().bind(this.res.lblP2ValueText);
-		this.view.lblP3Position.textProperty().bind(this.res.lblP3PositionText);
-		this.view.lblP3Name.textProperty().bind(this.res.lblP3NameText);
-		this.view.lblP3Value.textProperty().bind(this.res.lblP3ValueText);
-		this.view.lblP4Position.textProperty().bind(this.res.lblP4PositionText);
-		this.view.lblP4Name.textProperty().bind(this.res.lblP4NameText);
-		this.view.lblP4Value.textProperty().bind(this.res.lblP4ValueText);
-		this.view.lblP5Position.textProperty().bind(this.res.lblP5PositionText);
-		this.view.lblP5Name.textProperty().bind(this.res.lblP5NameText);
-		this.view.lblP5Value.textProperty().bind(this.res.lblP5ValueText);
+		this.view.lblP1Position.textProperty().bind(this.res.lblPlayerPositionTexts[0]);
+		this.view.lblP1Name.textProperty().bind(this.res.lblPlayerNameTexts[0]);
+		this.view.lblP1Value.textProperty().bind(this.res.lblPlayerValueTexts[0]);
+		this.view.lblP2Position.textProperty().bind(this.res.lblPlayerPositionTexts[1]);
+		this.view.lblP2Name.textProperty().bind(this.res.lblPlayerNameTexts[1]);
+		this.view.lblP2Value.textProperty().bind(this.res.lblPlayerValueTexts[1]);
+		this.view.lblP3Position.textProperty().bind(this.res.lblPlayerPositionTexts[2]);
+		this.view.lblP3Name.textProperty().bind(this.res.lblPlayerNameTexts[2]);
+		this.view.lblP3Value.textProperty().bind(this.res.lblPlayerValueTexts[2]);
+		this.view.lblP4Position.textProperty().bind(this.res.lblPlayerPositionTexts[3]);
+		this.view.lblP4Name.textProperty().bind(this.res.lblPlayerNameTexts[3]);
+		this.view.lblP4Value.textProperty().bind(this.res.lblPlayerValueTexts[3]);
+		this.view.lblP5Position.textProperty().bind(this.res.lblPlayerPositionTexts[4]);
+		this.view.lblP5Name.textProperty().bind(this.res.lblPlayerNameTexts[4]);
+		this.view.lblP5Value.textProperty().bind(this.res.lblPlayerValueTexts[4]);
 		
 		this.view.tbpTopFiveCharacter.bindTitleText(this.res.tbpTopFiveCharacterText);
-		this.view.lblC1Position.textProperty().bind(this.res.lblC1PositionText);
-		this.view.lblC1Name.textProperty().bind(this.res.lblC1NameText);
-		this.view.lblC1Counter.textProperty().bind(this.res.lblC1CounterText);
-		this.view.lblC2Position.textProperty().bind(this.res.lblC2PositionText);
-		this.view.lblC2Name.textProperty().bind(this.res.lblC2NameText);
-		this.view.lblC2Counter.textProperty().bind(this.res.lblC2CounterText);
-		this.view.lblC3Position.textProperty().bind(this.res.lblC3PositionText);
-		this.view.lblC3Name.textProperty().bind(this.res.lblC3NameText);
-		this.view.lblC3Counter.textProperty().bind(this.res.lblC3CounterText);
-		this.view.lblC4Position.textProperty().bind(this.res.lblC4PositionText);
-		this.view.lblC4Name.textProperty().bind(this.res.lblC4NameText);
-		this.view.lblC4Counter.textProperty().bind(this.res.lblC4CounterText);
-		this.view.lblC5Position.textProperty().bind(this.res.lblC5PositionText);
-		this.view.lblC5Name.textProperty().bind(this.res.lblC5NameText);
-		this.view.lblC5Counter.textProperty().bind(this.res.lblC5CounterText);
+		this.view.lblC1Position.textProperty().bind(this.res.lblCharacterPositionTexts[0]);
+		this.view.lblC1Name.textProperty().bind(this.res.lblCharacterNameTexts[0]);
+		this.view.lblC1Counter.textProperty().bind(this.res.lblCharacterCounterTexts[0]);
+		this.view.lblC2Position.textProperty().bind(this.res.lblCharacterPositionTexts[1]);
+		this.view.lblC2Name.textProperty().bind(this.res.lblCharacterNameTexts[1]);
+		this.view.lblC2Counter.textProperty().bind(this.res.lblCharacterCounterTexts[1]);
+		this.view.lblC3Position.textProperty().bind(this.res.lblCharacterPositionTexts[2]);
+		this.view.lblC3Name.textProperty().bind(this.res.lblCharacterNameTexts[2]);
+		this.view.lblC3Counter.textProperty().bind(this.res.lblCharacterCounterTexts[2]);
+		this.view.lblC4Position.textProperty().bind(this.res.lblCharacterPositionTexts[3]);
+		this.view.lblC4Name.textProperty().bind(this.res.lblCharacterNameTexts[3]);
+		this.view.lblC4Counter.textProperty().bind(this.res.lblCharacterCounterTexts[3]);
+		this.view.lblC5Position.textProperty().bind(this.res.lblCharacterPositionTexts[4]);
+		this.view.lblC5Name.textProperty().bind(this.res.lblCharacterNameTexts[4]);
+		this.view.lblC5Counter.textProperty().bind(this.res.lblCharacterCounterTexts[4]);
 		
 		this.view.btnOk.textProperty().bind(this.res.btnOkText);
 		
@@ -117,31 +117,14 @@ public class StatisticStageController {
 		
 		TopFiveGenerator tfGen = new TopFiveGenerator();
 		ArrayList<Player> tfp = tfGen.getTopFivePlayers();
+		Player curPlayer = null;
 		
-		Player curPlayer = tfp.get(0);
-		
-		this.res.lblP1NameText.set(curPlayer.getAnzeigeName());
-		this.res.lblP1ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
-		
-		curPlayer = tfp.get(1);
-		
-		this.res.lblP2NameText.set(curPlayer.getAnzeigeName());
-		this.res.lblP2ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
-		
-		curPlayer = tfp.get(2);
-		
-		this.res.lblP3NameText.set(curPlayer.getAnzeigeName());
-		this.res.lblP3ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
-		
-		curPlayer = tfp.get(3);
-		
-		this.res.lblP4NameText.set(curPlayer.getAnzeigeName());
-		this.res.lblP4ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
-		
-		curPlayer = tfp.get(4);
-		
-		this.res.lblP5NameText.set(curPlayer.getAnzeigeName());
-		this.res.lblP5ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		for(int i = 0; i < tfp.size(); i++) {
+			
+			curPlayer = tfp.get(i);
+			this.res.lblPlayerNameTexts[i].set(curPlayer.getAnzeigeName());
+			this.res.lblPlayerValueTexts[i].set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		}
 		
 		//ArrayList<WikiCharacter> tfc = tfGen.
 	}
