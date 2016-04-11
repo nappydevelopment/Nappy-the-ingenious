@@ -4,6 +4,10 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 import java.awt.RenderingHints;
 //### IMPORTS ##############################################################################################################################
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,7 +21,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
+import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
+import nappydevelopment.nappy_the_ingenious.data.Spieler;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
+import nappydevelopment.nappy_the_ingenious.util.statistics.TopFiveGenerator;
+
+import java.sql.Statement;
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
@@ -149,6 +158,7 @@ public class MainStageController {
 			}
 			else if(src == view.btnYes) {
 				System.out.println("Clicked the Yes-Button");
+				MainStageController.this.res.askedQuestions+=1;
 				if(MainStageController.this.gameIsFinished) {
 					MainStageController.this.program.abortCurrentGame();
 				}
@@ -159,6 +169,7 @@ public class MainStageController {
 			}
 			else if(src == view.btnNo) {
 				System.out.println("Clicked the No-Button");
+				MainStageController.this.res.askedQuestions+=1;
 				if(MainStageController.this.gameIsFinished) {
 					MainStageController.this.program.abortCurrentGame();
 				}
@@ -203,7 +214,7 @@ public class MainStageController {
 		
 		//If the user confirm the game abortion:
 		if (result.get() == bttApply){
-		    this.program.abortCurrentGame();
+		    this.program.abortCurrentGameWithoutStatistics();
 		}
 	}
 	
@@ -351,6 +362,76 @@ public class MainStageController {
 	public void showGamemode2View() {
 		
 	}
+
+	public MainStageResources getRes(){
+		return res;
+	}
+
+	public void berechnePunktzahl(){
+		/*TODO
+		Algo zum Berechnen der Punktzahl hier einfügen
+		 */
+		Spieler aktuellerSpieler = new Spieler("Günther", 20, 20, 12345);
+		boolean won_mode1 = true;
+		boolean won_mode2 = false;
+
+
+
+		TopFiveGenerator t5g = new TopFiveGenerator();
+		ArrayList<Spieler> topPlayers = t5g.getTopFivePlayers();
+		topPlayers.add(aktuellerSpieler);
+
+		topPlayers.sort(new Comparator<Spieler>() {
+            /* TODO
+            * Comparator anhand zu ermittelnder Kriterien erweitern */
+            @Override
+            public int compare(Spieler spieler1, Spieler spieler2) {
+                if(spieler1.getGesamtPunktzahl()<spieler2.getGesamtPunktzahl()){
+                    return 0;
+                }
+                if(spieler1.getGesamtPunktzahl()>spieler2.getGesamtPunktzahl()){
+                    return 1;
+                }
+                return 0;
+            }
+        });
+
+		topPlayers.remove(topPlayers.lastIndexOf(Spieler.class));
+
+		try{
+			Statement st = DatabaseProvider.getStatement();
+			st.execute(
+					"DROP TABLE IF EXISTS HIGHSCORES; \n" +
+							"CREATE TABLE HIGHSCORES( \n" +
+							"ID INT PRIMARY KEY, \n" +
+							"player_name VARCHAR, \n" +
+							"win_mode1 Boolean, \n" +
+							"win_mode2 Boolean, \n" +
+							"questions_nappy INT, \n" +
+							"questions_spieler INT, \n" +
+							"score INT );"
+							);
+			int playerStat = 0;
+			for (Spieler player: topPlayers) {
+				playerStat +=1;
+				st.execute(
+						"Insert Into HIGHSCORES value(" +
+								playerStat + ", " +
+								player.getAnzeigeName() + ", " +
+								won_mode1 + ", " +
+								won_mode2 + ", " +
+								player.getFragen_nappy() + ", " +
+								player.getFragen_spieler() + ", " +
+								player.getGesamtPunktzahl() + ");"
+				);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+
+	}
+
 
 	/* changeLanguageToGerman [method]: *//**
 	 * 

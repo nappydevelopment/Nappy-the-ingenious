@@ -7,10 +7,14 @@ public class Spieler {
 
     private String anzeigeName;
     private int gesamtPunktzahl;
+    private int fragen_nappy;
+    private int fragen_spieler;
 
 
-    public Spieler(String anzeigename, int gesamtpunktzahl) {
+    public Spieler(String anzeigename, int fragen_nappy, int fragen_spieler, int gesamtpunktzahl) {
         this.anzeigeName = anzeigename;
+        this.fragen_nappy = fragen_nappy;
+        this.fragen_spieler = fragen_spieler;
         this.gesamtPunktzahl = gesamtpunktzahl;
     }
 
@@ -22,11 +26,28 @@ public class Spieler {
         anzeigeName = anzeigeName;
     }
 
-    public int getGesamtpunktzahl() {
+    public int getFragen_nappy() {
+        return fragen_nappy;
+    }
+
+    public void setFragen_nappy(int fragen_nappy) {
+        this.fragen_nappy = fragen_nappy;
+    }
+
+    public int getFragen_spieler() {
+        return fragen_spieler;
+    }
+
+    public void setFragen_spieler(int fragen_spieler) {
+        this.fragen_spieler = fragen_spieler;
+    }
+
+    public int getGesamtPunktzahl() {
         return gesamtPunktzahl;
     }
 
-    public void setGesamtpunktzahl(int gesamtpunktzahl) {
-        gesamtPunktzahl = gesamtpunktzahl;
+    public void setGesamtPunktzahl(int gesamtPunktzahl) {
+        this.gesamtPunktzahl = gesamtPunktzahl;
     }
+
 }

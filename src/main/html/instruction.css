@@ -24,7 +24,7 @@
 
 html, body {
   font-family: 'simpsons';
-  background-color: #FFD90F;
+  background-color: #eeeeee;
   font-weight: 900;
 }
 
@@ -42,14 +42,14 @@ html {
 
 dt {
   font-weight:bold;
-  background: #eceff3;
-  background: -moz-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eceff3), color-stop(100%, #c1cad5));
-  background: -webkit-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
-  background: -o-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
-  background: -ms-linear-gradient(top, #eceff3 0%, #c1cad5 100%);
-  background: linear-gradient(top, #eceff3 0%, #c1cad5 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eceff3', endColorstr='#c1cad5', GradientType=0 );
+  background: #FFD90F;
+  background: -moz-linear-gradient(top, #eceff3 0%, #FFD90F 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eceff3), color-stop(100%, #FFD90F));
+  background: -webkit-linear-gradient(top, #eceff3 0%, #FFD90F 100%);
+  background: -o-linear-gradient(top, #eceff3 0%, #FFD90F 100%);
+  background: -ms-linear-gradient(top, #eceff3 0%, #FFD90F 100%);
+  background: linear-gradient(top, #eceff3 0%, #FFD90F 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eceff3', endColorstr='#FFD90F', GradientType=0 );
   float:left;
   width:510px;
   padding:10px 10px 9px 10px;
@@ -73,20 +73,20 @@ dt {
 
 dt:hover {
   color:black;
-  background: #eceff3;
-  background: -moz-linear-gradient(top, #fff 0%, #c1cad5 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #c1cad5));
-  background: -webkit-linear-gradient(top, #fff 0%, #c1cad5 100%);
-  background: -o-linear-gradient(top, #fff 0%, #c1cad5 100%);
-  background: -ms-linear-gradient(top, #fff 0%, #c1cad5 100%);
-  background: linear-gradient(top, #fff 0%, #c1cad5 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#c1cad5', GradientType=0 );
+  background: #FFD90F;
+  background: -moz-linear-gradient(top, #fff 0%, #FFD90F 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #FFD90F));
+  background: -webkit-linear-gradient(top, #fff 0%, #FFD90F 100%);
+  background: -o-linear-gradient(top, #fff 0%, #FFD90F 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #FFD90F 100%);
+  background: linear-gradient(top, #fff 0%, #FFD90F 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#FFD90F', GradientType=0 );
 }
 
 dd {
   color: black;
   display: none;
-  background: #FFD90F;
+  background: #eeeeee;
   margin: 0 0 15px 0;
   float: left;
   width: 520px;

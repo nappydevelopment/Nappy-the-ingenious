@@ -1,5 +1,6 @@
 package nappydevelopment.nappy_the_ingenious;
 
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
+import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
@@ -177,7 +179,20 @@ public class Program extends Application {
 		this.noOfQuestions++;
 	}
 	
+	public void abortCurrentGameWithoutStatistics() {
+		this.noOfQuestions = 0;
+		this.questGen = null;
+		this.mainStageController.showStartView();
+	}
+
 	public void abortCurrentGame() {
+
+		/*TODO
+		Punkteberechnung hier, Datenbankspeicherung hier
+		 */
+		this.mainStageController.berechnePunktzahl();
+
+
 		this.noOfQuestions = 0;
 		this.questGen = null;
 		this.mainStageController.showStartView();
