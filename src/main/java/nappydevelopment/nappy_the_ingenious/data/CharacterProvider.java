@@ -34,7 +34,6 @@ public class CharacterProvider{
 			st.close();
 			return out;
 		}catch(SQLException e){
-			System.out.println("SQL Exception in Character Provider");
 			e.printStackTrace();
 		}
 		return null;
