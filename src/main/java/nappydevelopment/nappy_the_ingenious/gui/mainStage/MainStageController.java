@@ -396,9 +396,9 @@ public class MainStageController {
 	private String showEnterNameDialog() {
 
 		TextInputDialog dialog = new TextInputDialog("walter");
-		dialog.setTitle("Text Input Dialog");
-		dialog.setHeaderText("Look, a Text Input Dialog");
-		dialog.setContentText("Please enter your name:");
+		dialog.setTitle(this.res.enterNameDialogTitle);
+		dialog.setHeaderText(this.res.enterNameDialogHeaderText);
+		dialog.setContentText(this.res.enterNameDialogContentText);
 
 // Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
