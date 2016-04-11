@@ -23,7 +23,7 @@ import javafx.scene.paint.ImagePattern;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
-import nappydevelopment.nappy_the_ingenious.data.Spieler;
+import nappydevelopment.nappy_the_ingenious.data.Player;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 import nappydevelopment.nappy_the_ingenious.util.statistics.TopFiveGenerator;
 
@@ -373,7 +373,7 @@ public class MainStageController {
 		/*TODO
 		Algo zum Berechnen der Punktzahl hier einfügen
 		 */
-		Spieler player = new Spieler(spielerName, 20, 20, 12345);
+		Player player = new Player(spielerName, 20, 20, 12345);
 		boolean won_mode1 = true;
 		boolean won_mode2 = false;
 

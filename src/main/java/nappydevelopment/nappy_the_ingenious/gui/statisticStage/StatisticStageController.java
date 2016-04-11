@@ -1,11 +1,15 @@
 package nappydevelopment.nappy_the_ingenious.gui.statisticStage;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.Player;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
+import nappydevelopment.nappy_the_ingenious.util.statistics.TopFiveGenerator;
 
 //### IMPORTS ##############################################################################################################################
 public class StatisticStageController {
@@ -106,6 +110,41 @@ public class StatisticStageController {
 		}
 		
 	}
+
+//### PRIVATE METHODS ######################################################################################################################
+	
+	private void readOutTopFivePlayer() {
+		
+		TopFiveGenerator tfGen = new TopFiveGenerator();
+		ArrayList<Player> tfp = tfGen.getTopFivePlayers();
+		
+		Player curPlayer = tfp.get(0);
+		
+		this.res.lblP1NameText.set(curPlayer.getAnzeigeName());
+		this.res.lblP1ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		
+		curPlayer = tfp.get(1);
+		
+		this.res.lblP2NameText.set(curPlayer.getAnzeigeName());
+		this.res.lblP2ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		
+		curPlayer = tfp.get(2);
+		
+		this.res.lblP3NameText.set(curPlayer.getAnzeigeName());
+		this.res.lblP3ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		
+		curPlayer = tfp.get(3);
+		
+		this.res.lblP4NameText.set(curPlayer.getAnzeigeName());
+		this.res.lblP4ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		
+		curPlayer = tfp.get(4);
+		
+		this.res.lblP5NameText.set(curPlayer.getAnzeigeName());
+		this.res.lblP5ValueText.set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+		
+		//ArrayList<WikiCharacter> tfc = tfGen.
+	}
 	
 //### PUBLIC METHODS #######################################################################################################################
 	
@@ -116,6 +155,8 @@ public class StatisticStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
+		
+		this.readOutTopFivePlayer();
 		
 		this.view.show();
 	}
