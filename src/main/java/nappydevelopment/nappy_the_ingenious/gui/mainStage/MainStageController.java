@@ -2,7 +2,7 @@
 
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
-import java.awt.RenderingHints;
+import java.awt.*;
 //### IMPORTS ##############################################################################################################################
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +16,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
@@ -368,70 +369,44 @@ public class MainStageController {
 	}
 
 	public void berechnePunktzahl(){
+		String spielerName = MainStageController.this.showEnterNameDialog();
 		/*TODO
 		Algo zum Berechnen der Punktzahl hier einfügen
 		 */
-		Spieler aktuellerSpieler = new Spieler("Günther", 20, 20, 12345);
+		Spieler player = new Spieler(spielerName, 20, 20, 12345);
 		boolean won_mode1 = true;
 		boolean won_mode2 = false;
 
-
-
-		TopFiveGenerator t5g = new TopFiveGenerator();
-		ArrayList<Spieler> topPlayers = t5g.getTopFivePlayers();
-		topPlayers.add(aktuellerSpieler);
-
-		topPlayers.sort(new Comparator<Spieler>() {
-            /* TODO
-            * Comparator anhand zu ermittelnder Kriterien erweitern */
-            @Override
-            public int compare(Spieler spieler1, Spieler spieler2) {
-                if(spieler1.getGesamtPunktzahl()<spieler2.getGesamtPunktzahl()){
-                    return 0;
-                }
-                if(spieler1.getGesamtPunktzahl()>spieler2.getGesamtPunktzahl()){
-                    return 1;
-                }
-                return 0;
-            }
-        });
-
-		topPlayers.remove(topPlayers.lastIndexOf(Spieler.class));
-
 		try{
 			Statement st = DatabaseProvider.getStatement();
-			st.execute(
-					"DROP TABLE IF EXISTS HIGHSCORES; \n" +
-							"CREATE TABLE HIGHSCORES( \n" +
-							"ID INT PRIMARY KEY, \n" +
-							"player_name VARCHAR, \n" +
-							"win_mode1 Boolean, \n" +
-							"win_mode2 Boolean, \n" +
-							"questions_nappy INT, \n" +
-							"questions_spieler INT, \n" +
-							"score INT );"
-							);
-			int playerStat = 0;
-			for (Spieler player: topPlayers) {
-				playerStat +=1;
 				st.execute(
-						"Insert Into HIGHSCORES value(" +
-								playerStat + ", " +
-								player.getAnzeigeName() + ", " +
-								won_mode1 + ", " +
-								won_mode2 + ", " +
-								player.getFragen_nappy() + ", " +
-								player.getFragen_spieler() + ", " +
-								player.getGesamtPunktzahl() + ");"
+						"Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
+								player.getAnzeigeName() + "', '" +
+								won_mode1 + "', '" +
+								won_mode2 + "', '" +
+								player.getFragen_nappy() + "', '" +
+								player.getFragen_spieler() + "', '" +
+								player.getGesamtPunktzahl() + "');"
 				);
-			}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-
-
 	}
 
+	private String showEnterNameDialog() {
+
+		TextInputDialog dialog = new TextInputDialog("walter");
+		dialog.setTitle("Text Input Dialog");
+		dialog.setHeaderText("Look, a Text Input Dialog");
+		dialog.setContentText("Please enter your name:");
+
+// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			System.out.println("Your name: " + result.get());
+		}
+		return result.get();
+	}
 
 	/* changeLanguageToGerman [method]: *//**
 	 * 

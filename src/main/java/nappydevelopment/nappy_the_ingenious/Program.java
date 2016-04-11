@@ -193,6 +193,7 @@ public class Program extends Application {
 		this.mainStageController.berechnePunktzahl();
 
 
+
 		this.noOfQuestions = 0;
 		this.questGen = null;
 		this.mainStageController.showStartView();
