@@ -88,9 +88,12 @@ public class MainStageResources {
 	Image imvKnowledgeIcon;
 	Image imvNappyImage;
 
-	//### Fragenanzahl #############################################################################
+	//### Statistik-Kram #############################################################################
 
 	int askedQuestions;
+	boolean win_mode1;
+	boolean win_mode2;
+
 
 //### CONSTRUCTORS #########################################################################################################################
 
@@ -158,6 +161,8 @@ public class MainStageResources {
 		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
 
 		this.askedQuestions = 0;
+		this.win_mode1 = false;
+		this.win_mode2 = false;
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
@@ -254,6 +259,14 @@ public class MainStageResources {
 
 	public int getAskedQuestions(){
 		return this.askedQuestions;
+	}
+
+	public boolean getWinMode1(){
+		return this.win_mode1;
+	}
+
+	public boolean getWinMode2(){
+		return this.win_mode2;
 	}
 
 //##########################################################################################################################################
