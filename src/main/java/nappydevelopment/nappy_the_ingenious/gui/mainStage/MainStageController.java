@@ -370,25 +370,28 @@ public class MainStageController {
 
 	public void berechnePunktzahl(){
 		String spielerName = MainStageController.this.showEnterNameDialog();
+		if(spielerName == null){
+			return;
+		}
 		/*TODO
-		Algo zum Berechnen der Punktzahl hier einfügen
-		 */
+	Algo zum Berechnen der Punktzahl hier einfügen
+	 */
 		Spieler player = new Spieler(spielerName, 20, 20, 12345);
 		boolean won_mode1 = true;
 		boolean won_mode2 = false;
 
 		try{
 			Statement st = DatabaseProvider.getStatement();
-				st.execute(
-						"Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
-								player.getAnzeigeName() + "', '" +
-								won_mode1 + "', '" +
-								won_mode2 + "', '" +
-								player.getFragen_nappy() + "', '" +
-								player.getFragen_spieler() + "', '" +
-								player.getGesamtPunktzahl() + "');"
-				);
-		}catch(SQLException e){
+			st.execute(
+					"Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
+							player.getAnzeigeName() + "', '" +
+							won_mode1 + "', '" +
+							won_mode2 + "', '" +
+							player.getFragen_nappy() + "', '" +
+							player.getFragen_spieler() + "', '" +
+							player.getGesamtPunktzahl() + "');"
+			);
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -404,8 +407,9 @@ public class MainStageController {
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
 			System.out.println("Your name: " + result.get());
+			return result.get();
 		}
-		return result.get();
+		return null;
 	}
 
 	/* changeLanguageToGerman [method]: *//**
