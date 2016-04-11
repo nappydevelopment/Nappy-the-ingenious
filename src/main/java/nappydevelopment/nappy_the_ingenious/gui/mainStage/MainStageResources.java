@@ -83,6 +83,10 @@ public class MainStageResources {
 	Image imvKnowledgeIcon;
 	Image imvNappyImage;
 
+	//### Fragenanzahl #############################################################################
+
+	int askedQuestions;
+
 //### CONSTRUCTORS #########################################################################################################################
 
 	/* MainStageResources [constructor]: Default constructor to create a MainStageResources-object *//**
@@ -148,6 +152,7 @@ public class MainStageResources {
 		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
 		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
 
+		this.askedQuestions = 0;
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
@@ -227,6 +232,10 @@ public class MainStageResources {
 		this.abortGameDialogBtnApplyText = "Spiel abbrechen";
 		this.abortGameDialogBtnCancelText = "Abbrechen";
 
+	}
+
+	public int getAskedQuestions(){
+		return this.askedQuestions;
 	}
 
 //##########################################################################################################################################

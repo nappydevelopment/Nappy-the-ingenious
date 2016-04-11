@@ -28,7 +28,7 @@ public class CharacterProvider{
 
 				Image img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + name.toLowerCase().replace(" ", "_") +".png");
 
-				WikiCharacter chr = new WikiCharacter(name, nickname, description_de, description_de, img);
+				WikiCharacter chr = new WikiCharacter(name, nickname, description_de, description_en, img);
 				out.add(chr);
 			}
 			st.close();
