@@ -100,7 +100,3 @@ dd {
   width:17px;
   text-indent:-9999px;
 }
-
-.closed { background:url(button.png) left no-repeat; }
-
-.open { background:url(button.png) right no-repeat; }
