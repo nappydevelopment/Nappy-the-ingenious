@@ -61,7 +61,7 @@ public class MainStageResources {
 	String enterNameDialogBtnCancelText;
 	String enterNameDialogTitle;
 	String enterNameDialogHeaderText;
-	String enterNameDiaogContentText;
+	String enterNameDialogContentText;
 
 	//### Images for the menu-bar ##################################################################
 
@@ -202,7 +202,7 @@ public class MainStageResources {
 		//Enter-Name-Texts:
 		this.enterNameDialogTitle = "Nappy, the ingenious";
 		this.enterNameDialogHeaderText = "Please enter your name!";
-
+		this.enterNameDialogContentText = "Your name:";
 		this.abortGameDialogBtnApplyText = "Apply for the Top 5";
 		this.abortGameDialogBtnCancelText = "Cancel";
 	}
@@ -242,6 +242,12 @@ public class MainStageResources {
 		this.abortGameDialogContentText = "Möchten Sie das aktuelle Spiel wirklich abbrechen?\n"
 										+ "Hinweis: Abgebrochene Spiele werden nicht in die Statistik aufgenommen!\n\n";
 		this.abortGameDialogBtnApplyText = "Spiel abbrechen";
+		this.abortGameDialogBtnCancelText = "Abbrechen";
+
+		this.enterNameDialogTitle = "Nappy, the ingenious";
+		this.enterNameDialogHeaderText = "Bitte gib deinen Namen ein!";
+		this.enterNameDialogContentText = "Dein Name:";
+		this.abortGameDialogBtnApplyText = "Versuch dein Glück im Top 5";
 		this.abortGameDialogBtnCancelText = "Abbrechen";
 
 	}
