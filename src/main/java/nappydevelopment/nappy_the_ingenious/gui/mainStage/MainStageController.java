@@ -161,6 +161,7 @@ public class MainStageController {
 				System.out.println("Clicked the Yes-Button");
 				MainStageController.this.res.askedQuestions+=1;
 				if(MainStageController.this.gameIsFinished) {
+					MainStageController.this.res.win_mode1 = true;
 					MainStageController.this.program.abortCurrentGame();
 				}
 				else {
@@ -172,6 +173,7 @@ public class MainStageController {
 				System.out.println("Clicked the No-Button");
 				MainStageController.this.res.askedQuestions+=1;
 				if(MainStageController.this.gameIsFinished) {
+					MainStageController.this.res.win_mode1 = false;
 					MainStageController.this.program.abortCurrentGame();
 				}
 				else {
@@ -373,19 +375,31 @@ public class MainStageController {
 		if(spielerName == null){
 			return;
 		}
+<<<<<<< HEAD
 
 		Player player = new Player(spielerName, 20, 20, 12345);
 
 		boolean won_mode1 = true;
 		boolean won_mode2 = false;
+=======
+		/*TODO
+	Algo zum Berechnen der Punktzahl hier einfügen
+	 */
+		boolean win_mode1 = MainStageController.this.res.win_mode1;
+		boolean win_mode2 = MainStageController.this.res.win_mode2;
+
+
+		Spieler player = new Spieler(spielerName, MainStageController.this.res.getAskedQuestions(), 20, 12345);
+		MainStageController.this.res.askedQuestions = 0;
+>>>>>>> 20a58fbafd1351eaffb0bee1e4ce86063f3900cb
 
 		try{
 			Statement st = DatabaseProvider.getStatement();
 			st.execute(
 					"Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
 							player.getAnzeigeName() + "', '" +
-							won_mode1 + "', '" +
-							won_mode2 + "', '" +
+							win_mode1 + "', '" +
+							win_mode2 + "', '" +
 							player.getFragen_nappy() + "', '" +
 							player.getFragen_spieler() + "', '" +
 							player.getGesamtPunktzahl() + "');"
