@@ -57,6 +57,11 @@ public class MainStageResources {
 	String abortGameDialogContentText;
 	String abortGameDialogBtnApplyText;
 	String abortGameDialogBtnCancelText;
+	String enterNameDialogBtnApplyText;
+	String enterNameDialogBtnCancelText;
+	String enterNameDialogTitle;
+	String enterNameDialogHeaderText;
+	String enterNameDiaogContentText;
 
 	//### Images for the menu-bar ##################################################################
 
@@ -192,6 +197,13 @@ public class MainStageResources {
 		this.abortGameDialogContentText = "Do you really want to abort the current game?\n"
 										+ "Notice: Aborted games will not listed in the statistic!\n\n";
 		this.abortGameDialogBtnApplyText = "Abort game";
+		this.abortGameDialogBtnCancelText = "Cancel";
+
+		//Enter-Name-Texts:
+		this.enterNameDialogTitle = "Nappy, the ingenious";
+		this.enterNameDialogHeaderText = "Please enter your name!";
+
+		this.abortGameDialogBtnApplyText = "Apply for the Top 5";
 		this.abortGameDialogBtnCancelText = "Cancel";
 	}
 

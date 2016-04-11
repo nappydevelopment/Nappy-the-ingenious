@@ -43,17 +43,19 @@ public class TopFiveGenerator {
             st.execute(
                      /* TODO
                     * Select anhand zu erläuternder Kriterien erweitern */
-                    "SELECT spieler_name, gesamtpunktzahl FROM SPIELER_HIGHSCORE ORDER BY gesamtpunktzahl LIMIT 5"
+                    "SELECT * FROM HIGHSCORES ORDER BY score DESC LIMIT 5"
             );
             ResultSet res = st.getResultSet();
 
             while(res.next()){
                  /* TODO
             * Nötige Dinge anhand Absprache aus dem RS auslesen */
-                String name = res.getString("spieler_name");
-                int nappy_fragen = res.getInt("");
-                int spieler_fragen = res.getInt("");
-                int punktzahl = res.getInt("gesamtpunktzahl");
+                String name = res.getString("player_name");
+                System.out.print(name+ ", ");
+                //, player_name VARCHAR, win_mode1 Boolean, win_mode2 Boolean, questions_nappy INT, questions_spieler INT, score
+                int nappy_fragen = res.getInt("questions_nappy");
+                int spieler_fragen = res.getInt("questions_player");
+                int punktzahl = res.getInt("score");
                 topFiveList.add(new Spieler(name, nappy_fragen, spieler_fragen, punktzahl));
             }
             res.close();
@@ -61,7 +63,7 @@ public class TopFiveGenerator {
         }catch(SQLException e){
             e.printStackTrace();
         }
-
+        System.out.print("\n");
         return topFiveList;
     }
 
