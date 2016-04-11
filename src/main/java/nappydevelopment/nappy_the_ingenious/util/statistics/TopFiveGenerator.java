@@ -52,7 +52,6 @@ public class TopFiveGenerator {
             * Nötige Dinge anhand Absprache aus dem RS auslesen */
                 String name = res.getString("player_name");
                 System.out.print(name+ ", ");
-                //, player_name VARCHAR, win_mode1 Boolean, win_mode2 Boolean, questions_nappy INT, questions_spieler INT, score
                 int nappy_fragen = res.getInt("questions_nappy");
                 int spieler_fragen = res.getInt("questions_player");
                 int punktzahl = res.getInt("score");
