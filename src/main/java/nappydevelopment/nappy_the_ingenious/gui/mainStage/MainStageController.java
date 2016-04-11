@@ -299,7 +299,7 @@ public class MainStageController {
 		this.view.mniNewGame.setDisable(false);
 		this.view.mniSettings.setDisable(false);
 		this.view.mniStatistic.setDisable(false);
-		this.view.btnStatistic.setDisable(true);
+		this.view.btnStatistic.setDisable(false);
 		
 		//Show the stage:
 		this.view.show();

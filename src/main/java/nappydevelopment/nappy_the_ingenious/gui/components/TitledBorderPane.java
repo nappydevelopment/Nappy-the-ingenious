@@ -1,5 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.gui.components;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -30,11 +32,11 @@ public class TitledBorderPane extends StackPane {
 		    StackPane.setAlignment(lblTitle, Pos.TOP_LEFT);
 
 		    StackPane contentPane = new StackPane();
-		    content.setStyle("-fx-padding: 26 10 10 10;");
+		    //content.setStyle("-fx-padding: 26 10 10 10;");
 		    contentPane.getChildren().add(content);
 
 		    this.setStyle("-fx-content-display: top;" +
-		    			  "-fx-border-insets: 20 15 15 15;" +
+		    			  //"-fx-border-insets: 20 15 15 15;" +
                           "-fx-border-color: black;" +
 		    			  "-fx-border-width: 2;");
 		    this.getChildren().addAll(lblTitle, contentPane);
@@ -48,10 +50,10 @@ public class TitledBorderPane extends StackPane {
 		StackPane.setAlignment(lblTitle, Pos.TOP_LEFT);
 		
 		this.skpContent = new StackPane();
-		this.skpContent.setPadding(new Insets(10, 10, 10, 10));
+		this.skpContent.setPadding(new Insets(15, 15, 15, 15));
 		
 	    this.setStyle("-fx-content-display: top;" +
-  			          "-fx-border-insets: 20 15 15 15;" +
+  			          "-fx-border-insets: 10 0 0 0;" +
                       "-fx-border-color: black;" +
   			          "-fx-border-width: 2;");
         this.getChildren().addAll(lblTitle, this.skpContent);
@@ -68,8 +70,13 @@ public class TitledBorderPane extends StackPane {
 	   this.lblTitle.setText("  " + text + "  ");
    }
 	
+	public void bindTitleText(StringProperty tbpTopFivePlayerText) {
+		this.lblTitle.textProperty().bind(tbpTopFivePlayerText);
+	}
+	
 	public void setContent(Node content) {
 		this.nodContent = content;
+		this.skpContent.getChildren().add(this.nodContent);
 	}
 	
 	public void setTitlePosition(Pos pos) {
