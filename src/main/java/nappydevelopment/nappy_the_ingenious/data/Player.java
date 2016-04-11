@@ -3,7 +3,7 @@ package nappydevelopment.nappy_the_ingenious.data;
 /**
  * Created by Marc on 04.04.2016.
  */
-public class Spieler {
+public class Player {
 
     private String anzeigeName;
     private int gesamtPunktzahl;
@@ -11,7 +11,7 @@ public class Spieler {
     private int fragen_spieler;
 
 
-    public Spieler(String anzeigename, int fragen_nappy, int fragen_spieler, int gesamtpunktzahl) {
+    public Player(String anzeigename, int fragen_nappy, int fragen_spieler, int gesamtpunktzahl) {
         this.anzeigeName = anzeigename;
         this.fragen_nappy = fragen_nappy;
         this.fragen_spieler = fragen_spieler;
