@@ -12,11 +12,12 @@ import java.sql.Statement;
 
 public class QuestionGenerator{
 
-	private String[] column = new String[40];
-	private boolean[] columnBool = new boolean[40];
-	private Boolean[] ans = new Boolean[40];
-	private String[] question = new String[40];
-	private boolean[] dunno = new boolean[40];
+	private String[] column = new String[60];
+	private boolean[] columnBool = new boolean[60];
+	private Boolean[] ans = new Boolean[60];
+	private String[] question = new String[60];
+	private boolean[] dunno = new boolean[60];
+	private int remaining = 0;
 	private int numDunno = 0;
 	private int activeQuestion = -1;
 	private boolean determinisic = false;
@@ -28,9 +29,7 @@ public class QuestionGenerator{
 			st.execute(
 				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
 				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
-				"AND COLUMN_NAME != 'ID'\n" +
-				"AND COLUMN_NAME != 'NAME'\n" +
-				"AND COLUMN_NAME != 'NICKNAME'\n" +
+				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'NICKNAME')\n" +
 				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'"
 			);
 			ResultSet res = st.getResultSet();
@@ -116,33 +115,15 @@ public class QuestionGenerator{
     }
 
 	private float sureness(){
-		Statement st = DatabaseProvider.getStatement();
-		String select = "Select count(0) as C FROM SIMPSONS WHERE ";
-		boolean first = true;
-		for(int i = 0; i < column.length; i++){
-			if(ans[i] == null){
-				continue;
-			}
-			if(first){
-				first = false;
-			}else{
-				select += "AND ";
-			}
-
-			select += column[i];
-			if(!ans[i]){
-				select += "!";
-			}
-			select += "='" + question[i] + "' ";
-		}
-		if(select.endsWith("WHERE ")){
+		String where = generateWhere();
+		if(where.isEmpty()){
 			return 0;
 		}
 		try{
-			st.execute(select);
-			ResultSet res = st.getResultSet();
+			ResultSet res = DatabaseProvider.executeStatement("Select count(0) as C FROM SIMPSONS" + where);
 			res.next();
 			float count = res.getFloat("C");
+			res.close();
 			if(count == 0){
 				return -2;
 			}
@@ -151,6 +132,30 @@ public class QuestionGenerator{
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	private String generateWhere(){
+		String where = " WHERE ";
+		if(firstQuestion == false){
+			boolean first = true;
+			for(int i = 0; i < column.length; i++){
+				if(ans[i] != null && column[i] != null){
+					if(first){
+						first = false;
+					}else{
+						where += "AND ";
+					}
+					where += "SIMPSONS." + column[i];
+					if(!ans[i]){
+						where += " !";
+					}
+					where += "= '" + question[i] + "' ";
+				}
+			}
+		}
+		if(where == " WHERE "){
+			where = "";
+		}
+		return where;
 	}
 
 	public float getSureness(){
@@ -223,28 +228,8 @@ public class QuestionGenerator{
 
 	private float tryQuestion(int columnID){
 		Statement st = DatabaseProvider.getStatement();
-		String where = " WHERE ";
-		if(firstQuestion == false){
-			boolean first = true;
-			for(int i = 0; i < column.length; i++){
-				if(ans[i] != null && column[i] != null){
-					if(first){
-						first = false;
-					}else{
-						where += "AND ";
-					}
-					where += "SIMPSONS." + column[i];
-					if(!ans[i]){
-						where += " !";
-					}
-					where += "= '" + question[i] + "' ";
-				}
-			}
-		}
-		if(where == " WHERE "){
-			where = "";
-		}
-		String select = "SELECT count(0) as C, " + column[columnID] + " FROM SIMPSONS" + where + " GROUP BY " + column[columnID];
+		String select = "SELECT count(0) as C, " + column[columnID] +
+				" FROM SIMPSONS" + generateWhere() + " GROUP BY " + column[columnID];
 		float max = 0;
 		float sum = 0;
 		float ret = 0;
@@ -254,7 +239,7 @@ public class QuestionGenerator{
 			while(res.next()){
 				float val = res.getInt("C");
 				if(!determinisic){
-					val += Math.random()*30;
+					val += Math.random()*(max/2);
 				}
 				if(val > max){
 					max = val;

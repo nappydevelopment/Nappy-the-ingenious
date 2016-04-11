@@ -16,29 +16,13 @@ public class DatabaseProvider{
 				"SELECT count(0) as c FROM(\n" +
 					"SELECT * FROM INFORMATION_SCHEMA.TABLES\n" +
 					"WHERE TABLES.TABLE_NAME = 'SIMPSONS'\n" +
-					"OR TABLES.TABLE_NAME = 'AGE_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'ALIVE_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'AMERICAN_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'CHARACTER_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'FAMOUS_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'FAT_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'HAIRCOLOR_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'HOMOSEXUAL_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'HUMAN_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'JOB_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'MALE_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'MARRIED_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'MOESBAR_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'RELIGOUS_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'SIMPSON_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'SKINCOLOR_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'SMOKES_QUESTIONS'\n" +
-					"OR TABLES.TABLE_NAME = 'WEARINGS_QUESTIONS'\n" +
+					"OR TABLES.TABLE_NAME = 'HIGHSCORES'\n" +
+					"OR TABLES.TABLE_NAME like '%_QUESTIONS'\n" +
 				");"
 			);
 			ResultSet res = st.getResultSet();
 			res.next();
-			if(res.getInt("C") != 19){
+			if(res.getInt("C") != 42){
 				//not everything there
 				resetDatabase();
 			}else{
@@ -56,7 +40,7 @@ public class DatabaseProvider{
 		try{
 			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/db/simpsons.sql");
 			java.util.Scanner s = new java.util.Scanner(initScriptStream).useDelimiter("\\A");
-			String[] initScriptArray = s.next().split(";");
+			String[] initScriptArray = s.next().substring(1).split(";");
 			Statement st = dbConn.createStatement();
 			for(String sa: initScriptArray){
 				st.execute(sa);
@@ -86,6 +70,15 @@ public class DatabaseProvider{
 			return null;
 		}
 		return st;
+	}
+	public static ResultSet executeStatement(String sql){
+		try{
+			Statement st = getStatement();
+			st.execute(sql);
+			return st.getResultSet();
+		}catch(SQLException e){
+		}
+		return null;
 	}
 
 	public void closeDatabase(){
