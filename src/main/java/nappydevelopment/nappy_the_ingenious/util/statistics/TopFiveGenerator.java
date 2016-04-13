@@ -19,21 +19,6 @@ public class TopFiveGenerator {
 
     public TopFiveGenerator(){
 
-
-//        topFiveList.sort(new Comparator<Spieler>() {
-            /* TODO
-            * Comparator anhand zu ermittelnder Kriterien erweitern */
-//            @Override
-//            public int compare(Spieler spieler1, Spieler spieler2) {
-//                if(spieler1.getGesamtPunktzahl()<spieler2.getGesamtPunktzahl()){
-//                    return 0;
-//                }
-//                if(spieler1.getGesamtPunktzahl()>spieler2.getGesamtPunktzahl()){
-//                    return 1;
-//                }
-//                return 0;
-//            }
-//        });
     }
 
     public ArrayList<Player> getTopFivePlayers() {
