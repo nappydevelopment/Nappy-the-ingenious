@@ -18,7 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.SavePlayerInfos;
+import nappydevelopment.nappy_the_ingenious.data.SaveStatisticInfos;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 //Class that handles the interactions of the main-stage with the program-logic:
@@ -154,6 +154,7 @@ public class MainStageController {
 				MainStageController.this.res.askedQuestions+=1;
 				if(MainStageController.this.gameIsFinished) {
 					MainStageController.this.res.win_mode1 = true;
+					SaveStatisticInfos.createAndSaveCharakter(MainStageController.this.program.getCharacter());
 					MainStageController.this.program.abortCurrentGame();
 				}
 				else {
@@ -375,7 +376,7 @@ public class MainStageController {
 		boolean win_mode2 = MainStageController.this.res.win_mode2;
 
 
-		SavePlayerInfos.createAndSavePlayer(spielerName, win_mode1, win_mode2, MainStageController.this.res.askedQuestions);
+		SaveStatisticInfos.createAndSavePlayer(spielerName, win_mode1, win_mode2, MainStageController.this.res.askedQuestions);
 		MainStageController.this.res.askedQuestions = 0;
 	}
 
