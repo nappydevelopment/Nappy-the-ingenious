@@ -8,8 +8,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Player;
-import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
-import nappydevelopment.nappy_the_ingenious.util.statistics.TopFiveGenerator;
+import nappydevelopment.nappy_the_ingenious.util.statistics.StatisticStufGenerator;
 
 //### IMPORTS ##############################################################################################################################
 public class StatisticStageController {
@@ -115,7 +114,7 @@ public class StatisticStageController {
 	
 	private void readOutTopFivePlayer() {
 		
-		TopFiveGenerator tfGen = new TopFiveGenerator();
+		StatisticStufGenerator tfGen = new StatisticStufGenerator();
 		ArrayList<Player> tfp = tfGen.getTopFivePlayers();
 		Player curPlayer = null;
 		

@@ -4,10 +4,6 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 import java.awt.*;
 //### IMPORTS ##############################################################################################################################
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -22,13 +18,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
-import nappydevelopment.nappy_the_ingenious.data.Player;
 import nappydevelopment.nappy_the_ingenious.data.SavePlayerInfos;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
-import nappydevelopment.nappy_the_ingenious.util.statistics.TopFiveGenerator;
-
-import java.sql.Statement;
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
