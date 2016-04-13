@@ -1,16 +1,12 @@
 package nappydevelopment.nappy_the_ingenious;
 
-import java.sql.Statement;
-import java.util.LinkedList;
 import java.util.List;
 
 //### IMPORTS ##############################################################################################################################
 import javafx.application.Application;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
-import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
@@ -20,7 +16,6 @@ import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
-import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageView;
 import nappydevelopment.nappy_the_ingenious.util.gamemode1.QuestionGenerator;
 
 public class Program extends Application {
@@ -190,7 +185,7 @@ public class Program extends Application {
 		/*TODO
 		Punkteberechnung hier, Datenbankspeicherung hier
 		 */
-		this.mainStageController.berechnePunktzahl();
+		this.mainStageController.initSave();
 
 
 
