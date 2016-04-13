@@ -375,13 +375,10 @@ public class MainStageController {
 		if(spielerName == null){
 			return;
 		}
-<<<<<<< HEAD
-
-		Player player = new Player(spielerName, 20, 20, 12345);
 
 		boolean won_mode1 = true;
 		boolean won_mode2 = false;
-=======
+
 		/*TODO
 	Algo zum Berechnen der Punktzahl hier einfügen
 	 */
@@ -389,9 +386,9 @@ public class MainStageController {
 		boolean win_mode2 = MainStageController.this.res.win_mode2;
 
 
-		Spieler player = new Spieler(spielerName, MainStageController.this.res.getAskedQuestions(), 20, 12345);
+		Player player = new Player(spielerName, MainStageController.this.res.getAskedQuestions(), 20, 12345);
 		MainStageController.this.res.askedQuestions = 0;
->>>>>>> 20a58fbafd1351eaffb0bee1e4ce86063f3900cb
+
 
 		try{
 			Statement st = DatabaseProvider.getStatement();
