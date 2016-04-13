@@ -24,6 +24,7 @@ import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Player;
+import nappydevelopment.nappy_the_ingenious.data.SavePlayerInfos;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 import nappydevelopment.nappy_the_ingenious.util.statistics.TopFiveGenerator;
 
@@ -370,14 +371,11 @@ public class MainStageController {
 		return res;
 	}
 
-	public void berechnePunktzahl(){
+	public void initSave(){
 		String spielerName = MainStageController.this.showEnterNameDialog();
 		if(spielerName == null){
 			return;
 		}
-
-		boolean won_mode1 = false;
-		boolean won_mode2 = false;
 
 		/*TODO
 	Algo zum Berechnen der Punktzahl hier einfügen
@@ -386,25 +384,11 @@ public class MainStageController {
 		boolean win_mode2 = MainStageController.this.res.win_mode2;
 
 
-		Player player = new Player(spielerName, MainStageController.this.res.getAskedQuestions(), 20, 12345);
+		SavePlayerInfos.createAndSavePlayer(spielerName, win_mode1, win_mode2, MainStageController.this.res.askedQuestions);
 		MainStageController.this.res.askedQuestions = 0;
-
-
-		try{
-			Statement st = DatabaseProvider.getStatement();
-			st.execute(
-					"Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
-							player.getAnzeigeName() + "', '" +
-							win_mode1 + "', '" +
-							win_mode2 + "', '" +
-							player.getFragen_nappy() + "', '" +
-							player.getFragen_spieler() + "', '" +
-							player.getGesamtPunktzahl() + "');"
-			);
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
 	}
+
+
 
 	private String showEnterNameDialog() {
 
