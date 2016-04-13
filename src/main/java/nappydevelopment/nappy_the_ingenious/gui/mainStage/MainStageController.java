@@ -376,7 +376,7 @@ public class MainStageController {
 			return;
 		}
 
-		boolean won_mode1 = true;
+		boolean won_mode1 = false;
 		boolean won_mode2 = false;
 
 		/*TODO
