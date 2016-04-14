@@ -46,6 +46,7 @@ public class QuestionGenerator{
 			e.printStackTrace();
 		}
     }
+
 	public QuestionGenerator(boolean det){
 		super();
 		determinisic = det;
@@ -53,22 +54,9 @@ public class QuestionGenerator{
 
 	public WikiCharacter getCharacter(Language lang){
 		Statement st = DatabaseProvider.getStatement();
-		String select = "SELECT name, nickname, description_en, description_de FROM SIMPSONS WHERE ";
+		String select = "SELECT name, nickname, description_en, description_de FROM SIMPSONS";
 		boolean first = true;
-		for(int i = 0; i < column.length; i++){
-			if(column[i] != null & question[i] != null & ans[i] != null){
-				if(!first){
-					select += "AND ";
-				}else{
-					first = false;
-				}
-				if(ans[i]){
-					select += column[i] + "='" + question[i] + "' ";
-				}else{
-					select += column[i] + "!='" + question[i] + "' ";
-				}
-			}
-		}
+		select += generateWhere();
 		try{
 			st.execute(select);
 			ResultSet res = st.getResultSet();
@@ -133,6 +121,7 @@ public class QuestionGenerator{
 		}
 		return -1;
 	}
+
 	private String generateWhere(){
 		String where = " WHERE ";
 		if(firstQuestion == false){

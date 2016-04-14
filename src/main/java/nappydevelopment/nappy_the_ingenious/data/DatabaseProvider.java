@@ -59,6 +59,7 @@ public class DatabaseProvider{
 		}
 		return dbConn;
 	}
+
 	public static Statement getStatement(){
 		Statement st;
 		if(dbConn == null){
@@ -71,6 +72,7 @@ public class DatabaseProvider{
 		}
 		return st;
 	}
+
 	public static ResultSet executeStatement(String sql){
 		try{
 			Statement st = getStatement();
