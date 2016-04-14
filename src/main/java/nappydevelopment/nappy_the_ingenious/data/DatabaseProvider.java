@@ -73,16 +73,6 @@ public class DatabaseProvider{
 		return st;
 	}
 
-	public static ResultSet executeStatement(String sql){
-		try{
-			Statement st = getStatement();
-			st.execute(sql);
-			return st.getResultSet();
-		}catch(SQLException e){
-		}
-		return null;
-	}
-
 	public void closeDatabase(){
 		try{
 			dbConn.close();
