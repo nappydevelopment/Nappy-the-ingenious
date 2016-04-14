@@ -14,7 +14,7 @@ public class Question{
 		this.question = question;
 	}
 	public Question(String table, String attribute, String question, String type){
-		super();
+		this(table, attribute, question);
 		this.isBoolean = type == "BOOLEAN";
 	}
 
