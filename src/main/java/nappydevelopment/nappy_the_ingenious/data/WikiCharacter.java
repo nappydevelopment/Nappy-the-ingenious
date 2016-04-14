@@ -24,12 +24,9 @@ public class WikiCharacter {
 		this.wikiImage = wikiImage;
 	}
 	public WikiCharacter(String name, String nickname, String description_de, String description_en, Image wikiImage) {
-		this.name = name;
-		this.nickname = nickname;
-		this.description = description_de;
+		this(name, nickname, description_de, wikiImage);
 		this.description_de = description_de;
 		this.description_en = description_en;
-		this.wikiImage = wikiImage;
 	}
 
 //### GETTER/SETTER ########################################################################################################################
