@@ -24,9 +24,8 @@ public class Gamemode1{
 	private boolean firstQuestion = true;
 
     public Gamemode1(){
-		try{
-        	Statement st = DatabaseProvider.getStatement();
-			st.execute(
+		try(Statement st = DatabaseProvider.getStatement()){
+        	st.execute(
 				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
 				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
 				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'NICKNAME')\n" +
@@ -40,8 +39,6 @@ public class Gamemode1{
 				ans[i] = null;
 				i++;
 			}
-			res.close();
-			st.close();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -53,11 +50,10 @@ public class Gamemode1{
 	}
 
 	public WikiCharacter getCharacter(Language lang){
-		Statement st = DatabaseProvider.getStatement();
 		String select = "SELECT name, nickname, description_en, description_de FROM SIMPSONS";
 		boolean first = true;
 		select += generateWhere();
-		try{
+		try(Statement st = DatabaseProvider.getStatement()){
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			if(!res.next()){
@@ -107,8 +103,9 @@ public class Gamemode1{
 		if(where.isEmpty()){
 			return 0;
 		}
-		try{
-			ResultSet res = DatabaseProvider.executeStatement("Select count(0) as C FROM SIMPSONS" + where);
+		try(Statement st = DatabaseProvider.getStatement()){
+			st.execute("Select count(0) as C FROM SIMPSONS" + where);
+			ResultSet res = st.getResultSet();
 			res.next();
 			float count = res.getFloat("C");
 			res.close();
@@ -199,8 +196,7 @@ public class Gamemode1{
 
 	private String giveQuestion(int columnNr, Language lang){
 		String ques = null;
-		try{
-			Statement st = DatabaseProvider.getStatement();
+		try(Statement st = DatabaseProvider.getStatement()){
 			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			ResultSet res = st.getResultSet();
 			res.next();
@@ -216,13 +212,12 @@ public class Gamemode1{
 	}
 
 	private float tryQuestion(int columnID){
-		Statement st = DatabaseProvider.getStatement();
 		String select = "SELECT count(0) as C, " + column[columnID] +
 				" FROM SIMPSONS" + generateWhere() + " GROUP BY " + column[columnID];
 		float max = 0;
 		float sum = 0;
 		float ret = 0;
-		try{
+		try(Statement st = DatabaseProvider.getStatement()){
 			st.execute(select);
 			ResultSet res = st.getResultSet();
 			while(res.next()){
