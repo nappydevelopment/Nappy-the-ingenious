@@ -9,6 +9,7 @@ import java.util.Map;
 
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Question;
+import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
@@ -18,6 +19,9 @@ public class Gamemode2{
 	private Language lang;
 
 	public Gamemode2(Language ln){
+		this(ln, false);
+	}
+	public Gamemode2(Language ln, boolean deterministic){
 		lang = ln;
 		try(Statement st = DatabaseProvider.getStatement()){
 			String questionSelect = "";
@@ -58,7 +62,11 @@ public class Gamemode2{
 			}
 			res.close();
 
-			st.execute("SELECT * FROM SIMPSONS ORDER BY RANDOM() limit 1;");
+			if(deterministic){
+				st.execute("SELECT * FROM SIMPSONS limit 1;");
+			}else{
+				st.execute("SELECT * FROM SIMPSONS ORDER BY RANDOM() limit 1;");
+			}
 			res = st.getResultSet();
 			res.next();
 			for(int i = 1; i < res.getMetaData().getColumnCount(); i++){
@@ -78,8 +86,12 @@ public class Gamemode2{
 		return character.get(question.getTable()).equals(question.getAttribute());
 	}
 
+	public Boolean makeGuess(WikiCharacter wiki){
+		return this.makeGuess(wiki.getName());
+	}
 	public Boolean makeGuess(String name){
-		if(character.get("NAME") == name){
+		System.out.println(character.get("NAME") +"=="+ name);
+		if(character.get("NAME").equals(name)){
 			return true;
 		}
 		return false;
@@ -90,11 +102,13 @@ public class Gamemode2{
 	//public WikiCharakter endGame()
 
 	public static void main(String[] args) {
-		Gamemode2 gm = new Gamemode2(Language.ENGLISH);
+		Gamemode2 gm = new Gamemode2(Language.ENGLISH, true);
 		System.out.println(gm.getQuestions().stream().count());
 		Question q = gm.getQuestions().get(3);
 		System.out.println(q.getQuestion());
 		System.out.println(gm.askQuestion(q));
 		System.out.println(gm.getQuestions().stream().count());
+		System.out.println(gm.makeGuess("Jeff Albertson"));
+		System.out.println(gm.makeGuess("Eleanor Abernathy"));
 	}
 }
