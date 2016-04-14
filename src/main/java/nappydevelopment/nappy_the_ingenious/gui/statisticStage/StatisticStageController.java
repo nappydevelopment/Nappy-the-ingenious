@@ -8,6 +8,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Player;
+import nappydevelopment.nappy_the_ingenious.data.StatisticCharacter;
 import nappydevelopment.nappy_the_ingenious.util.statistics.StatisticStufGenerator;
 
 //### IMPORTS ##############################################################################################################################
@@ -115,6 +116,7 @@ public class StatisticStageController {
 	private void readOutTopFivePlayer() {
 		
 		StatisticStufGenerator tfGen = new StatisticStufGenerator();
+		
 		ArrayList<Player> tfp = tfGen.getTopFivePlayers();
 		Player curPlayer = null;
 		
@@ -125,7 +127,15 @@ public class StatisticStageController {
 			this.res.lblPlayerValueTexts[i].set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
 		}
 		
-		//ArrayList<WikiCharacter> tfc = tfGen.
+		ArrayList<StatisticCharacter> tfc = tfGen.getTopFivePlayedCharacters();
+		StatisticCharacter curCharacter = null;
+		
+		for(int i = 0; i < tfc.size(); i++) {
+			
+			curCharacter = tfc.get(i);
+			this.res.lblCharacterNameTexts[i].set(curCharacter.getName());
+			this.res.lblCharacterCounterTexts[i].set("" + curCharacter.getAmount());
+		}
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
