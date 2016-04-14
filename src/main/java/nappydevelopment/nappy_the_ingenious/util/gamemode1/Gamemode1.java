@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class QuestionGenerator{
+public class Gamemode1{
 
 	private String[] column = new String[60];
 	private boolean[] columnBool = new boolean[60];
@@ -23,7 +23,7 @@ public class QuestionGenerator{
 	private boolean determinisic = false;
 	private boolean firstQuestion = true;
 
-    public QuestionGenerator(){
+    public Gamemode1(){
 		try{
         	Statement st = DatabaseProvider.getStatement();
 			st.execute(
@@ -47,7 +47,7 @@ public class QuestionGenerator{
 		}
     }
 
-	public QuestionGenerator(boolean det){
+	public Gamemode1(boolean det){
 		super();
 		determinisic = det;
 	}
