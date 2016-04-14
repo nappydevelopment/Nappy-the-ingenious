@@ -16,14 +16,14 @@ import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
-import nappydevelopment.nappy_the_ingenious.util.gamemode1.QuestionGenerator;
+import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
 
 public class Program extends Application {
 
 //### ATTRIBUTES ###########################################################################################################################
 	
 	private int noOfQuestions;
-	private QuestionGenerator questGen;
+	private Gamemode1 questGen;
 	
 //### STAGES ###############################################################################################################################
 	
@@ -130,7 +130,7 @@ public class Program extends Application {
 	}
 	
 	public void startCurrentGame() {
-		this.questGen = new QuestionGenerator();
+		this.questGen = new Gamemode1();
 	}
 	
 	public String getCurrentQuestion() {
