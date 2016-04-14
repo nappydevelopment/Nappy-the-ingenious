@@ -80,13 +80,13 @@ public class StatisticStageResources {
 	void setUniversalTexts() {
 		
 		for(int i = 0; i < 5; i++) {
-			this.lblPlayerPositionTexts[i].setValue("1.");
+			this.lblPlayerPositionTexts[i].setValue((i + 1) + ".");
 			this.lblPlayerNameTexts[i].setValue("-");
 			this.lblPlayerValueTexts[i].setValue("-");
 		}
 
 		for(int i = 0; i < 5; i++) {
-			this.lblCharacterPositionTexts[i].setValue("1.");
+			this.lblCharacterPositionTexts[i].setValue((i + 1) + ".");
 			this.lblCharacterNameTexts[i].setValue("-");
 			this.lblCharacterCounterTexts[i].setValue("-");
 		}
