@@ -30,9 +30,7 @@ public class InfoStageResources {
 	StringProperty lblName4Text;
 
 	StringProperty lblNappyDevelopmentText;
-	StringProperty lblOurBlogText;
 	StringProperty lblBlogText;
-	StringProperty lblOurEmailText;
 	StringProperty lblEmailText;
 
 	Image imvLogoImage;
@@ -63,9 +61,7 @@ public class InfoStageResources {
 		this.lblName4Text = new SimpleStringProperty("Mehmet Ali Incekara");
 
 		this.lblNappyDevelopmentText = new SimpleStringProperty("nappydevelopment");
-		this.lblOurBlogText = new SimpleStringProperty();
 		this.lblBlogText = new SimpleStringProperty("https://nappydevelopment.wordpress.com/");
-		this.lblOurEmailText = new SimpleStringProperty();
 		this.lblEmailText  = new SimpleStringProperty("nappydevelopment@gmail.com");
 
 		this.imvLogoImage = new Image(GlobalReferences.IMAGES_PATH + "general/logo.png");
@@ -79,8 +75,6 @@ public class InfoStageResources {
 	void setTextsToEnglish() {
 		this.lblDescriptionText.setValue("A Simpsons quiz game");
 		this.lblDevelopedByText.setValue("Developed by");
-		this.lblOurBlogText.setValue("Our blog");
-		this.lblOurEmailText.setValue("Our email-adress");
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the info-stage to German *//**
@@ -89,8 +83,6 @@ public class InfoStageResources {
 	void setTextsToGerman() {
 		this.lblDescriptionText.setValue("Ein Simpsons Quiz");
 		this.lblDevelopedByText.setValue("Entwickelt von");
-		this.lblOurBlogText.setValue("Unser Blog");
-		this.lblOurEmailText.setValue("Unsere E-Mail-Adresse");
 	}
 
 //##########################################################################################################################################

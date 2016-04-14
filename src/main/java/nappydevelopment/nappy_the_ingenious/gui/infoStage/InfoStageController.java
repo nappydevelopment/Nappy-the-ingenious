@@ -58,9 +58,7 @@ public class InfoStageController {
 		this.view.lblName3.textProperty().bind(this.res.lblName3Text);
 		this.view.lblName4.textProperty().bind(this.res.lblName4Text);
 		this.view.lblNappyDevelopment.textProperty().bind(this.res.lblNappyDevelopmentText);
-		this.view.lblOurBlog.textProperty().bind(this.res.lblOurBlogText);
 		this.view.lblBlog.textProperty().bind(this.res.lblBlogText);
-		this.view.lblOurEmail.textProperty().bind(this.res.lblOurEmailText);
 		this.view.lblEmail.textProperty().bind(this.res.lblEmailText);
 		
 	}

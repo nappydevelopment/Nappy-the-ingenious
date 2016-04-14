@@ -53,9 +53,7 @@ public class InfoStageView extends Stage {
 	Label lblName4;;
 
 	Label lblNappyDevelopment;
-	Label lblOurBlog;
 	Label lblBlog;
-	Label lblOurEmail;
 	Label lblEmail;
 
 //### CONSTRUCTORS #########################################################################################################################
@@ -115,9 +113,7 @@ public class InfoStageView extends Stage {
 		this.imvLogo = new ImageView(Utils.getScaledInstance(res.imvLogoImage, 200, 200, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.75, true));
 		
 		this.lblNappyDevelopment = new Label();
-		this.lblOurBlog = new Label();
 		this.lblBlog = new Label();
-		this.lblOurEmail = new Label();
 		this.lblEmail = new Label();
 		
 	}
@@ -138,9 +134,7 @@ public class InfoStageView extends Stage {
 		this.gdpContentPane.add(this.lblName3, 1, 6);
 		this.gdpContentPane.add(this.lblName4, 1, 7);
 		this.gdpContentPane.add(this.lblNappyDevelopment, 4, 4);
-		//this.gdpContentPane.add(this.lblOurBlog, 3, 5);
 		this.gdpContentPane.add(this.lblBlog, 4, 5);
-		//this.gdpContentPane.add(this.lblOurEmail, 3, 6);
 		this.gdpContentPane.add(this.lblEmail, 4, 6);
 		
 		this.bdpRootPane.setCenter(this.gdpContentPane);
