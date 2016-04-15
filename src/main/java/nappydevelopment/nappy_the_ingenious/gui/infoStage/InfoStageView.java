@@ -4,10 +4,13 @@ package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 
 //### IMPORTS ##############################################################################################################################
 import java.awt.RenderingHints;
+
+import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,8 +18,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageView;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
@@ -53,8 +59,8 @@ public class InfoStageView extends Stage {
 	Label lblName4;;
 
 	Label lblNappyDevelopment;
-	Label lblBlog;
-	Label lblEmail;
+	Hyperlink linkBlog;
+	Hyperlink linkMail;
 
 //### CONSTRUCTORS #########################################################################################################################
 	
@@ -113,9 +119,15 @@ public class InfoStageView extends Stage {
 		this.imvLogo = new ImageView(Utils.getScaledInstance(res.imvLogoImage, 200, 200, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.75, true));
 		
 		this.lblNappyDevelopment = new Label();
-		this.lblBlog = new Label();
-		this.lblEmail = new Label();
-		
+
+		this.linkBlog = new Hyperlink("https://nappydevelopment.wordpress.com/");
+		this.linkMail = new Hyperlink("nappydevelopment@gmail.com");
+
+        /*
+        this.linkBlog.setOnAction(t -> {
+            new HostServices().showDocument(this.linkBlog.getText());
+        });
+        */
 	}
 	
 	
@@ -134,8 +146,8 @@ public class InfoStageView extends Stage {
 		this.gdpContentPane.add(this.lblName3, 1, 6);
 		this.gdpContentPane.add(this.lblName4, 1, 7);
 		this.gdpContentPane.add(this.lblNappyDevelopment, 4, 4);
-		this.gdpContentPane.add(this.lblBlog, 4, 5);
-		this.gdpContentPane.add(this.lblEmail, 4, 6);
+		this.gdpContentPane.add(this.linkBlog, 4, 5);
+		this.gdpContentPane.add(this.linkMail, 4, 6);
 		
 		this.bdpRootPane.setCenter(this.gdpContentPane);
 		

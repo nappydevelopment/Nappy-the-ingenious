@@ -5,12 +5,13 @@ package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 //### IMPORTS ##############################################################################################################################
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 
 /* InfoStageResources [class]: Contains the resources for the info-stage like images, component-texts etc.: *//**
  *
- * @author Manuel Bothner
+ * @author Manuel Bothner, Mehmet Ali Incekara
  *
  */
 public class InfoStageResources {
@@ -30,8 +31,6 @@ public class InfoStageResources {
 	StringProperty lblName4Text;
 
 	StringProperty lblNappyDevelopmentText;
-	StringProperty lblBlogText;
-	StringProperty lblEmailText;
 
 	Image imvLogoImage;
 	Image impPic1Image;
@@ -61,8 +60,6 @@ public class InfoStageResources {
 		this.lblName4Text = new SimpleStringProperty("Mehmet Ali Incekara");
 
 		this.lblNappyDevelopmentText = new SimpleStringProperty("nappydevelopment");
-		this.lblBlogText = new SimpleStringProperty("https://nappydevelopment.wordpress.com/");
-		this.lblEmailText  = new SimpleStringProperty("nappydevelopment@gmail.com");
 
 		this.imvLogoImage = new Image(GlobalReferences.IMAGES_PATH + "general/logo.png");
 	}
