@@ -3,7 +3,10 @@
 package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 
 //### IMPORTS ##############################################################################################################################
-import java.awt.RenderingHints;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
@@ -18,12 +21,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
-import nappydevelopment.nappy_the_ingenious.Program;
-import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageView;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
@@ -61,6 +60,7 @@ public class InfoStageView extends Stage {
 	Label lblNappyDevelopment;
 	Hyperlink linkBlog;
 	Hyperlink linkMail;
+    HostServices host;
 
 //### CONSTRUCTORS #########################################################################################################################
 	
@@ -123,11 +123,43 @@ public class InfoStageView extends Stage {
 		this.linkBlog = new Hyperlink("https://nappydevelopment.wordpress.com/");
 		this.linkMail = new Hyperlink("nappydevelopment@gmail.com");
 
-        /*
         this.linkBlog.setOnAction(t -> {
-            new HostServices().showDocument(this.linkBlog.getText());
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                URI uri = null;
+                try {
+                    uri = new URI("https://nappydevelopment.wordpress.com/");
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                if (desktop.isSupported(Desktop.Action.MAIL)) {
+                    try {
+                        desktop.browse(uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         });
-        */
+
+        this.linkMail.setOnAction(t -> {
+            if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                URI uri = null;
+                try {
+                    uri = new URI("mailto:nappydevelopment@gmail.com");
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                if (desktop.isSupported(Desktop.Action.MAIL)) {
+                    try {
+                        desktop.mail(uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
 	}
 	
 	
@@ -162,7 +194,7 @@ public class InfoStageView extends Stage {
 		this.setResizable(true);
 		
 	}
-	
+
 //##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################

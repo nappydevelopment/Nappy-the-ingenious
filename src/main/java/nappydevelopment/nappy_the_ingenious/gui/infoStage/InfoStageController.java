@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 public class InfoStageController {
 	
 	
@@ -71,11 +76,13 @@ public class InfoStageController {
 			
 			Object src = e.getSource();
 			
-			if(src == InfoStageController.this.view.linkBlog) {
+			if(src == view.linkBlog) {
 				System.out.println("Open Blog in Browser");
+                openBrowser();
 			}
-			else if(src == InfoStageController.this.view.linkMail) {
+			if(src == view.linkMail) {
 				System.out.println("Open e-mail program");
+                openMailClient();
 			}
 		}
 		
@@ -111,7 +118,47 @@ public class InfoStageController {
 	public void changeLanguageToEnglish() {
 		this.res.setTextsToEnglish();
 	}
-	
+
+//### PRIVATE METHODS #######################################################################################################################
+
+    private void openBrowser(){
+        /*if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            URI uri = null;
+            try {
+                uri = new URI("https://nappydevelopment.wordpress.com/");
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            if (desktop.isSupported(Desktop.Action.MAIL)) {
+                try {
+                    desktop.browse(uri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }*/
+    }
+
+    private void openMailClient(){
+        /*if (Desktop.isDesktopSupported()) {
+                Desktop desktop = Desktop.getDesktop();
+                URI uri = null;
+                try {
+                    uri = new URI("mailto:nappydevelopment@gmail.com");
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                if (desktop.isSupported(Desktop.Action.MAIL)) {
+                    try {
+                        desktop.mail(uri); // alternately, pass a mailto: URI in here
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }*/
+    }
+
 //##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################
