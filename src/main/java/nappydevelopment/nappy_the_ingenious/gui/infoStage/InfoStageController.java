@@ -58,8 +58,6 @@ public class InfoStageController {
 		this.view.lblName3.textProperty().bind(this.res.lblName3Text);
 		this.view.lblName4.textProperty().bind(this.res.lblName4Text);
 		this.view.lblNappyDevelopment.textProperty().bind(this.res.lblNappyDevelopmentText);
-		this.view.lblBlog.textProperty().bind(this.res.lblBlogText);
-		this.view.lblEmail.textProperty().bind(this.res.lblEmailText);
 		
 	}
 		
@@ -73,10 +71,10 @@ public class InfoStageController {
 			
 			Object src = e.getSource();
 			
-			if(src == InfoStageController.this.view.lblBlog) {
+			if(src == InfoStageController.this.view.linkBlog) {
 				System.out.println("Open Blog in Browser");
 			}
-			else if(src == InfoStageController.this.view.lblEmail) {
+			else if(src == InfoStageController.this.view.linkMail) {
 				System.out.println("Open e-mail program");
 			}
 		}
