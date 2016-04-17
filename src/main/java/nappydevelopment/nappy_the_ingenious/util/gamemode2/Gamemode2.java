@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.image.Image;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Question;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
@@ -87,19 +89,27 @@ public class Gamemode2{
 	}
 
 	public Boolean makeGuess(WikiCharacter wiki){
-		return this.makeGuess(wiki.getName());
+		return makeGuess(wiki.getName());
 	}
-	public Boolean makeGuess(String name){
-		System.out.println(character.get("NAME") +"=="+ name);
+	public Boolean makeGuess(String name){;
 		if(character.get("NAME").equals(name)){
 			return true;
 		}
 		return false;
 	}
 
-	//public String endGame()
-	// oder:
-	//public WikiCharakter endGame()
+	public WikiCharacter endGame(){
+		String l = "DE";
+		switch(lang){
+			case ENGLISH: l = "EN"; break;
+		}
+		return new WikiCharacter(
+				character.get("NAME"),
+				character.get("NICKNAME"),
+				character.get("DESCRIPTION_" + l),
+				new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png")
+		);
+	}
 
 	public static void main(String[] args) {
 		Gamemode2 gm = new Gamemode2(Language.ENGLISH, true);
@@ -108,7 +118,11 @@ public class Gamemode2{
 		System.out.println(q.getQuestion());
 		System.out.println(gm.askQuestion(q));
 		System.out.println(gm.getQuestions().stream().count());
+		System.out.println("Jeff Albertson?");
 		System.out.println(gm.makeGuess("Jeff Albertson"));
+		System.out.println("Eleanor Abernathy?");
 		System.out.println(gm.makeGuess("Eleanor Abernathy"));
+
+		System.out.println("Es war: "+ gm.endGame());
 	}
 }
