@@ -1,13 +1,25 @@
 package nappydevelopment.nappy_the_ingenious.gui.wikiStage;
 
+import java.awt.RenderingHints;
 import java.util.List;
+import java.util.ListIterator;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
 //### IMPORTS ##############################################################################################################################
@@ -21,6 +33,8 @@ public class WikiStageController {
 	private WikiStageView view;
 	private WikiStageResources res;
 	private ViewActionEventHandler aeh;
+	
+	private List<WikiCharacter> characters;
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
@@ -39,6 +53,8 @@ public class WikiStageController {
 		this.aeh = new ViewActionEventHandler();
 		//Initialize the view:
 		this.view = new WikiStageView(this.res, this.aeh, chars);
+		//Set character list:
+		this.characters = chars;
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 				
@@ -70,6 +86,10 @@ public class WikiStageController {
 			if(e.getSource() == view.btnResetFilter) {
 				WikiStageController.this.resetFilter();
 			}
+			else if(e.getSource() == view.txfSearchField) {
+				WikiStageController.this.changeCharacterListView(CharacterProvider.search(WikiStageController.this.characters,
+						                                                       WikiStageController.this.view.txfSearchField.getText()));
+			}
 		}
 				
 	}
@@ -77,11 +97,94 @@ public class WikiStageController {
 //### PRIVATE METHODS ######################################################################################################################
 	
 	private void resetFilter() {
+		
 		this.view.rbtMale.setSelected(false);
 		this.view.rbtFemale.setSelected(false);
 		this.view.rbtYoung.setSelected(false);
 		this.view.rbtMiddle.setSelected(false);
 		this.view.rbtOld.setSelected(false);
+		this.view.txfSearchField.setText("");
+		
+	}
+	
+	private void changeCharacterListView(List<WikiCharacter> chars) {
+		
+		System.out.printf("saadsada");
+		Boolean colorFlag = true;
+		
+		//### Generate content wiki-character ##################################
+		
+        ListIterator<WikiCharacter> listIterator = chars.listIterator();
+        
+        //Run through all wiki-characters:
+        while (listIterator.hasNext()) {
+        	
+        	//Read out current character:
+        	WikiCharacter curCharacter = listIterator.next();
+        	
+        	//Set-up horizontal box that contains all gui-elements for the current character:
+            HBox hbxBox = new HBox();
+            hbxBox.setSpacing(10);
+            hbxBox.setPadding(new Insets(6,6,6,6));
+            //Set alternating the style (background) of the box:
+        	if(colorFlag == true) {
+        		hbxBox.getStyleClass().add("hbxEntry1");
+        		colorFlag = false;
+        	}
+        	else {
+        		hbxBox.getStyleClass().add("hbxEntry2");
+        		colorFlag = true;
+        	}
+            //Set-up vertical box that contains the name and description labels:
+        	VBox vbxBox = new VBox();
+        	//Set-up image-pattern for the rectangle:
+        	
+        	ImagePattern imgPat = null;
+        	
+        	if(curCharacter.getWikiImage() == null) {
+        		System.out.println("Image Null");
+        	}
+        	else {
+        		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+        	}
+        	
+        	Rectangle imgRec = new Rectangle();
+    		imgRec.setWidth(90);
+    		imgRec.setHeight(90);
+    		imgRec.setFill(imgPat);
+    		imgRec.setArcHeight(8);
+    		imgRec.setArcWidth(8);
+    		//Set-up horizontal box that contains the image:
+    		HBox hbxImage = new HBox();
+    		hbxImage.setId("hbxEntry1");
+    		hbxImage.getChildren().add(imgRec);
+    		//Set-up labels for name and description:
+    		Label lblName = null;
+    		if(curCharacter.getNickname() == null) {
+    			lblName = new Label(curCharacter.getName());
+    		}
+    		else if(!curCharacter.getNickname().equals("")) {
+    			lblName = new Label(curCharacter.getName() + " (" + curCharacter.getNickname() + ")");
+    		}
+    		else {
+    			lblName = new Label(curCharacter.getName());
+    		}
+        	
+        	lblName.getStyleClass().add("lblName");
+        	Label lblDescription = new Label(curCharacter.getDescription());
+        	lblDescription.setTextAlignment(TextAlignment.JUSTIFY);
+        	lblDescription.setWrapText(true);
+        	//Add elements to their containers: 
+        	vbxBox.getChildren().addAll(lblName, lblDescription);
+        	hbxBox.getChildren().addAll(hbxImage, vbxBox);
+        	
+        	//Add current character-gui-elements to the main-container:
+        	this.view.vbxContentPane.getChildren().clear();
+        	this.view.vbxContentPane.getChildren().add(hbxBox);
+        	this.view.scpContentPane.setContent(this.view.vbxContentPane);
+    		this.view.bdpRootPane.setCenter(this.view.scpContentPane);
+    		//this.view.bdpRootPane.setCenter(new Group());
+        }	
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
