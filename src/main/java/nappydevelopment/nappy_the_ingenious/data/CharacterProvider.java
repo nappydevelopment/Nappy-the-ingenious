@@ -7,7 +7,6 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,6 +33,7 @@ public class CharacterProvider{
 				out.add(chr);
 			}
 			st.close();
+			out.sort(new WikiCharacterNameComparator());
 			return out;
 		}catch(SQLException e){
 			e.printStackTrace();
