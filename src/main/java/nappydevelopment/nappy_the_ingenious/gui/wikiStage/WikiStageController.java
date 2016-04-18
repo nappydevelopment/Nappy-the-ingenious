@@ -74,7 +74,6 @@ public class WikiStageController {
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
 		this.view.txfSearchField.setDisable(true);
-		this.view.btnAddNewCharacter.setDisable(true);
 		this.view.show();
 	}
 			
