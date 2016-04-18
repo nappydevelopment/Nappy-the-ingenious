@@ -26,6 +26,8 @@ public class WikiStageResources {
 	StringProperty rbpYoungText;
 	StringProperty rbpMiddleText;
 	StringProperty rbpOldText;
+	
+	StringProperty btnResetFilterText;
 
 	//Stage icon:
 	Image stageIcon16x16;
@@ -50,6 +52,8 @@ public class WikiStageResources {
 		this.rbpMiddleText = new SimpleStringProperty();
 		this.rbpOldText = new SimpleStringProperty();
 		
+		this.btnResetFilterText = new SimpleStringProperty();
+		
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
@@ -68,6 +72,7 @@ public class WikiStageResources {
 		this.rbpMiddleText.setValue("Adult");
 		this.rbpOldText.setValue("Old");
 		
+		this.btnResetFilterText.setValue("Reset filter");
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the wiki-stage to German *//**
@@ -83,6 +88,8 @@ public class WikiStageResources {
 		this.rbpYoungText.setValue("Jung");
 		this.rbpMiddleText.setValue("Erwachsen");
 		this.rbpOldText.setValue("Alt");
+		
+		this.btnResetFilterText.setValue("Filter zurücksetzten");
 	}
 
 //##########################################################################################################################################

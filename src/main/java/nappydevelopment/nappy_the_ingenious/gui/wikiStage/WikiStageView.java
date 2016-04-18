@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
@@ -65,6 +66,8 @@ public class WikiStageView extends Stage {
 	RadioButton rbtMiddle;
 	RadioButton rbtOld;
 	
+	VBox vbxResetFilter;
+	Button btnResetFilter;
 	
 	//### Content ##############################################################
 	ScrollPane scpContentPane;
@@ -148,7 +151,11 @@ public class WikiStageView extends Stage {
 			this.tbpAge.lblTitle.setStyle("-fx-translate-y: -12; -fx-background-color: #2f4f4f; -fx-translate-x: +12;");
 			this.tbpAge.lblTitle.setTextFill(Color.WHITE);
 		
-
+	    this.vbxResetFilter = new VBox();
+	    this.vbxResetFilter.setAlignment(Pos.CENTER);
+        this.btnResetFilter = new Button();
+        this.btnResetFilter.setOnAction(aeh);
+        
 		//######################################################################
 		
 		//### Generate content wiki-character ##################################
@@ -238,7 +245,8 @@ public class WikiStageView extends Stage {
 		this.hbxAgeContent.getChildren().addAll(this.rbtYoung, this.rbtMiddle, this.rbtOld);
 		this.tbpAge.setContent(this.hbxAgeContent);
         
-		this.hbxFilter.getChildren().addAll(this.vbxFilterIcon, this.tbpGender, new Group(), this.tbpAge);
+		this.vbxResetFilter.getChildren().add(this.btnResetFilter);
+		this.hbxFilter.getChildren().addAll(this.vbxFilterIcon, this.tbpGender, new Group(), this.tbpAge, new Group(), this.vbxResetFilter);
 		
 		this.vbxTopBar.getChildren().addAll(this.hbxSearchBar, this.hbxFilter);
 		
