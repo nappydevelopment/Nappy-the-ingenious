@@ -113,6 +113,7 @@ public class WikiStageController {
 		Boolean colorFlag = true;
 		
 		//### Generate content wiki-character ##################################
+		this.view.vbxContentPane.getChildren().clear();
 		
         ListIterator<WikiCharacter> listIterator = chars.listIterator();
         
@@ -179,12 +180,13 @@ public class WikiStageController {
         	hbxBox.getChildren().addAll(hbxImage, vbxBox);
         	
         	//Add current character-gui-elements to the main-container:
-        	this.view.vbxContentPane.getChildren().clear();
+        	
         	this.view.vbxContentPane.getChildren().add(hbxBox);
-        	this.view.scpContentPane.setContent(this.view.vbxContentPane);
-    		this.view.bdpRootPane.setCenter(this.view.scpContentPane);
     		//this.view.bdpRootPane.setCenter(new Group());
         }	
+        
+    	this.view.scpContentPane.setContent(this.view.vbxContentPane);
+		this.view.bdpRootPane.setCenter(this.view.scpContentPane);
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
