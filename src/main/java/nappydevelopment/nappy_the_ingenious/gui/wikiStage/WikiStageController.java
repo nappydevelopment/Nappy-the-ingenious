@@ -55,7 +55,7 @@ public class WikiStageController {
 		this.view.rbtYoung.textProperty().bind(this.res.rbpYoungText);
 		this.view.rbtMiddle.textProperty().bind(this.res.rbpMiddleText);
 		this.view.rbtOld.textProperty().bind(this.res.rbpOldText);
-					
+		this.view.btnResetFilter.textProperty().bind(this.res.btnResetFilterText);
 	}
 			
 			
@@ -66,11 +66,24 @@ public class WikiStageController {
 							 
 		@Override
 		public void handle(ActionEvent e) {
-					
+		
+			if(e.getSource() == view.btnResetFilter) {
+				WikiStageController.this.resetFilter();
+			}
 		}
 				
 	}
-			
+
+//### PRIVATE METHODS ######################################################################################################################
+	
+	private void resetFilter() {
+		this.view.rbtMale.setSelected(false);
+		this.view.rbtFemale.setSelected(false);
+		this.view.rbtYoung.setSelected(false);
+		this.view.rbtMiddle.setSelected(false);
+		this.view.rbtOld.setSelected(false);
+	}
+	
 //### PUBLIC METHODS #######################################################################################################################
 			
 	public void show(Stage owner) {
@@ -80,7 +93,7 @@ public class WikiStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
-		
+	    this.resetFilter();
 		this.view.show();
 	}
 			
