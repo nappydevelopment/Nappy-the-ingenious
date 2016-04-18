@@ -44,7 +44,11 @@ public class CharacterProvider{
 	public static List<WikiCharacter> search(List<WikiCharacter> list, String search){
 		List<WikiCharacter> out;
 		out = list.stream()
-			.filter(wc -> wc.getName().toLowerCase().contains(search))
+			.filter(wc -> {
+				if(search.isEmpty()){return true;}
+				return wc.getName().toLowerCase().contains(search.toLowerCase());
+			})
+			.sorted(new WikiCharacterNameComparator())
 			.collect(Collectors.toList());
 		return out;
 	}
