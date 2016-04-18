@@ -389,6 +389,13 @@ public class MainStageController {
 		dialog.setHeaderText(this.res.enterNameDialogHeaderText);
 		dialog.setContentText(this.res.enterNameDialogContentText);
 
+
+		ButtonType bttApply = new ButtonType(this.res.abortGameDialogBtnApplyText);
+		ButtonType bttCancel = new ButtonType(this.res.abortGameDialogBtnCancelText);
+
+		//Set properties of the dialog:
+		//alert.getButtonTypes().setAll(bttApply, bttCancel);
+
 // Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
