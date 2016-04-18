@@ -40,7 +40,7 @@ public class DatabaseProvider{
 		try{
 			InputStream initScriptStream = DatabaseProvider.class.getResourceAsStream("/db/simpsons.sql");
 			java.util.Scanner s = new java.util.Scanner(initScriptStream).useDelimiter("\\A");
-			String[] initScriptArray = s.next().substring(1).split(";");
+			String[] initScriptArray = s.next().split(";");
 			Statement st = dbConn.createStatement();
 			for(String sa: initScriptArray){
 				st.execute(sa);
