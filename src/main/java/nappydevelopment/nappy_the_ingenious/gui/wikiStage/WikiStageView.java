@@ -123,23 +123,23 @@ public class WikiStageView extends Stage {
 		this.tbpGender.lblTitle.setTextFill(Color.WHITE);
 		this.hbxGenderContent = new HBox(10);
 		this.tggGender = new ToggleGroup();
-		this.rbtMale = new RadioButton("Male");
+		this.rbtMale = new RadioButton();
 		this.rbtMale.setToggleGroup(this.tggGender);
 		this.rbtMale.setTextFill(Color.WHITE);
-		this.rbtFemale = new RadioButton("Female");
+		this.rbtFemale = new RadioButton();
 		this.rbtFemale.setToggleGroup(this.tggGender);
 		this.rbtFemale.setTextFill(Color.WHITE);
 		
 		this.tbpAge = new TitledBorderPane();
 		this.hbxAgeContent = new HBox(10);
 		this.tggAge = new ToggleGroup();
-		this.rbtYoung = new RadioButton("Young");
+		this.rbtYoung = new RadioButton();
 		this.rbtYoung.setTextFill(Color.WHITE);
 		this.rbtYoung.setToggleGroup(this.tggAge);
-		this.rbtMiddle = new RadioButton("Middle");
+		this.rbtMiddle = new RadioButton();
 		this.rbtMiddle.setTextFill(Color.WHITE);
 		this.rbtMiddle.setToggleGroup(this.tggAge);
-		this.rbtOld = new RadioButton("Old");
+		this.rbtOld = new RadioButton();
 		this.rbtOld.setTextFill(Color.WHITE);
 		this.rbtOld.setToggleGroup(this.tggAge);
 		this.tbpAge.setStyle("-fx-content-display: top;" +
@@ -233,11 +233,9 @@ public class WikiStageView extends Stage {
 		
 		this.vbxFilterIcon.getChildren().add(this.imvFilterIcon);
 		this.hbxGenderContent.getChildren().addAll(this.rbtMale, this.rbtFemale);
-		this.tbpGender.setTitleText("Gender");
 		this.tbpGender.setContent(this.hbxGenderContent);
 		
 		this.hbxAgeContent.getChildren().addAll(this.rbtYoung, this.rbtMiddle, this.rbtOld);
-		this.tbpAge.setTitleText("Age");
 		this.tbpAge.setContent(this.hbxAgeContent);
         
 		this.hbxFilter.getChildren().addAll(this.vbxFilterIcon, this.tbpGender, new Group(), this.tbpAge);

@@ -48,6 +48,13 @@ public class WikiStageController {
 	private void initViewBindings() {
 					
 		this.view.titleProperty().bind(this.res.stageTitleText);
+		this.view.tbpGender.bindTitleText(this.res.tbpGenderText);
+		this.view.rbtMale.textProperty().bind(this.res.rbtMaleText);
+		this.view.rbtFemale.textProperty().bind(this.res.rbtFemaleText);
+		this.view.tbpAge.bindTitleText(this.res.tbpAgeText);
+		this.view.rbtYoung.textProperty().bind(this.res.rbpYoungText);
+		this.view.rbtMiddle.textProperty().bind(this.res.rbpMiddleText);
+		this.view.rbtOld.textProperty().bind(this.res.rbpOldText);
 					
 	}
 			
@@ -73,7 +80,7 @@ public class WikiStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
-		this.view.txfSearchField.setDisable(true);
+		
 		this.view.show();
 	}
 			
