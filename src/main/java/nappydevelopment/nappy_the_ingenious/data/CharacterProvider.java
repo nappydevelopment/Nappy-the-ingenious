@@ -1,6 +1,5 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
-import com.sun.deploy.util.StringUtils;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
@@ -8,7 +7,7 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,9 +43,8 @@ public class CharacterProvider{
 
 	public static List<WikiCharacter> search(List<WikiCharacter> list, String search){
 		List<WikiCharacter> out;
-		final String s = ".*"+ StringUtils.join(Arrays.asList(search.toCharArray()),".*") +".*";
 		out = list.stream()
-			.filter(wc -> wc.getName().toLowerCase().matches(s))
+			.filter(wc -> wc.getName().toLowerCase().contains(search))
 			.collect(Collectors.toList());
 		return out;
 	}
