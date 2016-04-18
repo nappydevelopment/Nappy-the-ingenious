@@ -19,6 +19,7 @@ public class Gamemode2{
 	private ArrayList<Question> remainingQuestions = new ArrayList<>();
 	private Map<String,String> character = new HashMap<>();
 	private Language lang;
+	private int questionCounter = 0;
 
 	public Gamemode2(Language ln){
 		this(ln, false);
@@ -79,11 +80,16 @@ public class Gamemode2{
 		}
 	}
 
+	public int answeredQuestions(){
+		return questionCounter;
+	}
+
 	public ArrayList<Question> getQuestions(){
 		return remainingQuestions;
 	}
 
 	public Boolean askQuestion(Question question){
+		questionCounter++;
 		remainingQuestions.remove(question);
 		return character.get(question.getTable()).equals(question.getAttribute());
 	}
