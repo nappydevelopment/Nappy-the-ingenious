@@ -1,8 +1,15 @@
 package nappydevelopment.nappy_the_ingenious.test.util;
 
+import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
+import nappydevelopment.nappy_the_ingenious.data.Player;
+import nappydevelopment.nappy_the_ingenious.data.StatisticCharacter;
+import nappydevelopment.nappy_the_ingenious.util.statistics.StatisticStuffGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -11,9 +18,13 @@ import static org.junit.Assert.*;
  */
 public class StatisticStuffGeneratorTest {
 
+    ArrayList<Player> playerList;
+    ArrayList<StatisticCharacter> charList;
+    StatisticStuffGenerator gen;
+
     @Before
     public void setUp() throws Exception {
-
+    gen = new StatisticStuffGenerator();
     }
 
     @After
@@ -23,11 +34,11 @@ public class StatisticStuffGeneratorTest {
 
     @Test
     public void testGetTopFivePlayers() throws Exception {
-
+        playerList = gen.getTopFivePlayers();
     }
 
     @Test
     public void testGetTopFivePlayedCharacters() throws Exception {
-
+        charList = gen.getTopFivePlayedCharacters();
     }
 }
