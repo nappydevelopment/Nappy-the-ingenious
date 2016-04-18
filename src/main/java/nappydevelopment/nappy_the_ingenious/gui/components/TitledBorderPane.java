@@ -17,7 +17,7 @@ public class TitledBorderPane extends StackPane {
 
 //### COMPONENTS ###########################################################################################################################
 	
-	Label lblTitle;
+	public Label lblTitle;
 	StackPane skpContent;
 	Node nodContent;
 	
