@@ -18,6 +18,14 @@ public class WikiStageResources {
 //### ATTRIBUTES ###########################################################################################################################
 
 	StringProperty stageTitleText;
+	
+	StringProperty tbpGenderText;
+	StringProperty rbtMaleText;
+	StringProperty rbtFemaleText;
+	StringProperty tbpAgeText;
+	StringProperty rbpYoungText;
+	StringProperty rbpMiddleText;
+	StringProperty rbpOldText;
 
 	//Stage icon:
 	Image stageIcon16x16;
@@ -33,6 +41,15 @@ public class WikiStageResources {
 		this.stageTitleText = new SimpleStringProperty("Nappy, the ingenious - Wiki");
 		//Icon:
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/wiki.png");
+		
+		this.tbpGenderText = new SimpleStringProperty();
+		this.rbtMaleText = new SimpleStringProperty();
+		this.rbtFemaleText = new SimpleStringProperty();
+		this.tbpAgeText = new SimpleStringProperty();
+		this.rbpYoungText = new SimpleStringProperty();
+		this.rbpMiddleText = new SimpleStringProperty();
+		this.rbpOldText = new SimpleStringProperty();
+		
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
@@ -41,14 +58,31 @@ public class WikiStageResources {
 	 *
 	 */
 	void setTextsToEnglish() {
-
+		
+		this.tbpGenderText.setValue("  Gender  ");
+		this.rbtMaleText.setValue("Male");
+		this.rbtFemaleText.setValue("Female");
+		
+		this.tbpAgeText.setValue("  Age  ");
+		this.rbpYoungText.setValue("Young");
+		this.rbpMiddleText.setValue("Adult");
+		this.rbpOldText.setValue("Old");
+		
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the wiki-stage to German *//**
 	 *
 	 */
 	void setTextsToGerman() {
-
+		
+		this.tbpGenderText.setValue("  Geschlecht  ");
+		this.rbtMaleText.setValue("Männlich");
+		this.rbtFemaleText.setValue("Weiblich");
+		
+		this.tbpAgeText.setValue("  Alter  ");
+		this.rbpYoungText.setValue("Jung");
+		this.rbpMiddleText.setValue("Erwachsen");
+		this.rbpOldText.setValue("Alt");
 	}
 
 //##########################################################################################################################################
