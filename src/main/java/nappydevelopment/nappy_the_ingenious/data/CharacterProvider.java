@@ -7,7 +7,7 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +15,7 @@ public class CharacterProvider{
 
 	public static List<WikiCharacter> getCharacters(Language lang){
 		Statement st = DatabaseProvider.getStatement();
-		List<WikiCharacter> out = new LinkedList<WikiCharacter>();
+		List<WikiCharacter> out = new ArrayList<WikiCharacter>();
 		try{
 			if(st == null){return null;}
 			st.execute("SELECT name, description_en, description_de, nickname FROM SIMPSONS");
