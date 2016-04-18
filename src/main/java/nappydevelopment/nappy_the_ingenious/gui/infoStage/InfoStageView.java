@@ -121,45 +121,9 @@ public class InfoStageView extends Stage {
 		this.lblNappyDevelopment = new Label();
 
 		this.linkBlog = new Hyperlink("https://nappydevelopment.wordpress.com/");
+		this.linkBlog.setOnAction(aeh);
 		this.linkMail = new Hyperlink("nappydevelopment@gmail.com");
-
-        this.linkBlog.setOnAction(t -> {
-            if (Desktop.isDesktopSupported()) {
-                Desktop desktop = Desktop.getDesktop();
-                URI uri = null;
-                try {
-                    uri = new URI("https://nappydevelopment.wordpress.com/");
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                if (desktop.isSupported(Desktop.Action.MAIL)) {
-                    try {
-                        desktop.browse(uri);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-
-        this.linkMail.setOnAction(t -> {
-            if (Desktop.isDesktopSupported()) {
-                Desktop desktop = Desktop.getDesktop();
-                URI uri = null;
-                try {
-                    uri = new URI("mailto:nappydevelopment@gmail.com");
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                if (desktop.isSupported(Desktop.Action.MAIL)) {
-                    try {
-                        desktop.mail(uri);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+		this.linkMail.setOnAction(aeh);
 	}
 	
 	

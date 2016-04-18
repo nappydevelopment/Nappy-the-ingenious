@@ -122,7 +122,7 @@ public class InfoStageController {
 //### PRIVATE METHODS #######################################################################################################################
 
     private void openBrowser(){
-        /*if (Desktop.isDesktopSupported()) {
+        if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             URI uri = null;
             try {
@@ -137,11 +137,11 @@ public class InfoStageController {
                     e.printStackTrace();
                 }
             }
-        }*/
+        }
     }
 
     private void openMailClient(){
-        /*if (Desktop.isDesktopSupported()) {
+        if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
                 URI uri = null;
                 try {
@@ -156,7 +156,7 @@ public class InfoStageController {
                         e.printStackTrace();
                     }
                 }
-            }*/
+            }
     }
 
 //##########################################################################################################################################
