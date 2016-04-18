@@ -109,6 +109,7 @@ public class WikiStageView extends Stage {
 		this.imvSearchIcon = new ImageView(new Image(WikiStageView.class.getResourceAsStream("/icons/32x32/search.png")));
 		this.txfSearchField = new TextField();
 		this.txfSearchField.setPrefWidth(1000);
+		this.txfSearchField.setOnAction(aeh);
 		
 		this.hbxFilter = new HBox();
 		this.hbxFilter.setPadding(new Insets(10,10,10,10));
@@ -193,9 +194,7 @@ public class WikiStageView extends Stage {
         	else {
         		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
         	}
-        	//ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-        	//ImagePattern imgPat = new ImagePattern(Utils.getScaledInstance(new Image(GlobalReferences.IMAGES_PATH + "wiki/homer_simpson.png"), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-        	//Set-up rectangle that contains the character-image:
+        	
         	Rectangle imgRec = new Rectangle();
     		imgRec.setWidth(90);
     		imgRec.setHeight(90);
