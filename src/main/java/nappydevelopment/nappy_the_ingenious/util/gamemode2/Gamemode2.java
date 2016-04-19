@@ -129,6 +129,7 @@ public class Gamemode2{
 		if(finished){
 			return null;
 		}
+		finished = true;
 		String l = lang.getCode();
 		return new WikiCharacter(
 				character.get("NAME"),
