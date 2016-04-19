@@ -252,8 +252,8 @@ public class MainStageResources {
 		this.enterNameDialogTitle = "Nappy, the ingenious";
 		this.enterNameDialogHeaderText = "Bitte gib deinen Namen ein!";
 		this.enterNameDialogContentText = "Dein Name:";
-		this.abortGameDialogBtnApplyText = "Versuch dein Glück im Top 5";
-		this.abortGameDialogBtnCancelText = "Abbrechen";
+		this.enterNameDialogBtnApplyText = "Versuch dein Glück im Top 5";
+		this.enterNameDialogBtnCancelText = "Abbrechen";
 
 	}
 
