@@ -19,6 +19,7 @@ public class Gamemode2{
 	private ArrayList<Question> remainingQuestions = new ArrayList<>();
 	private Map<String,String> character = new HashMap<>();
 	private int questionCounter = 0;
+	private boolean finished = true;
 
 	public Gamemode2(){
 		this(false);
@@ -89,6 +90,7 @@ public class Gamemode2{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+		finished = false;
 	}
 
 	public int answeredQuestions(){
@@ -100,6 +102,9 @@ public class Gamemode2{
 	}
 
 	public Boolean askQuestion(Question question){
+		if(finished){
+			return null;
+		}
 		questionCounter++;
 		remainingQuestions.remove(question);
 		return character.get(question.getTable()).equals(question.getAttribute());
@@ -108,14 +113,22 @@ public class Gamemode2{
 	public Boolean makeGuess(WikiCharacter wiki){
 		return makeGuess(wiki.getName());
 	}
-	public Boolean makeGuess(String name){;
+	public Boolean makeGuess(String name){
+		if(finished){
+			return null;
+		}
 		if(character.get("NAME").equals(name)){
 			return true;
 		}
 		return false;
 	}
 
+	public boolean finished() { return finished; }
+
 	public WikiCharacter endGame(Language lang){
+		if(finished){
+			return null;
+		}
 		String l = lang.getCode();
 		return new WikiCharacter(
 				character.get("NAME"),
