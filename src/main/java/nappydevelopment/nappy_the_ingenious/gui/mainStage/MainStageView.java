@@ -3,7 +3,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 //### IMPORTS ##############################################################################################################################
-import java.awt.RenderingHints;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -77,9 +77,9 @@ public class MainStageView extends Stage {
 	Button btnStatistic;
 	Button btnWiki;
 	Button btnHelp;
-
-	//### Content of the Gamemode1 View ############################################################
-
+    
+	//### Content of both Gamemodes ################################################################
+	
 	GridPane gdpProgressBarPic;
 
 	StackPane skpPicText;
@@ -87,14 +87,8 @@ public class MainStageView extends Stage {
 
 	GridPane gdpQuestion;
 	HBox hbxQuestion;
-	//Text txtQuestion;
 	Label lblQuestion;
-
-	HBox hbxCharacter;
-	Rectangle recCharacter;
-	ImagePattern impCharacter;
-
-
+	
 	VBox vbxNoOfQuest;
 	Label lblNoOfQuest;
 	VerticalProgressBar pgbNoOfQuest;
@@ -104,14 +98,26 @@ public class MainStageView extends Stage {
 	Label lblKnowledge;
 	VerticalProgressBar pgbKnowledge;
 	ImageView imvKnowledge;
+	
+	//### Content of the Gamemode1 View ############################################################
+
+	HBox hbxCharacter;
+	Rectangle recCharacter;
+	ImagePattern impCharacter;
 
 	GridPane gdpButtons;
 	Button btnYes;
 	Button btnNo;
 	Button btnIdontKnow;
+	Button btnNextGamemode;
 
 	//### Content of the Gamemode2 View ############################################################
-
+    
+	Label lblAnswer;
+	ComboBox cmbQuestions;
+	Button btnIKnowTheCharacter;
+	Button btnAskQuestion;
+	
 
 //### CONSTRUCTORS #########################################################################################################################
 
@@ -324,7 +330,26 @@ public class MainStageView extends Stage {
 		this.btnIdontKnow.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnIdontKnow.setAlignment(Pos.CENTER);
 		this.btnIdontKnow.setOnAction(aeh);
-
+		
+		this.btnNextGamemode = new Button();
+		//this.btnIdontKnow.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/dont_know.png"))));
+		this.btnNextGamemode.setPrefSize(Integer.MAX_VALUE, 50);
+		this.btnNextGamemode.setAlignment(Pos.CENTER);
+		this.btnNextGamemode.setOnAction(aeh);
+		
+        
+		// Gamemode2 ###############################
+		
+		this.lblAnswer = new Label();
+		
+		this.btnAskQuestion = new Button();
+		this.btnAskQuestion.setMinSize(30, 10);
+		
+		this.cmbQuestions = new ComboBox();
+		
+		this.btnIKnowTheCharacter = new Button();
+		
+		
 	}
 
 	//Method that structure (add components to their parent node) the gui-components:

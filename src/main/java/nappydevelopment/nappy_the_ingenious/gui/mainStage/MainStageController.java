@@ -19,6 +19,7 @@ import javafx.scene.paint.ImagePattern;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.SaveStatisticInfos;
+import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 //Class that handles the interactions of the main-stage with the program-logic:
@@ -111,7 +112,8 @@ public class MainStageController {
 			if(src == view.mniNewGame || src == view.btnNewGame) {
 				//Start a new game;
 				System.out.println("Start a new game");
-				MainStageController.this.showGamemode1View();
+				MainStageController.this.program.startGame();
+				//MainStageController.this.showGamemode1View();
 			}
 			else if(src == view.mniAbortGame) {
 				//Abort the current game!
@@ -150,34 +152,39 @@ public class MainStageController {
 				MainStageController.this.program.showInfoStage(MainStageController.this.view);
 			}
 			else if(src == view.btnYes) {
-				System.out.println("Clicked the Yes-Button");
-				MainStageController.this.res.askedQuestions+=1;
-				if(MainStageController.this.gameIsFinished) {
-					MainStageController.this.res.win_mode1 = true;
-					SaveStatisticInfos.createAndSaveCharakter(MainStageController.this.program.getCharacter());
-					MainStageController.this.program.abortCurrentGame();
-				}
-				else {
-					MainStageController.this.program.setCurrentAnswer(Answer.YES);
-					MainStageController.this.showNextQuestion();
-				}
+				MainStageController.this.program.setAnswer(Answer.YES);
+//				System.out.println("Clicked the Yes-Button");
+//				
+//				MainStageController.this.res.askedQuestions+=1;
+//				
+//				if(MainStageController.this.gameIsFinished) {
+//					MainStageController.this.res.win_mode1 = true;
+//					SaveStatisticInfos.createAndSaveCharakter(MainStageController.this.program.getCharacter());
+//					MainStageController.this.program.finishGameWithStatistics();
+//				}
+//				else {
+//					MainStageController.this.program.setCurrentAnswer(Answer.YES);
+//					MainStageController.this.showQuestion();
+//				}
 			}
 			else if(src == view.btnNo) {
-				System.out.println("Clicked the No-Button");
-				MainStageController.this.res.askedQuestions+=1;
-				if(MainStageController.this.gameIsFinished) {
-					MainStageController.this.res.win_mode1 = false;
-					MainStageController.this.program.abortCurrentGame();
-				}
-				else {
-					MainStageController.this.program.setCurrentAnswer(Answer.NO);
-					MainStageController.this.showNextQuestion();
-				}
+				MainStageController.this.program.setAnswer(Answer.NO);
+//				System.out.println("Clicked the No-Button");
+//				MainStageController.this.res.askedQuestions+=1;
+//				if(MainStageController.this.gameIsFinished) {
+//					MainStageController.this.res.win_mode1 = false;
+//					MainStageController.this.program.finishGameWithStatistics();
+//				}
+//				else {
+//					MainStageController.this.program.setCurrentAnswer(Answer.NO);
+//					MainStageController.this.showQuestion();
+//				}
 			}
 			else if(src == view.btnIdontKnow) {
-				System.out.println("Clicked the I don't Know Button");
-				MainStageController.this.program.setCurrentAnswer(Answer.DONT_KNOW);
-				MainStageController.this.showNextQuestion();
+				MainStageController.this.program.setAnswer(Answer.DONT_KNOW);
+//				System.out.println("Clicked the I don't Know Button");
+//				MainStageController.this.program.setCurrentAnswer(Answer.DONT_KNOW);
+//				MainStageController.this.showQuestion();
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
@@ -210,47 +217,52 @@ public class MainStageController {
 		
 		//If the user confirm the game abortion:
 		if (result.get() == bttApply){
-		    this.program.abortCurrentGameWithoutStatistics();
+		    this.program.abortGame();;
 		}
 	}
 	
-	private void showNextQuestion() {
+	public void updateInfo(float noqInPercent, float surness) {
 		
 		this.view.pgbKnowledge.getProgressBar().setProgress(this.program.getSureness());
 		this.view.lblKnowledge.setText("" + (int)(this.program.getSureness() * 100) + "%");
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(this.program.getNoOfQuestionsPercent());
 		this.view.lblNoOfQuest.setText("" + this.program.getNoOfQuestions());
+	}
+	
+	//Method that shows the next question:
+	public void showQuestion(String question) {
 		
-		if(this.program.getIsSure() == Answer.YES) {
-			System.out.println(this.program.getCharacter());
-			//this.view.lblQuestion.setText(this.res.iThinkItIsText.get() + "\n" + this.program.getCharacter().getName());
-			this.view.lblQuestion.setText("");
-			this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(this.program.getCharacter().getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-			this.view.recCharacter.setFill(this.view.impCharacter);
-			this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
-			this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
-			//this.view.gdpQuestion.getChildren().
-			//this.view.gdpQuestion.setGridLinesVisible(true);
-			this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
-			this.view.hbxQuestion.getChildren().remove(this.view.hbxCharacter);
-			this.view.hbxQuestion.getChildren().add(this.view.hbxCharacter);
-			this.view.gdpQuestion.setAlignment(Pos.CENTER);
-			this.view.gdpQuestion.add(this.view.hbxQuestion, 1, 1);
-			this.view.btnIdontKnow.setDisable(true);
-			this.gameIsFinished = true;
-		}
-		else if(this.program.getIsSure() == Answer.DONT_KNOW) {
-			this.view.lblQuestion.setText(this.res.iDontKnowYourCharacterText.get());
+		this.view.lblQuestion.setText(question);
+	}
 	
-			this.view.btnIdontKnow.setDisable(true);
-			this.view.btnYes.setDisable(true);
-			this.view.btnNo.setDisable(true);
-			this.gameIsFinished = true;
-		}
-		else if (this.program.getIsSure() == Answer.NO){
-			this.view.lblQuestion.setText(this.program.getCurrentQuestion());
-		}
+	//Method that shows the character that nappy guessed:
+	public void showGuessedCharacter(WikiCharacter character) {
+		
+		System.out.println(this.program.getCharacter());
+		//this.view.lblQuestion.setText(this.res.iThinkItIsText.get() + "\n" + this.program.getCharacter().getName());
+		this.view.lblQuestion.setText("");
+		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recCharacter.setFill(this.view.impCharacter);
+		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
+		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
+		//this.view.gdpQuestion.getChildren().
+		//this.view.gdpQuestion.setGridLinesVisible(true);
+		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+		this.view.hbxQuestion.getChildren().remove(this.view.hbxCharacter);
+		this.view.hbxQuestion.getChildren().add(this.view.hbxCharacter);
+		this.view.gdpQuestion.setAlignment(Pos.CENTER);
+		this.view.gdpQuestion.add(this.view.hbxQuestion, 1, 1);
+		this.view.btnIdontKnow.setDisable(true);
+		this.gameIsFinished = true;
+	}
 	
+	public void showNappyDontKnow() {
+		this.view.lblQuestion.setText(this.res.iDontKnowYourCharacterText.get());
+		
+		this.view.btnIdontKnow.setDisable(true);
+		this.view.btnYes.setDisable(true);
+		this.view.btnNo.setDisable(true);
+		this.gameIsFinished = true;
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
@@ -320,8 +332,8 @@ public class MainStageController {
 	public void showGamemode1View() {
 		
 		//Start a new Game:
-		this.program.startCurrentGame();
 		this.gameIsFinished = false;
+		
 		//Enable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(false);
 		//Disable the "new game" menu-item:
@@ -349,7 +361,7 @@ public class MainStageController {
 		this.view.lblQuestion.setText(this.program.getCurrentQuestion());
 		//Show the stage:
 		this.view.show();
-		System.out.println(this.view.gdpQuestion.getWidth());
+		
 	}
 	
 	/* showGamemode2View [method]: *//**
@@ -357,6 +369,11 @@ public class MainStageController {
 	 */
 	public void showGamemode2View() {
 		
+		//Reset ProgressBars:
+		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
+		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
+		this.view.lblNoOfQuest.setText("0");
+		this.view.lblKnowledge.setText("0%");
 	}
 
 	public MainStageResources getRes(){
