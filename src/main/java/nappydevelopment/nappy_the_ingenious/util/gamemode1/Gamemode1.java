@@ -60,21 +60,12 @@ public class Gamemode1{
 				// not a valid character :O
 				return null;
 			}
-			if(lang.equals(Language.GERMAN)){
-				return new WikiCharacter(
-					res.getString("name"),
-					res.getString("nickname"),
-					res.getString("description_de"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
-				);
-			}else if(lang.equals(Language.ENGLISH)){
-				return new WikiCharacter(
-					res.getString("name"),
-					res.getString("nickname"),
-					res.getString("description_en"),
-					new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
-				);
-			}
+			return new WikiCharacter(
+				res.getString("name"),
+				res.getString("nickname"),
+				res.getString("description_" + lang.getCode().toLowerCase()),
+				new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
+			);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -200,11 +191,7 @@ public class Gamemode1{
 			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			ResultSet res = st.getResultSet();
 			res.next();
-			if(lang.equals(Language.GERMAN)){
-				ques = res.getString("Q1_DE");
-			}else if(lang.equals(Language.ENGLISH)){
-				ques = res.getString("Q1_EN");
-			}
+			ques = res.getString("Q1_" + lang.getCode());
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
