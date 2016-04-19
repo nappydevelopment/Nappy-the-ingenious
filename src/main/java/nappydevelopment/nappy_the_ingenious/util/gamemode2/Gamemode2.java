@@ -18,14 +18,12 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 public class Gamemode2{
 	private ArrayList<Question> remainingQuestions = new ArrayList<>();
 	private Map<String,String> character = new HashMap<>();
-	private Language lang;
 	private int questionCounter = 0;
 
-	public Gamemode2(Language ln){
-		this(ln, false);
+	public Gamemode2(){
+		this(false);
 	}
-	public Gamemode2(Language ln, boolean deterministic){
-		lang = ln;
+	public Gamemode2(boolean deterministic){
 		try(Statement st = DatabaseProvider.getStatement()){
 			String questionSelect = "";
 			st.execute(
@@ -35,6 +33,10 @@ public class Gamemode2{
 				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'"
 			);
 			ResultSet res = st.getResultSet();
+			String langselect = "";
+			for(Language l: Language.values()){
+				langselect += ", Q1_"+ l.getCode();
+			}
 			boolean first = true;
 			while(res.next()){
 				if(!first){
@@ -42,24 +44,33 @@ public class Gamemode2{
 				}else{
 					first = false;
 				}
-				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL, Q1_";
-				switch(lang){
-					case ENGLISH: questionSelect += "EN "; break;
-					case  GERMAN: questionSelect += "DE "; break;
-					default: System.out.println("AHHHH!"); break;
-				}
-				questionSelect += "as Q FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
+				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL"+ langselect;
+				questionSelect += " FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
 			}
 			res.close();
 
-			st.execute("Select TABL, ID, Q from (" + questionSelect + ") WHERE Q != 'YOU SHOULD NOT READ THIS!'");
+			questionSelect = "Select TABL, ID" + langselect + " from (" + questionSelect + ") WHERE";
+			first = true;
+			for(Language l: Language.values()){
+				if(!first){
+					questionSelect += " AND ";
+				}else{
+					first = false;
+				}
+				questionSelect += " Q1_"+ l.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
+			}
+			st.execute(questionSelect);
 			res = st.getResultSet();
 			while(res.next()){
+				HashMap<Language, String> questions = new HashMap();
+				for(Language l: Language.values()){
+					questions.put(l, res.getString("Q1_"+ l.getCode()));
+				}
 				remainingQuestions.add(
 					new Question(
 						res.getString("TABL"),
 						res.getString("ID"),
-						res.getString("Q")
+						questions
 					)
 				);
 			}
@@ -104,11 +115,8 @@ public class Gamemode2{
 		return false;
 	}
 
-	public WikiCharacter endGame(){
-		String l = "DE";
-		switch(lang){
-			case ENGLISH: l = "EN"; break;
-		}
+	public WikiCharacter endGame(Language lang){
+		String l = lang.getCode();
 		return new WikiCharacter(
 				character.get("NAME"),
 				character.get("NICKNAME"),
@@ -118,10 +126,10 @@ public class Gamemode2{
 	}
 
 	public static void main(String[] args) {
-		Gamemode2 gm = new Gamemode2(Language.ENGLISH, true);
+		Gamemode2 gm = new Gamemode2(true);
 		System.out.println(gm.getQuestions().stream().count());
 		Question q = gm.getQuestions().get(3);
-		System.out.println(q.getQuestion());
+		System.out.println(q.getQuestion(Language.GERMAN));
 		System.out.println(gm.askQuestion(q));
 		System.out.println(gm.getQuestions().stream().count());
 		System.out.println("Jeff Albertson?");
@@ -129,6 +137,6 @@ public class Gamemode2{
 		System.out.println("Eleanor Abernathy?");
 		System.out.println(gm.makeGuess("Eleanor Abernathy"));
 
-		System.out.println("Es war: "+ gm.endGame());
+		System.out.println("Es war: "+ gm.endGame(Language.GERMAN));
 	}
 }
