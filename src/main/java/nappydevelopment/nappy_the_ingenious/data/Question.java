@@ -1,25 +1,29 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
+import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+
+import java.util.Map;
+
 public class Question{
 
 	private String table;
 	private String attribute;
-	private String question;
+	private Map<Language, String> questions;
 
 	private boolean isBoolean;
 
-	public Question(String table, String attribute, String question){
+	public Question(String table, String attribute, Map<Language, String> questions){
 		this.table = table;
 		this.attribute = attribute;
-		this.question = question;
+		this.questions = questions;
 	}
-	public Question(String table, String attribute, String question, String type){
-		this(table, attribute, question);
+	public Question(String table, String attribute, Map<Language, String> questions, String type){
+		this(table, attribute, questions);
 		this.isBoolean = type == "BOOLEAN";
 	}
 
-	public String getQuestion(){
-		return question;
+	public String getQuestion(Language lang){
+		return questions.get(lang);
 	}
 	public String getAttribute(){
 		return attribute;

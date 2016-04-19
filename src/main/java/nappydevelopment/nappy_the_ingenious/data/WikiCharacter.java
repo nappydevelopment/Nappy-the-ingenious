@@ -50,8 +50,6 @@ public class WikiCharacter {
 	}
 
 	@Override
-	public String toString(){
-		return this.name;
-	}
+	public String toString() { return this.name; }
 }
 //### EOF ##################################################################################################################################
