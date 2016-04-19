@@ -109,7 +109,6 @@ public class WikiStageController {
 	
 	private void changeCharacterListView(List<WikiCharacter> chars) {
 		
-		System.out.printf("saadsada");
 		Boolean colorFlag = true;
 		
 		//### Generate content wiki-character ##################################
