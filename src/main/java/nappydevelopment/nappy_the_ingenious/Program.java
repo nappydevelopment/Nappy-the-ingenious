@@ -7,6 +7,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
+import nappydevelopment.nappy_the_ingenious.data.Game;
+import nappydevelopment.nappy_the_ingenious.data.Gamemode;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
@@ -17,13 +19,18 @@ import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageContr
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
+import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
 
 public class Program extends Application {
 
 //### ATTRIBUTES ###########################################################################################################################
 	
-	private int noOfQuestions;
-	private Gamemode1 questGen;
+	//Logic:
+	private Gamemode1 gm1Logic;
+	private Gamemode2 gm2Logic;
+	
+	//Object that represents the current game:
+	private Game game;
 	
 //### STAGES ###############################################################################################################################
 	
@@ -42,8 +49,10 @@ public class Program extends Application {
 		
 		System.out.println("JavaFX-Application - Init");
 		
-		this.noOfQuestions = 0;
-		this.questGen = null;
+		//Initialize Logic and Game:
+		this.gm1Logic = null;
+		this.gm2Logic = null;
+		this.game = null;
 		
 		//Init the stage-controller:
 		this.mainStageController = new MainStageController(this);
@@ -60,12 +69,10 @@ public class Program extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		List<WikiCharacter> chars = CharacterProvider.getCharacters(Language.GERMAN);
-		//List<WikiCharacter> chars = new LinkedList<WikiCharacter>();
-		if(chars == null) {
-			System.out.println("Null!");
-		}
+		System.out.println("JavaFX-Application - Start");
 		
+		//Read out the list with wiki-characters:
+		List<WikiCharacter> chars = CharacterProvider.getCharacters(Language.GERMAN);
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
@@ -75,13 +82,15 @@ public class Program extends Application {
 		this.wikiStageController.initView(chars);
 		this.infoStageController.initView();
 		
-		//Set the language of the main stage to English:
+		//Set the language of the stages to German:
 		this.mainStageController.changeLanguageToGerman();
 		this.statisticStageController.changeLanguageToGerman();
 		this.settingsStageController.changeLanguageToGerman();
 		this.helpStageController.changeLanguageToGerman();
 		this.wikiStageController.changeLanguageToGerman();
 		this.infoStageController.changeLanguageToGerman();
+		
+		System.out.println("JavaFX-Application - Run");
 		
 		//Show the main-stage-window:
 		this.mainStageController.showStartView();
@@ -118,81 +127,7 @@ public class Program extends Application {
 		this.infoStageController.show(owner);
 	}
 	
-	//##############################################################################################
-	
-	public boolean existsAnActiveGame() {
-		if(this.questGen == null) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	
-	public void startCurrentGame() {
-		this.questGen = new Gamemode1();
-	}
-	
-	public String getCurrentQuestion() {
-		this.noOfQuestions += 0.05;
-		return this.questGen.getQuestion(Settings.getLanguage());
-	}
-	
-	public Answer getIsSure() {
-		
-		if(this.questGen.isSure() == null) {
-			return Answer.DONT_KNOW;
-		}
-		else if (this.questGen.isSure() == false) {
-			return Answer.NO;
-		}
-		else {
-			return Answer.YES;
-		}
-	}
-
-	public double getSureness() {
-		return this.questGen.getSureness();
-	}
-
-	public WikiCharacter getCharacter() {
-		System.out.println(this.questGen.getCharacter(Language.GERMAN));
-		return this.questGen.getCharacter(Settings.getLanguage());
-	}
-	
-	public void setCurrentAnswer(Answer answer) {
-		
-		if(answer == Answer.YES) {
-			this.questGen.setAnswer(true);
-		}
-		else if(answer == Answer.NO) {
-			this.questGen.setAnswer(false);
-		}
-		else if(answer == Answer.DONT_KNOW) {
-			this.questGen.setAnswer(null);
-		}
-		this.noOfQuestions++;
-	}
-	
-	public void abortCurrentGameWithoutStatistics() {
-		this.noOfQuestions = 0;
-		this.questGen = null;
-		this.mainStageController.showStartView();
-	}
-
-	public void abortCurrentGame() {
-
-		/*TODO
-		Punkteberechnung hier, Datenbankspeicherung hier
-		 */
-		this.mainStageController.initSave();
-
-
-
-		this.noOfQuestions = 0;
-		this.questGen = null;
-		this.mainStageController.showStartView();
-	}
+	//### Apply settings ###########################################################################
 	
 	public void applySettings() {
 		
@@ -215,13 +150,156 @@ public class Program extends Application {
 		
 	}
 	
+	//### Methods for game general control & info ##################################################
+	
+	/* existsAnActiveGame [method]: Method that tell if an active game exists *//**
+	 * 
+	 * @return
+	 */
+	public boolean existsAnActiveGame() {
+		
+		return this.game.isActive();
+	}
+	
+	/* startCurrentGame [method]: Method that starts a Game and initialize the logic *//**
+	 * 
+	 */
+	public void startGame() {
+		
+		//Initialize the logic:
+		this.gm1Logic = new Gamemode1();
+		//this.gm2Logic = new Gamemode2(null);
+		//Set Flag for a started game:
+		this.game = new Game();
+		this.game.setActive(true);
+		this.game.setActiveGamemode(Gamemode.GAMEMODE1);
+		
+		//Show the gamemode1:
+		this.mainStageController.showGamemode1View();
+		
+		//Show the first Question:
+		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+	}
+    
+	public void setAnswer(Answer answer) {
+		
+		//Write answer in the logic:
+		if(answer == Answer.YES) {
+			this.gm1Logic.setAnswer(true);
+		}
+		else if(answer == Answer.NO) {
+			this.gm1Logic.setAnswer(false);
+		}
+		else if(answer == Answer.DONT_KNOW) {
+			this.gm1Logic.setAnswer(null);
+		}
+		
+		//Increase the number of questions that nappy need:
+		this.game.increaseNoOfQuestionsNappy();
+		
+		//Update info elements (Progress-Bars):
+		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappyInPercent(),
+                                            this.gm1Logic.getSureness());
+		
+		//Check if nappy knows the character:
+		if(this.gm1Logic.isSure() == true) {
+			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter(Settings.getLanguage()));			                                    
+		}
+		//Ask the next question:
+		else if (this.gm1Logic.isSure() == false) {
+			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+		}
+		else if (this.gm1Logic.isSure() == null) {
+			this.mainStageController.showNappyDontKnow();
+		}
+	}
+	
+	/* finishGameWithoutStatistics [method]: Method to finish a game without writing a statistics entry *//**
+	 * 
+	 */
+	public void finishGameWithoutStatistics() {
+		
+		//Erase logics:
+		this.gm1Logic = null;
+		this.gm2Logic = null;
+		//Erase game:
+		this.game = null;
+		//Show start view:
+		this.mainStageController.showStartView();
+	}
+
+	/* finishGameWithStatistics [method]: Method to finish a game and if necessary write a statistics entry *//**
+	 * 
+	 */
+	public void finishGameWithStatistics() {
+
+		/* TODO
+		Punkteberechnung hier, Datenbankspeicherung hier
+		Refactoring !!!!
+		 */
+		this.mainStageController.initSave();
+
+		this.gm1Logic = null;
+		this.gm2Logic = null;
+		this.game = null;
+		this.mainStageController.showStartView();
+	}
+	
+	/* abortGame [method]: Method to abort a current game *//**
+	 * 
+	 */
+	public void abortGame() {
+		
+		this.gm1Logic = null;
+		this.gm2Logic = null;
+		this.game = null;
+		this.mainStageController.showStartView();
+	}
+	
+	//### Methods for gamemode1 ####################################################################
+	
+	public String getCurrentQuestion() {
+		//this.noOfQuestions += 0.05;
+		return this.gm1Logic.getQuestion(Settings.getLanguage());
+	}
+	
+	public void setCurrentAnswer(Answer answer) {
+		
+
+	}
+	
+	public Answer getIsSure() {
+		
+		if(this.gm1Logic.isSure() == null) {
+			return Answer.DONT_KNOW;
+		}
+		else if (this.gm1Logic.isSure() == false) {
+			return Answer.NO;
+		}
+		else {
+			return Answer.YES;
+		}
+	}
+
+	public double getSureness() {
+		return this.gm1Logic.getSureness();
+	}
+
+	public WikiCharacter getCharacter() {
+		System.out.println(this.gm1Logic.getCharacter(Language.GERMAN));
+		return this.gm1Logic.getCharacter(Settings.getLanguage());
+	}
+
 	public int getNoOfQuestions() {
-		return this.noOfQuestions;
+		return this.game.getNoOfQuestionsNappy();
 	}
 	
 	public float getNoOfQuestionsPercent() {
-		return ((float)this.noOfQuestions * 0.05F);
+		return ((float)this.game.getNoOfQuestionsNappy() * 0.05F);
 	}
+	
+	//### Methods for gamemode2 ####################################################################
+	
 	
 //### MAIN METHOD ##########################################################################################################################
 	
