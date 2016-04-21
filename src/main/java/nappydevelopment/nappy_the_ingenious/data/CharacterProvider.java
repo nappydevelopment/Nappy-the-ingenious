@@ -26,7 +26,7 @@ public class CharacterProvider{
 				select += ", description_"+ l.getCode().toLowerCase();
 				select += ", nickname_"+ l.getCode().toLowerCase();
 			}
-			st.execute(select + "FROM SIMPSONS " + whereclause);
+			st.execute(select + " FROM SIMPSONS " + whereclause);
 			ResultSet res = st.getResultSet();
 
 			while(res.next()){
