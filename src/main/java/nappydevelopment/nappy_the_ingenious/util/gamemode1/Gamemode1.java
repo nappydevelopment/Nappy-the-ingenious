@@ -1,8 +1,5 @@
 package nappydevelopment.nappy_the_ingenious.util.gamemode1;
 
-import javafx.scene.control.TextFormatter;
-import javafx.scene.image.Image;
-import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
