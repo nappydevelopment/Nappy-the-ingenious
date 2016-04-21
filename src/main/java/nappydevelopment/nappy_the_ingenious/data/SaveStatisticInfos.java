@@ -8,16 +8,16 @@ import java.sql.Statement;
  */
 public class SaveStatisticInfos {
 
-    public static void createAndSavePlayer(String spielerName, boolean win_mode1, boolean win_mode2, int noOfQuestionsNappy, int askedQuestions) {
-        Player player = new Player(spielerName, askedQuestions, 20, 12345);
+    public static void createAndSavePlayer(String spielerName, Game game) {
+        Player player = new Player(spielerName, game.getNoOfQuestionsNappy(), game.getNoOfQuestionsPlayer(), 12345);
 
         try{
             Statement st = DatabaseProvider.getStatement();
             st.execute(
                     "Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
                             player.getAnzeigeName() + "', '" +
-                            win_mode1 + "', '" +
-                            win_mode2 + "', '" +
+                            game.isWinNappy() + "', '" +
+                            game.isWinPlayer() + "', '" +
                             player.getFragen_nappy() + "', '" +
                             player.getFragen_spieler() + "', '" +
                             player.getGesamtPunktzahl() + "');"
