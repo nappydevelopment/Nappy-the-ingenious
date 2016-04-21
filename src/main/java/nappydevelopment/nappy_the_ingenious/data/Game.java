@@ -13,6 +13,25 @@ public class Game {
 	
 	private int noOfQuestionsNappy;
 	private int noOfQuestionsPlayer;
+
+	public boolean isWinNappy() {
+		return winNappy;
+	}
+
+	public void setWinNappy(boolean winNappy) {
+		this.winNappy = winNappy;
+	}
+
+	public boolean isWinPlayer() {
+		return winPlayer;
+	}
+
+	public void setWinPlayer(boolean winPlayer) {
+		this.winPlayer = winPlayer;
+	}
+
+	private boolean winNappy;
+	private boolean winPlayer;
 	
 	
 //### COMPONENTS ###########################################################################################################################
