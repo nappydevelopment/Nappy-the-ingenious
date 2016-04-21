@@ -5,49 +5,49 @@ package nappydevelopment.nappy_the_ingenious.data;
  */
 public class Player {
 
-    private String anzeigeName;
-    private int gesamtPunktzahl;
-    private int fragen_nappy;
-    private int fragen_spieler;
+    private String playerName;
+    private int score;
+    private int questions_nappy;
+    private int questions_player;
 
 
-    public Player(String anzeigename, int fragen_nappy, int fragen_spieler, int gesamtpunktzahl) {
-        this.anzeigeName = anzeigename;
-        this.fragen_nappy = fragen_nappy;
-        this.fragen_spieler = fragen_spieler;
-        this.gesamtPunktzahl = gesamtpunktzahl;
+    public Player(String anzeigename, int questions_nappy, int questions_player, int score) {
+        this.playerName = anzeigename;
+        this.questions_nappy = questions_nappy;
+        this.questions_player = questions_player;
+        this.score = score;
     }
 
-    public String getAnzeigeName() {
-        return anzeigeName;
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public void setAnzeigeName(String anzeigeName) {
-        anzeigeName = anzeigeName;
+    public void setPlayerName(String playerName) {
+        playerName = playerName;
     }
 
-    public int getFragen_nappy() {
-        return fragen_nappy;
+    public int getQuestions_nappy() {
+        return questions_nappy;
     }
 
-    public void setFragen_nappy(int fragen_nappy) {
-        this.fragen_nappy = fragen_nappy;
+    public void setQuestions_nappy(int questions_nappy) {
+        this.questions_nappy = questions_nappy;
     }
 
-    public int getFragen_spieler() {
-        return fragen_spieler;
+    public int getQuestions_player() {
+        return questions_player;
     }
 
-    public void setFragen_spieler(int fragen_spieler) {
-        this.fragen_spieler = fragen_spieler;
+    public void setQuestions_player(int questions_player) {
+        this.questions_player = questions_player;
     }
 
-    public int getGesamtPunktzahl() {
-        return gesamtPunktzahl;
+    public int getScore() {
+        return score;
     }
 
-    public void setGesamtPunktzahl(int gesamtPunktzahl) {
-        this.gesamtPunktzahl = gesamtPunktzahl;
+    public void setScore(int score) {
+        this.score = score;
     }
 
 }
