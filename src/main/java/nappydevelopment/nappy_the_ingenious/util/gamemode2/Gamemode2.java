@@ -125,16 +125,24 @@ public class Gamemode2{
 
 	public boolean finished() { return finished; }
 
-	public WikiCharacter endGame(Language lang){
+	public WikiCharacter getCharacter() { return this.endGame(); }
+	public WikiCharacter endGame(){
 		if(finished){
 			return null;
 		}
 		finished = true;
-		String l = lang.getCode();
+		Map<Language, String> nicknames = new HashMap<>();
+		Map<Language, String> descriptions = new HashMap<>();
+
+		for(Language l: Language.values()){
+			nicknames.put(l, character.get("NICKNAME_"+ l.getCode()));
+			descriptions.put(l, character.get("DESCRIPTION_"+ l.getCode()));
+		}
+
 		return new WikiCharacter(
 				character.get("NAME"),
-				character.get("NICKNAME"),
-				character.get("DESCRIPTION_" + l),
+				nicknames,
+				descriptions,
 				new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png")
 		);
 	}
@@ -151,6 +159,6 @@ public class Gamemode2{
 		System.out.println("Eleanor Abernathy?");
 		System.out.println(gm.makeGuess("Eleanor Abernathy"));
 
-		System.out.println("Es war: "+ gm.endGame(Language.GERMAN));
+		System.out.println("Es war: "+ gm.getCharacter());
 	}
 }
