@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class CharacterProvider{
 
-	public static List<WikiCharacter> getCharacters(Language lang){
+	public static List<WikiCharacter> getCharacters(){
 		Statement st = DatabaseProvider.getStatement();
 		List<WikiCharacter> out = new ArrayList<WikiCharacter>();
 		try{
