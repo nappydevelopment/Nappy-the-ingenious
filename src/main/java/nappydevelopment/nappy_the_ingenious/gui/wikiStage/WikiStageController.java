@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
@@ -160,18 +161,18 @@ public class WikiStageController {
     		hbxImage.getChildren().add(imgRec);
     		//Set-up labels for name and description:
     		Label lblName = null;
-    		if(curCharacter.getNickname() == null) {
+    		if(curCharacter.getNickname(Settings.getLanguage()) == null) {
     			lblName = new Label(curCharacter.getName());
     		}
-    		else if(!curCharacter.getNickname().equals("")) {
-    			lblName = new Label(curCharacter.getName() + " (" + curCharacter.getNickname() + ")");
+    		else if(!curCharacter.getNickname(Settings.getLanguage()).equals("")) {
+    			lblName = new Label(curCharacter.getName() + " (" + curCharacter.getNickname(Settings.getLanguage()) + ")");
     		}
     		else {
     			lblName = new Label(curCharacter.getName());
     		}
         	
         	lblName.getStyleClass().add("lblName");
-        	Label lblDescription = new Label(curCharacter.getDescription());
+        	Label lblDescription = new Label(curCharacter.getDescription(Settings.getLanguage()));
         	lblDescription.setTextAlignment(TextAlignment.JUSTIFY);
         	lblDescription.setWrapText(true);
         	//Add elements to their containers: 

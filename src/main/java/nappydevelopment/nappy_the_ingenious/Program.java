@@ -72,7 +72,7 @@ public class Program extends Application {
 		System.out.println("JavaFX-Application - Start");
 		
 		//Read out the list with wiki-characters:
-		List<WikiCharacter> chars = CharacterProvider.getCharacters(Language.GERMAN);
+		List<WikiCharacter> chars = CharacterProvider.getCharacters();
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
