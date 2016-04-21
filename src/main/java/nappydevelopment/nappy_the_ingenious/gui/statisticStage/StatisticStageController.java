@@ -123,8 +123,8 @@ public class StatisticStageController {
 		for(int i = 0; i < tfp.size(); i++) {
 			
 			curPlayer = tfp.get(i);
-			this.res.lblPlayerNameTexts[i].set(curPlayer.getAnzeigeName());
-			this.res.lblPlayerValueTexts[i].set(curPlayer.getFragen_nappy() + "/" + curPlayer.getFragen_spieler());
+			this.res.lblPlayerNameTexts[i].set(curPlayer.getPlayerName());
+			this.res.lblPlayerValueTexts[i].set(curPlayer.getQuestions_nappy() + "/" + curPlayer.getQuestions_player());
 		}
 		
 		ArrayList<StatisticCharacter> tfc = tfGen.getTopFivePlayedCharacters();
