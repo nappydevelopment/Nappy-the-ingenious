@@ -124,8 +124,7 @@ public class Gamemode2{
 	}
 
 	public boolean finished() { return finished; }
-
-	public WikiCharacter getCharacter() { return this.endGame(); }
+	
 	public WikiCharacter endGame(){
 		if(finished){
 			return null;
@@ -145,20 +144,5 @@ public class Gamemode2{
 				descriptions,
 				new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png")
 		);
-	}
-
-	public static void main(String[] args) {
-		Gamemode2 gm = new Gamemode2(true);
-		System.out.println(gm.getQuestions().stream().count());
-		Question q = gm.getQuestions().get(3);
-		System.out.println(q.getQuestion(Language.GERMAN));
-		System.out.println(gm.askQuestion(q));
-		System.out.println(gm.getQuestions().stream().count());
-		System.out.println("Jeff Albertson?");
-		System.out.println(gm.makeGuess("Jeff Albertson"));
-		System.out.println("Eleanor Abernathy?");
-		System.out.println(gm.makeGuess("Eleanor Abernathy"));
-
-		System.out.println("Es war: "+ gm.getCharacter());
 	}
 }
