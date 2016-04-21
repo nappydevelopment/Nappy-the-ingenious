@@ -124,7 +124,7 @@ public class Gamemode2{
 	}
 
 	public boolean finished() { return finished; }
-	
+
 	public WikiCharacter endGame(){
 		if(finished){
 			return null;
