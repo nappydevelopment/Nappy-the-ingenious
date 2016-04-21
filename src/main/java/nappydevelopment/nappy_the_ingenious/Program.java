@@ -243,12 +243,7 @@ public class Program extends Application {
 	/* abortGame [method]: Method to abort a current game *//**
 	 * 
 	 */private void writeStatistics(String spielerName) {
-		/* TODO
-		Punkteberechnung hier, Datenbankspeicherung hier
-		Refactoring !!!!
-		 */
-		SaveStatisticInfos.createAndSavePlayer(spielerName, game.isWinNappy(),game.isWinPlayer(), game.getNoOfQuestionsNappy(), game.getNoOfQuestionsPlayer());
-
+		SaveStatisticInfos.createAndSavePlayer(spielerName, this.game);
 	}
 
 
