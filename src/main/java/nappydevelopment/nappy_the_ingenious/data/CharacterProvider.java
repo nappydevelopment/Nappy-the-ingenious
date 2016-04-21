@@ -18,7 +18,7 @@ public class CharacterProvider{
 	public static List<WikiCharacter> getCharacters() { return getCharacters(""); }
 	public static List<WikiCharacter> getCharacters(String whereclause){
 		Statement st = DatabaseProvider.getStatement();
-		List<WikiCharacter> out = new ArrayList<WikiCharacter>();
+		List<WikiCharacter> out = new ArrayList<>();
 		try{
 			if(st == null){return null;}
 			String select = "SELECT name";
@@ -31,8 +31,8 @@ public class CharacterProvider{
 
 			while(res.next()){
 				String name = res.getString("name");
-				Map<Language, String> descriptions= new HashMap<>();
-				Map<Language, String> nicknames= new HashMap<>();
+				Map<Language, String> descriptions = new HashMap<>();
+				Map<Language, String> nicknames = new HashMap<>();
 
 				for(Language l: Language.values()){
 					descriptions.put(l, res.getString("description_"+ l.getCode().toLowerCase()));
