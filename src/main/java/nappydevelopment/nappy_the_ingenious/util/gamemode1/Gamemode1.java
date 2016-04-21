@@ -27,8 +27,9 @@ public class Gamemode1{
         	st.execute(
 				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
 				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
-				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'NICKNAME', 'COUNTER')\n" +
-				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'"
+				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'COUNTER')\n" +
+				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'" +
+				"AND COLUMN_NAME NOT LIKE 'NICKNAME_%'"
 			);
 			ResultSet res = st.getResultSet();
 			int i = 0;
