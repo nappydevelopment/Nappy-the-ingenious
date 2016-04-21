@@ -1,7 +1,9 @@
 package nappydevelopment.nappy_the_ingenious.util.gamemode1;
 
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
@@ -9,6 +11,7 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class Gamemode1{
 
@@ -49,27 +52,12 @@ public class Gamemode1{
 		determinisic = det;
 	}
 
-	public WikiCharacter getCharacter(Language lang){
-		String select = "SELECT name, nickname, description_en, description_de FROM SIMPSONS";
-		boolean first = true;
-		select += generateWhere();
-		try(Statement st = DatabaseProvider.getStatement()){
-			st.execute(select);
-			ResultSet res = st.getResultSet();
-			if(!res.next()){
-				// not a valid character :O
-				return null;
-			}
-			return new WikiCharacter(
-				res.getString("name"),
-				res.getString("nickname"),
-				res.getString("description_" + lang.getCode().toLowerCase()),
-				new Image(GlobalReferences.IMAGES_PATH + "wiki/" + res.getString("name").toLowerCase().replace(" ", "_") + ".png")
-			);
-		}catch(Exception e){
-			e.printStackTrace();
+	public WikiCharacter getCharacter(){
+		List<WikiCharacter> chars = CharacterProvider.getCharacters(generateWhere());
+		if(chars.isEmpty() || !isSure()){
+			return null;
 		}
-		return null;
+		return chars.get(0);
 	}
 
     public void setAnswer(Boolean answer){
