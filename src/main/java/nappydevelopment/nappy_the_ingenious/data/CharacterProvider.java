@@ -17,9 +17,8 @@ public class CharacterProvider{
 
 	public static List<WikiCharacter> getCharacters() { return getCharacters(""); }
 	public static List<WikiCharacter> getCharacters(String whereclause){
-		Statement st = DatabaseProvider.getStatement();
 		List<WikiCharacter> out = new ArrayList<>();
-		try{
+		try(Statement st = DatabaseProvider.getStatement()){
 			if(st == null){return null;}
 			String select = "SELECT name";
 			for(Language l: Language.values()){
