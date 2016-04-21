@@ -199,7 +199,7 @@ public class Program extends Application {
 		
 		//Check if nappy knows the character:
 		if(this.gm1Logic.isSure() == true) {
-			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter(Settings.getLanguage()));			                                    
+			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
 		}
 		//Ask the next question:
 		else if (this.gm1Logic.isSure() == false) {
@@ -290,8 +290,8 @@ public class Program extends Application {
 	}
 
 	public WikiCharacter getCharacter() {
-		System.out.println(this.gm1Logic.getCharacter(Language.GERMAN));
-		return this.gm1Logic.getCharacter(Settings.getLanguage());
+		System.out.println(this.gm1Logic.getCharacter());
+		return this.gm1Logic.getCharacter();
 	}
 
 	public int getNoOfQuestions() {
