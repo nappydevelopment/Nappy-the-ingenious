@@ -15,7 +15,8 @@ import java.util.stream.Collectors;
 
 public class CharacterProvider{
 
-	public static List<WikiCharacter> getCharacters(){
+	public static List<WikiCharacter> getCharacters() { return getCharacters(""); }
+	public static List<WikiCharacter> getCharacters(String whereclause){
 		Statement st = DatabaseProvider.getStatement();
 		List<WikiCharacter> out = new ArrayList<WikiCharacter>();
 		try{
@@ -25,7 +26,7 @@ public class CharacterProvider{
 				select += ", description_"+ l.getCode().toLowerCase();
 				select += ", nickname_"+ l.getCode().toLowerCase();
 			}
-			st.execute(select + "FROM SIMPSONS");
+			st.execute(select + "FROM SIMPSONS " + whereclause);
 			ResultSet res = st.getResultSet();
 
 			while(res.next()){
