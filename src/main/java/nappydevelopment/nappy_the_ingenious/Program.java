@@ -5,11 +5,7 @@ import java.util.List;
 //### IMPORTS ##############################################################################################################################
 import javafx.application.Application;
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
-import nappydevelopment.nappy_the_ingenious.data.Game;
-import nappydevelopment.nappy_the_ingenious.data.Gamemode;
-import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
@@ -232,22 +228,30 @@ public class Program extends Application {
 	 * 
 	 */
 	public void finishGameWithStatistics() {
-
-		/* TODO
-		Punkteberechnung hier, Datenbankspeicherung hier
-		Refactoring !!!!
-		 */
-		this.mainStageController.initSave();
-
+		String spielerName = this.mainStageController.showEnterNameDialog();
+		if(spielerName != null){
+			this.writeStatistics(spielerName);
+		}
 		this.gm1Logic = null;
 		this.gm2Logic = null;
 		this.game = null;
 		this.mainStageController.showStartView();
 	}
+
+
 	
 	/* abortGame [method]: Method to abort a current game *//**
 	 * 
-	 */
+	 */private void writeStatistics(String spielerName) {
+		/* TODO
+		Punkteberechnung hier, Datenbankspeicherung hier
+		Refactoring !!!!
+		 */
+		SaveStatisticInfos.createAndSavePlayer(spielerName, game.isWinNappy(),game.isWinPlayer(), game.getNoOfQuestionsNappy(), game.getNoOfQuestionsPlayer());
+
+	}
+
+
 	public void abortGame() {
 		
 		this.gm1Logic = null;

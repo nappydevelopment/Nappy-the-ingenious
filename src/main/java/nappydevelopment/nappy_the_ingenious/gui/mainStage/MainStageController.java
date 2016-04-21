@@ -376,39 +376,12 @@ public class MainStageController {
 		this.view.lblKnowledge.setText("0%");
 	}
 
-	public MainStageResources getRes(){
-		return res;
-	}
-
-	public void initSave(){
-		String spielerName = MainStageController.this.showEnterNameDialog();
-		if(spielerName == null){
-			return;
-		}
-
-		/*TODO
-	Algo zum Berechnen der Punktzahl hier einfügen
-	 */
-		boolean win_mode1 = MainStageController.this.res.win_mode1;
-		boolean win_mode2 = MainStageController.this.res.win_mode2;
-
-
-		SaveStatisticInfos.createAndSavePlayer(spielerName, win_mode1, win_mode2, MainStageController.this.res.askedQuestions);
-		MainStageController.this.res.askedQuestions = 0;
-	}
-
-
-
-	private String showEnterNameDialog() {
+	public String showEnterNameDialog() {
 
 		TextInputDialog dialog = new TextInputDialog("walter");
 		dialog.setTitle(this.res.enterNameDialogTitle);
 		dialog.setHeaderText(this.res.enterNameDialogHeaderText);
 		dialog.setContentText(this.res.enterNameDialogContentText);
-
-
-		ButtonType bttApply = new ButtonType(this.res.abortGameDialogBtnApplyText);
-		ButtonType bttCancel = new ButtonType(this.res.abortGameDialogBtnCancelText);
 
 		//Set properties of the dialog:
 		//alert.getButtonTypes().setAll(bttApply, bttCancel);
