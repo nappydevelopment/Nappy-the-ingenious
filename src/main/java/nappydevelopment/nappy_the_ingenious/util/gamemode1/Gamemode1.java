@@ -17,7 +17,6 @@ public class Gamemode1{
 	private Boolean[] ans = new Boolean[60];
 	private String[] question = new String[60];
 	private boolean[] dunno = new boolean[60];
-	private int remaining = 0;
 	private int numDunno = 0;
 	private int activeQuestion = -1;
 	private boolean determinisic = false;
