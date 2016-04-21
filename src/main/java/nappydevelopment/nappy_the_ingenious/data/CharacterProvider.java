@@ -36,7 +36,7 @@ public class CharacterProvider{
 
 				for(Language l: Language.values()){
 					descriptions.put(l, res.getString("description_"+ l.getCode().toLowerCase()));
-					nicknames.put(l, res.getString("description_"+ l.getCode().toLowerCase()));
+					nicknames.put(l, res.getString("nickname_"+ l.getCode().toLowerCase()));
 				}
 
 				Image img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + name.toLowerCase().replace(" ", "_") +".png");
