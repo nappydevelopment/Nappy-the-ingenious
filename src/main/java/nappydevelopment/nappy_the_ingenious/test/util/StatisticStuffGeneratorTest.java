@@ -4,9 +4,12 @@ import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Player;
 import nappydevelopment.nappy_the_ingenious.data.StatisticCharacter;
 import nappydevelopment.nappy_the_ingenious.util.statistics.StatisticStuffGenerator;
+import org.jmock.auto.Mock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.jmock.Mockery;
+import org.jmock.Expectations;
 
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,9 +21,12 @@ import static org.junit.Assert.*;
  */
 public class StatisticStuffGeneratorTest {
 
+    Mockery context = new Mockery();
     ArrayList<Player> playerList;
     ArrayList<StatisticCharacter> charList;
     StatisticStuffGenerator gen;
+
+
 
     @Before
     public void setUp() throws Exception {
