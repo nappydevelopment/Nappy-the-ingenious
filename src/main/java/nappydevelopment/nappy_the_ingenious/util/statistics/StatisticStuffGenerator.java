@@ -16,12 +16,6 @@ import java.util.Comparator;
  */
 public class StatisticStuffGenerator {
 
-
-
-    public StatisticStuffGenerator(){
-
-    }
-
     public ArrayList<Player> getTopFivePlayers() {
         ArrayList<Player> topFiveList = new ArrayList<Player>();
         try{
@@ -30,13 +24,12 @@ public class StatisticStuffGenerator {
                     "SELECT player_name, questions_nappy, questions_player, score FROM HIGHSCORES ORDER BY score DESC LIMIT 5"
             );
             ResultSet res = st.getResultSet();
-
             while(res.next()){
                 String name = res.getString("player_name");
                 System.out.print(name+ ", ");
                 int nappy_fragen = res.getInt("questions_nappy");
                 int spieler_fragen = res.getInt("questions_player");
-                int punktzahl = res.getInt("score");
+                double punktzahl = res.getDouble("score");
                 topFiveList.add(new Player(name, nappy_fragen, spieler_fragen, punktzahl));
             }
             res.close();
@@ -56,7 +49,6 @@ public class StatisticStuffGenerator {
                     "SELECT name, counter FROM SIMPSONS ORDER BY counter DESC LIMIT 5"
             );
             ResultSet res = st.getResultSet();
-
             while(res.next()){
                 String name = res.getString("name");
                 int counter = res.getInt("counter");
