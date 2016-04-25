@@ -35,7 +35,7 @@ public class Gamemode1{
 			int i = 0;
 			while(res.next()){
 				column[i] = res.getString("COLUMN_NAME");
-				columnBool[i] = res.getString("TYPE_NAME") == "BOOLEAN";
+				columnBool[i] = res.getString("TYPE_NAME").equals("BOOLEAN");
 				ans[i] = null;
 				i++;
 			}
