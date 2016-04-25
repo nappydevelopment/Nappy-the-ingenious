@@ -157,7 +157,7 @@ public class Program extends Application {
 		return this.game.isActive();
 	}
 	
-	/* startCurrentGame [method]: Method that starts a Game and initialize the logic *//**
+	/* startGame [method]: Method that starts a Game and initialize the logic *//**
 	 * 
 	 */
 	public void startGame() {
@@ -177,6 +177,10 @@ public class Program extends Application {
 		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
 	}
     
+	/* setAnswer [method]: Method that sets the answer to the current question *//**
+	 * 
+	 * @param answer
+	 */
 	public void setAnswer(Answer answer) {
 		
 		//Write answer in the logic:
@@ -238,15 +242,15 @@ public class Program extends Application {
 		this.mainStageController.showStartView();
 	}
 
-
-	
-	/* abortGame [method]: Method to abort a current game *//**
+	/* writeStatistics [method]: Method that write a statistic entry *//**
 	 * 
-	 */private void writeStatistics(String spielerName) {
+	 * @param spielerName
+	 */
+	private void writeStatistics(String spielerName) {
 		SaveStatisticInfos.createAndSavePlayer(spielerName, this.game);
 	}
-
-
+    
+	/* abortGame [method]: Method to abort a current game */
 	public void abortGame() {
 		
 		this.gm1Logic = null;
