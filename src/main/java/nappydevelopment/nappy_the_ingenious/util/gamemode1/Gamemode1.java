@@ -82,13 +82,14 @@ public class Gamemode1{
 		try(Statement st = DatabaseProvider.getStatement()){
 			st.execute("Select count(0) as C FROM SIMPSONS" + where);
 			ResultSet res = st.getResultSet();
-			res.next();
-			float count = res.getFloat("C");
-			res.close();
-			if(count == 0){
-				return -2;
+			if(res.next()){
+				float count = res.getFloat("C");
+				res.close();
+				if(count == 0){
+					return -2;
+				}
+				return (1 / count);
 			}
-			return (1 / count);
 		}catch(Throwable e){
 			e.printStackTrace();
 		}
@@ -114,7 +115,7 @@ public class Gamemode1{
 				}
 			}
 		}
-		if(where.equals(" WHERE ")){
+		if(" WHERE ".equals(where)){
 			where = "";
 		}
 		return where;
