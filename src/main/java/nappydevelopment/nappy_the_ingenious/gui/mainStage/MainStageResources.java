@@ -187,7 +187,7 @@ public class MainStageResources {
 		this.btnNoText.setValue("No");
 		this.btnIdontKnow.setValue("I don't know");
 		
-		this.iDontKnowYourCharacterText.setValue("I don't know your character");
+		this.iDontKnowYourCharacterText.setValue("I don't know your character!");
 		this.iThinkItIsText.setValue("I think your character is");
 		
 		//Abort-Dialog-Texts:
@@ -232,7 +232,7 @@ public class MainStageResources {
 		this.btnNoText.setValue("Nein");
 		this.btnIdontKnow.setValue("Ich weiß nicht");
 		
-		this.iDontKnowYourCharacterText.setValue("Ich kenne deinen Charakter nicht");
+		this.iDontKnowYourCharacterText.setValue("Ich kenne deinen Charakter nicht!");
 		this.iThinkItIsText.setValue("Ich denke dein Charakter ist");
 		
 		//Abort-Dialog-Texts:

@@ -1,10 +1,14 @@
+//### Program.java #########################################################################################################################
+
 package nappydevelopment.nappy_the_ingenious;
 
-import java.util.List;
-
 //### IMPORTS ##############################################################################################################################
+
+import java.util.List;
+//JavaFX imports:
 import javafx.application.Application;
 import javafx.stage.Stage;
+//Nappy imports:
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
@@ -17,8 +21,13 @@ import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
 
+
 public class Program extends Application {
 
+//### PUBLIC CONSTANTS #####################################################################################################################
+	
+	public static final boolean DEBUG = true;
+	
 //### ATTRIBUTES ###########################################################################################################################
 	
 	//Logic:
@@ -43,9 +52,10 @@ public class Program extends Application {
 	@Override
 	public void init() {
 		
+		//Print status message:
 		System.out.println("JavaFX-Application - Init");
 		
-		//Initialize Logic and Game:
+		//Initialize logic and game:
 		this.gm1Logic = null;
 		this.gm2Logic = null;
 		this.game = null;
@@ -65,6 +75,7 @@ public class Program extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
+		//Print status message:
 		System.out.println("JavaFX-Application - Start");
 		
 		//Read out the list with wiki-characters:
@@ -86,6 +97,7 @@ public class Program extends Application {
 		this.wikiStageController.changeLanguageToGerman();
 		this.infoStageController.changeLanguageToGerman();
 		
+		//Print status message:
 		System.out.println("JavaFX-Application - Run");
 		
 		//Show the main-stage-window:
@@ -96,37 +108,56 @@ public class Program extends Application {
 	//Method that is called when the JavaFX-Application is shutdown:
 	@Override
 	public void stop() {
+		
+		//Print status message:
 		System.out.println("JavaFX-Application - Stop");
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
 	
-	//### Show stages ##############################################################################
-	
+	//### Methods to show stages ###################################################################
+		
+	/* showStatisticStage [method]: Method to show the statistic-stage: *//*
+	 * 
+	 */
 	public void showStatisticStage(Stage owner) {
 		this.statisticStageController.show(owner);
 	}
 	
+	/* showSettingsStage [method]: Method to show the settings-stage: *//**
+	 * 
+	 * @param owner
+	 */
 	public void showSettingsStage(Stage owner) {
 		this.settingsStageController.show(owner);
 	}
 	
+	/* showHelpStage [method]: Method to show the help-stage: *//**
+	 * 
+	 * @param owner
+	 */
 	public void showHelpStage(Stage owner) {
 		this.helpStageController.show(owner);
 	}
 	
+	/* showWikiStage [method]: Method to show the wiki-stage: */
 	public void showWikiStage(Stage owner) {
 		this.wikiStageController.show(owner);
 	}
 	
+	/* showInfoStage [method]: Method to show the info-stage: */
 	public void showInfoStage(Stage owner) {
 		this.infoStageController.show(owner);
 	}
 	
-	//### Apply settings ###########################################################################
+	//### Method to apply settings #################################################################
 	
+	/* applySettings [method]: Method to apply the settings for all stages *//**
+	 * 
+	 */
 	public void applySettings() {
 		
+		//Apply the language setting:
 		if(Settings.getLanguage() == Language.GERMAN) {
 			this.mainStageController.changeLanguageToGerman();
 			this.statisticStageController.changeLanguageToGerman();
@@ -165,6 +196,7 @@ public class Program extends Application {
 		//Initialize the logic:
 		this.gm1Logic = new Gamemode1();
 		//this.gm2Logic = new Gamemode2(null);
+		
 		//Set Flag for a started game:
 		this.game = new Game();
 		this.game.setActive(true);
@@ -177,43 +209,6 @@ public class Program extends Application {
 		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
 	}
     
-	/* setAnswer [method]: Method that sets the answer to the current question *//**
-	 * 
-	 * @param answer
-	 */
-	public void setAnswer(Answer answer) {
-		
-		//Write answer in the logic:
-		if(answer == Answer.YES) {
-			this.gm1Logic.setAnswer(true);
-		}
-		else if(answer == Answer.NO) {
-			this.gm1Logic.setAnswer(false);
-		}
-		else if(answer == Answer.DONT_KNOW) {
-			this.gm1Logic.setAnswer(null);
-		}
-		
-		//Increase the number of questions that nappy need:
-		this.game.increaseNoOfQuestionsNappy();
-		
-		//Update info elements (Progress-Bars):
-		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappyInPercent(),
-                                            this.gm1Logic.getSureness());
-		
-		//Check if nappy knows the character:
-		if(this.gm1Logic.isSure() == true) {
-			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
-		}
-		//Ask the next question:
-		else if (this.gm1Logic.isSure() == false) {
-			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
-		}
-		else if (this.gm1Logic.isSure() == null) {
-			this.mainStageController.showNappyDontKnow();
-		}
-	}
-	
 	/* finishGameWithoutStatistics [method]: Method to finish a game without writing a statistics entry *//**
 	 * 
 	 */
@@ -261,44 +256,50 @@ public class Program extends Application {
 	
 	//### Methods for gamemode1 ####################################################################
 	
-	public String getCurrentQuestion() {
-		//this.noOfQuestions += 0.05;
-		return this.gm1Logic.getQuestion(Settings.getLanguage());
-	}
-	
-	public void setCurrentAnswer(Answer answer) {
+	/* setAnswer [method]: Method that sets the answer to the current question *//**
+	 * 
+	 * @param answer
+	 */
+	public void setAnswer(Answer answer) {
 		
-
-	}
-	
-	public Answer getIsSure() {
-		
-		if(this.gm1Logic.isSure() == null) {
-			return Answer.DONT_KNOW;
+		//Write answer in the logic:
+		if(answer == Answer.YES) {
+			this.gm1Logic.setAnswer(true);
 		}
+		else if(answer == Answer.NO) {
+			this.gm1Logic.setAnswer(false);
+		}
+		else if(answer == Answer.DONT_KNOW) {
+			this.gm1Logic.setAnswer(null);
+		}
+		
+		//Increase the number of questions that nappy need:
+		this.game.increaseNoOfQuestionsNappy();
+		
+		//Update info elements (Progress-Bars):
+		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
+				                            this.game.getNoOfQuestionsNappyInPercent(),
+                                            this.gm1Logic.getSureness());
+		
+		//Check if nappy knows the character:
+		if(this.gm1Logic.isSure() == true) {
+			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
+		}
+		//Ask the next question:
 		else if (this.gm1Logic.isSure() == false) {
-			return Answer.NO;
+			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
 		}
-		else {
-			return Answer.YES;
+		else if (this.gm1Logic.isSure() == null) {
+			this.mainStageController.showNappyDontKnow();
 		}
-	}
-
-	public double getSureness() {
-		return this.gm1Logic.getSureness();
-	}
-
-	public WikiCharacter getCharacter() {
-		System.out.println(this.gm1Logic.getCharacter());
-		return this.gm1Logic.getCharacter();
-	}
-
-	public int getNoOfQuestions() {
-		return this.game.getNoOfQuestionsNappy();
 	}
 	
-	public float getNoOfQuestionsPercent() {
-		return ((float)this.game.getNoOfQuestionsNappy() * 0.05F);
+	/* finishGamemode1 [method]: Method that finish gamemode1 an set if nappy guess the right character *//**
+	 * 
+	 * @param isNappyRight
+	 */
+	public void finishGamemode1(boolean isNappyRight) {
+		
 	}
 	
 	//### Methods for gamemode2 ####################################################################
