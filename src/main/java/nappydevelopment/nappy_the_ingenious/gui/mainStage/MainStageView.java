@@ -32,7 +32,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.gui.components.VerticalProgressBar;
-import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 /* MainStageView [class]: Class the represents the main-stage-view so the whole window with all gui-components *//**
  *
@@ -86,7 +85,7 @@ public class MainStageView extends Stage {
 	ImageView imvNappy;
 
 	GridPane gdpQuestion;
-	HBox hbxQuestion;
+	HBox hbxCenterPic;
 	Label lblQuestion;
 	
 	VBox vbxNoOfQuest;
@@ -106,6 +105,8 @@ public class MainStageView extends Stage {
 	ImagePattern impCharacter;
 
 	GridPane gdpButtons;
+	VBox vbxIsThisRight;
+	Label lblIsThisRight;
 	Button btnYes;
 	Button btnNo;
 	Button btnIdontKnow;
@@ -223,8 +224,10 @@ public class MainStageView extends Stage {
 
 		//### Initialize components of the gamemode1 view ##########################################
 
+		//Gridpane 
 		this.gdpProgressBarPic = new GridPane();
 		this.gdpProgressBarPic.setPadding(new Insets(10,10,10,10));
+		
 		//Set the column-rate:
 	    ColumnConstraints col1 = new ColumnConstraints();
 	    col1.setPercentWidth(10);
@@ -236,20 +239,28 @@ public class MainStageView extends Stage {
 	    this.gdpProgressBarPic.getColumnConstraints().addAll(col1,col2,col3);
 	    //this.gdpProgressBarPic.setGridLinesVisible(true);
 	    this.gdpProgressBarPic.setPrefSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
-
+        
+	    //Initialization of the number of questions components: ####################################
+	    
+	    //Vertikal box for the number of questions label:
 	    this.vbxNoOfQuest = new VBox();
 	    this.vbxNoOfQuest.setPadding(new Insets(0,0,10,0));
 	    this.vbxNoOfQuest.setAlignment(Pos.BOTTOM_CENTER);
 	    this.vbxNoOfQuest.setSpacing(10);
-
+        //Label that show the no of questions:
 	    this.lblNoOfQuest = new Label("0");
+	    //ProgressBar that visualize the number of questions:
 	    this.pgbNoOfQuest = new VerticalProgressBar(20, 440);
 	    this.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 	    this.pgbNoOfQuest.getProgressBar().setStyle("-fx-accent: #A2232C");
+	    //ImageView for the number of questions icon:
 	    this.imvNoOfQuest = new ImageView(res.imvNoOfQuestIcon);
-
+        
+	    //Initialization of the elements in the middle (nappy-pic, question, and character-image) ##
+	    
 	    this.skpPicText = new StackPane();
 	    this.skpPicText.setAlignment(Pos.CENTER);
+	    
 	    this.imvNappy = new ImageView(res.imvNappyImage);
 	    this.imvNappy.setFitHeight(524);
 	    this.imvNappy.setFitWidth(340);
@@ -258,21 +269,13 @@ public class MainStageView extends Stage {
 	    this.lblQuestion.setId("lblQuestion");
 	    this.lblQuestion.setWrapText(true);
 	    this.lblQuestion.setTextAlignment(TextAlignment.JUSTIFY);
-	    this.lblQuestion.setText("Ist dein Charakter zwischen 20 und 60 Jahre alt?");
 
-	    this.hbxCharacter = new HBox();
-	    this.hbxCharacter.setId("hbxCharacter");
-	    //this.impCharacter = new ImagePattern(null);
-    	this.recCharacter = new Rectangle();
-		this.recCharacter.setWidth(110);
-		this.recCharacter.setHeight(110);
-		this.recCharacter.setArcHeight(8);
-		this.recCharacter.setArcWidth(8);
-
-	    this.hbxQuestion = new HBox();
-	    this.hbxQuestion.setAlignment(Pos.CENTER);
+	    this.hbxCenterPic = new HBox();
+	    this.hbxCenterPic.setAlignment(Pos.CENTER);
 
 	    this.gdpQuestion = new GridPane();
+	    this.gdpQuestion.setAlignment(Pos.CENTER);
+	    
 	    //Set the column-rate:
 	    ColumnConstraints gdpQuestionCol1 = new ColumnConstraints();
 	    gdpQuestionCol1.setPercentWidth(28);
@@ -300,7 +303,17 @@ public class MainStageView extends Stage {
 	    	gdpQuestionRow3
 	    );
 
-
+	    this.hbxCharacter = new HBox();
+	    this.hbxCharacter.setId("hbxCharacter");
+	    //this.impCharacter = new ImagePattern(null);
+    	this.recCharacter = new Rectangle();
+		this.recCharacter.setWidth(110);
+		this.recCharacter.setHeight(110);
+		this.recCharacter.setArcHeight(8);
+		this.recCharacter.setArcWidth(8);
+		
+		//Initialization of the knowledge components: ##############################################
+		
 	    this.vbxKnowledge = new VBox();
 	    this.vbxKnowledge.setPadding(new Insets(0,0,10,0));
 	    this.vbxKnowledge.setAlignment(Pos.BOTTOM_CENTER);
@@ -312,19 +325,30 @@ public class MainStageView extends Stage {
 	    this.pgbKnowledge.getProgressBar().setStyle("-fx-accent: #A2232C");
 	    this.imvKnowledge = new ImageView(res.imvKnowledgeIcon);
 
+	    //Initialization of the button components: #################################################
 
 		this.gdpButtons = new GridPane();
 		this.gdpButtons.setPadding(new Insets(10,10,10,10));
+		
+		this.vbxIsThisRight = new VBox();
+		this.vbxIsThisRight.setAlignment(Pos.CENTER);
+		this.vbxIsThisRight.setPadding(new Insets(0,0,23,0));
+		
+		this.lblIsThisRight = new Label("Is this the right character!");
+		this.lblIsThisRight.setId("lblIsThisRight");
+		
 		this.btnYes = new Button();
 		//this.btnYes.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/yes.png"))));
 		this.btnYes.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnYes.setAlignment(Pos.CENTER);
 		this.btnYes.setOnAction(aeh);
+		
 		this.btnNo = new Button();
 		//this.btnNo.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/no.png"))));
 		this.btnNo.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnNo.setAlignment(Pos.CENTER);
 		this.btnNo.setOnAction(aeh);
+		
 		this.btnIdontKnow = new Button();
 		//this.btnIdontKnow.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/dont_know.png"))));
 		this.btnIdontKnow.setPrefSize(Integer.MAX_VALUE, 50);
@@ -398,27 +422,34 @@ public class MainStageView extends Stage {
 
 		//### Structure gamemode1-view-components ##################################################
 
+		//Add the three number of questions components to the vertical box:
 		this.vbxNoOfQuest.getChildren().addAll(
 			this.lblNoOfQuest,
 			this.pgbNoOfQuest.getProgressHolder(),
 			this.imvNoOfQuest
 		);
-
-		//this.hbxQuestions.getChildren().add(this.lblQusetion);
+        
+		//Add the question label to the positioning grid-pane:
 		//this.gdpQuestion.add(this.lblQuestion, 1, 1);
+		//MUST BE DONE IN THE CONTROLER BECAUSE THE DEPENDING TO LOGICAL PROCESS-FLOW!!!
+		
+		//Add the nappy-image and the positioning grid-pane to the stack-pane:
 		this.skpPicText.getChildren().addAll(this.imvNappy, this.gdpQuestion);
-		//this.skpPicText.getChildren().addAll(this.imvNappy, this.lblQuestion);
-
+        
+		//Add the three knowledge components to the vertical box:
 		this.vbxKnowledge.getChildren().addAll(
 				this.lblKnowledge,
 				this.pgbKnowledge.getProgressHolder(),
 				this.imvKnowledge
 			);
-
+        
+		//Add the three main elements to the main grid-pane:
 		this.gdpProgressBarPic.add(this.vbxNoOfQuest, 0, 0);
 		this.gdpProgressBarPic.add(this.skpPicText, 1, 0);
 		this.gdpProgressBarPic.add(this.vbxKnowledge, 2, 0);
-
+        
+		this.vbxIsThisRight.getChildren().add(this.lblIsThisRight);
+		//Add the buttons to the button grid-pane:
 		this.gdpButtons.add(this.btnYes, 0, 0);
 		this.gdpButtons.add(this.btnNo, 1, 0);
 		this.gdpButtons.add(this.btnIdontKnow, 0, 1, 2, 1);

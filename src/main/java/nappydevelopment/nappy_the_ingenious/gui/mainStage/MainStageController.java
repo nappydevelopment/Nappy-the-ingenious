@@ -8,7 +8,9 @@ import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
@@ -108,16 +110,21 @@ public class MainStageController {
 		public void handle(ActionEvent e) {
 	    	  
 			Object src = e.getSource();
-				
+			
+			//Start a new game:
 			if(src == view.mniNewGame || src == view.btnNewGame) {
-				//Start a new game;
-				System.out.println("Start a new game");
+				
+				//Print status message:
+				if(Program.DEBUG) { System.out.println("Start a new game"); }
+				//Call program method to start a new game:
 				MainStageController.this.program.startGame();
-				//MainStageController.this.showGamemode1View();
 			}
+			//Abort the current game:
 			else if(src == view.mniAbortGame) {
-				//Abort the current game!
+				
+				//Print status message:
 				System.out.println("Abort the current game");
+				//Show the Dialog to confirm the abortion:
 				MainStageController.this.showAbortGameDialog();
 			}
 			else if(src == view.mniStatistic || src == view.btnStatistic) {
@@ -221,12 +228,12 @@ public class MainStageController {
 		}
 	}
 	
-	public void updateInfo(float noqInPercent, float surness) {
+	public void updateInfo(int noq, float noqInPercent, float surness) {
 		
-		this.view.pgbKnowledge.getProgressBar().setProgress(this.program.getSureness());
-		this.view.lblKnowledge.setText("" + (int)(this.program.getSureness() * 100) + "%");
-		this.view.pgbNoOfQuest.getProgressBar().setProgress(this.program.getNoOfQuestionsPercent());
-		this.view.lblNoOfQuest.setText("" + this.program.getNoOfQuestions());
+		this.view.pgbKnowledge.getProgressBar().setProgress(surness);
+		this.view.lblKnowledge.setText("" + (int)(surness * 100) + "%");
+		this.view.pgbNoOfQuest.getProgressBar().setProgress(noqInPercent);
+		this.view.lblNoOfQuest.setText("" + noq);
 	}
 	
 	//Method that shows the next question:
@@ -238,22 +245,40 @@ public class MainStageController {
 	//Method that shows the character that nappy guessed:
 	public void showGuessedCharacter(WikiCharacter character) {
 		
-		System.out.println(this.program.getCharacter());
-		//this.view.lblQuestion.setText(this.res.iThinkItIsText.get() + "\n" + this.program.getCharacter().getName());
+		System.out.println(character);
+		this.view.lblIsThisRight.setText(this.res.iThinkItIsText.get() + " " + character.getName() + "!");
+		
+		//Clear text of the question label:
 		this.view.lblQuestion.setText("");
+		this.view.btnIdontKnow.setDisable(true);
+        
+		//Get the picture of the guessed character:
 		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
 		this.view.recCharacter.setFill(this.view.impCharacter);
+		
+		//Remove eventually the old picture and add the (new) picture:
 		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
 		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
-		//this.view.gdpQuestion.getChildren().
-		//this.view.gdpQuestion.setGridLinesVisible(true);
+		
+		//Remove eventually the old picture and add the picture to the question box:
+		this.view.hbxCenterPic.getChildren().remove(this.view.hbxCharacter);
+		this.view.hbxCenterPic.getChildren().add(this.view.hbxCharacter);
+		
+		//Remove the question label from the positioning grid-pane:
 		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
-		this.view.hbxQuestion.getChildren().remove(this.view.hbxCharacter);
-		this.view.hbxQuestion.getChildren().add(this.view.hbxCharacter);
-		this.view.gdpQuestion.setAlignment(Pos.CENTER);
-		this.view.gdpQuestion.add(this.view.hbxQuestion, 1, 1);
-		this.view.btnIdontKnow.setDisable(true);
-		this.gameIsFinished = true;
+		//Add the horizontal box with the picture to the positioning grid-pane:
+		this.view.gdpQuestion.add(this.view.hbxCenterPic, 1, 1);
+		
+		//### Change the buttons:
+		
+		this.view.gdpButtons.getChildren().clear();
+		
+		//Add the buttons to the button grid-pane:
+		this.view.gdpButtons.add(this.view.vbxIsThisRight, 0, 0, 2, 1);
+		this.view.gdpButtons.add(this.view.btnYes, 0, 1);
+		this.view.gdpButtons.add(this.view.btnNo, 1, 1);
+
+		
 	}
 	
 	public void showNappyDontKnow() {
@@ -331,36 +356,33 @@ public class MainStageController {
 	 */
 	public void showGamemode1View() {
 		
-		//Start a new Game:
-		this.gameIsFinished = false;
-		
 		//Enable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(false);
 		//Disable the "new game" menu-item:
 		this.view.mniNewGame.setDisable(true);
 		this.view.mniSettings.setDisable(true);
 		
-		this.view.gdpQuestion.getChildren().remove(this.view.hbxQuestion);
-		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+		//Eventually remove the character picture:
+		this.view.gdpQuestion.getChildren().remove(this.view.hbxCenterPic);
+		//Add the question lable to the positioning-grid:
 		this.view.gdpQuestion.add(this.view.lblQuestion, 1, 1);
 		
 		//Reset view of old game:
-		this.view.btnIdontKnow.setDisable(false);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
-		this.view.lblKnowledge.setText("0%");
+		this.view.lblKnowledge.setText("0%");	
 		this.view.btnYes.setDisable(false);
 		this.view.btnNo.setDisable(false);
+		this.view.btnIdontKnow.setDisable(false);
+		
 		//Set the needed panes to the root-pane:
 		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
 		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);
 		this.view.bdpRootPane.setBottom(this.view.gdpButtons);
-		this.view.getScene().setRoot(this.view.bdpRootPane);
 		
-		this.view.lblQuestion.setText(this.program.getCurrentQuestion());
-		//Show the stage:
-		this.view.show();
+		//Set the root-pane as root-pane of the scene:
+		this.view.getScene().setRoot(this.view.bdpRootPane);
 		
 	}
 	
