@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.test.util;
+package nappydevelopment.nappy_the_ingenious.util;
 
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Player;
