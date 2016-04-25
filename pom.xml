@@ -53,15 +53,20 @@
         <executions>
           <execution>
             <id>unpack</id>
+            <phase>prepare-package</phase>
             <goals>
               <goal>unpack</goal>
             </goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>org.h2</groupId>
-                  <artifactId>org.h2</artifactId>
-                  <version>1.0</version>
+                  <groupId>h2-1.4.190</groupId>
+  				  <artifactId>h2-1.4.190</artifactId>
+ 			      <version>1.4</version>
+ 			      <type>jar</type>
+ 			      <destFileName>${project.basedir}/res/main/lib/h2-1.4.190.jar</destFileName>
+                  <includes>**/*.class,**/*.xml</includes>
+                  <excludes>**/*test.class</excludes>
                   <outputDirectory>${project.build.directory}/classes</outputDirectory>
                 </artifactItem>
               </artifactItems>
@@ -77,28 +82,6 @@
               <target>1.8</target>
           </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifest>
-              <mainClass>nappydevelopment.nappy_the_ingenious.Program</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
   <name>Nappy the ingenious</name>
@@ -109,5 +92,12 @@
   		<version>4.12</version>
   		<scope>test</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>H2-Database</groupId>
+  		<artifactId>h2-1.4.190</artifactId>
+ 		<version>1.4</version>
+  		<systemPath>${project.basedir}/res/main/lib/h2-1.4.190.jar</systemPath>
+ 		<scope>system</scope>
+	</dependency>
   </dependencies>
 </project>
