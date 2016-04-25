@@ -28,14 +28,14 @@ public class Gamemode1{
 				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
 				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
 				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'COUNTER')\n" +
-				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'" +
+				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'\n" +
 				"AND COLUMN_NAME NOT LIKE 'NICKNAME_%'"
 			);
 			ResultSet res = st.getResultSet();
 			int i = 0;
 			while(res.next()){
 				column[i] = res.getString("COLUMN_NAME");
-				columnBool[i] = res.getString("TYPE_NAME") == "BOOLEAN";
+				columnBool[i] = res.getString("TYPE_NAME").equals("BOOLEAN");
 				ans[i] = null;
 				i++;
 			}
@@ -114,7 +114,7 @@ public class Gamemode1{
 				}
 			}
 		}
-		if(where == " WHERE "){
+		if(where.equals(" WHERE ")){
 			where = "";
 		}
 		return where;
@@ -175,8 +175,9 @@ public class Gamemode1{
 		try(Statement st = DatabaseProvider.getStatement()){
 			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
 			ResultSet res = st.getResultSet();
-			res.next();
-			ques = res.getString("Q1_" + lang.getCode());
+			if(res.next()){
+				ques = res.getString("Q1_" + lang.getCode());
+			}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -185,7 +186,7 @@ public class Gamemode1{
 
 	private float tryQuestion(int columnID){
 		String select = "SELECT count(0) as C, " + column[columnID] +
-				" FROM SIMPSONS" + generateWhere() + " GROUP BY " + column[columnID];
+				" FROM SIMPSONS " + generateWhere() + " GROUP BY " + column[columnID];
 		float max = 0;
 		float sum = 0;
 		float ret = 0;

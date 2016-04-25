@@ -10,8 +10,12 @@ public class DatabaseProvider{
 		try{
 			Class.forName("org.h2.Driver").newInstance();
 			dbConn = DriverManager.getConnection("jdbc:h2:./nappy;TRACE_LEVEL_FILE=0");
+		}catch(SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException e){
+			e.printStackTrace();
+			return;
+		}
 
-			Statement st = dbConn.createStatement();
+		try(Statement st = dbConn.createStatement()){
 			st.execute(
 				"SELECT count(0) as c FROM(\n" +
 					"SELECT * FROM INFORMATION_SCHEMA.TABLES\n" +
@@ -21,19 +25,17 @@ public class DatabaseProvider{
 				");"
 			);
 			ResultSet res = st.getResultSet();
-			res.next();
-			if(res.getInt("C") != 42){
-				//not everything there
-				resetDatabase();
-			}else{
-				// System.out.println("db exists");
+			if(res.next()){
+				if(res.getInt("C") != 42){
+					//not everything there
+					resetDatabase();
+				}
 			}
 			res.close();
 			st.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return;
 	}
 
 	public static boolean resetDatabase(){
