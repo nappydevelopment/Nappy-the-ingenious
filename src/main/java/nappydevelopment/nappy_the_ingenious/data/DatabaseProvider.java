@@ -25,11 +25,9 @@ public class DatabaseProvider{
 				");"
 			);
 			ResultSet res = st.getResultSet();
-			if(res.next()){
-				if(res.getInt("C") != 42){
-					//not everything there
-					resetDatabase();
-				}
+			if(res.next() && res.getInt("C") != 42){
+				//not everything there
+				resetDatabase();
 			}
 			res.close();
 			st.close();
