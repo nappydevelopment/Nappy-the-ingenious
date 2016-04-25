@@ -38,6 +38,12 @@
       	<artifactId>maven-jar-plugin</artifactId>
         <version>2.3.1</version>
         <configuration>
+           <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>nappydevelopment.nappy_the_ingenious.Program</mainClass>
+            </manifest>
+          </archive>
           <outputDirectory>${project.basedir}/jar</outputDirectory>
         </configuration>
       </plugin>
@@ -70,6 +76,28 @@
               <source>1.8</source>
               <target>1.8</target>
           </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>nappydevelopment.nappy_the_ingenious.Program</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
