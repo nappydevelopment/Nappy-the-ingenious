@@ -19,7 +19,7 @@ public class Question{
 	}
 	public Question(String table, String attribute, Map<Language, String> questions, String type){
 		this(table, attribute, questions);
-		this.isBoolean = type == "BOOLEAN";
+		this.isBoolean = type.equals("BOOLEAN");
 	}
 
 	public String getQuestion(Language lang){
