@@ -16,15 +16,15 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
 public class Gamemode2{
-	private ArrayList<Question> remainingQuestions = new ArrayList<>();
-	private Map<String,String> character = new HashMap<>();
+	private final ArrayList<Question> remainingQuestions = new ArrayList<>();
+	private final Map<String,String> character = new HashMap<>();
 	private int questionCounter = 0;
 	private boolean finished = true;
 
 	public Gamemode2(){
 		this(false);
 	}
-	public Gamemode2(boolean deterministic){
+	public Gamemode2(final boolean deterministic){
 		try(Statement st = DatabaseProvider.getStatement()){
 			String questionSelect = "";
 			st.execute(
@@ -101,7 +101,7 @@ public class Gamemode2{
 		return remainingQuestions;
 	}
 
-	public Boolean askQuestion(Question question){
+	public Boolean askQuestion(final Question question){
 		if(finished){
 			return null;
 		}
@@ -110,10 +110,10 @@ public class Gamemode2{
 		return character.get(question.getTable()).equals(question.getAttribute());
 	}
 
-	public Boolean makeGuess(WikiCharacter wiki){
+	public Boolean makeGuess(final WikiCharacter wiki){
 		return makeGuess(wiki.getName());
 	}
-	public Boolean makeGuess(String name){
+	public Boolean makeGuess(final String name){
 		if(finished){
 			return null;
 		}
