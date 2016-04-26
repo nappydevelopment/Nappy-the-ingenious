@@ -262,35 +262,70 @@ public class Program extends Application {
 	 */
 	public void setAnswer(Answer answer) {
 		
-		//Write answer in the logic:
-		if(answer == Answer.YES) {
-			this.gm1Logic.setAnswer(true);
-		}
-		else if(answer == Answer.NO) {
-			this.gm1Logic.setAnswer(false);
-		}
-		else if(answer == Answer.DONT_KNOW) {
-			this.gm1Logic.setAnswer(null);
-		}
+		//### If the gamemode 1 is still active ####################################################
+		if(this.game.isGamemode1Finish() == false) {
+			
+			//Write answer in the logic:
+			if(answer == Answer.YES) {
+				this.gm1Logic.setAnswer(true);
+			}
+			else if(answer == Answer.NO) {
+				this.gm1Logic.setAnswer(false);
+			}
+			else if(answer == Answer.DONT_KNOW) {
+				this.gm1Logic.setAnswer(null);
+			}
 		
-		//Increase the number of questions that nappy need:
-		this.game.increaseNoOfQuestionsNappy();
+			//Increase the number of questions that nappy need:
+			this.game.increaseNoOfQuestionsNappy();
 		
-		//Update info elements (Progress-Bars):
-		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
-				                            this.game.getNoOfQuestionsNappyInPercent(),
-                                            this.gm1Logic.getSureness());
+			//Update info elements (Progress-Bars):
+			this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
+												this.game.getNoOfQuestionsNappyInPercent(),
+												this.gm1Logic.getSureness());
 		
-		//Check if nappy knows the character:
-		if(this.gm1Logic.isSure() == true) {
-			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
+			//Check if nappy knows the character:
+			if(this.gm1Logic.isSure() == true) {
+				this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
+				this.game.setCharacterNappy(this.gm1Logic.getCharacter());
+				this.game.setGamemode1Finish(true);
+			}
+			//Check if nappy is sure but don't knows the character:
+			else if (this.gm1Logic.isSure() == null) {
+				this.mainStageController.showNappyDontKnow();
+				this.game.setGamemode1Finish(true);
+			}
+			//Ask the next question:
+			else if (this.gm1Logic.isSure() == false) {
+				this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+			}
 		}
-		//Ask the next question:
-		else if (this.gm1Logic.isSure() == false) {
-			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
-		}
-		else if (this.gm1Logic.isSure() == null) {
-			this.mainStageController.showNappyDontKnow();
+		//### If the gamemode 1 is finsh ###########################################################
+		else {
+			
+			//If nappy guessed the character right:
+			if(answer == Answer.YES) {
+				this.game.setNappyRight(true);
+			}
+			//If nappy was wrong
+			else {
+				this.game.setNappyRight(false);
+			}
+			
+			//Show status dialog gamemode 1:
+			boolean result = this.mainStageController.showStatusDialogGM1(this.game.isNappyRight(),
+                             this.game.getNoOfQuestionsNappy(),
+                             this.game.getCharacterNappy().getWikiImage(),
+                             this.game.getCharacterNappy().getName());
+			
+			//If Player want to play gamemode 2:
+			if(result) {
+				//TODO!
+			}
+			else {
+				//Finish game with no statistics:
+				this.finishGameWithoutStatistics();
+			}
 		}
 	}
 	

@@ -7,6 +7,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 
 /* MainStageResources [class]: Contains the resources for the main-stage like images, component-texts etc.: *//**
  *
@@ -47,8 +49,15 @@ public class MainStageResources {
 	StringProperty btnNoText;
 	StringProperty btnIdontKnow;
 	
-	StringProperty iThinkItIsText;
-	StringProperty iDontKnowYourCharacterText;
+	String iThinkYourCharacterIs;
+	String iDontKnowYourCharacterText;
+	
+	String btnYesTextYes;
+	String btnYesTextRight;
+	String btnNoTextNo;
+	String btnNoTextWrong;
+	String btnIdontKnowTextIdontKnow;
+	String btnIdontKnowTextContinue;
 
 	//### Abort Dialog Texts #######################################################################
 
@@ -57,11 +66,22 @@ public class MainStageResources {
 	String abortGameDialogContentText;
 	String abortGameDialogBtnApplyText;
 	String abortGameDialogBtnCancelText;
+	
 	String enterNameDialogBtnApplyText;
 	String enterNameDialogBtnCancelText;
 	String enterNameDialogTitle;
 	String enterNameDialogHeaderText;
 	String enterNameDialogContentText;
+	
+	String statusDialogGM1Title;
+	String statusDialogGM1BtnApplyText;
+	String statusDialogGM1BtnCancelText;
+	String statusDialogGM1StatusTextRight1;
+	String statusDialogGM1StatusTextRight2;
+	String statusDialogGM1StatusTextRight3;
+	String statusDialogGM1StatusTextRight4;
+	String statusDialogGM1StatusTextWrong;
+	String statusDialogGM1Question;
 
 	//### Images for the menu-bar ##################################################################
 
@@ -129,8 +149,8 @@ public class MainStageResources {
 		this.btnNoText = new SimpleStringProperty();
 		this.btnIdontKnow = new SimpleStringProperty();
 		
-		this.iThinkItIsText = new SimpleStringProperty();
-		this.iDontKnowYourCharacterText = new SimpleStringProperty();
+		this.iThinkYourCharacterIs = null;
+		this.iDontKnowYourCharacterText = null;
 
 		//### Images for the menu-bar ##################################################################
 
@@ -187,9 +207,6 @@ public class MainStageResources {
 		this.btnNoText.setValue("No");
 		this.btnIdontKnow.setValue("I don't know");
 		
-		this.iDontKnowYourCharacterText.setValue("I don't know your character!");
-		this.iThinkItIsText.setValue("I think your character is");
-		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
 		this.abortGameDialogHeaderText = "Abort game?";
@@ -202,8 +219,28 @@ public class MainStageResources {
 		this.enterNameDialogTitle = "Nappy, the ingenious";
 		this.enterNameDialogHeaderText = "Please enter your name!";
 		this.enterNameDialogContentText = "Your name:";
-		this.abortGameDialogBtnApplyText = "Apply for the Top 5";
-		this.abortGameDialogBtnCancelText = "Cancel";
+		this.enterNameDialogBtnApplyText = "Add to statistic";
+		this.enterNameDialogBtnCancelText = "Cancel";
+		
+		this.statusDialogGM1Title = "Nappy, the ingenious - Status game mode 1";
+		this.statusDialogGM1BtnApplyText = "Yes";
+		this.statusDialogGM1BtnCancelText = "No";
+		this.statusDialogGM1StatusTextRight1 = "Nappy guessed your character ";
+		this.statusDialogGM1StatusTextRight2 = " correctly.";
+		this.statusDialogGM1StatusTextRight3 = "Nappy needed ";
+		this.statusDialogGM1StatusTextRight4 = " questions.";
+		this.statusDialogGM1StatusTextWrong = "Nappy could not correctly guess your character";
+ 		this.statusDialogGM1Question = "Do you want to try to beat Nappy and play the game mode 2?";
+		
+		this.iDontKnowYourCharacterText = "I don't know your character!";
+		this.iThinkYourCharacterIs = "I think your character is";
+		
+		this.btnYesTextYes = "Yes";
+		this.btnYesTextRight = "Right";
+		this.btnNoTextNo = "No";
+		this.btnNoTextWrong = "Wrong";
+		this.btnIdontKnowTextIdontKnow = "I don't know";
+		this.btnIdontKnowTextContinue = "Continue";
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -232,9 +269,6 @@ public class MainStageResources {
 		this.btnNoText.setValue("Nein");
 		this.btnIdontKnow.setValue("Ich weiß nicht");
 		
-		this.iDontKnowYourCharacterText.setValue("Ich kenne deinen Charakter nicht!");
-		this.iThinkItIsText.setValue("Ich denke dein Charakter ist");
-		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
 		this.abortGameDialogHeaderText = "Spiel abbrechen?";
@@ -246,11 +280,57 @@ public class MainStageResources {
 		this.enterNameDialogTitle = "Nappy, the ingenious";
 		this.enterNameDialogHeaderText = "Bitte gib deinen Namen ein!";
 		this.enterNameDialogContentText = "Dein Name:";
-		this.enterNameDialogBtnApplyText = "Versuch dein Glück im Top 5";
+		this.enterNameDialogBtnApplyText = "In die Statistik aufnehmen";
 		this.enterNameDialogBtnCancelText = "Abbrechen";
+		
+		this.statusDialogGM1Title = "Nappy, the ingenious - Status Spielmodus 1";
+		this.statusDialogGM1BtnApplyText = "Ja";
+		this.statusDialogGM1BtnCancelText = "Nein";
+		this.statusDialogGM1StatusTextRight1 = "Nappy hat deinen Charakter ";
+		this.statusDialogGM1StatusTextRight2 = " richtig erraten.";
+		this.statusDialogGM1StatusTextRight3 = "Nappy hat dafür ";
+		this.statusDialogGM1StatusTextRight4 = " Fragen gebraucht.";
+		this.statusDialogGM1StatusTextWrong = "Nappy konnte deinen Character nicht richtig erraten.";
+ 		this.statusDialogGM1Question = "Möchtest du versuchen Nappy zu schlagen und den zweiten Spielmodus spielen?";
+		
+		this.iDontKnowYourCharacterText = "Ich kenne deinen Charakter nicht!";
+		this.iThinkYourCharacterIs = "Ich denke dein Charakter ist";
+		
+		this.btnYesTextYes = "Ja";
+		this.btnYesTextRight = "Richtig";
+		this.btnNoTextNo = "Nein";
+		this.btnNoTextWrong = "Falsch";
+		this.btnIdontKnowTextIdontKnow = "Ich weiß nicht";
+		this.btnIdontKnowTextContinue = "Fortfahren";
 
 	}
 
+	
+	void setBtnYesTextToYes() {
+		this.btnYesText.set(this.btnYesTextYes);
+	}
+	
+	void setBtnYesTextToRight() {
+		this.btnYesText.set(this.btnYesTextRight);
+	}
+	
+	void setBtnNoTextToNo() {
+		this.btnNoText.set(this.btnNoTextNo);
+	}
+
+	void setBtnNoTextToWrong() {
+		this.btnNoText.set(this.btnNoTextWrong);
+	}
+	
+	void setBtnIdontKnowTextToIdontKnow() {
+		this.btnIdontKnow.set(this.btnIdontKnowTextIdontKnow);
+	}
+	
+	void setBtnIdontKnowTextToContinue() {
+		this.btnIdontKnow.set(this.btnIdontKnowTextContinue);
+	}
+	
+	
 //##########################################################################################################################################
 }
 //### EOF ##################################################################################################################################

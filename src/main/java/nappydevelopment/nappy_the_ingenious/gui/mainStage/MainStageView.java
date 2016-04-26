@@ -105,8 +105,8 @@ public class MainStageView extends Stage {
 	ImagePattern impCharacter;
 
 	GridPane gdpButtons;
-	VBox vbxIsThisRight;
-	Label lblIsThisRight;
+	VBox vbxInfoLabel;
+	Label lblInfo;
 	Button btnYes;
 	Button btnNo;
 	Button btnIdontKnow;
@@ -330,12 +330,12 @@ public class MainStageView extends Stage {
 		this.gdpButtons = new GridPane();
 		this.gdpButtons.setPadding(new Insets(10,10,10,10));
 		
-		this.vbxIsThisRight = new VBox();
-		this.vbxIsThisRight.setAlignment(Pos.CENTER);
-		this.vbxIsThisRight.setPadding(new Insets(0,0,23,0));
+		this.vbxInfoLabel = new VBox();
+		this.vbxInfoLabel.setAlignment(Pos.CENTER);
+		this.vbxInfoLabel.setPadding(new Insets(0,0,23,0));
 		
-		this.lblIsThisRight = new Label("Is this the right character!");
-		this.lblIsThisRight.setId("lblIsThisRight");
+		this.lblInfo = new Label("Is this the right character!");
+		this.lblInfo.setId("lblIsThisRight");
 		
 		this.btnYes = new Button();
 		//this.btnYes.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/yes.png"))));
@@ -448,12 +448,13 @@ public class MainStageView extends Stage {
 		this.gdpProgressBarPic.add(this.skpPicText, 1, 0);
 		this.gdpProgressBarPic.add(this.vbxKnowledge, 2, 0);
         
-		this.vbxIsThisRight.getChildren().add(this.lblIsThisRight);
+		this.vbxInfoLabel.getChildren().add(this.lblInfo);
 		//Add the buttons to the button grid-pane:
-		this.gdpButtons.add(this.btnYes, 0, 0);
-		this.gdpButtons.add(this.btnNo, 1, 0);
-		this.gdpButtons.add(this.btnIdontKnow, 0, 1, 2, 1);
-
+		//this.gdpButtons.add(this.btnYes, 0, 0);
+		//this.gdpButtons.add(this.btnNo, 1, 0);
+		//this.gdpButtons.add(this.btnIdontKnow, 0, 1, 2, 1);
+		//MUST BE DONE IN THE CONTROLER BECAUSE THE DEPENDING TO LOGICAL PROCESS-FLOW!!!
+		
 	}
 
 	//Method that initialize the stage (window) settings:

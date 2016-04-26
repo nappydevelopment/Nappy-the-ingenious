@@ -10,10 +10,24 @@ public class Game {
 	private boolean isFinish;
 	
 	private Gamemode activeGamemode;
+	private boolean isGamemode1Finish;
 	
 	private int noOfQuestionsNappy;
-	private int noOfQuestionsPlayer;
+	private WikiCharacter characterNappy;
+	private boolean isNappyRight;
+	
+	public boolean isNappyRight() {
+		return isNappyRight;
+	}
 
+	public void setNappyRight(boolean isNappyRight) {
+		this.isNappyRight = isNappyRight;
+	}
+
+	private int noOfQuestionsPlayer;
+	private WikiCharacter characterPlayer;
+
+	
 	public boolean isWinNappy() {
 		return winNappy;
 	}
@@ -39,14 +53,48 @@ public class Game {
 //### CONSTRUCTORS #########################################################################################################################
 	public Game() {
 		this.isActive = false;
+		this.isGamemode1Finish = false;
 		this.activeGamemode = Gamemode.NONE;
+		
 		this.noOfQuestionsNappy = 0;
 		this.noOfQuestionsPlayer = 0;
 	}
 //### INITIAL METHODS ######################################################################################################################
 
 
-//### GETTER/SETTER ########################################################################################################################
+public boolean isFinish() {
+		return isFinish;
+	}
+
+	public void setFinish(boolean isFinish) {
+		this.isFinish = isFinish;
+	}
+
+	public boolean isGamemode1Finish() {
+		return isGamemode1Finish;
+	}
+
+	public void setGamemode1Finish(boolean isGamemode1Finish) {
+		this.isGamemode1Finish = isGamemode1Finish;
+	}
+
+	public WikiCharacter getCharacterNappy() {
+		return characterNappy;
+	}
+
+	public void setCharacterNappy(WikiCharacter characterNappy) {
+		this.characterNappy = characterNappy;
+	}
+
+	public WikiCharacter getCharacterPlayer() {
+		return characterPlayer;
+	}
+
+	public void setCharacterPlayer(WikiCharacter characterPlayer) {
+		this.characterPlayer = characterPlayer;
+	}
+
+	//### GETTER/SETTER ########################################################################################################################
 	public boolean isActive() {
 		return isActive;
 	}
