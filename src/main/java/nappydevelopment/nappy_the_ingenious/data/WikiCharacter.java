@@ -11,10 +11,10 @@ public class WikiCharacter {
 	
 //### ATTRIBUTES ###########################################################################################################################
 	
-	private String name;
-	private Map<Language, String> nicknames;
-	private Map<Language, String> descriptions;
-	private Image wikiImage;
+	private final String name;
+	private final Map<Language, String> nicknames;
+	private final Map<Language, String> descriptions;
+	private final Image wikiImage;
 
 //### CONSTRUCTORS #########################################################################################################################
 
@@ -31,9 +31,9 @@ public class WikiCharacter {
 		return name;
 	}
 	
-	public String getNickname(Language l) { return nicknames.get(l); }
+	public String getNickname(final Language l) { return nicknames.get(l); }
 	
-	public String getDescription(Language l) { return descriptions.get(l); }
+	public String getDescription(final Language l) { return descriptions.get(l); }
 
 	public Image getWikiImage() {
 		return wikiImage;

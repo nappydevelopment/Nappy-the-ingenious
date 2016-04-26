@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class Question{
 
-	private String table;
-	private String attribute;
-	private Map<Language, String> questions;
+	private final String table;
+	private final String attribute;
+	private final Map<Language, String> questions;
 
 	public Question(String table, String attribute, Map<Language, String> questions){
 		this.table = table;
@@ -16,7 +16,7 @@ public class Question{
 		this.questions = questions;
 	}
 
-	public String getQuestion(Language lang){
+	public String getQuestion(final Language lang){
 		return questions.get(lang);
 	}
 	public String getAttribute(){

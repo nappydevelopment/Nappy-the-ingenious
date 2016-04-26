@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Gamemode1{
 
-	private String[] column = new String[60];
+	private final String[] column = new String[60];
 	private boolean[] columnBool = new boolean[60];
 	private Boolean[] ans = new Boolean[60];
 	private String[] question = new String[60];
@@ -36,7 +36,6 @@ public class Gamemode1{
 			while(res.next()){
 				column[i] = res.getString("COLUMN_NAME");
 				columnBool[i] = res.getString("TYPE_NAME").equals("BOOLEAN");
-				ans[i] = null;
 				i++;
 			}
 		}catch(SQLException e){
@@ -44,7 +43,7 @@ public class Gamemode1{
 		}
     }
 
-	public Gamemode1(boolean det){
+	public Gamemode1(final boolean det){
 		super();
 		determinisic = det;
 	}
@@ -57,7 +56,7 @@ public class Gamemode1{
 		return chars.get(0);
 	}
 
-    public void setAnswer(Boolean answer){
+    public void setAnswer(final Boolean answer){
 		if(activeQuestion != -1){
 			if(answer == null){
 				dunno[activeQuestion] = true;
@@ -144,7 +143,7 @@ public class Gamemode1{
 		return activeQuestion != -1;
 	}
 
-    public String getQuestion(Language lang){
+    public String getQuestion(final Language lang){
 		if(isSure()){
 			return null;
 		}
@@ -171,7 +170,7 @@ public class Gamemode1{
 		return giveQuestion(maxNr, lang);
     }
 
-	private String giveQuestion(int columnNr, Language lang){
+	private String giveQuestion(final int columnNr, final Language lang){
 		String ques = null;
 		try(Statement st = DatabaseProvider.getStatement()){
 			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
@@ -185,7 +184,7 @@ public class Gamemode1{
 		return ques;
 	}
 
-	private float tryQuestion(int columnID){
+	private float tryQuestion(final int columnID){
 		String select = "SELECT count(0) as C, " + column[columnID] +
 				" FROM SIMPSONS " + generateWhere() + " GROUP BY " + column[columnID];
 		float max = 0;
