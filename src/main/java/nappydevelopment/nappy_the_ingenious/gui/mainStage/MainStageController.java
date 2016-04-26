@@ -2,7 +2,8 @@
 
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
-import java.awt.*;
+
+import java.awt.RenderingHints;
 //### IMPORTS ##############################################################################################################################
 import java.util.Optional;
 import javafx.application.Platform;
@@ -11,13 +12,19 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.SaveStatisticInfos;
@@ -30,8 +37,6 @@ public class MainStageController {
 //### ATTRIBUTES ###########################################################################################################################
 	
 	private boolean initialShowing;
-	
-	private boolean gameIsFinished;
 	
 	//Reference to the program-logic:
 	private Program program;
@@ -160,38 +165,12 @@ public class MainStageController {
 			}
 			else if(src == view.btnYes) {
 				MainStageController.this.program.setAnswer(Answer.YES);
-//				System.out.println("Clicked the Yes-Button");
-//				
-//				MainStageController.this.res.askedQuestions+=1;
-//				
-//				if(MainStageController.this.gameIsFinished) {
-//					MainStageController.this.res.win_mode1 = true;
-//					SaveStatisticInfos.createAndSaveCharakter(MainStageController.this.program.getCharacter());
-//					MainStageController.this.program.finishGameWithStatistics();
-//				}
-//				else {
-//					MainStageController.this.program.setCurrentAnswer(Answer.YES);
-//					MainStageController.this.showQuestion();
-//				}
 			}
 			else if(src == view.btnNo) {
-				MainStageController.this.program.setAnswer(Answer.NO);
-//				System.out.println("Clicked the No-Button");
-//				MainStageController.this.res.askedQuestions+=1;
-//				if(MainStageController.this.gameIsFinished) {
-//					MainStageController.this.res.win_mode1 = false;
-//					MainStageController.this.program.finishGameWithStatistics();
-//				}
-//				else {
-//					MainStageController.this.program.setCurrentAnswer(Answer.NO);
-//					MainStageController.this.showQuestion();
-//				}
+				MainStageController.this.program.setAnswer(Answer.NO);		
 			}
 			else if(src == view.btnIdontKnow) {
 				MainStageController.this.program.setAnswer(Answer.DONT_KNOW);
-//				System.out.println("Clicked the I don't Know Button");
-//				MainStageController.this.program.setCurrentAnswer(Answer.DONT_KNOW);
-//				MainStageController.this.showQuestion();
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
@@ -228,6 +207,62 @@ public class MainStageController {
 		}
 	}
 	
+	
+    public boolean showStatusDialogGM1(boolean isNappyRight, int noOfQuestions, Image imgCharacter, String nameCharacter) {
+    	
+	    HBox hbxCharacter = new HBox();
+	    hbxCharacter.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          "-fx-padding: 5;" +
+	                          "-fx-background-color: #FFD90F;" +
+	                          "-fx-background-radius: 5;");
+	    ImagePattern impCharacter = new ImagePattern(Utils.getScaledInstance(imgCharacter, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+	    
+    	Rectangle recCharacter = new Rectangle();
+		recCharacter.setWidth(110);
+		recCharacter.setHeight(110);
+		recCharacter.setArcHeight(8);
+		recCharacter.setArcWidth(8);
+		recCharacter.setFill(impCharacter);
+		
+		hbxCharacter.getChildren().add(recCharacter);
+    	
+		//Create the dialog buttons:
+		ButtonType bttApply = new ButtonType(this.res.statusDialogGM1BtnApplyText);
+		ButtonType bttCancel = new ButtonType(this.res.statusDialogGM1BtnCancelText);
+    	
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	
+    	if(isNappyRight == true) {
+    	
+    		alert.setHeaderText(this.res.statusDialogGM1StatusTextRight1 + 
+    			            	nameCharacter + 
+    			            	this.res.statusDialogGM1StatusTextRight2 +
+    			            	"\n" +
+    			            	this.res.statusDialogGM1StatusTextRight3 +
+    			            	noOfQuestions + 
+    			            	this.res.statusDialogGM1StatusTextRight4);
+    		alert.setGraphic(hbxCharacter);
+    	}
+    	else {
+    		
+    		alert.setHeaderText(this.res.statusDialogGM1StatusTextWrong);
+    		alert.setGraphic(new Group());
+    	}
+    	
+    	alert.setTitle(this.res.statusDialogGM1Title);
+    	alert.setContentText(this.res.statusDialogGM1Question);
+    	
+    	alert.getButtonTypes().setAll(bttApply, bttCancel);
+    	
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    	    return true;
+    	} else {
+    	    return false;
+    	}
+    }
+    
+    
 	public void updateInfo(int noq, float noqInPercent, float surness) {
 		
 		this.view.pgbKnowledge.getProgressBar().setProgress(surness);
@@ -245,11 +280,13 @@ public class MainStageController {
 	//Method that shows the character that nappy guessed:
 	public void showGuessedCharacter(WikiCharacter character) {
 		
-		System.out.println(character);
-		this.view.lblIsThisRight.setText(this.res.iThinkItIsText.get() + " " + character.getName() + "!");
+		//Show info label with the guessed character name:
+		this.view.lblInfo.setText(this.res.iThinkYourCharacterIs + " " + character.getName() + "!");
 		
 		//Clear text of the question label:
 		this.view.lblQuestion.setText("");
+		this.res.setBtnYesTextToRight();
+		this.res.setBtnNoTextToWrong();
 		this.view.btnIdontKnow.setDisable(true);
         
 		//Get the picture of the guessed character:
@@ -274,20 +311,50 @@ public class MainStageController {
 		this.view.gdpButtons.getChildren().clear();
 		
 		//Add the buttons to the button grid-pane:
-		this.view.gdpButtons.add(this.view.vbxIsThisRight, 0, 0, 2, 1);
+		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0, 2, 1);
 		this.view.gdpButtons.add(this.view.btnYes, 0, 1);
 		this.view.gdpButtons.add(this.view.btnNo, 1, 1);
 
 		
 	}
-	
+    
+	/* showNappyDontKnowView [method]: */
 	public void showNappyDontKnow() {
-		this.view.lblQuestion.setText(this.res.iDontKnowYourCharacterText.get());
 		
-		this.view.btnIdontKnow.setDisable(true);
+		this.view.lblInfo.setText(this.res.iDontKnowYourCharacterText);
+		
+		//Clear text of the question label:
+		this.view.lblQuestion.setText("");
+		this.res.setBtnIdontKnowTextToContinue();
+		
 		this.view.btnYes.setDisable(true);
 		this.view.btnNo.setDisable(true);
-		this.gameIsFinished = true;
+		
+		//Get the picture of a questionmark:
+		Image img = new Image(GlobalReferences.IMAGES_PATH + "general/questionmark.png");
+		
+		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(img, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recCharacter.setFill(this.view.impCharacter);
+		
+		//Remove eventually the old picture and add the (new) picture:
+		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
+		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
+		
+		//Remove eventually the old picture and add the picture to the question box:
+		this.view.hbxCenterPic.getChildren().remove(this.view.hbxCharacter);
+		this.view.hbxCenterPic.getChildren().add(this.view.hbxCharacter);
+		
+		//Remove the question label from the positioning grid-pane:
+		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+		//Add the horizontal box with the picture to the positioning grid-pane:
+		this.view.gdpQuestion.add(this.view.hbxCenterPic, 1, 1);
+		
+		this.view.gdpButtons.getChildren().clear();
+		
+		//Add the buttons to the button grid-pane:
+		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0, 2, 1);
+		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 1, 2, 1);
+		
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
@@ -363,7 +430,7 @@ public class MainStageController {
 		this.view.mniSettings.setDisable(true);
 		
 		//Eventually remove the character picture:
-		this.view.gdpQuestion.getChildren().remove(this.view.hbxCenterPic);
+		this.view.gdpQuestion.getChildren().clear();;
 		//Add the question lable to the positioning-grid:
 		this.view.gdpQuestion.add(this.view.lblQuestion, 1, 1);
 		
@@ -375,6 +442,17 @@ public class MainStageController {
 		this.view.btnYes.setDisable(false);
 		this.view.btnNo.setDisable(false);
 		this.view.btnIdontKnow.setDisable(false);
+		
+		this.res.setBtnYesTextToYes();
+		this.res.setBtnNoTextToNo();
+		this.res.setBtnIdontKnowTextToIdontKnow();
+		
+		this.view.gdpButtons.getChildren().clear();
+		
+		//Add the buttons to the button grid-pane:
+		this.view.gdpButtons.add(this.view.btnYes, 0, 0);
+		this.view.gdpButtons.add(this.view.btnNo, 1, 0);
+		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 1, 2, 1);
 		
 		//Set the needed panes to the root-pane:
 		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
