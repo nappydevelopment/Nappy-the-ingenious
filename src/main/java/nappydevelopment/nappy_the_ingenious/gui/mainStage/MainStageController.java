@@ -208,7 +208,7 @@ public class MainStageController {
 	}
 	
 	
-    public boolean showStatusDialogGM1(boolean isNappyRight, int noOfQuestions, Image imgCharacter, String nameCharacter) {
+    public boolean showStatusDialogGM1(boolean askForMode2, boolean isNappyRight, int noOfQuestions, Image imgCharacter, String nameCharacter) {
     	
 	    HBox hbxCharacter = new HBox();
 	    hbxCharacter.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
@@ -229,6 +229,7 @@ public class MainStageController {
 		//Create the dialog buttons:
 		ButtonType bttApply = new ButtonType(this.res.statusDialogGM1BtnApplyText);
 		ButtonType bttCancel = new ButtonType(this.res.statusDialogGM1BtnCancelText);
+		ButtonType bttOk = new ButtonType(this.res.statusDialogGM1BtnOkText);
     	
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	
@@ -250,12 +251,19 @@ public class MainStageController {
     	}
     	
     	alert.setTitle(this.res.statusDialogGM1Title);
-    	alert.setContentText(this.res.statusDialogGM1Question);
     	
-    	alert.getButtonTypes().setAll(bttApply, bttCancel);
+    	
+    	if(askForMode2 == true) {
+    		alert.getButtonTypes().setAll(bttApply, bttCancel);
+    		alert.setContentText(this.res.statusDialogGM1Question);
+    	}
+    	else {
+    		alert.getButtonTypes().setAll(bttOk);
+    	}
     	
     	Optional<ButtonType> result = alert.showAndWait();
-    	if (result.get() == ButtonType.OK){
+    	
+    	if (result.get() == bttApply){
     	    return true;
     	} else {
     	    return false;

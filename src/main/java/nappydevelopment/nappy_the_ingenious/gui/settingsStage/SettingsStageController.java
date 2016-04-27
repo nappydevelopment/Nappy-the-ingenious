@@ -165,8 +165,6 @@ public class SettingsStageController {
 		//Disable not implemented settings:
 		this.view.rdbBright.setDisable(true);
 		this.view.rdbDark.setDisable(true);
-		this.view.rdbBothModes.setDisable(true);
-		this.view.rdbOnlyMode1.setDisable(true);
 		
 		this.view.show();
 	}
