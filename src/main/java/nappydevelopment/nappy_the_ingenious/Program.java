@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 //Nappy imports:
 import nappydevelopment.nappy_the_ingenious.data.*;
+import nappydevelopment.nappy_the_ingenious.data.settings.GameMode;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
@@ -312,8 +313,17 @@ public class Program extends Application {
 				this.game.setNappyRight(false);
 			}
 			
+			boolean askForMode2;
+			
+			if(Settings.getGameMode() == GameMode.ONLY_MODE1) {
+				askForMode2 = false;
+			}
+			else {
+				askForMode2 = true;
+			}
 			//Show status dialog gamemode 1:
-			boolean result = this.mainStageController.showStatusDialogGM1(this.game.isNappyRight(),
+			boolean result = this.mainStageController.showStatusDialogGM1(askForMode2,
+					         this.game.isNappyRight(),
                              this.game.getNoOfQuestionsNappy(),
                              this.game.getCharacterNappy().getWikiImage(),
                              this.game.getCharacterNappy().getName());

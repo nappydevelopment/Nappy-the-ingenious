@@ -76,6 +76,7 @@ public class MainStageResources {
 	String statusDialogGM1Title;
 	String statusDialogGM1BtnApplyText;
 	String statusDialogGM1BtnCancelText;
+	String statusDialogGM1BtnOkText;
 	String statusDialogGM1StatusTextRight1;
 	String statusDialogGM1StatusTextRight2;
 	String statusDialogGM1StatusTextRight3;
@@ -225,6 +226,7 @@ public class MainStageResources {
 		this.statusDialogGM1Title = "Nappy, the ingenious - Status game mode 1";
 		this.statusDialogGM1BtnApplyText = "Yes";
 		this.statusDialogGM1BtnCancelText = "No";
+		this.statusDialogGM1BtnOkText = "Ok";
 		this.statusDialogGM1StatusTextRight1 = "Nappy guessed your character ";
 		this.statusDialogGM1StatusTextRight2 = " correctly.";
 		this.statusDialogGM1StatusTextRight3 = "Nappy needed ";
@@ -286,6 +288,7 @@ public class MainStageResources {
 		this.statusDialogGM1Title = "Nappy, the ingenious - Status Spielmodus 1";
 		this.statusDialogGM1BtnApplyText = "Ja";
 		this.statusDialogGM1BtnCancelText = "Nein";
+		this.statusDialogGM1BtnOkText = "Ok";
 		this.statusDialogGM1StatusTextRight1 = "Nappy hat deinen Charakter ";
 		this.statusDialogGM1StatusTextRight2 = " richtig erraten.";
 		this.statusDialogGM1StatusTextRight3 = "Nappy hat dafür ";
