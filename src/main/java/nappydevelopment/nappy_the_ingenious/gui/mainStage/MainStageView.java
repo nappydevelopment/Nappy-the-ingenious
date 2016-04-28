@@ -113,10 +113,10 @@ public class MainStageView extends Stage {
 
 	//### Content of the Gamemode2 View ############################################################
     
-	Label lblAnswer;
-	@SuppressWarnings("rawtypes")
-	ComboBox cmbQuestions;
-	Button btnIKnowTheCharacter;
+	Label lblAnswer;               //nc
+	ComboBox<String> cmbQuestions; //nc
+	//Button btnIKnowTheCharacter; //handled through the btnIdontKnow!
+	HBox hbxAskQuestion;
 	Button btnAskQuestion;
 	
 
@@ -262,7 +262,7 @@ public class MainStageView extends Stage {
 	    this.skpPicText = new StackPane();
 	    this.skpPicText.setAlignment(Pos.CENTER);
 	    
-	    this.imvNappy = new ImageView(res.imvNappyImage);
+	    this.imvNappy = new ImageView(res.imvNappyImageGM1);
 	    this.imvNappy.setFitHeight(524);
 	    this.imvNappy.setFitWidth(340);
 
@@ -361,12 +361,13 @@ public class MainStageView extends Stage {
 		
 		this.lblAnswer = new Label();
 		
-		this.btnAskQuestion = new Button();
+		this.btnAskQuestion = new Button("Frage stellen");
+		this.hbxAskQuestion = new HBox();
+		this.hbxAskQuestion.setAlignment(Pos.CENTER);
+		
 		this.btnAskQuestion.setMinSize(30, 10);
 		
-		this.cmbQuestions = new ComboBox();
-		
-		this.btnIKnowTheCharacter = new Button();
+		this.cmbQuestions = new ComboBox<String>();
 		
 		
 	}
@@ -449,6 +450,9 @@ public class MainStageView extends Stage {
 		//this.gdpButtons.add(this.btnNo, 1, 0);
 		//this.gdpButtons.add(this.btnIdontKnow, 0, 1, 2, 1);
 		//MUST BE DONE IN THE CONTROLER BECAUSE THE DEPENDING TO LOGICAL PROCESS-FLOW!!!
+		
+		
+		this.hbxAskQuestion.getChildren().add(this.btnAskQuestion);
 		
 	}
 
