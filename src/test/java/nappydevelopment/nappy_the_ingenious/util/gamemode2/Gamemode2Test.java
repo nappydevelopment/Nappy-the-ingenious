@@ -9,10 +9,12 @@ import static org.junit.Assert.*;
 
 public class Gamemode2Test{
 	private Gamemode2 gm;
+	private Gamemode2 gm_det;
 
 	@Before
 	public void init(){
-		gm = new Gamemode2(Language.GERMAN, true);
+		gm = new Gamemode2(Language.GERMAN);
+		gm_det = new Gamemode2(Language.GERMAN, true);
 	}
 
 	@Test
@@ -30,15 +32,24 @@ public class Gamemode2Test{
 	}
 
 	@Test
+	public void askQuestionWhenFinished() throws Exception{
+		gm.endGame();
+		assertNull(gm.askQuestion("EGAL"));
+	}
+	@Test
 	public void makeGuess() throws Exception{
-		assertFalse(gm.makeGuess("Jeff Albertson"));
-		assertTrue(gm.makeGuess("Eleanor Abernathy"));
+		assertFalse(gm_det.makeGuess("Jeff Albertson"));
+		assertTrue(gm_det.makeGuess("Eleanor Abernathy"));
+		gm_det.endGame();
+		assertNull(gm_det.makeGuess("EGAL"));
+
+		gm_det.makeGuess(CharacterProvider.getCharacters().get(0));
 	}
 
 	@Test
 	public void endGame() throws Exception{
 		assertEquals(
-			gm.endGame(),
+			gm_det.endGame(),
 			CharacterProvider.getCharacters().get(0)
 		);
 	}
