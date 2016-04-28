@@ -42,7 +42,7 @@ public class Gamemode1{
     }
 
 	public Gamemode1(final boolean det){
-		super();
+		this();
 		deterministic = det;
 	}
 
