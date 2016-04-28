@@ -26,11 +26,28 @@ public class WikiCharacter {
 	public String getName() {return name; }
 
 	public String getNickname(final Language l) { return nicknames.get(l); }
+	protected Map<Language, String> getNicknames() { return nicknames; }
 
 	public String getDescription(final Language l) { return descriptions.get(l); }
+	protected Map<Language, String> getDescriptions() { return descriptions; }
 
 	public Image getWikiImage() { return wikiImage; }
 
 	@Override
 	public String toString() { return this.name; }
+
+	@Override
+	public boolean equals(Object obj){
+		if((obj instanceof WikiCharacter)){
+			WikiCharacter other = (WikiCharacter) obj;
+			if(
+				this.descriptions.values().containsAll(other.getDescriptions().values()) &&
+				this.name.equals(other.getName()) &&
+				this.nicknames.values().containsAll(other.getNicknames().values())
+			){
+				return true;
+			}
+		}
+		return false;
+	}
 }
