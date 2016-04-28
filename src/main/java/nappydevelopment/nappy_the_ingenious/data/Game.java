@@ -9,12 +9,13 @@ public class Game {
 	private boolean isActive;
 	private boolean isFinish;
 	
-	private Gamemode activeGamemode;
-	private boolean isGamemode1Finish;
-	
 	private int noOfQuestionsNappy;
 	private WikiCharacter characterNappy;
 	private boolean isNappyRight;
+	
+	private int noOfQuestionsPlayer;
+	private WikiCharacter characterPlayer;
+	private boolean isPlayerRight;
 	
 	public boolean isNappyRight() {
 		return isNappyRight;
@@ -23,10 +24,6 @@ public class Game {
 	public void setNappyRight(boolean isNappyRight) {
 		this.isNappyRight = isNappyRight;
 	}
-
-	private int noOfQuestionsPlayer;
-	private WikiCharacter characterPlayer;
-
 	
 	public boolean isWinNappy() {
 		return winNappy;
@@ -52,12 +49,18 @@ public class Game {
 
 //### CONSTRUCTORS #########################################################################################################################
 	public Game() {
+		
 		this.isActive = false;
-		this.isGamemode1Finish = false;
-		this.activeGamemode = Gamemode.NONE;
+		this.isFinish = false;
 		
 		this.noOfQuestionsNappy = 0;
+		this.characterNappy = null;
+		this.isNappyRight = false;
+		
 		this.noOfQuestionsPlayer = 0;
+		this.characterPlayer = null;
+		this.isPlayerRight = false;
+		
 	}
 //### INITIAL METHODS ######################################################################################################################
 
@@ -68,14 +71,6 @@ public boolean isFinish() {
 
 	public void setFinish(boolean isFinish) {
 		this.isFinish = isFinish;
-	}
-
-	public boolean isGamemode1Finish() {
-		return isGamemode1Finish;
-	}
-
-	public void setGamemode1Finish(boolean isGamemode1Finish) {
-		this.isGamemode1Finish = isGamemode1Finish;
 	}
 
 	public WikiCharacter getCharacterNappy() {
@@ -101,12 +96,7 @@ public boolean isFinish() {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Gamemode getActiveGamemode() {
-		return activeGamemode;
-	}
-	public void setActiveGamemode(Gamemode activeGamemode) {
-		this.activeGamemode = activeGamemode;
-	}
+
 	public int getNoOfQuestionsNappy() {
 		return noOfQuestionsNappy;
 	}

@@ -9,16 +9,13 @@ import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -27,7 +24,6 @@ import javafx.scene.shape.Rectangle;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.SaveStatisticInfos;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
@@ -115,7 +111,7 @@ public class MainStageController {
 		public void handle(ActionEvent e) {
 	    	  
 			Object src = e.getSource();
-			
+		
 			//Start a new game:
 			if(src == view.mniNewGame || src == view.btnNewGame) {
 				
@@ -164,13 +160,29 @@ public class MainStageController {
 				MainStageController.this.program.showInfoStage(MainStageController.this.view);
 			}
 			else if(src == view.btnYes) {
-				MainStageController.this.program.setAnswer(Answer.YES);
+				
+				//Act the button as yes button for questions:
+				if("btnYes" == ((Button)src).getId()) {
+					MainStageController.this.program.setQuestionAnswer(Answer.YES);
+				}
+				//Acts the button as right button for the guessed character:
+				else if("btnRight" == ((Button)src).getId()) {
+					MainStageController.this.program.setIfNappyIsRight(true);
+				}
 			}
 			else if(src == view.btnNo) {
-				MainStageController.this.program.setAnswer(Answer.NO);		
+				//Act the button as yes button for questions:
+				if("btnYes" == ((Button)src).getId()) {
+					MainStageController.this.program.setQuestionAnswer(Answer.NO);
+				}
+				//Acts the button as right button for the guessed character:
+				else if("btnRight" == ((Button)src).getId()) {
+					MainStageController.this.program.setIfNappyIsRight(false);
+				}
+					
 			}
 			else if(src == view.btnIdontKnow) {
-				MainStageController.this.program.setAnswer(Answer.DONT_KNOW);
+				MainStageController.this.program.setQuestionAnswer(Answer.DONT_KNOW);
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
@@ -279,93 +291,11 @@ public class MainStageController {
 		this.view.lblNoOfQuest.setText("" + noq);
 	}
 	
-	//Method that shows the next question:
-	public void showQuestion(String question) {
-		
-		this.view.lblQuestion.setText(question);
-	}
-	
-	//Method that shows the character that nappy guessed:
-	public void showGuessedCharacter(WikiCharacter character) {
-		
-		//Show info label with the guessed character name:
-		this.view.lblInfo.setText(this.res.iThinkYourCharacterIs + " " + character.getName() + "!");
-		
-		//Clear text of the question label:
-		this.view.lblQuestion.setText("");
-		this.res.setBtnYesTextToRight();
-		this.res.setBtnNoTextToWrong();
-		this.view.btnIdontKnow.setDisable(true);
-        
-		//Get the picture of the guessed character:
-		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-		this.view.recCharacter.setFill(this.view.impCharacter);
-		
-		//Remove eventually the old picture and add the (new) picture:
-		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
-		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
-		
-		//Remove eventually the old picture and add the picture to the question box:
-		this.view.hbxCenterPic.getChildren().remove(this.view.hbxCharacter);
-		this.view.hbxCenterPic.getChildren().add(this.view.hbxCharacter);
-		
-		//Remove the question label from the positioning grid-pane:
-		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
-		//Add the horizontal box with the picture to the positioning grid-pane:
-		this.view.gdpQuestion.add(this.view.hbxCenterPic, 1, 1);
-		
-		//### Change the buttons:
-		
-		this.view.gdpButtons.getChildren().clear();
-		
-		//Add the buttons to the button grid-pane:
-		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0, 2, 1);
-		this.view.gdpButtons.add(this.view.btnYes, 0, 1);
-		this.view.gdpButtons.add(this.view.btnNo, 1, 1);
 
-		
-	}
-    
-	/* showNappyDontKnowView [method]: */
-	public void showNappyDontKnow() {
-		
-		this.view.lblInfo.setText(this.res.iDontKnowYourCharacterText);
-		
-		//Clear text of the question label:
-		this.view.lblQuestion.setText("");
-		this.res.setBtnIdontKnowTextToContinue();
-		
-		this.view.btnYes.setDisable(true);
-		this.view.btnNo.setDisable(true);
-		
-		//Get the picture of a questionmark:
-		Image img = new Image(GlobalReferences.IMAGES_PATH + "general/questionmark.png");
-		
-		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(img, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-		this.view.recCharacter.setFill(this.view.impCharacter);
-		
-		//Remove eventually the old picture and add the (new) picture:
-		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
-		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
-		
-		//Remove eventually the old picture and add the picture to the question box:
-		this.view.hbxCenterPic.getChildren().remove(this.view.hbxCharacter);
-		this.view.hbxCenterPic.getChildren().add(this.view.hbxCharacter);
-		
-		//Remove the question label from the positioning grid-pane:
-		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
-		//Add the horizontal box with the picture to the positioning grid-pane:
-		this.view.gdpQuestion.add(this.view.hbxCenterPic, 1, 1);
-		
-		this.view.gdpButtons.getChildren().clear();
-		
-		//Add the buttons to the button grid-pane:
-		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0, 2, 1);
-		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 1, 2, 1);
-		
-	}
 	
 //### PUBLIC METHODS #######################################################################################################################
+	
+	//### Methods to show the start view ###########################################################
 	
 	/* showStartView [method]: *//**
 	 * 	
@@ -426,6 +356,8 @@ public class MainStageController {
 		
 	}
 	
+	//### Methods for gamemode 1 ###################################################################
+	
 	/* showGamemode1View [method]: *//**
 	 * 
 	 */
@@ -472,6 +404,104 @@ public class MainStageController {
 		
 	}
 	
+	//Method that shows the next question:
+	public void showQuestion(String question) {
+		
+		this.view.lblQuestion.setText(question);
+	}
+	
+	//Method that shows the character that nappy guessed:
+	public void showGuessedCharacter(WikiCharacter character) {
+		
+		//Show info label with the guessed character name:
+		this.view.lblInfo.setText(this.res.iThinkYourCharacterIs + " " + character.getName() + "!");
+		
+		//Clear text of the question label:
+		this.view.lblQuestion.setText("");
+		this.res.setBtnYesTextToRight();
+		this.res.setBtnNoTextToWrong();
+		this.view.btnIdontKnow.setDisable(true);
+        
+		//Get the picture of the guessed character:
+		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(),
+				                                                          110,
+				                                                          110, 
+				                                                          RenderingHints.VALUE_INTERPOLATION_BICUBIC,
+				                                                          0.80,
+				                                                          true));
+		this.view.recCharacter.setFill(this.view.impCharacter);
+		
+		//Remove eventually the old picture and add the (new) picture:
+		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
+		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
+		
+		//Remove eventually the old picture and add the picture to the question box:
+		this.view.hbxCenterPic.getChildren().remove(this.view.hbxCharacter);
+		this.view.hbxCenterPic.getChildren().add(this.view.hbxCharacter);
+		
+		//Remove the question label from the positioning grid-pane:
+		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+		//Add the horizontal box with the picture to the positioning grid-pane:
+		this.view.gdpQuestion.add(this.view.hbxCenterPic, 1, 1);
+		
+		//### Change the buttons grid pane #########################################################
+		
+		//Clear the grid pane:
+		this.view.gdpButtons.getChildren().clear();
+		
+		//Set the new ids for the buttons that acts now in a other context:
+		this.view.btnYes.setId("btnRight");
+		this.view.btnNo.setId("btnWrong");
+		
+		//Add the buttons and the info label to the button grid-pane:
+		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0, 2, 1);
+		this.view.gdpButtons.add(this.view.btnYes, 0, 1);
+		this.view.gdpButtons.add(this.view.btnNo, 1, 1);
+
+		
+	}
+    
+	/* showNappyDontKnowView [method]: */
+	public void showNappyDontKnow() {
+		
+		this.view.lblInfo.setText(this.res.iDontKnowYourCharacterText);
+		
+		//Clear text of the question label:
+		this.view.lblQuestion.setText("");
+		this.res.setBtnIdontKnowTextToContinue();
+		
+		this.view.btnYes.setDisable(true);
+		this.view.btnNo.setDisable(true);
+		
+		//Get the picture of a questionmark:
+		Image img = new Image(GlobalReferences.IMAGES_PATH + "general/questionmark.png");
+		
+		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(img, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recCharacter.setFill(this.view.impCharacter);
+		
+		//Remove eventually the old picture and add the (new) picture:
+		this.view.hbxCharacter.getChildren().remove(this.view.recCharacter);
+		this.view.hbxCharacter.getChildren().add(this.view.recCharacter);
+		
+		//Remove eventually the old picture and add the picture to the question box:
+		this.view.hbxCenterPic.getChildren().remove(this.view.hbxCharacter);
+		this.view.hbxCenterPic.getChildren().add(this.view.hbxCharacter);
+		
+		//Remove the question label from the positioning grid-pane:
+		this.view.gdpQuestion.getChildren().remove(this.view.lblQuestion);
+		//Add the horizontal box with the picture to the positioning grid-pane:
+		this.view.gdpQuestion.add(this.view.hbxCenterPic, 1, 1);
+		
+		this.view.gdpButtons.getChildren().clear();
+		
+		//Add the buttons to the button grid-pane:
+		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0, 2, 1);
+		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 1, 2, 1);
+		
+	}
+	
+	//### Methods for gamemode 2 ###################################################################
+	
 	/* showGamemode2View [method]: *//**
 	 * 
 	 */
@@ -494,8 +524,9 @@ public class MainStageController {
 		//Set properties of the dialog:
 		//alert.getButtonTypes().setAll(bttApply, bttCancel);
 
-// Traditional way to get the response value.
+        // Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
+		
 		if (result.isPresent()){
 			System.out.println("Your name: " + result.get());
 			return result.get();

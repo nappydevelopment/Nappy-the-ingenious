@@ -110,11 +110,11 @@ public class MainStageView extends Stage {
 	Button btnYes;
 	Button btnNo;
 	Button btnIdontKnow;
-	Button btnNextGamemode;
 
 	//### Content of the Gamemode2 View ############################################################
     
 	Label lblAnswer;
+	@SuppressWarnings("rawtypes")
 	ComboBox cmbQuestions;
 	Button btnIKnowTheCharacter;
 	Button btnAskQuestion;
@@ -136,6 +136,7 @@ public class MainStageView extends Stage {
 //### INITAL METHODS #######################################################################################################################
 
 	//Method that initialize the gui-components:
+	@SuppressWarnings("rawtypes")
 	private void initComponents(MainStageResources res, EventHandler<ActionEvent> aeh) {
 
 		//### Initialize components of all views ###################################################
@@ -338,28 +339,22 @@ public class MainStageView extends Stage {
 		this.lblInfo.setId("lblIsThisRight");
 		
 		this.btnYes = new Button();
-		//this.btnYes.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/yes.png"))));
+		this.btnYes.setId("btnYes");
 		this.btnYes.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnYes.setAlignment(Pos.CENTER);
 		this.btnYes.setOnAction(aeh);
 		
 		this.btnNo = new Button();
-		//this.btnNo.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/no.png"))));
+		this.btnNo.setId("btnNo");
 		this.btnNo.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnNo.setAlignment(Pos.CENTER);
 		this.btnNo.setOnAction(aeh);
 		
 		this.btnIdontKnow = new Button();
-		//this.btnIdontKnow.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/dont_know.png"))));
+		this.btnIdontKnow.setId("btnIdontKnow");
 		this.btnIdontKnow.setPrefSize(Integer.MAX_VALUE, 50);
 		this.btnIdontKnow.setAlignment(Pos.CENTER);
 		this.btnIdontKnow.setOnAction(aeh);
-		
-		this.btnNextGamemode = new Button();
-		//this.btnIdontKnow.setGraphic(new ImageView(new Image(MainStage.class.getResourceAsStream("/icons/32x32/dont_know.png"))));
-		this.btnNextGamemode.setPrefSize(Integer.MAX_VALUE, 50);
-		this.btnNextGamemode.setAlignment(Pos.CENTER);
-		this.btnNextGamemode.setOnAction(aeh);
 		
         
 		// Gamemode2 ###############################

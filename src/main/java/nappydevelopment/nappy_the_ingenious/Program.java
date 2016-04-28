@@ -2,6 +2,8 @@
 
 package nappydevelopment.nappy_the_ingenious;
 
+import java.util.ArrayList;
+
 //### IMPORTS ##############################################################################################################################
 
 import java.util.List;
@@ -180,15 +182,6 @@ public class Program extends Application {
 	
 	//### Methods for game general control & info ##################################################
 	
-	/* existsAnActiveGame [method]: Method that tell if an active game exists *//**
-	 * 
-	 * @return
-	 */
-	public boolean existsAnActiveGame() {
-		
-		return this.game.isActive();
-	}
-	
 	/* startGame [method]: Method that starts a Game and initialize the logic *//**
 	 * 
 	 */
@@ -196,18 +189,13 @@ public class Program extends Application {
 		
 		//Initialize the logic:
 		this.gm1Logic = new Gamemode1();
-		//this.gm2Logic = new Gamemode2(null);
+		this.gm2Logic = new Gamemode2();
 		
 		//Set Flag for a started game:
 		this.game = new Game();
 		this.game.setActive(true);
-		this.game.setActiveGamemode(Gamemode.GAMEMODE1);
 		
-		//Show the gamemode1:
-		this.mainStageController.showGamemode1View();
-		
-		//Show the first Question:
-		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+        this.startGamemode1();
 	}
     
 	/* finishGameWithoutStatistics [method]: Method to finish a game without writing a statistics entry *//**
@@ -228,7 +216,9 @@ public class Program extends Application {
 	 * 
 	 */
 	public void finishGameWithStatistics() {
+		
 		String spielerName = this.mainStageController.showEnterNameDialog();
+		
 		if(spielerName != null){
 			this.writeStatistics(spielerName);
 		}
@@ -257,98 +247,109 @@ public class Program extends Application {
 	
 	//### Methods for gamemode1 ####################################################################
 	
-	/* setAnswer [method]: Method that sets the answer to the current question *//**
+	/* startGamemode1 [method]: Method that starts gamemode1 *//**
+	 * 
+	 */
+	private void startGamemode1() {
+		
+		//Show the gamemode1:
+		this.mainStageController.showGamemode1View();
+		
+		//Show the first Question:
+		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+	}
+	
+	/* setQuestionAnswer [method]: Method that sets the answer to the current question *//**
 	 * 
 	 * @param answer
 	 */
-	public void setAnswer(Answer answer) {
+	public void setQuestionAnswer(Answer answer) {
 		
-		//### If the gamemode 1 is still active ####################################################
-		if(this.game.isGamemode1Finish() == false) {
-			
-			//Write answer in the logic:
-			if(answer == Answer.YES) {
-				this.gm1Logic.setAnswer(true);
-			}
-			else if(answer == Answer.NO) {
-				this.gm1Logic.setAnswer(false);
-			}
-			else if(answer == Answer.DONT_KNOW) {
-				this.gm1Logic.setAnswer(null);
-			}
-		
-			//Increase the number of questions that nappy need:
-			this.game.increaseNoOfQuestionsNappy();
-		
-			//Update info elements (Progress-Bars):
-			this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
-												this.game.getNoOfQuestionsNappyInPercent(),
-												this.gm1Logic.getSureness());
-		
-			//Check if nappy knows the character:
-			if(this.gm1Logic.isSure() == true) {
-				this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
-				this.game.setCharacterNappy(this.gm1Logic.getCharacter());
-				this.game.setGamemode1Finish(true);
-			}
-			//Check if nappy is sure but don't knows the character:
-			else if (this.gm1Logic.isSure() == null) {
-				this.mainStageController.showNappyDontKnow();
-				this.game.setGamemode1Finish(true);
-			}
-			//Ask the next question:
-			else if (this.gm1Logic.isSure() == false) {
-				this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
-			}
+		//Write answer in the logic:
+		if(answer == Answer.YES) {
+			this.gm1Logic.setAnswer(true);
 		}
-		//### If the gamemode 1 is finsh ###########################################################
-		else {
-			
-			//If nappy guessed the character right:
-			if(answer == Answer.YES) {
-				this.game.setNappyRight(true);
-			}
-			//If nappy was wrong
-			else {
-				this.game.setNappyRight(false);
-			}
-			
-			boolean askForMode2;
-			
-			if(Settings.getGameMode() == GameMode.ONLY_MODE1) {
-				askForMode2 = false;
-			}
-			else {
-				askForMode2 = true;
-			}
-			//Show status dialog gamemode 1:
-			boolean result = this.mainStageController.showStatusDialogGM1(askForMode2,
-					         this.game.isNappyRight(),
-                             this.game.getNoOfQuestionsNappy(),
-                             this.game.getCharacterNappy().getWikiImage(),
-                             this.game.getCharacterNappy().getName());
-			
-			//If Player want to play gamemode 2:
-			if(result) {
-				//TODO!
-			}
-			else {
-				//Finish game with no statistics:
-				this.finishGameWithoutStatistics();
-			}
+		else if(answer == Answer.NO) {
+			this.gm1Logic.setAnswer(false);
 		}
+		else if(answer == Answer.DONT_KNOW) {
+			this.gm1Logic.setAnswer(null);
+		}
+		
+		//Increase the number of questions that nappy need:
+		this.game.increaseNoOfQuestionsNappy();
+		
+		//Update info elements (Progress-Bars):
+		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
+											this.game.getNoOfQuestionsNappyInPercent(),
+											this.gm1Logic.getSureness());
+		
+		//Check if nappy knows the character:
+		if(this.gm1Logic.isSure() == true) {
+			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
+			this.game.setCharacterNappy(this.gm1Logic.getCharacter());
+		}
+		//Check if nappy is sure but don't knows the character:
+		else if (this.gm1Logic.isSure() == null) {
+			this.mainStageController.showNappyDontKnow();
+		}
+		//Ask the next question:
+		else if (this.gm1Logic.isSure() == false) {
+			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+		}
+		
 	}
 	
-	/* finishGamemode1 [method]: Method that finish gamemode1 an set if nappy guess the right character *//**
+	/* setIfNappyIsRight [method]: Method that set if nappy guess the right character *//**
 	 * 
 	 * @param isNappyRight
 	 */
-	public void finishGamemode1(boolean isNappyRight) {
+	public void setIfNappyIsRight(boolean isNappyRight) {
+		
+		//If nappy guessed the character right:
+		if(isNappyRight == true) {
+			this.game.setNappyRight(true);
+		}
+		//If nappy was wrong:
+		else {
+			this.game.setNappyRight(false);
+		}
+		
+        this.finishGamemode1();
+	}
+	
+	/* finishGamemode1 [method]: Method that show the status dialog of gamemode1 and start gamemode2 or finish the game */
+	private void finishGamemode1() {
+		
+		//Show status dialog gamemode1:
+		boolean playGM2 = this.mainStageController.showStatusDialogGM1(
+				         	  Settings.getGameMode().askForGamemode2(),
+				         	  this.game.isNappyRight(),
+				         	  this.game.getNoOfQuestionsNappy(),
+				         	  this.game.getCharacterNappy().getWikiImage(),
+				         	  this.game.getCharacterNappy().getName());
+		
+		//If Player want to play gamemode 2:
+		if(playGM2) {
+			//Start gamemode2:
+			this.startGamemode2();
+		}
+		else {
+			//Finish game with no statistics:
+			this.finishGameWithoutStatistics();
+		}
 		
 	}
 	
 	//### Methods for gamemode2 ####################################################################
 	
+	private void startGamemode2() {
+		//TODO: implement!
+		
+		//Read out the questions that the player can ask:
+		ArrayList<Question> questions = this.gm2Logic.getQuestions();
+	
+	}
 	
 //### MAIN METHOD ##########################################################################################################################
 	
