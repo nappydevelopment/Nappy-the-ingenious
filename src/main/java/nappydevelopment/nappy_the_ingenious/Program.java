@@ -348,7 +348,8 @@ public class Program extends Application {
 		
 		//Read out the questions that the player can ask:
 		ArrayList<Question> questions = this.gm2Logic.getQuestions();
-	
+
+		this.mainStageController.showGamemode2View();
 	}
 	
 //### MAIN METHOD ##########################################################################################################################

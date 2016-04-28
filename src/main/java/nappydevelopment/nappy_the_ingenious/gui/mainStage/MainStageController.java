@@ -512,6 +512,10 @@ public class MainStageController {
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
+		
+		this.view.gdpProgressBarPic.getChildren().clear();
+		this.view.gdpButtons.getChildren().clear();
+		
 	}
 
 	public String showEnterNameDialog() {
