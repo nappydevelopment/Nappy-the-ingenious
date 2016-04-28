@@ -2,8 +2,6 @@ package nappydevelopment.nappy_the_ingenious.data;
 
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
-import java.util.Map;
-
 public class Question{
 
 	private final String table;
