@@ -6,6 +6,7 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 //### IMPORTS ##############################################################################################################################
+import java.util.List;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -559,7 +560,7 @@ public class MainStageController {
 		this.view.lblAnswer.setText(answer);
 	}
 	
-	public void showQuestions(ArrayList<String> questions) {
+	public void showQuestions(List<String> questions) {
 		
 		this.view.cmbQuestions.getItems().addAll(questions);
 	}
