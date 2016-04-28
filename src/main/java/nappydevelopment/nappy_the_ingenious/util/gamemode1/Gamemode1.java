@@ -18,7 +18,7 @@ public class Gamemode1{
 	private boolean[] dunno = new boolean[60];
 	private int numDunno = 0;
 	private int activeQuestion = -1;
-	private boolean determinisic = false;
+	private boolean deterministic = false;
 	private boolean firstQuestion = true;
 
     public Gamemode1(){
@@ -43,7 +43,7 @@ public class Gamemode1{
 
 	public Gamemode1(final boolean det){
 		super();
-		determinisic = det;
+		deterministic = det;
 	}
 
 	public WikiCharacter getCharacter(){
@@ -194,7 +194,7 @@ public class Gamemode1{
 			ResultSet res = st.getResultSet();
 			while(res.next()){
 				float val = res.getInt("C");
-				if(!determinisic){
+				if(!deterministic){
 					val += Math.random()*(max/2);
 				}
 				if(val > max){
