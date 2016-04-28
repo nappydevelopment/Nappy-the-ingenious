@@ -26,6 +26,7 @@ import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.gui.components.VerticalProgressBar;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 //Class that handles the interactions of the main-stage with the program-logic:
@@ -183,7 +184,15 @@ public class MainStageController {
 					
 			}
 			else if(src == view.btnIdontKnow) {
+				
 				MainStageController.this.program.setQuestionAnswer(Answer.DONT_KNOW);
+			}
+			else if(src == view.btnAskQuestion) {
+				
+				MainStageController.this.program.askQuestion(null);
+			}
+			else if(src == view.cmbQuestions) {
+				MainStageController.this.adoptQuestion();
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
@@ -508,7 +517,9 @@ public class MainStageController {
 	public void showGamemode2View() {
 		
 		//Reset ProgressBars:
+		//this.view.pgbKnowledge = new VerticalProgressBar(20, 300);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
+		//this.view.pgbNoOfQuest = new VerticalProgressBar(20, 300);
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
@@ -517,7 +528,7 @@ public class MainStageController {
 		
 		//this.view.imvNappy.setImage(value);
 		//Add the nappy-image and the positioning grid-pane to the stack-pane:
-	    this.view.skpPicText.getChildren().addAll(this.view.imvNappy);
+	    //this.view.skpPicText.getChildren().addAll(this.view.imvNappy);
 		
 		//Add the three main elements to the main grid-pane:
 		this.view.gdpProgressBarPic.add(this.view.vbxNoOfQuest, 0, 0);
@@ -543,11 +554,20 @@ public class MainStageController {
 		
 	}
 
+	/* showAnswer [method]: Method to show the answer form Nappy to a question */
+	public void showAnswer(String answer) {
+		this.view.lblAnswer.setText(answer);
+	}
 	
 	public void showQuestions(ArrayList<String> questions) {
 		
 		this.view.cmbQuestions.getItems().addAll(questions);
 	}
+	
+	private void adoptQuestion() {
+		this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
+	}
+	
 	
 	public String showEnterNameDialog() {
 

@@ -366,9 +366,10 @@ public class MainStageView extends Stage {
 		this.hbxAskQuestion.setAlignment(Pos.CENTER);
 		
 		this.btnAskQuestion.setMinSize(30, 10);
+		this.btnAskQuestion.setOnAction(aeh);
 		
 		this.cmbQuestions = new ComboBox<String>();
-		
+		this.cmbQuestions.setOnAction(aeh);
 		
 	}
 
