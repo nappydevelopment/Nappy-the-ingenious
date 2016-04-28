@@ -3,7 +3,7 @@ package nappydevelopment.nappy_the_ingenious.util.gamemode2;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,28 +16,28 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
 public class Gamemode2{
-	private final ArrayList<Question> remainingQuestions = new ArrayList<>();
+	private final Map<String, Question> remainingQuestions = new HashMap<>();
 	private final Map<String,String> character = new HashMap<>();
+	private final Language lang;
 	private int questionCounter = 0;
 	private boolean finished = true;
 
-	public Gamemode2(){
-		this(false);
-	}
-	public Gamemode2(final boolean deterministic){
+	public Gamemode2(final Language l){ this(l, false); }
+	public Gamemode2(
+		final Language l,
+		final boolean deterministic
+	){
+		lang = l;
 		try(Statement st = DatabaseProvider.getStatement()){
 			String questionSelect = "";
 			st.execute(
 				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
 				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
-				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'NICKNAME', 'COUNTER')\n" +
+				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'COUNTER')\n" +
+				"AND COLUMN_NAME NOT LIKE 'NICKNAME_%'\n" +
 				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'"
 			);
 			ResultSet res = st.getResultSet();
-			String langselect = "";
-			for(Language l: Language.values()){
-				langselect += ", Q1_"+ l.getCode();
-			}
 			boolean first = true;
 			while(res.next()){
 				if(!first){
@@ -45,33 +45,24 @@ public class Gamemode2{
 				}else{
 					first = false;
 				}
-				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL"+ langselect;
+				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL, Q1_"+ l.getCode();
 				questionSelect += " FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
 			}
 			res.close();
 
-			questionSelect = "Select TABL, ID" + langselect + " from (" + questionSelect + ") WHERE";
-			first = true;
-			for(Language l: Language.values()){
-				if(!first){
-					questionSelect += " AND ";
-				}else{
-					first = false;
-				}
-				questionSelect += " Q1_"+ l.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
-			}
+			questionSelect = "Select TABL, ID, Q1_"+ l.getCode() + " from (" + questionSelect + ")" +
+							 " WHERE Q1_"+ l.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
 			st.execute(questionSelect);
 			res = st.getResultSet();
 			while(res.next()){
-				HashMap<Language, String> questions = new HashMap();
-				for(Language l: Language.values()){
-					questions.put(l, res.getString("Q1_"+ l.getCode()));
-				}
-				remainingQuestions.add(
+				String question = res.getString("Q1_"+ l.getCode());
+				remainingQuestions.put(
+					question,
 					new Question(
 						res.getString("TABL"),
 						res.getString("ID"),
-						questions
+						lang,
+						question
 					)
 				);
 			}
@@ -97,17 +88,23 @@ public class Gamemode2{
 		return questionCounter;
 	}
 
-	public ArrayList<Question> getQuestions(){
-		return remainingQuestions;
+	public String[] getQuestions() {
+		Object[] questions = remainingQuestions.keySet().toArray();
+		return Arrays.asList(questions).toArray(new String[questions.length]);
 	}
 
-	public Boolean askQuestion(final Question question){
+	public Boolean askQuestion(final String question){
 		if(finished){
 			return null;
 		}
 		questionCounter++;
+
+		Question q = remainingQuestions.get(question);
+		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
+
 		remainingQuestions.remove(question);
-		return character.get(question.getTable()).equals(question.getAttribute());
+
+		return answer;
 	}
 
 	public Boolean makeGuess(final WikiCharacter wiki){
