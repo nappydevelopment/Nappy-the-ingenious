@@ -13,7 +13,6 @@ import java.util.List;
 public class Gamemode1{
 
 	private final String[] column = new String[60];
-	private boolean[] columnBool = new boolean[60];
 	private Boolean[] ans = new Boolean[60];
 	private String[] question = new String[60];
 	private boolean[] dunno = new boolean[60];
@@ -35,7 +34,6 @@ public class Gamemode1{
 			int i = 0;
 			while(res.next()){
 				column[i] = res.getString("COLUMN_NAME");
-				columnBool[i] = res.getString("TYPE_NAME").equals("BOOLEAN");
 				i++;
 			}
 		}catch(SQLException e){
@@ -89,7 +87,7 @@ public class Gamemode1{
 				}
 				return (1 / count);
 			}
-		}catch(Throwable e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		return -1;
@@ -173,7 +171,8 @@ public class Gamemode1{
 	private String giveQuestion(final int columnNr, final Language lang){
 		String ques = null;
 		try(Statement st = DatabaseProvider.getStatement()){
-			st.execute("SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'");
+			String select = "SELECT * from " + column[columnNr] + "_QUESTIONS WHERE ID='" + question[activeQuestion] + "'";
+			st.execute(select);
 			ResultSet res = st.getResultSet();
 			if(res.next()){
 				ques = res.getString("Q1_" + lang.getCode());
