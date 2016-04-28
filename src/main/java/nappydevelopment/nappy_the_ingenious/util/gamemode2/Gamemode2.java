@@ -82,9 +82,9 @@ public class Gamemode2{
 		finished = false;
 	}
 
-	public int answeredQuestions() { return questionCounter; }
+	public int answeredQuestions(){ return questionCounter; }
 
-	public List<String> getQuestions() {
+	public List<String> getQuestions(){
 		ArrayList<String> questions= new ArrayList<>();
 		questions.addAll(remainingQuestions.keySet());
 		return questions;
@@ -121,12 +121,9 @@ public class Gamemode2{
 		return false;
 	}
 
-	public boolean finished() { return finished; }
+	public boolean finished(){ return finished; }
 
-
-	public WikiCharacter endGame(){return endGame(true);}
-	WikiCharacter endGame(boolean image){
-		// image parameter is for testing...
+	public WikiCharacter endGame(){
 		if(finished){ return null; }
 		finished = true;
 
