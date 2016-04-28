@@ -93,13 +93,7 @@ dd {
   padding: 10px 10px 15px 10px;
 }
 
-#button {
-  float:right;
-  display:block;
-  height:18px;
-  width:17px;
-  text-indent:-9999px;
-}
+#button { display:none; }
 
 .closed { background:url(button.png) left no-repeat; }
 
