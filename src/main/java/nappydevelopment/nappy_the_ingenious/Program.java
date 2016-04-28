@@ -365,6 +365,10 @@ public class Program extends Application {
 		this.mainStageController.showQuestions(questions);
 	}
 	
+	public void askQuestion(String question) {
+		
+	}
+	
 //### MAIN METHOD ##########################################################################################################################
 	
 	//Main-method that starts the JavaFX-Platform:
