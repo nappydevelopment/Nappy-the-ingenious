@@ -48,4 +48,11 @@ public class Gamemode2Test{
 		assertNotNull(gm.endGame());
 		assertNull(gm.endGame());
 	}
+
+	@Test
+	public void finished() throws Exception{
+		assertFalse(gm.finished());
+		gm.endGame();
+		assertTrue(gm.finished());
+	}
 }
