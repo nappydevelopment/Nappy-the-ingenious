@@ -115,10 +115,7 @@ public class Gamemode2{
 			return null;
 		}
 		questionCounter++;
-		if(character.get("NAME").equals(name)){
-			return true;
-		}
-		return false;
+		return character.get("NAME").equals(name);
 	}
 
 	public boolean finished(){ return finished; }
