@@ -3,9 +3,7 @@ package nappydevelopment.nappy_the_ingenious.util.gamemode2;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
@@ -88,9 +86,12 @@ public class Gamemode2{
 		return questionCounter;
 	}
 
-	public String[] getQuestions() {
-		Object[] questions = remainingQuestions.keySet().toArray();
-		return Arrays.asList(questions).toArray(new String[questions.length]);
+	public int answeredQuestions() { return questionCounter; }
+
+	public List<String> getQuestions() {
+		ArrayList<String> questions= new ArrayList<>();
+		questions.addAll(remainingQuestions.keySet());
+		return questions;
 	}
 
 	public Boolean askQuestion(final String question){
@@ -114,6 +115,7 @@ public class Gamemode2{
 		if(finished){
 			return null;
 		}
+		questionCounter++;
 		if(character.get("NAME").equals(name)){
 			return true;
 		}

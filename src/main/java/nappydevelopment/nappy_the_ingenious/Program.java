@@ -359,7 +359,7 @@ public class Program extends Application {
 		
 		//Read out the questions that the player can ask:
 		//TODO: Not realy nice logic should return a list of questions (Strings) depending on a language parameter:
-		ArrayList<String> questions = new ArrayList<String>(Arrays.asList(gm2Logic.getQuestions()));
+		List<String> questions = gm2Logic.getQuestions();
 
 		this.mainStageController.showGamemode2View();
 		this.mainStageController.showQuestions(questions);
