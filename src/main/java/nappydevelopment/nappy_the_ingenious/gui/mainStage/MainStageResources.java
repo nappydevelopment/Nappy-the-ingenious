@@ -58,6 +58,7 @@ public class MainStageResources {
 	String btnNoTextWrong;
 	String btnIdontKnowTextIdontKnow;
 	String btnIdontKnowTextContinue;
+	String btnIdontKnowTextIknow;
 
 	//### Abort Dialog Texts #######################################################################
 
@@ -107,8 +108,9 @@ public class MainStageResources {
 
 	Image imvNoOfQuestIcon;
 	Image imvKnowledgeIcon;
-	Image imvNappyImage;
-
+	Image imvNappyImageGM1;
+	Image imvNappyImageGM2;
+	
 	//### Statistik-Kram #############################################################################
 
 
@@ -176,8 +178,8 @@ public class MainStageResources {
 
 		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/counter.png");
 		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
-		this.imvNappyImage = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
-
+		this.imvNappyImageGM1 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
+		this.imvNappyImageGM2 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_no_border.png");
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
@@ -243,6 +245,8 @@ public class MainStageResources {
 		this.btnNoTextWrong = "Wrong";
 		this.btnIdontKnowTextIdontKnow = "I don't know";
 		this.btnIdontKnowTextContinue = "Continue";
+		this.btnIdontKnowTextIknow = "I think I know your character";
+		
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -305,6 +309,7 @@ public class MainStageResources {
 		this.btnNoTextWrong = "Falsch";
 		this.btnIdontKnowTextIdontKnow = "Ich weiß nicht";
 		this.btnIdontKnowTextContinue = "Fortfahren";
+		this.btnIdontKnowTextIknow = "Ich glaube ich kennen deinen Character";
 
 	}
 
@@ -333,6 +338,9 @@ public class MainStageResources {
 		this.btnIdontKnow.set(this.btnIdontKnowTextContinue);
 	}
 	
+	void setBtnIdontKnowTextToIknow() {
+		this.btnIdontKnow.set(this.btnIdontKnowTextIknow);
+	}
 	
 //##########################################################################################################################################
 }

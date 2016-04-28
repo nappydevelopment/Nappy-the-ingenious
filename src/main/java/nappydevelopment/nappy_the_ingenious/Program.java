@@ -3,6 +3,7 @@
 package nappydevelopment.nappy_the_ingenious;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //### IMPORTS ##############################################################################################################################
 
@@ -189,12 +190,13 @@ public class Program extends Application {
 		
 		//Initialize the logic:
 		this.gm1Logic = new Gamemode1();
-		this.gm2Logic = new Gamemode2();
+		//TODO: No consistently logic interface:
+		this.gm2Logic = new Gamemode2(Settings.getLanguage());
 		
-		//Set Flag for a started game:
+		//Initialize a new game:
 		this.game = new Game();
-		this.game.setActive(true);
 		
+		//Call method to start gamemode1:
         this.startGamemode1();
 	}
     
@@ -208,6 +210,7 @@ public class Program extends Application {
 		this.gm2Logic = null;
 		//Erase game:
 		this.game = null;
+		
 		//Show start view:
 		this.mainStageController.showStartView();
 	}
@@ -217,14 +220,22 @@ public class Program extends Application {
 	 */
 	public void finishGameWithStatistics() {
 		
+		//Show dialog to enter the player name:
 		String spielerName = this.mainStageController.showEnterNameDialog();
 		
-		if(spielerName != null){
+		//If the player entered a name:
+		if(spielerName != null) {
+			//Write the player into statistic:
 			this.writeStatistics(spielerName);
 		}
+		
+		//Erase logics:
 		this.gm1Logic = null;
 		this.gm2Logic = null;
+		//Erase game:
 		this.game = null;
+		
+		//Show start view:
 		this.mainStageController.showStartView();
 	}
 
@@ -233,15 +244,20 @@ public class Program extends Application {
 	 * @param spielerName
 	 */
 	private void writeStatistics(String spielerName) {
+		
 		SaveStatisticInfos.createAndSavePlayer(spielerName, this.game);
 	}
     
 	/* abortGame [method]: Method to abort a current game */
 	public void abortGame() {
 		
+		//Erase logic:
 		this.gm1Logic = null;
 		this.gm2Logic = null;
+		//Erase game:
 		this.game = null;
+		
+		//Show start view:
 		this.mainStageController.showStartView();
 	}
 	
@@ -266,6 +282,7 @@ public class Program extends Application {
 	public void setQuestionAnswer(Answer answer) {
 		
 		//Write answer in the logic:
+		//TODO: No clean code logic should use the Answer object:
 		if(answer == Answer.YES) {
 			this.gm1Logic.setAnswer(true);
 		}
@@ -306,15 +323,10 @@ public class Program extends Application {
 	 */
 	public void setIfNappyIsRight(boolean isNappyRight) {
 		
-		//If nappy guessed the character right:
-		if(isNappyRight == true) {
-			this.game.setNappyRight(true);
-		}
-		//If nappy was wrong:
-		else {
-			this.game.setNappyRight(false);
-		}
+		//Set if nappy guessed the character right or not:
+		this.game.setNappyRight(isNappyRight);
 		
+		//finish the gamemode1:
         this.finishGamemode1();
 	}
 	
@@ -329,7 +341,7 @@ public class Program extends Application {
 				         	  this.game.getCharacterNappy().getWikiImage(),
 				         	  this.game.getCharacterNappy().getName());
 		
-		//If Player want to play gamemode 2:
+		//If Player want to play gamemode2:
 		if(playGM2) {
 			//Start gamemode2:
 			this.startGamemode2();
@@ -344,12 +356,13 @@ public class Program extends Application {
 	//### Methods for gamemode2 ####################################################################
 	
 	private void startGamemode2() {
-		//TODO: implement!
 		
 		//Read out the questions that the player can ask:
-		ArrayList<Question> questions = this.gm2Logic.getQuestions();
+		//TODO: Not realy nice logic should return a list of questions (Strings) depending on a language parameter:
+		ArrayList<String> questions = new ArrayList<String>(Arrays.asList(gm2Logic.getQuestions()));
 
 		this.mainStageController.showGamemode2View();
+		this.mainStageController.showQuestions(questions);
 	}
 	
 //### MAIN METHOD ##########################################################################################################################

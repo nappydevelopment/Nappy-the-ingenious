@@ -4,6 +4,7 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 
 import java.awt.RenderingHints;
+import java.util.ArrayList;
 //### IMPORTS ##############################################################################################################################
 import java.util.Optional;
 import javafx.application.Platform;
@@ -420,7 +421,6 @@ public class MainStageController {
 		this.view.lblQuestion.setText("");
 		this.res.setBtnYesTextToRight();
 		this.res.setBtnNoTextToWrong();
-		this.view.btnIdontKnow.setDisable(true);
         
 		//Get the picture of the guessed character:
 		this.view.impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(),
@@ -514,10 +514,41 @@ public class MainStageController {
 		this.view.lblKnowledge.setText("0%");
 		
 		this.view.gdpProgressBarPic.getChildren().clear();
+		
+		//this.view.imvNappy.setImage(value);
+		//Add the nappy-image and the positioning grid-pane to the stack-pane:
+	    this.view.skpPicText.getChildren().addAll(this.view.imvNappy);
+		
+		//Add the three main elements to the main grid-pane:
+		this.view.gdpProgressBarPic.add(this.view.vbxNoOfQuest, 0, 0);
+		//this.gdpProgressBarPic.add(this.skpPicText, 1, 0);
+		this.view.gdpProgressBarPic.add(this.view.vbxKnowledge, 2, 0);
+		
+		
 		this.view.gdpButtons.getChildren().clear();
+		this.view.gdpButtons.setVgap(10);
+		
+		
+		
+		
+		this.view.btnIdontKnow.setId("btnIknow");
+		this.res.setBtnIdontKnowTextToIknow();
+		
+		this.view.lblInfo.setText("Hier steht dann später die Frage die man Nappy stellt!");
+		
+		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0);
+		this.view.gdpButtons.add(this.view.cmbQuestions, 0, 2);
+		this.view.gdpButtons.add(this.view.hbxAskQuestion, 0, 3);
+		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 5, 2, 1);
 		
 	}
 
+	
+	public void showQuestions(ArrayList<String> questions) {
+		
+		this.view.cmbQuestions.getItems().addAll(questions);
+	}
+	
 	public String showEnterNameDialog() {
 
 		TextInputDialog dialog = new TextInputDialog("walter");
