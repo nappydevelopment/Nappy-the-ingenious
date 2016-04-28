@@ -45,17 +45,17 @@ public class Gamemode2{
 				}else{
 					first = false;
 				}
-				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL, Q1_"+ l.getCode();
+				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL, Q1_"+ lang.getCode();
 				questionSelect += " FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
 			}
 			res.close();
 
-			questionSelect = "Select TABL, ID, Q1_"+ l.getCode() + " from (" + questionSelect + ")" +
-							 " WHERE Q1_"+ l.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
+			questionSelect = "Select TABL, ID, Q1_"+ lang.getCode() + " from (" + questionSelect + ")" +
+							 " WHERE Q1_"+ lang.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
 			st.execute(questionSelect);
 			res = st.getResultSet();
 			while(res.next()){
-				String question = res.getString("Q1_"+ l.getCode());
+				String question = res.getString("Q1_"+ lang.getCode());
 				remainingQuestions.put(
 					question,
 					new Question(
