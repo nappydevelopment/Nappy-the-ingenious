@@ -97,6 +97,9 @@ public class Gamemode2{
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
+		if(q == null){
+			return null;
+		}
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
 
 		remainingQuestions.remove(question);
@@ -120,11 +123,13 @@ public class Gamemode2{
 
 	public boolean finished() { return finished; }
 
-	public WikiCharacter endGame(){
-		if(finished){
-			return null;
-		}
+
+	public WikiCharacter endGame(){return endGame(true);}
+	WikiCharacter endGame(boolean image){
+		// image parameter is for testing...
+		if(finished){ return null; }
 		finished = true;
+
 		Map<Language, String> nicknames = new HashMap<>();
 		Map<Language, String> descriptions = new HashMap<>();
 
@@ -133,11 +138,19 @@ public class Gamemode2{
 			descriptions.put(l, character.get("DESCRIPTION_"+ l.getCode()));
 		}
 
+		Image img = null;
+		try{
+			img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png");
+		}catch(RuntimeException e){
+			if(!"Internal graphics not initialized yet".equals(e.getMessage())){
+				throw e;
+			}
+		}
 		return new WikiCharacter(
-				character.get("NAME"),
-				nicknames,
-				descriptions,
-				new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png")
+			character.get("NAME"),
+			nicknames,
+			descriptions,
+			img
 		);
 	}
 }
