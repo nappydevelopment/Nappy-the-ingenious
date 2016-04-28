@@ -82,10 +82,6 @@ public class Gamemode2{
 		finished = false;
 	}
 
-	public int answeredQuestions(){
-		return questionCounter;
-	}
-
 	public int answeredQuestions() { return questionCounter; }
 
 	public List<String> getQuestions() {
