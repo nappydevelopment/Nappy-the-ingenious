@@ -49,16 +49,24 @@ public class MainStageResources {
 	StringProperty btnNoText;
 	StringProperty btnIdontKnow;
 	
-	String iThinkYourCharacterIs;
-	String iDontKnowYourCharacterText;
+	//Variable Text for gui-components:
+	
+	//Texts for the label lblInfo:
+	String lblInfoTextIKnowYourCharacter;
+	String lblInfoTextIDontKnowYourCharacterText;
+	String lblInfoTextPleaseSelectAQuestion;
 	
 	String btnYesTextYes;
 	String btnYesTextRight;
+	
 	String btnNoTextNo;
 	String btnNoTextWrong;
+	
 	String btnIdontKnowTextIdontKnow;
 	String btnIdontKnowTextContinue;
 	String btnIdontKnowTextIknow;
+	
+	String cmbQuestionsTextSelectAQuestion;
 
 	//### Abort Dialog Texts #######################################################################
 
@@ -152,8 +160,8 @@ public class MainStageResources {
 		this.btnNoText = new SimpleStringProperty();
 		this.btnIdontKnow = new SimpleStringProperty();
 		
-		this.iThinkYourCharacterIs = null;
-		this.iDontKnowYourCharacterText = null;
+		this.lblInfoTextIKnowYourCharacter = null;
+		this.lblInfoTextIDontKnowYourCharacterText = null;
 
 		//### Images for the menu-bar ##################################################################
 
@@ -236,8 +244,9 @@ public class MainStageResources {
 		this.statusDialogGM1StatusTextWrong = "Nappy could not correctly guess your character";
  		this.statusDialogGM1Question = "Do you want to try to beat Nappy and play the game mode 2?";
 		
-		this.iDontKnowYourCharacterText = "I don't know your character!";
-		this.iThinkYourCharacterIs = "I think your character is";
+		this.lblInfoTextIDontKnowYourCharacterText = "I don't know your character!";
+		this.lblInfoTextIKnowYourCharacter = "I think your character is";
+		this.lblInfoTextPleaseSelectAQuestion = "Please select a question!";
 		
 		this.btnYesTextYes = "Yes";
 		this.btnYesTextRight = "Right";
@@ -247,6 +256,7 @@ public class MainStageResources {
 		this.btnIdontKnowTextContinue = "Continue";
 		this.btnIdontKnowTextIknow = "I think I know your character";
 		
+		this.cmbQuestionsTextSelectAQuestion = "Select a question";
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -300,8 +310,9 @@ public class MainStageResources {
 		this.statusDialogGM1StatusTextWrong = "Nappy konnte deinen Character nicht richtig erraten.";
  		this.statusDialogGM1Question = "Möchtest du versuchen Nappy zu schlagen und den zweiten Spielmodus spielen?";
 		
-		this.iDontKnowYourCharacterText = "Ich kenne deinen Charakter nicht!";
-		this.iThinkYourCharacterIs = "Ich denke dein Charakter ist";
+		this.lblInfoTextIDontKnowYourCharacterText = "Ich kenne deinen Charakter nicht!";
+		this.lblInfoTextIKnowYourCharacter = "Ich denke dein Charakter ist";
+		this.lblInfoTextPleaseSelectAQuestion = "Bitte wähle eine Frage!";
 		
 		this.btnYesTextYes = "Ja";
 		this.btnYesTextRight = "Richtig";
@@ -310,6 +321,8 @@ public class MainStageResources {
 		this.btnIdontKnowTextIdontKnow = "Ich weiß nicht";
 		this.btnIdontKnowTextContinue = "Fortfahren";
 		this.btnIdontKnowTextIknow = "Ich glaube ich kennen deinen Character";
+		
+		this.cmbQuestionsTextSelectAQuestion = "Frage wählen";
 
 	}
 
@@ -341,6 +354,7 @@ public class MainStageResources {
 	void setBtnIdontKnowTextToIknow() {
 		this.btnIdontKnow.set(this.btnIdontKnowTextIknow);
 	}
+	
 	
 //##########################################################################################################################################
 }

@@ -7,6 +7,7 @@ import java.util.*;
 
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Question;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
@@ -90,21 +91,38 @@ public class Gamemode2{
 		return questions;
 	}
 
-	public Boolean askQuestion(final String question){
+	public Answer askQuestion(final String question){
+		
+		//Changed something here:
+		//Add the use of the Answer object:
+		//By the way to use here (return) null is not good programming you should throw an exception! 
+		
+		Answer ans = null;
+		
 		if(finished){
-			return null;
+			return ans;
 		}
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
 		if(q == null){
-			return null;
+			return ans;
 		}
+		
+		
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
-
+       
+		
+		if(answer) {
+			ans = Answer.YES;
+		}
+		else {
+			ans = Answer.NO;
+		}
+		
 		remainingQuestions.remove(question);
 
-		return answer;
+		return ans;
 	}
 
 	public Boolean makeGuess(final WikiCharacter wiki){

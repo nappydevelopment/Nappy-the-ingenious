@@ -191,9 +191,10 @@ public class MainStageController {
 			}
 			else if(src == view.btnAskQuestion) {
 				
-				MainStageController.this.program.askQuestion(null);
+				MainStageController.this.program.askQuestion(MainStageController.this.view.cmbQuestions.getValue());
 			}
 			else if(src == view.cmbQuestions) {
+				//Adopt the question from the combobox to the label:
 				MainStageController.this.adoptQuestion();
 			}
 			else {
@@ -427,7 +428,7 @@ public class MainStageController {
 	public void showGuessedCharacter(WikiCharacter character) {
 		
 		//Show info label with the guessed character name:
-		this.view.lblInfo.setText(this.res.iThinkYourCharacterIs + " " + character.getName() + "!");
+		this.view.lblInfo.setText(this.res.lblInfoTextIKnowYourCharacter + " " + character.getName() + "!");
 		
 		//Clear text of the question label:
 		this.view.lblQuestion.setText("");
@@ -476,7 +477,7 @@ public class MainStageController {
 	/* showNappyDontKnowView [method]: */
 	public void showNappyDontKnow() {
 		
-		this.view.lblInfo.setText(this.res.iDontKnowYourCharacterText);
+		this.view.lblInfo.setText(this.res.lblInfoTextIDontKnowYourCharacterText);
 		
 		//Clear text of the question label:
 		this.view.lblQuestion.setText("");
@@ -549,11 +550,8 @@ public class MainStageController {
 		this.view.gdpButtons.setPadding(new Insets(0,10,10,10));
 		
 		
-		
 		this.view.btnIdontKnow.setId("btnIknow");
 		this.res.setBtnIdontKnowTextToIknow();
-		
-		this.view.lblInfo.setText("Bitte wähle eine Frage aus");
 		
 		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0);
 		this.view.gdpButtons.add(this.view.cmbQuestions, 0, 1);
@@ -574,15 +572,29 @@ public class MainStageController {
 		this.view.lblAnswer.setText(answer);
 	}
 	
-	public void showQuestions(List<String> questions) {
+	public void showQuestions(List<String> questions) {	
 		
 		this.view.cmbQuestions.getItems().addAll(questions);
+		this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
+		this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
+		this.view.btnAskQuestion.setDisable(true);
 	}
 	
 	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label */
 	private void adoptQuestion() {
-		this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
+		
+		if(this.view.cmbQuestions.getValue() != null) {
+			this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
+			this.view.btnAskQuestion.setDisable(false);
+		}
+		else {
+			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
+			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
+			this.view.btnAskQuestion.setDisable(true);
+		}
 	}
+	
+	
 	
 	
 	public String showEnterNameDialog() {
