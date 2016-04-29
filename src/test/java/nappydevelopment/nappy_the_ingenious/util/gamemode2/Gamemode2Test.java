@@ -25,14 +25,14 @@ public class Gamemode2Test{
 	}
 
 	@Test(expected=NoMoreQuestions.class)
-	public void answerAlreadyAnsweredQuestion() throws Throwable{
+	public void answerAlreadyAnsweredQuestion() throws Exception{
 		String q = gm.getQuestions().get(0);
 		assertNotNull(gm.askQuestion(q));
 		assertNull(gm.askQuestion(q));
 	}
 
 	@Test(expected=GameHasFinished.class)
-	public void askQuestionWhenFinished() throws Throwable{
+	public void askQuestionWhenFinished() throws Exception{
 		gm.endGame();
 		assertNull(gm.askQuestion("EGAL"));
 	}
