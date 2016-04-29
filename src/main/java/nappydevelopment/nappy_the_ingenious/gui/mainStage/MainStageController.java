@@ -20,7 +20,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -537,7 +539,40 @@ public class MainStageController {
 	    
 		//Add the nappy-image and the positioning grid-pane to the stack-pane:
 		this.view.skpPicText.getChildren().clear();
-	    this.view.skpPicText.getChildren().addAll(this.view.imvNappy);
+		
+		this.view.gdpQuestion.getChildren().clear();
+		this.view.gdpQuestion.getColumnConstraints().clear();
+		this.view.gdpQuestion.getRowConstraints().clear();
+		
+	    //Set the column-rate:
+	    ColumnConstraints gdpQuestionCol1 = new ColumnConstraints();
+	    gdpQuestionCol1.setPercentWidth(11);
+	    ColumnConstraints gdpQuestionCol2 = new ColumnConstraints();
+	    gdpQuestionCol2.setPercentWidth(40);
+	    ColumnConstraints gdpQuestionCol3 = new ColumnConstraints();
+	    gdpQuestionCol3.setPercentWidth(49);
+
+	    RowConstraints gdpQuestionRow1 = new RowConstraints();
+	    gdpQuestionRow1.setPercentHeight(16.2);
+	    RowConstraints gdpQuestionRow2 = new RowConstraints();
+	    gdpQuestionRow2.setPercentHeight(20);
+	    RowConstraints gdpQuestionRow3 = new RowConstraints();
+	    gdpQuestionRow3.setPercentHeight(63.8);
+
+	    this.view.gdpQuestion.getColumnConstraints().addAll(
+	    	gdpQuestionCol1,
+	    	gdpQuestionCol2,
+	    	gdpQuestionCol3
+	    );
+
+	    this.view.gdpQuestion.getRowConstraints().addAll(
+	    	gdpQuestionRow1,
+	    	gdpQuestionRow2,
+	    	gdpQuestionRow3
+	    );
+		
+	    this.view.gdpQuestion.add(this.view.lblAnswer, 1,1);
+	    this.view.skpPicText.getChildren().addAll(this.view.imvNappy, this.view.gdpQuestion);
 		
 		//Add the three main elements to the main grid-pane:
 		this.view.gdpProgressBarPic.add(this.view.vbxNoOfQuest, 0, 0);
