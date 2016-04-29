@@ -11,6 +11,7 @@ import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -413,6 +414,7 @@ public class MainStageController {
 		//Set the root-pane as root-pane of the scene:
 		this.view.getScene().setRoot(this.view.bdpRootPane);
 		
+		System.out.println("Size: " + this.view.gdpProgressBarPic.getHeight() + ", " + this.view.gdpProgressBarPic.getWidth());
 	}
 	
 	//Method that shows the next question:
@@ -518,40 +520,52 @@ public class MainStageController {
 	public void showGamemode2View() {
 		
 		//Reset ProgressBars:
-		//this.view.pgbKnowledge = new VerticalProgressBar(20, 300);
+		this.view.pgbKnowledge.getProgressBar().setPrefSize(380, 20);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
-		//this.view.pgbNoOfQuest = new VerticalProgressBar(20, 300);
+		this.view.pgbNoOfQuest.getProgressBar().setPrefSize(380, 20);
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
 		
+		
 		this.view.gdpProgressBarPic.getChildren().clear();
 		
-		//this.view.imvNappy.setImage(value);
+		this.view.imvNappy.setImage(this.res.imvNappyImageGM2);
+	    this.view.imvNappy.setFitHeight(401);
+	    this.view.imvNappy.setFitWidth(340);
+	    
 		//Add the nappy-image and the positioning grid-pane to the stack-pane:
-	    //this.view.skpPicText.getChildren().addAll(this.view.imvNappy);
+		this.view.skpPicText.getChildren().clear();
+	    this.view.skpPicText.getChildren().addAll(this.view.imvNappy);
 		
 		//Add the three main elements to the main grid-pane:
 		this.view.gdpProgressBarPic.add(this.view.vbxNoOfQuest, 0, 0);
-		//this.gdpProgressBarPic.add(this.skpPicText, 1, 0);
+		this.view.gdpProgressBarPic.add(this.view.skpPicText, 1, 0);
 		this.view.gdpProgressBarPic.add(this.view.vbxKnowledge, 2, 0);
-		
+		this.view.gdpProgressBarPic.setPadding(new Insets(10,10,0,10));
 		
 		this.view.gdpButtons.getChildren().clear();
 		this.view.gdpButtons.setVgap(10);
-		
+		this.view.gdpButtons.setPadding(new Insets(0,10,10,10));
 		
 		
 		
 		this.view.btnIdontKnow.setId("btnIknow");
 		this.res.setBtnIdontKnowTextToIknow();
 		
-		this.view.lblInfo.setText("Hier steht dann später die Frage die man Nappy stellt!");
+		this.view.lblInfo.setText("Bitte wähle eine Frage aus");
 		
 		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0);
-		this.view.gdpButtons.add(this.view.cmbQuestions, 0, 2);
-		this.view.gdpButtons.add(this.view.hbxAskQuestion, 0, 3);
-		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 5, 2, 1);
+		this.view.gdpButtons.add(this.view.cmbQuestions, 0, 1);
+		this.view.gdpButtons.add(this.view.hbxAskQuestion, 0, 2);
+		this.view.gdpButtons.add(this.view.btnIdontKnow, 0, 4);
+		//this.view.gdpButtons.setGridLinesVisible(true);
+		//this.view.gdpProgressBarPic.setGridLinesVisible(true);
+		
+		this.view.bdpRootPane.getChildren().clear();
+		this.view.bdpRootPane.setBottom(this.view.gdpButtons);
+		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
+		this.view.bdpRootPane.setCenter(this.view.gdpProgressBarPic);
 		
 	}
 
@@ -565,6 +579,7 @@ public class MainStageController {
 		this.view.cmbQuestions.getItems().addAll(questions);
 	}
 	
+	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label */
 	private void adoptQuestion() {
 		this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
 	}

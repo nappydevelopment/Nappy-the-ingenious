@@ -136,7 +136,6 @@ public class MainStageView extends Stage {
 //### INITAL METHODS #######################################################################################################################
 
 	//Method that initialize the gui-components:
-	@SuppressWarnings("rawtypes")
 	private void initComponents(MainStageResources res, EventHandler<ActionEvent> aeh) {
 
 		//### Initialize components of all views ###################################################
@@ -239,7 +238,7 @@ public class MainStageView extends Stage {
 
 	    this.gdpProgressBarPic.getColumnConstraints().addAll(col1,col2,col3);
 	    //this.gdpProgressBarPic.setGridLinesVisible(true);
-	    this.gdpProgressBarPic.setPrefSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
+	    //this.gdpProgressBarPic.setPrefSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
         
 	    //Initialization of the number of questions components: ####################################
 	    
@@ -263,7 +262,7 @@ public class MainStageView extends Stage {
 	    this.skpPicText.setAlignment(Pos.CENTER);
 	    
 	    this.imvNappy = new ImageView(res.imvNappyImageGM1);
-	    this.imvNappy.setFitHeight(524);
+	    this.imvNappy.setFitHeight(527);
 	    this.imvNappy.setFitWidth(340);
 
 	    this.lblQuestion = new Label();
@@ -330,13 +329,17 @@ public class MainStageView extends Stage {
 
 		this.gdpButtons = new GridPane();
 		this.gdpButtons.setPadding(new Insets(10,10,10,10));
+		//this.gdpButtons.setGridLinesVisible(true);
 		
 		this.vbxInfoLabel = new VBox();
 		this.vbxInfoLabel.setAlignment(Pos.CENTER);
-		this.vbxInfoLabel.setPadding(new Insets(0,0,23,0));
+		this.vbxInfoLabel.setPadding(new Insets(0,0,0,0));
 		
 		this.lblInfo = new Label("Is this the right character!");
 		this.lblInfo.setId("lblIsThisRight");
+		this.lblInfo.setTextAlignment(TextAlignment.CENTER);
+		this.lblInfo.setWrapText(true);
+		this.lblInfo.setPrefHeight(49);
 		
 		this.btnYes = new Button();
 		this.btnYes.setId("btnYes");
@@ -365,7 +368,8 @@ public class MainStageView extends Stage {
 		this.hbxAskQuestion = new HBox();
 		this.hbxAskQuestion.setAlignment(Pos.CENTER);
 		
-		this.btnAskQuestion.setMinSize(30, 10);
+		this.btnAskQuestion.setMinSize(150, 10);
+		this.btnAskQuestion.setTextAlignment(TextAlignment.CENTER);
 		this.btnAskQuestion.setOnAction(aeh);
 		
 		this.cmbQuestions = new ComboBox<String>();
@@ -461,7 +465,7 @@ public class MainStageView extends Stage {
 	private void initStage() {
 
 
-		this.scene = new Scene(this.bdpRootPane, 445, 680);
+		this.scene = new Scene(this.bdpRootPane, 445, 693);
 		this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
 		this.setScene(this.scene);
 		this.setTitle("Nappy, the ingenious");
@@ -474,7 +478,7 @@ public class MainStageView extends Stage {
 			new Image(GlobalReferences.ICONS_PATH + "128x128/icon.png"),
 			new Image(GlobalReferences.ICONS_PATH + "256x256/icon.png")
 		);
-		this.setResizable(false);
+		//this.setResizable(false);
 	}
 
 //##########################################################################################################################################
