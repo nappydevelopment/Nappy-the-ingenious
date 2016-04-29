@@ -367,6 +367,10 @@ public class Program extends Application {
 	
 	public void askQuestion(String question) {
 		
+		//TODO: Bad implementation askQuestion should return a Answer object:
+		Answer answer = this.gm2Logic.askQuestion(question);
+		this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
+		
 	}
 	
 //### MAIN METHOD ##########################################################################################################################
