@@ -92,8 +92,6 @@ public class Gamemode2{
 	}
 
 	public Answer askQuestion(final String question){
-		//By the way to use here (return) null is not good programming you should throw an exception! 
-		
 		Answer ans = null;
 		
 		if(finished){
