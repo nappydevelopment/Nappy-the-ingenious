@@ -186,7 +186,7 @@ public class MainStageResources {
 
 		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/counter.png");
 		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
-		this.imvNappyImageGM1 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_gamemode1.png");
+		this.imvNappyImageGM1 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_gamemode1_2.png");
 		this.imvNappyImageGM2 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_gamemode2_fit_size.png");
 	}
 

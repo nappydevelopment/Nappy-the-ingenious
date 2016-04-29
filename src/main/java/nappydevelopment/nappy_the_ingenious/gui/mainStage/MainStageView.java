@@ -363,6 +363,7 @@ public class MainStageView extends Stage {
 		// Gamemode2 ###############################
 		
 		this.lblAnswer = new Label();
+		this.lblAnswer.setId("lblAnswer");
 		
 		this.btnAskQuestion = new Button("Frage stellen");
 		this.hbxAskQuestion = new HBox();
