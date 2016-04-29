@@ -91,33 +91,21 @@ public class Gamemode2{
 		return questions;
 	}
 
-	public Answer askQuestion(final String question){
-		Answer ans = null;
-		
+	public Answer askQuestion(final String question) throws NoMoreQuestions, GameHasFinished{
 		if(finished){
-			return ans;
+			throw new GameHasFinished();
 		}
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
 		if(q == null){
-			return ans;
+			throw new NoMoreQuestions();
 		}
-		
-		
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
-       
-		
-		if(answer) {
-			ans = Answer.YES;
-		}
-		else {
-			ans = Answer.NO;
-		}
-		
+
 		remainingQuestions.remove(question);
 
-		return ans;
+		return Answer.fromBool(answer);
 	}
 
 	public Boolean makeGuess(final WikiCharacter wiki){
