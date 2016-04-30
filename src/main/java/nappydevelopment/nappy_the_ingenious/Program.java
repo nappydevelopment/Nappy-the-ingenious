@@ -23,7 +23,9 @@ import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageContr
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
+import nappydevelopment.nappy_the_ingenious.util.gamemode2.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
+import nappydevelopment.nappy_the_ingenious.util.gamemode2.NoMoreQuestions;
 
 
 public class Program extends Application {
@@ -366,11 +368,12 @@ public class Program extends Application {
 	}
 	
 	public void askQuestion(String question) {
-		
-		//TODO: Bad implementation askQuestion should return a Answer object:
-		Answer answer = this.gm2Logic.askQuestion(question);
-		this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
-		
+		try{
+			Answer answer = this.gm2Logic.askQuestion(question);
+			this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
+		}catch(NoMoreQuestions|GameHasFinished e){
+			e.printStackTrace();
+		}
 	}
 	
 //### MAIN METHOD ##########################################################################################################################
