@@ -52,13 +52,6 @@ public class DatabaseProvider{
 		return true;
 	}
 
-	public static Connection getConnection(){
-		if(dbConn == null){
-			createConnection();
-		}
-		return dbConn;
-	}
-
 	public static Statement getStatement(){
 		Statement st;
 		if(dbConn == null){
