@@ -33,5 +33,5 @@ script: "mvn test && mvn verify"
 after_success:
   - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
   - java -jar jpm4j.jar -u init
-  - /home/user/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
-  - /home/user/bin/codacy-coverage-reporter -l Java -r coverage.xml"
+  - /home/travis/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
+  - /home/travis/bin/codacy-coverage-reporter -l Java -r coverage.xml"
