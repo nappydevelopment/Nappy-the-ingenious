@@ -65,7 +65,7 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <excludes><exclude>org/h2/**</exclude></excludes>
+              <includes><include>nappydevelopment/**</include></includes>
             </configuration>
           </execution>
         </executions>
