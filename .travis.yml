@@ -9,7 +9,6 @@ language: java
 
 # test for these JDK versions and environments
 jdk:
-#   - oraclejdk8
 #   - oraclejdk7
    - oraclejdk8
 
@@ -27,22 +26,12 @@ branches:
 # container-based build:
 sudo: false
 
-#before_install:
-
-#before_script:
-
 # Run Integration tests
 script: "mvn test && mvn verify"
 
-after_success: "curl https://www.jpm4j.org/install/script | sh; jpm install com.codacy:codacy-coverage-reporter:assembly
-; codacy-coverage-reporter -l Java -r coverage.xml"
-
-#after_failure:
-
-#before_deploy:
-
-#deploy:
-
-#after_deploy:
-
-#after_script:
+# record coverage to codacy
+after_success:
+  - curl -sL http://bit.ly/jpm4j >jpm4j.jar
+  - java -jar jpm4j.jar -u init
+  - /home/user/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
+  - /home/user/bin/codacy-coverage-reporter -l Java -r coverage.xml"
