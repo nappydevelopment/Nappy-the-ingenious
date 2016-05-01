@@ -45,7 +45,6 @@ public class Question{
 	public float tryQuestion(final String where, final boolean deterministic){
 		String select = "SELECT count(0) as C, " + table +
 				" FROM SIMPSONS " + where + " GROUP BY " + table;
-		float max = 0;
 		float sum = 0;
 		float ret = 0;
 		try(Statement st = DatabaseProvider.getStatement()){
@@ -53,15 +52,18 @@ public class Question{
 			ResultSet res = st.getResultSet();
 			while(res.next()){
 				float val = res.getInt("C");
-				if(!deterministic){
-					val += Math.random()*(max/2);
-				}
-				if(val > max){
-					max = val;
+				if(attribute.equals(res.getString(table))){
+					ret = val;
 				}
 				sum += val;
 			}
-			ret = max / sum;
+			if(!deterministic){
+				ret += Math.random()*(sum/2);
+				if(ret > sum){
+					sum += ret;
+				}
+			}
+			ret = ret / sum;
 			if(ret > 0.5){
 				ret = 1 - ret;
 			}
