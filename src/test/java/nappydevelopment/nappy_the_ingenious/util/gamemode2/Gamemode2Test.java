@@ -24,7 +24,7 @@ public class Gamemode2Test{
 		assertEquals(gm.answeredQuestions(), 1);
 	}
 
-	@Test(expected=NoMoreQuestions.class)
+	@Test(expected=InvalidQuestion.class)
 	public void answerAlreadyAnsweredQuestion() throws Exception{
 		String q = gm.getQuestions().get(0);
 		assertNotNull(gm.askQuestion(q));
