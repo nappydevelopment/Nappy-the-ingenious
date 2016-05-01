@@ -57,12 +57,12 @@ public class CharacterProvider{
 		return null;
 	}
 
-	public static List<WikiCharacter> search(List<WikiCharacter> list, String search){
+	public static List<WikiCharacter> search(List<WikiCharacter> list, CharFilter search){
 		List<WikiCharacter> out;
 		out = list.stream()
 			.filter(wc -> {
-				if(search.isEmpty()){return true;}
-				return wc.getName().toLowerCase().contains(search.toLowerCase());
+				if(search.getSearchStr().isEmpty()){return true;}
+				return wc.getName().toLowerCase().contains(search.getSearchStr().toLowerCase());
 			})
 			.sorted(new WikiCharacterNameComparator())
 			.collect(Collectors.toList());
