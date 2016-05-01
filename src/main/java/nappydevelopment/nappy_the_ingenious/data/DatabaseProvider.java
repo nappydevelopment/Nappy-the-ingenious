@@ -31,7 +31,7 @@ public class DatabaseProvider{
 			}
 			res.close();
 			st.close();
-		}catch(Exception e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
