@@ -19,4 +19,11 @@ public enum Gender {
         }
         return gen;
     }
+
+    public boolean equals(Gender other){
+        if(this == UNKNOWN || other == UNKNOWN){
+            return true;
+        }
+        return this == other;
+    }
 }

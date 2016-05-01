@@ -30,4 +30,11 @@ public enum Age {
         }
         return age;
     }
+
+    public boolean equals(Age other){
+        if(this == UNKNOWN || other == UNKNOWN){
+            return true;
+        }
+        return this == other;
+    }
 }

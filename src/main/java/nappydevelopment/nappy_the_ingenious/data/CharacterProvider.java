@@ -64,6 +64,8 @@ public class CharacterProvider{
 				if(search.getSearchStr().isEmpty()){return true;}
 				return wc.getName().toLowerCase().contains(search.getSearchStr().toLowerCase());
 			})
+			.filter(wc -> wc.getGender().equals(search.getGender()))
+			.filter(wc -> wc.getAge().equals(search.getAge()))
 			.sorted(new WikiCharacterNameComparator())
 			.collect(Collectors.toList());
 		return out;
