@@ -18,10 +18,10 @@ public class Question{
 	private Answer answer = null;
 
 	public Question(
-			String table,
-			String attribute,
-			Language lang,
-			String question
+			final String table,
+			final String attribute,
+			final Language lang,
+			final String question
 	){
 		this.table = table;
 		this.attribute = attribute;
@@ -36,7 +36,7 @@ public class Question{
 
 	// stuff for GameMode1
 	public boolean answered(){ return answer != null; }
-	public void setAnswer(Answer answer){
+	public void setAnswer(final Answer answer){
 		if(this.answer != null){
 			return;
 		}
@@ -73,19 +73,19 @@ public class Question{
 		return ret;
 	}
 
-	public String genWhere(boolean first){
-		String where = "";
+	public String genWhere(final boolean first){
+		StringBuffer where = new StringBuffer();
 		if(answer == Answer.DONT_KNOW || answer == null){
-			return where;
+			return where.toString();
 		}
 		if(!first){
-			where += " AND ";
+			where.append(" AND ");
 		}
-		where += "SIMPSONS." + table;
+		where.append("SIMPSONS." + table);
 		if(answer == Answer.YES){
-			where += " !";
+			where.append(" !");
 		}
-		where += "= '" + attribute + "' ";
-		return where;
+		where.append("= '" + attribute + "' ");
+		return where.toString();
 	}
 }
