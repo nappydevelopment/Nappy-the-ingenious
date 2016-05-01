@@ -9,13 +9,13 @@ public class CharFilter {
     private Gender gender;
     private Age age;
 
-    CharFilter(String searchStr, Gender gender, Age age) {
+    public CharFilter(String searchStr, Gender gender, Age age) {
         this.searchStr=searchStr;
         this.gender=gender;
         this.age=age;
     }
 
-    CharFilter(String searchStr) {
+    public CharFilter(String searchStr) {
         this.searchStr=searchStr;
         this.gender=Gender.UNKNOWN;
         this.age=Age.UNKNOWN;

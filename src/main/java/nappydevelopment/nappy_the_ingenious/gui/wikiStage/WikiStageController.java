@@ -17,6 +17,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.CharFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
@@ -88,8 +89,11 @@ public class WikiStageController {
 				WikiStageController.this.resetFilter();
 			}
 			else if(e.getSource() == view.txfSearchField) {
-				WikiStageController.this.changeCharacterListView(CharacterProvider.search(WikiStageController.this.characters,
-						                                                       WikiStageController.this.view.txfSearchField.getText()));
+				CharFilter filter = new CharFilter(WikiStageController.this.view.txfSearchField.getText());
+				WikiStageController.this.changeCharacterListView(CharacterProvider.search(
+						WikiStageController.this.characters,
+						filter
+				));
 			}
 		}
 				
