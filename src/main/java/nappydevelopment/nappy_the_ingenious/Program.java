@@ -25,6 +25,7 @@ import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
+import nappydevelopment.nappy_the_ingenious.util.gamemode2.InvalidQuestion;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.NoMoreQuestions;
 
 
@@ -191,7 +192,7 @@ public class Program extends Application {
 	public void startGame() {
 		
 		//Initialize the logic:
-		this.gm1Logic = new Gamemode1();
+		this.gm1Logic = new Gamemode1(Settings.getLanguage());
 		//TODO: No consistently logic interface:
 		this.gm2Logic = new Gamemode2(Settings.getLanguage());
 		
@@ -274,7 +275,7 @@ public class Program extends Application {
 		this.mainStageController.showGamemode1View();
 		
 		//Show the first Question:
-		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+		this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
 	}
 	
 	/* setQuestionAnswer [method]: Method that sets the answer to the current question *//**
@@ -285,15 +286,7 @@ public class Program extends Application {
 		
 		//Write answer in the logic:
 		//TODO: No clean code logic should use the Answer object:
-		if(answer == Answer.YES) {
-			this.gm1Logic.setAnswer(true);
-		}
-		else if(answer == Answer.NO) {
-			this.gm1Logic.setAnswer(false);
-		}
-		else if(answer == Answer.DONT_KNOW) {
-			this.gm1Logic.setAnswer(null);
-		}
+		this.gm1Logic.setAnswer(answer);
 		
 		//Increase the number of questions that nappy need:
 		this.game.increaseNoOfQuestionsNappy();
@@ -314,7 +307,7 @@ public class Program extends Application {
 		}
 		//Ask the next question:
 		else if (this.gm1Logic.isSure() == false) {
-			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+			this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
 		}
 		
 	}
@@ -371,7 +364,7 @@ public class Program extends Application {
 		try{
 			Answer answer = this.gm2Logic.askQuestion(question);
 			this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
-		}catch(NoMoreQuestions|GameHasFinished e){
+		}catch(InvalidQuestion|NoMoreQuestions|GameHasFinished e){
 			e.printStackTrace();
 		}
 	}

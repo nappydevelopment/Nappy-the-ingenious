@@ -12,8 +12,8 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
 public class Gamemode2{
-	private final Map<String, Question> remainingQuestions = new HashMap<>();
-	private final Map<String,String> character = new HashMap<>();
+	private Map<String, Question> remainingQuestions;
+	private final Map<String, String> character = new HashMap<>();
 	private final Language lang;
 	private int questionCounter = 0;
 	private boolean finished = true;
@@ -25,51 +25,14 @@ public class Gamemode2{
 	){
 		lang = l;
 		try(Statement st = DatabaseProvider.getStatement()){
-			String questionSelect = "";
-			st.execute(
-				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
-				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
-				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'COUNTER')\n" +
-				"AND COLUMN_NAME NOT LIKE 'NICKNAME_%'\n" +
-				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'"
-			);
-			ResultSet res = st.getResultSet();
-			boolean first = true;
-			while(res.next()){
-				if(!first){
-					questionSelect += " UNION ";
-				}else{
-					first = false;
-				}
-				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL, Q1_"+ lang.getCode();
-				questionSelect += " FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
-			}
-			res.close();
-
-			questionSelect = "Select TABL, ID, Q1_"+ lang.getCode() + " from (" + questionSelect + ")" +
-							 " WHERE Q1_"+ lang.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
-			st.execute(questionSelect);
-			res = st.getResultSet();
-			while(res.next()){
-				String question = res.getString("Q1_"+ lang.getCode());
-				remainingQuestions.put(
-					question,
-					new Question(
-						res.getString("TABL"),
-						res.getString("ID"),
-						lang,
-						question
-					)
-				);
-			}
-			res.close();
+			remainingQuestions = QuestionProvider.getQuestions(lang);
 
 			if(deterministic){
 				st.execute("SELECT * FROM SIMPSONS limit 1;");
 			}else{
 				st.execute("SELECT * FROM SIMPSONS ORDER BY RANDOM() limit 1;");
 			}
-			res = st.getResultSet();
+			ResultSet res = st.getResultSet();
 			res.next();
 			for(int i = 1; i < res.getMetaData().getColumnCount(); i++){
 				character.put(res.getMetaData().getColumnName(i), res.getString(i));
@@ -88,15 +51,18 @@ public class Gamemode2{
 		return questions;
 	}
 
-	public Answer askQuestion(final String question) throws NoMoreQuestions, GameHasFinished{
+	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished{
 		if(finished){
 			throw new GameHasFinished();
 		}
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
-		if(q == null){
+		if(remainingQuestions.values().stream().count() == 0){
 			throw new NoMoreQuestions();
+		}
+		if(q == null){
+			throw new InvalidQuestion();
 		}
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
 
