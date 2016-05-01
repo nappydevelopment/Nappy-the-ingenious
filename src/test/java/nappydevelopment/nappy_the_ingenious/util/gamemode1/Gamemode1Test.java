@@ -80,6 +80,30 @@ public class Gamemode1Test{
 	}
 
 	@Test
+	public void impossibleCharacter(){
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(false);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(true);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(false);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(true);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(false);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(true);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(true);
+		System.out.println(gm_det.getQuestion(lang));
+		gm_det.setAnswer(true);
+		System.out.println(gm_det.getCharacter());
+		System.out.println(gm_det.getSureness());
+		//assertNull(gm_det.getCharacter());
+		//assertNull(gm_det.isSure());
+	}
+
+	@Test
 	public void getQuestionTwice(){
 		assertEquals(gm.getQuestion(lang), gm.getQuestion(lang));
 	}
