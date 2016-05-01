@@ -143,7 +143,7 @@ public class Gamemode2{
 			nicknames,
 			descriptions,
 			img,
-			character.get("MALE").equals("TRUE"),
+			Gender.fromBool(character.get("MALE").equals("TRUE")),
 			Age.fromString(character.get("AGE")));
 	}
 }

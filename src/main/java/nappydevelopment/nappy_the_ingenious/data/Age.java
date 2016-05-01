@@ -6,7 +6,8 @@ package nappydevelopment.nappy_the_ingenious.data;
 public enum Age {
     YOUNG("young"),
     ADULT("adult"),
-    OLD("old");
+    OLD("old"),
+    UNKNOWN("unknown");
 
     private final String text;
 
