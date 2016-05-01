@@ -10,11 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class QuestionProvider{
-	public static Map<String, Question> getQuestions(Language lang){
+	public static Map<String, Question> getQuestions(final Language lang){
 		Map<String, Question> questions = null;
 		try(Statement st = DatabaseProvider.getStatement()){
 			questions = new HashMap<>();
-			String questionSelect = "";
+			StringBuffer questionSelect = new StringBuffer(" Select TABL, ID, Q1_" + lang.getCode() + " from (");
 			st.execute(
 				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
 				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
@@ -26,18 +26,18 @@ public class QuestionProvider{
 			boolean first = true;
 			while(res.next()){
 				if(!first){
-					questionSelect += " UNION ";
+					questionSelect.append(" UNION ");
 				}else{
 					first = false;
 				}
-				questionSelect += "SELECT cast(id as varchar) as ID, '" + res.getString("COLUMN_NAME") + "' as TABL, Q1_" + lang.getCode();
-				questionSelect += " FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
+				questionSelect.append(" SELECT cast(id as varchar) as ID, '");
+				questionSelect.append(res.getString("COLUMN_NAME") + "' as TABL, Q1_" + lang.getCode());
+				questionSelect.append(" FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS");
 			}
 			res.close();
 
-			questionSelect = "Select TABL, ID, Q1_" + lang.getCode() + " from (" + questionSelect + ")" +
-					" WHERE Q1_" + lang.getCode() + "!= 'YOU SHOULD NOT READ THIS!'";
-			st.execute(questionSelect);
+			questionSelect.append(") WHERE Q1_" + lang.getCode() + "!= 'YOU SHOULD NOT READ THIS!'");
+			st.execute(questionSelect.toString());
 			res = st.getResultSet();
 			while(res.next()){
 				String question = res.getString("Q1_" + lang.getCode());
