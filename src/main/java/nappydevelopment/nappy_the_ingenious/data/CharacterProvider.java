@@ -20,7 +20,7 @@ public class CharacterProvider{
 		List<WikiCharacter> out = new ArrayList<>();
 		try(Statement st = DatabaseProvider.getStatement()){
 			if(st == null){return null;}
-			String select = "SELECT name";
+			String select = "SELECT name, male, age";
 			for(Language l: Language.values()){
 				select += ", description_"+ l.getCode().toLowerCase();
 				select += ", nickname_"+ l.getCode().toLowerCase();
@@ -30,6 +30,8 @@ public class CharacterProvider{
 
 			while(res.next()){
 				String name = res.getString("name");
+				boolean male = res.getBoolean("male");
+				String age = res.getString("age");
 				Map<Language, String> descriptions = new HashMap<>();
 				Map<Language, String> nicknames = new HashMap<>();
 
@@ -45,7 +47,7 @@ public class CharacterProvider{
 						throw e;
 					}
 				}
-				WikiCharacter chr = new WikiCharacter(name, nicknames, descriptions, img);
+				WikiCharacter chr = new WikiCharacter(name, nicknames, descriptions, img, male, Age.fromString(age));
 				out.add(chr);
 			}
 			st.close();

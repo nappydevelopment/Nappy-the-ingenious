@@ -7,10 +7,7 @@ import java.util.*;
 
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
-import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
-import nappydevelopment.nappy_the_ingenious.data.Question;
-import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
@@ -145,7 +142,8 @@ public class Gamemode2{
 			character.get("NAME"),
 			nicknames,
 			descriptions,
-			img
-		);
+			img,
+			character.get("MALE").equals("TRUE"),
+			Age.fromString(character.get("AGE")));
 	}
 }
