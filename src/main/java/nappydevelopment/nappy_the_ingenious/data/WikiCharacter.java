@@ -10,7 +10,7 @@ public class WikiCharacter {
 	private final Map<Language, String> nicknames;
 	private final Map<Language, String> descriptions;
 	private final Image wikiImage;
-	private final boolean male;
+	private final Gender gender;
 	private final Age age;
 
 
@@ -19,20 +19,20 @@ public class WikiCharacter {
 			Map<Language, String> nicknames,
 			Map<Language, String> descriptions,
 			Image wikiImage,
-			boolean male,
+			Gender gender,
 			Age age
 	) {
 		this.name = name;
 		this.nicknames = nicknames;
 		this.wikiImage = wikiImage;
 		this.descriptions = descriptions;
-		this.male = male;
+		this.gender = gender;
 		this.age = age;
 	}
 
 
-	public boolean isMale() {
-		return male;
+	public Gender getGender() {
+		return gender;
 	}
 
 	public Age getAge() {

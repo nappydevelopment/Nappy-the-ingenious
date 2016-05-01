@@ -46,7 +46,7 @@ public class CharacterProvider{
 						throw e;
 					}
 				}
-				WikiCharacter chr = new WikiCharacter(name, nicknames, descriptions, img, male, Age.fromString(age));
+				WikiCharacter chr = new WikiCharacter(name, nicknames, descriptions, img, Gender.fromBool(male), Age.fromString(age));
 				out.add(chr);
 			}
 			st.close();
