@@ -52,17 +52,11 @@ public class DatabaseProvider{
 		return true;
 	}
 
-	public static Statement getStatement(){
-		Statement st;
+	public static Statement getStatement() throws SQLException{
 		if(dbConn == null){
 			createConnection();
 		}
-		try{
-			st = dbConn.createStatement();
-		}catch(Exception e){
-			return null;
-		}
-		return st;
+		return dbConn.createStatement();
 	}
 
 	public void closeDatabase(){
