@@ -9,9 +9,9 @@ import java.sql.Statement;
 public class SaveStatisticInfos {
 
     public static void createAndSavePlayer(String spielerName, Game game) {
-        final double baseScore = 1000/game.getNoOfQuestionsPlayer();
-        final double nappyBonus = 0.25*game.getNoOfQuestionsNappy();
-        final double multiplicator = nappyWin(game.isWinNappy())*2 + playerWin(game.isWinPlayer()) +1;
+        final double baseScore = 1000.0 / game.getNoOfQuestionsPlayer();
+        final double nappyBonus = 0.25 * game.getNoOfQuestionsNappy();
+        final double multiplicator = nappyWin(game.isWinNappy())*2 + playerWin(game.isWinPlayer()) + 1.0;
         final double score = (baseScore+nappyBonus)*multiplicator;
 
 
