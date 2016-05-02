@@ -25,7 +25,7 @@ public class StatisticStuffGenerator {
             ResultSet res = st.getResultSet();
             while(res.next()){
                 String name = res.getString("player_name");
-                System.out.print(name+ ", ");
+                // System.out.print(name+ ", ");
                 int nappy_fragen = res.getInt("questions_nappy");
                 int spieler_fragen = res.getInt("questions_player");
                 double punktzahl = res.getDouble("score");
