@@ -19,7 +19,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void getCharacterUnsure(){
+	public void getCharacterUnsure() throws NoActiveQuestion{
 		assertNull(gm.getCharacter());
 
 		gm.getQuestion();
@@ -28,7 +28,7 @@ public class Gamemode1Test{
 		assertNull(gm.getCharacter());
 	}
 	@Test
-	public void getCharacterSure(){
+	public void getCharacterSure() throws NoActiveQuestion{
 		while(!gm.isSure()){
 			gm.getQuestion();
 			gm.setAnswer(Answer.YES);
@@ -38,7 +38,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void sureness(){
+	public void sureness() throws NoActiveQuestion{
 		float sureness = gm.getSureness();
 		gm.getQuestion();
 		gm.setAnswer(Answer.YES);
@@ -46,7 +46,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void isActive(){
+	public void isActive() throws NoActiveQuestion{
 		assertFalse(gm.isActive());
 		gm.getQuestion();
 		assertTrue(gm.isActive());
@@ -55,7 +55,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void dunnoCount(){
+	public void dunnoCount() throws NoActiveQuestion{
 		assertEquals(gm.getNumDunno(), 0);
 
 		gm.getQuestion();
@@ -72,7 +72,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void exhaustQuestions(){
+	public void exhaustQuestions() throws NoActiveQuestion{
 		String q;
 		while((q = gm.getQuestion()) != null && !q.isEmpty()){
 			gm.setAnswer(Answer.DONT_KNOW);
