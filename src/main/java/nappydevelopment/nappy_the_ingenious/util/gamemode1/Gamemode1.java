@@ -1,6 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.util.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.*;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.Question;
 
@@ -28,8 +29,8 @@ public class Gamemode1{
 		questions = QuestionProvider.getQuestions(lang);
 	}
 
-	public WikiCharacter endGame(){
-		List<WikiCharacter> chars = CharacterProvider.getCharacters(generateWhere());
+	public Character endGame(){
+		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
 		if(chars.isEmpty() || !isSure()){
 			return null;
 		}

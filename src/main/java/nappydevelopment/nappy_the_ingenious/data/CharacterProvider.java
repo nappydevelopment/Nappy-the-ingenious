@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 
 public class CharacterProvider{
 
-	public static List<WikiCharacter> getCharacters() { return getCharacters(""); }
-	public static List<WikiCharacter> getCharacters(String whereclause){
-		List<WikiCharacter> out = new ArrayList<>();
+	public static List<Character> getCharacters() { return getCharacters(""); }
+	public static List<Character> getCharacters(String whereclause){
+		List<Character> out = new ArrayList<>();
 		try(Statement st = DatabaseProvider.getStatement()){
 			String select = "SELECT name, male, age";
 			for(Language l: Language.values()){
@@ -46,7 +46,7 @@ public class CharacterProvider{
 						throw e;
 					}
 				}
-				WikiCharacter chr = new WikiCharacter(name, nicknames, descriptions, img, Gender.fromBool(male), Age.fromString(age));
+				Character chr = new Character(name, nicknames, descriptions, img, Gender.fromBool(male), Age.fromString(age));
 				out.add(chr);
 			}
 			st.close();
@@ -57,16 +57,16 @@ public class CharacterProvider{
 		return null;
 	}
 
-	public static List<WikiCharacter> search(List<WikiCharacter> list, CharFilter search){
-		List<WikiCharacter> out;
+	public static List<Character> search(List<Character> list, CharFilter search){
+		List<Character> out;
 		out = list.stream()
-			.filter(wc -> {
+			.filter(c -> {
 				if(search.getSearchStr().isEmpty()){return true;}
-				return wc.getName().toLowerCase().contains(search.getSearchStr().toLowerCase());
+				return c.getName().toLowerCase().contains(search.getSearchStr().toLowerCase());
 			})
-			.filter(wc -> wc.getGender().equals(search.getGender()))
-			.filter(wc -> wc.getAge().equals(search.getAge()))
-			.sorted(new WikiCharacterNameComparator())
+			.filter(c -> c.getGender().equals(search.getGender()))
+			.filter(c -> c.getAge().equals(search.getAge()))
+			.sorted(new CharacterNameComparator())
 			.collect(Collectors.toList());
 		return out;
 	}
