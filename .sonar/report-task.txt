@@ -1,0 +1,5 @@
+projectKey=nappydevelopment:nappy
+serverUrl=http://sonarqube.it.dh-karlsruhe.de
+dashboardUrl=http://sonarqube.it.dh-karlsruhe.de/dashboard/index/nappydevelopment:nappy
+ceTaskId=AVRwy0VoByBA63aaFe9e
+ceTaskUrl=http://sonarqube.it.dh-karlsruhe.de/api/ce/task?id=AVRwy0VoByBA63aaFe9e

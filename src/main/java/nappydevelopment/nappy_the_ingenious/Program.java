@@ -2,9 +2,6 @@
 
 package nappydevelopment.nappy_the_ingenious;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 //### IMPORTS ##############################################################################################################################
 
 import java.util.List;
@@ -13,7 +10,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 //Nappy imports:
 import nappydevelopment.nappy_the_ingenious.data.*;
-import nappydevelopment.nappy_the_ingenious.data.settings.GameMode;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
@@ -87,7 +84,7 @@ public class Program extends Application {
 		System.out.println("JavaFX-Application - Start");
 		
 		//Read out the list with wiki-characters:
-		List<WikiCharacter> chars = CharacterProvider.getCharacters();
+		List<Character> chars = CharacterProvider.getCharacters();
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
@@ -303,8 +300,8 @@ public class Program extends Application {
 		
 		//Check if nappy knows the character:
 		if(this.gm1Logic.isSure() == true) {
-			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
-			this.game.setCharacterNappy(this.gm1Logic.getCharacter());
+			this.mainStageController.showGuessedCharacter(this.gm1Logic.endGame());
+			this.game.setCharacterNappy(this.gm1Logic.endGame());
 		}
 		//Check if nappy is sure but don't knows the character:
 		else if (this.gm1Logic.isSure() == null) {
