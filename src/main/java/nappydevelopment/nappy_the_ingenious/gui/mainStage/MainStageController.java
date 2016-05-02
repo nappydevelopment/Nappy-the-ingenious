@@ -4,7 +4,6 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 
 import java.awt.RenderingHints;
-import java.util.ArrayList;
 //### IMPORTS ##############################################################################################################################
 import java.util.List;
 import java.util.Optional;
@@ -29,8 +28,7 @@ import javafx.scene.shape.Rectangle;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
-import nappydevelopment.nappy_the_ingenious.gui.components.VerticalProgressBar;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 //Class that handles the interactions of the main-stage with the program-logic:
@@ -427,7 +425,7 @@ public class MainStageController {
 	}
 	
 	//Method that shows the character that nappy guessed:
-	public void showGuessedCharacter(WikiCharacter character) {
+	public void showGuessedCharacter(Character character) {
 		
 		//Show info label with the guessed character name:
 		this.view.lblInfo.setText(this.res.lblInfoTextIKnowYourCharacter + " " + character.getName() + "!");

@@ -10,7 +10,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 //Nappy imports:
 import nappydevelopment.nappy_the_ingenious.data.*;
-		import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
 import nappydevelopment.nappy_the_ingenious.gui.infoStage.InfoStageController;
@@ -83,7 +84,7 @@ public class Program extends Application {
 		System.out.println("JavaFX-Application - Start");
 		
 		//Read out the list with wiki-characters:
-		List<WikiCharacter> chars = CharacterProvider.getCharacters();
+		List<Character> chars = CharacterProvider.getCharacters();
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
