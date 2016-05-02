@@ -2,8 +2,8 @@ package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2;
 
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
-import nappydevelopment.nappy_the_ingenious.gamemodes.GameHasFinished;
-import nappydevelopment.nappy_the_ingenious.gamemodes.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
 import org.junit.Before;
 import org.junit.Test;
 

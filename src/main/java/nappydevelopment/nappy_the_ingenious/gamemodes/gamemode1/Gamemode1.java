@@ -3,9 +3,10 @@ package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
-import nappydevelopment.nappy_the_ingenious.gamemodes.NoMoreQuestions;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +40,7 @@ public class Gamemode1{
 		return chars.get(0);
 	}
 
-    public void setAnswer(final Answer answer) throws NoActiveQuestion{
+    public void setAnswer(final Answer answer) throws NoActiveQuestion {
 		if(answer == null){
 			return;
 		}

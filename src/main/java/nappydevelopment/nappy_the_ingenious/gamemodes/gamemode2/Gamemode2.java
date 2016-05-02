@@ -10,6 +10,9 @@ import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import nappydevelopment.nappy_the_ingenious.gamemodes.*;
 
 
@@ -53,7 +56,7 @@ public class Gamemode2{
 		return questions;
 	}
 
-	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished{
+	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished {
 		if(finished){
 			throw new GameHasFinished();
 		}
