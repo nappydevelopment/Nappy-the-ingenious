@@ -25,7 +25,7 @@ import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.NoActiveQuestion
 import nappydevelopment.nappy_the_ingenious.gamemodes.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.Gamemode2;
 import nappydevelopment.nappy_the_ingenious.gamemodes.InvalidQuestion;
-import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.NoMoreQuestions;
+import nappydevelopment.nappy_the_ingenious.gamemodes.NoMoreQuestions;
 
 
 public class Program extends Application {
@@ -283,7 +283,11 @@ public class Program extends Application {
 		this.mainStageController.showGamemode1View();
 		
 		//Show the first Question:
-		this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+		try{
+			this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+		}catch(NoMoreQuestions noMoreQuestions){
+			noMoreQuestions.printStackTrace();
+		}
 	}
 	
 	/* setQuestionAnswer [method]: Method that sets the answer to the current question *//**
@@ -319,7 +323,11 @@ public class Program extends Application {
 		}
 		//Ask the next question:
 		else if (this.gm1Logic.isSure() == false) {
-			this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+			try{
+				this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+			}catch(NoMoreQuestions noMoreQuestions){
+				noMoreQuestions.printStackTrace();
+			}
 		}
 		
 	}

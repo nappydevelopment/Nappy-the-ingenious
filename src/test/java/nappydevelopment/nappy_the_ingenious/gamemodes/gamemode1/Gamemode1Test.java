@@ -2,6 +2,7 @@ package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.gamemodes.NoMoreQuestions;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void getCharacterUnsure() throws NoActiveQuestion{
+	public void getCharacterUnsure() throws Exception{
 		assertNull(gm.endGame());
 
 		gm.getQuestion();
@@ -28,7 +29,7 @@ public class Gamemode1Test{
 		assertNull(gm.endGame());
 	}
 	@Test
-	public void getCharacterSure() throws NoActiveQuestion{
+	public void getCharacterSure() throws Exception{
 		while(!gm_det.isSure()){
 			gm_det.getQuestion();
 			gm_det.setAnswer(Answer.YES);
@@ -38,7 +39,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void sureness() throws NoActiveQuestion{
+	public void sureness() throws Exception{
 		float sureness = gm.getSureness();
 		gm.getQuestion();
 		gm.setAnswer(Answer.YES);
@@ -46,7 +47,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void isActive() throws NoActiveQuestion{
+	public void isActive() throws Exception{
 		assertFalse(gm.isActive());
 		gm.getQuestion();
 		assertTrue(gm.isActive());
@@ -55,7 +56,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void dunnoCount() throws NoActiveQuestion{
+	public void dunnoCount() throws Exception{
 		assertEquals(gm.getNumDunno(), 0);
 
 		gm.getQuestion();
@@ -72,7 +73,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void exhaustQuestions() throws NoActiveQuestion{
+	public void exhaustQuestions() throws Exception{
 		String q;
 		while((q = gm_det.getQuestion()) != null && !q.isEmpty()){
 			gm_det.setAnswer(Answer.DONT_KNOW);
@@ -81,7 +82,7 @@ public class Gamemode1Test{
 	}
 
 	@Test
-	public void getQuestionTwice(){
+	public void getQuestionTwice() throws NoMoreQuestions{
 		assertEquals(gm.getQuestion(), gm.getQuestion());
 	}
 }
