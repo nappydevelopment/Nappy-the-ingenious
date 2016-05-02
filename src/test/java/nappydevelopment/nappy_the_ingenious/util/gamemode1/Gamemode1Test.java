@@ -29,12 +29,12 @@ public class Gamemode1Test{
 	}
 	@Test
 	public void getCharacterSure() throws NoActiveQuestion{
-		while(!gm.isSure()){
-			gm.getQuestion();
-			gm.setAnswer(Answer.YES);
+		while(!gm_det.isSure()){
+			gm_det.getQuestion();
+			gm_det.setAnswer(Answer.YES);
 		}
-		assertNotNull(gm.getCharacter());
-		assertNull(gm.getQuestion());
+		assertNotNull(gm_det.getCharacter());
+		assertNull(gm_det.getQuestion());
 	}
 
 	@Test
@@ -74,29 +74,10 @@ public class Gamemode1Test{
 	@Test
 	public void exhaustQuestions() throws NoActiveQuestion{
 		String q;
-		while((q = gm.getQuestion()) != null && !q.isEmpty()){
-			gm.setAnswer(Answer.DONT_KNOW);
+		while((q = gm_det.getQuestion()) != null && !q.isEmpty()){
+			gm_det.setAnswer(Answer.DONT_KNOW);
 		}
-		assertNull(gm.getQuestion());
-	}
-
-	@Test
-	public void impossibleCharacter(){
-		//System.out.println(gm_det.getQuestion(lang)); // Ist deine Figur temperamentvoll?
-		//gm_det.setAnswer(Answer.NO);
-		//System.out.println(gm_det.getQuestion(lang)); // Ist deine Figur ehrlich?
-		//gm_det.setAnswer(Answer.YES);
-		//System.out.println(gm_det.getQuestion(lang)); // Ist dein Charakter im mittlerem Alter?
-		//gm_det.setAnswer(Answer.NO);
-		//System.out.println(gm_det.getQuestion(lang)); // Ist deine Figur nervig?
-		//gm_det.setAnswer(Answer.YES);
-		//System.out.println(gm_det.getQuestion(lang)); // Hat dein Character schwarze Haare?
-		//gm_det.setAnswer(Answer.NO);
-		//System.out.println(gm_det.getQuestion(lang)); // Ist deine Figur Schüler/Student?
-		//gm_det.setAnswer(Answer.YES);
-		//assertNull(gm_det.getCharacter());  // rodd & todd
-
-		//assertEquals(0.5, gm_det.getSureness(), 0.001);
+		assertNull(gm_det.getQuestion());
 	}
 
 	@Test
