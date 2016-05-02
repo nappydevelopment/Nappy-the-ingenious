@@ -8,7 +8,7 @@ public enum Gender {
     FEMALE,
     UNKNOWN;
 
-    public static Gender fromBool(boolean male) {
+    public static Gender fromBool(Boolean male) {
         Gender gen;
         if(male == true){
             gen = Gender.MALE;
