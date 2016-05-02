@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.util.gamemode1;
+package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
