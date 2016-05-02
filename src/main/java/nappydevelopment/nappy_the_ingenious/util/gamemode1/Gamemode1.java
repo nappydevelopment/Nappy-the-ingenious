@@ -28,7 +28,7 @@ public class Gamemode1{
 		questions = QuestionProvider.getQuestions(lang);
 	}
 
-	public WikiCharacter getCharacter(){
+	public WikiCharacter endGame(){
 		List<WikiCharacter> chars = CharacterProvider.getCharacters(generateWhere());
 		if(chars.isEmpty() || !isSure()){
 			return null;
