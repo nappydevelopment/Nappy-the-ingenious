@@ -15,7 +15,7 @@ public class Gamemode1{
 	private int numDunno = 0;
 	private Question activeQuestion = null;
 
-	private Language lang;
+	private final Language lang;
 	private boolean deterministic = false;
 	private boolean firstQuestion = true;
 
@@ -36,12 +36,15 @@ public class Gamemode1{
 		return chars.get(0);
 	}
 
-    public void setAnswer(final Answer answer){
+    public void setAnswer(final Answer answer) throws NoActiveQuestion{
 		if(answer == null){
 			return;
 		}
 		if(answer == Answer.DONT_KNOW){
 			numDunno++;
+		}
+		if(activeQuestion == null){
+			throw new NoActiveQuestion();
 		}
 		questions.get(activeQuestion.getQuestion()).setAnswer(answer);
 		activeQuestion = null;

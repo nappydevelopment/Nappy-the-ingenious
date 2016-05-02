@@ -23,6 +23,7 @@ import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageContr
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
+import nappydevelopment.nappy_the_ingenious.util.gamemode1.NoActiveQuestion;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
 import nappydevelopment.nappy_the_ingenious.util.gamemode2.InvalidQuestion;
@@ -282,12 +283,16 @@ public class Program extends Application {
 	 * 
 	 * @param answer
 	 */
-	public void setQuestionAnswer(Answer answer) {
+	public void setQuestionAnswer(Answer answer){
 		
 		//Write answer in the logic:
 		//TODO: No clean code logic should use the Answer object:
-		this.gm1Logic.setAnswer(answer);
-		
+		try{
+			this.gm1Logic.setAnswer(answer);
+		}catch(NoActiveQuestion noActiveQuestion){
+			noActiveQuestion.printStackTrace();
+		}
+
 		//Increase the number of questions that nappy need:
 		this.game.increaseNoOfQuestionsNappy();
 		
