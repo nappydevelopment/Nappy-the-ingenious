@@ -13,6 +13,7 @@ import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
+import nappydevelopment.nappy_the_ingenious.exception.ChangeLanguageException;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
 import nappydevelopment.nappy_the_ingenious.gui.infoStage.InfoStageController;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
@@ -160,16 +161,21 @@ public class Program extends Application {
 	/* applySettings [method]: Method to apply the settings for all stages *//**
 	 * 
 	 */
-	public void applySettings() {
+	public void applySettings() throws ChangeLanguageException {
 		
 		//Apply the language setting:
+        //TODO: add custom exception to the other controller's
 		if(Settings.getLanguage() == Language.GERMAN) {
 			this.mainStageController.changeLanguageToGerman();
 			this.statisticStageController.changeLanguageToGerman();
 			this.settingsStageController.changeLanguageToGerman();
 			this.helpStageController.changeLanguageToGerman();
 			this.wikiStageController.changeLanguageToGerman();
-			this.infoStageController.changeLanguageToGerman();
+			try {
+				this.infoStageController.changeLanguageToGerman();
+			} catch (ChangeLanguageException e) {
+				e.printStackTrace();
+			}
 		}
 		else {
 			this.mainStageController.changeLanguageToEnglish();
@@ -177,7 +183,11 @@ public class Program extends Application {
 			this.settingsStageController.changeLanguageToEnglish();
 			this.helpStageController.changeLanguageToEnglish();
 			this.wikiStageController.changeLanguageToEnglish();
-			this.infoStageController.changeLanguageToEnglish();
+			try {
+				this.infoStageController.changeLanguageToEnglish();
+			} catch (ChangeLanguageException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
