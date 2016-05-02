@@ -20,12 +20,12 @@ public class Gamemode1Test{
 
 	@Test
 	public void getCharacterUnsure() throws NoActiveQuestion{
-		assertNull(gm.getCharacter());
+		assertNull(gm.endGame());
 
 		gm.getQuestion();
 		gm.setAnswer(null);
 
-		assertNull(gm.getCharacter());
+		assertNull(gm.endGame());
 	}
 	@Test
 	public void getCharacterSure() throws NoActiveQuestion{
@@ -33,7 +33,7 @@ public class Gamemode1Test{
 			gm_det.getQuestion();
 			gm_det.setAnswer(Answer.YES);
 		}
-		assertNotNull(gm_det.getCharacter());
+		assertNotNull(gm_det.endGame());
 		assertNull(gm_det.getQuestion());
 	}
 
