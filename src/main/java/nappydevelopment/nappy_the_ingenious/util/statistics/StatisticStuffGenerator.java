@@ -55,7 +55,6 @@ public class StatisticStuffGenerator {
         }catch(SQLException e){
             e.printStackTrace();
         }
-        System.out.print("\n");
         return topFiveList;
     }
 
