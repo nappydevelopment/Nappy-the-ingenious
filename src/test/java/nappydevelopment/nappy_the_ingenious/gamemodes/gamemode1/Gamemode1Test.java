@@ -2,7 +2,7 @@ package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
-import nappydevelopment.nappy_the_ingenious.gamemodes.NoMoreQuestions;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import org.junit.Before;
 import org.junit.Test;
 
