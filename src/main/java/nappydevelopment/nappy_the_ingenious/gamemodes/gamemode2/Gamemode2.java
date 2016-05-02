@@ -13,6 +13,7 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.gamemodes.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.gamemodes.InvalidQuestion;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
+import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
 
 
 public class Gamemode2{

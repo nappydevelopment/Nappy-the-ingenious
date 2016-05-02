@@ -4,6 +4,7 @@ import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
+import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
