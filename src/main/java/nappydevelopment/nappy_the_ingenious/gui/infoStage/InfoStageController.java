@@ -78,11 +78,43 @@ public class InfoStageController {
 			
 			if(src == view.linkBlog) {
 				System.out.println("Open Blog in Browser");
-                openBrowser();
+
+				if (Desktop.isDesktopSupported()) {
+					Desktop desktop = Desktop.getDesktop();
+					URI uri = null;
+					try {
+						uri = new URI("https://nappydevelopment.wordpress.com/");
+					} catch (URISyntaxException urie) {
+						urie.printStackTrace();
+					}
+					if (desktop.isSupported(Desktop.Action.MAIL)) {
+						try {
+							desktop.browse(uri);
+						} catch (IOException ioe) {
+							ioe.printStackTrace();
+						}
+					}
+				}
 			}
 			if(src == view.linkMail) {
 				System.out.println("Open e-mail program");
-                openMailClient();
+
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+                    URI uri = null;
+                    try {
+                        uri = new URI("mailto:nappydevelopment@gmail.com");
+                    } catch (URISyntaxException urie) {
+                        urie.printStackTrace();
+                    }
+                    if (desktop.isSupported(Desktop.Action.MAIL)) {
+                        try {
+                            desktop.mail(uri); // alternately, pass a mailto: URI in here
+                        } catch (IOException ioe) {
+                            ioe.printStackTrace();
+                        }
+                    }
+                }
 			}
 		}
 		
@@ -120,44 +152,6 @@ public class InfoStageController {
 	}
 
 //### PRIVATE METHODS #######################################################################################################################
-
-    private void openBrowser(){
-        if (Desktop.isDesktopSupported()) {
-            Desktop desktop = Desktop.getDesktop();
-            URI uri = null;
-            try {
-                uri = new URI("https://nappydevelopment.wordpress.com/");
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-            if (desktop.isSupported(Desktop.Action.MAIL)) {
-                try {
-                    desktop.browse(uri);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private void openMailClient(){
-        if (Desktop.isDesktopSupported()) {
-                Desktop desktop = Desktop.getDesktop();
-                URI uri = null;
-                try {
-                    uri = new URI("mailto:nappydevelopment@gmail.com");
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                if (desktop.isSupported(Desktop.Action.MAIL)) {
-                    try {
-                        desktop.mail(uri); // alternately, pass a mailto: URI in here
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-    }
 
 //##########################################################################################################################################
 }
