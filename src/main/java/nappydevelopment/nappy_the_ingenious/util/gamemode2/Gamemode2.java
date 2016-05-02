@@ -8,6 +8,7 @@ import java.util.*;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.*;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 
@@ -71,7 +72,7 @@ public class Gamemode2{
 		return Answer.fromBool(answer);
 	}
 
-	public Boolean makeGuess(final WikiCharacter wiki){
+	public Boolean makeGuess(final Character wiki){
 		return makeGuess(wiki.getName());
 	}
 	public Boolean makeGuess(final String name){
@@ -84,7 +85,7 @@ public class Gamemode2{
 
 	public boolean finished(){ return finished; }
 
-	public WikiCharacter endGame(){
+	public Character endGame(){
 		if(finished){ return null; }
 		finished = true;
 
@@ -104,7 +105,7 @@ public class Gamemode2{
 				throw e;
 			}
 		}
-		return new WikiCharacter(
+		return new Character(
 			character.get("NAME"),
 			nicknames,
 			descriptions,

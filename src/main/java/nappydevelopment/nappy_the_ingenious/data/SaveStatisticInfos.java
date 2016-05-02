@@ -46,7 +46,7 @@ public class SaveStatisticInfos {
     }
 
 
-    public static void createAndSaveCharakter(WikiCharacter character){
+    public static void createAndSaveCharakter(Character character){
         try{
             Statement st = DatabaseProvider.getStatement();
             st.execute(

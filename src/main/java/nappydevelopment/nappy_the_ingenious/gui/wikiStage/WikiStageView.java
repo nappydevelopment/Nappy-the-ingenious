@@ -9,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +27,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.components.TitledBorderPane;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
@@ -77,7 +76,7 @@ public class WikiStageView extends Stage {
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
-	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, List<WikiCharacter> chars) {
+	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, List<Character> chars) {
 		this.initComponents(res, aeh, chars);
 		this.structureComponents();
 		this.initStage(res);
@@ -86,7 +85,7 @@ public class WikiStageView extends Stage {
 //### INITIAL METHODS ######################################################################################################################
 			
 	//Method that initialize the gui-components:
-	private void initComponents(WikiStageResources res, EventHandler<ActionEvent> aeh, List<WikiCharacter> chars) {
+	private void initComponents(WikiStageResources res, EventHandler<ActionEvent> aeh, List<Character> chars) {
 				
 		this.bdpRootPane = new BorderPane();
 		
@@ -162,13 +161,13 @@ public class WikiStageView extends Stage {
 		
 		//### Generate content wiki-character ##################################
 		
-        ListIterator<WikiCharacter> listIterator = chars.listIterator();
+        ListIterator<Character> listIterator = chars.listIterator();
         
         //Run through all wiki-characters:
         while (listIterator.hasNext()) {
         	
         	//Read out current character:
-        	WikiCharacter curCharacter = listIterator.next();
+        	Character curCharacter = listIterator.next();
         	
         	//Set-up horizontal box that contains all gui-elements for the current character:
             HBox hbxBox = new HBox();

@@ -8,14 +8,14 @@ public enum Gender {
     FEMALE,
     UNKNOWN;
 
-    public static Gender fromBool(boolean male) {
+    public static Gender fromBool(Boolean male) {
         Gender gen;
-        if(male == true){
-            gen = Gender.MALE;
-        }else if(male == false){
-            gen = Gender.FEMALE;
-        }else{
+        if(male == null){
             gen = Gender.UNKNOWN;
+        }else if(male){
+            gen = Gender.MALE;
+        }else{
+            gen = Gender.FEMALE;
         }
         return gen;
     }
