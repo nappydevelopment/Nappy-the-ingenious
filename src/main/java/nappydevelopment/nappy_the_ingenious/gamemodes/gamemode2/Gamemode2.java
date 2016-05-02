@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.util.gamemode2;
+package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +10,9 @@ import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.gamemodes.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.gamemodes.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 
 
 public class Gamemode2{

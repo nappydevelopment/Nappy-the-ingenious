@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.util.gamemode2;
+package nappydevelopment.nappy_the_ingenious.gamemodes;
 
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;

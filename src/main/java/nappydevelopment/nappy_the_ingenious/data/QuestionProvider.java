@@ -1,7 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
-import nappydevelopment.nappy_the_ingenious.util.gamemode2.Question;
+import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

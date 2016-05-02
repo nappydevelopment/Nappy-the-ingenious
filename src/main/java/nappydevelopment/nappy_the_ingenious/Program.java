@@ -19,12 +19,12 @@ import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
-import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
-import nappydevelopment.nappy_the_ingenious.util.gamemode1.NoActiveQuestion;
-import nappydevelopment.nappy_the_ingenious.util.gamemode2.GameHasFinished;
-import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
-import nappydevelopment.nappy_the_ingenious.util.gamemode2.InvalidQuestion;
-import nappydevelopment.nappy_the_ingenious.util.gamemode2.NoMoreQuestions;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.Gamemode1;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.NoActiveQuestion;
+import nappydevelopment.nappy_the_ingenious.gamemodes.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.Gamemode2;
+import nappydevelopment.nappy_the_ingenious.gamemodes.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.NoMoreQuestions;
 
 
 public class Program extends Application {
