@@ -72,13 +72,13 @@ public class Gamemode1Test{
 		assertEquals(gm.getNumDunno(), 2);
 	}
 
-	@Test
+	@Test(expected=NoMoreQuestions.class)
 	public void exhaustQuestions() throws Exception{
 		String q;
 		while((q = gm_det.getQuestion()) != null && !q.isEmpty()){
 			gm_det.setAnswer(Answer.DONT_KNOW);
 		}
-		assertNull(gm_det.getQuestion());
+		gm_det.getQuestion();
 	}
 
 	@Test
