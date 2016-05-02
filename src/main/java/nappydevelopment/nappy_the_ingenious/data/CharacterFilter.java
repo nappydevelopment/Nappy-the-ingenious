@@ -3,19 +3,19 @@ package nappydevelopment.nappy_the_ingenious.data;
 /**
  * Created by Marc on 01.05.2016.
  */
-public class CharFilter {
+public class CharacterFilter{
 
     private String searchStr;
     private Gender gender;
     private Age age;
 
-    public CharFilter(String searchStr, Gender gender, Age age) {
+    public CharacterFilter(String searchStr, Gender gender, Age age) {
         this.searchStr=searchStr;
         this.gender=gender;
         this.age=age;
     }
 
-    public CharFilter(String searchStr) {
+    public CharacterFilter(String searchStr) {
         this.searchStr=searchStr;
         this.gender=Gender.UNKNOWN;
         this.age=Age.UNKNOWN;
