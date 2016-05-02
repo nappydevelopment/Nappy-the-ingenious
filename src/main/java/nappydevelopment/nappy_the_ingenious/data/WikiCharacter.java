@@ -42,10 +42,10 @@ public class WikiCharacter {
 	public String getName() {return name; }
 
 	public String getNickname(final Language l) { return nicknames.get(l); }
-	protected Map<Language, String> getNicknames() { return nicknames; }
+	private Map<Language, String> getNicknames() { return nicknames; }
 
 	public String getDescription(final Language l) { return descriptions.get(l); }
-	protected Map<Language, String> getDescriptions() { return descriptions; }
+	private Map<Language, String> getDescriptions() { return descriptions; }
 
 	public Image getWikiImage() { return wikiImage; }
 
