@@ -5,6 +5,7 @@ import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
+import nappydevelopment.nappy_the_ingenious.gamemodes.NoMoreQuestions;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -119,7 +120,7 @@ public class Gamemode1{
 		return activeQuestion != null;
 	}
 
-    public String getQuestion(){
+    public String getQuestion() throws NoMoreQuestions{
 		if(isSure()){
 			return null;
 		}
@@ -136,7 +137,7 @@ public class Gamemode1{
 			).get();
 		}catch(NoSuchElementException e){
 			activeQuestion = null; // just to be sure
-			return null;
+			throw new NoMoreQuestions();
 		}
 		return activeQuestion.getQuestion();
     }

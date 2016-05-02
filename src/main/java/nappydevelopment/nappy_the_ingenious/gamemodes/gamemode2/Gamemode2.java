@@ -10,10 +10,7 @@ import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
-import nappydevelopment.nappy_the_ingenious.gamemodes.GameHasFinished;
-import nappydevelopment.nappy_the_ingenious.gamemodes.InvalidQuestion;
-import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
-import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
+import nappydevelopment.nappy_the_ingenious.gamemodes.*;
 
 
 public class Gamemode2{
