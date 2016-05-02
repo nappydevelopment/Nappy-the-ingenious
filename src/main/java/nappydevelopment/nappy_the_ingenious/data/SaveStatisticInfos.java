@@ -28,6 +28,7 @@ public class SaveStatisticInfos {
                             player.getQuestions_player() + "', '" +
                             player.getScore() + "');"
             );
+            st.close();
         }catch(SQLException e) {
             e.printStackTrace();
         }
@@ -51,6 +52,7 @@ public class SaveStatisticInfos {
             st.execute(
                     "UPDATE Simpsons SET counter = counter + 1 WHERE name='" + character.getName() + "';"
             );
+            st.close();
         }catch(SQLException e) {
             e.printStackTrace();
         }
