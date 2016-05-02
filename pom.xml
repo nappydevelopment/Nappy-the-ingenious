@@ -3,6 +3,11 @@
   <groupId>nappydevelompent</groupId>
   <artifactId>nappy-the-ingenious</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <sonar.host.url>
+      http://193.196.7.25
+    </sonar.host.url>
+  </properties>
   <build>
     <resources>
       <resource>
