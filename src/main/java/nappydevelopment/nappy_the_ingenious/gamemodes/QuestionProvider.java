@@ -1,5 +1,6 @@
-package nappydevelopment.nappy_the_ingenious.data;
+package nappydevelopment.nappy_the_ingenious.gamemodes;
 
+import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 
