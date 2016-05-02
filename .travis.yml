@@ -27,7 +27,9 @@ branches:
 sudo: false
 
 # Run Integration tests
-script: "mvn test && mvn verify && mvn clean install sonar:sonar"
+script:
+  - mvn verify
+  - mvn clean install sonar:sonar
 
 # record coverage to codacy
 after_success:
