@@ -54,7 +54,7 @@ public class CharacterProvider{
 		return null;
 	}
 
-	public static List<Character> search(List<Character> list, CharFilter search){
+	public static List<Character> search(List<Character> list, CharacterFilter search){
 		List<Character> out;
 		out = list.stream()
 			.filter(c -> {
