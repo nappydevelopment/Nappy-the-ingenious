@@ -2,7 +2,6 @@ package nappydevelopment.nappy_the_ingenious.gamemodes;
 
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
