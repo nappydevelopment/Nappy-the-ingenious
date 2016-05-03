@@ -28,13 +28,13 @@ public class Question{
 		this.question = question;
 		this.lang = lang;
 	}
-	public String toString(){ return question; }
 	public String getQuestion(){ return question; }
 	public String getAttribute(){ return attribute; }
 	public String getTable(){ return table; }
 	public Language getLanguage(){ return lang; }
 
 	// stuff for GameMode1
+	public Answer getAnswer(){ return answer; }
 	public boolean answered(){ return answer != null; }
 	public void setAnswer(final Answer answer){
 		if(this.answer != null){
