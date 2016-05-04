@@ -311,18 +311,18 @@ public class Program extends Application {
 		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
 											this.game.getNoOfQuestionsNappyInPercent(),
 											this.gm1Logic.getSureness());
-		
+
 		//Check if nappy knows the character:
-		if(this.gm1Logic.isSure() == true) {
+		if(this.gm1Logic.isSure() == Sureness.SURE) {
 			this.mainStageController.showGuessedCharacter(this.gm1Logic.endGame());
 			this.game.setCharacterNappy(this.gm1Logic.endGame());
 		}
 		//Check if nappy is sure but don't knows the character:
-		else if (this.gm1Logic.isSure() == null) {
+		else if (this.gm1Logic.isSure() == Sureness.DONTKNOW) {
 			this.mainStageController.showNappyDontKnow();
 		}
 		//Ask the next question:
-		else if (this.gm1Logic.isSure() == false) {
+		else if (this.gm1Logic.isSure() == Sureness.UNSURE) {
 			try{
 				this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
 			}catch(NoMoreQuestions noMoreQuestions){
