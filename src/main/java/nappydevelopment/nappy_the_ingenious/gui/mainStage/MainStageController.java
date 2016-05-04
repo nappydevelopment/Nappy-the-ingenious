@@ -166,21 +166,21 @@ public class MainStageController {
 			else if(src == view.btnYes) {
 				
 				//Act the button as yes button for questions:
-				if("btnYes" == ((Button)src).getId()) {
+				if("btnYes".equals(((Button)src).getId())) {
 					MainStageController.this.program.setQuestionAnswer(Answer.YES);
 				}
 				//Acts the button as right button for the guessed character:
-				else if("btnRight" == ((Button)src).getId()) {
+				else if("btnRight".equals(((Button)src).getId())) {
 					MainStageController.this.program.setIfNappyIsRight(true);
 				}
 			}
 			else if(src == view.btnNo) {
 				//Act the button as yes button for questions:
-				if("btnYes" == ((Button)src).getId()) {
+				if("btnYes".equals(((Button)src).getId())) {
 					MainStageController.this.program.setQuestionAnswer(Answer.NO);
 				}
 				//Acts the button as right button for the guessed character:
-				else if("btnRight" == ((Button)src).getId()) {
+				else if("btnRight".equals(((Button)src).getId())) {
 					MainStageController.this.program.setIfNappyIsRight(false);
 				}
 					
