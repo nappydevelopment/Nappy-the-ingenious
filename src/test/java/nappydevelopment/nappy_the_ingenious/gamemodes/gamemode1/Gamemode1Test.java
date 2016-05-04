@@ -1,6 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.Answer;
+import nappydevelopment.nappy_the_ingenious.data.Sureness;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import org.junit.Before;
@@ -30,7 +31,7 @@ public class Gamemode1Test{
 	}
 	@Test
 	public void getCharacterSure() throws Exception{
-		while(!gm_det.isSure()){
+		while(gm_det.isSure() == Sureness.UNSURE || gm_det.isSure() == Sureness.DONTKNOW){
 			gm_det.getQuestion();
 			gm_det.setAnswer(Answer.YES);
 		}

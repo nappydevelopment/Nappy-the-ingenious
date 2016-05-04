@@ -34,7 +34,7 @@ public class Gamemode1{
 
 	public Character endGame(){
 		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
-		if(chars.isEmpty() || !isSure()){
+		if(chars.isEmpty() || isSure() == Sureness.UNSURE || isSure() == Sureness.DONTKNOW){
 			return null;
 		}
 		return chars.get(0);
@@ -106,15 +106,15 @@ public class Gamemode1{
 		return sureness;
 	}
 
-    public Boolean isSure(){
+    public Sureness isSure(){
 		float sureness = this.sureness();
 		if(sureness == 1){
-			return true;
+			return Sureness.SURE;
 		}
 		if(sureness < 0){
-			return null;
+			return Sureness.DONTKNOW;
 		}
-		return false;
+		return Sureness.UNSURE;
     }
 
 	public boolean isActive(){
@@ -122,7 +122,7 @@ public class Gamemode1{
 	}
 
     public String getQuestion() throws NoMoreQuestions{
-		if(isSure()){
+		if(isSure()==Sureness.SURE){
 			return null;
 		}
 		if(activeQuestion != null){
