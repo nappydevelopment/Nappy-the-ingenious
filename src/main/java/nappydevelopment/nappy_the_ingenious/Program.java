@@ -302,11 +302,16 @@ public class Program extends Application {
 			this.gm1Logic.setAnswer(answer);
 		}catch(NoActiveQuestion noActiveQuestion){
 			noActiveQuestion.printStackTrace();
+			System.out.println(
+				"set the answer twice without getting a new question\n" +
+				" (through Program.setQuestionAnswer, problem is probably in MainStageController.ViewActionEventHandler.handle())"
+			);
+			return;
 		}
 
 		//Increase the number of questions that nappy need:
 		this.game.increaseNoOfQuestionsNappy();
-		
+
 		//Update info elements (Progress-Bars):
 		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
 											this.game.getNoOfQuestionsNappyInPercent(),
