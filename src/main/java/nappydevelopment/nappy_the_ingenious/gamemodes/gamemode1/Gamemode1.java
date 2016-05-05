@@ -3,6 +3,7 @@ package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
@@ -22,6 +23,7 @@ public class Gamemode1{
 	private final Language lang;
 	private boolean deterministic = false;
 	private boolean firstQuestion = true;
+	private boolean finished = true;
 
 	private Map<String, Question> questions;
 
@@ -30,12 +32,16 @@ public class Gamemode1{
 		deterministic = det;
 		lang = l;
 		questions = QuestionProvider.getQuestions(lang);
+		finished = false;
 	}
 
-	public Character endGame(){
+	public Character endGame() throws GameHasFinished{
 		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
-		if(chars.isEmpty() || isSure() == Sureness.UNSURE || isSure() == Sureness.DONTKNOW){
+		if(chars.isEmpty() || isSure() != Sureness.SURE){
 			return null;
+		}
+		if(isFinished()){
+			throw new GameHasFinished();
 		}
 		return chars.get(0);
 	}
@@ -108,18 +114,18 @@ public class Gamemode1{
 
     public Sureness isSure(){
 		float sureness = this.sureness();
+		Sureness ret = Sureness.UNSURE;
 		if(sureness == 1){
-			return Sureness.SURE;
+			ret = Sureness.SURE;
 		}
 		if(sureness < 0){
-			return Sureness.DONTKNOW;
+			ret = Sureness.DONTKNOW;
 		}
-		return Sureness.UNSURE;
+		return ret;
     }
 
-	public boolean isActive(){
-		return activeQuestion != null;
-	}
+	public boolean isActive(){ return activeQuestion != null; }
+	public boolean isFinished(){ return finished; }
 
     public String getQuestion() throws NoMoreQuestions{
 		if(isSure()==Sureness.SURE){
