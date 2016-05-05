@@ -20,6 +20,7 @@ import nappydevelopment.nappy_the_ingenious.data.CharacterFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
+import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
@@ -205,6 +206,27 @@ public class WikiStageController {
 		this.view.show();
 	}
 			
+	/* changeThemeToDarkTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToDarkTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
+	}
+	
+	/* changeThemeToBrightTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToBrightTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
+		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/BrightTheme.css");
+		this.view.getScene().getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
+	}
+	
 	public void changeLanguageToGerman() {
 		this.res.setTextsToGerman();
 	}

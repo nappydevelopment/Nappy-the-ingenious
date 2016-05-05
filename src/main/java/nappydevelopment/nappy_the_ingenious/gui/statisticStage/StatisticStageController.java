@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Player;
 import nappydevelopment.nappy_the_ingenious.data.StatisticCharacter;
+import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
 import nappydevelopment.nappy_the_ingenious.util.statistics.StatisticStuffGenerator;
 
 //### IMPORTS ##############################################################################################################################
@@ -152,6 +153,29 @@ public class StatisticStageController {
 		
 		this.view.show();
 	}
+	
+	
+	/* changeThemeToDarkTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToDarkTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add(StatisticStageView.class.getResource("StatisticStageCSS.css").toExternalForm());
+	}
+	
+	/* changeThemeToBrightTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToBrightTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
+		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/BrightTheme.css");
+		this.view.getScene().getStylesheets().add(StatisticStageView.class.getResource("StatisticStageCSS.css").toExternalForm());
+	}
+	
 	
 	public void changeLanguageToGerman() {
 		this.res.setTextsToGerman();

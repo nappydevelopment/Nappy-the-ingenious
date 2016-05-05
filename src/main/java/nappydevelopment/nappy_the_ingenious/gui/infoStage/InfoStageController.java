@@ -7,6 +7,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.exception.ChangeLanguageException;
+import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
 
 import java.awt.*;
 import java.io.IOException;
@@ -103,6 +104,28 @@ public class InfoStageController {
 		
 		this.view.show();
 	}
+	
+	/* changeThemeToDarkTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToDarkTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
+	}
+	
+	/* changeThemeToBrightTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToBrightTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
+		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/BrightTheme.css");
+		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
+	}
+	
 	
 	/* changeLanguageToGerman [method]: *//**
 	 * 

@@ -7,16 +7,13 @@ import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
 
 
 //### IMPORTS ##############################################################################################################################
 public class HelpStageController {
 
 //### ATTRIBUTES ###########################################################################################################################
-	
-	private Language curLang;
-	
-	private Program program;
 		
 	private HelpStageView view;
 	private HelpStageResources res;
@@ -24,10 +21,7 @@ public class HelpStageController {
 		
 //### CONSTRUCTORS #########################################################################################################################
 		
-	public HelpStageController(Program prog) {
-		this.program = prog;
-		this.curLang = null;
-	}
+	public HelpStageController() {}
 		
 //### INITIAL METHODS ######################################################################################################################
 		
@@ -60,7 +54,7 @@ public class HelpStageController {
 						 
 		@Override
 		public void handle(ActionEvent e) {
-				
+			//Nothing to do here
 		}
 			
 	}
@@ -75,25 +69,39 @@ public class HelpStageController {
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
 		
-		if(this.curLang == Language.GERMAN) {
-			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_de.html");
-		}
-		else if(this.curLang == Language.ENGLISH) {
-			System.out.println("English");
-			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_en.html");
-		}
-		
 		this.view.show();
 	}
 		
+	/* changeThemeToDarkTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToDarkTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add(HelpStageView.class.getResource("HelpStageCSS.css").toExternalForm());
+	}
+	
+	/* changeThemeToBrightTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToBrightTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
+		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/BrightTheme.css");
+		this.view.getScene().getStylesheets().add(HelpStageView.class.getResource("HelpStageCSS.css").toExternalForm());
+	}
+	
+	
 	public void changeLanguageToGerman() {
-		this.curLang = Language.GERMAN;
 		this.res.setTextsToGerman();
+		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_de.html");
 	}
 		
 	public void changeLanguageToEnglish() {
-		this.curLang = Language.ENGLISH;
-		this.res.setTextsToEnglish();	
+		this.res.setTextsToEnglish();
+		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_en.html");
 	}
 		
 //##########################################################################################################################################
