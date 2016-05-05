@@ -67,6 +67,7 @@ public class MainStageResources {
 	String btnIdontKnowTextIknow;
 	
 	String cmbQuestionsTextSelectAQuestion;
+	String cmbQuestionsTextSelectNextAnswer;
 
 	//### Abort Dialog Texts #######################################################################
 
