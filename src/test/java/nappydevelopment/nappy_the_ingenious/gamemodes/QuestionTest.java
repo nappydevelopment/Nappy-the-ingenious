@@ -7,11 +7,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class QuestionTest{
-	private Language lang = Language.values()[0];	// some Language
-	private Answer ans = Answer.values()[0];		// some Answer
-	private Answer ans2 = Answer.values()[1];		// another Answer
+	private final Language lang = Language.values()[0];	// some Language
+	private final Answer ans = Answer.values()[0];		// some Answer
+	private final Answer ans2 = Answer.values()[1];		// another Answer
 
-	private Question q = new Question(
+	private final Question q = new Question(
 		"table",
 		"attribute",
 		lang,
