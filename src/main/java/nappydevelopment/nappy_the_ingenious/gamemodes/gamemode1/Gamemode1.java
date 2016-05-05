@@ -108,13 +108,14 @@ public class Gamemode1{
 
     public Sureness isSure(){
 		float sureness = this.sureness();
+		Sureness ret = Sureness.UNSURE;
 		if(sureness == 1){
-			return Sureness.SURE;
+			ret = Sureness.SURE;
 		}
 		if(sureness < 0){
-			return Sureness.DONTKNOW;
+			ret = Sureness.DONTKNOW;
 		}
-		return Sureness.UNSURE;
+		return ret;
     }
 
 	public boolean isActive(){
