@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 //Nappy imports:
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.exception.ChangeLanguageException;
@@ -70,7 +71,7 @@ public class Program extends Application {
 		this.mainStageController = new MainStageController(this);
 		this.statisticStageController = new StatisticStageController(this);
 		this.settingsStageController = new SettingsStageController(this);
-		this.helpStageController = new HelpStageController(this);
+		this.helpStageController = new HelpStageController();
 		this.wikiStageController = new WikiStageController(this);
 		this.infoStageController = new InfoStageController(this);
 		
@@ -188,6 +189,24 @@ public class Program extends Application {
 			} catch (ChangeLanguageException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			this.mainStageController.changeThemeToDarkTheme();
+			this.statisticStageController.changeThemeToDarkTheme();
+			this.settingsStageController.changeThemeToDarkTheme();
+			this.helpStageController.changeThemeToDarkTheme();
+			this.wikiStageController.changeThemeToDarkTheme();
+			this.infoStageController.changeThemeToDarkTheme();
+			
+		}
+		else {
+			this.mainStageController.changeThemeToBrightTheme();
+			this.statisticStageController.changeThemeToBrightTheme();
+			this.settingsStageController.changeThemeToBrightTheme();
+			this.helpStageController.changeThemeToBrightTheme();
+			this.wikiStageController.changeThemeToBrightTheme();
+			this.infoStageController.changeThemeToBrightTheme();
 		}
 		
 	}

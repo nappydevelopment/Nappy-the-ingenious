@@ -29,6 +29,8 @@ import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
+import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 //Class that handles the interactions of the main-stage with the program-logic:
@@ -213,6 +215,8 @@ public class MainStageController {
 		//Create dialog:
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		
+		
+		
 		//Create the dialog buttons:
 		ButtonType bttApply = new ButtonType(this.res.abortGameDialogBtnApplyText);
 		ButtonType bttCancel = new ButtonType(this.res.abortGameDialogBtnCancelText);
@@ -222,6 +226,11 @@ public class MainStageController {
 		alert.setHeaderText(this.res.abortGameDialogHeaderText);
 		alert.setContentText(this.res.abortGameDialogContentText);
 		alert.getButtonTypes().setAll(bttApply, bttCancel);
+		
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			alert.getDialogPane().getStylesheets().clear();
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		}
 		
 		//Show dialog and read out the result:
 		Optional<ButtonType> result = alert.showAndWait();
@@ -275,6 +284,11 @@ public class MainStageController {
     		alert.setGraphic(new Group());
     	}
     	
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			alert.getDialogPane().getStylesheets().clear();
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		}
+		
     	alert.setTitle(this.res.statusDialogGM1Title);
     	
     	
@@ -640,6 +654,11 @@ public class MainStageController {
 		//Set properties of the dialog:
 		//alert.getButtonTypes().setAll(bttApply, bttCancel);
 
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			dialog.getDialogPane().getStylesheets().clear();
+			dialog.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		}
+		
         // Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		
@@ -650,6 +669,27 @@ public class MainStageController {
 		return null;
 	}
 
+	/* changeThemeToDarkTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToDarkTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
+	}
+	
+	/* changeThemeToBrightTheme [method]: *//**
+	 * 
+	 */
+	public void changeThemeToBrightTheme() {
+		
+		this.view.getScene().getStylesheets().clear();
+		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
+		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/BrightTheme.css");
+		this.view.getScene().getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
+	}
+	
 	/* changeLanguageToGerman [method]: *//**
 	 * 
 	 */
