@@ -22,6 +22,7 @@ public class Gamemode1{
 	private final Language lang;
 	private boolean deterministic = false;
 	private boolean firstQuestion = true;
+	private boolean finished = true;
 
 	private Map<String, Question> questions;
 
@@ -30,11 +31,12 @@ public class Gamemode1{
 		deterministic = det;
 		lang = l;
 		questions = QuestionProvider.getQuestions(lang);
+		finished = false;
 	}
 
 	public Character endGame(){
 		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
-		if(chars.isEmpty() || isSure() == Sureness.UNSURE || isSure() == Sureness.DONTKNOW){
+		if(chars.isEmpty() || isSure() != Sureness.SURE){
 			return null;
 		}
 		return chars.get(0);
@@ -118,9 +120,8 @@ public class Gamemode1{
 		return ret;
     }
 
-	public boolean isActive(){
-		return activeQuestion != null;
-	}
+	public boolean isActive(){ return activeQuestion != null; }
+	public boolean isFinished(){ return finished; }
 
     public String getQuestion() throws NoMoreQuestions{
 		if(isSure()==Sureness.SURE){
