@@ -79,7 +79,7 @@ public class Question{
 			where.append(" AND ");
 		}
 		where.append("SIMPSONS." + table);
-		if(answer == Answer.YES){
+		if(answer == Answer.NO){
 			where.append(" !");
 		}
 		where.append("= '" + attribute + "' ");
