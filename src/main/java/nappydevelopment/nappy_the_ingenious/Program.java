@@ -338,8 +338,12 @@ public class Program extends Application {
 
 		//Check if nappy knows the character:
 		if(this.gm1Logic.isSure() == Sureness.SURE) {
-			this.mainStageController.showGuessedCharacter(this.gm1Logic.endGame());
-			this.game.setCharacterNappy(this.gm1Logic.endGame());
+			try{
+				this.mainStageController.showGuessedCharacter(this.gm1Logic.endGame());
+				this.game.setCharacterNappy(this.gm1Logic.endGame());
+			}catch(GameHasFinished gameHasFinished){
+				gameHasFinished.printStackTrace();
+			}
 		}
 		//Check if nappy is sure but don't knows the character:
 		else if (this.gm1Logic.isSure() == Sureness.DONTKNOW) {
