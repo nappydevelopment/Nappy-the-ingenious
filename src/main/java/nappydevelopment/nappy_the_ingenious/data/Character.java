@@ -54,15 +54,21 @@ public class Character{
 
 	@Override
 	public boolean equals(Object obj){
-		if((obj instanceof Character)){
-			Character other = (Character) obj;
+		if(!(obj instanceof Character)){
+			return false;
+		}
+		Character other = (Character) obj;
+		try{
 			if(
-				this.descriptions.values().containsAll(other.getDescriptions().values()) &&
+				this.descriptions == null && other.descriptions == null
+					|| this.descriptions.values().containsAll(other.getDescriptions().values()) &&
 				this.name.equals(other.getName()) &&
-				this.nicknames.values().containsAll(other.getNicknames().values())
+				this.nicknames == null && other.nicknames == null
+					|| this.nicknames.values().containsAll(other.getNicknames().values())
 			){
 				return true;
 			}
+		}catch(NullPointerException e){
 		}
 		return false;
 	}
