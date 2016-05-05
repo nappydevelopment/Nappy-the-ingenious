@@ -467,7 +467,10 @@ public class MainStageView extends Stage {
 
 
 		this.scene = new Scene(this.bdpRootPane, 445, 693);
-		this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
+		//this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
+		//String globalCSS = this.getClass().getResource("/src/main/java/nappydevelopment/nappy_the_ingenious/gui/globalStyle/dark.css").toExternalForm();
+		//System.out.println(globalCSS);
+		this.scene.getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/dark.css");
 		this.setScene(this.scene);
 		this.setTitle("Nappy, the ingenious");
 

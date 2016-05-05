@@ -176,11 +176,11 @@ public class MainStageController {
 			}
 			else if(src == view.btnNo) {
 				//Act the button as yes button for questions:
-				if("btnYes".equals(((Button)src).getId())) {
+				if("btnNo".equals(((Button)src).getId())) {
 					MainStageController.this.program.setQuestionAnswer(Answer.NO);
 				}
 				//Acts the button as right button for the guessed character:
-				else if("btnRight".equals(((Button)src).getId())) {
+				else if("btnWrong".equals(((Button)src).getId())) {
 					MainStageController.this.program.setIfNappyIsRight(false);
 				}
 					
