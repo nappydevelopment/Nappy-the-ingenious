@@ -3,6 +3,7 @@ package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
@@ -34,10 +35,13 @@ public class Gamemode1{
 		finished = false;
 	}
 
-	public Character endGame(){
+	public Character endGame() throws GameHasFinished{
 		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
 		if(chars.isEmpty() || isSure() != Sureness.SURE){
 			return null;
+		}
+		if(isFinished()){
+			throw new GameHasFinished();
 		}
 		return chars.get(0);
 	}
