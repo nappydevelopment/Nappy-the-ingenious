@@ -59,11 +59,8 @@ public class Question{
 			}
 			if(!deterministic){
 				ret += Math.random()*(sum/2);
-				if(ret > sum){
-					sum += ret;
-				}
 			}
-			ret = ret / sum;
+			ret = Math.min(ret, sum) / Math.max(ret, sum);
 			if(ret > 0.5){
 				ret = 1 - ret;
 			}
