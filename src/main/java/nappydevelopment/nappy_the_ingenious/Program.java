@@ -2,9 +2,6 @@
 
 package nappydevelopment.nappy_the_ingenious;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 //### IMPORTS ##############################################################################################################################
 
 import java.util.List;
@@ -13,17 +10,22 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 //Nappy imports:
 import nappydevelopment.nappy_the_ingenious.data.*;
-import nappydevelopment.nappy_the_ingenious.data.settings.GameMode;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
+import nappydevelopment.nappy_the_ingenious.exception.ChangeLanguageException;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
 import nappydevelopment.nappy_the_ingenious.gui.infoStage.InfoStageController;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
-import nappydevelopment.nappy_the_ingenious.util.gamemode1.Gamemode1;
-import nappydevelopment.nappy_the_ingenious.util.gamemode2.Gamemode2;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.Gamemode1;
+import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.Gamemode2;
+import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 
 
 public class Program extends Application {
@@ -83,7 +85,7 @@ public class Program extends Application {
 		System.out.println("JavaFX-Application - Start");
 		
 		//Read out the list with wiki-characters:
-		List<WikiCharacter> chars = CharacterProvider.getCharacters();
+		List<Character> chars = CharacterProvider.getCharacters();
 		
 		//Initialize the view of the stages:
 		this.mainStageController.initView();
@@ -159,16 +161,21 @@ public class Program extends Application {
 	/* applySettings [method]: Method to apply the settings for all stages *//**
 	 * 
 	 */
-	public void applySettings() {
+	public void applySettings() throws ChangeLanguageException {
 		
 		//Apply the language setting:
+        //TODO: add custom exception to the other controller's
 		if(Settings.getLanguage() == Language.GERMAN) {
 			this.mainStageController.changeLanguageToGerman();
 			this.statisticStageController.changeLanguageToGerman();
 			this.settingsStageController.changeLanguageToGerman();
 			this.helpStageController.changeLanguageToGerman();
 			this.wikiStageController.changeLanguageToGerman();
-			this.infoStageController.changeLanguageToGerman();
+			try {
+				this.infoStageController.changeLanguageToGerman();
+			} catch (ChangeLanguageException e) {
+				e.printStackTrace();
+			}
 		}
 		else {
 			this.mainStageController.changeLanguageToEnglish();
@@ -176,7 +183,11 @@ public class Program extends Application {
 			this.settingsStageController.changeLanguageToEnglish();
 			this.helpStageController.changeLanguageToEnglish();
 			this.wikiStageController.changeLanguageToEnglish();
-			this.infoStageController.changeLanguageToEnglish();
+			try {
+				this.infoStageController.changeLanguageToEnglish();
+			} catch (ChangeLanguageException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -189,7 +200,7 @@ public class Program extends Application {
 	public void startGame() {
 		
 		//Initialize the logic:
-		this.gm1Logic = new Gamemode1();
+		this.gm1Logic = new Gamemode1(Settings.getLanguage());
 		//TODO: No consistently logic interface:
 		this.gm2Logic = new Gamemode2(Settings.getLanguage());
 		
@@ -272,47 +283,56 @@ public class Program extends Application {
 		this.mainStageController.showGamemode1View();
 		
 		//Show the first Question:
-		this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+		try{
+			this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+		}catch(NoMoreQuestions noMoreQuestions){
+			noMoreQuestions.printStackTrace();
+		}
 	}
 	
 	/* setQuestionAnswer [method]: Method that sets the answer to the current question *//**
 	 * 
 	 * @param answer
 	 */
-	public void setQuestionAnswer(Answer answer) {
+	public void setQuestionAnswer(Answer answer){
 		
 		//Write answer in the logic:
 		//TODO: No clean code logic should use the Answer object:
-		if(answer == Answer.YES) {
-			this.gm1Logic.setAnswer(true);
+		try{
+			this.gm1Logic.setAnswer(answer);
+		}catch(NoActiveQuestion noActiveQuestion){
+			noActiveQuestion.printStackTrace();
+			System.out.println(
+				"set the answer twice without getting a new question\n" +
+				" (through Program.setQuestionAnswer, problem is probably in MainStageController.ViewActionEventHandler.handle())"
+			);
+			return;
 		}
-		else if(answer == Answer.NO) {
-			this.gm1Logic.setAnswer(false);
-		}
-		else if(answer == Answer.DONT_KNOW) {
-			this.gm1Logic.setAnswer(null);
-		}
-		
+
 		//Increase the number of questions that nappy need:
 		this.game.increaseNoOfQuestionsNappy();
-		
+
 		//Update info elements (Progress-Bars):
 		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
 											this.game.getNoOfQuestionsNappyInPercent(),
 											this.gm1Logic.getSureness());
-		
+
 		//Check if nappy knows the character:
-		if(this.gm1Logic.isSure() == true) {
-			this.mainStageController.showGuessedCharacter(this.gm1Logic.getCharacter());
-			this.game.setCharacterNappy(this.gm1Logic.getCharacter());
+		if(this.gm1Logic.isSure() == Sureness.SURE) {
+			this.mainStageController.showGuessedCharacter(this.gm1Logic.endGame());
+			this.game.setCharacterNappy(this.gm1Logic.endGame());
 		}
 		//Check if nappy is sure but don't knows the character:
-		else if (this.gm1Logic.isSure() == null) {
+		else if (this.gm1Logic.isSure() == Sureness.DONTKNOW) {
 			this.mainStageController.showNappyDontKnow();
 		}
 		//Ask the next question:
-		else if (this.gm1Logic.isSure() == false) {
-			this.mainStageController.showQuestion(this.gm1Logic.getQuestion(Settings.getLanguage()));
+		else if (this.gm1Logic.isSure() == Sureness.UNSURE) {
+			try{
+				this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+			}catch(NoMoreQuestions noMoreQuestions){
+				noMoreQuestions.printStackTrace();
+			}
 		}
 		
 	}
@@ -366,11 +386,12 @@ public class Program extends Application {
 	}
 	
 	public void askQuestion(String question) {
-		
-		//TODO: Bad implementation askQuestion should return a Answer object:
-		Answer answer = this.gm2Logic.askQuestion(question);
-		this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
-		
+		try{
+			Answer answer = this.gm2Logic.askQuestion(question);
+			this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
+		}catch(InvalidQuestion|NoMoreQuestions|GameHasFinished e){
+			e.printStackTrace();
+		}
 	}
 	
 //### MAIN METHOD ##########################################################################################################################

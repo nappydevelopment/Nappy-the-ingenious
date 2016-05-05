@@ -7,20 +7,16 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CharacterProvider{
 
-	public static List<WikiCharacter> getCharacters() { return getCharacters(""); }
-	public static List<WikiCharacter> getCharacters(String whereclause){
-		List<WikiCharacter> out = new ArrayList<>();
+	public static List<Character> getCharacters() { return getCharacters(""); }
+	public static List<Character> getCharacters(String whereclause){
+		List<Character> out = new ArrayList<>();
 		try(Statement st = DatabaseProvider.getStatement()){
-			if(st == null){return null;}
-			String select = "SELECT name";
+			String select = "SELECT name, male, age";
 			for(Language l: Language.values()){
 				select += ", description_"+ l.getCode().toLowerCase();
 				select += ", nickname_"+ l.getCode().toLowerCase();
@@ -30,6 +26,8 @@ public class CharacterProvider{
 
 			while(res.next()){
 				String name = res.getString("name");
+				boolean male = res.getBoolean("male");
+				String age = res.getString("age");
 				Map<Language, String> descriptions = new HashMap<>();
 				Map<Language, String> nicknames = new HashMap<>();
 
@@ -45,7 +43,7 @@ public class CharacterProvider{
 						throw e;
 					}
 				}
-				WikiCharacter chr = new WikiCharacter(name, nicknames, descriptions, img);
+				Character chr = new Character(name, nicknames, descriptions, img, Gender.fromBool(male), Age.fromString(age));
 				out.add(chr);
 			}
 			st.close();
@@ -56,14 +54,16 @@ public class CharacterProvider{
 		return null;
 	}
 
-	public static List<WikiCharacter> search(List<WikiCharacter> list, String search){
-		List<WikiCharacter> out;
+	public static List<Character> search(List<Character> list, CharacterFilter search){
+		List<Character> out;
 		out = list.stream()
-			.filter(wc -> {
-				if(search.isEmpty()){return true;}
-				return wc.getName().toLowerCase().contains(search.toLowerCase());
+			.filter(c -> {
+				if(search.getSearchStr().isEmpty()){return true;}
+				return c.getName().toLowerCase().contains(search.getSearchStr().toLowerCase());
 			})
-			.sorted(new WikiCharacterNameComparator())
+			.filter(c -> c.getGender().equals(search.getGender()))
+			.filter(c -> c.getAge().equals(search.getAge()))
+			.sorted(new CharacterNameComparator())
 			.collect(Collectors.toList());
 		return out;
 	}

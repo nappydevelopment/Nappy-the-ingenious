@@ -9,9 +9,9 @@ import java.sql.Statement;
 public class SaveStatisticInfos {
 
     public static void createAndSavePlayer(String spielerName, Game game) {
-        final double baseScore = 1000/game.getNoOfQuestionsPlayer();
-        final double nappyBonus = 0.25*game.getNoOfQuestionsNappy();
-        final double multiplicator = nappyWin(game.isWinNappy())*2 + playerWin(game.isWinPlayer()) +1;
+        final double baseScore = 1000.0 / game.getNoOfQuestionsPlayer();
+        final double nappyBonus = 0.25 * game.getNoOfQuestionsNappy();
+        final double multiplicator = nappyWin(game.isWinNappy())*2 + playerWin(game.isWinPlayer()) + 1.0;
         final double score = (baseScore+nappyBonus)*multiplicator;
 
 
@@ -28,6 +28,7 @@ public class SaveStatisticInfos {
                             player.getQuestions_player() + "', '" +
                             player.getScore() + "');"
             );
+            st.close();
         }catch(SQLException e) {
             e.printStackTrace();
         }
@@ -45,12 +46,13 @@ public class SaveStatisticInfos {
     }
 
 
-    public static void createAndSaveCharakter(WikiCharacter character){
+    public static void createAndSaveCharakter(Character character){
         try{
             Statement st = DatabaseProvider.getStatement();
             st.execute(
                     "UPDATE Simpsons SET counter = counter + 1 WHERE name='" + character.getName() + "';"
             );
+            st.close();
         }catch(SQLException e) {
             e.printStackTrace();
         }

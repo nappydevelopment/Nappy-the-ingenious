@@ -1,6 +1,5 @@
 package nappydevelopment.nappy_the_ingenious.util.statistics;
 
-//import com.sun.xml.internal.bind.v2.TODO;
 import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
 import nappydevelopment.nappy_the_ingenious.data.Player;
 import nappydevelopment.nappy_the_ingenious.data.StatisticCharacter;
@@ -25,7 +24,6 @@ public class StatisticStuffGenerator {
             ResultSet res = st.getResultSet();
             while(res.next()){
                 String name = res.getString("player_name");
-                System.out.print(name+ ", ");
                 int nappy_fragen = res.getInt("questions_nappy");
                 int spieler_fragen = res.getInt("questions_player");
                 double punktzahl = res.getDouble("score");
@@ -36,7 +34,6 @@ public class StatisticStuffGenerator {
         }catch(SQLException e){
             e.printStackTrace();
         }
-        System.out.print("\n");
         return topFiveList;
     }
 
@@ -58,7 +55,6 @@ public class StatisticStuffGenerator {
         }catch(SQLException e){
             e.printStackTrace();
         }
-        System.out.print("\n");
         return topFiveList;
     }
 

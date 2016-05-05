@@ -4,9 +4,6 @@ package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 
 //### IMPORTS ##############################################################################################################################
 import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;

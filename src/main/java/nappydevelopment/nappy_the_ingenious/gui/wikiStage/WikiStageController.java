@@ -7,7 +7,6 @@ import java.util.ListIterator;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,8 +16,9 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.CharacterFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
-import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
@@ -35,7 +35,7 @@ public class WikiStageController {
 	private WikiStageResources res;
 	private ViewActionEventHandler aeh;
 	
-	private List<WikiCharacter> characters;
+	private List<Character> characters;
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
@@ -46,7 +46,7 @@ public class WikiStageController {
 //### INITIAL METHODS ######################################################################################################################
 			
 	//Initialize the view:
-	public void initView(List<WikiCharacter> chars) {
+	public void initView(List<Character> chars) {
 				
 		//Initialize the resources for the view:
 		this.res = new WikiStageResources();
@@ -88,8 +88,11 @@ public class WikiStageController {
 				WikiStageController.this.resetFilter();
 			}
 			else if(e.getSource() == view.txfSearchField) {
-				WikiStageController.this.changeCharacterListView(CharacterProvider.search(WikiStageController.this.characters,
-						                                                       WikiStageController.this.view.txfSearchField.getText()));
+				CharacterFilter filter = new CharacterFilter(WikiStageController.this.view.txfSearchField.getText());
+				WikiStageController.this.changeCharacterListView(CharacterProvider.search(
+						WikiStageController.this.characters,
+						filter
+				));
 			}
 		}
 				
@@ -108,20 +111,20 @@ public class WikiStageController {
 		
 	}
 	
-	private void changeCharacterListView(List<WikiCharacter> chars) {
+	private void changeCharacterListView(List<Character> chars) {
 		
 		Boolean colorFlag = true;
 		
 		//### Generate content wiki-character ##################################
 		this.view.vbxContentPane.getChildren().clear();
 		
-        ListIterator<WikiCharacter> listIterator = chars.listIterator();
+        ListIterator<Character> listIterator = chars.listIterator();
         
         //Run through all wiki-characters:
         while (listIterator.hasNext()) {
         	
         	//Read out current character:
-        	WikiCharacter curCharacter = listIterator.next();
+        	Character curCharacter = listIterator.next();
         	
         	//Set-up horizontal box that contains all gui-elements for the current character:
             HBox hbxBox = new HBox();

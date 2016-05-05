@@ -6,7 +6,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
-import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.ChangeLanguageException;
 
 import java.awt.*;
 import java.io.IOException;
@@ -14,8 +14,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class InfoStageController {
-	
-	
+
+
 	//Reference to the program-logic:
 	private Program program;
 	
@@ -78,11 +78,11 @@ public class InfoStageController {
 			
 			if(src == view.linkBlog) {
 				System.out.println("Open Blog in Browser");
-                openBrowser();
+                openBlogInBrowser();
 			}
 			if(src == view.linkMail) {
 				System.out.println("Open e-mail program");
-                openMailClient();
+                openEmailClient();
 			}
 		}
 		
@@ -107,57 +107,59 @@ public class InfoStageController {
 	/* changeLanguageToGerman [method]: *//**
 	 * 
 	 */
-	public void changeLanguageToGerman() {
-		
+	public void changeLanguageToGerman() throws ChangeLanguageException {
+
 		this.res.setTextsToGerman();
 	}
 	
 	/* changeLanguageToEnglish [method]: *//**
 	 * 
 	 */
-	public void changeLanguageToEnglish() {
+	public void changeLanguageToEnglish() throws ChangeLanguageException {
+
 		this.res.setTextsToEnglish();
 	}
 
 //### PRIVATE METHODS #######################################################################################################################
 
-    private void openBrowser(){
+    private void openBlogInBrowser() {
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             URI uri = null;
             try {
                 uri = new URI("https://nappydevelopment.wordpress.com/");
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
+            } catch (URISyntaxException urie) {
+                urie.printStackTrace();
             }
             if (desktop.isSupported(Desktop.Action.MAIL)) {
                 try {
                     desktop.browse(uri);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
                 }
             }
         }
     }
 
-    private void openMailClient(){
+    private void openEmailClient() {
         if (Desktop.isDesktopSupported()) {
-                Desktop desktop = Desktop.getDesktop();
-                URI uri = null;
+            Desktop desktop = Desktop.getDesktop();
+            URI uri = null;
+            try {
+                uri = new URI("mailto:nappydevelopment@gmail.com");
+            } catch (URISyntaxException urie) {
+                urie.printStackTrace();
+            }
+            if (desktop.isSupported(Desktop.Action.MAIL)) {
                 try {
-                    uri = new URI("mailto:nappydevelopment@gmail.com");
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                if (desktop.isSupported(Desktop.Action.MAIL)) {
-                    try {
-                        desktop.mail(uri); // alternately, pass a mailto: URI in here
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    desktop.mail(uri); // alternately, pass a mailto: URI in here
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
                 }
             }
+        }
     }
+
 
 //##########################################################################################################################################
 }

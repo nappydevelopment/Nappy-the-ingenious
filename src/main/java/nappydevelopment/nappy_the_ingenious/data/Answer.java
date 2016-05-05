@@ -23,6 +23,16 @@ public enum Answer {
 			return this.textGerman;
 		}
 	}
+
+	public static Answer fromBool(boolean b) {
+		Answer ans;
+		if(b){
+			ans = Answer.YES;
+		}else{
+			ans = Answer.NO;
+		}
+		return ans;
+	}
 }
 
 //### EOF ##################################################################################################################################
