@@ -1,7 +1,9 @@
-package nappydevelopment.nappy_the_ingenious.util.gamemode2;
+package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2;
 
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,15 +26,15 @@ public class Gamemode2Test{
 		assertEquals(gm.answeredQuestions(), 1);
 	}
 
-	@Test
-	public void answerAlreadyAnsweredQuestion(){
+	@Test(expected=InvalidQuestion.class)
+	public void answerAlreadyAnsweredQuestion() throws Exception{
 		String q = gm.getQuestions().get(0);
 		assertNotNull(gm.askQuestion(q));
 		assertNull(gm.askQuestion(q));
 	}
 
-	@Test
-	public void askQuestionWhenFinished(){
+	@Test(expected=GameHasFinished.class)
+	public void askQuestionWhenFinished() throws Exception{
 		gm.endGame();
 		assertNull(gm.askQuestion("EGAL"));
 	}

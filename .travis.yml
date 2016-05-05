@@ -9,7 +9,6 @@ language: java
 
 # test for these JDK versions and environments
 jdk:
-#   - oraclejdk8
 #   - oraclejdk7
    - oraclejdk8
 
@@ -27,21 +26,14 @@ branches:
 # container-based build:
 sudo: false
 
-#before_install:
-
-#before_script:
-
 # Run Integration tests
-script: "mvn test && mvn verify"
+script:
+  - mvn verify
+  - mvn clean install sonar:sonar
 
-#after_success:
-
-#after_failure:
-
-#before_deploy:
-
-#deploy:
-
-#after_deploy:
-
-#after_script:
+# record coverage to codacy
+after_success:
+  - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
+  - java -jar jpm4j.jar -u init
+  - /home/travis/jpm/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
+  - /home/travis/jpm/bin/codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml

@@ -5,7 +5,6 @@ package nappydevelopment.nappy_the_ingenious.gui.infoStage;
 //### IMPORTS ##############################################################################################################################
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 

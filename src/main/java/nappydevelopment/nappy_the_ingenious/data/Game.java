@@ -10,12 +10,12 @@ public class Game {
 	private boolean isFinish;
 	
 	private int noOfQuestionsNappy;
-	private WikiCharacter characterThatNappyGuessed;
+	private Character characterThatNappyGuessed;
 	private boolean isNappyRight;
 	
 	private int noOfQuestionsPlayer;
-	private WikiCharacter characterThatNappyChoose;
-	private WikiCharacter characterPlayer;
+	private Character characterThatNappyChoose;
+	private Character characterPlayer;
 	private boolean isPlayerRight;
 	
 	public boolean isNappyRight() {
@@ -74,19 +74,19 @@ public boolean isFinish() {
 		this.isFinish = isFinish;
 	}
 
-	public WikiCharacter getCharacterNappy() {
+	public Character getCharacterNappy() {
 		return characterThatNappyGuessed;
 	}
 
-	public void setCharacterNappy(WikiCharacter characterNappy) {
+	public void setCharacterNappy(Character characterNappy) {
 		this.characterThatNappyGuessed = characterNappy;
 	}
 
-	public WikiCharacter getCharacterPlayer() {
+	public Character getCharacterPlayer() {
 		return characterPlayer;
 	}
 
-	public void setCharacterPlayer(WikiCharacter characterPlayer) {
+	public void setCharacterPlayer(Character characterPlayer) {
 		this.characterPlayer = characterPlayer;
 	}
 

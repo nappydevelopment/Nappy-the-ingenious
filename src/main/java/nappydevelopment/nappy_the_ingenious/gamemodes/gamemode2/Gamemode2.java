@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.util.gamemode2;
+package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,16 +7,18 @@ import java.util.*;
 
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
-import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.DatabaseProvider;
-import nappydevelopment.nappy_the_ingenious.data.Question;
-import nappydevelopment.nappy_the_ingenious.data.WikiCharacter;
+import nappydevelopment.nappy_the_ingenious.data.*;
+import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
+import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
+import nappydevelopment.nappy_the_ingenious.gamemodes.*;
 
 
 public class Gamemode2{
-	private final Map<String, Question> remainingQuestions = new HashMap<>();
-	private final Map<String,String> character = new HashMap<>();
+	private Map<String, Question> remainingQuestions;
+	private final Map<String, String> character = new HashMap<>();
 	private final Language lang;
 	private int questionCounter = 0;
 	private boolean finished = true;
@@ -28,51 +30,14 @@ public class Gamemode2{
 	){
 		lang = l;
 		try(Statement st = DatabaseProvider.getStatement()){
-			String questionSelect = "";
-			st.execute(
-				"SELECT * FROM INFORMATION_SCHEMA.COLUMNS \n" +
-				"WHERE TABLE_NAME = 'SIMPSONS'\n" +
-				"AND COLUMN_NAME NOT IN ('ID', 'NAME', 'COUNTER')\n" +
-				"AND COLUMN_NAME NOT LIKE 'NICKNAME_%'\n" +
-				"AND COLUMN_NAME NOT LIKE 'DESCRIPTION_%'"
-			);
-			ResultSet res = st.getResultSet();
-			boolean first = true;
-			while(res.next()){
-				if(!first){
-					questionSelect += " UNION ";
-				}else{
-					first = false;
-				}
-				questionSelect += "SELECT cast(id as varchar) as ID, '"+ res.getString("COLUMN_NAME") +"' as TABL, Q1_"+ lang.getCode();
-				questionSelect += " FROM " + res.getString("COLUMN_NAME") + "_QUESTIONS";
-			}
-			res.close();
-
-			questionSelect = "Select TABL, ID, Q1_"+ lang.getCode() + " from (" + questionSelect + ")" +
-							 " WHERE Q1_"+ lang.getCode() +"!= 'YOU SHOULD NOT READ THIS!'";
-			st.execute(questionSelect);
-			res = st.getResultSet();
-			while(res.next()){
-				String question = res.getString("Q1_"+ lang.getCode());
-				remainingQuestions.put(
-					question,
-					new Question(
-						res.getString("TABL"),
-						res.getString("ID"),
-						lang,
-						question
-					)
-				);
-			}
-			res.close();
+			remainingQuestions = QuestionProvider.getQuestions(lang);
 
 			if(deterministic){
 				st.execute("SELECT * FROM SIMPSONS limit 1;");
 			}else{
 				st.execute("SELECT * FROM SIMPSONS ORDER BY RANDOM() limit 1;");
 			}
-			res = st.getResultSet();
+			ResultSet res = st.getResultSet();
 			res.next();
 			for(int i = 1; i < res.getMetaData().getColumnCount(); i++){
 				character.put(res.getMetaData().getColumnName(i), res.getString(i));
@@ -91,41 +56,27 @@ public class Gamemode2{
 		return questions;
 	}
 
-	public Answer askQuestion(final String question){
-		
-		//Changed something here:
-		//Add the use of the Answer object:
-		//By the way to use here (return) null is not good programming you should throw an exception! 
-		
-		Answer ans = null;
-		
+	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished {
 		if(finished){
-			return ans;
+			throw new GameHasFinished();
 		}
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
+		if(remainingQuestions.values().stream().count() == 0){
+			throw new NoMoreQuestions();
+		}
 		if(q == null){
-			return ans;
+			throw new InvalidQuestion();
 		}
-		
-		
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
-       
-		
-		if(answer) {
-			ans = Answer.YES;
-		}
-		else {
-			ans = Answer.NO;
-		}
-		
+
 		remainingQuestions.remove(question);
 
-		return ans;
+		return Answer.fromBool(answer);
 	}
 
-	public Boolean makeGuess(final WikiCharacter wiki){
+	public Boolean makeGuess(final Character wiki){
 		return makeGuess(wiki.getName());
 	}
 	public Boolean makeGuess(final String name){
@@ -138,7 +89,7 @@ public class Gamemode2{
 
 	public boolean finished(){ return finished; }
 
-	public WikiCharacter endGame(){
+	public Character endGame(){
 		if(finished){ return null; }
 		finished = true;
 
@@ -158,11 +109,12 @@ public class Gamemode2{
 				throw e;
 			}
 		}
-		return new WikiCharacter(
+		return new Character(
 			character.get("NAME"),
 			nicknames,
 			descriptions,
-			img
-		);
+			img,
+			Gender.fromBool(character.get("MALE").equals("TRUE")),
+			Age.fromString(character.get("AGE")));
 	}
 }

@@ -31,7 +31,7 @@ public class DatabaseProvider{
 			}
 			res.close();
 			st.close();
-		}catch(Exception e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
@@ -52,24 +52,11 @@ public class DatabaseProvider{
 		return true;
 	}
 
-	public static Connection getConnection(){
+	public static Statement getStatement() throws SQLException{
 		if(dbConn == null){
 			createConnection();
 		}
-		return dbConn;
-	}
-
-	public static Statement getStatement(){
-		Statement st;
-		if(dbConn == null){
-			createConnection();
-		}
-		try{
-			st = dbConn.createStatement();
-		}catch(Exception e){
-			return null;
-		}
-		return st;
+		return dbConn.createStatement();
 	}
 
 	public void closeDatabase(){
