@@ -22,7 +22,6 @@ public class Gamemode1{
 
 	private final Language lang;
 	private boolean deterministic = false;
-	private boolean firstQuestion = true;
 	private boolean finished = true;
 
 	private Map<String, Question> questions;
@@ -58,7 +57,6 @@ public class Gamemode1{
 		}
 		questions.get(activeQuestion.getQuestion()).setAnswer(answer);
 		activeQuestion = null;
-		firstQuestion = false;
     }
 
     public int getNumDunno(){
@@ -89,13 +87,11 @@ public class Gamemode1{
 
 	private String generateWhere(){
 		String where = " WHERE ";
-		if(firstQuestion == false){
-			boolean first = true;
-			for(Question question : questions.values()){
-				where += question.genWhere(first);
-				if(first && !" WHERE ".equals(where)){
-					first = false;
-				}
+		boolean first = true;
+		for(Question question : questions.values()){
+			where += question.genWhere(first);
+			if(first && !" WHERE ".equals(where)){
+				first = false;
 			}
 		}
 		if(" WHERE ".equals(where)){
