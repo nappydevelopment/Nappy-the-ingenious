@@ -32,7 +32,7 @@ public class Gamemode2Test{
 	}
 
 	@Test
-	public void answeredQuestionCounter(){
+	public void answeredQuestionCounter() throws GameHasFinished{
 		assertEquals(gm.answeredQuestions(), 0);
 		gm.makeGuess(gm.getQuestions().get(0));
 		assertEquals(gm.answeredQuestions(), 1);
@@ -51,31 +51,33 @@ public class Gamemode2Test{
 		assertNull(gm.askQuestion("EGAL"));
 	}
 	@Test
-	public void makeGuess(){
+	public void makeGuess() throws GameHasFinished{
 		assertFalse(gm_det.makeGuess("Jeff Albertson"));
 		assertTrue(gm_det.makeGuess("Eleanor Abernathy"));
 		gm_det.endGame();
-		assertNull(gm_det.makeGuess("EGAL"));
-
-		gm_det.makeGuess(CharacterProvider.getCharacters().get(0));
+	}
+	@Test(expected=GameHasFinished.class)
+	public void makeGuessAfterFinished() throws GameHasFinished{
+		gm.endGame();
+		gm.makeGuess("EGAL");
 	}
 
 	@Test
-	public void endGame(){
+	public void endGame() throws GameHasFinished{
 		assertEquals(
 			gm_det.endGame(),
 			CharacterProvider.getCharacters().get(0)
 		);
 	}
 
-	@Test
-	public void doubleEndGame(){
+	@Test(expected=GameHasFinished.class)
+	public void doubleEndGame() throws GameHasFinished{
 		assertNotNull(gm.endGame());
 		assertNull(gm.endGame());
 	}
 
 	@Test
-	public void finished(){
+	public void finished() throws GameHasFinished{
 		assertFalse(gm.isFinished());
 		gm.endGame();
 		assertTrue(gm.isFinished());
