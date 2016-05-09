@@ -4,7 +4,6 @@ package nappydevelopment.nappy_the_ingenious;
 
 //### IMPORTS ##############################################################################################################################
 
-import java.util.List;
 //JavaFX imports:
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,19 +13,18 @@ import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
-import nappydevelopment.nappy_the_ingenious.exception.ChangeLanguageException;
+import nappydevelopment.nappy_the_ingenious.exception.*;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.Gamemode1;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.Gamemode2;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
 import nappydevelopment.nappy_the_ingenious.gui.infoStage.InfoStageController;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
 import nappydevelopment.nappy_the_ingenious.gui.settingsStage.SettingsStageController;
 import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageController;
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
-import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.Gamemode1;
-import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
-import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
-import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.Gamemode2;
-import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
-import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
+
+import java.util.List;
+
 
 
 public class Program extends Application {
@@ -416,7 +414,12 @@ public class Program extends Application {
 		
 		//Read out the questions that the player can ask:
 		//TODO: Not really nice logic should return a list of questions (Strings) depending on a language parameter:
-		List<String> questions = gm2Logic.getQuestions();
+		List<String> questions = null;
+		try{
+			questions = gm2Logic.getQuestions();
+		}catch(GameHasFinished gameHasFinished){
+			gameHasFinished.printStackTrace();
+		}
 
 		this.mainStageController.showGamemode2View();
 		this.mainStageController.showQuestions(true, questions);
