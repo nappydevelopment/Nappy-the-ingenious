@@ -1,7 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.wikiStage;
 
 import java.awt.RenderingHints;
-import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 
