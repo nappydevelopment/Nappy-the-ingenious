@@ -83,7 +83,7 @@ public class Utils {
     														 targetHeight, 
     														 hint,
     														 scalFactor,
-    														 true);
+    														 higherQuality);
     	
     	return SwingFXUtils.toFXImage(scalImg, (WritableImage)helpImg);
 	}
