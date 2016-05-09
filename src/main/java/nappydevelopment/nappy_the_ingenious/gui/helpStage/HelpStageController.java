@@ -96,12 +96,12 @@ public class HelpStageController {
 	
 	public void changeLanguageToGerman() {
 		this.res.setTextsToGerman();
-		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_de.html");
+		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_bright.html");
 	}
 		
 	public void changeLanguageToEnglish() {
 		this.res.setTextsToEnglish();
-		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instructions_en.html");
+		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_bright.html");
 	}
 		
 //##########################################################################################################################################
