@@ -5,16 +5,16 @@ import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
 import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
-import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class Gamemode1{
 	private int numDunno = 0;
@@ -130,15 +130,16 @@ public class Gamemode1{
 		if(activeQuestion != null){
 			return activeQuestion.getQuestion();
 		}
-		try{
-			activeQuestion = questions.values().stream()
-				.filter(q -> !q.answered())
-				.max((q1, q2) -> Float.compare(
-					q1.tryQuestion(generateWhere(), deterministic),
-					q2.tryQuestion(generateWhere(), deterministic)
+		Optional<Question> bestMatch = questions.values().stream()
+			.filter(q -> !q.answered())
+			.max((q1, q2) -> Float.compare(
+				q1.tryQuestion(generateWhere(), deterministic),
+				q2.tryQuestion(generateWhere(), deterministic)
 				)
-			).get();
-		}catch(NoSuchElementException e){
+			);
+		if(bestMatch.isPresent()){
+			activeQuestion = bestMatch.get();
+		}else{
 			activeQuestion = null; // just to be sure
 			throw new NoMoreQuestions();
 		}
