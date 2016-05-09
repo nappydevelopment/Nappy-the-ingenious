@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.CharacterFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
+import nappydevelopment.nappy_the_ingenious.data.Gender;
+import nappydevelopment.nappy_the_ingenious.data.Age;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
@@ -30,7 +32,7 @@ public class WikiStageController {
 
 //### ATTRIBUTES ###########################################################################################################################
 	
-	private Program program;
+	private boolean initialShowing;
 			
 	private WikiStageView view;
 	private WikiStageResources res;
@@ -40,9 +42,7 @@ public class WikiStageController {
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
-	public WikiStageController(Program prog) {
-		this.program = prog;
-	}
+	public WikiStageController() {}
 			
 //### INITIAL METHODS ######################################################################################################################
 			
@@ -55,6 +55,8 @@ public class WikiStageController {
 		this.aeh = new ViewActionEventHandler();
 		//Initialize the view:
 		this.view = new WikiStageView(this.res, this.aeh, chars);
+		
+		this.initialShowing = true;
 		//Set character list:
 		this.characters = chars;
 		//Set the bindings to the view-components:
@@ -85,21 +87,45 @@ public class WikiStageController {
 		@Override
 		public void handle(ActionEvent e) {
 		
-			if(e.getSource() == view.btnResetFilter) {
+			Object src = e.getSource();
+			
+			if(src == view.btnResetFilter) {
 				WikiStageController.this.resetFilter();
 			}
-			else if(e.getSource() == view.txfSearchField) {
-				CharacterFilter filter = new CharacterFilter(WikiStageController.this.view.txfSearchField.getText());
-				WikiStageController.this.changeCharacterListView(CharacterProvider.search(
-						WikiStageController.this.characters,
-						filter
-				));
+			else if(src == view.rbtFemale || 
+					src == view.rbtMale   ||
+					src == view.rbtYoung  ||
+					src == view.rbtMiddle ||
+					src == view.rbtOld    ||
+					src == view.txfSearchField) {
+				WikiStageController.this.setFilter();
 			}
+
 		}
 				
 	}
 
 //### PRIVATE METHODS ######################################################################################################################
+	
+	private void setFilter() {
+		
+		Age age = Age.UNKNOWN;
+		Gender gender = Gender.UNKNOWN;
+		
+		if(this.view.tggAge.getSelectedToggle() != null) {
+			age = (Age) this.view.tggAge.getSelectedToggle().getUserData();
+		}
+        
+		if(this.view.tggGender.getSelectedToggle() != null) {
+			gender = (Gender) this.view.tggGender.getSelectedToggle().getUserData();
+		}
+		
+		//Create a new character filter:
+		CharacterFilter filter = new CharacterFilter(WikiStageController.this.view.txfSearchField.getText(), gender, age);
+		//Update character list:
+		this.changeCharacterListView(CharacterProvider.search(WikiStageController.this.characters, filter));
+		
+	}
 	
 	private void resetFilter() {
 		
@@ -109,6 +135,8 @@ public class WikiStageController {
 		this.view.rbtMiddle.setSelected(false);
 		this.view.rbtOld.setSelected(false);
 		this.view.txfSearchField.setText("");
+		//Reset character list:
+		this.changeCharacterListView(this.characters);
 		
 	}
 	
@@ -119,6 +147,7 @@ public class WikiStageController {
 		//### Generate content wiki-character ##################################
 		this.view.vbxContentPane.getChildren().clear();
 		
+		System.out.println("RENDERING FAST!!!");
         ListIterator<Character> listIterator = chars.listIterator();
         
         //Run through all wiki-characters:
@@ -150,7 +179,7 @@ public class WikiStageController {
         		System.out.println("Image Null");
         	}
         	else {
-        		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+        		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, false));
         	}
         	
         	Rectangle imgRec = new Rectangle();
@@ -181,12 +210,9 @@ public class WikiStageController {
         	lblDescription.setWrapText(true);
         	//Add elements to their containers: 
         	vbxBox.getChildren().addAll(lblName, lblDescription);
-        	hbxBox.getChildren().addAll(hbxImage, vbxBox);
-        	
-        	//Add current character-gui-elements to the main-container:
-        	
+        	hbxBox.getChildren().addAll(hbxImage, vbxBox);   	
         	this.view.vbxContentPane.getChildren().add(hbxBox);
-    		//this.view.bdpRootPane.setCenter(new Group());
+ 
         }	
         
     	this.view.scpContentPane.setContent(this.view.vbxContentPane);
@@ -202,7 +228,12 @@ public class WikiStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
-	    this.resetFilter();
+		if(this.initialShowing) {
+			this.initialShowing = false;
+		}
+		else {
+			this.resetFilter();
+		}
 		this.view.show();
 	}
 			

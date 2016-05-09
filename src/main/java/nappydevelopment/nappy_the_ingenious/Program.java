@@ -70,7 +70,7 @@ public class Program extends Application {
 		this.statisticStageController = new StatisticStageController(this);
 		this.settingsStageController = new SettingsStageController(this);
 		this.helpStageController = new HelpStageController();
-		this.wikiStageController = new WikiStageController(this);
+		this.wikiStageController = new WikiStageController();
 		this.infoStageController = new InfoStageController(this);
 		
 

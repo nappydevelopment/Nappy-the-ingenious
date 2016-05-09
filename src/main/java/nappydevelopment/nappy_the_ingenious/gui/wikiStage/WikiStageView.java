@@ -27,7 +27,9 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import nappydevelopment.nappy_the_ingenious.data.Age;
 import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.Gender;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.components.TitledBorderPane;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
@@ -127,12 +129,18 @@ public class WikiStageView extends Stage {
 		this.tbpGender.lblTitle.setTextFill(Color.WHITE);
 		this.hbxGenderContent = new HBox(10);
 		this.tggGender = new ToggleGroup();
+		
 		this.rbtMale = new RadioButton();
 		this.rbtMale.setToggleGroup(this.tggGender);
 		this.rbtMale.setTextFill(Color.WHITE);
+		this.rbtMale.setUserData(Gender.MALE);
+		this.rbtMale.setOnAction(aeh);
+		
 		this.rbtFemale = new RadioButton();
 		this.rbtFemale.setToggleGroup(this.tggGender);
 		this.rbtFemale.setTextFill(Color.WHITE);
+		this.rbtFemale.setUserData(Gender.FEMALE);
+		this.rbtFemale.setOnAction(aeh);
 		
 		this.tbpAge = new TitledBorderPane();
 		this.hbxAgeContent = new HBox(10);
@@ -140,12 +148,21 @@ public class WikiStageView extends Stage {
 		this.rbtYoung = new RadioButton();
 		this.rbtYoung.setTextFill(Color.WHITE);
 		this.rbtYoung.setToggleGroup(this.tggAge);
+		this.rbtYoung.setUserData(Age.YOUNG);
+		this.rbtYoung.setOnAction(aeh);
+		
 		this.rbtMiddle = new RadioButton();
 		this.rbtMiddle.setTextFill(Color.WHITE);
 		this.rbtMiddle.setToggleGroup(this.tggAge);
+		this.rbtMiddle.setUserData(Age.ADULT);
+		this.rbtMiddle.setOnAction(aeh);
+		
 		this.rbtOld = new RadioButton();
 		this.rbtOld.setTextFill(Color.WHITE);
 		this.rbtOld.setToggleGroup(this.tggAge);
+		this.rbtOld.setUserData(Age.OLD);
+		this.rbtOld.setOnAction(aeh);
+		
 		this.tbpAge.setStyle("-fx-content-display: top;" +
 	              "-fx-border-color: white;" +
 				  "-fx-border-width: 2;");
@@ -162,7 +179,7 @@ public class WikiStageView extends Stage {
 		//### Generate content wiki-character ##################################
 		
         ListIterator<Character> listIterator = chars.listIterator();
-        
+        System.out.println("RENDERING SLOW!!!");
         //Run through all wiki-characters:
         while (listIterator.hasNext()) {
         	
