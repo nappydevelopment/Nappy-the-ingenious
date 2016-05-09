@@ -11,18 +11,18 @@ public class Game {
 	
 	private int noOfQuestionsNappy;
 	private Character characterThatNappyGuessed;
-	private boolean isNappyRight;
+	private Answer isNappyRight;
 	
 	private int noOfQuestionsPlayer;
 	private Character characterThatNappyChoose;
 	private Character characterPlayer;
 	private boolean isPlayerRight;
 	
-	public boolean isNappyRight() {
+	public Answer isNappyRight() {
 		return isNappyRight;
 	}
 
-	public void setNappyRight(boolean isNappyRight) {
+	public void setNappyRight(Answer isNappyRight) {
 		this.isNappyRight = isNappyRight;
 	}
 	
@@ -56,7 +56,7 @@ public class Game {
 		
 		this.noOfQuestionsNappy = 0;
 		this.characterThatNappyGuessed = null;
-		this.isNappyRight = false;
+		this.isNappyRight = null;
 		
 		this.noOfQuestionsPlayer = 0;
 		this.characterPlayer = null;

@@ -364,7 +364,7 @@ public class Program extends Application {
 	 * 
 	 * @param isNappyRight
 	 */
-	public void setIfNappyIsRight(boolean isNappyRight) {
+	public void setIfNappyIsRight(Answer isNappyRight) {
 		
 		//Set if nappy guessed the character right or not:
 		this.game.setNappyRight(isNappyRight);
@@ -376,13 +376,27 @@ public class Program extends Application {
 	/* finishGamemode1 [method]: Method that show the status dialog of gamemode1 and start gamemode2 or finish the game */
 	private void finishGamemode1() {
 		
-		//Show status dialog gamemode1:
-		boolean playGM2 = this.mainStageController.showStatusDialogGM1(
-				         	  Settings.getGameMode().askForGamemode2(),
-				         	  this.game.isNappyRight(),
-				         	  this.game.getNoOfQuestionsNappy(),
-				         	  this.game.getCharacterNappy().getWikiImage(),
-				         	  this.game.getCharacterNappy().getName());
+		boolean playGM2;
+		
+		//If Nappy could not guess the character (not the same as Nappy guess the worng character):
+		if(game.isNappyRight() == Answer.DONT_KNOW) {
+			//Show status dialog gamemode1:
+			playGM2 = this.mainStageController.showStatusDialogGM1(
+					         	  Settings.getGameMode().askForGamemode2(),
+					         	  this.game.isNappyRight(),
+					         	  this.game.getNoOfQuestionsNappy(),
+					         	  null,
+					         	  null);
+		}
+		else {
+			//Show status dialog gamemode1:
+			playGM2 = this.mainStageController.showStatusDialogGM1(
+					         	  Settings.getGameMode().askForGamemode2(),
+					         	  this.game.isNappyRight(),
+					         	  this.game.getNoOfQuestionsNappy(),
+					         	  this.game.getCharacterNappy().getWikiImage(),
+					         	  this.game.getCharacterNappy().getName());
+		}
 		
 		//If Player want to play gamemode2:
 		if(playGM2) {
@@ -405,14 +419,22 @@ public class Program extends Application {
 		List<String> questions = gm2Logic.getQuestions();
 
 		this.mainStageController.showGamemode2View();
-		this.mainStageController.showQuestions(questions);
+		this.mainStageController.showQuestions(true, questions);
 	}
 	
 	public void askQuestion(String question) {
-		try{
+		
+		try {
+			
 			Answer answer = this.gm2Logic.askQuestion(question);
 			this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
-		}catch(InvalidQuestion|NoMoreQuestions|GameHasFinished e){
+			
+			//Read out the new list of questions:
+			List<String> questions = gm2Logic.getQuestions();
+			//Show the new list:
+			this.mainStageController.showQuestions(false, questions);
+			
+		} catch(InvalidQuestion|NoMoreQuestions|GameHasFinished e){
 			e.printStackTrace();
 		}
 	}
