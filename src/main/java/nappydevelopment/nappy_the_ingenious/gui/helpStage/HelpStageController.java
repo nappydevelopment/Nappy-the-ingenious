@@ -48,7 +48,6 @@ public class HelpStageController {
 				
 	}
 		
-		
 //### INNER CLASSES ########################################################################################################################
 
 	//Event-Handler that handles all ActionEvents of the view

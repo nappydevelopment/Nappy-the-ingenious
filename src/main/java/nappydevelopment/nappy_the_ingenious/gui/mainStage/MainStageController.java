@@ -7,27 +7,35 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
 import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.QuestAnsElement;
+import nappydevelopment.nappy_the_ingenious.data.QuestAnsList;
 import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
-import java.awt.*;
+import java.awt.RenderingHints;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
 
 
@@ -198,11 +206,12 @@ public class MainStageController {
 			}
 			else if(src == view.btnAskQuestion) {
 				
-				MainStageController.this.program.askQuestion(MainStageController.this.view.cmbQuestions.getValue());
+				MainStageController.this.program.askQuestion(MainStageController.this.view.cmbQuestions.getValue().getQuestion());
 			}
 			else if(src == view.cmbQuestions) {
 				//Adopt the question from the combobox to the label:
 				MainStageController.this.adoptQuestion();
+				//view.cmbQuestions.setCellFactory(value);
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
@@ -648,18 +657,19 @@ public class MainStageController {
 	 * 
 	 * @param questions
 	 */
-	public void showQuestions(Boolean isTheFirstQuestion, List<String> questions) {	
+	public void showQuestions(Boolean isTheFirstQuestion, QuestAnsList qal) {	
 		
 		this.view.cmbQuestions.getItems().clear();
-		this.view.cmbQuestions.getItems().addAll(questions);
+		this.view.cmbQuestions.getItems().addAll(qal);
 		
 		if(isTheFirstQuestion) {
 			System.out.println("Is the first question!");
-			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
+			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
 			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
 		}
 		else {
-			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
+			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
+			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
 		}
 
 		this.view.btnAskQuestion.setDisable(true);
@@ -673,19 +683,18 @@ public class MainStageController {
 		if(this.view.cmbQuestions.getItems().isEmpty()) {
 			return;
 		}
-		if(this.view.cmbQuestions.getValue() != this.res.cmbQuestionsTextSelectAQuestion &&
-		   this.view.cmbQuestions.getValue() != this.res.cmbQuestionsTextSelectNextQuestion) {
+		if(this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectAQuestion &&
+		   this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectNextQuestion) {
 			
-		   this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
+		   this.view.lblInfo.setText(this.view.cmbQuestions.getValue().getQuestion());
 		   this.view.lblAnswer.setText("");
 		   this.view.btnAskQuestion.setDisable(false);
 		}
 		else {
-			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
+			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
 			this.view.btnAskQuestion.setDisable(true);
 		}
 	}
-	
 	
 
 	public String showEnterNameDialog() {
