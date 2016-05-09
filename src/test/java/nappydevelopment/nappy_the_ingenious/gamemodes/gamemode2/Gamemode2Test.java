@@ -4,8 +4,11 @@ import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
+import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +20,15 @@ public class Gamemode2Test{
 	public void init(){
 		gm = new Gamemode2(Language.GERMAN);
 		gm_det = new Gamemode2(Language.GERMAN, true);
+	}
+
+	@Test
+	public void removeAnsweredQuestions() throws InvalidQuestion, GameHasFinished, NoMoreQuestions{
+		List<String> questions = gm.getQuestions();
+		int last = questions.size();
+		gm.askQuestion(questions.get(0));
+		questions = gm.getQuestions();
+		assertTrue(questions.size() < last);
 	}
 
 	@Test
