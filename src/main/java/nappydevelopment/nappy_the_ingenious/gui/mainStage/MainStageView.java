@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -422,15 +424,18 @@ public class MainStageView extends Stage {
                          	lblQuest.setStyle("-fx-text-fill: black;");
                          	Label lblAns   = new Label(qae.getAnswer());
                          	lblAns.setStyle("-fx-text-fill: black;");
-                 		
+                         	Image image = new Image(GlobalReferences.CURSORS_PATH + "pointer.png");
+                     		setCursor(new ImageCursor(image,10,1));
                          	GridPane grid = new GridPane();
                          	grid.setMaxWidth(425);
                          	grid.setPadding(new Insets(0,5,0,0));
                          	if(qae.getAnswer() != "") {
                          		//grid.setStyle("-fx-background-color: #C0C0C0;");
                          		setStyle("-fx-background-color: #E0E0E0;");
-                             	lblQuest.setStyle("-fx-text-fill: #A2A2A2;");
-                             	lblAns.setStyle("-fx-text-fill: #A2A2A2;");
+                         		image = new Image(GlobalReferences.CURSORS_PATH + "not-allowed.png");
+                         		setCursor(new ImageCursor(image,5,5));
+                             	lblQuest.setStyle("-fx-text-fill: #A5A5A5;");
+                             	lblAns.setStyle("-fx-text-fill: #A5A5A5;");
                          	}
                          	
                          	//Set the column-rate:
@@ -548,6 +553,8 @@ public class MainStageView extends Stage {
 
 
 		this.scene = new Scene(this.bdpRootPane, 445, 693);
+ 		Image image = new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png");
+		this.scene.setCursor(new ImageCursor(image,0,0));
 		this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());;
 		this.setScene(this.scene);
 		this.setTitle("Nappy, the ingenious");

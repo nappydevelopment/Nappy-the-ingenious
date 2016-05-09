@@ -11,6 +11,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -496,6 +497,9 @@ public class MainStageController {
 			ButtonType bttOk = new ButtonType(this.res.statusDialogGM1BtnOkText);
 	    	
 	    	Alert alert = new Alert(AlertType.CONFIRMATION);
+	    	
+	 		Image image = new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png");
+			alert.getDialogPane().setCursor(new ImageCursor(image,0,0));
 	    	
 	    	if(isNappyRight == Answer.YES) {
 	    	
