@@ -650,6 +650,7 @@ public class MainStageController {
 	 */
 	public void showQuestions(Boolean isTheFirstQuestion, List<String> questions) {	
 		
+		this.view.cmbQuestions.getItems().clear();
 		this.view.cmbQuestions.getItems().addAll(questions);
 		
 		if(isTheFirstQuestion) {
@@ -669,6 +670,9 @@ public class MainStageController {
 	 */
 	private void adoptQuestion() {
 		
+		if(this.view.cmbQuestions.getItems().isEmpty()) {
+			return;
+		}
 		if(this.view.cmbQuestions.getValue() != this.res.cmbQuestionsTextSelectAQuestion &&
 		   this.view.cmbQuestions.getValue() != this.res.cmbQuestionsTextSelectNextQuestion) {
 			
