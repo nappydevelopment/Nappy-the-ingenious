@@ -75,7 +75,7 @@ public class Gamemode2{
 		}
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
 
-		remainingQuestions.remove(q);
+		remainingQuestions.remove(question);
 
 		return Answer.fromBool(answer);
 	}
