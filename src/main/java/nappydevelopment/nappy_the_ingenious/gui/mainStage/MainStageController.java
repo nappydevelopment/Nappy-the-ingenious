@@ -173,23 +173,30 @@ public class MainStageController {
 				}
 				//Acts the button as right button for the guessed character:
 				else if("btnRight".equals(((Button)src).getId())) {
-					MainStageController.this.program.setIfNappyIsRight(true);
+					MainStageController.this.program.setIfNappyIsRight(Answer.YES);
 				}
 			}
 			else if(src == view.btnNo) {
+				
 				//Act the button as yes button for questions:
 				if("btnNo".equals(((Button)src).getId())) {
 					MainStageController.this.program.setQuestionAnswer(Answer.NO);
 				}
 				//Acts the button as right button for the guessed character:
 				else if("btnWrong".equals(((Button)src).getId())) {
-					MainStageController.this.program.setIfNappyIsRight(false);
+					MainStageController.this.program.setIfNappyIsRight(Answer.NO);
 				}
 					
 			}
 			else if(src == view.btnIdontKnow) {
+		
+				if("btnIdontKnow".equals(((Button)src).getId())) {
+					MainStageController.this.program.setQuestionAnswer(Answer.DONT_KNOW);
+				}
+				else if("btnContinue".equals(((Button)src).getId())) {
+					MainStageController.this.program.setIfNappyIsRight(Answer.DONT_KNOW);
+				}
 				
-				MainStageController.this.program.setQuestionAnswer(Answer.DONT_KNOW);
 			}
 			else if(src == view.btnAskQuestion) {
 				
@@ -242,74 +249,14 @@ public class MainStageController {
 	}
 	
 	
-    public boolean showStatusDialogGM1(boolean askForMode2, boolean isNappyRight, int noOfQuestions, Image imgCharacter, String nameCharacter) {
-    	
-	    HBox hbxCharacter = new HBox();
-	    hbxCharacter.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
-	                          "-fx-padding: 5;" +
-	                          "-fx-background-color: #FFD90F;" +
-	                          "-fx-background-radius: 5;");
-	    ImagePattern impCharacter = new ImagePattern(Utils.getScaledInstance(imgCharacter, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-	    
-    	Rectangle recCharacter = new Rectangle();
-		recCharacter.setWidth(110);
-		recCharacter.setHeight(110);
-		recCharacter.setArcHeight(8);
-		recCharacter.setArcWidth(8);
-		recCharacter.setFill(impCharacter);
-		
-		hbxCharacter.getChildren().add(recCharacter);
-    	
-		//Create the dialog buttons:
-		ButtonType bttApply = new ButtonType(this.res.statusDialogGM1BtnApplyText);
-		ButtonType bttCancel = new ButtonType(this.res.statusDialogGM1BtnCancelText);
-		ButtonType bttOk = new ButtonType(this.res.statusDialogGM1BtnOkText);
-    	
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	
-    	if(isNappyRight == true) {
-    	
-    		alert.setHeaderText(this.res.statusDialogGM1StatusTextRight1 + 
-    			            	nameCharacter + 
-    			            	this.res.statusDialogGM1StatusTextRight2 +
-    			            	"\n" +
-    			            	this.res.statusDialogGM1StatusTextRight3 +
-    			            	noOfQuestions + 
-    			            	this.res.statusDialogGM1StatusTextRight4);
-    		alert.setGraphic(hbxCharacter);
-    	}
-    	else {
-    		
-    		alert.setHeaderText(this.res.statusDialogGM1StatusTextWrong);
-    		alert.setGraphic(new Group());
-    	}
-    	
-		if(Settings.getColoScheme() == ColorScheme.DARK) {
-			alert.getDialogPane().getStylesheets().clear();
-			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
-		}
-		
-    	alert.setTitle(this.res.statusDialogGM1Title);
-    	
-    	
-    	if(askForMode2 == true) {
-    		alert.getButtonTypes().setAll(bttApply, bttCancel);
-    		alert.setContentText(this.res.statusDialogGM1Question);
-    	}
-    	else {
-    		alert.getButtonTypes().setAll(bttOk);
-    	}
-    	
-    	Optional<ButtonType> result = alert.showAndWait();
-    	
-    	if (result.get() == bttApply){
-    	    return true;
-    	} else {
-    	    return false;
-    	}
-    }
+   
     
-    
+    /* updateInfo [method]: Method to update the progress elements (progress-bars / -labels) *//**
+     * 
+     * @param noq
+     * @param noqInPercent
+     * @param surness
+     */
 	public void updateInfo(int noq, float noqInPercent, float surness) {
 		
 		this.view.pgbKnowledge.getProgressBar().setProgress(surness);
@@ -319,7 +266,6 @@ public class MainStageController {
 	}
 	
 
-	
 //### PUBLIC METHODS #######################################################################################################################
 	
 	//### Methods to show the start view ###########################################################
@@ -380,7 +326,6 @@ public class MainStageController {
 		//Show the stage:
 		this.view.show();
 		
-		
 	}
 	
 	//### Methods for gamemode 1 ###################################################################
@@ -407,8 +352,11 @@ public class MainStageController {
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");	
 		this.view.btnYes.setDisable(false);
+		this.view.btnYes.setId("btnYes");
 		this.view.btnNo.setDisable(false);
+		this.view.btnNo.setId("btnNo");
 		this.view.btnIdontKnow.setDisable(false);
+		this.view.btnIdontKnow.setId("btnIdontKnow");
 		
 		this.res.setBtnYesTextToYes();
 		this.res.setBtnNoTextToNo();
@@ -495,6 +443,7 @@ public class MainStageController {
 		
 		//Clear text of the question label:
 		this.view.lblQuestion.setText("");
+		this.view.btnIdontKnow.setId("btnContinue");
 		this.res.setBtnIdontKnowTextToContinue();
 		
 		this.view.btnYes.setDisable(true);
@@ -527,6 +476,76 @@ public class MainStageController {
 		
 	}
 	
+	
+	public boolean showStatusDialogGM1(boolean askForMode2, Answer isNappyRight, int noOfQuestions, Image imgCharacter, String nameCharacter) {
+	    	
+			//Create the dialog buttons:
+			ButtonType bttApply = new ButtonType(this.res.statusDialogGM1BtnApplyText);
+			ButtonType bttCancel = new ButtonType(this.res.statusDialogGM1BtnCancelText);
+			ButtonType bttOk = new ButtonType(this.res.statusDialogGM1BtnOkText);
+	    	
+	    	Alert alert = new Alert(AlertType.CONFIRMATION);
+	    	
+	    	if(isNappyRight == Answer.YES) {
+	    	
+	    		alert.setHeaderText(this.res.statusDialogGM1StatusTextRight1 + 
+	    			            	nameCharacter + 
+	    			            	this.res.statusDialogGM1StatusTextRight2 +
+	    			            	"\n" +
+	    			            	this.res.statusDialogGM1StatusTextRight3 +
+	    			            	noOfQuestions + 
+	    			            	this.res.statusDialogGM1StatusTextRight4);
+	    		
+			    HBox hbxCharacter = new HBox();
+			    hbxCharacter.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+			                          "-fx-padding: 5;" +
+			                          "-fx-background-color: #FFD90F;" +
+			                          "-fx-background-radius: 5;");
+			    ImagePattern impCharacter = new ImagePattern(Utils.getScaledInstance(imgCharacter, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+			    
+		    	Rectangle recCharacter = new Rectangle();
+				recCharacter.setWidth(110);
+				recCharacter.setHeight(110);
+				recCharacter.setArcHeight(8);
+				recCharacter.setArcWidth(8);
+				recCharacter.setFill(impCharacter);
+				
+				hbxCharacter.getChildren().add(recCharacter);
+	    		
+	    		alert.setGraphic(hbxCharacter);
+	    	}
+	    	else {
+	    		
+	    		alert.setHeaderText(this.res.statusDialogGM1StatusTextWrong);
+	    		alert.setGraphic(new Group());
+	    	}
+	    	
+			if(Settings.getColoScheme() == ColorScheme.DARK) {
+				alert.getDialogPane().getStylesheets().clear();
+				alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+			}
+			
+	    	alert.setTitle(this.res.statusDialogGM1Title);
+	    	
+	    	
+	    	if(askForMode2 == true) {
+	    		alert.getButtonTypes().setAll(bttApply, bttCancel);
+	    		alert.setContentText(this.res.statusDialogGM1Question);
+	    	}
+	    	else {
+	    		alert.getButtonTypes().setAll(bttOk);
+	    	}
+	    	
+	    	Optional<ButtonType> result = alert.showAndWait();
+	    	
+	    	if (result.get() == bttApply){
+	    	    return true;
+	    	} else {
+	    	    return false;
+	    	}
+	    }
+	    
+	
 	//### Methods for gamemode 2 ###################################################################
 	
 	/* showGamemode2View [method]: *//**
@@ -534,11 +553,12 @@ public class MainStageController {
 	 */
 	public void showGamemode2View() {
 		
-		//Reset ProgressBars:
+		//Reset progress-bars:
 		this.view.pgbKnowledge.getProgressBar().setPrefSize(380, 20);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
 		this.view.pgbNoOfQuest.getProgressBar().setPrefSize(380, 20);
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
+		//Reset the progress-labels:
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
 		
@@ -614,36 +634,54 @@ public class MainStageController {
 		
 	}
 
-	/* showAnswer [method]: Method to show the answer form Nappy to a question */
+	/* showAnswer [method]: Method to show the answer form Nappy to a question *//**
+	 * 
+	 * @param answer
+	 */
 	public void showAnswer(String answer) {
 		this.view.lblAnswer.setText(answer);
 	}
 	
-	public void showQuestions(List<String> questions) {	
+	/* showQuestions [method]: Method to set the questions in the combobox *//**
+	 * 
+	 * @param questions
+	 */
+	public void showQuestions(Boolean isTheFirstQuestion, List<String> questions) {	
 		
 		this.view.cmbQuestions.getItems().addAll(questions);
-		this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
-		this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
+		
+		if(isTheFirstQuestion) {
+			System.out.println("Is the first question!");
+			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
+			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
+		}
+		else {
+			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
+		}
+
 		this.view.btnAskQuestion.setDisable(true);
 	}
 	
-	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label */
+	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label *//**
+	 * 
+	 */
 	private void adoptQuestion() {
 		
-		if(this.view.cmbQuestions.getValue() != null) {
-			this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
-			this.view.btnAskQuestion.setDisable(false);
+		if(this.view.cmbQuestions.getValue() != this.res.cmbQuestionsTextSelectAQuestion &&
+		   this.view.cmbQuestions.getValue() != this.res.cmbQuestionsTextSelectNextQuestion) {
+			
+		   this.view.lblInfo.setText(this.view.cmbQuestions.getValue());
+		   this.view.lblAnswer.setText("");
+		   this.view.btnAskQuestion.setDisable(false);
 		}
 		else {
-			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
-			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
+			this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
 			this.view.btnAskQuestion.setDisable(true);
 		}
 	}
 	
 	
-	
-	
+
 	public String showEnterNameDialog() {
 
 		TextInputDialog dialog = new TextInputDialog("walter");
@@ -669,6 +707,7 @@ public class MainStageController {
 		return null;
 	}
 
+	
 	/* changeThemeToDarkTheme [method]: *//**
 	 * 
 	 */
