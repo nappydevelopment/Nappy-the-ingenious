@@ -67,7 +67,7 @@ public class MainStageResources {
 	String btnIdontKnowTextIknow;
 	
 	String cmbQuestionsTextSelectAQuestion;
-	String cmbQuestionsTextSelectNextAnswer;
+	String cmbQuestionsTextSelectNextQuestion;
 
 	//### Abort Dialog Texts #######################################################################
 
@@ -257,7 +257,8 @@ public class MainStageResources {
 		this.btnIdontKnowTextContinue = "Continue";
 		this.btnIdontKnowTextIknow = "I think I know your character";
 		
-		this.cmbQuestionsTextSelectAQuestion = "Select a question";
+		this.cmbQuestionsTextSelectAQuestion = "Select a question...";
+		this.cmbQuestionsTextSelectNextQuestion = "Select the next question...";
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -323,7 +324,8 @@ public class MainStageResources {
 		this.btnIdontKnowTextContinue = "Fortfahren";
 		this.btnIdontKnowTextIknow = "Ich glaube ich kennen deinen Character";
 		
-		this.cmbQuestionsTextSelectAQuestion = "Frage wählen";
+		this.cmbQuestionsTextSelectAQuestion = "Eine Frage wählen...";
+		this.cmbQuestionsTextSelectNextQuestion = "Die nächste Frage wählen...";
 
 	}
 
