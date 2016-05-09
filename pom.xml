@@ -56,16 +56,6 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.7.6.201602180812</version>
-        <configuration>
-        	<excludes>
-            	<exclude>**/MainStage*.class</exclude>
-            	<exclude>**/SettingsStage*.class</exclude>
-            	<exclude>**/StatisticStage*.class</exclude>
-            	<exclude>**/WikiStage*.class</exclude>
-            	<exclude>**/HelpStage*.class</exclude>
-            	<exclude>**/InfoStage*.class</exclude>
-        	</excludes>
-    	</configuration>
         <executions>
           <execution>
             <id>default-prepare-agent</id>
