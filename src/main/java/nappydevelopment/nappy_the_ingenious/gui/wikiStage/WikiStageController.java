@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
@@ -15,7 +16,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.CharacterFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.Gender;
@@ -37,6 +37,7 @@ public class WikiStageController {
 	private WikiStageView view;
 	private WikiStageResources res;
 	private ViewActionEventHandler aeh;
+	private ViewKeyEventHandler keh;
 	
 	private List<Character> characters;
 			
@@ -53,8 +54,10 @@ public class WikiStageController {
 		this.res = new WikiStageResources();
 		//Initialize the action-event-handler for the view-components:
 		this.aeh = new ViewActionEventHandler();
+		
+		this.keh = new ViewKeyEventHandler();
 		//Initialize the view:
-		this.view = new WikiStageView(this.res, this.aeh, chars);
+		this.view = new WikiStageView(this.res, this.aeh, this.keh, chars);
 		
 		this.initialShowing = true;
 		//Set character list:
@@ -96,13 +99,26 @@ public class WikiStageController {
 					src == view.rbtMale   ||
 					src == view.rbtYoung  ||
 					src == view.rbtMiddle ||
-					src == view.rbtOld    ||
-					src == view.txfSearchField) {
+					src == view.rbtOld  /*||
+					src == view.txfSearchField*/) {
 				WikiStageController.this.setFilter();
 			}
 
 		}
 				
+	}
+	
+	private class ViewKeyEventHandler implements EventHandler<KeyEvent> {
+
+		@Override
+		public void handle(KeyEvent e) {
+			
+			if(e.getSource() == view.txfSearchField) {
+				WikiStageController.this.setFilter();
+			}
+			
+		}
+		
 	}
 
 //### PRIVATE METHODS ######################################################################################################################
