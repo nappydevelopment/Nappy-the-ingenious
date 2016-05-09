@@ -106,13 +106,8 @@ public class Gamemode2{
 		}
 
 		Image img = null;
-		try{
-			img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png");
-		}catch(RuntimeException e){
-			if(!"Internal graphics not initialized yet".equals(e.getMessage())){
-				throw e;
-			}
-		}
+		img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png");
+		
 		return new Character(
 			character.get("NAME"),
 			nicknames,
