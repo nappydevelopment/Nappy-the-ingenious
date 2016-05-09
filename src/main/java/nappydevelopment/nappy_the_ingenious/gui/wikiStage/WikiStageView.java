@@ -19,6 +19,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -78,8 +79,8 @@ public class WikiStageView extends Stage {
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
-	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, List<Character> chars) {
-		this.initComponents(res, aeh, chars);
+	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, List<Character> chars) {
+		this.initComponents(res, aeh, keh, chars);
 		this.structureComponents();
 		this.initStage(res);
 	}
@@ -87,7 +88,7 @@ public class WikiStageView extends Stage {
 //### INITIAL METHODS ######################################################################################################################
 			
 	//Method that initialize the gui-components:
-	private void initComponents(WikiStageResources res, EventHandler<ActionEvent> aeh, List<Character> chars) {
+	private void initComponents(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, List<Character> chars) {
 				
 		this.bdpRootPane = new BorderPane();
 		
@@ -111,7 +112,8 @@ public class WikiStageView extends Stage {
 		this.imvSearchIcon = new ImageView(new Image(WikiStageView.class.getResourceAsStream("/icons/32x32/search.png")));
 		this.txfSearchField = new TextField();
 		this.txfSearchField.setPrefWidth(1000);
-		this.txfSearchField.setOnAction(aeh);
+		//this.txfSearchField.setOnAction(aeh);
+		this.txfSearchField.addEventHandler(KeyEvent.KEY_PRESSED, keh);
 		
 		this.hbxFilter = new HBox();
 		this.hbxFilter.setPadding(new Insets(10,10,10,10));
