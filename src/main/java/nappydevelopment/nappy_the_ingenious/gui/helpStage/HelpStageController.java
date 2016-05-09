@@ -6,7 +6,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
+import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
+import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
 
 
@@ -80,6 +82,14 @@ public class HelpStageController {
 		this.view.getScene().getStylesheets().clear();
 		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
 		this.view.getScene().getStylesheets().add(HelpStageView.class.getResource("HelpStageCSS.css").toExternalForm());
+		
+		if(Settings.getLanguage() == Language.GERMAN) {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_dark.html");
+		}
+		else {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_dark.html");
+		}
+		
 	}
 	
 	/* changeThemeToBrightTheme [method]: *//**
@@ -91,17 +101,40 @@ public class HelpStageController {
 		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
 		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/BrightTheme.css");
 		this.view.getScene().getStylesheets().add(HelpStageView.class.getResource("HelpStageCSS.css").toExternalForm());
+		
+		if(Settings.getLanguage() == Language.GERMAN) {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_dark.html");
+		}
+		else {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_dark.html");
+		}
+		
 	}
 	
 	
 	public void changeLanguageToGerman() {
+		
 		this.res.setTextsToGerman();
-		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_bright.html");
+		
+		if(Settings.getColoScheme() == ColorScheme.BRIGHT) {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_bright.html");
+		}
+		else {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_dark.html");
+		}
 	}
 		
 	public void changeLanguageToEnglish() {
+		
 		this.res.setTextsToEnglish();
-		this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_bright.html");
+		
+		if(Settings.getColoScheme() == ColorScheme.BRIGHT) {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_bright.html");
+		}
+		else {
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_dark.html");
+		}
+		
 	}
 		
 //##########################################################################################################################################
