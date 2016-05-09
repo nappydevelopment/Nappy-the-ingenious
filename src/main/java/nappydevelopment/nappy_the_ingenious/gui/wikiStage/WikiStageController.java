@@ -1,5 +1,7 @@
+//### WikiStageController.java #############################################################################################################
 package nappydevelopment.nappy_the_ingenious.gui.wikiStage;
 
+//### IMPORTS ##############################################################################################################################
 import java.awt.RenderingHints;
 import java.util.List;
 import java.util.ListIterator;
@@ -16,22 +18,21 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import nappydevelopment.nappy_the_ingenious.data.CharacterFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
 import nappydevelopment.nappy_the_ingenious.data.Gender;
 import nappydevelopment.nappy_the_ingenious.data.Age;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
-import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageView;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
-//### IMPORTS ##############################################################################################################################
 public class WikiStageController {
-
 
 //### ATTRIBUTES ###########################################################################################################################
 	
+	//Flag that mark the first show of the stage (necessary because there is no reset of filters):
 	private boolean initialShowing;
 			
 	private WikiStageView view;
@@ -39,6 +40,7 @@ public class WikiStageController {
 	private ViewActionEventHandler aeh;
 	private ViewKeyEventHandler keh;
 	
+	//List with the characters of the wiki:
 	private List<Character> characters;
 			
 //### CONSTRUCTORS #########################################################################################################################
@@ -54,14 +56,15 @@ public class WikiStageController {
 		this.res = new WikiStageResources();
 		//Initialize the action-event-handler for the view-components:
 		this.aeh = new ViewActionEventHandler();
-		
+		//Initialize the key-event-handler for the view-components:
 		this.keh = new ViewKeyEventHandler();
 		//Initialize the view:
 		this.view = new WikiStageView(this.res, this.aeh, this.keh, chars);
-		
+		//Set flag for initial show of the view:
 		this.initialShowing = true;
 		//Set character list:
 		this.characters = chars;
+		
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 				
@@ -84,7 +87,7 @@ public class WikiStageController {
 			
 //### INNER CLASSES ########################################################################################################################
 
-	//Event-Handler that handles all ActionEvents of the view
+	//Event-Handler that handles all ActionEvents of the view:
 	private class ViewActionEventHandler implements EventHandler<ActionEvent> {
 							 
 		@Override
@@ -101,20 +104,21 @@ public class WikiStageController {
 					src == view.rbtMiddle ||
 					src == view.rbtOld  /*||
 					src == view.txfSearchField*/) {
-				WikiStageController.this.setFilter();
+				WikiStageController.this.applyFilter();
 			}
 
 		}
 				
 	}
 	
+	//Event-Handler that handles all KeyEvents of the view:
 	private class ViewKeyEventHandler implements EventHandler<KeyEvent> {
 
 		@Override
 		public void handle(KeyEvent e) {
 			
 			if(e.getSource() == view.txfSearchField) {
-				WikiStageController.this.setFilter();
+				WikiStageController.this.applyFilter();
 			}
 			
 		}
@@ -123,7 +127,10 @@ public class WikiStageController {
 
 //### PRIVATE METHODS ######################################################################################################################
 	
-	private void setFilter() {
+	/* applyFilter [method]: Method that applies the filter options: *//**
+	 * 
+	 */
+	private void applyFilter() {
 		
 		Age age = Age.UNKNOWN;
 		Gender gender = Gender.UNKNOWN;
@@ -143,18 +150,24 @@ public class WikiStageController {
 		
 	}
 	
+	/* resetFilter [method]: Method that reset the filter (radio buttons & text field) *//**
+	 * 
+	 */
 	private void resetFilter() {
 		
+		//Reset filter elements:
 		this.view.rbtMale.setSelected(false);
 		this.view.rbtFemale.setSelected(false);
 		this.view.rbtYoung.setSelected(false);
 		this.view.rbtMiddle.setSelected(false);
 		this.view.rbtOld.setSelected(false);
 		this.view.txfSearchField.setText("");
+		
 		//Reset character list:
 		this.changeCharacterListView(this.characters);
 		
 	}
+
 	
 	private void changeCharacterListView(List<Character> chars) {
 		
@@ -195,7 +208,8 @@ public class WikiStageController {
         		System.out.println("Image Null");
         	}
         	else {
-        		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, false));
+        		//imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, false));
+        		imgPat = new ImagePattern(res.charNameImageMap.get(curCharacter.getName()));
         	}
         	
         	Rectangle imgRec = new Rectangle();
