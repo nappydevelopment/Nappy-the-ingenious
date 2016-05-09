@@ -22,15 +22,12 @@ import java.util.Map;
 public class GM2RunningState implements GM2State{
 	private Map<String, Question> remainingQuestions;
 	private final Map<String, String> character = new HashMap<>();
-	private final Language lang;
 	private int questionCounter = 0;
 
-	public GM2RunningState(final Language l){ this(l, false); }
 	public GM2RunningState(
-			final Language l,
+			final Language lang,
 			final boolean deterministic
 	){
-		lang = l;
 		try(Statement st = DatabaseProvider.getStatement()){
 			remainingQuestions = QuestionProvider.getQuestions(lang);
 
@@ -90,7 +87,7 @@ public class GM2RunningState implements GM2State{
 
 	public boolean isFinished(){ return false; }
 
-	public Character endGame(Gamemode2 gm2){
+	public Character endGame(final Gamemode2 gm2){
 		gm2.state = new GM2FinishedState(questionCounter);
 
 		Map<Language, String> nicknames = new HashMap<>();
