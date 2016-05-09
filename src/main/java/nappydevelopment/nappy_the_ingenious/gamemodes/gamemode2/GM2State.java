@@ -9,11 +9,11 @@ import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import java.util.List;
 
 public interface GM2State{
-	public int answeredQuestions();
-	public List<String> getQuestions() throws GameHasFinished;
-	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished;
-	public Boolean makeGuess(final Character wiki) throws GameHasFinished;
-	public Boolean makeGuess(final String name) throws GameHasFinished;
-	public boolean isFinished();
-	public Character endGame(Gamemode2 gm2) throws GameHasFinished;
+	int answeredQuestions();
+	Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished;
+	Boolean makeGuess(final Character wiki) throws GameHasFinished;
+	Boolean makeGuess(final String name) throws GameHasFinished;
+	Character endGame(final Gamemode2 gm2) throws GameHasFinished;
+	List<String> getQuestions() throws GameHasFinished;
+	boolean isFinished();
 }
