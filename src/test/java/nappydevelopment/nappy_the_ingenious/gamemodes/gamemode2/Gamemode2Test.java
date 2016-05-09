@@ -64,8 +64,8 @@ public class Gamemode2Test{
 
 	@Test
 	public void finished(){
-		assertFalse(gm.finished());
+		assertFalse(gm.isFinished());
 		gm.endGame();
-		assertTrue(gm.finished());
+		assertTrue(gm.isFinished());
 	}
 }

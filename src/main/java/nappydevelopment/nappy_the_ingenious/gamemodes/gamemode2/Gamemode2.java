@@ -1,10 +1,5 @@
 package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.*;
-
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.*;
@@ -13,7 +8,16 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.exception.InvalidQuestion;
 import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
-import nappydevelopment.nappy_the_ingenious.gamemodes.*;
+import nappydevelopment.nappy_the_ingenious.gamemodes.Question;
+import nappydevelopment.nappy_the_ingenious.gamemodes.QuestionProvider;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class Gamemode2{
@@ -57,7 +61,7 @@ public class Gamemode2{
 	}
 
 	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished {
-		if(finished){
+		if(isFinished()){
 			throw new GameHasFinished();
 		}
 		questionCounter++;
@@ -71,7 +75,7 @@ public class Gamemode2{
 		}
 		boolean answer = character.get(q.getTable()).equals(q.getAttribute());
 
-		remainingQuestions.remove(question);
+		remainingQuestions.remove(q);
 
 		return Answer.fromBool(answer);
 	}
@@ -80,17 +84,17 @@ public class Gamemode2{
 		return makeGuess(wiki.getName());
 	}
 	public Boolean makeGuess(final String name){
-		if(finished){
+		if(isFinished()){
 			return null;
 		}
 		questionCounter++;
 		return character.get("NAME").equals(name);
 	}
 
-	public boolean finished(){ return finished; }
+	public boolean isFinished(){ return finished; }
 
 	public Character endGame(){
-		if(finished){ return null; }
+		if(isFinished()){ return null; }
 		finished = true;
 
 		Map<Language, String> nicknames = new HashMap<>();

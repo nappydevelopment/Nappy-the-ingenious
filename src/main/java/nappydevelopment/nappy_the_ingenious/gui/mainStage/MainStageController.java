@@ -3,10 +3,7 @@
 package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 
-import java.awt.RenderingHints;
 //### IMPORTS ##############################################################################################################################
-import java.util.List;
-import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,11 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
@@ -32,6 +25,11 @@ import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
+
+import java.awt.*;
+import java.util.List;
+import java.util.Optional;
+
 
 //Class that handles the interactions of the main-stage with the program-logic:
 public class MainStageController {
@@ -334,6 +332,10 @@ public class MainStageController {
 	 * 
 	 */
 	public void showGamemode1View() {
+
+		//Reset Button id's
+		this.view.btnNo.setId("btnNo");
+		this.view.btnYes.setId("btnYes");
 		
 		//Enable the "abort game" menu-item:
 		this.view.mniAbortGame.setDisable(false);
