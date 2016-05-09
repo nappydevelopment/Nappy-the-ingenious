@@ -1,6 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.gui.wikiStage;
 
 import java.awt.RenderingHints;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -41,7 +42,7 @@ public class WikiStageView extends Stage {
 //### ATTRIBUTES ###########################################################################################################################
 		
 	//Flag for alternating background-colors of the character-entries:
-	private Boolean colorFlag = true;
+	private Boolean colorFlag;
 	
 //### COMPONENTS ###########################################################################################################################
 
@@ -80,6 +81,9 @@ public class WikiStageView extends Stage {
 //### CONSTRUCTORS #########################################################################################################################
 			
 	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, List<Character> chars) {
+		
+		this.colorFlag = true;
+		
 		this.initComponents(res, aeh, keh, chars);
 		this.structureComponents();
 		this.initStage(res);
@@ -113,7 +117,7 @@ public class WikiStageView extends Stage {
 		this.txfSearchField = new TextField();
 		this.txfSearchField.setPrefWidth(1000);
 		//this.txfSearchField.setOnAction(aeh);
-		this.txfSearchField.addEventHandler(KeyEvent.KEY_PRESSED, keh);
+		this.txfSearchField.addEventHandler(KeyEvent.KEY_RELEASED, keh);
 		
 		this.hbxFilter = new HBox();
 		this.hbxFilter.setPadding(new Insets(10,10,10,10));
@@ -207,12 +211,16 @@ public class WikiStageView extends Stage {
         	
         	ImagePattern imgPat = null;
         	
-        	if(curCharacter.getWikiImage() == null) {
-        		System.out.println("Image Null");
-        	}
-        	else {
-        		imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
-        	}
+//        	if(curCharacter.getWikiImage() == null) {
+//        		System.out.println("Image Null");
+//        		this.charNameImageMap.put(curCharacter.getName(), null);
+//        	}
+//        	else 
+//        	{
+        	Image img = Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true);
+        	imgPat = new ImagePattern(img);
+        	res.charNameImageMap.put(curCharacter.getName(), img);
+//        	}
         	
         	Rectangle imgRec = new Rectangle();
     		imgRec.setWidth(90);
