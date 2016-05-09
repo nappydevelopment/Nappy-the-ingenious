@@ -6,6 +6,16 @@ public class Game {
 	
 //### ATTRIBUTES ###########################################################################################################################
 
+	private QuestAnsList qal;
+	
+	public QuestAnsList getQal() {
+		return qal;
+	}
+
+	public void setQal(QuestAnsList qal) {
+		this.qal = qal;
+	}
+
 	private boolean isActive;
 	private boolean isFinish;
 	
@@ -50,6 +60,8 @@ public class Game {
 
 //### CONSTRUCTORS #########################################################################################################################
 	public Game() {
+		
+		this.qal = new QuestAnsList();
 		
 		this.isActive = false;
 		this.isFinish = false;

@@ -6,12 +6,15 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -30,7 +33,9 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
+import nappydevelopment.nappy_the_ingenious.data.QuestAnsElement;
 import nappydevelopment.nappy_the_ingenious.gui.components.VerticalProgressBar;
 
 /* MainStageView [class]: Class the represents the main-stage-view so the whole window with all gui-components *//**
@@ -114,7 +119,7 @@ public class MainStageView extends Stage {
 	//### Content of the Gamemode2 View ############################################################
     
 	Label lblAnswer;               //nc
-	ComboBox<String> cmbQuestions; //nc
+	ComboBox<QuestAnsElement> cmbQuestions; //nc
 	//Button btnIKnowTheCharacter; //handled through the btnIdontKnow!
 	HBox hbxAskQuestion;
 	Button btnAskQuestion;
@@ -373,7 +378,83 @@ public class MainStageView extends Stage {
 		this.btnAskQuestion.setTextAlignment(TextAlignment.CENTER);
 		this.btnAskQuestion.setOnAction(aeh);
 		
-		this.cmbQuestions = new ComboBox<String>();
+		this.cmbQuestions = new ComboBox<QuestAnsElement>();
+		ListCell<QuestAnsElement> buttonCell = new ListCell<QuestAnsElement>() {
+			
+			  @Override protected void updateItem(QuestAnsElement qae, boolean empty) {
+				  super.updateItem(qae, empty);
+                  
+                  if (empty) {
+                      setText(null);
+                      setGraphic(null);
+                  } else {
+                      setText(null);
+                      if(qae.getAnswer() != "") {
+                    	  setText("Du hast diese Frage schon gestellt");
+                      }
+                      else {
+                    	  setText(qae.getQuestion());
+                      }
+                  }
+			  }
+			};
+		this.cmbQuestions.setButtonCell(buttonCell);
+		this.cmbQuestions.setCellFactory(new Callback<ListView<QuestAnsElement>, ListCell<QuestAnsElement>>() {
+			
+            @Override
+            public ListCell<QuestAnsElement> call(ListView<QuestAnsElement> param) {
+                
+            	final ListCell<QuestAnsElement> cell = new ListCell<QuestAnsElement>() {
+            		
+                     @Override
+                     public void updateItem(QuestAnsElement qae, boolean empty) {
+                    	 
+                    	 getListView().setMaxWidth(425);
+                    	 super.updateItem(qae, empty);
+                             
+                         if (empty) {
+                             setText(null);
+                             setGraphic(null);
+                         } else {
+                             setText(null);
+                             
+                         	Label lblQuest = new Label(qae.getQuestion());
+                         	lblQuest.setStyle("-fx-text-fill: black;");
+                         	Label lblAns   = new Label(qae.getAnswer());
+                         	lblAns.setStyle("-fx-text-fill: black;");
+                 		
+                         	GridPane grid = new GridPane();
+                         	grid.setMaxWidth(425);
+                         	grid.setPadding(new Insets(0,5,0,0));
+                         	if(qae.getAnswer() != "") {
+                         		//grid.setStyle("-fx-background-color: #C0C0C0;");
+                         		setStyle("-fx-background-color: #E0E0E0;");
+                             	lblQuest.setStyle("-fx-text-fill: #A2A2A2;");
+                             	lblAns.setStyle("-fx-text-fill: #A2A2A2;");
+                         	}
+                         	
+                         	//Set the column-rate:
+                         	ColumnConstraints col1 = new ColumnConstraints();
+                         	col1.setPercentWidth(90);
+                         	col1.setHalignment(HPos.LEFT);
+                         	ColumnConstraints col2 = new ColumnConstraints();
+                         	col2.setPercentWidth(10);
+                         	col2.setHalignment(HPos.RIGHT);
+                         	grid.getColumnConstraints().addAll(col1, col2);
+                         	grid.add(lblQuest, 0, 0);
+                         	grid.add(lblAns, 1, 0);
+                 		
+
+                         	setGraphic(grid);
+                         }
+                         
+                     }
+             };
+             return cell;
+         }
+     });
+		
+		//this.cmbQuestions.setPrefWidth(Integer.MAX_VALUE);
 		this.cmbQuestions.setOnAction(aeh);
 		
 	}

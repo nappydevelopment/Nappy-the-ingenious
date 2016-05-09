@@ -24,6 +24,7 @@ import nappydevelopment.nappy_the_ingenious.gui.statisticStage.StatisticStageCon
 import nappydevelopment.nappy_the_ingenious.gui.wikiStage.WikiStageController;
 
 import java.util.List;
+import java.util.ListIterator;
 
 
 
@@ -412,6 +413,7 @@ public class Program extends Application {
 	
 	private void startGamemode2() {
 		
+		
 		//Read out the questions that the player can ask:
 		//TODO: Not really nice logic should return a list of questions (Strings) depending on a language parameter:
 		List<String> questions = null;
@@ -421,8 +423,21 @@ public class Program extends Application {
 			gameHasFinished.printStackTrace();
 		}
 
+		//Generate a list iterator:
+		ListIterator<String> listIterator = questions.listIterator();
+				
+		//Run through the list:
+		while (listIterator.hasNext()) {
+		        	
+			//Read out current element:
+		    String question = listIterator.next();
+		    
+		    this.game.getQal().add(new QuestAnsElement(question));
+		}
+		
+		
 		this.mainStageController.showGamemode2View();
-		this.mainStageController.showQuestions(true, questions);
+		this.mainStageController.showQuestions(true, this.game.getQal());
 	}
 	
 	public void askQuestion(String question) {
@@ -431,11 +446,11 @@ public class Program extends Application {
 			
 			Answer answer = this.gm2Logic.askQuestion(question);
 			this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
-			
+			this.game.getQal().setAnswer(question, answer.getText(Settings.getLanguage()));
 			//Read out the new list of questions:
-			List<String> questions = gm2Logic.getQuestions();
+			//List<String> questions = gm2Logic.getQuestions();
 			//Show the new list:
-			this.mainStageController.showQuestions(false, questions);
+			this.mainStageController.showQuestions(false, this.game.getQal());
 			
 		} catch(InvalidQuestion|NoMoreQuestions|GameHasFinished e){
 			e.printStackTrace();
