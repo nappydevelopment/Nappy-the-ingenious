@@ -103,10 +103,10 @@ public class HelpStageController {
 		this.view.getScene().getStylesheets().add(HelpStageView.class.getResource("HelpStageCSS.css").toExternalForm());
 		
 		if(Settings.getLanguage() == Language.GERMAN) {
-			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_dark.html");
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_bright.html");
 		}
 		else {
-			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_dark.html");
+			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_bright.html");
 		}
 		
 	}

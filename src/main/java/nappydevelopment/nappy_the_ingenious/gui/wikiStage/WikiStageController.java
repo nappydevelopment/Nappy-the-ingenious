@@ -2,7 +2,6 @@
 package nappydevelopment.nappy_the_ingenious.gui.wikiStage;
 
 //### IMPORTS ##############################################################################################################################
-import java.awt.RenderingHints;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -25,7 +24,6 @@ import nappydevelopment.nappy_the_ingenious.data.Gender;
 import nappydevelopment.nappy_the_ingenious.data.Age;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
-import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 
 public class WikiStageController {
@@ -127,7 +125,7 @@ public class WikiStageController {
 
 //### PRIVATE METHODS ######################################################################################################################
 	
-	/* applyFilter [method]: Method that applies the filter options: *//**
+	/* applyFilter [method]: Method that applies the filter options *//**
 	 * 
 	 */
 	private void applyFilter() {
@@ -146,7 +144,7 @@ public class WikiStageController {
 		//Create a new character filter:
 		CharacterFilter filter = new CharacterFilter(WikiStageController.this.view.txfSearchField.getText(), gender, age);
 		//Update character list:
-		this.changeCharacterListView(CharacterProvider.search(WikiStageController.this.characters, filter));
+		this.adaptCharacterList(CharacterProvider.search(WikiStageController.this.characters, filter));
 		
 	}
 	
@@ -164,12 +162,15 @@ public class WikiStageController {
 		this.view.txfSearchField.setText("");
 		
 		//Reset character list:
-		this.changeCharacterListView(this.characters);
+		this.adaptCharacterList(this.characters);
 		
 	}
 
-	
-	private void changeCharacterListView(List<Character> chars) {
+	/* adaptCharacterList [method]: Method that adapt the shown character list depending on the set filters *//**
+	 * 
+	 * @param chars
+	 */
+	private void adaptCharacterList(List<Character> chars) {
 		
 		Boolean colorFlag = true;
 		
@@ -251,6 +252,10 @@ public class WikiStageController {
 	
 //### PUBLIC METHODS #######################################################################################################################
 			
+	/* show [method]: Method that shows the stage *//**
+	 * 
+	 * @param owner
+	 */
 	public void show(Stage owner) {
 				
 		//Set owner and modality by the first start of the stage:
@@ -258,12 +263,19 @@ public class WikiStageController {
 			this.view.initOwner(owner);
 			this.view.initModality(Modality.WINDOW_MODAL);
 		}
+		
+		//Check if this is that fist time that the stage is shown:
 		if(this.initialShowing) {
+			//Change flag:
 			this.initialShowing = false;
 		}
+		//Was the stage open before:
 		else {
+			//Reset filters:
 			this.resetFilter();
 		}
+		
+		//Show the stage:
 		this.view.show();
 	}
 			
@@ -288,10 +300,16 @@ public class WikiStageController {
 		this.view.getScene().getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
 	}
 	
+	/* changeLanguageToGerman [method]: *//**
+	 * 
+	 */
 	public void changeLanguageToGerman() {
 		this.res.setTextsToGerman();
 	}
-			
+	
+	/* changeLanguageToEnglish [method]: *//**
+	 * 
+	 */
 	public void changeLanguageToEnglish() {
 		this.res.setTextsToEnglish();	
 	}
