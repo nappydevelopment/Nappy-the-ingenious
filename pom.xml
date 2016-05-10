@@ -46,7 +46,7 @@
            <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>nappydevelopment.nappy_the_ingenious.Program</mainClass>
+              <mainClass>nappydevelopment.nappyTheIngenious.Program</mainClass>
             </manifest>
           </archive>
           <outputDirectory>${project.basedir}/jar</outputDirectory>
