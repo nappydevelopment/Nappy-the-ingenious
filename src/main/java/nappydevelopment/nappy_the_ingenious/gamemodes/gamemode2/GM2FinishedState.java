@@ -24,7 +24,7 @@ public class GM2FinishedState implements GM2State{
 	public Boolean makeGuess(final String name) throws GameHasFinished{
 		throw new GameHasFinished();
 	}
-	public Character endGame(final Gamemode2 gm2) throws GameHasFinished{
+	public Character endGame(final GameMode2 gm2) throws GameHasFinished{
 		throw new GameHasFinished();
 	}
 	public List<String> getQuestions() throws GameHasFinished{

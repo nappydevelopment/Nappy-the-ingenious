@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class Gamemode1{
+public class GameMode1{
 	private int numDunno = 0;
 	private Question activeQuestion = null;
 
@@ -26,8 +26,8 @@ public class Gamemode1{
 
 	private Map<String, Question> questions;
 
-	public Gamemode1(Language l){ this(l, false); }
-	public Gamemode1(Language l, final boolean det){
+	public GameMode1(Language l){ this(l, false); }
+	public GameMode1(Language l, final boolean det){
 		deterministic = det;
 		lang = l;
 		questions = QuestionProvider.getQuestions(lang);

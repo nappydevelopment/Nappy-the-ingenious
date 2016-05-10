@@ -86,7 +86,7 @@ public class GM2RunningState implements GM2State{
 
 	public boolean isFinished(){ return false; }
 
-	public Character endGame(final Gamemode2 gm2){
+	public Character endGame(final GameMode2 gm2){
 		gm2.state = new GM2FinishedState(questionCounter);
 
 		Map<Language, String> nicknames = new HashMap<>();

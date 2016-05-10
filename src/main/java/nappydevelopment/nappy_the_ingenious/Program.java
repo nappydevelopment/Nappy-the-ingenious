@@ -14,8 +14,8 @@ import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.exception.*;
-import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.Gamemode1;
-import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.Gamemode2;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1.GameMode1;
+import nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2.GameMode2;
 import nappydevelopment.nappy_the_ingenious.gui.helpStage.HelpStageController;
 import nappydevelopment.nappy_the_ingenious.gui.infoStage.InfoStageController;
 import nappydevelopment.nappy_the_ingenious.gui.mainStage.MainStageController;
@@ -37,8 +37,8 @@ public class Program extends Application {
 //### ATTRIBUTES ###########################################################################################################################
 	
 	//Logic:
-	private Gamemode1 gm1Logic;
-	private Gamemode2 gm2Logic;
+	private GameMode1 gm1Logic;
+	private GameMode2 gm2Logic;
 	
 	//Object that represents the current game:
 	private Game game;
@@ -218,9 +218,9 @@ public class Program extends Application {
 	public void startGame() {
 		
 		//Initialize the logic:
-		this.gm1Logic = new Gamemode1(Settings.getLanguage());
+		this.gm1Logic = new GameMode1(Settings.getLanguage());
 		//TODO: No consistently logic interface:
-		this.gm2Logic = new Gamemode2(Settings.getLanguage());
+		this.gm2Logic = new GameMode2(Settings.getLanguage());
 		
 		//Initialize a new game:
 		this.game = new Game();

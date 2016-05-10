@@ -12,14 +12,14 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class Gamemode2Test{
-	private Gamemode2 gm;
-	private Gamemode2 gm_det;
+public class GameMode2Test{
+	private GameMode2 gm;
+	private GameMode2 gm_det;
 
 	@Before
 	public void init(){
-		gm = new Gamemode2(Language.GERMAN);
-		gm_det = new Gamemode2(Language.GERMAN, true);
+		gm = new GameMode2(Language.GERMAN);
+		gm_det = new GameMode2(Language.GERMAN, true);
 	}
 
 	@Test
