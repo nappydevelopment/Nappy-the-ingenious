@@ -7,8 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
-import nappydevelopment.nappy_the_ingenious.data.settings.Language;
-import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 
 /* MainStageResources [class]: Contains the resources for the main-stage like images, component-texts etc.: *//**
  *
@@ -47,7 +45,9 @@ public class MainStageResources {
 
 	StringProperty btnYesText;
 	StringProperty btnNoText;
-	StringProperty btnIdontKnow;
+	StringProperty btnIdontKnowText;
+	
+	StringProperty btnAskQuestionText;
 	
 	//Variable Text for gui-components:
 	
@@ -68,6 +68,7 @@ public class MainStageResources {
 	
 	String cmbQuestionsTextSelectAQuestion;
 	String cmbQuestionsTextSelectNextQuestion;
+	String cmbQuestionsTextYouveAskThisQuestionAlready;
 
 	//### Abort Dialog Texts #######################################################################
 
@@ -159,11 +160,15 @@ public class MainStageResources {
 
 		this.btnYesText = new SimpleStringProperty();
 		this.btnNoText = new SimpleStringProperty();
-		this.btnIdontKnow = new SimpleStringProperty();
+		this.btnIdontKnowText = new SimpleStringProperty();
 		
 		this.lblInfoTextIKnowYourCharacter = null;
 		this.lblInfoTextIDontKnowYourCharacterText = null;
 
+		//### Texts for gamemode2 components ###########################################################
+		
+		this.btnAskQuestionText = new SimpleStringProperty();
+		
 		//### Images for the menu-bar ##################################################################
 
 		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/new_game.png");
@@ -217,7 +222,9 @@ public class MainStageResources {
 		this.btnHelpText.setValue("Instructions");
 		this.btnYesText.setValue("Yes");
 		this.btnNoText.setValue("No");
-		this.btnIdontKnow.setValue("I don't know");
+		this.btnIdontKnowText.setValue("I don't know");
+		
+		this.btnAskQuestionText.setValue("Ask question");
 		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
@@ -259,6 +266,7 @@ public class MainStageResources {
 		
 		this.cmbQuestionsTextSelectAQuestion = "Select a question...";
 		this.cmbQuestionsTextSelectNextQuestion = "Select the next question...";
+		this.cmbQuestionsTextYouveAskThisQuestionAlready = "You've asked this question already!";
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -285,7 +293,9 @@ public class MainStageResources {
 		this.btnHelpText.setValue("Spielanleitung");
 		this.btnYesText.setValue("Ja");
 		this.btnNoText.setValue("Nein");
-		this.btnIdontKnow.setValue("Ich weiß nicht");
+		this.btnIdontKnowText.setValue("Ich weiß nicht");
+		
+		this.btnAskQuestionText.setValue("Frage stellen");
 		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
@@ -326,7 +336,7 @@ public class MainStageResources {
 		
 		this.cmbQuestionsTextSelectAQuestion = "Eine Frage wählen...";
 		this.cmbQuestionsTextSelectNextQuestion = "Die nächste Frage wählen...";
-
+		this.cmbQuestionsTextYouveAskThisQuestionAlready = "Du hast diese Frage bereits gestellt!";
 	}
 
 	
@@ -347,15 +357,15 @@ public class MainStageResources {
 	}
 	
 	void setBtnIdontKnowTextToIdontKnow() {
-		this.btnIdontKnow.set(this.btnIdontKnowTextIdontKnow);
+		this.btnIdontKnowText.set(this.btnIdontKnowTextIdontKnow);
 	}
 	
 	void setBtnIdontKnowTextToContinue() {
-		this.btnIdontKnow.set(this.btnIdontKnowTextContinue);
+		this.btnIdontKnowText.set(this.btnIdontKnowTextContinue);
 	}
 	
 	void setBtnIdontKnowTextToIknow() {
-		this.btnIdontKnow.set(this.btnIdontKnowTextIknow);
+		this.btnIdontKnowText.set(this.btnIdontKnowTextIknow);
 	}
 	
 	
