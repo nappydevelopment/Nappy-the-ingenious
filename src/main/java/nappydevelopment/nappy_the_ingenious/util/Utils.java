@@ -16,13 +16,14 @@ public class Utils {
 
 //### STATIC METHODS #######################################################################################################################
 	
-	public static BufferedImage getScaledInstance(BufferedImage img, 
-			                                      int targetWidth, 
-			                                      int targetHeight, 
-			                                      Object hint,
-			                                      double scalFactor,
-			                                      boolean higherQuality) {
-		
+	public static BufferedImage getScaledInstance(
+		BufferedImage img,
+		int targetWidth,
+		int targetHeight,
+		Object hint,
+		double scalFactor,
+		boolean higherQuality
+	){
 		int type = (img.getTransparency() == Transparency.OPAQUE) ?
 		BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
 		BufferedImage ret = (BufferedImage)img;
@@ -68,22 +69,25 @@ public class Utils {
 		return ret;
 		}
 
-	public static Image getScaledInstance(Image img, 
-										  int targetWidth, 
-										  int targetHeight, 
-										  Object hint,
-										  double scalFactor,
-										  boolean higherQuality) {
-		
+	public static Image getScaledInstance(
+		Image img,
+		int targetWidth,
+		int targetHeight,
+		Object hint,
+		double scalFactor,
+		boolean higherQuality
+	){
 		Image helpImg = null;
 		
 		BufferedImage buffImg = SwingFXUtils.fromFXImage(img, null);
-    	BufferedImage scalImg = Utils.getScaledInstance(buffImg, 
-    														 targetWidth,
-    														 targetHeight, 
-    														 hint,
-    														 scalFactor,
-    														 higherQuality);
+		BufferedImage scalImg = Utils.getScaledInstance(
+			buffImg,
+			targetWidth,
+			targetHeight,
+			hint,
+			scalFactor,
+			higherQuality
+		);
     	
     	return SwingFXUtils.toFXImage(scalImg, (WritableImage)helpImg);
 	}
