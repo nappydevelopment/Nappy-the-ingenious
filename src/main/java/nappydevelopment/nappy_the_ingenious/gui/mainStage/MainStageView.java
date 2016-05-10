@@ -105,7 +105,7 @@ public class MainStageView extends Stage {
 	VerticalProgressBar pgbKnowledge;
 	ImageView imvKnowledge;
 	
-	//### Content of the Gamemode1 View ############################################################
+	//### Content of the GameMode1 View ############################################################
 
 	HBox hbxCharacter;
 	Rectangle recCharacter;
@@ -118,7 +118,7 @@ public class MainStageView extends Stage {
 	Button btnNo;
 	Button btnIdontKnow;
 
-	//### Content of the Gamemode2 View ############################################################
+	//### Content of the GameMode2 View ############################################################
     
 	Label lblAnswer;               //nc
 	ComboBox<QuestAnsElement> cmbQuestions; //nc
@@ -367,7 +367,7 @@ public class MainStageView extends Stage {
 		this.btnIdontKnow.setOnAction(aeh);
 		
         
-		// Gamemode2 ###############################
+		// GameMode2 ###############################
 		
 		//Label that show the answer of Nappy:
 		this.lblAnswer = new Label();

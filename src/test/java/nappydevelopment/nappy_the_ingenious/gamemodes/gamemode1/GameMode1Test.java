@@ -9,15 +9,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Gamemode1Test{
-	private Gamemode1 gm_det;
-	private Gamemode1 gm;
+public class GameMode1Test{
+	private GameMode1 gm_det;
+	private GameMode1 gm;
 	private Language lang = Language.GERMAN;
 
 	@Before
 	public void init(){
-		gm_det = new Gamemode1(lang, true);
-		gm = new Gamemode1(lang, false);
+		gm_det = new GameMode1(lang, true);
+		gm = new GameMode1(lang, false);
 	}
 
 	@Test

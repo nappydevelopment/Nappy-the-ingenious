@@ -10,12 +10,12 @@ import nappydevelopment.nappy_the_ingenious.exception.NoMoreQuestions;
 import java.util.List;
 
 
-public class Gamemode2{
+public class GameMode2{
 
 	GM2State state;
 
-	public Gamemode2(final Language l){ this(l, false); }
-	public Gamemode2(
+	public GameMode2(final Language l){ this(l, false); }
+	public GameMode2(
 		final Language lang,
 		final boolean deterministic
 	){
