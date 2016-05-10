@@ -9,7 +9,7 @@ public class CharacterImage{
 
 	public CharacterImage(final String name){
 		try{
-			new Image(GlobalReferences.IMAGES_PATH + "wiki/" + name.toLowerCase().replace(" ", "_") +".png");
+			img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + name.toLowerCase().replace(" ", "_") +".png");
 		}catch(RuntimeException e){
 			if(!"Internal graphics not initialized yet".equals(e.getMessage())){
 				throw e;
