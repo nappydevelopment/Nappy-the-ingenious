@@ -1,7 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
 import javafx.scene.image.Image;
-import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 import java.sql.ResultSet;
@@ -35,14 +34,7 @@ public class CharacterProvider{
 					descriptions.put(l, res.getString("description_"+ l.getCode().toLowerCase()));
 					nicknames.put(l, res.getString("nickname_"+ l.getCode().toLowerCase()));
 				}
-				Image img = null;
-				try{
-					img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + name.toLowerCase().replace(" ", "_") + ".png");
-				}catch(RuntimeException e){
-					if(!"Internal graphics not initialized yet".equals(e.getMessage())){
-						throw e;
-					}
-				}
+				Image img = new CharacterImage(name).get();
 				Character chr = new Character(name, nicknames, descriptions, img, Gender.fromBool(male), Age.fromString(age));
 				out.add(chr);
 			}
