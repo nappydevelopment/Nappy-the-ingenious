@@ -239,7 +239,7 @@ public class MainStageController {
 		
 		if(Settings.getColoScheme() == ColorScheme.DARK) {
 			alert.getDialogPane().getStylesheets().clear();
-			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 		}
 		
 		//Show dialog and read out the result:
@@ -533,7 +533,7 @@ public class MainStageController {
 	    	
 			if(Settings.getColoScheme() == ColorScheme.DARK) {
 				alert.getDialogPane().getStylesheets().clear();
-				alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+				alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 			}
 			
 	    	alert.setTitle(this.res.statusDialogGM1Title);
@@ -709,7 +709,7 @@ public class MainStageController {
 
 		if(Settings.getColoScheme() == ColorScheme.DARK) {
 			dialog.getDialogPane().getStylesheets().clear();
-			dialog.getDialogPane().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+			dialog.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 		}
 		
         // Traditional way to get the response value.
@@ -729,7 +729,7 @@ public class MainStageController {
 	public void changeThemeToDarkTheme() {
 		
 		this.view.getScene().getStylesheets().clear();
-		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 		this.view.getScene().getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
 	}
 	
