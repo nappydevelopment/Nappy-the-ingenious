@@ -7,27 +7,22 @@ package nappydevelopment.nappy_the_ingenious.gui.mainStage;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.Program;
 import nappydevelopment.nappy_the_ingenious.data.Answer;
-import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
 import nappydevelopment.nappy_the_ingenious.data.QuestAnsElement;
 import nappydevelopment.nappy_the_ingenious.data.QuestAnsList;
 import nappydevelopment.nappy_the_ingenious.data.settings.ColorScheme;
@@ -35,8 +30,6 @@ import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 import nappydevelopment.nappy_the_ingenious.util.Utils;
 
 import java.awt.RenderingHints;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Optional;
 
 

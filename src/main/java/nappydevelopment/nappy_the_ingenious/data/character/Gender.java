@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.data;
+package nappydevelopment.nappy_the_ingenious.data.character;
 
 /**
  * Created by Marc on 01.05.2016.

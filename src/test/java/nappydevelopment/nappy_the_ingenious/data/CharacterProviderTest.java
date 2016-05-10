@@ -1,5 +1,9 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
+import nappydevelopment.nappy_the_ingenious.data.character.Age;
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
+import nappydevelopment.nappy_the_ingenious.data.character.CharacterFilter;
+import nappydevelopment.nappy_the_ingenious.data.character.Gender;
 import org.junit.Test;
 
 import java.util.ArrayList;

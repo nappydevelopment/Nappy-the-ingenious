@@ -1,6 +1,8 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
 import javafx.scene.image.Image;
+import nappydevelopment.nappy_the_ingenious.data.character.*;
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 
 import java.sql.ResultSet;
