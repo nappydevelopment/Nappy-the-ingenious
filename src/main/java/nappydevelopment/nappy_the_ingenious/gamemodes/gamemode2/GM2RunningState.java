@@ -1,7 +1,6 @@
 package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode2;
 
 import javafx.scene.image.Image;
-import nappydevelopment.nappy_the_ingenious.GlobalReferences;
 import nappydevelopment.nappy_the_ingenious.data.*;
 import nappydevelopment.nappy_the_ingenious.data.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
@@ -98,14 +97,7 @@ public class GM2RunningState implements GM2State{
 			descriptions.put(l, character.get("DESCRIPTION_"+ l.getCode()));
 		}
 
-		Image img = null;
-		try{
-			img = new Image(GlobalReferences.IMAGES_PATH + "wiki/" + character.get("NAME").toLowerCase().replace(" ", "_") +".png");
-		}catch(RuntimeException e){
-			if(!"Internal graphics not initialized yet".equals(e.getMessage())){
-				throw e;
-			}
-		}
+		Image img = new CharacterImage(character.get("NAME")).get();
 
 		return new Character(
 			character.get("NAME"),
