@@ -110,7 +110,7 @@ public class InfoStageController {
 	public void changeThemeToDarkTheme() {
 		
 		this.view.getScene().getStylesheets().clear();
-		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
 	}
 	

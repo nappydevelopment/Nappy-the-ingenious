@@ -160,7 +160,7 @@ public class StatisticStageController {
 	public void changeThemeToDarkTheme() {
 		
 		this.view.getScene().getStylesheets().clear();
-		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 		this.view.getScene().getStylesheets().add(StatisticStageView.class.getResource("StatisticStageCSS.css").toExternalForm());
 	}
 	
