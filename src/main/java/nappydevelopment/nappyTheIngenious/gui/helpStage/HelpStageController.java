@@ -77,7 +77,7 @@ public class HelpStageController {
 	public void changeThemeToDarkTheme() {
 		
 		this.view.getScene().getStylesheets().clear();
-		this.view.getScene().getStylesheets().add("/nappydevelopment/nappy_the_ingenious/gui/globalStyle/DarkTheme.css");
+		this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
 		this.view.getScene().getStylesheets().add(HelpStageView.class.getResource("HelpStageCSS.css").toExternalForm());
 		
 		if(Settings.getLanguage() == Language.GERMAN) {
