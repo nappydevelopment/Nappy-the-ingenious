@@ -369,18 +369,29 @@ public class MainStageView extends Stage {
         
 		// Gamemode2 ###############################
 		
+		//Label that show the answer of Nappy:
 		this.lblAnswer = new Label();
 		this.lblAnswer.setId("lblAnswer");
 		
-		this.btnAskQuestion = new Button("Frage stellen");
+		//Button to ask the question:
+		this.btnAskQuestion = new Button();
 		this.hbxAskQuestion = new HBox();
 		this.hbxAskQuestion.setAlignment(Pos.CENTER);
-		
 		this.btnAskQuestion.setMinSize(150, 10);
 		this.btnAskQuestion.setTextAlignment(TextAlignment.CENTER);
 		this.btnAskQuestion.setOnAction(aeh);
 		
+		//The label where the question is shown is implemented through the lblInfo label!
+		//The button to guess the character is implemented through the btnIdontKnow!
+		
+		//### Combobox for questions selection in gamemode2: #######################################
+		
+		//Combobox for a list of QuestAnsElement objects:
 		this.cmbQuestions = new ComboBox<QuestAnsElement>();
+		//Width of the combobox and the viewlist is set in the css-file!
+		
+		/* This definition create a list cell, this list cell object defines what content
+		 * is shown in the combobox (not list view) and how this content looks like! */
 		ListCell<QuestAnsElement> buttonCell = new ListCell<QuestAnsElement>() {
 			
 			  @Override protected void updateItem(QuestAnsElement qae, boolean empty) {
@@ -392,7 +403,7 @@ public class MainStageView extends Stage {
                   } else {
                       setText(null);
                       if(qae.getAnswer() != "") {
-                    	  setText("Du hast diese Frage schon gestellt");
+                    	  setText(res.cmbQuestionsTextYouveAskThisQuestionAlready);
                       }
                       else {
                     	  setText(qae.getQuestion());
@@ -400,7 +411,14 @@ public class MainStageView extends Stage {
                   }
 			  }
 			};
+		
+		//Set the configured button cell to the combobox:
 		this.cmbQuestions.setButtonCell(buttonCell);
+		
+		/* This definition create a list view with list cell objects, this list view defines
+		 * the list view (drop-down-content) of the combobox. The current list cell object 
+		 * defines the current content of the items (entries) in the combobox and how this 
+		 * content looks like! */
 		this.cmbQuestions.setCellFactory(new Callback<ListView<QuestAnsElement>, ListCell<QuestAnsElement>>() {
 			
             @Override
@@ -424,6 +442,7 @@ public class MainStageView extends Stage {
                          	lblQuest.setStyle("-fx-text-fill: black;");
                          	Label lblAns   = new Label(qae.getAnswer());
                          	lblAns.setStyle("-fx-text-fill: black;");
+                         	setStyle("-fx-background-color: #FFFFFF;");
                          	Image image = new Image(GlobalReferences.CURSORS_PATH + "pointer.png");
                      		setCursor(new ImageCursor(image,10,1));
                          	GridPane grid = new GridPane();
@@ -459,7 +478,7 @@ public class MainStageView extends Stage {
          }
      });
 		
-		//this.cmbQuestions.setPrefWidth(Integer.MAX_VALUE);
+		//Set action listener:
 		this.cmbQuestions.setOnAction(aeh);
 		
 	}
@@ -551,14 +570,15 @@ public class MainStageView extends Stage {
 	//Method that initialize the stage (window) settings:
 	private void initStage() {
 
-
-		this.scene = new Scene(this.bdpRootPane, 445, 693);
- 		Image image = new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png");
-		this.scene.setCursor(new ImageCursor(image,0,0));
-		this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());;
+		//Create scene and set their properties:
+		this.scene = new Scene(this.bdpRootPane, 445, 693);	
+		this.scene.getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());; 
+		this.scene.setCursor(new ImageCursor(new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png"), 0, 0));
+		
+		//Set stage properties:
 		this.setScene(this.scene);
 		this.setTitle("Nappy, the ingenious");
-
+		this.setResizable(false);
 		this.getIcons().addAll(
 			new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"),
 			new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"),
@@ -567,7 +587,7 @@ public class MainStageView extends Stage {
 			new Image(GlobalReferences.ICONS_PATH + "128x128/icon.png"),
 			new Image(GlobalReferences.ICONS_PATH + "256x256/icon.png")
 		);
-		//this.setResizable(false);
+		
 	}
 
 //##########################################################################################################################################

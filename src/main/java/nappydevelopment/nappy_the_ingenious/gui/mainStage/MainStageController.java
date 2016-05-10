@@ -109,7 +109,9 @@ public class MainStageController {
 		
 		this.view.btnYes.textProperty().bind(this.res.btnYesText);
 		this.view.btnNo.textProperty().bind(this.res.btnNoText);
-		this.view.btnIdontKnow.textProperty().bind(this.res.btnIdontKnow);
+		this.view.btnIdontKnow.textProperty().bind(this.res.btnIdontKnowText);
+		
+		this.view.btnAskQuestion.textProperty().bind(this.res.btnAskQuestionText);
 		
 		//Stage-Properties:
 		this.view.titleProperty().bind(this.res.stageTitleText);
@@ -501,6 +503,7 @@ public class MainStageController {
 	 		Image image = new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png");
 			alert.getDialogPane().setCursor(new ImageCursor(image,0,0));
 	    	
+			
 	    	if(isNappyRight == Answer.YES) {
 	    	
 	    		alert.setHeaderText(this.res.statusDialogGM1StatusTextRight1 + 
@@ -668,12 +671,12 @@ public class MainStageController {
 		
 		if(isTheFirstQuestion) {
 			System.out.println("Is the first question!");
-			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectAQuestion);
+			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectAQuestion));
 			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
 		}
 		else {
 			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
-			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
+			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
 		}
 
 		this.view.btnAskQuestion.setDisable(true);
