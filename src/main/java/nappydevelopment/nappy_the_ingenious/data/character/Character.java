@@ -1,4 +1,4 @@
-package nappydevelopment.nappy_the_ingenious.data;
+package nappydevelopment.nappy_the_ingenious.data.character;
 
 import javafx.scene.image.Image;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;

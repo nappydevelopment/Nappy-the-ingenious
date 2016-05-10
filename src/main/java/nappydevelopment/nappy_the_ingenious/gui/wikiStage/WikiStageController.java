@@ -18,11 +18,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import nappydevelopment.nappy_the_ingenious.data.CharacterFilter;
+import nappydevelopment.nappy_the_ingenious.data.character.CharacterFilter;
 import nappydevelopment.nappy_the_ingenious.data.CharacterProvider;
-import nappydevelopment.nappy_the_ingenious.data.Gender;
-import nappydevelopment.nappy_the_ingenious.data.Age;
-import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.character.Gender;
+import nappydevelopment.nappy_the_ingenious.data.character.Age;
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Settings;
 
 

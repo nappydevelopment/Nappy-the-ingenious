@@ -1,6 +1,8 @@
 package nappydevelopment.nappy_the_ingenious.data;
 //### IMPORTS ##############################################################################################################################
 
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
+
 //Class that represent an active game:
 public class Game {
 	

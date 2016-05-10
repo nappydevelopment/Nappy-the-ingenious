@@ -1,5 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.data;
 
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 

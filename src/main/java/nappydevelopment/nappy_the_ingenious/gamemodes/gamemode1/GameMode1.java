@@ -1,7 +1,7 @@
 package nappydevelopment.nappy_the_ingenious.gamemodes.gamemode1;
 
 import nappydevelopment.nappy_the_ingenious.data.*;
-import nappydevelopment.nappy_the_ingenious.data.Character;
+import nappydevelopment.nappy_the_ingenious.data.character.Character;
 import nappydevelopment.nappy_the_ingenious.data.settings.Language;
 import nappydevelopment.nappy_the_ingenious.exception.GameHasFinished;
 import nappydevelopment.nappy_the_ingenious.exception.NoActiveQuestion;
