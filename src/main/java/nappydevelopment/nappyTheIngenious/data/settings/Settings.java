@@ -18,7 +18,7 @@ public class Settings implements Serializable{
 	private static volatile Settings singleton = new Settings();
 
 	private Settings(){ this(true); }
-	private Settings(boolean loadFromDb){
+	private Settings(final boolean loadFromDb){
 		if(!loadFromDb){
 			return;
 		}
@@ -56,7 +56,7 @@ public class Settings implements Serializable{
 	}
 
 	// internal api: do not use!
-	protected static void reset(boolean loadFromDb){ singleton = new Settings(loadFromDb); }
+	protected static void reset(final boolean loadFromDb){ singleton = new Settings(loadFromDb); }
 
 	public static ColorScheme getColoScheme(){ return get().coloScheme; }
 	public static void setColoScheme(ColorScheme coloScheme){ get().coloScheme = coloScheme; }

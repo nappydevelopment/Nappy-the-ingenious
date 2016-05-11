@@ -9,12 +9,12 @@ public enum Answer {
 	private final String textEnglish;
 	private final String textGerman;
 	
-	private Answer(String eng, String ger) {
+	private Answer(final String eng, final String ger) {
 		this.textEnglish = eng;
 		this.textGerman = ger;
 	}
 	
-	public String getText(Language lang) {
+	public String getText(final Language lang) {
 		
 		if(lang == Language.ENGLISH) {
 			return this.textEnglish;
@@ -24,7 +24,7 @@ public enum Answer {
 		}
 	}
 
-	public static Answer fromBool(boolean b) {
+	public static Answer fromBool(final boolean b) {
 		Answer ans;
 		if(b){
 			ans = Answer.YES;
