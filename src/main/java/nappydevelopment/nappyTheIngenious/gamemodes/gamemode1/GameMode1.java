@@ -20,16 +20,14 @@ public class GameMode1{
 	private int numDunno = 0;
 	private Question activeQuestion = null;
 
-	private final Language lang;
 	private boolean deterministic = false;
 	private boolean finished = true;
 
 	private Map<String, Question> questions;
 
-	public GameMode1(Language l){ this(l, false); }
-	public GameMode1(Language l, final boolean det){
+	public GameMode1(final Language lang){ this(lang, false); }
+	public GameMode1(final Language lang, final boolean det){
 		deterministic = det;
-		lang = l;
 		questions = QuestionProvider.getQuestions(lang);
 		finished = false;
 	}
