@@ -44,7 +44,7 @@ public class Question{
 	}
 	public float tryQuestion(final String where, final boolean deterministic){
 		String select = "SELECT count(0) as C, " + table +
-				" FROM SIMPSONS " + where + " GROUP BY " + table;
+			" FROM SIMPSONS " + where + " GROUP BY " + table;
 		float sum = 0;
 		float ret = 0;
 		try(Statement st = DatabaseProvider.getStatement()){
