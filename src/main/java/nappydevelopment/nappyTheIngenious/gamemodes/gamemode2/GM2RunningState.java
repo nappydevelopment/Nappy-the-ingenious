@@ -76,9 +76,6 @@ public class GM2RunningState implements GM2State{
 		return Answer.fromBool(answer);
 	}
 
-	public Boolean makeGuess(final Character wiki){
-		return makeGuess(wiki.getName());
-	}
 	public Boolean makeGuess(final String name){
 		if(isFinished()){
 			return null;

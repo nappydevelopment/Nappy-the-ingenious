@@ -18,9 +18,6 @@ public class GM2FinishedState implements GM2State{
 	public Answer askQuestion(final String question) throws GameHasFinished{
 		throw new GameHasFinished();
 	}
-	public Boolean makeGuess(final Character wiki) throws GameHasFinished{
-		throw new GameHasFinished();
-	}
 	public Boolean makeGuess(final String name) throws GameHasFinished{
 		throw new GameHasFinished();
 	}
