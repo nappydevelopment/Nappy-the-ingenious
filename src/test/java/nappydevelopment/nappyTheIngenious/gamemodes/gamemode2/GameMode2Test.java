@@ -1,6 +1,7 @@
 package nappydevelopment.nappyTheIngenious.gamemodes.gamemode2;
 
 import nappydevelopment.nappyTheIngenious.data.CharacterProvider;
+import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.InvalidQuestion;
@@ -22,8 +23,11 @@ public class GameMode2Test{
 		gm_det = new GameMode2(Language.GERMAN, true);
 	}
 
+
 	@Test
-	public void removeAnsweredQuestions() throws InvalidQuestion, GameHasFinished, NoMoreQuestions{
+	public void removeAnsweredQuestions()
+		throws InvalidQuestion, GameHasFinished, NoMoreQuestions
+	{
 		List<String> questions = gm.getQuestions();
 		int last = questions.size();
 		gm.askQuestion(questions.get(0));
@@ -45,21 +49,11 @@ public class GameMode2Test{
 		assertNull(gm.askQuestion(q));
 	}
 
-	@Test(expected=GameHasFinished.class)
-	public void askQuestionWhenFinished() throws Exception{
-		gm.endGame();
-		assertNull(gm.askQuestion("EGAL"));
-	}
 	@Test
 	public void makeGuess() throws GameHasFinished{
 		assertFalse(gm_det.makeGuess("Jeff Albertson"));
 		assertTrue(gm_det.makeGuess("Eleanor Abernathy"));
 		gm_det.endGame();
-	}
-	@Test(expected=GameHasFinished.class)
-	public void makeGuessAfterFinished() throws GameHasFinished{
-		gm.endGame();
-		gm.makeGuess("EGAL");
 	}
 
 	@Test
@@ -70,16 +64,46 @@ public class GameMode2Test{
 		);
 	}
 
-	@Test(expected=GameHasFinished.class)
-	public void doubleEndGame() throws GameHasFinished{
-		assertNotNull(gm.endGame());
-		assertNull(gm.endGame());
-	}
-
 	@Test
 	public void finished() throws GameHasFinished{
 		assertFalse(gm.isFinished());
 		gm.endGame();
 		assertTrue(gm.isFinished());
 	}
+
+	// test finished state
+	@Test
+	public void answeredQuestionsWhenFinished()
+		throws GameHasFinished, NoMoreQuestions, InvalidQuestion
+	{
+		gm.askQuestion(gm.getQuestions().get(0));
+		gm.endGame();
+		assertEquals(gm.answeredQuestions(), 1);
+	}
+	@Test(expected=GameHasFinished.class)
+	public void askQuestionWhenFinished() throws Exception{
+		gm.endGame();
+		assertNull(gm.askQuestion("EGAL"));
+	}
+	@Test(expected=GameHasFinished.class)
+	public void doubleEndGameWhenFinished() throws GameHasFinished{
+		gm.endGame();
+		assertNull(gm.endGame());
+	}
+	@Test(expected=GameHasFinished.class)
+	public void getQuestionsWhenFinished() throws GameHasFinished{
+		gm.endGame();
+		assertNull(gm.getQuestions());
+	}
+	@Test(expected=GameHasFinished.class)
+	public void makeGuessWhenFinished() throws GameHasFinished{
+		gm.endGame();
+		gm.makeGuess("EGAL");
+	}
+	@Test(expected=GameHasFinished.class)
+	public void makeCharacterGuessWhenFinished() throws GameHasFinished{
+		gm.endGame();
+		assertNull(gm.makeGuess(new Character(null,null,null,null,null,null)));
+	}
+
 }
