@@ -94,21 +94,14 @@ public class Program extends Application {
 		this.helpStageController.initView();
 		this.wikiStageController.initView(chars);
 		this.infoStageController.initView();
-		
-		//Set the language of the stages to German:
-		this.mainStageController.changeLanguageToGerman();
-		this.statisticStageController.changeLanguageToGerman();
-		this.settingsStageController.changeLanguageToGerman();
-		this.helpStageController.changeLanguageToGerman();
-		this.wikiStageController.changeLanguageToGerman();
-		this.infoStageController.changeLanguageToGerman();
-		
+
+		this.applySettings();
+
 		//Print status message:
 		System.out.println("JavaFX-Application - Run");
-		
+
 		//Show the main-stage-window:
 		this.mainStageController.showStartView();
-		
 	}
 	
 	//Method that is called when the JavaFX-Application is shutdown:
