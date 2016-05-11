@@ -11,7 +11,6 @@ import java.util.List;
 public interface GM2State{
 	int answeredQuestions();
 	Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished;
-	Boolean makeGuess(final Character wiki) throws GameHasFinished;
 	Boolean makeGuess(final String name) throws GameHasFinished;
 	Character endGame(final GameMode2 gm2) throws GameHasFinished;
 	List<String> getQuestions() throws GameHasFinished;
