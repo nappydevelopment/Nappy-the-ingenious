@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.data.character.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.util.eastereggs.EastereggSearcher;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,6 +50,7 @@ public class CharacterProvider{
 	}
 
 	public static List<Character> search(List<Character> list, CharacterFilter search){
+		EastereggSearcher.lookForEasteregg(search.getSearchStr().toLowerCase());
 		List<Character> out;
 		out = list.stream()
 			.filter(c -> {
