@@ -25,7 +25,7 @@ public class CharacterProviderTest{
 
 	@Test
 	public void search() throws Exception{
-		CharacterFilter filter1 = new CharacterFilter("simp");
+		CharacterFilter filter1 = new CharacterFilter("simp", Gender.UNKNOWN, Age.UNKNOWN);
 		CharacterFilter filter2 = new CharacterFilter("simp", Gender.MALE, Age.UNKNOWN);
 		CharacterFilter filter3 = new CharacterFilter("", Gender.UNKNOWN, Age.OLD);
 

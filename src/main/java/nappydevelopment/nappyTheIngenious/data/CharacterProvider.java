@@ -53,7 +53,7 @@ public class CharacterProvider{
 		out = list.stream()
 			.filter(c -> {
 				if(search.getSearchStr().isEmpty()){return true;}
-				return c.getName().toLowerCase().contains(search.getSearchStr().toLowerCase());
+				return c.getName().toLowerCase().contains(search.getSearchStr());
 			})
 			.filter(c -> c.getGender().equals(search.getGender()))
 			.filter(c -> c.getAge().equals(search.getAge()))

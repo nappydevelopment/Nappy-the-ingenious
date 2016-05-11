@@ -10,15 +10,9 @@ public class CharacterFilter{
     private Age age;
 
     public CharacterFilter(String searchStr, Gender gender, Age age) {
-        this.searchStr=searchStr;
-        this.gender=gender;
-        this.age=age;
-    }
-
-    public CharacterFilter(String searchStr) {
-        this.searchStr=searchStr;
-        this.gender=Gender.UNKNOWN;
-        this.age=Age.UNKNOWN;
+        this.searchStr = searchStr.toLowerCase();
+        this.gender = gender;
+        this.age = age;
     }
 
     public String getSearchStr() {
