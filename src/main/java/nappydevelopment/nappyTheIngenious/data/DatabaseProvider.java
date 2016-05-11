@@ -59,9 +59,10 @@ public class DatabaseProvider{
 		return dbConn.createStatement();
 	}
 
-	public void closeDatabase(){
+	public static void closeConnection(){
 		try{
 			dbConn.close();
+			dbConn = null;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
