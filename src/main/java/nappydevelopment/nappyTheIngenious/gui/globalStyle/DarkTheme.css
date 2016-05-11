@@ -1,7 +1,7 @@
 .root {
-	-fx-base: rgb(50, 50, 50);
-	-fx-background: rgb(50, 50, 50);
-	-fx-control-inner-background:  rgb(50, 50, 50);
+	-fx-base: #3B3636;
+	-fx-background: #3b3636;
+	-fx-control-inner-background: #3b3636;
 }
 
 .tab {
