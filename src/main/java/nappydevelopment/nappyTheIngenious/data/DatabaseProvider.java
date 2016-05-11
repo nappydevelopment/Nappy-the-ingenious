@@ -67,7 +67,9 @@ public class DatabaseProvider{
 		}
 	}
 
-	public static PreparedStatement prepareStatement(String sql) throws SQLException{
+	public static PreparedStatement prepareStatement(
+		final String sql
+	) throws SQLException {
 		return dbConn.prepareStatement(sql);
 	}
 }
