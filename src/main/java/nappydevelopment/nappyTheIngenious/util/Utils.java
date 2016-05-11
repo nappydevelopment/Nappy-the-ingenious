@@ -1,4 +1,4 @@
-//### 
+//###
 package nappydevelopment.nappyTheIngenious.util;
 
 //### IMPORTS ##############################################################################################################################
@@ -15,21 +15,21 @@ import javafx.scene.image.WritableImage;
 public class Utils {
 
 //### STATIC METHODS #######################################################################################################################
-	
+
 	public static BufferedImage getScaledInstance(
 		BufferedImage img,
 		int targetWidth,
 		int targetHeight,
 		Object hint,
-		double scalFactor,
+		double scaleFactor,
 		boolean higherQuality
 	){
 		int type = (img.getTransparency() == Transparency.OPAQUE) ?
 		BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
 		BufferedImage ret = (BufferedImage)img;
-		
+
 		int w, h;
-		
+
 		if (higherQuality) {
 			// Use multi-step technique: start with original size, then
 			// scale down in multiple passes with drawImage()
@@ -45,13 +45,13 @@ public class Utils {
 
 		do {
 			if (higherQuality && w > targetWidth) {
-				w *= scalFactor;
+				w *= scaleFactor;
 				if (w < targetWidth) {
 					w = targetWidth;
 				}
 			}
 			if (higherQuality && h > targetHeight) {
-				h *= scalFactor;
+				h *= scaleFactor;
 				if (h < targetHeight) {
 					h = targetHeight;
 				}
@@ -62,7 +62,7 @@ public class Utils {
 			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, hint);
 			g2.drawImage(ret, 0, 0, w, h, null);
 			g2.dispose();
-			
+
 			ret = tmp;
 		} while (w != targetWidth || h != targetHeight);
 
@@ -74,22 +74,22 @@ public class Utils {
 		int targetWidth,
 		int targetHeight,
 		Object hint,
-		double scalFactor,
+		double scaleFactor,
 		boolean higherQuality
 	){
 		Image helpImg = null;
-		
+
 		BufferedImage buffImg = SwingFXUtils.fromFXImage(img, null);
-		BufferedImage scalImg = Utils.getScaledInstance(
+		BufferedImage scaleImg = Utils.getScaledInstance(
 			buffImg,
 			targetWidth,
 			targetHeight,
 			hint,
-			scalFactor,
+			scaleFactor,
 			higherQuality
 		);
-    	
-    	return SwingFXUtils.toFXImage(scalImg, (WritableImage)helpImg);
+
+		return SwingFXUtils.toFXImage(scaleImg, (WritableImage)helpImg);
 	}
 
 }
