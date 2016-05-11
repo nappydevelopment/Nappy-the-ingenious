@@ -114,7 +114,13 @@ public class Program extends Application {
 	//Method that is called when the JavaFX-Application is shutdown:
 	@Override
 	public void stop() {
-		
+
+		try{
+			Settings.saveToDatabase();
+		}catch(CouldNotSaveToDatabase couldNotSaveToDatabase){
+			couldNotSaveToDatabase.printStackTrace();
+		}
+
 		//Print status message:
 		System.out.println("JavaFX-Application - Stop");
 	}
