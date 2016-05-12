@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class InfoStageControllerTest {
     @Test
     public void initView() throws Exception {
-
+        //sdhjos
     }
 
 }
