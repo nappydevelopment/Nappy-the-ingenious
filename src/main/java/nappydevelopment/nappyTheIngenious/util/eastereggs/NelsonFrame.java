@@ -1,41 +1,85 @@
 package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
-import javax.swing.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
-/**
- * Created by Marc on 11.05.2016.
- */
-public class NelsonFrame extends JFrame{
+import javafx.event.EventHandler;
+
+import javafx.scene.Scene;
+
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import nappydevelopment.nappyTheIngenious.GlobalReferences;
+
+import javafx.scene.image.Image;
+
+import java.awt.*;
+
+
+public class NelsonFrame extends Stage {
 
     private int counter;
+    int width = 490;
+    int height = 490;
+    private Scene scene;
+    private BorderPane bdpRootPane;
+    private ImageView imvNelson;
+    private Image imgNelsonR;
+    private Image imgNelsonL;
 
-    public static void createNewNelson(){
+    public static void createNewNelson() {
         new NelsonFrame(1);
     }
 
-    NelsonFrame(int timesOpened){
-        super();
+    NelsonFrame(int timesOpened) {
         this.counter = timesOpened;
-        this.setTitle("HAHA");
-        this.setSize(300, 300);
-        this.addWindowListener(new WindowAdapter() {
+        initComponents();
+        structureComponents();
+        initStage();
+        new SoundPlayer("haha");
+        this.setAlwaysOnTop(true);
+        this.show();
+    }
+
+    private void initComponents() {
+        this.bdpRootPane = new BorderPane();
+
+        this.imgNelsonR = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEastereggRechts.png");
+        this.imgNelsonL = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEastereggLinks.png");
+
+        if(Math.random()<0.5){
+            imvNelson = new ImageView(imgNelsonL);
+        }else {
+            this.imvNelson = new ImageView(imgNelsonR);
+        }
+    }
+
+    private void structureComponents() {
+        this.bdpRootPane.setCenter(this.imvNelson);
+    }
+
+    private void initStage() {
+        this.scene = new Scene(this.bdpRootPane, width, height);
+        this.setScene(this.scene);
+        this.setResizable(false);
+        this.getIcons().add(new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"));
+        //Set owner and modality by the first start of the stage:
+        this.initModality(Modality.APPLICATION_MODAL);
+        this.setX(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getWidth()-width)+1);
+        this.setY(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getHeight()-height)+1);
+        this.setOnCloseRequest(new EventHandler<javafx.stage.WindowEvent>() {
             @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);
+            public void handle(javafx.stage.WindowEvent event) {
                 exitForm();
             }
         });
-        this.setVisible(true);
+
     }
 
     private void exitForm() {
-        if(counter < 3) {
+        if (counter < 7) {
             new NelsonFrame(counter + 1);
             new NelsonFrame(counter + 1);
         }
-        this.dispose();
     }
 }
