@@ -44,7 +44,7 @@ after_success:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - git status
-  - git checkout master
+  - git branch
   - git status
   - export GIT_TAG=$TRAVIS_BRANCH-v0.1.$TRAVIS_BUILD_NUMBER
   - git add jar/*.jar
