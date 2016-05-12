@@ -57,7 +57,7 @@ public class CharacterProvider{
 			})
 			.filter(c -> c.getGender().equals(search.getGender()))
 			.filter(c -> c.getAge().equals(search.getAge()))
-			.sorted(new CharacterNameComparator())
+			.sorted((o1, o2) -> o1.getName().compareTo(o2.getName()))
 			.collect(Collectors.toList());
 		return out;
 	}
