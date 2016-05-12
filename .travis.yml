@@ -47,8 +47,8 @@ after_success:
   - git checkout $TRAVIS_BRANCH
   - git status
   - export GIT_TAG=$TRAVIS_BRANCH-v0.1.$TRAVIS_BUILD_NUMBER
-  - git add jar/*.jar
+  - git add -f jar/*.jar
   - git commit -m "Generated from TravisCI $GIT_TAG [ci skip]"
   - git status
-  - git --no-pager log
+  - git --no-pager log | head
 # - git push -q https://$GITHUB_TOKEN@github.com/nappydevelopment/Nappy-the-ingenious --tags
