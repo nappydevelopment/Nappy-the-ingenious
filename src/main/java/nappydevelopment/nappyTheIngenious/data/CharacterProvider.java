@@ -50,7 +50,7 @@ public class CharacterProvider{
 	}
 
 	public static List<Character> search(List<Character> list, CharacterFilter search){
-		EastereggSearcher.lookForEasteregg(search.getSearchStr().toLowerCase());
+		new EastereggSearcher(search.getSearchStr());
 		List<Character> out;
 		out = list.stream()
 			.filter(c -> {
