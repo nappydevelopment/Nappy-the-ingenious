@@ -25,6 +25,7 @@ addons:
 branches:
     only:
     - master
+    - travis-test
     - /v\d+\.\d+[a-z]/
 
 # container-based build:
@@ -33,13 +34,6 @@ sudo: false
 # Run Integration tests
 script:
   - mvn clean install verify sonar:sonar
-
-deploy:
-  provider: releases
-  skip_cleanup: true
-  on:
-    tags: false
-    branch: master
 
 # record coverage to codacy
 after_success:
