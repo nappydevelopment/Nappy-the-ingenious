@@ -12,6 +12,9 @@ jdk:
 #   - oraclejdk7
    - oraclejdk8
 
+env:
+   - GITHUB_TOKEN=GITHUB_TOKEN
+
 addons:
   apt:
     packages:
@@ -31,17 +34,18 @@ script:
   - mvn verify
   - mvn clean install sonar:sonar
 
+deploy:
+  provider: releases
+  api_key: "GITHUB_TOKEN"
+  file: "jar/nappy-the-ingenious-0.0.1-SNAPSHOT.jar"
+  skip_cleanup: true
+  on:
+    repo: nappydevelopment/Nappy-the-ingenious
+    tags: true
+
 # record coverage to codacy
 after_success:
   - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
   - java -jar jpm4j.jar -u init
   - /home/travis/jpm/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
   - /home/travis/jpm/bin/codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml
-
-deploy:
-  provider: releases
-  api_key: "b06b08906c5e29544ac077fb627710010d4abb07" # GITHUB TOKEN travisci
-  file: "jar/nappy-the-ingenious-0.0.1-SNAPSHOT.jar"
-  skip_cleanup: true
-  on:
-    tags: true
