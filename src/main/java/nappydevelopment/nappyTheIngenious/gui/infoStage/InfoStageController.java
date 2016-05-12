@@ -144,6 +144,9 @@ public class InfoStageController {
 
 //### PRIVATE METHODS #######################################################################################################################
 
+	/* Open a website with the standard browser
+	*
+	 */
     private void openBlogInBrowser() {
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
@@ -163,6 +166,9 @@ public class InfoStageController {
         }
     }
 
+	/* 	Open the standard mailclient
+	*	Set mailto
+	 */
     private void openEmailClient() {
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
