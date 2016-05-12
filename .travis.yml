@@ -25,7 +25,6 @@ addons:
 branches:
     only:
     - master
-    - travis-test
     - /v\d+\.\d+[a-z]/
 
 # container-based build:
@@ -51,4 +50,4 @@ after_success:
   - git commit -m "Generated from TravisCI $GIT_TAG [ci skip]"
   - git status
   - git --no-pager log | head
-# - git push -q https://$GITHUB_TOKEN@github.com/nappydevelopment/Nappy-the-ingenious --tags
+  - git push -q https://$GITHUB_TOKEN@github.com/nappydevelopment/Nappy-the-ingenious --tags
