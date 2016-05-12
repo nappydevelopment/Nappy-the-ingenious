@@ -12,9 +12,6 @@ jdk:
 #   - oraclejdk7
    - oraclejdk8
 
-env:
-   - GITHUB_TOKEN=GITHUB_TOKEN
-
 addons:
   apt:
     packages:
