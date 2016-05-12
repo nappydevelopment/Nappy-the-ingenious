@@ -5,7 +5,7 @@ package nappydevelopment.nappyTheIngenious.util.eastereggs;
  */
 public class EastereggSearcher {
 
-    public static void lookForEasteregg(String str){
+    public EastereggSearcher(String str){
         if(str.equals("haha")){
             NelsonFrame.createNewNelson();
         }
@@ -16,4 +16,5 @@ public class EastereggSearcher {
 
         }
     }
+
 }
