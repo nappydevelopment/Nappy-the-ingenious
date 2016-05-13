@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.Program;
-import nappydevelopment.nappyTheIngenious.exception.ChangeLanguageException;
 
 import java.awt.*;
 import java.io.IOException;
@@ -129,7 +128,7 @@ public class InfoStageController {
 	/* changeLanguageToGerman [method]: *//**
 	 * 
 	 */
-	public void changeLanguageToGerman() throws ChangeLanguageException {
+	public void changeLanguageToGerman() {
 
 		this.res.setTextsToGerman();
 	}
@@ -137,7 +136,7 @@ public class InfoStageController {
 	/* changeLanguageToEnglish [method]: *//**
 	 * 
 	 */
-	public void changeLanguageToEnglish() throws ChangeLanguageException {
+	public void changeLanguageToEnglish() {
 
 		this.res.setTextsToEnglish();
 	}

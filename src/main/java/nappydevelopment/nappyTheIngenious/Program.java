@@ -160,7 +160,7 @@ public class Program extends Application {
 	/* applySettings [method]: Method to apply the settings for all stages *//**
 	 * 
 	 */
-	public void applySettings() throws ChangeLanguageException {
+	public void applySettings() {
 		
 		//Apply the language setting:
         //TODO: add custom exception to the other controller's
@@ -170,11 +170,7 @@ public class Program extends Application {
 			this.settingsStageController.changeLanguageToGerman();
 			this.helpStageController.changeLanguageToGerman();
 			this.wikiStageController.changeLanguageToGerman();
-			try {
-				this.infoStageController.changeLanguageToGerman();
-			} catch (ChangeLanguageException e) {
-				e.printStackTrace();
-			}
+			this.infoStageController.changeLanguageToGerman();
 		}
 		else {
 			this.mainStageController.changeLanguageToEnglish();
@@ -182,11 +178,7 @@ public class Program extends Application {
 			this.settingsStageController.changeLanguageToEnglish();
 			this.helpStageController.changeLanguageToEnglish();
 			this.wikiStageController.changeLanguageToEnglish();
-			try {
-				this.infoStageController.changeLanguageToEnglish();
-			} catch (ChangeLanguageException e) {
-				e.printStackTrace();
-			}
+			this.infoStageController.changeLanguageToEnglish();
 		}
 		
 		if(Settings.getColoScheme() == ColorScheme.DARK) {
