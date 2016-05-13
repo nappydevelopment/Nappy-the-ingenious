@@ -10,7 +10,6 @@ import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
 import nappydevelopment.nappyTheIngenious.data.settings.GameMode;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
-import nappydevelopment.nappyTheIngenious.exception.ChangeLanguageException;
 
 /* SettingsStageController [class] *//**
  * 
@@ -123,11 +122,7 @@ public class SettingsStageController {
 		//Here you need to read out the changes!
 		this.view.close();
 
-		try {
-			this.program.applySettings();
-		} catch (ChangeLanguageException e) {
-			e.printStackTrace();
-		}
+		this.program.applySettings();
 	}
 	
 	private void loadSettings() {
