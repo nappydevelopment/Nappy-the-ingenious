@@ -50,7 +50,6 @@ public class CharacterProvider{
 	}
 
 	public static List<Character> search(List<Character> list, CharacterFilter search){
-		System.out.println("PENIS");
 		new EastereggSearcher(search.getSearchStr());
 		List<Character> out;
 		out = list.stream()
