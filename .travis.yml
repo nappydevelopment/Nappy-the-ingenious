@@ -1,42 +1,35 @@
 # configuration file for TravisCI
 
-# Notes:
-#  - you can skip a build by adding [ci skip] to the commit message
-#
-
-# see http://about.travis-ci.org/docs/user/languages/java/
 language: java
 
-# test for these JDK versions and environments
 jdk:
-#   - oraclejdk7
-   - oraclejdk8
+  - oraclejdk8
 
+# install java8
 addons:
   apt:
     packages:
       - oracle-java8-installer
 
-
-# only build these branches (RegEx is also valid, eg. /^deploy.*$/):
+# only build master
 branches:
     only:
     - master
-    - /v\d+\.\d+[a-z]/
 
 # container-based build:
 sudo: false
 
-# Run Integration tests
+# verify and execute sonar
+# and report coverage to codacy
 script:
-  - mvn clean install verify sonar:sonar
-
-# record coverage to codacy
-after_success:
+  - mvn verify sonar:sonar
   - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
   - java -jar jpm4j.jar -u init
   - /home/travis/jpm/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
   - /home/travis/jpm/bin/codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml
+
+# push jar to github
+after_success:
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - git status
