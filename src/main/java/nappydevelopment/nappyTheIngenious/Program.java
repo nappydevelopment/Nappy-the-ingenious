@@ -294,8 +294,8 @@ public class Program extends Application {
 		//Show the first Question:
 		try{
 			this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
-		}catch(NoMoreQuestions noMoreQuestions){
-			noMoreQuestions.printStackTrace();
+		}catch(NoMoreQuestions|GameHasFinished e){
+			e.printStackTrace();
 		}
 	}
 	
@@ -309,8 +309,8 @@ public class Program extends Application {
 		//TODO: No clean code logic should use the Answer object:
 		try{
 			this.gm1Logic.setAnswer(answer);
-		}catch(NoActiveQuestion noActiveQuestion){
-			noActiveQuestion.printStackTrace();
+		}catch(NoActiveQuestion|GameHasFinished e){
+			e.printStackTrace();
 			System.out.println(
 				"set the answer twice without getting a new question\n" +
 				" (through Program.setQuestionAnswer, problem is probably in MainStageController.ViewActionEventHandler.handle())"
@@ -322,16 +322,22 @@ public class Program extends Application {
 		this.game.increaseNoOfQuestionsNappy();
 
 		//Update info elements (Progress-Bars):
-		this.mainStageController.updateInfo(this.game.getNoOfQuestionsNappy(),
-											this.game.getNoOfQuestionsNappyInPercent(),
-											this.gm1Logic.getSureness());
+		try{
+			this.mainStageController.updateInfo(
+				this.game.getNoOfQuestionsNappy(),
+				this.game.getNoOfQuestionsNappyInPercent(),
+				this.gm1Logic.getSureness()
+			);
+		}catch(GameHasFinished gameHasFinished){
+			gameHasFinished.printStackTrace();
+		}
 
 		//Check if nappy knows the character:
 		if(this.gm1Logic.isSure() == Sureness.SURE) {
 			try{
 				this.mainStageController.showGuessedCharacter(this.gm1Logic.endGame());
 				this.game.setCharacterNappy(this.gm1Logic.endGame());
-			}catch(GameHasFinished gameHasFinished){
+			}catch(GameHasFinished|CantFinishGamemMode gameHasFinished){
 				gameHasFinished.printStackTrace();
 			}
 		}
@@ -343,8 +349,8 @@ public class Program extends Application {
 		else if (this.gm1Logic.isSure() == Sureness.UNSURE) {
 			try{
 				this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
-			}catch(NoMoreQuestions noMoreQuestions){
-				noMoreQuestions.printStackTrace();
+			}catch(NoMoreQuestions|GameHasFinished e){
+				e.printStackTrace();
 			}
 		}
 		
