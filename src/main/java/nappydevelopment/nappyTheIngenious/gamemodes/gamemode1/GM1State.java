@@ -9,7 +9,7 @@ import nappydevelopment.nappyTheIngenious.exception.NoActiveQuestion;
 import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
 
 public interface GM1State{
-	Character endGame(GameMode1 gameMode1) throws GameHasFinished, CantFinishGamemMode;
+	Character endGame() throws GameHasFinished, CantFinishGamemMode;
 	void setAnswer(final Answer answer) throws NoActiveQuestion, GameHasFinished;
 	int getNumDunno();
 	float getSureness() throws GameHasFinished;

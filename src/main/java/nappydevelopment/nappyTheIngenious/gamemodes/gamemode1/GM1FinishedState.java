@@ -31,7 +31,7 @@ public class GM1FinishedState implements GM1State{
 	public boolean isFinished(){ return true; }
 
 	@Override
-	public Character endGame(GameMode1 gameMode1) throws GameHasFinished{
+	public Character endGame() throws GameHasFinished{
 		throw new GameHasFinished();
 	}
 

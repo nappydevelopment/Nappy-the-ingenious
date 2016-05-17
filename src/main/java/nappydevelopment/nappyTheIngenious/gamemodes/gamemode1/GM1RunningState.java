@@ -21,49 +21,40 @@ import java.util.Map;
 import java.util.Optional;
 
 public class GM1RunningState implements GM1State{
-	private int numDunno = 0;
+	protected int numDunno = 0;
 	private boolean deterministic = false;
 
 	private Map<String, Question> questions;
-	private Question activeQuestion = null;
 
-	public GM1RunningState(final Language lang, final boolean det){
+	private GameMode1 context;
+
+	public GM1RunningState(final GameMode1 ctx, final Language lang, final boolean det){
+		context = ctx;
 		deterministic = det;
 		questions = QuestionProvider.getQuestions(lang);
 	}
 	@Override
-	public boolean isFinished(){
-		return false;
-	}
+	public int getNumDunno(){ return numDunno; }
 
 	@Override
-	public Character endGame(GameMode1 gameMode1) throws GameHasFinished, CantFinishGamemMode{
+	public boolean isActive(){ return false; }
+
+	@Override
+	public boolean isFinished(){ return false; }
+
+	@Override
+	public Character endGame() throws GameHasFinished, CantFinishGamemMode{
 		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
 		if(chars.isEmpty() || isSure() != Sureness.SURE){
 			throw new CantFinishGamemMode();
 		}
-		gameMode1.state = new GM1FinishedState(numDunno, isSure());
+		context.state = new GM1FinishedState(numDunno, isSure());
 		return chars.get(0);
 	}
 
 	@Override
 	public void setAnswer(final Answer answer) throws NoActiveQuestion {
-		if(answer == null){
-			return;
-		}
-		if(answer == Answer.DONT_KNOW){
-			numDunno++;
-		}
-		if(activeQuestion == null){
-			throw new NoActiveQuestion();
-		}
-		questions.get(activeQuestion.getQuestion()).setAnswer(answer);
-		activeQuestion = null;
-	}
-
-	@Override
-	public int getNumDunno(){
-		return numDunno;
+		throw new NoActiveQuestion();
 	}
 
 	private float sureness(){
@@ -126,15 +117,9 @@ public class GM1RunningState implements GM1State{
 	}
 
 	@Override
-	public boolean isActive(){ return activeQuestion != null; }
-
-	@Override
 	public String getQuestion() throws NoMoreQuestions{
-		if(isSure()==Sureness.SURE){
+		if(isSure() == Sureness.SURE){
 			return null;
-		}
-		if(activeQuestion != null){
-			return activeQuestion.getQuestion();
 		}
 		Optional<Question> bestMatch = questions.values().stream()
 				.filter(q -> !q.answered())
@@ -143,12 +128,11 @@ public class GM1RunningState implements GM1State{
 						q2.tryQuestion(generateWhere(), deterministic)
 						)
 				);
-		if(bestMatch.isPresent()){
-			activeQuestion = bestMatch.get();
-		}else{
-			activeQuestion = null; // just to be sure
+		if(!bestMatch.isPresent()){
 			throw new NoMoreQuestions();
 		}
+		Question activeQuestion = bestMatch.get();
+		context.state = new GM1ActiveState(activeQuestion, context, this);
 		return activeQuestion.getQuestion();
 	}
 }

@@ -13,10 +13,10 @@ public class GameMode1{
 	GM1State state;
 	public GameMode1(final Language lang){ this(lang, false); }
 	public GameMode1(final Language lang, final boolean det){
-		state = new GM1RunningState(lang, det);
+		state = new GM1RunningState(this, lang, det);
 	}
 
-	public Character endGame() throws GameHasFinished, CantFinishGamemMode{ return state.endGame(this); }
+	public Character endGame() throws GameHasFinished, CantFinishGamemMode{ return state.endGame(); }
 	public void setAnswer(final Answer answer) throws NoActiveQuestion, GameHasFinished{ state.setAnswer(answer); }
 	public int getNumDunno(){ return state.getNumDunno(); }
 	public float getSureness() throws GameHasFinished{ return state.getSureness(); }
