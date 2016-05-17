@@ -22,15 +22,11 @@ import java.util.Optional;
 
 public class GM1RunningState implements GM1State{
 	protected int numDunno = 0;
-	private boolean deterministic = false;
-
 	private Map<String, Question> questions;
-
 	private GameMode1 context;
 
-	public GM1RunningState(final GameMode1 ctx, final Language lang, final boolean det){
+	public GM1RunningState(final GameMode1 ctx, final Language lang){
 		context = ctx;
-		deterministic = det;
 		questions = QuestionProvider.getQuestions(lang);
 	}
 	@Override
@@ -117,7 +113,7 @@ public class GM1RunningState implements GM1State{
 	}
 
 	@Override
-	public String getQuestion() throws NoMoreQuestions{
+	public String getQuestion(final boolean deterministic) throws NoMoreQuestions{
 		if(isSure() == Sureness.SURE){
 			return null;
 		}

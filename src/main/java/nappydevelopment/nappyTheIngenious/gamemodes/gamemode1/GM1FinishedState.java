@@ -46,7 +46,7 @@ public class GM1FinishedState implements GM1State{
 	}
 
 	@Override
-	public String getQuestion() throws GameHasFinished{
+	public String getQuestion(final boolean det) throws GameHasFinished{
 		throw new GameHasFinished();
 	}
 }

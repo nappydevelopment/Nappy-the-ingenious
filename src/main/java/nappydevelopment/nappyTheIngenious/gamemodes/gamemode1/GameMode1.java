@@ -11,9 +11,8 @@ import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
 
 public class GameMode1{
 	GM1State state;
-	public GameMode1(final Language lang){ this(lang, false); }
-	public GameMode1(final Language lang, final boolean det){
-		state = new GM1RunningState(this, lang, det);
+	public GameMode1(final Language lang){
+		state = new GM1RunningState(this, lang);
 	}
 
 	public Character endGame() throws GameHasFinished, CantFinishGamemMode{ return state.endGame(); }
@@ -23,6 +22,7 @@ public class GameMode1{
 	public Sureness isSure(){ return state.isSure(); }
 	public boolean isActive(){ return state.isActive(); }
 	public boolean isFinished(){ return state.isFinished(); }
-	public String getQuestion() throws NoMoreQuestions, GameHasFinished{ return state.getQuestion(); }
+	public String getQuestion() throws NoMoreQuestions, GameHasFinished{ return state.getQuestion(false); }
+	public String getQuestion(final boolean det) throws NoMoreQuestions, GameHasFinished{ return state.getQuestion(det); }
 
 }
