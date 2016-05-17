@@ -13,13 +13,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GameMode1Test{
-	private GameMode1 gm_det;
 	private GameMode1 gm;
 	private Language lang = Language.GERMAN;
 
 	@Before
 	public void init(){
-		gm_det = new GameMode1(lang, true);
 		gm = new GameMode1(lang);
 	}
 
@@ -30,11 +28,11 @@ public class GameMode1Test{
 
 	@Test
 	public void getCharacterSure() throws Exception{
-		while(gm_det.isSure() == Sureness.UNSURE || gm_det.isSure() == Sureness.DONTKNOW){
-			gm_det.getQuestion();
-			gm_det.setAnswer(Answer.YES);
+		while(gm.isSure() == Sureness.UNSURE || gm.isSure() == Sureness.DONTKNOW){
+			gm.getQuestion(true);
+			gm.setAnswer(Answer.YES);
 		}
-		assertNotNull(gm_det.endGame());
+		assertNotNull(gm.endGame());
 	}
 
 	@Test
@@ -73,8 +71,8 @@ public class GameMode1Test{
 
 	@Test(expected=NoMoreQuestions.class)
 	public void exhaustQuestions() throws Exception{
-		finishGM1(gm_det, Answer.DONT_KNOW);
-		gm_det.getQuestion();
+		finishGM1(gm, Answer.DONT_KNOW);
+		gm.getQuestion();
 	}
 
 	@Test
@@ -90,59 +88,54 @@ public class GameMode1Test{
 
 	@Test
 	public void getNumDunnoAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGamemMode{
-		gm_det.getQuestion();
-		gm_det.setAnswer(Answer.DONT_KNOW);
-		finishGM1(gm_det, Answer.YES);
-		gm_det.endGame();
-		assertEquals(gm_det.getNumDunno(), 1);
+		gm.getQuestion();
+		gm.setAnswer(Answer.DONT_KNOW);
+		finishGM1(gm, Answer.YES);
+		gm.endGame();
+		assertEquals(gm.getNumDunno(), 1);
 	}
 	@Test
 	public void isSureAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.YES);
-		Sureness sure = gm_det.isSure();
-		gm_det.endGame();
-		assertEquals(gm_det.isSure(), sure);
+		finishGM1(gm, Answer.YES);
+		Sureness sure = gm.isSure();
+		gm.endGame();
+		assertEquals(gm.isSure(), sure);
 	}
 	@Test
 	public void isActiveAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.NO);
-		gm_det.endGame();
-		assertEquals(gm_det.isActive(), false);
+		finishGM1(gm, Answer.NO);
+		gm.endGame();
+		assertEquals(gm.isActive(), false);
 	}
 	@Test
 	public void isFinishedAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.YES);
-		gm_det.endGame();
-		assertEquals(gm_det.isFinished(), true);
+		finishGM1(gm, Answer.YES);
+		gm.endGame();
+		assertEquals(gm.isFinished(), true);
 	}
 	@Test(expected=GameHasFinished.class)
 	public void endGameAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.YES);
-		gm_det.endGame();
-		gm_det.endGame();
+		finishGM1(gm, Answer.YES);
+		gm.endGame();
+		gm.endGame();
 	}
 	@Test(expected=GameHasFinished.class)
 	public void setAnswerAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.YES);
-		gm_det.endGame();
-		gm_det.setAnswer(Answer.YES);
+		finishGM1(gm, Answer.YES);
+		gm.endGame();
+		gm.setAnswer(Answer.YES);
 	}
 	@Test(expected=GameHasFinished.class)
 	public void getSurenessAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.YES);
-		gm_det.endGame();
-		gm_det.getSureness();
+		finishGM1(gm, Answer.YES);
+		gm.endGame();
+		gm.getSureness();
 	}
 	@Test(expected=GameHasFinished.class)
 	public void getQuestionAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
-		finishGM1(gm_det, Answer.YES);
-		gm_det.endGame();
-		gm_det.getQuestion();
-	}
-
-	@Test
-	public void QuestionLanguage(){
-
+		finishGM1(gm, Answer.YES);
+		gm.endGame();
+		gm.getQuestion();
 	}
 
 	private void finishGM1(
@@ -154,7 +147,7 @@ public class GameMode1Test{
 		NoMoreQuestions
 	{
 		String q;
-		while((q = gm.getQuestion()) != null && !q.isEmpty()){
+		while((q = gm.getQuestion(true)) != null && !q.isEmpty()){
 			gm.setAnswer(ans);
 		}
 	}

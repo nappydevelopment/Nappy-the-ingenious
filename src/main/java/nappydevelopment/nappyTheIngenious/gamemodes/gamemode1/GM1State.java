@@ -16,5 +16,5 @@ public interface GM1State{
 	Sureness isSure();
 	boolean isActive();
 	boolean isFinished();
-	String getQuestion() throws NoMoreQuestions, GameHasFinished;
+	String getQuestion(final boolean deterministic) throws NoMoreQuestions, GameHasFinished;
 }

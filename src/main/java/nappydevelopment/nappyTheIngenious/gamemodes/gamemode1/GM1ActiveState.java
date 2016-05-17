@@ -53,5 +53,5 @@ public class GM1ActiveState implements GM1State{
 	public boolean isFinished(){ return false; }
 
 	@Override
-	public String getQuestion(){ return question.getQuestion(); }
+	public String getQuestion(final boolean det){ return question.getQuestion(); }
 }
