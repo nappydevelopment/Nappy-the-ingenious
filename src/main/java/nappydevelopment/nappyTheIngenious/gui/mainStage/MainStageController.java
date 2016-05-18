@@ -44,8 +44,8 @@ public class MainStageController {
 	private Program program;
 	
 	//Class that represents the main-stage-view:
-	private MainStageView view;
-	private MainStageResources res;
+	protected MainStageView view;
+	protected MainStageResources res;
 	private ViewActionEventHandler aeh;
 	
 //### CONSTRUCTORS #########################################################################################################################
