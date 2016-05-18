@@ -85,6 +85,10 @@ public class GameMode1Test{
 		gm.endGame();
 	}
 
+	@Test(expected=NoActiveQuestion.class)
+	public void setAnswerRunning() throws GameHasFinished, NoActiveQuestion{
+		gm.setAnswer(null);
+	}
 
 	@Test
 	public void getNumDunnoAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGameMode{
