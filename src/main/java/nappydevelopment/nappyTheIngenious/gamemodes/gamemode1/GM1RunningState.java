@@ -6,7 +6,7 @@ import nappydevelopment.nappyTheIngenious.data.DatabaseProvider;
 import nappydevelopment.nappyTheIngenious.data.Sureness;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
-import nappydevelopment.nappyTheIngenious.exception.CantFinishGamemMode;
+import nappydevelopment.nappyTheIngenious.exception.CantFinishGameMode;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.NoActiveQuestion;
 import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
@@ -39,10 +39,10 @@ public class GM1RunningState implements GM1State{
 	public boolean isFinished(){ return false; }
 
 	@Override
-	public Character endGame() throws GameHasFinished, CantFinishGamemMode{
+	public Character endGame() throws GameHasFinished, CantFinishGameMode{
 		List<Character> chars = CharacterProvider.getCharacters(generateWhere());
 		if(chars.isEmpty() || isSure() != Sureness.SURE){
-			throw new CantFinishGamemMode();
+			throw new CantFinishGameMode();
 		}
 		context.state = new GM1FinishedState(numDunno, isSure());
 		return chars.get(0);

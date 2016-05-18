@@ -3,7 +3,7 @@ package nappydevelopment.nappyTheIngenious.gamemodes.gamemode1;
 import nappydevelopment.nappyTheIngenious.data.Answer;
 import nappydevelopment.nappyTheIngenious.data.Sureness;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
-import nappydevelopment.nappyTheIngenious.exception.CantFinishGamemMode;
+import nappydevelopment.nappyTheIngenious.exception.CantFinishGameMode;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.NoActiveQuestion;
 import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
@@ -80,14 +80,14 @@ public class GameMode1Test{
 		assertEquals(gm.getQuestion(), gm.getQuestion());
 	}
 
-	@Test(expected=CantFinishGamemMode.class)
-	public void cantFinish() throws CantFinishGamemMode, GameHasFinished{
+	@Test(expected=CantFinishGameMode.class)
+	public void cantFinish() throws CantFinishGameMode, GameHasFinished{
 		gm.endGame();
 	}
 
 
 	@Test
-	public void getNumDunnoAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGamemMode{
+	public void getNumDunnoAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGameMode{
 		gm.getQuestion();
 		gm.setAnswer(Answer.DONT_KNOW);
 		finishGM1(gm, Answer.YES);
@@ -95,44 +95,44 @@ public class GameMode1Test{
 		assertEquals(gm.getNumDunno(), 1);
 	}
 	@Test
-	public void isSureAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
+	public void isSureAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGameMode{
 		finishGM1(gm, Answer.YES);
 		Sureness sure = gm.isSure();
 		gm.endGame();
 		assertEquals(gm.isSure(), sure);
 	}
 	@Test
-	public void isActiveAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
+	public void isActiveAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGameMode{
 		finishGM1(gm, Answer.NO);
 		gm.endGame();
 		assertEquals(gm.isActive(), false);
 	}
 	@Test
-	public void isFinishedAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
+	public void isFinishedAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGameMode{
 		finishGM1(gm, Answer.YES);
 		gm.endGame();
 		assertEquals(gm.isFinished(), true);
 	}
 	@Test(expected=GameHasFinished.class)
-	public void endGameAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
+	public void endGameAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGameMode{
 		finishGM1(gm, Answer.YES);
 		gm.endGame();
 		gm.endGame();
 	}
 	@Test(expected=GameHasFinished.class)
-	public void setAnswerAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGamemMode{
+	public void setAnswerAfterFinish() throws GameHasFinished, NoActiveQuestion, NoMoreQuestions, CantFinishGameMode{
 		finishGM1(gm, Answer.YES);
 		gm.endGame();
 		gm.setAnswer(Answer.YES);
 	}
 	@Test(expected=GameHasFinished.class)
-	public void getSurenessAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
+	public void getSurenessAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGameMode{
 		finishGM1(gm, Answer.YES);
 		gm.endGame();
 		gm.getSureness();
 	}
 	@Test(expected=GameHasFinished.class)
-	public void getQuestionAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGamemMode{
+	public void getQuestionAfterFinish() throws GameHasFinished, NoMoreQuestions, NoActiveQuestion, CantFinishGameMode{
 		finishGM1(gm, Answer.YES);
 		gm.endGame();
 		gm.getQuestion();
