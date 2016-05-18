@@ -3,7 +3,7 @@ package nappydevelopment.nappyTheIngenious.gamemodes.gamemode1;
 import nappydevelopment.nappyTheIngenious.data.Answer;
 import nappydevelopment.nappyTheIngenious.data.Sureness;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
-import nappydevelopment.nappyTheIngenious.exception.CantFinishGamemMode;
+import nappydevelopment.nappyTheIngenious.exception.CantFinishGameMode;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.NoActiveQuestion;
 import nappydevelopment.nappyTheIngenious.gamemodes.Question;
@@ -34,8 +34,8 @@ public class GM1ActiveState implements GM1State{
 	}
 
 	@Override
-	public Character endGame() throws GameHasFinished, CantFinishGamemMode{
-		throw new CantFinishGamemMode();
+	public Character endGame() throws GameHasFinished, CantFinishGameMode{
+		throw new CantFinishGameMode();
 	}
 
 	@Override

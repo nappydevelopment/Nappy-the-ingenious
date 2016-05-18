@@ -1,3 +1,3 @@
 package nappydevelopment.nappyTheIngenious.exception;
 
-public class CantFinishGamemMode extends Exception{}
+public class CantFinishGameMode extends Exception{}

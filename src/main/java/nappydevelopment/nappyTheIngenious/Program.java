@@ -338,7 +338,7 @@ public class Program extends Application {
 				Character chr = this.gm1Logic.endGame();
 				this.mainStageController.showGuessedCharacter(chr);
 				this.game.setCharacterNappy(chr);
-			}catch(GameHasFinished|CantFinishGamemMode gameHasFinished){
+			}catch(GameHasFinished|CantFinishGameMode gameHasFinished){
 				gameHasFinished.printStackTrace();
 			}
 		}
