@@ -51,10 +51,10 @@ public class CharacterProvider{
 	}
 
 	public static List<Character> search(List<Character> list, CharacterFilter search){
-		new EastereggSearcher(search.getSearchStr());
+		EastereggSearcher.lookFor(search.getSearchStr());
 		List<Character> out;
 		if(EastereggSearcher.lookFor(search.getSearchStr())){
-			return TonsOfHomer.getThem(list, search, out);
+			return TonsOfHomer.getThem(list, search);
 		};
 
 		out = list.stream()
