@@ -9,7 +9,7 @@ cache:
   apt: true
   directories:
     - $HOME/.m2
-    - %HOME/.sonar/cache
+    - $HOME/.sonar/cache
 
 # only build master
 branches:
