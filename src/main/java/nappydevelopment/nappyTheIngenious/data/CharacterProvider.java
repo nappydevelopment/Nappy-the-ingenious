@@ -5,6 +5,7 @@ import nappydevelopment.nappyTheIngenious.data.character.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.EastereggSearcher;
+import nappydevelopment.nappyTheIngenious.util.eastereggs.TonsOfHomer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,6 +53,10 @@ public class CharacterProvider{
 	public static List<Character> search(List<Character> list, CharacterFilter search){
 		new EastereggSearcher(search.getSearchStr());
 		List<Character> out;
+		if(EastereggSearcher.lookFor(search.getSearchStr())){
+			return TonsOfHomer.getThem(list, search, out);
+		};
+
 		out = list.stream()
 			.filter(c -> {
 				if(search.getSearchStr().isEmpty()){return true;}
@@ -63,4 +68,6 @@ public class CharacterProvider{
 			.collect(Collectors.toList());
 		return out;
 	}
+
+
 }
