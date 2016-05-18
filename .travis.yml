@@ -11,6 +11,11 @@ addons:
     packages:
       - oracle-java8-installer
 
+cache:
+  apt: true
+  directories:
+    - $HOME/.m2
+
 # only build master
 branches:
     only:
