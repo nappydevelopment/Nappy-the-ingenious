@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
 import java.awt.*;
 
 
-public class NelsonFrame extends Stage {
+public class NelsonStage extends Stage {
 
     private int counter;
     int width = 490;
@@ -28,10 +28,10 @@ public class NelsonFrame extends Stage {
     private Image imgNelsonL;
 
     public static void createNewNelson() {
-        new NelsonFrame(1);
+        new NelsonStage(1);
     }
 
-    NelsonFrame(int timesOpened) {
+    NelsonStage(int timesOpened) {
         this.counter = timesOpened;
         initComponents();
         structureComponents();
@@ -77,9 +77,9 @@ public class NelsonFrame extends Stage {
     }
 
     private void exitForm() {
-        if (counter < 7) {
-            new NelsonFrame(counter + 1);
-            new NelsonFrame(counter + 1);
+        if (counter < 3) {
+            new NelsonStage(counter + 1);
+            new NelsonStage(counter + 1);
         }
     }
 }
