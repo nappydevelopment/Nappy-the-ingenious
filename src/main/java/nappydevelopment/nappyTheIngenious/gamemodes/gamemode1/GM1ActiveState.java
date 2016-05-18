@@ -28,6 +28,7 @@ public class GM1ActiveState implements GM1State{
 			lastState.numDunno++;
 		}
 		question.setAnswer(answer);
+		lastState.questionsAttributeAnswered(this.question);
 
 		context.state = lastState;
 	}
