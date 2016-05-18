@@ -14,19 +14,23 @@ public class Question{
 	private final String attribute;
 	private final String question;
 	private final Language lang;
+	private final boolean bool;
 
 	private Answer answer = null;
+	private boolean attributeAnswered = false;
+
 
 	public Question(
-			final String table,
-			final String attribute,
-			final Language lang,
-			final String question
+		final String table,
+		final String attribute,
+		final Language lang,
+		final String question
 	){
 		this.table = table;
 		this.attribute = attribute;
 		this.question = question;
 		this.lang = lang;
+		this.bool = "TRUE".equals(attribute) || "FALSE".equals(attribute);
 	}
 	public String getQuestion(){ return question; }
 	public String getAttribute(){ return attribute; }
@@ -35,12 +39,18 @@ public class Question{
 
 	// stuff for GameMode1
 	public Answer getAnswer(){ return answer; }
-	public boolean answered(){ return answer != null; }
+	public boolean answered(){ return answer != null || attributeAnswered; }
 	public void setAnswer(final Answer answer){
 		if(this.answer != null){
 			return;
 		}
 		this.answer = answer;
+	}
+	public Question attributeAnswered(Question q){
+		if(q.getAnswer() == Answer.YES || bool && attribute.equals(q.getAttribute())){
+			attributeAnswered = true;
+		}
+		return this; // for predicate usage
 	}
 	public float tryQuestion(final String where, final boolean deterministic){
 		String select = "SELECT count(0) as C, " + table +

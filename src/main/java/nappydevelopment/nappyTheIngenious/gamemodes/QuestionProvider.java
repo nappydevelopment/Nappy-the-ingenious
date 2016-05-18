@@ -41,7 +41,12 @@ public class QuestionProvider{
 			res = st.getResultSet();
 			while(res.next()){
 				String question = res.getString("Q1_" + lang.getCode());
-				questions.put(question, new Question(res.getString("TABL"), res.getString("ID"), lang, question));
+				questions.put(question, new Question(
+					res.getString("TABL"),
+					res.getString("ID"),
+					lang,
+					question
+				));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

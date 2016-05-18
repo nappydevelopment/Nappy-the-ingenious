@@ -112,6 +112,10 @@ public class GM1RunningState implements GM1State{
 		return ret;
 	}
 
+	protected void questionsAttributeAnswered(Question question){
+		questions.values().stream().map(q -> q.attributeAnswered(question));
+	}
+
 	@Override
 	public String getQuestion(final boolean deterministic) throws NoMoreQuestions{
 		if(isSure() == Sureness.SURE){
