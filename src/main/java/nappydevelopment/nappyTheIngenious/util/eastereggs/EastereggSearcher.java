@@ -2,16 +2,19 @@ package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
 public class EastereggSearcher {
 
-    public EastereggSearcher(String str){
+    public static boolean lookFor(String str){
         if(str.equals("haha")){
-            NelsonFrame.createNewNelson();
+            NelsonStage.createNewNelson();
+            return false;
         }
         else if(str.equals("doh") || str.equals("d'oh")) {
-
+            return true;
         }
         else if(str.equals("nappy")) {
-
+            new NappyStage();
+            return false;
         }
+        return false;
     }
 
 }
