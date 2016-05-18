@@ -44,8 +44,8 @@ public class NelsonStage extends Stage {
     private void initComponents() {
         this.bdpRootPane = new BorderPane();
 
-        this.imgNelsonR = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEastereggRechts.png");
-        this.imgNelsonL = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEastereggLinks.png");
+        this.imgNelsonR = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEastereggR.png");
+        this.imgNelsonL = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEastereggL.png");
 
         if(Math.random()<0.5){
             imvNelson = new ImageView(imgNelsonL);
