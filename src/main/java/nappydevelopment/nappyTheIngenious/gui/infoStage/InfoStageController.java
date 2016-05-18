@@ -20,7 +20,7 @@ public class InfoStageController {
 	
 	//Class that represents the main-stage-view:
 	protected InfoStageView view;
-	private InfoStageResources res;
+	protected InfoStageResources res;
 	private ViewActionEventHandler aeh;
 	
 //### CONSTRUCTORS #########################################################################################################################
