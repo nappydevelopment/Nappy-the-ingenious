@@ -20,14 +20,16 @@ branches:
 sudo: false
 
 # install java8
-before_script:
+before_install:
   - sudo -E apt-get -yq update &>> ~/apt-get-update.log
   - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install oracle-java8-installer
 
-# verify and execute sonar
-# and report coverage to codacy
+#build project, verify and execute sonar
+install:
+  - mvn install verify sonar:sonar -Dmaven.javadoc.skip=true -B
+
+# report coverage to codacy
 script:
-  - mvn verify sonar:sonar
   - curl -sL https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar >jpm4j.jar
   - java -jar jpm4j.jar -u init
   - /home/travis/jpm/bin/jpm install com.codacy:codacy-coverage-reporter:assembly
