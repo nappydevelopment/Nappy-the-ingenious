@@ -22,7 +22,7 @@ public class SettingsStageController {
 	
 	private Program program;
 	
-	private SettingsStageView view;
+	protected SettingsStageView view;
 	private SettingsStageResources res;
 	private ViewActionEventHandler aeh;
 
