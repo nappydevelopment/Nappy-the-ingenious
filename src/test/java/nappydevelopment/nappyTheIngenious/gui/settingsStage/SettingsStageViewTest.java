@@ -1,7 +1,10 @@
 package nappydevelopment.nappyTheIngenious.gui.settingsStage;
 
-import javafx.scene.control.RadioButton;
+import javafx.scene.Node;
+import javafx.scene.control.Labeled;
 import javafx.stage.Stage;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
@@ -9,6 +12,8 @@ import org.testfx.framework.junit.ApplicationTest;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class SettingsStageViewTest extends ApplicationTest{
 	private SettingsStageController controller;
@@ -33,12 +38,20 @@ public class SettingsStageViewTest extends ApplicationTest{
 
 	@Test
 	public void english(){
-		Set<RadioButton> bla = lookup(".radio-button").queryAll();
-		final Optional<RadioButton> first;
-		first = bla.stream()
-			.filter((RadioButton rb) -> "Englisch".equals(rb.getText()))
+		Settings.setLanguage(Language.GERMAN);
+
+		click(".radio-button", "Englisch");
+		click(".button", "Übernehmen");
+
+		assertEquals(Settings.getLanguage(), Language.ENGLISH);
+	}
+
+	@SuppressWarnings("OptionalGetWithoutIsPresent")
+	private void click(String lookup, String content){
+		Set<? extends Labeled> things = lookup(lookup).queryAll();
+		Optional<?> thing = things.stream()
+			.filter(b -> content.equals(b.getText()))
 			.findFirst();
-		clickOn(first.get());
-		sleep(800);
+		clickOn((Node)thing.get());
 	}
 }
