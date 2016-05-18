@@ -5,16 +5,11 @@ language: java
 jdk:
   - oraclejdk8
 
-# install java8
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-
 cache:
   apt: true
   directories:
     - $HOME/.m2
+    - %HOME/.sonar/cache
 
 # only build master
 branches:
@@ -23,6 +18,11 @@ branches:
 
 # container-based build:
 sudo: false
+
+# install java8
+before_script:
+  - sudo -E apt-get -yq update &>> ~/apt-get-update.log
+  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install oracle-java8-installer
 
 # verify and execute sonar
 # and report coverage to codacy
