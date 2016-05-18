@@ -37,8 +37,8 @@ public class SettingsStageViewTest extends ApplicationTest{
 	public void english(){
 		Settings.setLanguage(Language.GERMAN);
 
-		Util.click(".radio-button", "Englisch");
-		Util.click(".button", "Übernehmen");
+		Util.click(".radio-button", controller.res.rdbEnglish.getValue());
+		Util.click(".button", controller.res.btnApply.getValue());
 
 		assertEquals(Settings.getLanguage(), Language.ENGLISH);
 	}
