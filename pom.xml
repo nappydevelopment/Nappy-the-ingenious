@@ -8,6 +8,15 @@
       http://193.196.7.25
     </sonar.host.url>
   </properties>
+  <repositories>
+    <repository>
+      <id>maven-central-repo</id>
+      <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <resources>
       <resource>
@@ -123,6 +132,21 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <version>1.4.191</version>
+    </dependency>
+    <dependency>
+      <groupId>de.saxsys</groupId>
+      <artifactId>jfx-testrunner</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-core</artifactId>
+      <version>RELEASE</version>
     </dependency>
   </dependencies>
 </project>
