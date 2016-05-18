@@ -26,12 +26,6 @@ branches:
 # container-based build:
 sudo: false
 
-# start xvfb for gui tests
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-
 #build project, verify and execute sonar
 install:
   - mvn install verify sonar:sonar -Dmaven.javadoc.skip=true -B
