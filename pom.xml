@@ -134,11 +134,6 @@
       <version>1.4.191</version>
     </dependency>
     <dependency>
-      <groupId>de.saxsys</groupId>
-      <artifactId>jfx-testrunner</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <dependency>
       <groupId>org.testfx</groupId>
       <artifactId>testfx-junit</artifactId>
       <version>RELEASE</version>
