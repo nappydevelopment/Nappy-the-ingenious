@@ -25,11 +25,6 @@ branches:
 # container-based build:
 sudo: false
 
-# install java8
-before_install:
-  - sudo -E apt-get -yq update &>> ~/apt-get-update.log
-  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install oracle-java8-installer
-
 #build project, verify and execute sonar
 install:
   - mvn install verify sonar:sonar -Dmaven.javadoc.skip=true -B
