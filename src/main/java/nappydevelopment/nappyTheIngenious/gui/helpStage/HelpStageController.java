@@ -107,12 +107,23 @@ public class HelpStageController {
 		}
 		
 	}
+
+	public void changeLanguageTo(Language l) {
+		this.res.setTextsTo(l);
+
+		switch(l){
+			case ENGLISH:
+				changeLanguageToEnglish();
+				break;
+			case GERMAN:
+				changeLanguageToGerman();
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
+	}
 	
-	
-	public void changeLanguageToGerman() {
-		
-		this.res.setTextsToGerman();
-		
+	private void changeLanguageToGerman() {
 		if(Settings.getColoScheme() == ColorScheme.BRIGHT) {
 			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_de_bright.html");
 		}
@@ -121,10 +132,7 @@ public class HelpStageController {
 		}
 	}
 		
-	public void changeLanguageToEnglish() {
-		
-		this.res.setTextsToEnglish();
-		
+	private void changeLanguageToEnglish() {
 		if(Settings.getColoScheme() == ColorScheme.BRIGHT) {
 			this.view.webEngine.load(GlobalReferences.HTML_PATH + "instruction_en_bright.html");
 		}

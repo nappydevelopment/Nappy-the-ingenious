@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 /* InfoStageResources [class]: Contains the resources for the info-stage like images, component-texts etc.: *//**
  *
@@ -65,21 +66,21 @@ public class InfoStageResources {
 
 //### PUBLIC METHODS #######################################################################################################################
 
-	/* setTextsToEnglish [method]: Method that sets all texts of the info-stage to English *//**
-	 *
-	 */
-	void setTextsToEnglish() {
-		this.lblDescriptionText.setValue("A Simpsons quiz game");
-		this.lblDevelopedByText.setValue("Developed by");
+	void setTextsTo(Language l) {
+		switch(l){
+			case ENGLISH:
+				this.lblDescriptionText.setValue("A Simpsons quiz game");
+				this.lblDevelopedByText.setValue("Developed by");
+				break;
+			case GERMAN:
+				this.lblDescriptionText.setValue("Ein Simpsons Quiz");
+				this.lblDevelopedByText.setValue("Entwickelt von");
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
 	}
 
-	/* setTextsToGerman [method]: Method that sets all texts of the info-stage to German *//**
-	 *
-	 */
-	void setTextsToGerman() {
-		this.lblDescriptionText.setValue("Ein Simpsons Quiz");
-		this.lblDevelopedByText.setValue("Entwickelt von");
-	}
 
 //##########################################################################################################################################
 }

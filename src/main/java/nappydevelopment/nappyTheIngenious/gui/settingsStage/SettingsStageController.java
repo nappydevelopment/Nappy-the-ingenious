@@ -187,12 +187,8 @@ public class SettingsStageController {
 	}
 	
 	
-	public void changeLanguageToGerman() {
-		this.res.setTextsToGerman();
-	}
-	
-	public void changeLanguageToEnglish() {
-		this.res.setTextsToEnglish();
+	public void changeLanguageTo(Language l) {
+		this.res.setTextsTo(l);
 	}
 
 //##########################################################################################################################################

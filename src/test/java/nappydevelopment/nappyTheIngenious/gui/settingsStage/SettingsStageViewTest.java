@@ -15,13 +15,15 @@ import static junit.framework.TestCase.assertEquals;
 
 public class SettingsStageViewTest extends ApplicationTest{
 	private SettingsStageController controller;
+	private Language lang = Language.GERMAN;
+
 	@Override
 	public void init() throws TimeoutException{
 		controller = new SettingsStageController(null);
 
 		FxToolkit.registerStage(() -> {
 			controller.initView();
-			controller.changeLanguageToGerman();
+			controller.changeLanguageTo(lang);
 			controller.changeThemeToBrightTheme();
 			return controller.view;
 		});

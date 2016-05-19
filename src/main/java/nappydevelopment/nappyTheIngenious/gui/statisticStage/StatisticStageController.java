@@ -1,7 +1,5 @@
 package nappydevelopment.nappyTheIngenious.gui.statisticStage;
 
-import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
@@ -9,7 +7,10 @@ import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.Program;
 import nappydevelopment.nappyTheIngenious.data.Player;
 import nappydevelopment.nappyTheIngenious.data.StatisticCharacter;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.util.statistics.StatisticStuffGenerator;
+
+import java.util.ArrayList;
 
 //### IMPORTS ##############################################################################################################################
 public class StatisticStageController {
@@ -176,12 +177,8 @@ public class StatisticStageController {
 	}
 	
 	
-	public void changeLanguageToGerman() {
-		this.res.setTextsToGerman();
-	}
-	
-	public void changeLanguageToEnglish() {
-		this.res.setTextsToEnglish();
+	public void changeLanguageTo(Language l) {
+		this.res.setTextsTo(l);
 	}
 	
 //##########################################################################################################################################

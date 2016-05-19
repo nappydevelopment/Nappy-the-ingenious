@@ -1,6 +1,7 @@
 package nappydevelopment.nappyTheIngenious.gui.mainStage;
 
 import javafx.stage.Stage;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeoutException;
 
 public class MainStageTestMainscreen extends ApplicationTest{
 	private MainStageController controller;
+	private Language lang = Language.GERMAN;
 
 	@Override
 	public void init() throws TimeoutException{
@@ -16,7 +18,7 @@ public class MainStageTestMainscreen extends ApplicationTest{
 
 		FxToolkit.registerStage(() -> {
 			controller.initView();
-			controller.changeLanguageToGerman();
+			controller.changeLanguageTo(lang);
 			controller.showStartView();
 			return controller.view;
 		});

@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.Program;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 import java.awt.*;
 import java.io.IOException;
@@ -123,22 +124,9 @@ public class InfoStageController {
 		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/BrightTheme.css");
 		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
 	}
-	
-	
-	/* changeLanguageToGerman [method]: *//**
-	 * 
-	 */
-	public void changeLanguageToGerman() {
 
-		this.res.setTextsToGerman();
-	}
-	
-	/* changeLanguageToEnglish [method]: *//**
-	 * 
-	 */
-	public void changeLanguageToEnglish() {
-
-		this.res.setTextsToEnglish();
+	public void changeLanguageTo(Language l) {
+		this.res.setTextsTo(l);
 	}
 
 //### PRIVATE METHODS #######################################################################################################################
