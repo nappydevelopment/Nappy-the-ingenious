@@ -8,14 +8,12 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import java.util.concurrent.TimeoutException;
 
-public class MainStageTestMainscreen extends ApplicationTest{
-	private MainStageController controller;
+public class MainStageMainscreenTest extends ApplicationTest{
+	private MainStageController controller = new MainStageController(null);
 	private Language lang = Language.GERMAN;
 
 	@Override
 	public void init() throws TimeoutException{
-		controller = new MainStageController(null);
-
 		FxToolkit.registerStage(() -> {
 			controller.initView();
 			controller.changeLanguageTo(lang);
@@ -34,13 +32,13 @@ public class MainStageTestMainscreen extends ApplicationTest{
 	}
 
 	@Test
-	public void help(){
-		clickOn(controller.view.btnHelp);
+	public void openStatistics(){
+		clickOn(controller.view.btnStatistic);
 	}
 
 	@Test
-	public void openStatistics(){
-		clickOn(controller.view.btnStatistic);
+	public void help(){
+		clickOn(controller.view.btnHelp);
 	}
 
 	@Test
