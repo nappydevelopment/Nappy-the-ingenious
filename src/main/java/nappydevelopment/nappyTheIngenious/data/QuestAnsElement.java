@@ -21,6 +21,13 @@ public class QuestAnsElement {
 	}
 
 	private Answer answer;
+
+	public String getText() {
+		if(answer == null){
+			return "";
+		}
+		return this.answer.getText();
+	}
 	
 	public QuestAnsElement(String question) {
 		
