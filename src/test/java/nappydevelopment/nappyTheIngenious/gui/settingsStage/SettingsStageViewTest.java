@@ -2,6 +2,7 @@ package nappydevelopment.nappyTheIngenious.gui.settingsStage;
 
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
+import nappydevelopment.nappyTheIngenious.data.settings.GameMode;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import org.junit.Test;
@@ -47,7 +48,7 @@ public class SettingsStageViewTest extends ApplicationTest{
 		clickOn(controller.view.rdbGerman);
 		clickOn(controller.view.btnApply);
 
-		assertEquals(Language.ENGLISH, Settings.getLanguage());
+		assertEquals(Language.GERMAN, Settings.getLanguage());
 	}
 
 	@Test
@@ -56,10 +57,37 @@ public class SettingsStageViewTest extends ApplicationTest{
 
 		clickOn(controller.view.rdbDark);
 		clickOn(controller.view.btnApply);
+
+		assertEquals(ColorScheme.DARK, Settings.getColoScheme());
 	}
 
 	@Test
 	public void setThemeToBright(){
+		Settings.setColoScheme(ColorScheme.DARK);
 
+		clickOn(controller.view.rdbBright);
+		clickOn(controller.view.btnApply);
+
+		assertEquals(ColorScheme.BRIGHT, Settings.getColoScheme());
+	}
+
+	@Test
+	public void playFirstGameMode(){
+		Settings.setGameMode(GameMode.BOTH_MODES);
+
+		clickOn(controller.view.rdbOnlyMode1);
+		clickOn(controller.view.btnApply);
+
+		assertEquals(GameMode.ONLY_MODE1, Settings.getGameMode());
+	}
+
+	@Test
+	public void playBothGameModes(){
+		Settings.setGameMode(GameMode.ONLY_MODE1);
+
+		clickOn(controller.view.rdbBothModes);
+		clickOn(controller.view.btnApply);
+
+		assertEquals(GameMode.BOTH_MODES, Settings.getGameMode());
 	}
 }
