@@ -443,8 +443,8 @@ public class Program extends Application {
 		try {
 			
 			Answer answer = this.gm2Logic.askQuestion(question);
-			this.mainStageController.showAnswer(answer.getText(Settings.getLanguage()));
-			this.game.getQal().setAnswer(question, answer.getText(Settings.getLanguage()));
+			this.mainStageController.showAnswer(answer.getText());
+			this.game.getQal().setAnswer(question, answer);
 			//Read out the new list of questions:
 			//List<String> questions = gm2Logic.getQuestions();
 			//Show the new list:

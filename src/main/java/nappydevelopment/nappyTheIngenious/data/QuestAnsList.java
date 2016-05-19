@@ -6,7 +6,7 @@ import java.util.ListIterator;
 //### IMPORTS ##############################################################################################################################
 public class QuestAnsList extends LinkedList<QuestAnsElement>{
 
-	public void setAnswer(String question, String answer) {
+	public void setAnswer(String question, Answer answer) {
 		
         ListIterator<QuestAnsElement> listIterator = this.listIterator();
         

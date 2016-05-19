@@ -401,7 +401,7 @@ public class MainStageView extends Stage {
                       setGraphic(null);
                   } else {
                       setText(null);
-                      if(qae.getAnswer() != "") {
+                      if(qae.getAnswer() != null) {
                     	  setText(res.cmbQuestionsTextYouveAskThisQuestionAlready);
                       }
                       else {
@@ -439,7 +439,7 @@ public class MainStageView extends Stage {
                              
                          	Label lblQuest = new Label(qae.getQuestion());
                          	lblQuest.setStyle("-fx-text-fill: black;");
-                         	Label lblAns   = new Label(qae.getAnswer());
+                            Label lblAns   = new Label(qae.getAnswer().getText());
                          	lblAns.setStyle("-fx-text-fill: black;");
                          	setStyle("-fx-background-color: #FFFFFF;");
                          	Image image = new Image(GlobalReferences.CURSORS_PATH + "pointer.png");
@@ -447,7 +447,7 @@ public class MainStageView extends Stage {
                          	GridPane grid = new GridPane();
                          	grid.setMaxWidth(425);
                          	grid.setPadding(new Insets(0,5,0,0));
-                         	if(qae.getAnswer() != "") {
+                            if(qae.getAnswer() != null) {
                          		//grid.setStyle("-fx-background-color: #C0C0C0;");
                          		setStyle("-fx-background-color: #E0E0E0;");
                          		image = new Image(GlobalReferences.CURSORS_PATH + "not-allowed.png");
