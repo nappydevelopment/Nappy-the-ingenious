@@ -46,7 +46,13 @@ public class WikiStageTest extends ApplicationTest{
 	@Override
 	public void start(Stage stage){ controller.show(new Stage()); }
 	@Override
-	public void stop(){ controller.view.close(); }
+	public void stop(){
+		controller.view.close();
+
+		// reshow for more coverage
+		controller.show(new Stage());
+		controller.view.close();
+	}
 
 	@Test
 	public void filterYoung(){
