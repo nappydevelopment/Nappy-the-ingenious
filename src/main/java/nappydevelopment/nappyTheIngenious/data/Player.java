@@ -1,8 +1,5 @@
 package nappydevelopment.nappyTheIngenious.data;
 
-/**
- * Created by Marc on 04.04.2016.
- */
 public class Player {
 
     private String playerName;

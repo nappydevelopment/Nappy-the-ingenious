@@ -9,9 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * Created by Marc on 05.04.2016.
- */
 public class StatisticStuffGenerator {
 
     public ArrayList<Player> getTopFivePlayers() {

@@ -1,8 +1,5 @@
 package nappydevelopment.nappyTheIngenious.data.character;
 
-/**
- * Created by Marc on 01.05.2016.
- */
 public enum Age {
     YOUNG("young"),
     ADULT("adult"),

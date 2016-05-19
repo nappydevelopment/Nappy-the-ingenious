@@ -5,9 +5,6 @@ import nappydevelopment.nappyTheIngenious.data.character.Character;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Created by Marc on 13.04.2016.
- */
 public class SaveStatisticInfos {
 
     public static void createAndSavePlayer(String spielerName, Game game) {

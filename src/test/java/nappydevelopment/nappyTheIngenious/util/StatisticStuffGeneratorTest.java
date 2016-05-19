@@ -10,9 +10,6 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Marc on 18.04.2016.
- */
 public class StatisticStuffGeneratorTest {
 
     /*
