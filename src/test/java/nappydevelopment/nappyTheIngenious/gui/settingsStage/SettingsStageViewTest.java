@@ -20,17 +20,14 @@ public class SettingsStageViewTest extends ApplicationTest{
 		FxToolkit.registerStage(() -> {
 			controller.initView();
 			controller.changeLanguageToGerman();
+			controller.changeThemeToBrightTheme();
 			return controller.view;
 		});
 	}
 	@Override
-	public void start(Stage stage){
-		stage.show();
-	}
+	public void start(Stage stage){ stage.show(); }
 	@Override
-	public void stop(){
-		controller.view.close();
-	}
+	public void stop(){ controller.view.close(); }
 
 	@Test
 	public void english(){
@@ -39,6 +36,6 @@ public class SettingsStageViewTest extends ApplicationTest{
 		clickOn(controller.view.rdbEnglish);
 		clickOn(controller.view.btnApply);
 
-		assertEquals(Settings.getLanguage(), Language.ENGLISH);
+		assertEquals(Language.ENGLISH, Settings.getLanguage());
 	}
 }
