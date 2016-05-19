@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 /* MainStageResources [class]: Contains the resources for the main-stage like images, component-texts etc.: *//**
  *
@@ -201,7 +202,7 @@ public class MainStageResources {
 	/* setTextsToEnglish [method]: Method that sets all texts of the main-stage to English *//**
 	 *
 	 */
-	void setTextsToEnglish() {
+	private void setTextsToEnglish() {
 
 		//Menu-Texts:
 		this.mnuGameText.setValue("Game");
@@ -272,7 +273,7 @@ public class MainStageResources {
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
 	 *
 	 */
-	void setTextsToGerman() {
+	private void setTextsToGerman() {
 
 		//Menu-Texts:
 		this.mnuGameText.setValue("Spiel");
@@ -339,6 +340,18 @@ public class MainStageResources {
 		this.cmbQuestionsTextYouveAskThisQuestionAlready = "Du hast diese Frage bereits gestellt!";
 	}
 
+	void setTextsTo(Language l) {
+		switch(l){
+			case ENGLISH:
+				setTextsToEnglish();
+				break;
+			case GERMAN:
+				setTextsToGerman();
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
+	}
 	
 	void setBtnYesTextToYes() {
 		this.btnYesText.set(this.btnYesTextYes);

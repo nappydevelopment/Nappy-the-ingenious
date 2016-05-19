@@ -4,6 +4,7 @@ package nappydevelopment.nappyTheIngenious.gui.mainStage;
 
 
 //### IMPORTS ##############################################################################################################################
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,14 +23,15 @@ import javafx.scene.shape.Rectangle;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
 import nappydevelopment.nappyTheIngenious.Program;
 import nappydevelopment.nappyTheIngenious.data.Answer;
-import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.QuestAnsElement;
 import nappydevelopment.nappyTheIngenious.data.QuestAnsList;
+import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import nappydevelopment.nappyTheIngenious.util.Utils;
 
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.util.Optional;
 
 
@@ -744,18 +746,8 @@ public class MainStageController {
 		this.view.getScene().getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
 	}
 	
-	/* changeLanguageToGerman [method]: *//**
-	 * 
-	 */
-	public void changeLanguageToGerman() {
-		this.res.setTextsToGerman();
-	}
-	
-	/* changeLanguageToEnglish [method]: *//**
-	 * 
-	 */
-	public void changeLanguageToEnglish() {
-		this.res.setTextsToEnglish();
+	public void changeLanguageTo(Language l) {
+		this.res.setTextsTo(l);
 	}
 
 //##########################################################################################################################################

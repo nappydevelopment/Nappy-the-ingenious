@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 /* StatisticStageResources [class]: Contains the resources for the statistic-stage like images, component-texts etc.: *//**
  *
@@ -96,28 +97,24 @@ public class StatisticStageResources {
 	
 //### PUBLIC METHODS #######################################################################################################################
 
-	/* setTextsToEnglish [method]: Method that sets all texts of the statistic-stage to English *//**
+	/* setTextsTo [method]: Method that sets all texts of the statistic-stage to Language l
 	 *
 	 */
-	void setTextsToEnglish() {
-		
-		this.tbpTopFivePlayerText.setValue("  Top five players  ");
-		
-		this.tbpTopFiveCharacterText.setValue("  Top five Simpsons characters  ");
-		
-		this.stageTitleText.setValue("Nappy, the ingenious - Statistic");
-	}
-
-	/* setTextsToGerman [method]: Method that sets all texts of the statistic-stage to German *//**
-	 *
-	 */
-	void setTextsToGerman() {
-		
-		this.tbpTopFivePlayerText.setValue("  Top fünf Spieler  ");
-		
-		this.tbpTopFiveCharacterText.setValue("  Top fünf Simpsons Charakter  ");
-		
-		this.stageTitleText.setValue("Nappy, the ingenious - Statistik");
+	void setTextsTo(Language l) {
+		switch(l){
+			case ENGLISH:
+				this.tbpTopFivePlayerText.setValue("  Top five players  ");
+				this.tbpTopFiveCharacterText.setValue("  Top five Simpsons characters  ");
+				this.stageTitleText.setValue("Nappy, the ingenious - Statistic");
+				break;
+			case GERMAN:
+				this.tbpTopFivePlayerText.setValue("  Top fünf Spieler  ");
+				this.tbpTopFiveCharacterText.setValue("  Top fünf Simpsons Charakter  ");
+				this.stageTitleText.setValue("Nappy, the ingenious - Statistik");
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
 	}
 
 //##########################################################################################################################################

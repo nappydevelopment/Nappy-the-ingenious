@@ -164,22 +164,13 @@ public class Program extends Application {
 		
 		//Apply the language setting:
         //TODO: add custom exception to the other controller's
-		if(Settings.getLanguage() == Language.GERMAN) {
-			this.mainStageController.changeLanguageToGerman();
-			this.statisticStageController.changeLanguageToGerman();
-			this.settingsStageController.changeLanguageToGerman();
-			this.helpStageController.changeLanguageToGerman();
-			this.wikiStageController.changeLanguageToGerman();
-			this.infoStageController.changeLanguageToGerman();
-		}
-		else {
-			this.mainStageController.changeLanguageToEnglish();
-			this.statisticStageController.changeLanguageToEnglish();
-			this.settingsStageController.changeLanguageToEnglish();
-			this.helpStageController.changeLanguageToEnglish();
-			this.wikiStageController.changeLanguageToEnglish();
-			this.infoStageController.changeLanguageToEnglish();
-		}
+		Language l = Settings.getLanguage();
+		this.mainStageController.changeLanguageTo(l);
+		this.statisticStageController.changeLanguageTo(l);
+		this.settingsStageController.changeLanguageTo(l);
+		this.helpStageController.changeLanguageTo(l);
+		this.wikiStageController.changeLanguageTo(l);
+		this.infoStageController.changeLanguageTo(l);
 		
 		if(Settings.getColoScheme() == ColorScheme.DARK) {
 			this.mainStageController.changeThemeToDarkTheme();

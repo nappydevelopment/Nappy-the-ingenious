@@ -19,6 +19,7 @@ import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 
 import java.util.List;
@@ -302,15 +303,8 @@ public class WikiStageController {
 	/* changeLanguageToGerman [method]: *//**
 	 * 
 	 */
-	public void changeLanguageToGerman() {
-		this.res.setTextsToGerman();
-	}
-	
-	/* changeLanguageToEnglish [method]: *//**
-	 * 
-	 */
-	public void changeLanguageToEnglish() {
-		this.res.setTextsToEnglish();	
+	public void changeLanguageTo(Language l) {
+		this.res.setTextsTo(l);
 	}
 			
 //##########################################################################################################################################

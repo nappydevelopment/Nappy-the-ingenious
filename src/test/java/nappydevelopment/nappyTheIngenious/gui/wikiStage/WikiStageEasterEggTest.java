@@ -1,6 +1,7 @@
 package nappydevelopment.nappyTheIngenious.gui.wikiStage;
 
 import javafx.stage.Stage;
+import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
@@ -10,6 +11,7 @@ import java.util.concurrent.TimeoutException;
 
 public class WikiStageEasterEggTest extends ApplicationTest{
 	private WikiStageController controller;
+	private Language lang = Language.GERMAN;
 
 	@Override
 	public void init() throws TimeoutException{
@@ -17,7 +19,7 @@ public class WikiStageEasterEggTest extends ApplicationTest{
 
 		FxToolkit.registerStage(() -> {
 			controller.initView(Collections.emptyList());
-			controller.changeLanguageToGerman();
+			controller.changeLanguageTo(lang);
 			return controller.view;
 		});
 	}

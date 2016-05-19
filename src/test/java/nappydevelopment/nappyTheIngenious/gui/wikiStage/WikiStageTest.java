@@ -21,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 public class WikiStageTest extends ApplicationTest{
 	private WikiStageController controller;
+	private Language lang = Language.GERMAN;
 
 	private List<Character> chars = new ArrayList();
 	private Map<Language, String> nicknames = new HashMap<>();
@@ -38,7 +39,7 @@ public class WikiStageTest extends ApplicationTest{
 
 		FxToolkit.registerStage(() -> {
 			controller.initView(chars);
-			controller.changeLanguageToGerman();
+			controller.changeLanguageTo(lang);
 			return controller.view;
 		});
 	}
