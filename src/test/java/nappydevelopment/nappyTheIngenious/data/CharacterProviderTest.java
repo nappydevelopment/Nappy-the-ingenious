@@ -16,6 +16,7 @@ public class CharacterProviderTest{
 	public void getCharacters(){
 		List<Character> list = CharacterProvider.getCharacters();
 		assertNotNull(list);
+		assertTrue("More than one Character", list.size() >= 1);
 		assertTrue(list.get(0) instanceof Character);
 	}
 	@Test//(expected=SQLException.class)
