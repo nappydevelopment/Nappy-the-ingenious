@@ -1,6 +1,7 @@
 package nappydevelopment.nappyTheIngenious.data;
 
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 
 //### IMPORTS ##############################################################################################################################
 public enum Answer {
@@ -14,9 +15,8 @@ public enum Answer {
 		this.textGerman = ger;
 	}
 	
-	public String getText(final Language lang) {
-		
-		if(lang == Language.ENGLISH) {
+	public String getText() {
+		if(Settings.getLanguage() == Language.ENGLISH) {
 			return this.textEnglish;
 		}
 		else {

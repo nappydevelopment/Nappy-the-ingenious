@@ -12,20 +12,20 @@ public class QuestAnsElement {
 		this.question = question;
 	}
 
-	public String getAnswer() {
+	public Answer getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(Answer answer) {
 		this.answer = answer;
 	}
 
-	private String answer;
+	private Answer answer;
 	
 	public QuestAnsElement(String question) {
 		
 		this.question = question;
-		this.answer = "";
+		this.answer = null;
 		this.position = -1;
 	}
 	
