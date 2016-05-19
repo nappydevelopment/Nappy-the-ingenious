@@ -2,9 +2,6 @@
 package nappydevelopment.nappyTheIngenious.gui.wikiStage;
 
 //### IMPORTS ##############################################################################################################################
-import java.util.List;
-import java.util.ListIterator;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,13 +14,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
 import nappydevelopment.nappyTheIngenious.data.CharacterProvider;
-import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
+import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
+import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
+
+import java.util.List;
+import java.util.ListIterator;
 
 
 public class WikiStageController {
@@ -33,8 +32,8 @@ public class WikiStageController {
 	//Flag that mark the first show of the stage (necessary because there is no reset of filters):
 	private boolean initialShowing;
 			
-	private WikiStageView view;
-	private WikiStageResources res;
+	protected WikiStageView view;
+	protected WikiStageResources res;
 	private ViewActionEventHandler aeh;
 	private ViewKeyEventHandler keh;
 	
