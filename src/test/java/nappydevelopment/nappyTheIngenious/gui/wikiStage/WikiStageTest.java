@@ -9,6 +9,8 @@ import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterImage;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.data.settings.Settings;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
@@ -20,19 +22,23 @@ import static org.junit.Assert.*;
 
 public class WikiStageTest extends ApplicationTest{
 	private final WikiStageController controller = new WikiStageController();
-	private final Language lang = Language.GERMAN;
+	private static final Language lang = Language.GERMAN;
 
 	private final List<Character> chars = new ArrayList();
-	private final Map<Language, String> nicknames = new HashMap<>();
+	private final Map<Language, String> nicknames1 = new HashMap<>();
+	private final Map<Language, String> nicknames2 = new HashMap<>();
+	private final Map<Language, String> nicknames3 = new HashMap<>();
 
 	@Override
 	public void init() throws TimeoutException{
-		nicknames.put(Language.GERMAN, "nickname");
+		nicknames1.put(Language.GERMAN, "nickname");
+		nicknames2.put(Language.GERMAN, "");
+		nicknames3.put(Language.GERMAN, null);
 
 		Image img = new CharacterImage("lisa simpson").get();
-		chars.add(new Character("lisa simpson", nicknames, nicknames, img, Gender.FEMALE, Age.YOUNG));
-		chars.add(new Character("homer simpson", nicknames, nicknames, img, Gender.MALE, Age.ADULT));
-		chars.add(new Character("Burns", nicknames, nicknames, img, Gender.MALE, Age.OLD));
+		chars.add(new Character("lisa simpson", nicknames1, nicknames1, img, Gender.FEMALE, Age.YOUNG));
+		chars.add(new Character("homer simpson", nicknames2, nicknames2, img, Gender.MALE, Age.ADULT));
+		chars.add(new Character("Burns", nicknames3, nicknames3, img, Gender.MALE, Age.OLD));
 
 		FxToolkit.registerStage(() -> {
 			controller.initView(chars);
@@ -49,6 +55,11 @@ public class WikiStageTest extends ApplicationTest{
 		// reshow for more coverage
 		controller.show(new Stage());
 		controller.view.close();
+	}
+
+	@BeforeClass
+	public static void setLanguage(){
+		Settings.setLanguage(lang);
 	}
 
 	@Test
@@ -70,7 +81,7 @@ public class WikiStageTest extends ApplicationTest{
 		clickOn(controller.view.rbtFemale);
 		Set<Node> lbl = controller.view.vbxContentPane.lookupAll(".lblName");
 		assertEquals(1, lbl.size());
-		assertEquals("lisa simpson", ((Labeled)lbl.toArray()[0]).getText());
+		assertEquals("lisa simpson (nickname)", ((Labeled)lbl.toArray()[0]).getText());
 	}
 	@Test
 	public void filterEmpty(){
