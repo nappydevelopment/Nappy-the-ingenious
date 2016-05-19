@@ -93,8 +93,6 @@ dd {
     padding: 10px 10px 15px 10px;
 }
 
-#button { display:none; }
-
-.closed { background:url(button.png) left no-repeat; }
-
-.open { background:url(button.png) right no-repeat; }
+.open,.closed {
+    display:none;
+}
