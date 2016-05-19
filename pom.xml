@@ -8,6 +8,15 @@
       http://193.196.7.25
     </sonar.host.url>
   </properties>
+  <repositories>
+    <repository>
+      <id>maven-central-repo</id>
+      <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <resources>
       <resource>
@@ -30,14 +39,6 @@
       </resource>
     </resources>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source/>
-          <target/>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -103,6 +104,34 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <systemProperties>
+            <property>
+              <name>testfx.headless</name>
+              <value>true</value>
+            </property>
+            <property>
+              <name>testfx.robot</name>
+              <value>glass</value>
+            </property>
+            <property>
+              <name>glass.platform</name>
+              <value>Monocle</value>
+            </property>
+            <property>
+              <name>monocle.platform</name>
+              <value>Headless</value>
+            </property>
+            <property>
+              <name>prism.order</name>
+              <value>sw</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <source>1.8</source>
@@ -123,6 +152,21 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <version>1.4.191</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-core</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jfxtras</groupId>
+      <artifactId>openjfx-monocle</artifactId>
+      <version>RELEASE</version>
     </dependency>
   </dependencies>
 </project>
