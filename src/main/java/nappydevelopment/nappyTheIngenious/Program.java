@@ -414,23 +414,22 @@ public class Program extends Application {
 		
 		//Read out the questions that the player can ask:
 		//TODO: Not really nice logic should return a list of questions (Strings) depending on a language parameter:
-		List<String> questions = null;
 		try{
-			questions = gm2Logic.getQuestions();
+			List<String> questions = gm2Logic.getQuestions();
+
+			//Generate a list iterator:
+			ListIterator<String> listIterator = questions.listIterator();
+
+			//Run through the list:
+			while (listIterator.hasNext()) {
+
+				//Read out current element:
+				String question = listIterator.next();
+
+				this.game.getQal().add(new QuestAnsElement(question));
+			}
 		}catch(GameHasFinished gameHasFinished){
 			gameHasFinished.printStackTrace();
-		}
-
-		//Generate a list iterator:
-		ListIterator<String> listIterator = questions.listIterator();
-				
-		//Run through the list:
-		while (listIterator.hasNext()) {
-		        	
-			//Read out current element:
-		    String question = listIterator.next();
-		    
-		    this.game.getQal().add(new QuestAnsElement(question));
 		}
 		
 		
