@@ -7,6 +7,9 @@
     <sonar.host.url>
       http://193.196.7.25
     </sonar.host.url>
+    <project.build.sourceEncoding>
+      UTF-8
+    </project.build.sourceEncoding>
   </properties>
   <repositories>
     <repository>
