@@ -26,7 +26,7 @@ sudo: false
 
 #build project, verify and execute sonar
 install:
-  - mvn install verify sonar:sonar jacoco:report -Dmaven.javadoc.skip=true -B
+  - mvn install verify sonar:sonar coveralls:report -Dmaven.javadoc.skip=true -B
 
 # report coverage to codacy
 script:
