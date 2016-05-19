@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.TimeoutException;
 
 public class WikiStageEasterEggTest extends ApplicationTest{
@@ -16,7 +16,7 @@ public class WikiStageEasterEggTest extends ApplicationTest{
 		controller = new WikiStageController();
 
 		FxToolkit.registerStage(() -> {
-			controller.initView(Arrays.asList());
+			controller.initView(Collections.emptyList());
 			controller.changeLanguageToGerman();
 			return controller.view;
 		});
