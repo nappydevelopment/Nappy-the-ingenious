@@ -439,7 +439,7 @@ public class MainStageView extends Stage {
 
 							Label lblQuest = new Label(qae.getQuestion());
 							lblQuest.setStyle("-fx-text-fill: black;");
-							Label lblAns   = new Label(qae.getAnswer().getText());
+							Label lblAns   = new Label(qae.getText());
 							lblAns.setStyle("-fx-text-fill: black;");
 							setStyle("-fx-background-color: #FFFFFF;");
 							Image image = new Image(GlobalReferences.CURSORS_PATH + "pointer.png");
