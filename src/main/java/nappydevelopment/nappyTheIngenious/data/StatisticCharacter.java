@@ -1,8 +1,5 @@
 package nappydevelopment.nappyTheIngenious.data;
 
-/**
- * Created by Marc on 13.04.2016.
- */
 public class StatisticCharacter {
 
     String name;
