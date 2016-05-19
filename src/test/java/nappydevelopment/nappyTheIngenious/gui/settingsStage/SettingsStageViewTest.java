@@ -3,7 +3,6 @@ package nappydevelopment.nappyTheIngenious.gui.settingsStage;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
-import nappydevelopment.nappyTheIngenious.util.Util;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
@@ -37,8 +36,8 @@ public class SettingsStageViewTest extends ApplicationTest{
 	public void english(){
 		Settings.setLanguage(Language.GERMAN);
 
-		Util.click(".radio-button", controller.res.rdbEnglish.getValue());
-		Util.click(".button", controller.res.btnApply.getValue());
+		clickOn(controller.view.rdbEnglish);
+		clickOn(controller.view.btnApply);
 
 		assertEquals(Settings.getLanguage(), Language.ENGLISH);
 	}
