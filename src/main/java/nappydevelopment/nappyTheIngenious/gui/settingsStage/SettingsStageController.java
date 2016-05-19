@@ -22,8 +22,8 @@ public class SettingsStageController {
 	
 	private Program program;
 	
-	private SettingsStageView view;
-	private SettingsStageResources res;
+	protected SettingsStageView view;
+	protected SettingsStageResources res;
 	private ViewActionEventHandler aeh;
 
 //### CONSTRUCTORS #########################################################################################################################
