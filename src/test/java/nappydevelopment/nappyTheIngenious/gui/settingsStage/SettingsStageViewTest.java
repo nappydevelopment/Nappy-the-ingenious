@@ -19,12 +19,12 @@ public class SettingsStageViewTest extends ApplicationTest{
 
 	@Override
 	public void init() throws TimeoutException{
+		Settings.setLanguage(lang);
 		controller = new SettingsStageController(null);
 
 		FxToolkit.registerStage(() -> {
 			controller.initView();
-			controller.changeLanguageTo(lang);
-			controller.changeThemeToBrightTheme();
+			controller.applySettings();
 			return controller.view;
 		});
 	}

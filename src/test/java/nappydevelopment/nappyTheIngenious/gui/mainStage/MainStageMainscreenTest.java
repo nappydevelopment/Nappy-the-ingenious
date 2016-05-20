@@ -2,6 +2,7 @@ package nappydevelopment.nappyTheIngenious.gui.mainStage;
 
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit.ApplicationTest;
@@ -14,9 +15,10 @@ public class MainStageMainscreenTest extends ApplicationTest{
 
 	@Override
 	public void init() throws TimeoutException{
+		Settings.setLanguage(lang);
 		FxToolkit.registerStage(() -> {
 			controller.initView();
-			controller.changeLanguageTo(lang);
+			controller.applySettings();
 			controller.showStartView();
 			return controller.view;
 		});

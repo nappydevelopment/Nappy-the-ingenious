@@ -8,6 +8,7 @@ import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterImage;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
+import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import org.junit.BeforeClass;
@@ -64,8 +65,10 @@ public class WikiStageTest extends ApplicationTest{
 
 	@Test
 	public void testThemes(){
-		controller.changeThemeToBrightTheme();
-		controller.changeThemeToDarkTheme();
+		Settings.setColoScheme(ColorScheme.BRIGHT);
+		controller.applySettings();
+		Settings.setColoScheme(ColorScheme.DARK);
+		controller.applySettings();
 	}
 
 	@Test
