@@ -47,7 +47,7 @@ public class Question{
 		this.answer = answer;
 	}
 	public Question attributeAnswered(Question q){
-		if((q.getAnswer() == Answer.YES || bool) && attribute.equals(q.getAttribute())){
+		if((q.getAnswer() == Answer.YES || bool) && table.equals(q.getTable())){
 			attributeAnswered = true;
 		}
 		return this; // for predicate usage
