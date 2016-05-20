@@ -113,7 +113,7 @@ public class GM1RunningState implements GM1State{
 	}
 
 	protected void questionsAttributeAnswered(Question question){
-		questions.values().stream().map(q -> q.attributeAnswered(question));
+		questions.values().forEach(q -> q.attributeAnswered(question));
 	}
 
 	@Override
