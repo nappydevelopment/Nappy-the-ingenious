@@ -19,7 +19,7 @@ import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 
 import java.util.List;
@@ -278,33 +278,24 @@ public class WikiStageController {
 		//Show the stage:
 		this.view.show();
 	}
-			
-	/* changeThemeToDarkTheme [method]: *//**
-	 * 
-	 */
-	public void changeThemeToDarkTheme() {
-		
+
+	public void applySettings() {
 		this.view.getScene().getStylesheets().clear();
-		this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		if(Settings.getColoScheme() == ColorScheme.DARK){
+			this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		}
 		this.view.getScene().getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
-	}
-	
-	/* changeThemeToBrightTheme [method]: *//**
-	 * 
-	 */
-	public void changeThemeToBrightTheme() {
-		
-		this.view.getScene().getStylesheets().clear();
-		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
-		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/BrightTheme.css");
-		this.view.getScene().getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
-	}
-	
-	/* changeLanguageToGerman [method]: *//**
-	 * 
-	 */
-	public void changeLanguageTo(Language l) {
-		this.res.setTextsTo(l);
+
+		switch(Settings.getLanguage()){
+			case GERMAN:
+				this.res.changeLanguageToGerman();
+				break;
+			case ENGLISH:
+				this.res.changeLanguageToEnglish();
+				break;
+			default:
+				throw new IllegalArgumentException("unknown Language");
+		}
 	}
 			
 //##########################################################################################################################################

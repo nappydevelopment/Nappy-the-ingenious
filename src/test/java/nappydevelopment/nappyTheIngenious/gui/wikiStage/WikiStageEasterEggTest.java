@@ -19,7 +19,7 @@ public class WikiStageEasterEggTest extends ApplicationTest{
 
 		FxToolkit.registerStage(() -> {
 			controller.initView(Collections.emptyList());
-			controller.changeLanguageTo(lang);
+			controller.applySettings();
 			return controller.view;
 		});
 	}

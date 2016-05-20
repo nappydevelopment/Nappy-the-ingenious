@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 //Nappy imports:
 import nappydevelopment.nappyTheIngenious.data.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
-import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import nappydevelopment.nappyTheIngenious.exception.*;
 import nappydevelopment.nappyTheIngenious.gamemodes.gamemode1.GameMode1;
@@ -162,34 +160,14 @@ public class Program extends Application {
 	 */
 	public void applySettings() {
 		
-		//Apply the language setting:
+		//Apply the language/ColorScheme settings:
         //TODO: add custom exception to the other controller's
-		Language l = Settings.getLanguage();
-		this.mainStageController.changeLanguageTo(l);
-		this.statisticStageController.changeLanguageTo(l);
-		this.settingsStageController.changeLanguageTo(l);
-		this.helpStageController.changeLanguageTo(l);
-		this.wikiStageController.changeLanguageTo(l);
-		this.infoStageController.changeLanguageTo(l);
-		
-		if(Settings.getColoScheme() == ColorScheme.DARK) {
-			this.mainStageController.changeThemeToDarkTheme();
-			this.statisticStageController.changeThemeToDarkTheme();
-			this.settingsStageController.changeThemeToDarkTheme();
-			this.helpStageController.changeThemeToDarkTheme();
-			this.wikiStageController.changeThemeToDarkTheme();
-			this.infoStageController.changeThemeToDarkTheme();
-			
-		}
-		else {
-			this.mainStageController.changeThemeToBrightTheme();
-			this.statisticStageController.changeThemeToBrightTheme();
-			this.settingsStageController.changeThemeToBrightTheme();
-			this.helpStageController.changeThemeToBrightTheme();
-			this.wikiStageController.changeThemeToBrightTheme();
-			this.infoStageController.changeThemeToBrightTheme();
-		}
-		
+		this.mainStageController.applySettings();
+		this.statisticStageController.applySettings();
+		this.settingsStageController.applySettings();
+		this.helpStageController.applySettings();
+		this.wikiStageController.applySettings();
+		this.infoStageController.applySettings();
 	}
 	
 	//### Methods for game general control & info ##################################################
