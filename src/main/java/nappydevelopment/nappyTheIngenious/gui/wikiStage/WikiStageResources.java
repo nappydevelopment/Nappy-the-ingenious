@@ -6,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 import java.util.HashMap;
 
@@ -65,37 +64,30 @@ public class WikiStageResources {
 //### PUBLIC METHODS #######################################################################################################################
 
 
-	void setTextsTo(Language lang) {
-		switch(lang){
-			case GERMAN:
-				this.tbpGenderText.setValue("  Geschlecht  ");
-				this.rbtMaleText.setValue("Männlich");
-				this.rbtFemaleText.setValue("Weiblich");
+	protected void changeLanguageToEnglish(){
+		this.tbpGenderText.setValue("  Gender  ");
+		this.rbtMaleText.setValue("Male");
+		this.rbtFemaleText.setValue("Female");
 
-				this.tbpAgeText.setValue("  Alter  ");
-				this.rbpYoungText.setValue("Jung");
-				this.rbpMiddleText.setValue("Erwachsen");
-				this.rbpOldText.setValue("Alt");
+		this.tbpAgeText.setValue("  Age  ");
+		this.rbpYoungText.setValue("Young");
+		this.rbpMiddleText.setValue("Adult");
+		this.rbpOldText.setValue("Old");
 
-				this.btnResetFilterText.setValue("Filter zurücksetzten");
+		this.btnResetFilterText.setValue("Reset filter");
+	}
 
-				break;
-			case ENGLISH:
-				this.tbpGenderText.setValue("  Gender  ");
-				this.rbtMaleText.setValue("Male");
-				this.rbtFemaleText.setValue("Female");
+	protected void changeLanguageToGerman(){
+		this.tbpGenderText.setValue("  Geschlecht  ");
+		this.rbtMaleText.setValue("Männlich");
+		this.rbtFemaleText.setValue("Weiblich");
 
-				this.tbpAgeText.setValue("  Age  ");
-				this.rbpYoungText.setValue("Young");
-				this.rbpMiddleText.setValue("Adult");
-				this.rbpOldText.setValue("Old");
+		this.tbpAgeText.setValue("  Alter  ");
+		this.rbpYoungText.setValue("Jung");
+		this.rbpMiddleText.setValue("Erwachsen");
+		this.rbpOldText.setValue("Alt");
 
-				this.btnResetFilterText.setValue("Reset filter");
-
-				break;
-			default:
-				throw new IllegalArgumentException("unknown Language");
-		}
+		this.btnResetFilterText.setValue("Filter zurücksetzten");
 	}
 
 //##########################################################################################################################################

@@ -42,7 +42,7 @@ public class WikiStageTest extends ApplicationTest{
 
 		FxToolkit.registerStage(() -> {
 			controller.initView(chars);
-			controller.changeLanguageTo(lang);
+			controller.applySettings();
 			return controller.view;
 		});
 	}

@@ -6,7 +6,8 @@ import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.Program;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
+import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
+import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 
 import java.awt.*;
 import java.io.IOException;
@@ -103,30 +104,24 @@ public class InfoStageController {
 		
 		this.view.show();
 	}
-	
-	/* changeThemeToDarkTheme [method]: *//**
-	 * 
-	 */
-	public void changeThemeToDarkTheme() {
-		
-		this.view.getScene().getStylesheets().clear();
-		this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
-		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
-	}
-	
-	/* changeThemeToBrightTheme [method]: *//**
-	 * 
-	 */
-	public void changeThemeToBrightTheme() {
-		
-		this.view.getScene().getStylesheets().clear();
-		//The following command is not really necessary because through the clear Method about the bright (normal) theme is implicit set:
-		//this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/BrightTheme.css");
-		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
-	}
 
-	public void changeLanguageTo(Language l) {
-		this.res.setTextsTo(l);
+	public void applySettings() {
+		this.view.getScene().getStylesheets().clear();
+		if(Settings.getColoScheme() == ColorScheme.DARK){
+			this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		}
+		this.view.getScene().getStylesheets().add(InfoStageView.class.getResource("InfoStageCSS.css").toExternalForm());
+
+		switch(Settings.getLanguage()){
+			case ENGLISH:
+				this.res.changeLanguageToEnglish();
+				break;
+			case GERMAN:
+				this.res.changeLanguageToGerman();
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
 	}
 
 //### PRIVATE METHODS #######################################################################################################################

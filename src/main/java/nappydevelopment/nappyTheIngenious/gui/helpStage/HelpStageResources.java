@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 /* HelpStageResources [class]: Contains the resources for the help-stage like images, component-texts etc.: *//**
  *
@@ -38,17 +37,12 @@ public class HelpStageResources {
 
 //### PUBLIC METHODS #######################################################################################################################
 
-	void setTextsTo(Language l) {
-		switch(l){
-			case ENGLISH:
-				this.stageTitleText.setValue("Nappy, the ingenious - Instructions");
-				break;
-			case GERMAN:
-				this.stageTitleText.setValue("Nappy, the ingenious - Spielanleitung");
-				break;
-			default:
-				throw new IllegalArgumentException();
-		}
+	protected void changeLanguageToEnglish(){
+		this.stageTitleText.setValue("Nappy, the ingenious - Instructions");
+	}
+
+	protected void changeLanguageToGerman(){
+		this.stageTitleText.setValue("Nappy, the ingenious - Spielanleitung");
 	}
 
 //##########################################################################################################################################

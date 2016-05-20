@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
 
 /* SettingsStageResources [class]: Contains the resources for the settings-stage like images, component-texts etc.: *//**
  *
@@ -63,39 +62,34 @@ public class SettingsStageResources {
 
 //### PUBLIC METHODS #######################################################################################################################
 
-	void setTextsTo(Language l) {
-		switch(l){
-			case ENGLISH:
-				this.stageTitleText.setValue("Nappy, the ingenious - Settings");
-				this.lblLanguageText.setValue("Language");
-				this.rdbGerman.setValue("German");
-				this.rdbEnglish.setValue("English");
-				this.lblColorScheme.setValue("Colorscheme");
-				this.rdbBright.setValue("Bright");
-				this.rdbDark.setValue("Dark");
-				this.lblGameMode.setValue("Gamemode");
-				this.rdbBothModes.setValue("Both modes");
-				this.rdbOnlyMode1.setValue("Only mode 1");
-				this.btnAbort.setValue("Abort");
-				this.btnApply.setValue("Apply");
-				break;
-			case GERMAN:
-				this.stageTitleText.setValue("Nappy, the ingenious - Einstellungen");
-				this.lblLanguageText.setValue("Sprache");
-				this.rdbGerman.setValue("Deutsch");
-				this.rdbEnglish.setValue("Englisch");
-				this.lblColorScheme.setValue("Farbschema");
-				this.rdbBright.setValue("Hell");
-				this.rdbDark.setValue("Dunkel");
-				this.lblGameMode.setValue("Spielmodus");
-				this.rdbBothModes.setValue("Beide Modi");
-				this.rdbOnlyMode1.setValue("Nur Spielmodus 1");
-				this.btnAbort.setValue("Abbrechen");
-				this.btnApply.setValue("Übernehmen");
-				break;
-			default:
-				throw new IllegalArgumentException();
-		}
+	protected void setLanguageToEnglish(){
+		this.stageTitleText.setValue("Nappy, the ingenious - Settings");
+		this.lblLanguageText.setValue("Language");
+		this.rdbGerman.setValue("German");
+		this.rdbEnglish.setValue("English");
+		this.lblColorScheme.setValue("Colorscheme");
+		this.rdbBright.setValue("Bright");
+		this.rdbDark.setValue("Dark");
+		this.lblGameMode.setValue("Gamemode");
+		this.rdbBothModes.setValue("Both modes");
+		this.rdbOnlyMode1.setValue("Only mode 1");
+		this.btnAbort.setValue("Abort");
+		this.btnApply.setValue("Apply");
+	}
+
+	protected void setLanguageToGerman(){
+		this.stageTitleText.setValue("Nappy, the ingenious - Einstellungen");
+		this.lblLanguageText.setValue("Sprache");
+		this.rdbGerman.setValue("Deutsch");
+		this.rdbEnglish.setValue("Englisch");
+		this.lblColorScheme.setValue("Farbschema");
+		this.rdbBright.setValue("Hell");
+		this.rdbDark.setValue("Dunkel");
+		this.lblGameMode.setValue("Spielmodus");
+		this.rdbBothModes.setValue("Beide Modi");
+		this.rdbOnlyMode1.setValue("Nur Spielmodus 1");
+		this.btnAbort.setValue("Abbrechen");
+		this.btnApply.setValue("Übernehmen");
 	}
 
 //##########################################################################################################################################
