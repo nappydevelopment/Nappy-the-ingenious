@@ -200,6 +200,9 @@ public class MainStageController {
 				else if("btnContinue".equals(((Button)src).getId())) {
 					MainStageController.this.program.setIfNappyIsRight(Answer.DONT_KNOW);
 				}
+				else if("btnIknow".equals(((Button)src).getId())) {
+					System.out.println("Open Wiki to select a character");
+				}
 				
 			}
 			else if(src == view.btnAskQuestion) {
