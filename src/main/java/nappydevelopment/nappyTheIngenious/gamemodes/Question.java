@@ -67,8 +67,8 @@ public class Question{
 				}
 				sum += val;
 			}
-			if(!deterministic){
-				ret += Math.random()*(sum/2);
+			if(!deterministic && ret > 0){
+				ret += Math.random()*(sum/4);
 			}
 			ret = Math.min(ret, sum) / Math.max(ret, sum);
 			if(ret > 0.5){
