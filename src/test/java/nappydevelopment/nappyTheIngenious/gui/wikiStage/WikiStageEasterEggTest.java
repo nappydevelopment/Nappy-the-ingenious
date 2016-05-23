@@ -63,7 +63,6 @@ public class WikiStageEasterEggTest extends ApplicationTest{
 		clickOn(controller.view.txfSearchField);
 		write("d'oh");
 		clickOn("D'oh!");
-		sleep(1000);
 		Assert.assertEquals(8, controller.view.vbxContentPane.lookupAll(".lblName").size());
 	}
 }
