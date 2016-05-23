@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -359,10 +360,59 @@ public class MainStageController {
 		this.view.gdpQuestion.add(this.view.lblQuestion, 1, 1);
 		
 		//Reset view of old game:
+		this.view.pgbKnowledge.getProgressBar().setPrefSize(440, 20);
 		this.view.pgbKnowledge.getProgressBar().setProgress(0.0);
+		this.view.pgbNoOfQuest.getProgressBar().setPrefSize(440, 20);
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
-		this.view.lblKnowledge.setText("0%");	
+		this.view.lblKnowledge.setText("0%");
+		
+		//Set image of Nappy for gm1:
+		this.view.imvNappy = new ImageView(this.res.imvNappyImageGM1);
+		this.view.imvNappy.setFitHeight(527);
+		this.view.imvNappy.setFitWidth(340);
+		
+		this.view.gdpQuestion.getColumnConstraints().clear();
+		this.view.gdpQuestion.getRowConstraints().clear();
+		
+		//Set the column-rate:
+		ColumnConstraints gdpQuestionCol1 = new ColumnConstraints();
+		gdpQuestionCol1.setPercentWidth(28);
+		ColumnConstraints gdpQuestionCol2 = new ColumnConstraints();
+		gdpQuestionCol2.setPercentWidth(41);
+		ColumnConstraints gdpQuestionCol3 = new ColumnConstraints();
+		gdpQuestionCol3.setPercentWidth(31);
+
+		RowConstraints gdpQuestionRow1 = new RowConstraints();
+		gdpQuestionRow1.setPercentHeight(73);
+		RowConstraints gdpQuestionRow2 = new RowConstraints();
+		gdpQuestionRow2.setPercentHeight(23);
+		RowConstraints gdpQuestionRow3 = new RowConstraints();
+		gdpQuestionRow3.setPercentHeight(4);
+
+		this.view.gdpQuestion.getColumnConstraints().addAll(
+			gdpQuestionCol1,
+			gdpQuestionCol2,
+			gdpQuestionCol3
+		);
+
+		this.view.gdpQuestion.getRowConstraints().addAll(
+			gdpQuestionRow1,
+			gdpQuestionRow2,
+			gdpQuestionRow3
+		);
+		
+		//Add the nappy-image and the positioning grid-pane to the stack-pane:
+		this.view.skpPicText.getChildren().clear();
+		this.view.skpPicText.getChildren().addAll(this.view.imvNappy, this.view.gdpQuestion);
+		
+		//Add the three main elements to the main grid-pane:
+		this.view.gdpProgressBarPic.getChildren().clear();
+		this.view.gdpProgressBarPic.add(this.view.vbxNoOfQuest, 0, 0);
+		this.view.gdpProgressBarPic.add(this.view.skpPicText, 1, 0);
+		this.view.gdpProgressBarPic.add(this.view.vbxKnowledge, 2, 0);
+		
+		//Buttons:
 		this.view.btnYes.setDisable(false);
 		this.view.btnYes.setId("btnYes");
 		this.view.btnNo.setDisable(false);
@@ -375,7 +425,7 @@ public class MainStageController {
 		this.res.setBtnIdontKnowTextToIdontKnow();
 		
 		this.view.gdpButtons.getChildren().clear();
-		
+		this.view.gdpButtons.setVgap(0);
 		//Add the buttons to the button grid-pane:
 		this.view.gdpButtons.add(this.view.btnYes, 0, 0);
 		this.view.gdpButtons.add(this.view.btnNo, 1, 0);
