@@ -47,6 +47,7 @@ public class WikiStageTest extends ApplicationTest{
 			return controller.view;
 		});
 	}
+
 	@Override
 	public void start(Stage stage){ controller.show(new Stage()); }
 	@Override

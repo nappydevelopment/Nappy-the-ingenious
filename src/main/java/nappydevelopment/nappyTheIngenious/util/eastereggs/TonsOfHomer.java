@@ -3,6 +3,7 @@ package nappydevelopment.nappyTheIngenious.util.eastereggs;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
 import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
@@ -15,9 +16,14 @@ import java.util.stream.Collectors;
 /**
  * Created by Marc on 13.05.2016.
  */
-public class TonsOfHomer {
+public class TonsOfHomer{
+    Alert alert;
 
-    public static List<Character> getThem(List<Character> list, CharacterFilter search) {
+    public Alert getAlert() {
+        return alert;
+    }
+
+    public List<Character> getThem(List<Character> list, CharacterFilter search) {
         showDohDialog();
         new SoundPlayer("doh");
         List<Character> homerList = new ArrayList<Character>();
@@ -32,10 +38,10 @@ public class TonsOfHomer {
         return (List<Character>)homerList;
     }
 
-    private static void showDohDialog() {
+    private void showDohDialog() {
 
-        //Create dialog:
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        //Create the dialog
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
 
         //Create the dialog buttons:
         ButtonType bttApply = new ButtonType("D'oh!");

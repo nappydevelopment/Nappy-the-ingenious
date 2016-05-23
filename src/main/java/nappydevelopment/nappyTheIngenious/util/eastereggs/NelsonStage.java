@@ -27,8 +27,8 @@ public class NelsonStage extends Stage {
     private Image imgNelsonR;
     private Image imgNelsonL;
 
-    public static void createNewNelson() {
-        new NelsonStage(1);
+    public static NelsonStage createNewNelson() {
+        return new NelsonStage(1);
     }
 
     NelsonStage(int timesOpened) {
@@ -75,6 +75,8 @@ public class NelsonStage extends Stage {
         });
 
     }
+
+
 
     private void exitForm() {
         if (counter < 3) {
