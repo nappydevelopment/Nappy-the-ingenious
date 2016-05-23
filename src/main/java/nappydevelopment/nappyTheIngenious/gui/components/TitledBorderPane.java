@@ -5,8 +5,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 //### IMPORTS ##############################################################################################################################
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class TitledBorderPane extends StackPane {
@@ -45,7 +49,8 @@ public class TitledBorderPane extends StackPane {
 		
 		this.lblTitle = new Label("  No Title  ");
 		this.lblTitle.setFont(Font.font(this.lblTitle.getFont().getName(), 14));
-		this.lblTitle.setStyle("-fx-translate-y: -12; -fx-background-color: #F4F4F4; -fx-translate-x: +12;");
+		this.lblTitle.setStyle("-fx-translate-y: -12; -fx-translate-x: +12;");
+		//-fx-background-color: #F4F4F4;
 		StackPane.setAlignment(lblTitle, Pos.TOP_LEFT);
 		
 		this.skpContent = new StackPane();
@@ -82,6 +87,9 @@ public class TitledBorderPane extends StackPane {
 		
 	}
 	
+	public void setTitleBackcolor(Color color) {
+		this.lblTitle.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
+	}
 //### METHODS ##############################################################################################################################}
 }
 //### EOF ##################################################################################################################################

@@ -2,6 +2,7 @@ package nappydevelopment.nappyTheIngenious.gui.statisticStage;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.Program;
@@ -43,6 +44,8 @@ public class StatisticStageController {
 		this.view = new StatisticStageView(this.res, this.aeh);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
+		//
+		this.applySettings();
 		
 	}
 	
@@ -156,9 +159,16 @@ public class StatisticStageController {
 	}
 
 	public void applySettings() {
+		
 		this.view.getScene().getStylesheets().clear();
 		if(Settings.getColoScheme() == ColorScheme.DARK) {
 			this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+			this.view.tbpTopFiveCharacter.setTitleBackcolor(Color.web("0x3B3636"));
+			this.view.tbpTopFivePlayer.setTitleBackcolor(Color.web("0x3B3636"));
+		}
+		else {
+			this.view.tbpTopFiveCharacter.setTitleBackcolor(Color.web("0xF4F4F4"));
+			this.view.tbpTopFivePlayer.setTitleBackcolor(Color.web("0xF4F4F4"));
 		}
 		this.view.getScene().getStylesheets().add(StatisticStageView.class.getResource("StatisticStageCSS.css").toExternalForm());
 

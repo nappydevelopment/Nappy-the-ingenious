@@ -669,6 +669,7 @@ public class MainStageController {
 	    	gdpQuestionRow3
 	    );
 		
+	    this.view.lblAnswer.setText("");
 	    this.view.gdpQuestion.add(this.view.lblAnswer, 1,1);
 	    this.view.skpPicText.getChildren().addAll(this.view.imvNappy, this.view.gdpQuestion);
 		
