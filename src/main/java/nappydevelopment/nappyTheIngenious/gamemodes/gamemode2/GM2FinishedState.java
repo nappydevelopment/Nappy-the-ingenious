@@ -5,6 +5,7 @@ import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 
 import java.util.List;
+import java.util.Map;
 
 public class GM2FinishedState implements GM2State{
 	private final int answeredQuestions;
@@ -25,6 +26,9 @@ public class GM2FinishedState implements GM2State{
 		throw new GameHasFinished();
 	}
 	public List<String> getQuestions() throws GameHasFinished{
+		throw new GameHasFinished();
+	}
+	public Map<String, Answer> getSortedQuestionAnswerMap() throws GameHasFinished{
 		throw new GameHasFinished();
 	}
 }
