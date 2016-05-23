@@ -34,6 +34,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
 import nappydevelopment.nappyTheIngenious.data.QuestAnsElement;
@@ -133,10 +135,10 @@ public class MainStageView extends Stage {
 	 * @param res
 	 * @param aeh
 	 */
-	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh) {
+	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh, EventHandler<WindowEvent> weh) {
 		this.initComponents(res, aeh);
 		this.structureComponents();
-		this.initStage();
+		this.initStage(weh);
 	}
 
 //### INITAL METHODS #######################################################################################################################
@@ -569,7 +571,7 @@ public class MainStageView extends Stage {
 	}
 
 	//Method that initialize the stage (window) settings:
-	private void initStage() {
+	private void initStage(EventHandler<WindowEvent> weh) {
 
 		//Create scene and set their properties:
 		this.scene = new Scene(this.bdpRootPane, 445, 693);
@@ -588,7 +590,8 @@ public class MainStageView extends Stage {
 			new Image(GlobalReferences.ICONS_PATH + "128x128/icon.png"),
 			new Image(GlobalReferences.ICONS_PATH + "256x256/icon.png")
 		);
-
+		
+		this.setOnCloseRequest(weh);
 	}
 
 //##########################################################################################################################################

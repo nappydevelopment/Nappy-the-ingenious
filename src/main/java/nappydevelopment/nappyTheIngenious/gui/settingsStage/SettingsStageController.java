@@ -3,6 +3,8 @@ package nappydevelopment.nappyTheIngenious.gui.settingsStage;
 //### IMPORTS ##############################################################################################################################
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.Program;
@@ -86,6 +88,9 @@ public class SettingsStageController {
 				System.out.println("Abort settings");
 				SettingsStageController.this.view.close();
 			}
+			else if(src == view.rdbOnlyMode1) {
+				SettingsStageController.this.showInfoDialogNoStatistic();
+			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
 			}
@@ -95,6 +100,19 @@ public class SettingsStageController {
 	}
 
 //### PRIVATE METHODS ######################################################################################################################
+	
+	private void showInfoDialogNoStatistic() {
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Nappy, the ingenious");
+		alert.setHeaderText(null);
+		alert.setContentText(res.infoDialogNoStatistics);
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			alert.getDialogPane().getStylesheets().clear();
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		}
+		alert.showAndWait();
+	}
 	
 	private void applySettingChanges() {
 		

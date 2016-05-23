@@ -36,6 +36,7 @@ public class StatisticStageResources {
 	//Stage icon:
 	Image stageIcon16x16;
 	Image stageIcon32x32;
+	
 
 //### CONSTRUCTORS #########################################################################################################################
 

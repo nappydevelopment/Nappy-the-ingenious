@@ -88,6 +88,7 @@ public class InfoStageView extends Stage {
 		
 		this.lblTitle = new Label();
 		this.lblTitle.setId("lblTitle");
+		this.lblTitle.setWrapText(true);
 		this.lblDescription = new Label();
 		this.lblDescription.setId("lblDescription");
 	
