@@ -6,7 +6,10 @@ package nappydevelopment.nappyTheIngenious;
 
 //JavaFX imports:
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 //Nappy imports:
 import nappydevelopment.nappyTheIngenious.data.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
@@ -77,7 +80,7 @@ public class Program extends Application {
 	
 	//Method that starts the JavaFX-Application:
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage primarystage) throws Exception {
 		
 		//Print status message:
 		System.out.println("JavaFX-Application - Start");
@@ -86,7 +89,7 @@ public class Program extends Application {
 		List<Character> chars = CharacterProvider.getCharacters();
 		
 		//Initialize the view of the stages:
-		this.mainStageController.initView();
+		this.mainStageController.initView(primarystage);
 		this.statisticStageController.initView();
 		this.settingsStageController.initView();
 		this.helpStageController.initView();
@@ -228,6 +231,10 @@ public class Program extends Application {
 		this.mainStageController.showStartView();
 	}
 
+	public boolean existAnActiveGame() {
+		return (this.game != null);
+	}
+	
 	/* writeStatistics [method]: Method that write a statistic entry *//**
 	 * 
 	 * @param spielerName

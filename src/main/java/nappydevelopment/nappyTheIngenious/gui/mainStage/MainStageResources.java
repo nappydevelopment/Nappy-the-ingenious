@@ -78,6 +78,12 @@ public class MainStageResources {
 	String abortGameDialogBtnApplyText;
 	String abortGameDialogBtnCancelText;
 	
+	String closeProgramDialogTitle;
+	String closeProgramDialogHeaderText;
+	String closeProgramDialogContentText;
+	String closeProgramDialogBtnApplyText;
+	String closeProgramDialogBtnCancelText;
+	
 	String enterNameDialogBtnApplyText;
 	String enterNameDialogBtnCancelText;
 	String enterNameDialogTitle;
@@ -233,6 +239,14 @@ public class MainStageResources {
 										+ "Notice: Aborted games will not listed in the statistic!\n\n";
 		this.abortGameDialogBtnApplyText = "Abort game";
 		this.abortGameDialogBtnCancelText = "Cancel";
+		
+		//Close-Dialog-Texts:
+		this.closeProgramDialogTitle = "Nappy, the ingenious";
+		this.closeProgramDialogHeaderText = "Exit program?";
+		this.closeProgramDialogContentText = "Do you really want to exit the program?\n"
+										+ "Notice: Your current game will aborted!\n\n";
+		this.closeProgramDialogBtnApplyText = "Exit program";
+		this.closeProgramDialogBtnCancelText = "Cancel";
 
 		//Enter-Name-Texts:
 		this.enterNameDialogTitle = "Nappy, the ingenious";
@@ -304,6 +318,14 @@ public class MainStageResources {
 										+ "Hinweis: Abgebrochene Spiele werden nicht in die Statistik aufgenommen!\n\n";
 		this.abortGameDialogBtnApplyText = "Spiel abbrechen";
 		this.abortGameDialogBtnCancelText = "Abbrechen";
+		
+		//Close-Dialog-Texts:
+		this.closeProgramDialogTitle = "Nappy, the ingenious";
+		this.closeProgramDialogHeaderText = "Programm beenden?";
+		this.closeProgramDialogContentText = "Möchten Sie das Programm wirklich beenden?\n"
+										+ "Hinweis: Dadurch wird das aktuelle Spiel abgebrochen!\n\n";
+		this.closeProgramDialogBtnApplyText = "Programm beenden";
+		this.closeProgramDialogBtnCancelText = "Abbrechen";
 
 		this.enterNameDialogTitle = "Nappy, the ingenious";
 		this.enterNameDialogHeaderText = "Bitte gib deinen Namen ein!";

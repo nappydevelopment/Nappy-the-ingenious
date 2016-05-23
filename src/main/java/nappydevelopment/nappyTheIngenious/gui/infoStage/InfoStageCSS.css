@@ -3,11 +3,10 @@
 #lblTitle {
 	-fx-font-weight: bold;
 	-fx-font-size: 24px;
-	-fx-text-fill: black;
 }
 
 #lblDescription {
 	-fx-font-weight: bold;
 	-fx-font-size: 16px;
-	-fx-text-fill: black;
+	-fx-text-fill: orange;
 }

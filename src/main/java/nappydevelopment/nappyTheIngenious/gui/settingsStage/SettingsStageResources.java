@@ -30,6 +30,8 @@ public class SettingsStageResources {
 	//Button-Texts:
 	StringProperty btnAbort;
 	StringProperty btnApply;
+	
+	String infoDialogNoStatistics;
 	//Icon:
 	Image stageIcon16x16;
 	Image stageIcon32x32;
@@ -75,6 +77,8 @@ public class SettingsStageResources {
 		this.rdbOnlyMode1.setValue("Only mode 1");
 		this.btnAbort.setValue("Abort");
 		this.btnApply.setValue("Apply");
+		this.infoDialogNoStatistics = "If you select this option your games will not listed in the statistic!";
+
 	}
 
 	protected void setLanguageToGerman(){
@@ -90,6 +94,8 @@ public class SettingsStageResources {
 		this.rdbOnlyMode1.setValue("Nur Spielmodus 1");
 		this.btnAbort.setValue("Abbrechen");
 		this.btnApply.setValue("Übernehmen");
+		this.infoDialogNoStatistics = "Wenn du diese Einstellung wählst werden deine Spiele nicht in die Statistik aufgenommen!";
+
 	}
 
 //##########################################################################################################################################

@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
 import nappydevelopment.nappyTheIngenious.Program;
 import nappydevelopment.nappyTheIngenious.data.Answer;
@@ -28,7 +30,6 @@ import nappydevelopment.nappyTheIngenious.data.QuestAnsElement;
 import nappydevelopment.nappyTheIngenious.data.QuestAnsList;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
-import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import nappydevelopment.nappyTheIngenious.util.Utils;
 
@@ -50,6 +51,7 @@ public class MainStageController {
 	protected MainStageView view;
 	protected MainStageResources res;
 	private ViewActionEventHandler aeh;
+	private ViewWindowEventHandler weh;
 	
 //### CONSTRUCTORS #########################################################################################################################
 	
@@ -69,14 +71,16 @@ public class MainStageController {
 	/* initView [method]: *//**
 	 * 
 	 */
-	public void initView() {
+	public void initView(Stage primarystage) {
 		
 		//Initialize the resources for the view:
 		this.res = new MainStageResources();
 		//Initialize the action-event-handler for the view-components:
 		this.aeh = new ViewActionEventHandler();
+		//Initialize the window-event-handler:
+		this.weh = new ViewWindowEventHandler();
 		//Initialize the view:
-		this.view = new MainStageView(this.res, this.aeh);
+		this.view = new MainStageView(this.res, this.aeh, this.weh);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 		
@@ -153,7 +157,12 @@ public class MainStageController {
 			else if(src == view.mniExit) {
 				//Exit the JavaFX-Application!
 				System.out.println("Exit game");
-				Platform.exit();
+				if(MainStageController.this.program.existAnActiveGame()) {
+					MainStageController.this.showCloseProgramDialog();
+				}
+				else {
+					Platform.exit();
+				}
 			}
 			else if (src == view.mniHelp || src == view.btnHelp) {
 				//Show the help-stage!
@@ -223,6 +232,35 @@ public class MainStageController {
 		
 	}
 	
+	private class ViewWindowEventHandler implements EventHandler<WindowEvent> {
+
+		@Override
+		public void handle(WindowEvent event) {
+		    
+//			// consume event
+//	        event.consume();
+//
+//	        // show close dialog
+//	        Alert alert = new Alert(AlertType.CONFIRMATION);
+//	        alert.setTitle("Close Confirmation");
+//	        alert.setHeaderText("Do you really want to quit?");
+//	        alert.initOwner( MainStageController.this.view);
+//
+//	        Optional<ButtonType> result = alert.showAndWait();
+//	        if (result.get() == ButtonType.OK){
+//	            Platform.exit();
+//	        }
+			event.consume();
+			if(MainStageController.this.program.existAnActiveGame()) {
+				MainStageController.this.showCloseProgramDialog();
+			}
+			else {
+				Platform.exit();
+			}
+		}
+		
+	}
+	
 //### PRIVATE METHODS ######################################################################################################################
 	
 	//Method that creates a Dialog where the user must confirm the game abortion:
@@ -257,9 +295,7 @@ public class MainStageController {
 		}
 	}
 	
-	
-   
-    
+  
     /* updateInfo [method]: Method to update the progress elements (progress-bars / -labels) *//**
      * 
      * @param noq
@@ -611,6 +647,34 @@ public class MainStageController {
 	    	}
 	    }
 	    
+	public void showCloseProgramDialog() {
+		
+		//Create dialog:
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		
+		//Create the dialog buttons:
+		ButtonType bttApply = new ButtonType(this.res.closeProgramDialogBtnApplyText);
+		ButtonType bttCancel = new ButtonType(this.res.closeProgramDialogBtnCancelText);
+		
+		//Set properties of the dialog:
+		alert.setTitle(this.res.closeProgramDialogTitle);
+		alert.setHeaderText(this.res.closeProgramDialogHeaderText);
+		alert.setContentText(this.res.closeProgramDialogContentText);
+		alert.getButtonTypes().setAll(bttApply, bttCancel);
+		
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			alert.getDialogPane().getStylesheets().clear();
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		}
+		
+		//Show dialog and read out the result:
+		Optional<ButtonType> result = alert.showAndWait();
+		
+		//If the user confirm the game abortion:
+		if (result.get() == bttApply){
+		    Platform.exit();
+		}
+	}
 	
 	//### Methods for gamemode 2 ###################################################################
 	

@@ -17,7 +17,7 @@ public class MainStageMainscreenTest extends ApplicationTest{
 	public void init() throws TimeoutException{
 		Settings.setLanguage(lang);
 		FxToolkit.registerStage(() -> {
-			controller.initView();
+			controller.initView(null);
 			controller.applySettings();
 			controller.showStartView();
 			return controller.view;

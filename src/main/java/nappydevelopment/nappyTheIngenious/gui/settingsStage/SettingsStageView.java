@@ -116,6 +116,7 @@ public class SettingsStageView extends Stage {
 		this.rdbBothModes.setToggleGroup(this.tggGameMode);
 		this.rdbOnlyMode1 = new RadioButton();
 		this.rdbOnlyMode1.setToggleGroup(this.tggGameMode);
+		this.rdbOnlyMode1.setOnAction(aeh);
 		
 		this.hbxBottom = new HBox();
 		this.hbxBottom.setAlignment(Pos.CENTER_RIGHT);
