@@ -8,4 +8,4 @@
 This is our project for softwareengineering. "Nappy the ingenious" is a brilliant Combination Artist. He is able to guess a character of the Simpsons and solely with character-specific questions.
 
 
-You can [Download](https://github.com/nappydevelopment/Nappy-the-ingenious/raw/master/jar/nappy-the-ingenious-0.0.2-SNAPSHOT.jar) right here. Enjoy :-) 
+You can [Download](https://github.com/nappydevelopment/Nappy-the-ingenious/raw/master/jar/nappy-the-ingenious-0.0.2-SNAPSHOT.jar) right here. You will need Java (jre or jdk) 8 installed on your operation system. Enjoy :-) 

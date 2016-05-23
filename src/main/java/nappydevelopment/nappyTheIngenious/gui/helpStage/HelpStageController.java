@@ -76,11 +76,13 @@ public class HelpStageController {
 		// somewhat both of the above
 		// loads instruction_(de|en)_(dark|bright).html
 		this.view.webEngine.load(
-			"instruction_" +
-			Settings.getLanguage().getCode().toLowerCase() +
-			"_" +
-			Settings.getColoScheme().toString().toLowerCase() +
-			".html"
+			HelpStageController.class.getResource(
+				"/html/instruction_" +
+				Settings.getLanguage().getCode().toLowerCase() +
+				"_" +
+				Settings.getColoScheme().toString().toLowerCase() +
+				".html"
+			).toExternalForm()
 		);
 	}
 
