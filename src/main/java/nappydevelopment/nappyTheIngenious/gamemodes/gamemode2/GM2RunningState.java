@@ -1,9 +1,10 @@
 package nappydevelopment.nappyTheIngenious.gamemodes.gamemode2;
 
 import javafx.scene.image.Image;
-import nappydevelopment.nappyTheIngenious.data.*;
-import nappydevelopment.nappyTheIngenious.data.character.Character;
+import nappydevelopment.nappyTheIngenious.data.Answer;
+import nappydevelopment.nappyTheIngenious.data.DatabaseProvider;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
+import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterImage;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GM2RunningState implements GM2State{
 	private Map<String, Question> remainingQuestions;
@@ -57,9 +59,6 @@ public class GM2RunningState implements GM2State{
 	}
 
 	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished{
-		if(isFinished()){
-			throw new GameHasFinished();
-		}
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
@@ -77,9 +76,6 @@ public class GM2RunningState implements GM2State{
 	}
 
 	public Boolean makeGuess(final String name){
-		if(isFinished()){
-			return null;
-		}
 		questionCounter++;
 		return character.get("NAME").equals(name);
 	}
