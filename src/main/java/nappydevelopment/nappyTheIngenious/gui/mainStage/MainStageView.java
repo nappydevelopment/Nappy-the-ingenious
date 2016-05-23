@@ -374,6 +374,7 @@ public class MainStageView extends Stage {
 
 		//Button to ask the question:
 		this.btnAskQuestion = new Button();
+		this.btnAskQuestion.setAlignment(Pos.BASELINE_CENTER);
 		this.hbxAskQuestion = new HBox();
 		this.hbxAskQuestion.setAlignment(Pos.CENTER);
 		this.btnAskQuestion.setMinSize(150, 10);
@@ -403,6 +404,7 @@ public class MainStageView extends Stage {
 					  setText(null);
 					  if(qae.getAnswer() != null) {
 						  setText(res.cmbQuestionsTextYouveAskThisQuestionAlready);
+						  MainStageView.this.btnAskQuestion.setDisable(true);
 					  }
 					  else {
 						  setText(qae.getQuestion());
