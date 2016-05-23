@@ -1,10 +1,14 @@
 package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
-public class EastereggSearcher {
+import java.util.ArrayList;
+import java.util.List;
 
-    public static boolean lookFor(String str){
+public class EastereggSearcher {
+    private List<NelsonStage> ns = new ArrayList<>();
+
+    public boolean lookFor(String str){
         if(str.equals("haha")){
-            NelsonStage.createNewNelson();
+            ns.add(NelsonStage.createNewNelson());
             return false;
         }
         else if(str.equals("doh") || str.equals("d'oh")) {
@@ -16,5 +20,10 @@ public class EastereggSearcher {
         }
         return false;
     }
+
+    public List<NelsonStage> getNelsonStages(){
+        return ns;
+    }
+
 
 }

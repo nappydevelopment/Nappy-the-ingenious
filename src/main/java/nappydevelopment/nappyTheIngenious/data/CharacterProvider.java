@@ -14,8 +14,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CharacterProvider{
+	static EastereggSearcher eggs = new EastereggSearcher();
+	static TonsOfHomer toh = new TonsOfHomer();
 
-	public static List<Character> getCharacters() { return getCharacters(""); }
+	public static EastereggSearcher getEggs(){ return eggs; }
+	public static TonsOfHomer getToh(){ return toh; }
+
+	public static List<Character> getCharacters(){ return getCharacters(""); }
 	public static List<Character> getCharacters(String whereclause){
 		List<Character> out = new ArrayList<>();
 		try(Statement st = DatabaseProvider.getStatement()){
@@ -51,11 +56,11 @@ public class CharacterProvider{
 	}
 
 	public static List<Character> search(List<Character> list, CharacterFilter search){
-		EastereggSearcher.lookFor(search.getSearchStr());
+		eggs.lookFor(search.getSearchStr());
 		List<Character> out;
-		if(EastereggSearcher.lookFor(search.getSearchStr())){
-			return TonsOfHomer.getThem(list, search);
-		};
+		if(eggs.lookFor(search.getSearchStr())){
+			return toh.getThem(list, search);
+		}
 
 		out = list.stream()
 			.filter(c -> {
