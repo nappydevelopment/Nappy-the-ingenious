@@ -294,6 +294,14 @@ public class Program extends Application {
 			return;
 		}
 
+		if(answer == Answer.DONT_KNOW) {
+			this.game.increaseIdontKnow();
+		}
+		
+		if(this.game.isIdontKnowTooMuch()) {
+			this.mainStageController.blockIdontKnow();
+		}
+		
 		//Increase the number of questions that nappy need:
 		this.game.increaseNoOfQuestionsNappy();
 
