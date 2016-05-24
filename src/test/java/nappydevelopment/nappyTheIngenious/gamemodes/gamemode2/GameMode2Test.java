@@ -67,4 +67,14 @@ public class GameMode2Test{
 	public void finished() throws GameHasFinished{
 		assertFalse(gm.isFinished());
 	}
+
+	@Test
+	public void getQuestionAnswerList() throws GameHasFinished{
+		List<String> questions = gm.getQuestions();
+		gm.getQuestionAnswerList().forEach(qae -> {
+			if(!questions.remove(qae.getQuestion())){
+				fail("not all questions in questionAnswerList");
+			}
+		});
+	}
 }
