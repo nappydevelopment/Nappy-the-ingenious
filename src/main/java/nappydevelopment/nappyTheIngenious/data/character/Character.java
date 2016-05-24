@@ -50,9 +50,6 @@ public class Character{
 	public Image getWikiImage() { return wikiImage; }
 
 	@Override
-	public String toString() { return this.name; }
-
-	@Override
 	public boolean equals(Object obj){
 		if(!(obj instanceof Character)){
 			return false;
