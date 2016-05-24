@@ -211,7 +211,7 @@ public class MainStageController {
 					MainStageController.this.program.setIfNappyIsRight(Answer.DONT_KNOW);
 				}
 				else if("btnIknow".equals(((Button)src).getId())) {
-					System.out.println("Open Wiki to select a character");
+					MainStageController.this.program.showCharacterSelection(MainStageController.this.view);
 				}
 				
 			}

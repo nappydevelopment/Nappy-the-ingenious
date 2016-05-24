@@ -19,6 +19,15 @@ public class Game {
 	}
 
 	private boolean isActive;
+	private boolean isGamemode2Active;
+	public boolean isGamemode2Active() {
+		return isGamemode2Active;
+	}
+
+	public void setGamemode2Active(boolean isGamemode2Active) {
+		this.isGamemode2Active = isGamemode2Active;
+	}
+
 	private boolean isFinish;
 	
 	private int noOfQuestionsNappy;
@@ -68,6 +77,7 @@ public class Game {
 		
 		this.isActive = false;
 		this.isFinish = false;
+		this.isGamemode2Active = false;
 		
 		this.idontkowCounter = 0;
 		this.noOfQuestionsNappy = 0;

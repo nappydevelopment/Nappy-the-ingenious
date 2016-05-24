@@ -38,6 +38,15 @@ public class WikiStageResources {
 	Image stageIcon16x16;
 	Image stageIcon32x32;
 
+	boolean selectionFlag;
+	
+	String confirmDialogBtnApplyText;
+	String confirmDialogBtnCancelText;
+	String confirmDialogTitle;
+	String confirmDialogHeaderText1;
+	String confirmDialogHeaderText2;
+	String confirmDialogContentText;
+	
 //### CONSTRUCTORS #########################################################################################################################
 
 	/* WikiStageResources [constructor]: Default constructor to create a WikiStageResources-object *//**
@@ -59,12 +68,14 @@ public class WikiStageResources {
 		this.rbpOldText = new SimpleStringProperty();
 		
 		this.btnResetFilterText = new SimpleStringProperty();
+		
+		this.selectionFlag = false;
 	}
 
 //### PUBLIC METHODS #######################################################################################################################
 
 
-	protected void changeLanguageToEnglish(){
+	protected void changeLanguageToEnglish() {
 		this.tbpGenderText.setValue("  Gender  ");
 		this.rbtMaleText.setValue("Male");
 		this.rbtFemaleText.setValue("Female");
@@ -75,9 +86,18 @@ public class WikiStageResources {
 		this.rbpOldText.setValue("Old");
 
 		this.btnResetFilterText.setValue("Reset filter");
+		
+		this.confirmDialogBtnApplyText = "Yes";
+		this.confirmDialogBtnCancelText = "No";
+		this.confirmDialogTitle = "Nappy, the ingenious - Character selection";
+		this.confirmDialogHeaderText1 = "You selected the character ";
+		this.confirmDialogHeaderText2 = "";
+		this.confirmDialogContentText = "Are you sure that you want to choose this character?";
+		
 	}
 
-	protected void changeLanguageToGerman(){
+	protected void changeLanguageToGerman() {
+		
 		this.tbpGenderText.setValue("  Geschlecht  ");
 		this.rbtMaleText.setValue("Männlich");
 		this.rbtFemaleText.setValue("Weiblich");
@@ -88,6 +108,13 @@ public class WikiStageResources {
 		this.rbpOldText.setValue("Alt");
 
 		this.btnResetFilterText.setValue("Filter zurücksetzten");
+		
+		this.confirmDialogBtnApplyText = "Ja";
+		this.confirmDialogBtnCancelText = "Nein";
+		this.confirmDialogTitle = "Nappy, the ingenious - Charakter Auswahl";
+		this.confirmDialogHeaderText1 = "Du hast den Charakter ";
+		this.confirmDialogHeaderText2 = " ausgewählt";
+		this.confirmDialogContentText = "Bist du sicher, dass du diesen Charakter wählen möchtest?";
 	}
 
 //##########################################################################################################################################

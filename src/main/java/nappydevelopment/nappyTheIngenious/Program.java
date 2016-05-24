@@ -72,7 +72,7 @@ public class Program extends Application {
 		this.statisticStageController = new StatisticStageController(this);
 		this.settingsStageController = new SettingsStageController(this);
 		this.helpStageController = new HelpStageController();
-		this.wikiStageController = new WikiStageController();
+		this.wikiStageController = new WikiStageController(this);
 		this.infoStageController = new InfoStageController(this);
 		
 
@@ -395,6 +395,7 @@ public class Program extends Application {
 	
 	private void startGamemode2() {
 		
+		this.game.setGamemode2Active(true);
 		
 		//Read out the questions that the player can ask:
 		//TODO: Not really nice logic should return a list of questions (Strings) depending on a language parameter:
@@ -435,6 +436,18 @@ public class Program extends Application {
 			
 		} catch(InvalidQuestion|NoMoreQuestions|GameHasFinished e){
 			e.printStackTrace();
+		}
+	}
+	
+	public void showCharacterSelection(Stage owner) {
+		this.wikiStageController.showForSelection(owner);
+	}
+	
+	public void setSelectedCharacter(Character character) {
+		
+		if(this.game != null && this.game.isGamemode2Active()) {
+			System.out.println(character.getName());
+			this.wikiStageController.showConfirmSelectionDialog(character);
 		}
 	}
 	
