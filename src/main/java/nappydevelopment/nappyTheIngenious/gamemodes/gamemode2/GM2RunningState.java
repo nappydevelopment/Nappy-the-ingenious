@@ -17,11 +17,7 @@ import nappydevelopment.nappyTheIngenious.gamemodes.QuestionProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class GM2RunningState implements GM2State{
 	private Map<String, Question> remainingQuestions;
@@ -56,6 +52,21 @@ public class GM2RunningState implements GM2State{
 		ArrayList<String> questions= new ArrayList<>();
 		questions.addAll(remainingQuestions.keySet());
 		return questions;
+	}
+	@Override
+	public Map<String, Answer> getSortedQuestionAnswerMap(){
+		Map<String, Answer> result = new LinkedHashMap<>();
+
+		remainingQuestions.entrySet().stream()
+		.sorted((q1,q2)->
+			Boolean.compare(q1.getValue().answered(), q2.getValue().answered())
+		).forEachOrdered( e ->
+			result.put(
+				e.getKey(),
+				e.getValue().getAnswer())
+		);
+
+		return result;
 	}
 
 	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished{

@@ -8,9 +8,7 @@ import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GameMode2FinishedTest{
 	private GameMode2 gm;
@@ -52,5 +50,9 @@ public class GameMode2FinishedTest{
 	@Test(expected=GameHasFinished.class)
 	public void makeCharacterGuess() throws GameHasFinished{
 		assertNull(gm.makeGuess(new Character(null,null,null,null,null,null)));
+	}
+	@Test(expected=GameHasFinished.class)
+	public void getQuestionsMap() throws GameHasFinished{
+		gm.getSortedQuestionAnswerMap();
 	}
 }

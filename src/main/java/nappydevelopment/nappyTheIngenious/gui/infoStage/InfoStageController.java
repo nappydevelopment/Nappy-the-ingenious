@@ -130,45 +130,47 @@ public class InfoStageController {
 	*
 	 */
     private void openBlogInBrowser() {
-        if (Desktop.isDesktopSupported()) {
-            Desktop desktop = Desktop.getDesktop();
-            URI uri = null;
-            try {
-                uri = new URI("https://nappydevelopment.wordpress.com/");
-            } catch (URISyntaxException urie) {
-                urie.printStackTrace();
-            }
-            if (desktop.isSupported(Desktop.Action.MAIL)) {
-                try {
-                    desktop.browse(uri);
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-            }
-        }
+        if (!Desktop.isDesktopSupported()) {
+			return;
+		}
+		if (!Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			return;
+		}
+		try {
+			URI website = new URI("https://nappydevelopment.wordpress.com/");
+			if(System.getProperty("os.name").contains("Windows")) {
+				Desktop.getDesktop().browse(website);
+			} else {
+				// seems like there is no other way
+				// mac probably still fails here
+				Runtime.getRuntime().exec("/usr/bin/xdg-open "+ website.toString());
+			}
+		} catch (IOException|URISyntaxException e){
+			e.printStackTrace();
+		}
     }
 
 	/* 	Open the standard mailclient
 	*	Set mailto
 	 */
     private void openEmailClient() {
-        if (Desktop.isDesktopSupported()) {
-            Desktop desktop = Desktop.getDesktop();
-            URI uri = null;
-            try {
-                uri = new URI("mailto:nappydevelopment@gmail.com");
-            } catch (URISyntaxException urie) {
-                urie.printStackTrace();
-            }
-            if (desktop.isSupported(Desktop.Action.MAIL)) {
-                try {
-                    desktop.mail(uri); // alternately, pass a mailto: URI in here
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-            }
-        }
-    }
+        if (!Desktop.isDesktopSupported()){
+			return;
+		}
+		if(!Desktop.getDesktop().isSupported(Desktop.Action.MAIL)) {
+			return;
+		}
+		try {
+			URI mail = new URI("mailto:nappydevelopment@gmail.com");
+			if(System.getProperty("os.name").contains("Windows")) {
+				Desktop.getDesktop().mail(mail);
+			} else {
+				Runtime.getRuntime().exec("/usr/bin/xdg-open " + mail.toString());
+			}
+		} catch (URISyntaxException|IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 //##########################################################################################################################################
