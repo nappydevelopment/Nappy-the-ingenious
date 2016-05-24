@@ -3,6 +3,8 @@ package nappydevelopment.nappyTheIngenious.gamemodes.gamemode2;
 import javafx.scene.image.Image;
 import nappydevelopment.nappyTheIngenious.data.Answer;
 import nappydevelopment.nappyTheIngenious.data.DatabaseProvider;
+import nappydevelopment.nappyTheIngenious.data.QuestAnsElement;
+import nappydevelopment.nappyTheIngenious.data.QuestAnsList;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterImage;
@@ -53,19 +55,9 @@ public class GM2RunningState implements GM2State{
 		return questions;
 	}
 	@Override
-	public Map<String, Answer> getSortedQuestionAnswerMap(){
-		Map<String, Answer> result = new LinkedHashMap<>();
-
-		remainingQuestions.entrySet().stream()
-		.sorted((q1,q2)->
-			Boolean.compare(q1.getValue().answered(), q2.getValue().answered())
-		).forEachOrdered( e ->
-			result.put(
-				e.getKey(),
-				e.getValue().getAnswer()
-			)
-		);
-
+	public QuestAnsList getQuestionAnswerList(){
+		QuestAnsList result = new QuestAnsList();
+		remainingQuestions.forEach((k,v)->result.add(new QuestAnsElement(k)));
 		return result;
 	}
 
