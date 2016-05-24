@@ -63,7 +63,8 @@ public class GM2RunningState implements GM2State{
 		).forEachOrdered( e ->
 			result.put(
 				e.getKey(),
-				e.getValue().getAnswer())
+				e.getValue().getAnswer()
+			)
 		);
 
 		return result;
