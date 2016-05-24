@@ -11,6 +11,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import java.util.concurrent.TimeoutException;
 
+import static junit.framework.Assert.format;
 import static junit.framework.TestCase.assertEquals;
 
 public class SettingsStageViewTest extends ApplicationTest{
@@ -74,16 +75,6 @@ public class SettingsStageViewTest extends ApplicationTest{
 	}
 
 	@Test
-	public void playFirstGameMode(){
-		Settings.setGameMode(GameMode.BOTH_MODES);
-
-		clickOn(controller.view.rdbOnlyMode1);
-		clickOn(controller.view.btnApply);
-
-		assertEquals(GameMode.ONLY_MODE1, Settings.getGameMode());
-	}
-
-	@Test
 	public void playBothGameModes(){
 		Settings.setGameMode(GameMode.ONLY_MODE1);
 
@@ -91,5 +82,16 @@ public class SettingsStageViewTest extends ApplicationTest{
 		clickOn(controller.view.btnApply);
 
 		assertEquals(GameMode.BOTH_MODES, Settings.getGameMode());
+	}
+
+	@Test
+	public void playFirstGameMode(){
+		Settings.setGameMode(GameMode.BOTH_MODES);
+
+		clickOn(controller.view.rdbOnlyMode1);
+		clickOn("OK");
+		clickOn(controller.view.btnApply);
+
+		assertEquals(GameMode.ONLY_MODE1, Settings.getGameMode());
 	}
 }

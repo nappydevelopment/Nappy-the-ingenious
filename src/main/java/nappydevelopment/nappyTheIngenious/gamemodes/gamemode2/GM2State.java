@@ -7,6 +7,7 @@ import nappydevelopment.nappyTheIngenious.exception.InvalidQuestion;
 import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GM2State{
 	int answeredQuestions();
@@ -14,5 +15,6 @@ public interface GM2State{
 	Boolean makeGuess(final String name) throws GameHasFinished;
 	Character endGame(final GameMode2 gm2) throws GameHasFinished;
 	List<String> getQuestions() throws GameHasFinished;
+	Map<String, Answer> getSortedQuestionAnswerMap() throws GameHasFinished;
 	boolean isFinished();
 }
