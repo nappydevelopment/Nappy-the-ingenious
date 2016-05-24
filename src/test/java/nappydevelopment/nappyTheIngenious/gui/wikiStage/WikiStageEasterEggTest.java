@@ -15,7 +15,7 @@ public class WikiStageEasterEggTest extends ApplicationTest{
 
 	@Override
 	public void init() throws TimeoutException{
-		controller = new WikiStageController();
+		controller = new WikiStageController(null);
 
 		FxToolkit.registerStage(() -> {
 			controller.initView(Collections.emptyList());

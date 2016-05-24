@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException;
 import static org.junit.Assert.*;
 
 public class WikiStageTest extends ApplicationTest{
-	private final WikiStageController controller = new WikiStageController();
+	private final WikiStageController controller = new WikiStageController(null);
 	private static final Language lang = Language.GERMAN;
 
 	private final List<Character> chars = new ArrayList();

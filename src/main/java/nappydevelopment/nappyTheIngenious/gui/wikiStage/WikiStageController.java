@@ -5,8 +5,15 @@ package nappydevelopment.nappyTheIngenious.gui.wikiStage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.ImageCursor;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
@@ -14,6 +21,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import nappydevelopment.nappyTheIngenious.GlobalReferences;
+import nappydevelopment.nappyTheIngenious.Program;
+import nappydevelopment.nappyTheIngenious.data.Answer;
 import nappydevelopment.nappyTheIngenious.data.CharacterProvider;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
@@ -21,9 +31,12 @@ import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.settings.ColorScheme;
 import nappydevelopment.nappyTheIngenious.data.settings.Settings;
+import nappydevelopment.nappyTheIngenious.util.Utils;
 
+import java.awt.RenderingHints;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Optional;
 
 
 public class WikiStageController {
@@ -33,17 +46,24 @@ public class WikiStageController {
 	//Flag that mark the first show of the stage (necessary because there is no reset of filters):
 	private boolean initialShowing;
 			
+	
+	//Reference to the program-logic:
+	private Program program;
+	
 	protected WikiStageView view;
 	protected WikiStageResources res;
 	private ViewActionEventHandler aeh;
 	private ViewKeyEventHandler keh;
+	private ViewMouseEventHandler meh;
 	
 	//List with the characters of the wiki:
 	private List<Character> characters;
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
-	public WikiStageController() {}
+	public WikiStageController(Program prog) {
+		this.program = prog;
+	}
 			
 //### INITIAL METHODS ######################################################################################################################
 			
@@ -56,8 +76,10 @@ public class WikiStageController {
 		this.aeh = new ViewActionEventHandler();
 		//Initialize the key-event-handler for the view-components:
 		this.keh = new ViewKeyEventHandler();
+		
+		this.meh = new ViewMouseEventHandler();
 		//Initialize the view:
-		this.view = new WikiStageView(this.res, this.aeh, this.keh, chars);
+		this.view = new WikiStageView(this.res, this.aeh, this.keh, this.meh, chars);
 		//Set flag for initial show of the view:
 		this.initialShowing = true;
 		//Set character list:
@@ -123,6 +145,18 @@ public class WikiStageController {
 		
 	}
 
+	
+	private class ViewMouseEventHandler implements EventHandler<MouseEvent> {
+
+		@Override
+		public void handle(MouseEvent event) {
+			if(WikiStageController.this.res.selectionFlag) {
+				WikiStageController.this.program.setSelectedCharacter((Character)((Rectangle)event.getSource()).getUserData());
+			}
+		}
+	}
+	
+	
 //### PRIVATE METHODS ######################################################################################################################
 	
 	/* applyFilter [method]: Method that applies the filter options *//**
@@ -219,6 +253,8 @@ public class WikiStageController {
     		imgRec.setFill(imgPat);
     		imgRec.setArcHeight(8);
     		imgRec.setArcWidth(8);
+    		imgRec.setOnMouseClicked(this.meh);
+    		imgRec.setUserData(curCharacter);
     		//Set-up horizontal box that contains the image:
     		HBox hbxImage = new HBox();
     		hbxImage.setId("hbxEntry1");
@@ -251,7 +287,12 @@ public class WikiStageController {
 	}
 	
 //### PUBLIC METHODS #######################################################################################################################
-			
+		
+	public void showForSelection(Stage owner) {
+		this.res.selectionFlag = true;
+		this.show(owner);
+	}
+	
 	/* show [method]: Method that shows the stage *//**
 	 * 
 	 * @param owner
@@ -278,7 +319,56 @@ public class WikiStageController {
 		//Show the stage:
 		this.view.show();
 	}
-
+	
+	public boolean showConfirmSelectionDialog(Character character) {
+		
+		//Create the dialog buttons:
+		ButtonType bttApply = new ButtonType(this.res.confirmDialogBtnApplyText);
+		ButtonType bttCancel = new ButtonType(this.res.confirmDialogBtnCancelText);
+    	
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	
+ 		Image image = new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png");
+		alert.getDialogPane().setCursor(new ImageCursor(image,0,0));
+    		
+		HBox hbxCharacter = new HBox();
+		hbxCharacter.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+			"-fx-padding: 5;" +
+		    "-fx-background-color: #FFD90F;" +
+		    "-fx-background-radius: 5;"
+		);
+		
+		ImagePattern impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		    
+	    Rectangle recCharacter = new Rectangle();
+		recCharacter.setWidth(110);
+		recCharacter.setHeight(110);
+		recCharacter.setArcHeight(8);
+		recCharacter.setArcWidth(8);
+		recCharacter.setFill(impCharacter);
+			
+		hbxCharacter.getChildren().add(recCharacter);
+    	
+    	alert.setTitle(this.res.confirmDialogTitle);
+    	alert.setHeaderText(this.res.confirmDialogHeaderText1 + character.getName() + this.res.confirmDialogHeaderText2);
+    	alert.setContentText(this.res.confirmDialogContentText);
+    	alert.setGraphic(hbxCharacter);
+    	alert.getButtonTypes().setAll(bttApply, bttCancel);
+    	
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			alert.getDialogPane().getStylesheets().clear();
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		}
+		    	
+    	Optional<ButtonType> result = alert.showAndWait();
+    	
+    	if (result.get() == bttApply){
+    	    return true;
+    	} else {
+    	    return false;
+    	}
+	}
+	
 	public void applySettings() {
 		this.view.getScene().getStylesheets().clear();
 		if(Settings.getColoScheme() == ColorScheme.DARK){

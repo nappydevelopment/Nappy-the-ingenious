@@ -20,6 +20,7 @@ import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -28,6 +29,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
@@ -42,6 +44,8 @@ public class WikiStageView extends Stage {
 		
 	//Flag for alternating background-colors of the character-entries:
 	private Boolean colorFlag;
+	
+	private WikiStageResources res;
 	
 //### COMPONENTS ###########################################################################################################################
 
@@ -79,11 +83,11 @@ public class WikiStageView extends Stage {
 			
 //### CONSTRUCTORS #########################################################################################################################
 			
-	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, List<Character> chars) {
+	public WikiStageView(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, EventHandler<MouseEvent> meh, List<Character> chars) {
 		
 		this.colorFlag = true;
-		
-		this.initComponents(res, aeh, keh, chars);
+		this.res = res;
+		this.initComponents(res, aeh, keh, meh, chars);
 		this.structureComponents();
 		this.initStage(res);
 	}
@@ -91,7 +95,7 @@ public class WikiStageView extends Stage {
 //### INITIAL METHODS ######################################################################################################################
 			
 	//Method that initialize the gui-components:
-	private void initComponents(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, List<Character> chars) {
+	private void initComponents(WikiStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, EventHandler<MouseEvent> meh, List<Character> chars) {
 				
 		this.bdpRootPane = new BorderPane();
 		
@@ -227,6 +231,8 @@ public class WikiStageView extends Stage {
     		imgRec.setFill(imgPat);
     		imgRec.setArcHeight(8);
     		imgRec.setArcWidth(8);
+    		imgRec.setOnMouseClicked(meh);
+    		imgRec.setUserData(curCharacter);
     		//Set-up horizontal box that contains the image:
     		HBox hbxImage = new HBox();
     		hbxImage.setId("hbxEntry1");
@@ -288,9 +294,18 @@ public class WikiStageView extends Stage {
 		this.setScene(this.scene);
 				
 		this.getIcons().addAll(res.stageIcon16x16);
+		
+		this.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+		    @Override
+		    public void handle(WindowEvent we) {
+		        WikiStageView.this.res.selectionFlag = false;
+		    }
+		});
 				
 		
 	}
+	
 
 //##########################################################################################################################################
 }
