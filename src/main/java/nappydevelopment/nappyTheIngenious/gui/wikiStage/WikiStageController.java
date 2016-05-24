@@ -93,7 +93,6 @@ public class WikiStageController {
 	//Method that binds properties to the gui-components:
 	private void initViewBindings() {
 					
-		this.view.titleProperty().bind(this.res.stageTitleText);
 		this.view.tbpGender.bindTitleText(this.res.tbpGenderText);
 		this.view.rbtMale.textProperty().bind(this.res.rbtMaleText);
 		this.view.rbtFemale.textProperty().bind(this.res.rbtFemaleText);
@@ -291,6 +290,7 @@ public class WikiStageController {
 	public void showForSelection(Stage owner) {
 		this.res.selectionFlag = true;
 		this.show(owner);
+		this.view.setTitle(res.stageTitleText2);
 	}
 	
 	/* show [method]: Method that shows the stage *//**
@@ -367,6 +367,10 @@ public class WikiStageController {
     	} else {
     	    return false;
     	}
+	}
+	
+	public void closeView() {
+		this.view.close();
 	}
 	
 	public void applySettings() {

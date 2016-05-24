@@ -22,7 +22,8 @@ public class WikiStageResources {
 
 	HashMap<String, Image> charNameImageMap;
 	
-	StringProperty stageTitleText;
+	String stageTitleText1;
+	String stageTitleText2;
 	
 	StringProperty tbpGenderText;
 	StringProperty rbtMaleText;
@@ -55,7 +56,7 @@ public class WikiStageResources {
 	WikiStageResources() {
 
 		this.charNameImageMap = new HashMap<String, Image>();
-		this.stageTitleText = new SimpleStringProperty("Nappy, the ingenious - Wiki");
+		this.stageTitleText1 = "Nappy, the ingenious - Wiki";
 
 		this.stageIcon16x16 = new Image(GlobalReferences.ICONS_PATH + "16x16/wiki.png");
 		
@@ -76,6 +77,9 @@ public class WikiStageResources {
 
 
 	protected void changeLanguageToEnglish() {
+		
+		this.stageTitleText2 = "Nappy, the ingenious - Character selection";
+		
 		this.tbpGenderText.setValue("  Gender  ");
 		this.rbtMaleText.setValue("Male");
 		this.rbtFemaleText.setValue("Female");
@@ -97,6 +101,8 @@ public class WikiStageResources {
 	}
 
 	protected void changeLanguageToGerman() {
+		
+		this.stageTitleText2 = "Nappy, the ingenious - Character Auswahl";
 		
 		this.tbpGenderText.setValue("  Geschlecht  ");
 		this.rbtMaleText.setValue("Männlich");

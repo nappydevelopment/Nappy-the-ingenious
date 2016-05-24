@@ -100,6 +100,15 @@ public class MainStageResources {
 	String statusDialogGM1StatusTextRight4;
 	String statusDialogGM1StatusTextWrong;
 	String statusDialogGM1Question;
+	
+	String statusDialogGM2Title;
+	String statusDialogGM2StatusTextRight1;
+	String statusDialogGM2StatusTextRight2;
+	String statusDialogGM2StatusTextRight3;
+	String statusDialogGM2StatusTextRight4;
+	String statusDialogGM2StatusTextWrong1;
+	String statusDialogGM2StatusTextWrong2;
+	String statusDialogGM2StatusTextWrong3;
 
 	//### Images for the menu-bar ##################################################################
 
@@ -266,6 +275,16 @@ public class MainStageResources {
 		this.statusDialogGM1StatusTextWrong = "Nappy could not correctly guess your character";
  		this.statusDialogGM1Question = "Do you want to try to beat Nappy and play the game mode 2?";
 		
+ 		this.statusDialogGM2Title = "Nappy, the ingenious - Status game mode 2";
+ 		this.statusDialogGM2StatusTextRight1 = "You guessed Nappy's character ";
+ 		this.statusDialogGM2StatusTextRight2 = " right!";
+ 		this.statusDialogGM2StatusTextRight3 = "You needed ";
+ 		this.statusDialogGM2StatusTextRight4 = " questions.";
+ 		this.statusDialogGM2StatusTextWrong1 = "Sorry, you don't guess the right character!";
+ 		this.statusDialogGM2StatusTextWrong2 = "You're tip ";
+ 		this.statusDialogGM2StatusTextWrong3 = " is wrong, Nappy's character is ";
+ 		
+ 		
 		this.lblInfoTextIDontKnowYourCharacterText = "I don't know your character!";
 		this.lblInfoTextIKnowYourCharacter = "I think your character is";
 		this.lblInfoTextPleaseSelectAQuestion = "Please select a question!";
@@ -344,6 +363,15 @@ public class MainStageResources {
 		this.statusDialogGM1StatusTextWrong = "Nappy konnte deinen Character nicht richtig erraten.";
  		this.statusDialogGM1Question = "Möchtest du versuchen Nappy zu schlagen und den zweiten Spielmodus spielen?";
 		
+ 		this.statusDialogGM2Title = "Nappy, the ingenious - Status Spielmodus 2";
+ 		this.statusDialogGM2StatusTextRight1 = "Du hast Nappys Charakter ";
+ 		this.statusDialogGM2StatusTextRight2 = " richtig erraten!";
+ 		this.statusDialogGM2StatusTextRight3 = "Du hast dafür ";
+ 		this.statusDialogGM2StatusTextRight4 = " Fragen gebraucht.";
+ 		this.statusDialogGM2StatusTextWrong1 = "Du hast Nappys Charakter leider nicht richtig erraten!";
+ 		this.statusDialogGM2StatusTextWrong2 = "Dein Tip ";
+ 		this.statusDialogGM2StatusTextWrong3 = " ist falsch, Nappys Charakter ist ";
+ 		
 		this.lblInfoTextIDontKnowYourCharacterText = "Ich kenne deinen Charakter nicht!";
 		this.lblInfoTextIKnowYourCharacter = "Ich denke dein Charakter ist";
 		this.lblInfoTextPleaseSelectAQuestion = "Bitte wähle eine Frage!";

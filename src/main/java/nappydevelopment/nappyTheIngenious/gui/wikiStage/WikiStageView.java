@@ -292,7 +292,7 @@ public class WikiStageView extends Stage {
 		this.scene = new Scene(this.bdpRootPane, 750, 750);
 		this.scene.getStylesheets().add(WikiStageView.class.getResource("WikiStageCSS.css").toExternalForm());
 		this.setScene(this.scene);
-				
+		this.setTitle(res.stageTitleText1);
 		this.getIcons().addAll(res.stageIcon16x16);
 		
 		this.setOnCloseRequest(new EventHandler<WindowEvent>() {
