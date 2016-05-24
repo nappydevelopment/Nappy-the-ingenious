@@ -53,6 +53,6 @@ public class GameMode2FinishedTest{
 	}
 	@Test(expected=GameHasFinished.class)
 	public void getQuestionsMap() throws GameHasFinished{
-		gm.getSortedQuestionAnswerMap();
+		gm.getQuestionAnswerList();
 	}
 }

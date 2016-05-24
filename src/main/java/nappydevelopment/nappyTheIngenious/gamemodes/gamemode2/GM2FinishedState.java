@@ -1,11 +1,11 @@
 package nappydevelopment.nappyTheIngenious.gamemodes.gamemode2;
 
 import nappydevelopment.nappyTheIngenious.data.Answer;
+import nappydevelopment.nappyTheIngenious.data.QuestAnsList;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 
 import java.util.List;
-import java.util.Map;
 
 public class GM2FinishedState implements GM2State{
 	private final int answeredQuestions;
@@ -28,7 +28,7 @@ public class GM2FinishedState implements GM2State{
 	public List<String> getQuestions() throws GameHasFinished{
 		throw new GameHasFinished();
 	}
-	public Map<String, Answer> getSortedQuestionAnswerMap() throws GameHasFinished{
+	public QuestAnsList getQuestionAnswerList() throws GameHasFinished{
 		throw new GameHasFinished();
 	}
 }

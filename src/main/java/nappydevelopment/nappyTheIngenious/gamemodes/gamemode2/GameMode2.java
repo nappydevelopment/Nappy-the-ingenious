@@ -1,13 +1,13 @@
 package nappydevelopment.nappyTheIngenious.gamemodes.gamemode2;
 
 import nappydevelopment.nappyTheIngenious.data.Answer;
+import nappydevelopment.nappyTheIngenious.data.QuestAnsList;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.InvalidQuestion;
 
 import java.util.List;
-import java.util.Map;
 
 
 public class GameMode2{
@@ -28,7 +28,7 @@ public class GameMode2{
 
 	public int answeredQuestions(){ return state.answeredQuestions(); }
 	public List<String> getQuestions() throws GameHasFinished{ return state.getQuestions(); }
-	public Map<String, Answer> getSortedQuestionAnswerMap() throws GameHasFinished{ return state.getSortedQuestionAnswerMap(); }
+	public QuestAnsList getQuestionAnswerList() throws GameHasFinished{ return state.getQuestionAnswerList(); }
 	public Boolean makeGuess(final Character wiki) throws GameHasFinished{ return makeGuess(wiki.getName()); }
 	public Boolean makeGuess(final String name) throws GameHasFinished{ return state.makeGuess(name); }
 	public boolean isFinished(){ return state.isFinished(); }
