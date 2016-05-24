@@ -5,7 +5,6 @@ import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.InvalidQuestion;
-import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
 
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public class GameMode2{
 		state = new GM2RunningState(lang, deterministic);
 	}
 
-	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished {
+	public Answer askQuestion(final String question) throws InvalidQuestion, GameHasFinished {
 		return state.askQuestion(question);
 	}
 

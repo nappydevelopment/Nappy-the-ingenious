@@ -10,7 +10,6 @@ import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
 import nappydevelopment.nappyTheIngenious.exception.InvalidQuestion;
-import nappydevelopment.nappyTheIngenious.exception.NoMoreQuestions;
 import nappydevelopment.nappyTheIngenious.gamemodes.Question;
 import nappydevelopment.nappyTheIngenious.gamemodes.QuestionProvider;
 
@@ -70,13 +69,11 @@ public class GM2RunningState implements GM2State{
 		return result;
 	}
 
-	public Answer askQuestion(final String question) throws NoMoreQuestions, InvalidQuestion, GameHasFinished{
+	@Override
+	public Answer askQuestion(final String question) throws InvalidQuestion, GameHasFinished{
 		questionCounter++;
 
 		Question q = remainingQuestions.get(question);
-		if(remainingQuestions.values().stream().count() == 0){
-			throw new NoMoreQuestions();
-		}
 		if(q == null){
 			throw new InvalidQuestion();
 		}
