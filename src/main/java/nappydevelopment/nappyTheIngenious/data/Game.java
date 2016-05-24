@@ -33,6 +33,14 @@ public class Game {
 	private int noOfQuestionsNappy;
 	private Character characterThatNappyGuessed;
 	private Answer isNappyRight;
+	public boolean isPlayerRight() {
+		return isPlayerRight;
+	}
+
+	public void setPlayerRight(boolean isPlayerRight) {
+		this.isPlayerRight = isPlayerRight;
+	}
+
 	private int idontkowCounter;
 	
 	private int noOfQuestionsPlayer;
@@ -137,7 +145,11 @@ public class Game {
 	}
 	
 	public float getNoOfQuestionsNappyInPercent() {
-		return ((float)this.noOfQuestionsNappy * 0.05F);
+		return ((float)this.noOfQuestionsNappy * 0.04F);
+	}
+	
+	public float getNoOfQuestionsPlayerInPercent() {
+		return ((float)this.noOfQuestionsPlayer * 0.04F);
 	}
 	public void setNoOfQuestionsNappy(int noOfQuestionsNappy) {
 		this.noOfQuestionsNappy = noOfQuestionsNappy;

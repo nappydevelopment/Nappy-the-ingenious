@@ -578,7 +578,6 @@ public class MainStageController {
 		
 	}
 	
-	
 	public boolean showStatusDialogGM1(boolean askForMode2, Answer isNappyRight, int noOfQuestions, Image imgCharacter, String nameCharacter) {
 	    	
 			//Create the dialog buttons:
@@ -820,7 +819,86 @@ public class MainStageController {
 		}
 	}
 	
+	public void showStatusDialogGM2(boolean isPlayerRight, int noOfQuestions, Character character, Character nappysChar) {
+		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(this.res.statusDialogGM2Title);
+		Image image = new Image(GlobalReferences.CURSORS_PATH + "left_ptr.png");
+		alert.getDialogPane().setCursor(new ImageCursor(image,0,0));
+		
+	    HBox hbxCharacter = new HBox();
+	    hbxCharacter.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          "-fx-padding: 5;" +
+	                          "-fx-background-color: #AF2107;" +
+	                          "-fx-background-radius: 5;");
+	    HBox hbxNappysChar = new HBox();
+	    hbxNappysChar.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          "-fx-padding: 5;" +
+	                          "-fx-background-color: #83C33F;" +
+	                          "-fx-background-radius: 5;");
+	    StackPane skpImage = new StackPane();
+	    ImagePattern impCharacter = new ImagePattern(Utils.getScaledInstance(character.getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+	    ImagePattern impNappysChar = new ImagePattern(Utils.getScaledInstance(nappysChar.getWikiImage(), 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+	    ImageView imgRight = new ImageView(GlobalReferences.IMAGES_PATH + "general/right.png");
+	    ImageView imgWrong = new ImageView(GlobalReferences.IMAGES_PATH + "general/wrong.png");
+	    Rectangle recCharacter = new Rectangle();
+		recCharacter.setWidth(110);
+		recCharacter.setHeight(110);
+		recCharacter.setArcHeight(8);
+		recCharacter.setArcWidth(8);
+		recCharacter.setFill(impCharacter);
+		hbxCharacter.getChildren().add(recCharacter);
+	    Rectangle recNappysChar = new Rectangle();
+	    recNappysChar.setWidth(110);
+	    recNappysChar.setHeight(110);
+	    recNappysChar.setArcHeight(8);
+	    recNappysChar.setArcWidth(8);
+	    recNappysChar.setFill(impNappysChar);
+		hbxNappysChar.getChildren().add(recNappysChar);
+		
 
+		
+		if(Settings.getColoScheme() == ColorScheme.DARK) {
+			alert.getDialogPane().getStylesheets().clear();
+			alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+		}
+		
+		if(isPlayerRight) {
+			alert.setHeaderText(this.res.statusDialogGM2StatusTextRight1 + character.getName() +
+					            this.res.statusDialogGM2StatusTextRight2 + "\n" +
+					            this.res.statusDialogGM2StatusTextRight3 + noOfQuestions +
+					            this.res.statusDialogGM2StatusTextRight4);
+			skpImage.getChildren().add(hbxNappysChar);
+			skpImage.getChildren().add(imgRight);
+			alert.setGraphic(skpImage);
+		}
+		else {
+			alert.setHeaderText(this.res.statusDialogGM2StatusTextWrong1 + "\n" +
+		                        this.res.statusDialogGM2StatusTextWrong2 + character.getName() + 
+		                        this.res.statusDialogGM2StatusTextWrong3 +
+		                        nappysChar.getName());
+			StackPane skp = new StackPane();
+			HBox hbox = new HBox(20);
+			skp.getChildren().add(hbxNappysChar);
+			skp.getChildren().add(imgRight);
+			skpImage.getChildren().add(hbxCharacter);
+			skpImage.getChildren().add(imgWrong);
+			hbox.getChildren().addAll(skpImage, skp);
+			alert.setGraphic(hbox);
+			
+		}
+		alert.setContentText("");
+		
+		alert.showAndWait();
+		
+	}
+	
+	//### Methods for game result ##################################################################
+	
+	public void showGameResultView() {
+		
+	}
+	
 	public String showEnterNameDialog() {
 
 		TextInputDialog dialog = new TextInputDialog("walter");

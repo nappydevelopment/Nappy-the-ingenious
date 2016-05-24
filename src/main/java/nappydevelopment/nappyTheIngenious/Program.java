@@ -426,6 +426,14 @@ public class Program extends Application {
 		
 		try {
 			
+			this.game.increasNoOfQuestionsPlayer();
+			
+			this.mainStageController.updateInfo(
+					this.game.getNoOfQuestionsPlayer(),
+					this.game.getNoOfQuestionsPlayerInPercent(),
+					0.0F
+				);
+			
 			Answer answer = this.gm2Logic.askQuestion(question);
 			this.mainStageController.showAnswer(answer.getText());
 			this.game.getQal().setAnswer(question, answer);
@@ -447,7 +455,17 @@ public class Program extends Application {
 		
 		if(this.game != null && this.game.isGamemode2Active()) {
 			System.out.println(character.getName());
-			this.wikiStageController.showConfirmSelectionDialog(character);
+			if(this.wikiStageController.showConfirmSelectionDialog(character)) {
+				this.wikiStageController.closeView();
+				try {
+					this.game.setPlayerRight(this.gm2Logic.makeGuess(character));
+					Character nappysChar = this.gm2Logic.endGame();
+					this.mainStageController.showStatusDialogGM2(this.game.isPlayerRight(), this.game.getNoOfQuestionsPlayer(), character, nappysChar);
+				} catch (GameHasFinished e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
