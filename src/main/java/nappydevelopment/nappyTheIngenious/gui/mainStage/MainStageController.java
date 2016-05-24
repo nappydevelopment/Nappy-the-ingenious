@@ -311,6 +311,10 @@ public class MainStageController {
 	}
 	
 
+	public void blockIdontKnow() {
+		this.view.btnIdontKnow.setDisable(true);
+	}
+	
 //### PUBLIC METHODS #######################################################################################################################
 	
 	//### Methods to show the start view ###########################################################

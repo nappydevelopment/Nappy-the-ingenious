@@ -24,6 +24,7 @@ public class Game {
 	private int noOfQuestionsNappy;
 	private Character characterThatNappyGuessed;
 	private Answer isNappyRight;
+	private int idontkowCounter;
 	
 	private int noOfQuestionsPlayer;
 	private Character characterThatNappyChoose;
@@ -68,6 +69,7 @@ public class Game {
 		this.isActive = false;
 		this.isFinish = false;
 		
+		this.idontkowCounter = 0;
 		this.noOfQuestionsNappy = 0;
 		this.characterThatNappyGuessed = null;
 		this.isNappyRight = null;
@@ -80,7 +82,7 @@ public class Game {
 //### INITIAL METHODS ######################################################################################################################
 
 
-public boolean isFinish() {
+	public boolean isFinish() {
 		return isFinish;
 	}
 
@@ -103,7 +105,15 @@ public boolean isFinish() {
 	public void setCharacterPlayer(Character characterPlayer) {
 		this.characterPlayer = characterPlayer;
 	}
-
+	
+	public void increaseIdontKnow() {
+		this.idontkowCounter++;
+	}
+	
+	public boolean isIdontKnowTooMuch() {
+		return (this.idontkowCounter >= 4);
+	}
+	
 	//### GETTER/SETTER ########################################################################################################################
 	public boolean isActive() {
 		return isActive;
