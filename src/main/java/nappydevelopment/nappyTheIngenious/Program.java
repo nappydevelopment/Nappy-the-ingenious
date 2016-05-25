@@ -307,7 +307,7 @@ public class Program extends Application {
 
 		//Update info elements (Progress-Bars):
 		try{
-			this.mainStageController.updateInfo(
+			this.mainStageController.updateInfoGM1(
 				this.game.getNoOfQuestionsNappy(),
 				this.game.getNoOfQuestionsNappyInPercent(),
 				this.gm1Logic.getSureness()
@@ -419,6 +419,7 @@ public class Program extends Application {
 		
 		
 		this.mainStageController.showGamemode2View();
+		this.mainStageController.updateInfoGM2(0, 0.0F, this.game.getNoOfQuestionsNappy(), this.game.getNoOfQuestionsNappyInPercent());
 		this.mainStageController.showQuestions(true, this.game.getQal());
 	}
 	
@@ -428,10 +429,11 @@ public class Program extends Application {
 			
 			this.game.increasNoOfQuestionsPlayer();
 			
-			this.mainStageController.updateInfo(
+			this.mainStageController.updateInfoGM2(
 					this.game.getNoOfQuestionsPlayer(),
 					this.game.getNoOfQuestionsPlayerInPercent(),
-					0.0F
+					this.game.getNoOfQuestionsNappy(),
+					this.game.getNoOfQuestionsNappyInPercent()
 				);
 			
 			Answer answer = this.gm2Logic.askQuestion(question);
