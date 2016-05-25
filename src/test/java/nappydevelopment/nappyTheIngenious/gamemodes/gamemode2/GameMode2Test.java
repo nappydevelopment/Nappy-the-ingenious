@@ -1,6 +1,5 @@
 package nappydevelopment.nappyTheIngenious.gamemodes.gamemode2;
 
-import nappydevelopment.nappyTheIngenious.data.Answer;
 import nappydevelopment.nappyTheIngenious.data.CharacterProvider;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.exception.GameHasFinished;
@@ -10,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -71,23 +69,12 @@ public class GameMode2Test{
 	}
 
 	@Test
-	public void getSortedQuestionAnswerMap()
-		throws GameHasFinished, NoMoreQuestions, InvalidQuestion
-	{
+	public void getQuestionAnswerList() throws GameHasFinished{
 		List<String> questions = gm.getQuestions();
-		gm.askQuestion(questions.get(0));
-		gm.askQuestion(questions.get(1));
-		gm.askQuestion(questions.get(2));
-		gm.askQuestion(questions.get(3));
-
-		boolean answersFirst = false;
-		for(Map.Entry<String, Answer> entry : gm.getSortedQuestionAnswerMap().entrySet()){
-			if(answersFirst && entry.getValue() != Answer.DONT_KNOW){
-				fail("not sorted");
+		gm.getQuestionAnswerList().forEach(qae -> {
+			if(!questions.remove(qae.getQuestion())){
+				fail("not all questions in questionAnswerList");
 			}
-			if(entry.getValue() == Answer.DONT_KNOW){
-				answersFirst = true;
-			}
-		}
+		});
 	}
 }

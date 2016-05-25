@@ -48,12 +48,7 @@ public class Settings implements Serializable{
 			throw new CouldNotSaveToDatabase(e);
 		}
 	}
-	public static Settings get(){
-		if(singleton == null){
-			singleton = new Settings();
-		}
-		return singleton;
-	}
+	public static Settings get(){ return singleton; }
 
 	// internal api: do not use!
 	protected static void reset(final boolean loadFromDb){ singleton = new Settings(loadFromDb); }
