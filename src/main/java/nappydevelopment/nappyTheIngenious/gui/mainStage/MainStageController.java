@@ -302,12 +302,26 @@ public class MainStageController {
      * @param noqInPercent
      * @param surness
      */
-	public void updateInfo(int noq, float noqInPercent, float surness) {
+	public void updateInfoGM1(int noq, float noqInPercent, float surness) {
 		
 		this.view.pgbKnowledge.getProgressBar().setProgress(surness);
 		this.view.lblKnowledge.setText("" + (int)(surness * 100) + "%");
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(noqInPercent);
 		this.view.lblNoOfQuest.setText("" + noq);
+	}
+	
+    /* updateInfo [method]: Method to update the progress elements (progress-bars / -labels) *//**
+     * 
+     * @param noq
+     * @param noqInPercent
+     * @param surness
+     */
+	public void updateInfoGM2(int noqP, float noqPInPercent, int noqN, float noqNInPercent) {
+		
+		this.view.pgbKnowledge.getProgressBar().setProgress(noqNInPercent);
+		this.view.lblKnowledge.setText("" + noqN);
+		this.view.pgbNoOfQuest.getProgressBar().setProgress(noqPInPercent);
+		this.view.lblNoOfQuest.setText("" + noqP);
 	}
 	
 
@@ -406,6 +420,7 @@ public class MainStageController {
 		this.view.pgbNoOfQuest.getProgressBar().setProgress(0.0);
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
+		this.view.imvKnowledge.setImage(this.res.imvKnowledgeIcon);
 		
 		//Set image of Nappy for gm1:
 		this.view.imvNappy = new ImageView(this.res.imvNappyImageGM1);
@@ -694,6 +709,7 @@ public class MainStageController {
 		//Reset the progress-labels:
 		this.view.lblNoOfQuest.setText("0");
 		this.view.lblKnowledge.setText("0%");
+		this.view.imvKnowledge.setImage(this.res.imvNappyIcon);
 		
 		
 		this.view.gdpProgressBarPic.getChildren().clear();

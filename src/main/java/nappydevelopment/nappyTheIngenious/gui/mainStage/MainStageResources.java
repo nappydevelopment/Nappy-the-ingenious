@@ -133,6 +133,7 @@ public class MainStageResources {
 
 	Image imvNoOfQuestIcon;
 	Image imvKnowledgeIcon;
+	Image imvNappyIcon;
 	Image imvNappyImageGM1;
 	Image imvNappyImageGM2;
 	
@@ -207,6 +208,7 @@ public class MainStageResources {
 
 		this.imvNoOfQuestIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/counter.png");
 		this.imvKnowledgeIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/knowledge.png");
+		this.imvNappyIcon = new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png");
 		this.imvNappyImageGM1 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_gamemode1_2.png");
 		this.imvNappyImageGM2 = new Image(GlobalReferences.IMAGES_PATH + "general/nappy_gamemode2_fit_size.png");
 	}
@@ -282,7 +284,7 @@ public class MainStageResources {
  		this.statusDialogGM2StatusTextRight4 = " questions.";
  		this.statusDialogGM2StatusTextWrong1 = "Sorry, you don't guess the right character!";
  		this.statusDialogGM2StatusTextWrong2 = "You're tip ";
- 		this.statusDialogGM2StatusTextWrong3 = " is wrong, Nappy's character is ";
+ 		this.statusDialogGM2StatusTextWrong3 = " is wrong,\nNappy's character is ";
  		
  		
 		this.lblInfoTextIDontKnowYourCharacterText = "I don't know your character!";
@@ -370,7 +372,7 @@ public class MainStageResources {
  		this.statusDialogGM2StatusTextRight4 = " Fragen gebraucht.";
  		this.statusDialogGM2StatusTextWrong1 = "Du hast Nappys Charakter leider nicht richtig erraten!";
  		this.statusDialogGM2StatusTextWrong2 = "Dein Tip ";
- 		this.statusDialogGM2StatusTextWrong3 = " ist falsch, Nappys Charakter ist ";
+ 		this.statusDialogGM2StatusTextWrong3 = " ist falsch,\nNappys Charakter ist ";
  		
 		this.lblInfoTextIDontKnowYourCharacterText = "Ich kenne deinen Charakter nicht!";
 		this.lblInfoTextIKnowYourCharacter = "Ich denke dein Charakter ist";
