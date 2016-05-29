@@ -41,8 +41,6 @@ public class Game {
 		this.isPlayerRight = isPlayerRight;
 	}
 
-	private int idontkowCounter;
-	
 	private int noOfQuestionsPlayer;
 	private Character characterThatNappyChoose;
 	private Character characterPlayer;
@@ -86,8 +84,7 @@ public class Game {
 		this.isActive = false;
 		this.isFinish = false;
 		this.isGamemode2Active = false;
-		
-		this.idontkowCounter = 0;
+
 		this.noOfQuestionsNappy = 0;
 		this.characterThatNappyGuessed = null;
 		this.isNappyRight = null;
@@ -122,14 +119,6 @@ public class Game {
 
 	public void setCharacterPlayer(Character characterPlayer) {
 		this.characterPlayer = characterPlayer;
-	}
-	
-	public void increaseIdontKnow() {
-		this.idontkowCounter++;
-	}
-	
-	public boolean isIdontKnowTooMuch() {
-		return (this.idontkowCounter >= 4);
 	}
 	
 	//### GETTER/SETTER ########################################################################################################################
