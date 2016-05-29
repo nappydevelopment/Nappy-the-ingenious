@@ -280,63 +280,45 @@ public class Program extends Application {
 	 * @param answer
 	 */
 	public void setQuestionAnswer(Answer answer){
-		
-		//Write answer in the logic:
-		//TODO: No clean code logic should use the Answer object:
+
 		try{
+			//Write answer in the logic:
 			this.gm1Logic.setAnswer(answer);
-		}catch(NoActiveQuestion|GameHasFinished e){
-			e.printStackTrace();
-			System.out.println(
-				"set the answer twice without getting a new question\n" +
-				" (through Program.setQuestionAnswer, problem is probably in MainStageController.ViewActionEventHandler.handle())"
-			);
-			return;
-		}
 
-		if(answer == Answer.DONT_KNOW) {
-			this.game.increaseIdontKnow();
-		}
-		
-		if(this.game.isIdontKnowTooMuch()) {
-			this.mainStageController.blockIdontKnow();
-		}
-		
-		//Increase the number of questions that nappy need:
-		this.game.increaseNoOfQuestionsNappy();
+			if(this.gm1Logic.getNumDunno() >= 4) {
+				this.mainStageController.blockIdontKnow();
+			}
 
-		//Update info elements (Progress-Bars):
-		try{
+			//Increase the number of questions that nappy needed:
+			this.game.increaseNoOfQuestionsNappy();
+
+			//Update info elements (Progress-Bars):
 			this.mainStageController.updateInfoGM1(
 				this.game.getNoOfQuestionsNappy(),
 				this.game.getNoOfQuestionsNappyInPercent(),
 				this.gm1Logic.getSureness()
 			);
-		}catch(GameHasFinished gameHasFinished){
-			gameHasFinished.printStackTrace();
-		}
 
-		//Check if nappy knows the character:
-		if(this.gm1Logic.isSure() == Sureness.SURE) {
-			try{
-				Character chr = this.gm1Logic.endGame();
-				this.mainStageController.showGuessedCharacter(chr);
-				this.game.setCharacterNappy(chr);
-			}catch(GameHasFinished|CantFinishGameMode gameHasFinished){
-				gameHasFinished.printStackTrace();
+			switch(this.gm1Logic.isSure()){
+				case SURE:
+					//nappy knows the character:
+					Character chr = this.gm1Logic.endGame();
+					this.mainStageController.showGuessedCharacter(chr);
+					this.game.setCharacterNappy(chr);
+					break;
+				case DONTKNOW:
+					//nappy is sure that he doesn't know the character:
+					this.mainStageController.showNappyDontKnow();
+					break;
+				case UNSURE:
+					//Ask the next question:
+					this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
+					break;
+				default:
+					throw new IllegalArgumentException("");
 			}
-		}
-		//Check if nappy is sure but don't knows the character:
-		else if (this.gm1Logic.isSure() == Sureness.DONTKNOW) {
-			this.mainStageController.showNappyDontKnow();
-		}
-		//Ask the next question:
-		else if (this.gm1Logic.isSure() == Sureness.UNSURE) {
-			try{
-				this.mainStageController.showQuestion(this.gm1Logic.getQuestion());
-			}catch(NoMoreQuestions|GameHasFinished e){
-				e.printStackTrace();
-			}
+		}catch(NoActiveQuestion|CantFinishGameMode|NoMoreQuestions|GameHasFinished e){
+			e.printStackTrace();
 		}
 		
 	}
