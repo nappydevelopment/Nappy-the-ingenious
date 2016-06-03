@@ -360,7 +360,12 @@ public class Program extends Application {
 					         	  this.game.getCharacterNappy().getWikiImage(),
 					         	  this.game.getCharacterNappy().getName());
 		}
-		
+
+		//Add the played Character into the statistics
+		if(this.game.isNappyRight() == Answer.YES) {
+			SaveStatisticInfos.createAndSaveCharakter(this.game.getCharacterNappy());
+		}
+
 		//If Player want to play gamemode2:
 		if(playGM2) {
 			//Start gamemode2:
