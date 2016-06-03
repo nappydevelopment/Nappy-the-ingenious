@@ -6,19 +6,18 @@ import java.util.List;
 public class EastereggSearcher {
     private List<NelsonStage> ns = new ArrayList<>();
 
-    public boolean lookFor(String str){
+    public int lookFor(String str){
         if(str.equals("haha")){
             ns.add(NelsonStage.createNewNelson());
-            return false;
+            return 1;
         }
         else if(str.equals("doh") || str.equals("d'oh")) {
-            return true;
+            return 2;
         }
         else if(str.equals("nappy")) {
-            new NappyStage();
-            return false;
+            return 3;
         }
-        return false;
+        return 4;
     }
 
     public List<NelsonStage> getNelsonStages(){
