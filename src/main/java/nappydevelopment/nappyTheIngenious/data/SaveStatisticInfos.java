@@ -10,7 +10,7 @@ public class SaveStatisticInfos {
     public static void createAndSavePlayer(String spielerName, Game game) {
         final double baseScore = 1000.0 / game.getNoOfQuestionsPlayer();
         final double nappyBonus = 0.25 * game.getNoOfQuestionsNappy();
-        final double multiplicator = nappyWin(game.isWinNappy())*2 + playerWin(game.isWinPlayer()) + 1.0;
+        final double multiplicator = playerWin(game.isWinPlayer())*2 + nappyWin(game.isWinNappy()) + 1.0;
         final double score = (baseScore+nappyBonus)*multiplicator;
 
 
@@ -33,9 +33,9 @@ public class SaveStatisticInfos {
         }
     }
 
-    private static int nappyWin(boolean winNappy) { return boolToInt(winNappy); }
+    private static int nappyWin(boolean winNappy) { return 1-boolToInt(winNappy); }
 
-    private static int playerWin(boolean winPlayer) { return 1-boolToInt(winPlayer); }
+    private static int playerWin(boolean winPlayer) { return boolToInt(winPlayer); }
 
     private static int boolToInt(boolean b) {
         if(b){
