@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Marc on 30.05.2016.
  */
-public class ShowNappyInList {
+public class NappyInList {
 
 
         Alert alert;
