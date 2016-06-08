@@ -126,8 +126,28 @@ public class MainStageView extends Stage {
 	//Button btnIKnowTheCharacter; //handled through the btnIdontKnow!
 	HBox hbxAskQuestion;
 	Button btnAskQuestion;
-
-
+	
+	//### Content of the game result ###############################################################
+	
+	GridPane gdpMainContent;
+	Label lblGameResult;
+	Label lblNappy;
+	Label lblPlayer;
+	Label lblCharacter;
+	ImageView imvGuessedCharacterNappy;
+	ImageView imvGuessedCharacterPlayer;
+	Label lblRight;
+	ImageView imvRightNappy;
+	ImageView imvRightPlayer;
+	Label lblNoOfQuestions;
+	Label lblNoOfQuestionsNappy;
+	Label lblNoOfQuestionsPlayer;
+	Label lblWhosWinner;
+	ImageView imvWinner;
+	Label lblWinner;
+	Button btnPlayAgain;
+	Button btnBackToMainView;
+	
 //### CONSTRUCTORS #########################################################################################################################
 
 	/* MainStageView [constructor]: Constructor that creates a new main-stage-view with all gui-components *//**
@@ -567,7 +587,10 @@ public class MainStageView extends Stage {
 
 
 		this.hbxAskQuestion.getChildren().add(this.btnAskQuestion);
-
+		
+		//### Game result ###########################################
+		
+		this.lblGameResult = new Label("Spielergebnis");
 	}
 
 	//Method that initialize the stage (window) settings:
