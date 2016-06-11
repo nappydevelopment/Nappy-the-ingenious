@@ -48,6 +48,7 @@ public class WikiStageEasterEggTest extends ApplicationTest{
 	public void stop(){
 		controller.view.close();
 		CharacterProvider.getEggs().getNelsonStages().stream().forEach(Stage::close);
+		CharacterProvider.getEggs().getNappyStages().stream().forEach(Stage::close);
 	}
 
 	@Test
