@@ -5,6 +5,7 @@ import java.util.List;
 
 public class EastereggSearcher {
     private List<NelsonStage> ns = new ArrayList<>();
+    private List<NappyStage> nap = new ArrayList<>();
     public int lookFor(String str){
         if(str.equals("haha")){
             ns.add(NelsonStage.createNewNelson());
@@ -14,7 +15,7 @@ public class EastereggSearcher {
             return 2;
         }
         else if(str.equals("nappy")) {
-            new NappyStage();
+           nap.add(new NappyStage());
             return 3;
         }
         return 4;
@@ -23,6 +24,7 @@ public class EastereggSearcher {
     public List<NelsonStage> getNelsonStages(){
         return ns;
     }
+    public List<NappyStage> getNappyStages(){return nap;}
 
 
 }

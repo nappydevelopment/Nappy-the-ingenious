@@ -18,7 +18,7 @@ import java.awt.*;
 /**
  * Created by Marc on 30.05.2016.
  */
-public class NappyStage extends Stage{
+public class NappyStage extends Stage {
 
     int width = 590;
     int height = 800;
@@ -31,7 +31,7 @@ public class NappyStage extends Stage{
     private javafx.scene.control.TextArea textArea;
 
 
-   NappyStage() {
+    NappyStage() {
         initComponents();
         structureComponents();
         initStage();
@@ -73,16 +73,7 @@ public class NappyStage extends Stage{
         this.getIcons().add(new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"));
         //Set owner and modality by the first start of the stage:
         this.initModality(Modality.APPLICATION_MODAL);
-        this.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(javafx.stage.WindowEvent event) {
-                exitForm();
-            }
-        });
 
-    }
-
-    private void exitForm() {
 
     }
 
