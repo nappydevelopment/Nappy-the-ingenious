@@ -69,7 +69,7 @@ public class NelsonStage extends Stage {
             this.setX(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width) + 1);
             this.setY(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - height) + 1);
         } catch (java.awt.HeadlessException e){
-            e.printStackTrace();
+            System.out.println("This is a Nelson Exception!");
         }
         this.setOnCloseRequest(new EventHandler<javafx.stage.WindowEvent>() {
             @Override
