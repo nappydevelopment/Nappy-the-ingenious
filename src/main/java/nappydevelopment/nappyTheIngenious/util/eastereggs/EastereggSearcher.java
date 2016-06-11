@@ -5,8 +5,6 @@ import java.util.List;
 
 public class EastereggSearcher {
     private List<NelsonStage> ns = new ArrayList<>();
-
-
     public int lookFor(String str){
         if(str.equals("haha")){
             ns.add(NelsonStage.createNewNelson());
