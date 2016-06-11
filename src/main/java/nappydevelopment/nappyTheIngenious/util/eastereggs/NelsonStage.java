@@ -36,7 +36,7 @@ public class NelsonStage extends Stage {
         initComponents();
         structureComponents();
         initStage();
-        new SoundPlayer("haha");
+       // new SoundPlayer("haha");
         this.setAlwaysOnTop(true);
         this.show();
     }
