@@ -29,13 +29,14 @@ public class NappyStage extends Stage {
     private ImageView imvNappy;
     private Image nappyImg;
     private javafx.scene.control.TextArea textArea;
+    SoundPlayer soundPlayer;
 
 
     NappyStage() {
         initComponents();
         structureComponents();
         initStage();
-        new SoundPlayer("haha");
+        soundPlayer = new SoundPlayer("think", this);
         this.setAlwaysOnTop(true);
         this.show();
     }
@@ -73,8 +74,17 @@ public class NappyStage extends Stage {
         this.getIcons().add(new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"));
         //Set owner and modality by the first start of the stage:
         this.initModality(Modality.APPLICATION_MODAL);
+        this.setOnCloseRequest(new EventHandler<javafx.stage.WindowEvent>() {
+            @Override
+            public void handle(javafx.stage.WindowEvent event) {
+                exitForm();
+            }
+        });
 
+    }
 
+    private void exitForm() {
+        soundPlayer.stopCurrentTune();
     }
 
 }
