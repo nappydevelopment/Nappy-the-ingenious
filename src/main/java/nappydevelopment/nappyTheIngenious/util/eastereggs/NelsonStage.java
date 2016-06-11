@@ -65,8 +65,12 @@ public class NelsonStage extends Stage {
         this.getIcons().add(new Image(GlobalReferences.ICONS_PATH + "16x16/icon.png"));
         //Set owner and modality by the first start of the stage:
         this.initModality(Modality.APPLICATION_MODAL);
-        this.setX(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getWidth()-width)+1);
-        this.setY(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getHeight()-height)+1);
+        try {
+            this.setX(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width) + 1);
+            this.setY(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - height) + 1);
+        } catch (java.awt.HeadlessException e){
+            e.printStackTrace();
+        }
         this.setOnCloseRequest(new EventHandler<javafx.stage.WindowEvent>() {
             @Override
             public void handle(javafx.stage.WindowEvent event) {
