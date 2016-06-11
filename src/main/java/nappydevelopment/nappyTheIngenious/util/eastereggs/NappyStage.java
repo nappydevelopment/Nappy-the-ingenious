@@ -36,7 +36,7 @@ public class NappyStage extends Stage {
         initComponents();
         structureComponents();
         initStage();
-        soundPlayer = new SoundPlayer("think", this);
+       // soundPlayer = new SoundPlayer("think", this);
         this.setAlwaysOnTop(true);
         this.show();
     }

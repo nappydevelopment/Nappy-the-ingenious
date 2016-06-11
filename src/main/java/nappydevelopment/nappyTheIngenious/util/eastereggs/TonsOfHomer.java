@@ -25,7 +25,7 @@ public class TonsOfHomer{
 
     public List<Character> getThem(List<Character> list, CharacterFilter search) {
         showDohDialog();
-        new SoundPlayer("doh");
+       // new SoundPlayer("doh");
         List<Character> homerList = new ArrayList<Character>();
         List<Character> charList = list.stream()
                 .filter(c -> {
