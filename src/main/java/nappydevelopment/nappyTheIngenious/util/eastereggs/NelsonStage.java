@@ -66,8 +66,8 @@ public class NelsonStage extends Stage {
         //Set owner and modality by the first start of the stage:
         this.initModality(Modality.APPLICATION_MODAL);
         try {
-            this.setX(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width) + 1);
-            this.setY(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - height) + 1);
+           // this.setX(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - width) + 1);
+           // this.setY(Math.random() * (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - height) + 1);
         } catch (java.awt.HeadlessException e){
             System.out.println("This is a Nelson Exception!");
         }
