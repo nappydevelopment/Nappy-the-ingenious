@@ -1,5 +1,6 @@
 package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
+import com.sun.media.jfxmedia.MediaException;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -36,7 +37,11 @@ public class NappyStage extends Stage {
         initComponents();
         structureComponents();
         initStage();
-       // soundPlayer = new SoundPlayer("think", this);
+        try{
+            soundPlayer = new SoundPlayer("think", this);
+        } catch (MediaException e){
+            System.out.println("Sound won't play on Travis!");
+        }
         this.setAlwaysOnTop(true);
         this.show();
     }
@@ -84,7 +89,12 @@ public class NappyStage extends Stage {
     }
 
     private void exitForm() {
-        soundPlayer.stopCurrentTune();
+        try{
+            soundPlayer.stopCurrentTune();
+        } catch (MediaException e){
+            System.out.println("Sound won't play on Travis!");
+        }
+
     }
 
 }

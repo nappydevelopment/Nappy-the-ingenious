@@ -1,6 +1,7 @@
 package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import com.sun.media.jfxmedia.MediaException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
@@ -25,7 +26,11 @@ public class TonsOfHomer{
 
     public List<Character> getThem(List<Character> list, CharacterFilter search) {
         showDohDialog();
-       // new SoundPlayer("doh");
+        try{
+            new SoundPlayer("doh");
+        } catch (MediaException e){
+            System.out.println("Sound won't play on Travis!");
+        }
         List<Character> homerList = new ArrayList<Character>();
         List<Character> charList = list.stream()
                 .filter(c -> {
