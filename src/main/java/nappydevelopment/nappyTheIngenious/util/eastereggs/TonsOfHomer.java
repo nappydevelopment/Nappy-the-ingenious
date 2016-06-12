@@ -38,11 +38,11 @@ public class TonsOfHomer{
         }
         try{
             new SoundPlayer("doh");
-        } catch (MediaException e){
+        } catch (MediaException e) {
             System.out.println("Sound won't play on Travis!");
-        }finally {
-            return (List<Character>)homerList;
+            //return (List<Character>) homerList;
         }
+        return (List<Character>)homerList;
 
     }
 

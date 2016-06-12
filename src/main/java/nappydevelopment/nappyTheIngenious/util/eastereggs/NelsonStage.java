@@ -45,7 +45,6 @@ public class NelsonStage extends Stage {
         }finally {
             this.setAlwaysOnTop(true);
             this.show();
-            return;
         }
     }
 

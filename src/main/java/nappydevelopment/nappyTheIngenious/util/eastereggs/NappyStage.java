@@ -44,7 +44,6 @@ public class NappyStage extends Stage {
         }finally {
             this.setAlwaysOnTop(true);
             this.show();
-            return;
         }
     }
 
@@ -95,10 +94,7 @@ public class NappyStage extends Stage {
             soundPlayer.stopCurrentTune();
         } catch (MediaException e){
             System.out.println("Sound won't play on Travis!");
-        }finally {
-            return;
         }
-
     }
 
 }
