@@ -1,6 +1,7 @@
 package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
 
+import com.sun.media.jfxmedia.MediaException;
 import javafx.event.EventHandler;
 
 import javafx.scene.Scene;
@@ -36,7 +37,12 @@ public class NelsonStage extends Stage {
         initComponents();
         structureComponents();
         initStage();
-       // new SoundPlayer("haha");
+        try{
+            new SoundPlayer("haha");
+        } catch (MediaException e){
+            System.out.println("Sound won't play on Travis!");
+        }
+
         this.setAlwaysOnTop(true);
         this.show();
     }
