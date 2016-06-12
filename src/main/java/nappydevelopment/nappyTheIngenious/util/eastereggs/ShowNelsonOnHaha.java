@@ -2,7 +2,6 @@ package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterFilter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +20,6 @@ public class ShowNelsonOnHaha {
                 }).collect(Collectors.toList());
             nelsonList.add(charList.get(0));
 
-        return (List<Character>)nelsonList;
+        return nelsonList;
     }
 }

@@ -1,19 +1,14 @@
 package nappydevelopment.nappyTheIngenious.util.eastereggs;
 
 
-import com.sun.media.jfxmedia.MediaException;
 import javafx.event.EventHandler;
-
 import javafx.scene.Scene;
-
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
-
 import javafx.scene.image.Image;
-
 import java.awt.*;
 
 
@@ -50,10 +45,8 @@ public class NelsonStage extends Stage {
 
     private void initComponents() {
         this.bdpRootPane = new BorderPane();
-
         this.imgNelsonR = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEasterEggR.png");
         this.imgNelsonL = new Image(GlobalReferences.IMAGES_PATH + "general/NelsonEasterEggL.png");
-
         if(Math.random()<0.5){
             imvNelson = new ImageView(imgNelsonL);
         }else {
@@ -86,8 +79,6 @@ public class NelsonStage extends Stage {
         });
 
     }
-
-
 
     private void exitForm() {
         if (counter < 3) {
