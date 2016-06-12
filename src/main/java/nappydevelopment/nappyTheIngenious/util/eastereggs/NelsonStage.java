@@ -38,9 +38,9 @@ public class NelsonStage extends Stage {
         structureComponents();
         initStage();
 
-        try{
+        try {
             new SoundPlayer("haha");
-        } catch (MediaException e){
+        }catch (Exception e){
             System.out.println("Sound won't play on Travis!");
         }finally {
             this.setAlwaysOnTop(true);
