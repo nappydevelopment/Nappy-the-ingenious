@@ -38,16 +38,14 @@ public class TonsOfHomer{
         }
         try{
             new SoundPlayer("doh");
-        } catch (MediaException e) {
+        } catch (Exception e) {
             System.out.println("Sound won't play on Travis!");
-            //return (List<Character>) homerList;
         }
-        return (List<Character>)homerList;
+        return homerList;
 
     }
 
     private void showDohDialog() {
-
         //Create the dialog
         alert = new Alert(Alert.AlertType.CONFIRMATION);
 
@@ -66,7 +64,6 @@ public class TonsOfHomer{
             alert.getDialogPane().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
         }
     alert.showAndWait();
-
 
     }
 

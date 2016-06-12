@@ -7,7 +7,6 @@ import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.EastereggSearcher;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.ShowNelsonOnHaha;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.TonsOfHomer;
-import nappydevelopment.nappyTheIngenious.util.eastereggs.NappyInList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

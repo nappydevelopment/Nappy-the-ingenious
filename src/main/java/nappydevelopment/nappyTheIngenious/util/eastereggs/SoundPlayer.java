@@ -3,12 +3,8 @@ package nappydevelopment.nappyTheIngenious.util.eastereggs;
 import com.sun.media.jfxmedia.MediaException;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
-
-import java.net.URI;
 import java.net.URISyntaxException;
-
 
 public class SoundPlayer {
 
@@ -20,7 +16,7 @@ public class SoundPlayer {
             Media hit = new Media(bip);
             mediaPlayer = new MediaPlayer(hit);
             mediaPlayer.play();
-        } catch (URISyntaxException|MediaException e) {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
@@ -33,7 +29,7 @@ public class SoundPlayer {
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
             mediaPlayer.play();
 
-        } catch (URISyntaxException|MediaException e) {
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
@@ -41,7 +37,7 @@ public class SoundPlayer {
     public void stopCurrentTune(){
         try {
             mediaPlayer.stop();
-        } catch (MediaException e) {
+        } catch (Exception e) {
         e.printStackTrace();
     }
 

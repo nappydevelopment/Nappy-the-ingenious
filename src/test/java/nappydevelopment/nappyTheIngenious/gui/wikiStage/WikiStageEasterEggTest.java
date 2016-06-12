@@ -8,7 +8,6 @@ import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.CharacterImage;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
-import nappydevelopment.nappyTheIngenious.util.eastereggs.EastereggSearcher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
