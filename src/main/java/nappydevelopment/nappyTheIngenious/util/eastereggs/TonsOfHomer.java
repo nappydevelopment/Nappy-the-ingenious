@@ -26,11 +26,7 @@ public class TonsOfHomer{
 
     public List<Character> getThem(List<Character> list, CharacterFilter search) {
         showDohDialog();
-        try{
-            new SoundPlayer("doh");
-        } catch (MediaException e){
-            System.out.println("Sound won't play on Travis!");
-        }
+
         List<Character> homerList = new ArrayList<Character>();
         List<Character> charList = list.stream()
                 .filter(c -> {
@@ -40,7 +36,14 @@ public class TonsOfHomer{
         for(int i = 0; i < 8; i++){
             homerList.add(charList.get(0));
         }
-        return (List<Character>)homerList;
+        try{
+            new SoundPlayer("doh");
+        } catch (MediaException e){
+            System.out.println("Sound won't play on Travis!");
+        }finally {
+            return (List<Character>)homerList;
+        }
+
     }
 
     private void showDohDialog() {

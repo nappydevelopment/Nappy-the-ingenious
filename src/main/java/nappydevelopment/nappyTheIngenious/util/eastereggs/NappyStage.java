@@ -41,9 +41,11 @@ public class NappyStage extends Stage {
             soundPlayer = new SoundPlayer("think", this);
         } catch (MediaException e){
             System.out.println("Sound won't play on Travis!");
+        }finally {
+            this.setAlwaysOnTop(true);
+            this.show();
+            return;
         }
-        this.setAlwaysOnTop(true);
-        this.show();
     }
 
     private void initComponents() {
@@ -93,6 +95,8 @@ public class NappyStage extends Stage {
             soundPlayer.stopCurrentTune();
         } catch (MediaException e){
             System.out.println("Sound won't play on Travis!");
+        }finally {
+            return;
         }
 
     }
