@@ -567,13 +567,14 @@ public class MainStageView extends Stage {
 		this.imvNappyIcon = new ImageView(GlobalReferences.ICONS_PATH + "32x32/icon.png");
 		this.lblNappy = new Label("Nappy");
 		this.lblNappy.setId("lblNappy");
+		
 		this.vbxPlayer = new VBox(5);
 		this.vbxPlayer.setAlignment(Pos.CENTER);
 		this.imvPlayerIcon = new ImageView(GlobalReferences.ICONS_PATH + "32x32/player.png");
-		this.lblPlayer = new Label("Spieler");
+		this.lblPlayer = new Label();
 		this.lblPlayer.setId("lblPlayer");
 		
-		this.lblGuessedCharacter = new Label("Erratene Character:");
+		this.lblGuessedCharacter = new Label();
 		this.lblGuessedCharacter.setId("lblGuessedCharacter");
 		this.vbxGuessedCharacterNappy = new VBox(5);
 		this.vbxGuessedCharacterNappy.setAlignment(Pos.CENTER);
@@ -605,7 +606,7 @@ public class MainStageView extends Stage {
 		this.lblGuessedCharacterPlayer = new Label();
 		this.lblGuessedCharacterPlayer.setId("lblGuessedCharacterPlayer");
 		
-		this.lblRightGuess = new Label("Richtig erraten:");
+		this.lblRightGuess = new Label();
 		this.lblRightGuess.setId("lblRightGuess");
 		
 		this.imvRightNappy = new ImageView();
@@ -624,13 +625,14 @@ public class MainStageView extends Stage {
 		this.lblWinner = new Label();
 		this.lblWinner.setId("lblWinner");
 		//Buttons:
-		this.btnPlayAgain = new Button("Noch einmal spielen");
+		this.btnPlayAgain = new Button();
 		this.btnPlayAgain.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/restart.png"));
 		this.btnPlayAgain.setPrefSize(250, 40);
-		this.btnBackToMainView = new Button("Zurück zur Hauptsanschicht");
-		this.btnBackToMainView = new Button("Noch einmal spielen");
+		this.btnPlayAgain.setOnAction(aeh);
+		this.btnBackToMainView = new Button();
 		this.btnBackToMainView.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/home.png"));
 		this.btnBackToMainView.setPrefSize(250, 40);
+		this.btnBackToMainView.setOnAction(aeh);
 	}
 	
 	

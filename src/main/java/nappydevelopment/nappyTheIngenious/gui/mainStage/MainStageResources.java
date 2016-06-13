@@ -49,6 +49,16 @@ public class MainStageResources {
 	
 	StringProperty btnAskQuestionText;
 	
+	StringProperty btnPlayAgainText;
+	StringProperty btnBackToMainViewText;
+	
+	StringProperty lblGameResultText;
+	StringProperty lblPlayerText;
+	StringProperty lblGuessedCharacterText;
+	StringProperty lblRightGuessText;
+	StringProperty lblNoOfQuestionsText;
+	StringProperty lblWhosWinnerText;
+	
 	//Variable Text for gui-components:
 	
 	//Texts for the label lblInfo:
@@ -185,6 +195,17 @@ public class MainStageResources {
 		
 		this.btnAskQuestionText = new SimpleStringProperty();
 		
+		this.btnPlayAgainText = new SimpleStringProperty();
+		this.btnBackToMainViewText = new SimpleStringProperty();
+		
+		
+		this.lblGameResultText = new SimpleStringProperty();
+		this.lblPlayerText = new SimpleStringProperty();
+		this.lblGuessedCharacterText = new SimpleStringProperty();
+		this.lblRightGuessText = new SimpleStringProperty();
+		this.lblNoOfQuestionsText = new SimpleStringProperty();
+		this.lblWhosWinnerText = new SimpleStringProperty();
+		
 		//### Images for the menu-bar ##################################################################
 
 		this.mniNewGameIcon = new Image(GlobalReferences.ICONS_PATH + "16x16/new_game.png");
@@ -242,6 +263,9 @@ public class MainStageResources {
 		this.btnIdontKnowText.setValue("I don't know");
 		
 		this.btnAskQuestionText.setValue("Ask question");
+		
+		this.btnPlayAgainText.setValue("Play again");
+		this.btnBackToMainViewText.setValue("Back to main view");
 		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
@@ -302,6 +326,13 @@ public class MainStageResources {
 		this.cmbQuestionsTextSelectAQuestion = "Select a question...";
 		this.cmbQuestionsTextSelectNextQuestion = "Select the next question...";
 		this.cmbQuestionsTextYouveAskThisQuestionAlready = "You've asked this question already!";
+		
+		this.lblGameResultText.setValue("Game result");
+		this.lblPlayerText.setValue("Player");
+		this.lblGuessedCharacterText.setValue("Guessed character:");
+		this.lblRightGuessText.setValue("Guessed right:");
+		this.lblNoOfQuestionsText.setValue("No of questions:");
+		this.lblWhosWinnerText.setValue("Winner:");
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -331,6 +362,9 @@ public class MainStageResources {
 		this.btnIdontKnowText.setValue("Ich weiß nicht");
 		
 		this.btnAskQuestionText.setValue("Frage stellen");
+		
+		this.btnPlayAgainText.setValue("Nochmal spielen");
+		this.btnBackToMainViewText.setValue("Zurück zur Hauptansicht");
 		
 		//Abort-Dialog-Texts:
 		this.abortGameDialogTitle = "Nappy, the ingenious";
@@ -389,6 +423,13 @@ public class MainStageResources {
 		this.cmbQuestionsTextSelectAQuestion = "Eine Frage wählen...";
 		this.cmbQuestionsTextSelectNextQuestion = "Die nächste Frage wählen...";
 		this.cmbQuestionsTextYouveAskThisQuestionAlready = "Du hast diese Frage bereits gestellt!";
+		
+		this.lblGameResultText.setValue("Spielergebnis");
+		this.lblPlayerText.setValue("Spieler");
+		this.lblGuessedCharacterText.setValue("Erratener Character:");
+		this.lblRightGuessText.setValue("Richtig erraten:");
+		this.lblNoOfQuestionsText.setValue("Anzahl benötigter Fragen:");
+		this.lblWhosWinnerText.setValue("Gewinner:");
 	}
 	
 	void setBtnYesTextToYes() {
@@ -418,7 +459,6 @@ public class MainStageResources {
 	void setBtnIdontKnowTextToIknow() {
 		this.btnIdontKnowText.set(this.btnIdontKnowTextIknow);
 	}
-	
 	
 //##########################################################################################################################################
 }

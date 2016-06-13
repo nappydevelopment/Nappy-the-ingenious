@@ -114,6 +114,17 @@ public class MainStageController {
 		
 		this.view.btnAskQuestion.textProperty().bind(this.res.btnAskQuestionText);
 		
+		this.view.btnPlayAgain.textProperty().bind(this.res.btnPlayAgainText);
+		this.view.btnBackToMainView.textProperty().bind(this.res.btnBackToMainViewText);
+		
+		this.view.lblGameResult.textProperty().bind(this.res.lblGameResultText);
+		this.view.lblPlayer.textProperty().bind(this.res.lblPlayerText);
+		this.view.lblGuessedCharacter.textProperty().bind(this.res.lblGuessedCharacterText);
+		this.view.lblRightGuess.textProperty().bind(this.res.lblRightGuessText);
+		this.view.lblNoOfQuestions.textProperty().bind(this.res.lblNoOfQuestionsText);
+		this.view.lblWhosWinner.textProperty().bind(this.res.lblWhosWinnerText);
+		
+		
 		//Stage-Properties:
 		this.view.titleProperty().bind(this.res.stageTitleText);
 	}
@@ -225,6 +236,14 @@ public class MainStageController {
 				MainStageController.this.adoptQuestion();
 				//view.cmbQuestions.setCellFactory(value);
 			}
+			else if(src == view.btnPlayAgain) {
+				System.out.println("Play again!");
+				MainStageController.this.program.finishGameWithStatistics(true);
+			}
+			else if(src == view.btnBackToMainView) {
+				System.out.println("Back to main view");
+				MainStageController.this.program.finishGameWithStatistics(false);
+			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
 			}
@@ -233,25 +252,14 @@ public class MainStageController {
 		
 	}
 	
+	
 	private class ViewWindowEventHandler implements EventHandler<WindowEvent> {
 
 		@Override
 		public void handle(WindowEvent event) {
-		    
-//			// consume event
-//	        event.consume();
-//
-//	        // show close dialog
-//	        Alert alert = new Alert(AlertType.CONFIRMATION);
-//	        alert.setTitle("Close Confirmation");
-//	        alert.setHeaderText("Do you really want to quit?");
-//	        alert.initOwner( MainStageController.this.view);
-//
-//	        Optional<ButtonType> result = alert.showAndWait();
-//	        if (result.get() == ButtonType.OK){
-//	            Platform.exit();
-//	        }
+			
 			event.consume();
+			
 			if(MainStageController.this.program.existAnActiveGame()) {
 				MainStageController.this.showCloseProgramDialog();
 			}

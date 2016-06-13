@@ -210,7 +210,7 @@ public class Program extends Application {
 	/* finishGameWithStatistics [method]: Method to finish a game and if necessary write a statistics entry *//**
 	 * 
 	 */
-	public void finishGameWithStatistics() {
+	public void finishGameWithStatistics(boolean restart) {
 		
 		//Show dialog to enter the player name:
 		String spielerName = this.mainStageController.showEnterNameDialog();
@@ -228,7 +228,13 @@ public class Program extends Application {
 		this.game = null;
 		
 		//Show start view:
-		this.mainStageController.showStartView();
+		if(restart) {
+			this.startGame();;
+		}
+		else {
+			this.mainStageController.showStartView();
+		}
+		
 	}
 
 	public boolean existAnActiveGame() {
