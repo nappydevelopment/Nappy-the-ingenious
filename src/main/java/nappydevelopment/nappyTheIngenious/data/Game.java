@@ -49,6 +49,10 @@ public class Game {
 	public Answer isNappyRight() {
 		return isNappyRight;
 	}
+	
+	public boolean isNappyRightBoolean() {
+		return (isNappyRight == Answer.YES);
+	}
 
 	public void setNappyRight(Answer isNappyRight) {
 		this.isNappyRight = isNappyRight;
