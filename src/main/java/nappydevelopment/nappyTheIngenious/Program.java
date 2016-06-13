@@ -441,6 +441,7 @@ public class Program extends Application {
 			System.out.println(character.getName());
 			if(this.wikiStageController.showConfirmSelectionDialog(character)) {
 				this.wikiStageController.closeView();
+				this.game.setCharacterPlayer(character);
 				try {
 					this.game.setPlayerRight(this.gm2Logic.makeGuess(character));
 					Character nappysChar = this.gm2Logic.endGame();
@@ -451,6 +452,17 @@ public class Program extends Application {
 				}
 			}
 		}
+	}
+	
+	public void showGameResultView() {
+		this.mainStageController.showGameResultView(
+				this.game.getCharacterNappy(), 
+				this.game.isNappyRightBoolean(), 
+				this.game.getNoOfQuestionsNappy(), 
+				this.game.getCharacterPlayer(), 
+				this.game.isPlayerRight(),
+				this.game.getNoOfQuestionsPlayer(),
+				this.game.isWinPlayer());
 	}
 	
 //### MAIN METHOD ##########################################################################################################################

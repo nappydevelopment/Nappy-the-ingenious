@@ -27,6 +27,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -129,22 +130,44 @@ public class MainStageView extends Stage {
 	
 	//### Content of the game result ###############################################################
 	
-	GridPane gdpMainContent;
+	VBox vbxResultContent;
+	HBox hbxResultContent;
+	GridPane gdpResultContent;
+	
 	Label lblGameResult;
+	
+	VBox vbxNappy;
+	ImageView imvNappyIcon;
 	Label lblNappy;
+	VBox vbxPlayer;
+	ImageView imvPlayerIcon;
 	Label lblPlayer;
-	Label lblCharacter;
-	ImageView imvGuessedCharacterNappy;
-	ImageView imvGuessedCharacterPlayer;
-	Label lblRight;
+	
+	Label lblGuessedCharacter;
+	VBox vbxGuessedCharacterNappy;
+	HBox hbxGuessedCharacterNappy;
+	Rectangle recGuessedCharacterNappy;
+	ImagePattern impGuessedCharacterNappy;
+	Label lblGuessedCharacterNappy;
+	VBox vbxGuessedCharacterPlayer;
+	HBox hbxGuessedCharacterPlayer;
+	Rectangle recGuessedCharacterPlayer;
+	ImagePattern impGuessedCharacterPlayer;
+	Label lblGuessedCharacterPlayer;
+	
+	Label lblRightGuess;
 	ImageView imvRightNappy;
 	ImageView imvRightPlayer;
+	
 	Label lblNoOfQuestions;
 	Label lblNoOfQuestionsNappy;
 	Label lblNoOfQuestionsPlayer;
+	
 	Label lblWhosWinner;
+	VBox vbxWhosWinner;
 	ImageView imvWinner;
 	Label lblWinner;
+	
 	Button btnPlayAgain;
 	Button btnBackToMainView;
 	
@@ -503,10 +526,118 @@ public class MainStageView extends Stage {
 
 		//Set action listener:
 		this.cmbQuestions.setOnAction(aeh);
+		
+		//### Game result ##########################################################################
+		
+		this.vbxResultContent = new VBox();
+		this.vbxResultContent.setPadding(new Insets(15,15,15,15));
+		this.hbxResultContent = new HBox();
+	    this.hbxResultContent.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+    			  "-fx-background-color: #FFD90F;" +
+    			  "-fx-background-radius: 5;");
+		this.gdpResultContent = new GridPane();
+		//this.gdpResultContent.setGridLinesVisible(true);
+		this.gdpResultContent.setPadding(new Insets(5,5,5,5));
+		this.gdpResultContent.setStyle("-fx-background-color: #329C9C;" +
+  			  							"-fx-background-radius: 5;");
+		this.gdpResultContent.setAlignment(Pos.TOP_CENTER);
+		this.gdpResultContent.setPrefSize(Integer.MAX_VALUE, 400);
+		this.gdpResultContent.setMaxSize(Integer.MAX_VALUE, 400);
+		this.gdpResultContent.setHgap(15);
+		this.gdpResultContent.setVgap(15);
+//		//Set the column-rate:
+		ColumnConstraints gdpResultContentCol1 = new ColumnConstraints();
+		gdpResultContentCol1.setPercentWidth(50);
+		ColumnConstraints gdpResultContentCol2 = new ColumnConstraints();
+		gdpResultContentCol2.setPercentWidth(50);
+		
 
+		this.gdpResultContent.getColumnConstraints().addAll(
+			gdpResultContentCol1,
+			gdpResultContentCol2
+		);
+
+		
+		//Labels:
+		this.lblGameResult = new Label("Spielergebnis");
+		this.lblGameResult.setId("lblGameResult");
+		
+		this.vbxNappy = new VBox(5);
+		this.vbxNappy.setAlignment(Pos.CENTER); 
+		this.imvNappyIcon = new ImageView(GlobalReferences.ICONS_PATH + "32x32/icon.png");
+		this.lblNappy = new Label("Nappy");
+		this.lblNappy.setId("lblNappy");
+		this.vbxPlayer = new VBox(5);
+		this.vbxPlayer.setAlignment(Pos.CENTER);
+		this.imvPlayerIcon = new ImageView(GlobalReferences.ICONS_PATH + "32x32/player.png");
+		this.lblPlayer = new Label("Spieler");
+		this.lblPlayer.setId("lblPlayer");
+		
+		this.lblGuessedCharacter = new Label("Erratene Character:");
+		this.lblGuessedCharacter.setId("lblGuessedCharacter");
+		this.vbxGuessedCharacterNappy = new VBox(5);
+		this.vbxGuessedCharacterNappy.setAlignment(Pos.CENTER);
+	    this.hbxGuessedCharacterNappy = new HBox();
+	    hbxGuessedCharacterNappy.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          			  "-fx-padding: 3;" +
+	                          			  "-fx-background-color: #FFD90F;" +
+	                          			  "-fx-background-radius: 5;");
+	    hbxGuessedCharacterNappy.setAlignment(Pos.CENTER);
+	    hbxGuessedCharacterNappy.setMaxSize(63, 63);
+	    this.recGuessedCharacterNappy = new Rectangle();
+	    this.recGuessedCharacterNappy.setWidth(60);
+	    this.recGuessedCharacterNappy.setHeight(60);
+		this.lblGuessedCharacterNappy = new Label();
+		this.lblGuessedCharacterNappy.setId("lblGuessedCharacterNappy");
+		
+		this.vbxGuessedCharacterPlayer = new VBox(5);
+		this.vbxGuessedCharacterPlayer.setAlignment(Pos.CENTER);
+	    this.hbxGuessedCharacterPlayer = new HBox();
+	    hbxGuessedCharacterPlayer.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          			  "-fx-padding: 3;" +
+	                          			  "-fx-background-color: #FFD90F;" +
+	                          			  "-fx-background-radius: 5;");
+	    hbxGuessedCharacterPlayer.setAlignment(Pos.CENTER);
+	    hbxGuessedCharacterPlayer.setMaxSize(63, 63);
+	    this.recGuessedCharacterPlayer = new Rectangle();
+	    this.recGuessedCharacterPlayer.setWidth(60);
+	    this.recGuessedCharacterPlayer.setHeight(60);
+		this.lblGuessedCharacterPlayer = new Label();
+		this.lblGuessedCharacterPlayer.setId("lblGuessedCharacterPlayer");
+		
+		this.lblRightGuess = new Label("Richtig erraten:");
+		this.lblRightGuess.setId("lblRightGuess");
+		
+		this.imvRightNappy = new ImageView();
+		this.imvRightPlayer = new ImageView();
+		this.lblNoOfQuestions = new Label("Anzahl der gebrauchten Fragen:");
+		this.lblNoOfQuestions.setId("lblNoOfQuestions");
+		this.lblNoOfQuestionsNappy = new Label();
+		this.lblNoOfQuestionsNappy.setId("lblNoOfQuestionsNappy");
+		this.lblNoOfQuestionsPlayer = new Label();
+		this.lblNoOfQuestionsPlayer.setId("lblNoOfQuestionsPlayer");
+		this.lblWhosWinner = new Label("Gewinner:");
+		this.vbxWhosWinner = new VBox(5);
+		this.vbxWhosWinner.setAlignment(Pos.CENTER);
+		this.lblWhosWinner.setId("lblWhosWinner");
+		this.imvWinner = new ImageView();
+		this.lblWinner = new Label();
+		this.lblWinner.setId("lblWinner");
+		//Buttons:
+		this.btnPlayAgain = new Button("Noch einmal spielen");
+		this.btnPlayAgain.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/restart.png"));
+		this.btnPlayAgain.setPrefSize(250, 40);
+		this.btnBackToMainView = new Button("Zurück zur Hauptsanschicht");
+		this.btnBackToMainView = new Button("Noch einmal spielen");
+		this.btnBackToMainView.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/home.png"));
+		this.btnBackToMainView.setPrefSize(250, 40);
 	}
+	
+	
+
 
 	//Method that structure (add components to their parent node) the gui-components:
+	@SuppressWarnings("static-access")
 	private void structureComponents() {
 
 		//### Structure components of all views ####################################################
@@ -590,7 +721,42 @@ public class MainStageView extends Stage {
 		
 		//### Game result ###########################################
 		
-		this.lblGameResult = new Label("Spielergebnis");
+		this.gdpResultContent.add(this.lblGameResult, 0, 0, 2, 1);
+		
+		this.vbxNappy.getChildren().addAll(this.imvNappyIcon, this.lblNappy);
+		this.gdpResultContent.add(this.vbxNappy, 0, 2);
+		this.vbxPlayer.getChildren().addAll(this.imvPlayerIcon, this.lblPlayer);
+		this.gdpResultContent.add(this.vbxPlayer, 1, 2);
+		
+		this.gdpResultContent.add(this.lblGuessedCharacter, 0, 3, 2, 1);
+		this.hbxGuessedCharacterNappy.getChildren().add(this.recGuessedCharacterNappy);
+		this.vbxGuessedCharacterNappy.getChildren().addAll(this.hbxGuessedCharacterNappy, this.lblGuessedCharacterNappy);
+		this.hbxGuessedCharacterPlayer.getChildren().add(this.recGuessedCharacterPlayer);
+		this.vbxGuessedCharacterPlayer.getChildren().addAll(this.hbxGuessedCharacterPlayer, this.lblGuessedCharacterPlayer);
+		this.gdpResultContent.add(this.vbxGuessedCharacterNappy, 0, 4);
+		this.gdpResultContent.add(this.vbxGuessedCharacterPlayer, 1, 4);
+		
+		this.gdpResultContent.add(this.lblRightGuess, 0, 5, 2, 1);
+		this.gdpResultContent.add(this.imvRightNappy, 0, 6);
+		this.gdpResultContent.add(this.imvRightPlayer, 1, 6);
+		this.gdpResultContent.add(this.lblNoOfQuestions, 0, 7, 2, 1);
+		this.gdpResultContent.add(this.lblNoOfQuestionsNappy, 0, 8);
+		this.gdpResultContent.add(this.lblNoOfQuestionsPlayer, 1, 8);
+		this.gdpResultContent.add(this.lblWhosWinner, 0, 9, 2, 1);
+		this.vbxWhosWinner.getChildren().addAll(this.imvWinner, this.lblWinner);
+		this.gdpResultContent.add(this.vbxWhosWinner, 0, 10, 2, 1);
+		this.gdpResultContent.setHalignment(this.lblGameResult, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.vbxNappy, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.vbxPlayer, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.imvRightNappy, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.imvRightPlayer, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblNoOfQuestionsNappy, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblNoOfQuestionsPlayer, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblWhosWinner, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.vbxWhosWinner, HPos.CENTER);
+		this.gdpResultContent.autosize();
+		this.hbxResultContent.getChildren().add(this.gdpResultContent);
+		this.vbxResultContent.getChildren().add(this.hbxResultContent);
 	}
 
 	//Method that initialize the stage (window) settings:

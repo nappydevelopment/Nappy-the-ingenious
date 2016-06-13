@@ -38,3 +38,52 @@
 	-fx-background-color: #FFD90F;
 	-fx-background-radius: 5;
 }
+
+#lblGameResult {
+	-fx-font-size: 26px;
+}
+
+#lblNappy {
+	-fx-font-size: 14px;
+}
+
+#lblPlayer {
+	-fx-font-size: 14px;
+}
+
+#lblGuessedCharacter {
+	-fx-font-size: 15px;
+}
+
+#lblGuessedCharacterNappy {
+	-fx-font-size: 14px;
+}
+
+#lblGuessedCharacterPlayer {
+	-fx-font-size: 14px;
+}
+
+#lblRightGuess {
+	-fx-font-size: 16px;
+}
+
+#lblNoOfQuestions {
+	-fx-font-size: 15px;
+}
+
+#lblNoOfQuestionsNappy {
+	-fx-font-size: 16px;
+}
+
+#lblNoOfQuestionsPlayer {
+	-fx-font-size: 16px;
+}
+
+#lblWhosWinner {
+	-fx-font-size: 15px;
+}
+
+#lblWinner {
+	-fx-font-size: 14px;
+}
+

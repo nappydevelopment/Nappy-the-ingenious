@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
@@ -295,7 +296,6 @@ public class MainStageController {
 		}
 	}
 	
-  
     /* updateInfo [method]: Method to update the progress elements (progress-bars / -labels) *//**
      * 
      * @param noq
@@ -324,7 +324,6 @@ public class MainStageController {
 		this.view.lblNoOfQuest.setText("" + noqP);
 	}
 	
-
 	public void blockIdontKnow() {
 		this.view.btnIdontKnow.setDisable(true);
 	}
@@ -907,11 +906,58 @@ public class MainStageController {
 		
 		alert.showAndWait();
 		
+		//Show game result view:
+		this.program.showGameResultView();
 	}
 	
 	//### Methods for game result ##################################################################
 	
-	public void showGameResultView() {
+	public void showGameResultView(Character gcn, boolean inr, int noqn, Character gcp, boolean ipr, int noqp, boolean wp) {
+		
+		this.view.impGuessedCharacterNappy = new ImagePattern(Utils.getScaledInstance(gcn.getWikiImage(), 60, 60, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recGuessedCharacterNappy.setFill(this.view.impGuessedCharacterNappy);
+		this.view.lblGuessedCharacterNappy.setText(gcn.getName());
+		
+		this.view.impGuessedCharacterPlayer = new ImagePattern(Utils.getScaledInstance(gcp.getWikiImage(), 60, 60, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recGuessedCharacterPlayer.setFill(this.view.impGuessedCharacterPlayer);
+		this.view.lblGuessedCharacterPlayer.setText(gcp.getName());
+		
+		if(inr) {
+			this.view.imvRightNappy.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/right.png"));
+		}
+		else {
+			this.view.imvRightNappy.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/wrong.png"));
+		}
+		
+		if(ipr) {
+			this.view.imvRightPlayer.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/right.png"));
+		}
+		else {
+			this.view.imvRightPlayer.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/wrong.png"));
+		}
+		
+		this.view.lblNoOfQuestionsNappy.setText("" + noqn);
+		this.view.lblNoOfQuestionsPlayer.setText("" + noqp);
+		
+		if(wp) {
+			this.view.imvWinner.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/player.png"));
+			this.view.lblWinner.setText("Spieler");
+		}
+		else {
+			this.view.imvWinner.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"));
+			this.view.lblWinner.setText("Nappy");
+		}
+		
+		this.view.gdpButtons.getChildren().clear();
+		this.view.gdpButtons.add(this.view.btnPlayAgain, 0, 0);
+		this.view.gdpButtons.add(this.view.btnBackToMainView, 0, 1);
+		this.view.gdpButtons.add(new Group(), 0, 2);
+		this.view.gdpButtons.setAlignment(Pos.BOTTOM_CENTER);
+		
+		this.view.bdpRootPane.getChildren().clear();
+		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
+		this.view.bdpRootPane.setBottom(this.view.gdpButtons);
+		this.view.bdpRootPane.setCenter(this.view.vbxResultContent);
 		
 	}
 	
