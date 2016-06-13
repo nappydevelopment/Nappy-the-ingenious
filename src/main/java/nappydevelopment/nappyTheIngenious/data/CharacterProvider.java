@@ -5,7 +5,8 @@ import nappydevelopment.nappyTheIngenious.data.character.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.EastereggSearcher;
-
+import nappydevelopment.nappyTheIngenious.util.eastereggs.ShowNelsonOnHaha;
+import nappydevelopment.nappyTheIngenious.util.eastereggs.TonsOfHomer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,8 +14,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CharacterProvider{
+	static EastereggSearcher eggs = new EastereggSearcher();
+	static TonsOfHomer toh = new TonsOfHomer();
+	static ShowNelsonOnHaha haha = new ShowNelsonOnHaha();
 
-	public static List<Character> getCharacters() { return getCharacters(""); }
+	public static EastereggSearcher getEggs(){ return eggs; }
+	public static TonsOfHomer getToh(){ return toh; }
+	public static ShowNelsonOnHaha getHaha(){return haha;}
+
+	public static List<Character> getCharacters(){ return getCharacters(""); }
 	public static List<Character> getCharacters(String whereclause){
 		List<Character> out = new ArrayList<>();
 		try(Statement st = DatabaseProvider.getStatement()){
@@ -49,9 +57,15 @@ public class CharacterProvider{
 		return null;
 	}
 
-	public static List<Character> search(List<Character> list, CharacterFilter search){
-		new EastereggSearcher(search.getSearchStr());
+	public static List<Character> search(List<Character> list, CharacterFilter search) {
+		int i = eggs.lookFor(search.getSearchStr());
 		List<Character> out;
+		if( i == 1){
+			return haha.getThem(list, search);
+		}else if(i == 2) {
+			return toh.getThem(list, search);
+		}
+
 		out = list.stream()
 			.filter(c -> {
 				if(search.getSearchStr().isEmpty()){return true;}
@@ -63,4 +77,6 @@ public class CharacterProvider{
 			.collect(Collectors.toList());
 		return out;
 	}
+
+
 }
