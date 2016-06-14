@@ -32,7 +32,7 @@ public class NappyInList {
         );
         description.put(
             Language.ENGLISH,
-            "Nappy is a genius in everything related to the Simpsons! \r\n " +
+            "Nappy is a genius in everything related to the Simpsons! \r\n" +
             "He knows every character from the series and can guess them, by simply asking \"yes\" and \"no\" questions.\r\n" +
             "His immense knowledge relates to the diaper, which decorates his head.\r\n" +
             "It is his everything. He never pulls his diaper from his head and will not do so in the future. \r\n" +
