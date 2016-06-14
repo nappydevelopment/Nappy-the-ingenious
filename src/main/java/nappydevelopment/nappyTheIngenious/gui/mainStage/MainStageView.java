@@ -23,6 +23,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -178,8 +179,8 @@ public class MainStageView extends Stage {
 	 * @param res
 	 * @param aeh
 	 */
-	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh, EventHandler<WindowEvent> weh) {
-		this.initComponents(res, aeh);
+	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, EventHandler<WindowEvent> weh) {
+		this.initComponents(res, keh, aeh);
 		this.structureComponents();
 		this.initStage(weh);
 	}
@@ -187,7 +188,7 @@ public class MainStageView extends Stage {
 //### INITAL METHODS #######################################################################################################################
 
 	//Method that initialize the gui-components:
-	private void initComponents(MainStageResources res, EventHandler<ActionEvent> aeh) {
+	private void initComponents(MainStageResources res, EventHandler<KeyEvent> keh, EventHandler<ActionEvent> aeh) {
 
 		//### Initialize components of all views ###################################################
 
@@ -433,6 +434,7 @@ public class MainStageView extends Stage {
 
 		//Combobox for a list of QuestAnsElement objects:
 		this.cmbQuestions = new ComboBox<QuestAnsElement>();
+		this.cmbQuestions.setEditable(true);
 		//Width of the combobox and the viewlist is set in the css-file!
 
 		/* This definition create a list cell, this list cell object defines what content
@@ -475,7 +477,8 @@ public class MainStageView extends Stage {
 					 @Override
 					 public void updateItem(QuestAnsElement qae, boolean empty) {
 
-						 getListView().setMaxWidth(425);
+						 getListView().setMaxWidth(435);
+						 getListView().setMinWidth(435);
 						 super.updateItem(qae, empty);
 
 						 if (empty) {
@@ -526,6 +529,7 @@ public class MainStageView extends Stage {
 
 		//Set action listener:
 		this.cmbQuestions.setOnAction(aeh);
+		this.cmbQuestions.addEventHandler(KeyEvent.KEY_RELEASED, keh);
 		
 		//### Game result ##########################################################################
 		
@@ -624,13 +628,17 @@ public class MainStageView extends Stage {
 		this.imvWinner = new ImageView();
 		this.lblWinner = new Label();
 		this.lblWinner.setId("lblWinner");
+		
 		//Buttons:
 		this.btnPlayAgain = new Button();
 		this.btnPlayAgain.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/restart.png"));
 		this.btnPlayAgain.setPrefSize(250, 40);
+		this.btnPlayAgain.setAlignment(Pos.CENTER);
 		this.btnPlayAgain.setOnAction(aeh);
+		
 		this.btnBackToMainView = new Button();
 		this.btnBackToMainView.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/home.png"));
+		this.btnBackToMainView.setAlignment(Pos.CENTER);
 		this.btnBackToMainView.setPrefSize(250, 40);
 		this.btnBackToMainView.setOnAction(aeh);
 	}
