@@ -442,6 +442,14 @@ public class Program extends Application {
 			e.printStackTrace();
 		}
 	}
+
+	public void setQuestionFilter(String filter) {
+		//Show the new list:
+		System.out.println("METHOD setQuestionFilter - filter: " + filter);
+		QuestAnsList a = this.game.getQal().filter(filter);
+		System.out.println(a.size());
+		this.mainStageController.showQuestions(false, this.game.getQal().filter(filter));
+	}
 	
 	public void showCharacterSelection(Stage owner) {
 		this.wikiStageController.showForSelection(owner);
