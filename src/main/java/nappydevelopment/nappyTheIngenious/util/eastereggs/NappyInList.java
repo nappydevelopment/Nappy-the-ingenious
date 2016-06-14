@@ -7,9 +7,7 @@ import nappydevelopment.nappyTheIngenious.data.character.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.gui.wikiStage.WikiStageController;
-import nappydevelopment.nappyTheIngenious.util.Utils;
 
-import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,13 +23,11 @@ public class NappyInList {
 
 
     public List<Character> getThem(List<Character> list, CharacterFilter search) {
-    	
         List<Character> nappyList = new ArrayList<Character>();
         nicknames1.put(Language.GERMAN, "nickname");
-        Image imgOriginal = new Image(GlobalReferences.IMAGES_PATH + "wiki/nappy_gamemode2_fit_size.png");
-        Image img = Utils.getScaledInstance(imgOriginal, 110, 110, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true);
-        
-        nappyList.add(new Character("Homer Simpson", nicknames1, nicknames1, img, Gender.FEMALE, Age.YOUNG));
+        Image img = new CharacterImage("nappy_the_ingenious").get();
+        //Image(GlobalReferences.IMAGES_PATH + "general/nappy_gamemode2_fit_size.png");
+        nappyList.add(new Character("Nappy the ingenious", nicknames1, nicknames1, img, Gender.FEMALE, Age.YOUNG));
         return nappyList;
     }
 
