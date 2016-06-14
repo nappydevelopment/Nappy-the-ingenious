@@ -14,9 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Marc on 13.05.2016.
- */
 public class TonsOfHomer{
     Alert alert;
 

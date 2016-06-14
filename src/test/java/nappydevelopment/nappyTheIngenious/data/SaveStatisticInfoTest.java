@@ -15,9 +15,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Marc on 23.05.2016.
- */
 public class SaveStatisticInfoTest {
 
      /*
