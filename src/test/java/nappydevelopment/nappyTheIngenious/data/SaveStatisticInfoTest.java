@@ -56,74 +56,74 @@ public class SaveStatisticInfoTest {
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(7);
-        game.setWinNappy(true);
-        game.setWinPlayer(true);
+        game.setNappyRight(Answer.YES);
+        game.setPlayerRight(true);
         SaveStatisticInfos.createAndSavePlayer("4", game);
 
         game.setNoOfQuestionsNappy(7);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(true);
-        game.setWinPlayer(true);
+        game.setNappyRight(Answer.YES);
+        game.setPlayerRight(true);
         SaveStatisticInfos.createAndSavePlayer("6", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(true);
-        game.setWinPlayer(true);
+        game.setNappyRight(Answer.YES);
+        game.setPlayerRight(true);
         SaveStatisticInfos.createAndSavePlayer("5", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(7);
-        game.setWinNappy(true);
-        game.setWinPlayer(false);
+        game.setNappyRight(Answer.YES);
+        game.setPlayerRight(false);
         SaveStatisticInfos.createAndSavePlayer("10", game);
 
         game.setNoOfQuestionsNappy(7);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(true);
-        game.setWinPlayer(false);
+        game.setNappyRight(Answer.YES);
+        game.setPlayerRight(false);
         SaveStatisticInfos.createAndSavePlayer("12", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(true);
-        game.setWinPlayer(false);
+        game.setNappyRight(Answer.YES);
+        game.setPlayerRight(false);
         SaveStatisticInfos.createAndSavePlayer("11", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(7);
-        game.setWinNappy(false);
-        game.setWinPlayer(true);
+        game.setNappyRight(Answer.NO);
+        game.setPlayerRight(true);
         SaveStatisticInfos.createAndSavePlayer("1", game);
 
         game.setNoOfQuestionsNappy(7);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(false);
-        game.setWinPlayer(true);
+        game.setNappyRight(Answer.NO);
+        game.setPlayerRight(true);
         SaveStatisticInfos.createAndSavePlayer("3", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(false);
-        game.setWinPlayer(true);
+        game.setNappyRight(Answer.NO);
+        game.setPlayerRight(true);
         SaveStatisticInfos.createAndSavePlayer("2", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(7);
-        game.setWinNappy(false);
-        game.setWinPlayer(false);
+        game.setNappyRight(Answer.NO);
+        game.setPlayerRight(false);
         SaveStatisticInfos.createAndSavePlayer("7", game);
 
         game.setNoOfQuestionsNappy(7);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(false);
-        game.setWinPlayer(false);
+        game.setNappyRight(Answer.NO);
+        game.setPlayerRight(false);
         SaveStatisticInfos.createAndSavePlayer("9", game);
 
         game.setNoOfQuestionsNappy(8);
         game.setNoOfQuestionsPlayer(8);
-        game.setWinNappy(false);
-        game.setWinPlayer(false);
+        game.setNappyRight(Answer.NO);
+        game.setPlayerRight(false);
         SaveStatisticInfos.createAndSavePlayer("8", game);
 
         StringBuilder builder = new StringBuilder();

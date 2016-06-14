@@ -9,6 +9,16 @@ public class Game {
 //### ATTRIBUTES ###########################################################################################################################
 
 	private QuestAnsList qal;
+	private boolean isActive;
+	private boolean isGamemode2Active;
+	private boolean isFinish;
+	
+	private int noOfQuestionsPlayer;
+	private Character characterPlayer;
+	private boolean isPlayerRight;	
+	private int noOfQuestionsNappy;
+	private Character characterThatNappyGuessed;
+	private Answer isNappyRight;
 	
 	public QuestAnsList getQal() {
 		return qal;
@@ -18,8 +28,7 @@ public class Game {
 		this.qal = qal;
 	}
 
-	private boolean isActive;
-	private boolean isGamemode2Active;
+
 	public boolean isGamemode2Active() {
 		return isGamemode2Active;
 	}
@@ -28,11 +37,7 @@ public class Game {
 		this.isGamemode2Active = isGamemode2Active;
 	}
 
-	private boolean isFinish;
-	
-	private int noOfQuestionsNappy;
-	private Character characterThatNappyGuessed;
-	private Answer isNappyRight;
+
 	public boolean isPlayerRight() {
 		return isPlayerRight;
 	}
@@ -40,11 +45,6 @@ public class Game {
 	public void setPlayerRight(boolean isPlayerRight) {
 		this.isPlayerRight = isPlayerRight;
 	}
-
-	private int noOfQuestionsPlayer;
-	private Character characterThatNappyChoose;
-	private Character characterPlayer;
-	private boolean isPlayerRight;
 	
 	public Answer isNappyRight() {
 		return isNappyRight;
@@ -58,26 +58,20 @@ public class Game {
 		this.isNappyRight = isNappyRight;
 	}
 	
-	public boolean isWinNappy() {
-		return winNappy;
-	}
-
-	public void setWinNappy(boolean winNappy) {
-		this.winNappy = winNappy;
-	}
-
 	public boolean isWinPlayer() {
-		return winPlayer;
+		
+		if(this.isPlayerRight && !this.isNappyRightBoolean()) {
+			return true;
+		}
+		else if(!this.isPlayerRight && this.isNappyRightBoolean()) {
+			return false;
+		}
+		else {
+			return (this.noOfQuestionsNappy >= this.noOfQuestionsPlayer);
+		}
+		
 	}
-
-	public void setWinPlayer(boolean winPlayer) {
-		this.winPlayer = winPlayer;
-	}
-
-	private boolean winNappy;
-	private boolean winPlayer;
-	
-	
+		
 //### COMPONENTS ###########################################################################################################################
 
 //### CONSTRUCTORS #########################################################################################################################

@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -793,6 +794,7 @@ public class MainStageController {
 		
 		
 		this.view.btnIdontKnow.setId("btnIknow");
+		this.view.btnIdontKnow.setDisable(false);
 		this.res.setBtnIdontKnowTextToIknow();
 		
 		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0);
@@ -1001,11 +1003,11 @@ public class MainStageController {
 	
 	public void showGameResultView(Character gcn, boolean inr, int noqn, Character gcp, boolean ipr, int noqp, boolean wp) {
 		
-		this.view.impGuessedCharacterNappy = new ImagePattern(Utils.getScaledInstance(gcn.getWikiImage(), 60, 60, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.impGuessedCharacterNappy = new ImagePattern(Utils.getScaledInstance(gcn.getWikiImage(), 80, 80, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
 		this.view.recGuessedCharacterNappy.setFill(this.view.impGuessedCharacterNappy);
 		this.view.lblGuessedCharacterNappy.setText(gcn.getName());
 		
-		this.view.impGuessedCharacterPlayer = new ImagePattern(Utils.getScaledInstance(gcp.getWikiImage(), 60, 60, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.impGuessedCharacterPlayer = new ImagePattern(Utils.getScaledInstance(gcp.getWikiImage(), 80, 80, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
 		this.view.recGuessedCharacterPlayer.setFill(this.view.impGuessedCharacterPlayer);
 		this.view.lblGuessedCharacterPlayer.setText(gcp.getName());
 		
@@ -1027,12 +1029,14 @@ public class MainStageController {
 		this.view.lblNoOfQuestionsPlayer.setText("" + noqp);
 		
 		if(wp) {
-			this.view.imvWinner.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/player.png"));
-			this.view.lblWinner.setText("Spieler");
+			this.view.imvWinner1.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/player.png"));
+			this.view.lblWinner.setText("Spieler" + res.lblWinnerText);
+			this.view.imvWinner2.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/player.png"));
 		}
 		else {
-			this.view.imvWinner.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"));
-			this.view.lblWinner.setText("Nappy");
+			this.view.imvWinner1.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"));
+			this.view.lblWinner.setText("Nappy" + res.lblWinnerText);
+			this.view.imvWinner2.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"));
 		}
 		
 		this.view.gdpButtons.getChildren().clear();
@@ -1075,17 +1079,78 @@ public class MainStageController {
 
 	public void applySettings() {
 		this.view.getScene().getStylesheets().clear();
+		
 		if(Settings.getColoScheme() == ColorScheme.DARK){
 			this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+			this.view.gdpResultContent.setStyle("-fx-background-color: #515658;" + 
+					                            "-fx-background-radius: 5;");
+			this.view.hbxResultContent.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+                                                "-fx-background-radius: 5;" +
+												"-fx-background-color: #515658;");
+		}
+		else {
+			this.view.gdpResultContent.setStyle("-fx-background-color: #DADADA;" +
+					                            "-fx-background-radius: 5;");
+			this.view.hbxResultContent.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+                    	                        "-fx-background-radius: 5;" +
+								                "-fx-background-color: #DADADA;");
 		}
 		this.view.getScene().getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
-
 		switch(Settings.getLanguage()){
 			case ENGLISH:
 				this.res.setTextsToEnglish();
+				
+				this.view.hbxGuessedCharacter.getChildren().clear();
+				this.view.hbxGuessedCharacter.getChildren().addAll(
+						new Line(0.0f, 9.0f, 128.0f, 9.0f),
+						this.view.lblGuessedCharacter,
+						new Line(0.0f, 9.0f, 128.0f, 9.0f)
+				);
+				this.view.hbxRightGuess.getChildren().clear();
+				this.view.hbxRightGuess.getChildren().addAll(
+						new Line(0.0f, 9.0f, 143.0f, 9.0f),
+						this.view.lblRightGuess,
+						new Line(0.0f, 9.0f, 143.0f, 9.0f)
+				);
+				this.view.hbxNoOfQuestions.getChildren().clear();
+				this.view.hbxNoOfQuestions.getChildren().addAll(
+						new Line(0.0f, 9.0f, 136.0f, 9.0f),
+						this.view.lblNoOfQuestions,
+						new Line(0.0f, 9.0f, 136.0f, 9.0f)
+				);
+				this.view.hbxWhosWinner.getChildren().clear();
+				this.view.hbxWhosWinner.getChildren().addAll(
+						new Line(0.0f, 9.0f, 165.0f, 9.0f),
+						this.view.lblWhosWinner,
+						new Line(0.0f, 9.0f, 165.0f, 9.0f)
+				);
 				break;
 			case GERMAN:
 				this.res.setTextsToGerman();
+				this.view.hbxGuessedCharacter.getChildren().clear();
+				this.view.hbxGuessedCharacter.getChildren().addAll(
+						new Line(0.0f, 9.0f, 125.0f, 9.0f),
+						this.view.lblGuessedCharacter,
+						new Line(0.0f, 9.0f, 125.0f, 9.0f)
+				);
+				this.view.hbxRightGuess.getChildren().clear();
+				this.view.hbxRightGuess.getChildren().addAll(
+						new Line(0.0f, 9.0f, 140.0f, 9.0f),
+						this.view.lblRightGuess,
+						new Line(0.0f, 9.0f, 140.0f, 9.0f)
+				);
+				this.view.hbxNoOfQuestions.getChildren().clear();
+				this.view.hbxNoOfQuestions.getChildren().addAll(
+						new Line(0.0f, 9.0f, 105.0f, 9.0f),
+						this.view.lblNoOfQuestions,
+						new Line(0.0f, 9.0f, 105.0f, 9.0f)
+				);
+				this.view.hbxWhosWinner.getChildren().clear();
+				this.view.hbxWhosWinner.getChildren().addAll(
+						new Line(0.0f, 9.0f, 158.0f, 9.0f),
+						this.view.lblWhosWinner,
+						new Line(0.0f, 9.0f, 158.0f, 9.0f)
+				);
 				break;
 			default:
 				throw new IllegalArgumentException();

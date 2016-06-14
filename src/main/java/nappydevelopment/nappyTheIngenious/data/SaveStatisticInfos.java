@@ -10,7 +10,7 @@ public class SaveStatisticInfos {
     public static void createAndSavePlayer(String spielerName, Game game) {
         final double baseScore = 1000.0 / (game.getNoOfQuestionsPlayer()+6);
         final double nappyBonus = 0.25 * game.getNoOfQuestionsNappy();
-        final double multiplicator = playerWin(game.isWinPlayer())*2 + nappyWin(game.isWinNappy()) + 1.0;
+        final double multiplicator = playerWin(game.isPlayerRight())*2 + nappyWin(game.isNappyRightBoolean()) + 1.0;
         final double score = (baseScore+nappyBonus)*multiplicator * 10.0;
 
 
@@ -21,8 +21,8 @@ public class SaveStatisticInfos {
             st.execute(
                     "Insert into highscores(player_name,win_mode1,win_mode2,questions_nappy,questions_player, score) values('" +
                             player.getPlayerName() + "', '" +
-                            game.isWinNappy() + "', '" +
-                            game.isWinPlayer() + "', '" +
+                            game.isNappyRightBoolean() + "', '" +
+                            game.isPlayerRight() + "', '" +
                             player.getQuestions_nappy() + "', '" +
                             player.getQuestions_player() + "', '" +
                             player.getScore() + "');"
