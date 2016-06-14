@@ -6,9 +6,11 @@ package nappydevelopment.nappyTheIngenious.gui.mainStage;
 //### IMPORTS ##############################################################################################################################
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
@@ -18,8 +20,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -34,6 +38,7 @@ import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import nappydevelopment.nappyTheIngenious.util.Utils;
 
 import java.awt.*;
+import java.util.Iterator;
 import java.util.Optional;
 
 
@@ -51,6 +56,7 @@ public class MainStageController {
 	protected MainStageView view;
 	protected MainStageResources res;
 	private ViewActionEventHandler aeh;
+	private ViewKeyEventHandler keh;
 	private ViewWindowEventHandler weh;
 	
 //### CONSTRUCTORS #########################################################################################################################
@@ -77,10 +83,11 @@ public class MainStageController {
 		this.res = new MainStageResources();
 		//Initialize the action-event-handler for the view-components:
 		this.aeh = new ViewActionEventHandler();
+		this.keh = new ViewKeyEventHandler();
 		//Initialize the window-event-handler:
 		this.weh = new ViewWindowEventHandler();
 		//Initialize the view:
-		this.view = new MainStageView(this.res, this.aeh, this.weh);
+		this.view = new MainStageView(this.res, this.aeh, this.keh, this.weh);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 		
@@ -112,6 +119,17 @@ public class MainStageController {
 		this.view.btnIdontKnow.textProperty().bind(this.res.btnIdontKnowText);
 		
 		this.view.btnAskQuestion.textProperty().bind(this.res.btnAskQuestionText);
+		
+		this.view.btnPlayAgain.textProperty().bind(this.res.btnPlayAgainText);
+		this.view.btnBackToMainView.textProperty().bind(this.res.btnBackToMainViewText);
+		
+		this.view.lblGameResult.textProperty().bind(this.res.lblGameResultText);
+		this.view.lblPlayer.textProperty().bind(this.res.lblPlayerText);
+		this.view.lblGuessedCharacter.textProperty().bind(this.res.lblGuessedCharacterText);
+		this.view.lblRightGuess.textProperty().bind(this.res.lblRightGuessText);
+		this.view.lblNoOfQuestions.textProperty().bind(this.res.lblNoOfQuestionsText);
+		this.view.lblWhosWinner.textProperty().bind(this.res.lblWhosWinnerText);
+		
 		
 		//Stage-Properties:
 		this.view.titleProperty().bind(this.res.stageTitleText);
@@ -216,16 +234,38 @@ public class MainStageController {
 				
 			}
 			else if(src == view.btnAskQuestion) {
-				
-				MainStageController.this.program.askQuestion(MainStageController.this.view.cmbQuestions.getValue().getQuestion());
+				System.out.println("ACTION-EVENT-HANDLER: event of btnAskQuestion!");
+				MainStageController.this.askQuestion();
 			}
 			else if(src == view.cmbQuestions) {
 				//Adopt the question from the combobox to the label:
 				MainStageController.this.adoptQuestion();
-				//view.cmbQuestions.setCellFactory(value);
+			}
+			else if(src == view.btnPlayAgain) {
+				System.out.println("Play again!");
+				MainStageController.this.program.finishGameWithStatistics(true);
+			}
+			else if(src == view.btnBackToMainView) {
+				System.out.println("Back to main view");
+				MainStageController.this.program.finishGameWithStatistics(false);
 			}
 			else {
 				System.out.println("Unkwon EventHandler-Source!!!");
+			}
+			
+		}
+		
+	}
+	
+
+	//Event-Handler that handles all KeyEvents of the view:
+	private class ViewKeyEventHandler implements EventHandler<KeyEvent> {
+
+		@Override
+		public void handle(KeyEvent e) {
+			
+			if(e.getSource() == view.cmbQuestions) {
+				MainStageController.this.applyQuestionFilter();
 			}
 			
 		}
@@ -236,21 +276,9 @@ public class MainStageController {
 
 		@Override
 		public void handle(WindowEvent event) {
-		    
-//			// consume event
-//	        event.consume();
-//
-//	        // show close dialog
-//	        Alert alert = new Alert(AlertType.CONFIRMATION);
-//	        alert.setTitle("Close Confirmation");
-//	        alert.setHeaderText("Do you really want to quit?");
-//	        alert.initOwner( MainStageController.this.view);
-//
-//	        Optional<ButtonType> result = alert.showAndWait();
-//	        if (result.get() == ButtonType.OK){
-//	            Platform.exit();
-//	        }
+			
 			event.consume();
+			
 			if(MainStageController.this.program.existAnActiveGame()) {
 				MainStageController.this.showCloseProgramDialog();
 			}
@@ -295,7 +323,6 @@ public class MainStageController {
 		}
 	}
 	
-  
     /* updateInfo [method]: Method to update the progress elements (progress-bars / -labels) *//**
      * 
      * @param noq
@@ -324,7 +351,6 @@ public class MainStageController {
 		this.view.lblNoOfQuest.setText("" + noqP);
 	}
 	
-
 	public void blockIdontKnow() {
 		this.view.btnIdontKnow.setDisable(true);
 	}
@@ -768,6 +794,7 @@ public class MainStageController {
 		
 		
 		this.view.btnIdontKnow.setId("btnIknow");
+		this.view.btnIdontKnow.setDisable(false);
 		this.res.setBtnIdontKnowTextToIknow();
 		
 		this.view.gdpButtons.add(this.view.vbxInfoLabel, 0, 0);
@@ -789,6 +816,7 @@ public class MainStageController {
 	 * @param answer
 	 */
 	public void showAnswer(String answer) {
+		System.out.println("METHOD: showAnswer - answer: " + answer);
 		this.view.lblAnswer.setText(answer);
 	}
 	
@@ -802,16 +830,26 @@ public class MainStageController {
 		this.view.cmbQuestions.getItems().addAll(qal);
 		
 		if(isTheFirstQuestion) {
-			System.out.println("Is the first question!");
-			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectAQuestion));
+			System.out.println("METHOD: showQuestions - This is the first question!");
+			this.view.cmbQuestions.setPromptText(this.res.cmbQuestionsTextSelectAQuestion);
 			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
 		}
 		else {
-			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
-			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
+			System.out.println("METHOD: showQuestions - This is not the first question!");
+			//this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
+			this.view.cmbQuestions.setPromptText(this.res.cmbQuestionsTextSelectNextQuestion);
 		}
 
 		this.view.btnAskQuestion.setDisable(true);
+	}
+	
+	
+	public void applyQuestionFilter() {
+		
+		System.out.println("METHOD: applyQuestionFilter - Is not a QuestAnsElement");
+		String filter = "" + this.view.cmbQuestions.editorProperty().getValue().getText();
+		this.program.setQuestionFilter(filter);
+		
 	}
 	
 	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label *//**
@@ -822,17 +860,67 @@ public class MainStageController {
 		if(this.view.cmbQuestions.getItems().isEmpty()) {
 			return;
 		}
-		if(this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectAQuestion &&
-		   this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectNextQuestion) {
-			
-		   this.view.lblInfo.setText(this.view.cmbQuestions.getValue().getQuestion());
-		   this.view.lblAnswer.setText("");
-		   this.view.btnAskQuestion.setDisable(false);
+		String question = this.view.cmbQuestions.editorProperty().getValue().getText();
+		ObservableList<QuestAnsElement> qal = this.view.cmbQuestions.getItems();
+		boolean isCorrectQuest = false;
+		Iterator<QuestAnsElement> iterator = qal.iterator();
+		while (iterator.hasNext()) {
+			QuestAnsElement curQAL = iterator.next();
+			if(curQAL.getQuestion().equals(question)) {
+				isCorrectQuest = true;
+				break;
+			};
+		}
+		
+		//if(this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectAQuestion &&
+		//   this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectNextQuestion) {
+		if(this.view.cmbQuestions.getValue() instanceof QuestAnsElement) {
+			System.out.println("METHOD: adoptQuestion - This is a correct question!");
+			this.view.lblInfo.setText(this.view.cmbQuestions.getValue().getQuestion());
+			this.view.lblAnswer.setText("");
+			this.view.btnAskQuestion.setDisable(false);
+		}
+		else if(isCorrectQuest) {
+			this.view.lblInfo.setText(question);
+			this.view.lblAnswer.setText("");
+			this.view.btnAskQuestion.setDisable(false);
 		}
 		else {
-			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
+			System.out.println("METHOD: adoptQuestion - This is not a correct question!");
+			System.out.println("METHOD: adoptQuestion - combo-box element: " + this.view.cmbQuestions.getValue());
 			this.view.btnAskQuestion.setDisable(true);
+			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
 		}
+	}
+
+	/* askQuestion [method]: Method that call a program-method to ask the selected question *//**
+	 * 
+	 */
+	private void askQuestion() {
+		
+		if(this.view.cmbQuestions.getValue() instanceof QuestAnsElement) {
+			System.out.println("METHOD: askQuestion - The combo-box element is a question-answer-element");
+			this.program.askQuestion(this.view.cmbQuestions.getValue().getQuestion());
+		}
+		else {
+			System.out.println("METHOD: askQuestion - The combo-box element is not a question-answer-element");
+			String question = this.view.cmbQuestions.editorProperty().getValue().getText();
+			ObservableList<QuestAnsElement> qal = this.view.cmbQuestions.getItems();
+			boolean isCorrectQuest = false;
+			Iterator<QuestAnsElement> iterator = qal.iterator();
+			while (iterator.hasNext()) {
+				QuestAnsElement curQAL = iterator.next();
+				if(curQAL.getQuestion().equals(question)) {
+					isCorrectQuest = true;
+					break;
+				};
+			}
+			if(isCorrectQuest) {
+				this.program.askQuestion(question);
+			}
+			
+		}
+
 	}
 	
 	public void showStatusDialogGM2(boolean isPlayerRight, int noOfQuestions, Character character, Character nappysChar) {
@@ -907,11 +995,60 @@ public class MainStageController {
 		
 		alert.showAndWait();
 		
+		//Show game result view:
+		this.program.showGameResultView();
 	}
 	
 	//### Methods for game result ##################################################################
 	
-	public void showGameResultView() {
+	public void showGameResultView(Character gcn, boolean inr, int noqn, Character gcp, boolean ipr, int noqp, boolean wp) {
+		
+		this.view.impGuessedCharacterNappy = new ImagePattern(Utils.getScaledInstance(gcn.getWikiImage(), 80, 80, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recGuessedCharacterNappy.setFill(this.view.impGuessedCharacterNappy);
+		this.view.lblGuessedCharacterNappy.setText(gcn.getName());
+		
+		this.view.impGuessedCharacterPlayer = new ImagePattern(Utils.getScaledInstance(gcp.getWikiImage(), 80, 80, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true));
+		this.view.recGuessedCharacterPlayer.setFill(this.view.impGuessedCharacterPlayer);
+		this.view.lblGuessedCharacterPlayer.setText(gcp.getName());
+		
+		if(inr) {
+			this.view.imvRightNappy.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/right.png"));
+		}
+		else {
+			this.view.imvRightNappy.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/wrong.png"));
+		}
+		
+		if(ipr) {
+			this.view.imvRightPlayer.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/right.png"));
+		}
+		else {
+			this.view.imvRightPlayer.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/wrong.png"));
+		}
+		
+		this.view.lblNoOfQuestionsNappy.setText("" + noqn);
+		this.view.lblNoOfQuestionsPlayer.setText("" + noqp);
+		
+		if(wp) {
+			this.view.imvWinner1.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/player.png"));
+			this.view.lblWinner.setText("Spieler" + res.lblWinnerText);
+			this.view.imvWinner2.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/player.png"));
+		}
+		else {
+			this.view.imvWinner1.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"));
+			this.view.lblWinner.setText("Nappy" + res.lblWinnerText);
+			this.view.imvWinner2.setImage(new Image(GlobalReferences.ICONS_PATH + "32x32/icon.png"));
+		}
+		
+		this.view.gdpButtons.getChildren().clear();
+		this.view.gdpButtons.add(this.view.btnPlayAgain, 0, 0);
+		this.view.gdpButtons.add(this.view.btnBackToMainView, 0, 1);
+		this.view.gdpButtons.add(new Group(), 0, 2);
+		this.view.gdpButtons.setAlignment(Pos.BOTTOM_CENTER);
+		
+		this.view.bdpRootPane.getChildren().clear();
+		this.view.bdpRootPane.setTop(this.view.mnbMenuBar);
+		this.view.bdpRootPane.setBottom(this.view.gdpButtons);
+		this.view.bdpRootPane.setCenter(this.view.vbxResultContent);
 		
 	}
 	
@@ -942,17 +1079,78 @@ public class MainStageController {
 
 	public void applySettings() {
 		this.view.getScene().getStylesheets().clear();
+		
 		if(Settings.getColoScheme() == ColorScheme.DARK){
 			this.view.getScene().getStylesheets().add("/nappydevelopment/nappyTheIngenious/gui/globalStyle/DarkTheme.css");
+			this.view.gdpResultContent.setStyle("-fx-background-color: #515658;" + 
+					                            "-fx-background-radius: 5;");
+			this.view.hbxResultContent.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+                                                "-fx-background-radius: 5;" +
+												"-fx-background-color: #515658;");
+		}
+		else {
+			this.view.gdpResultContent.setStyle("-fx-background-color: #DADADA;" +
+					                            "-fx-background-radius: 5;");
+			this.view.hbxResultContent.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+                    	                        "-fx-background-radius: 5;" +
+								                "-fx-background-color: #DADADA;");
 		}
 		this.view.getScene().getStylesheets().add(MainStageView.class.getResource("MainStageCSS.css").toExternalForm());
-
 		switch(Settings.getLanguage()){
 			case ENGLISH:
 				this.res.setTextsToEnglish();
+				
+				this.view.hbxGuessedCharacter.getChildren().clear();
+				this.view.hbxGuessedCharacter.getChildren().addAll(
+						new Line(0.0f, 9.0f, 128.0f, 9.0f),
+						this.view.lblGuessedCharacter,
+						new Line(0.0f, 9.0f, 128.0f, 9.0f)
+				);
+				this.view.hbxRightGuess.getChildren().clear();
+				this.view.hbxRightGuess.getChildren().addAll(
+						new Line(0.0f, 9.0f, 143.0f, 9.0f),
+						this.view.lblRightGuess,
+						new Line(0.0f, 9.0f, 143.0f, 9.0f)
+				);
+				this.view.hbxNoOfQuestions.getChildren().clear();
+				this.view.hbxNoOfQuestions.getChildren().addAll(
+						new Line(0.0f, 9.0f, 136.0f, 9.0f),
+						this.view.lblNoOfQuestions,
+						new Line(0.0f, 9.0f, 136.0f, 9.0f)
+				);
+				this.view.hbxWhosWinner.getChildren().clear();
+				this.view.hbxWhosWinner.getChildren().addAll(
+						new Line(0.0f, 9.0f, 165.0f, 9.0f),
+						this.view.lblWhosWinner,
+						new Line(0.0f, 9.0f, 165.0f, 9.0f)
+				);
 				break;
 			case GERMAN:
 				this.res.setTextsToGerman();
+				this.view.hbxGuessedCharacter.getChildren().clear();
+				this.view.hbxGuessedCharacter.getChildren().addAll(
+						new Line(0.0f, 9.0f, 125.0f, 9.0f),
+						this.view.lblGuessedCharacter,
+						new Line(0.0f, 9.0f, 125.0f, 9.0f)
+				);
+				this.view.hbxRightGuess.getChildren().clear();
+				this.view.hbxRightGuess.getChildren().addAll(
+						new Line(0.0f, 9.0f, 140.0f, 9.0f),
+						this.view.lblRightGuess,
+						new Line(0.0f, 9.0f, 140.0f, 9.0f)
+				);
+				this.view.hbxNoOfQuestions.getChildren().clear();
+				this.view.hbxNoOfQuestions.getChildren().addAll(
+						new Line(0.0f, 9.0f, 105.0f, 9.0f),
+						this.view.lblNoOfQuestions,
+						new Line(0.0f, 9.0f, 105.0f, 9.0f)
+				);
+				this.view.hbxWhosWinner.getChildren().clear();
+				this.view.hbxWhosWinner.getChildren().addAll(
+						new Line(0.0f, 9.0f, 158.0f, 9.0f),
+						this.view.lblWhosWinner,
+						new Line(0.0f, 9.0f, 158.0f, 9.0f)
+				);
 				break;
 			default:
 				throw new IllegalArgumentException();
