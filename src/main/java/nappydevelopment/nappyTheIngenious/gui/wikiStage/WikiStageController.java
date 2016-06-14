@@ -5,7 +5,6 @@ package nappydevelopment.nappyTheIngenious.gui.wikiStage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -23,7 +22,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import nappydevelopment.nappyTheIngenious.GlobalReferences;
 import nappydevelopment.nappyTheIngenious.Program;
-import nappydevelopment.nappyTheIngenious.data.Answer;
 import nappydevelopment.nappyTheIngenious.data.CharacterProvider;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
@@ -103,7 +101,6 @@ public class WikiStageController {
 		this.view.btnResetFilter.textProperty().bind(this.res.btnResetFilterText);
 	}
 			
-			
 //### INNER CLASSES ########################################################################################################################
 
 	//Event-Handler that handles all ActionEvents of the view:
@@ -144,7 +141,6 @@ public class WikiStageController {
 		
 	}
 
-	
 	private class ViewMouseEventHandler implements EventHandler<MouseEvent> {
 
 		@Override
@@ -154,8 +150,7 @@ public class WikiStageController {
 			}
 		}
 	}
-	
-	
+		
 //### PRIVATE METHODS ######################################################################################################################
 	
 	/* applyFilter [method]: Method that applies the filter options *//**
