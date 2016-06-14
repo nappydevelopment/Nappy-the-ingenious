@@ -135,7 +135,9 @@ public class SaveStatisticInfoTest {
             ResultSet res = st.getResultSet();
             while(res.next()){
                 String name = res.getString("player_name");
+                double score = res.getDouble("score");
                 builder.append(name);
+                System.out.println(score);
             }
             res.close();
             st.close();
