@@ -220,7 +220,7 @@ public class WikiStageView extends Stage {
 //        	}
 //        	else 
 //        	{
-        	Image img = Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true);
+			Image img = Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true);
         	imgPat = new ImagePattern(img);
         	res.charNameImageMap.put(curCharacter.getName(), img);
 //        	}
