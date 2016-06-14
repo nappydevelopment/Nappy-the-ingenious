@@ -490,7 +490,6 @@ public class Program extends Application {
 	
 	//Main-method that starts the JavaFX-Platform:
 	public static void main(String[] args) {
-    	
     	//Start JavaFX-Platform with the JavaFX-Application class gui:
     	Application.launch(args);
     }
