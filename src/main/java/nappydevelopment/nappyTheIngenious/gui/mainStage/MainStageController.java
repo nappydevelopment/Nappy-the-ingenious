@@ -6,6 +6,7 @@ package nappydevelopment.nappyTheIngenious.gui.mainStage;
 //### IMPORTS ##############################################################################################################################
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -36,6 +37,7 @@ import nappydevelopment.nappyTheIngenious.data.settings.Settings;
 import nappydevelopment.nappyTheIngenious.util.Utils;
 
 import java.awt.*;
+import java.util.Iterator;
 import java.util.Optional;
 
 
@@ -841,7 +843,11 @@ public class MainStageController {
 	
 	
 	public void applyQuestionFilter() {
-		System.out.println("METHOD: applyQuestionFilter - ");
+		
+		System.out.println("METHOD: applyQuestionFilter - Is not a QuestAnsElement");
+		String filter = "" + this.view.cmbQuestions.editorProperty().getValue().getText();
+		this.program.setQuestionFilter(filter);
+		
 	}
 	
 	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label *//**
@@ -852,11 +858,28 @@ public class MainStageController {
 		if(this.view.cmbQuestions.getItems().isEmpty()) {
 			return;
 		}
+		String question = this.view.cmbQuestions.editorProperty().getValue().getText();
+		ObservableList<QuestAnsElement> qal = this.view.cmbQuestions.getItems();
+		boolean isCorrectQuest = false;
+		Iterator<QuestAnsElement> iterator = qal.iterator();
+		while (iterator.hasNext()) {
+			QuestAnsElement curQAL = iterator.next();
+			if(curQAL.getQuestion().equals(question)) {
+				isCorrectQuest = true;
+				break;
+			};
+		}
+		
 		//if(this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectAQuestion &&
 		//   this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectNextQuestion) {
 		if(this.view.cmbQuestions.getValue() instanceof QuestAnsElement) {
 			System.out.println("METHOD: adoptQuestion - This is a correct question!");
 			this.view.lblInfo.setText(this.view.cmbQuestions.getValue().getQuestion());
+			this.view.lblAnswer.setText("");
+			this.view.btnAskQuestion.setDisable(false);
+		}
+		else if(isCorrectQuest) {
+			this.view.lblInfo.setText(question);
 			this.view.lblAnswer.setText("");
 			this.view.btnAskQuestion.setDisable(false);
 		}
@@ -879,6 +902,21 @@ public class MainStageController {
 		}
 		else {
 			System.out.println("METHOD: askQuestion - The combo-box element is not a question-answer-element");
+			String question = this.view.cmbQuestions.editorProperty().getValue().getText();
+			ObservableList<QuestAnsElement> qal = this.view.cmbQuestions.getItems();
+			boolean isCorrectQuest = false;
+			Iterator<QuestAnsElement> iterator = qal.iterator();
+			while (iterator.hasNext()) {
+				QuestAnsElement curQAL = iterator.next();
+				if(curQAL.getQuestion().equals(question)) {
+					isCorrectQuest = true;
+					break;
+				};
+			}
+			if(isCorrectQuest) {
+				this.program.askQuestion(question);
+			}
+			
 		}
 
 	}
