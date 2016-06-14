@@ -542,8 +542,8 @@ public class MainStageView extends Stage {
 		this.gdpResultContent = new GridPane();
 		//this.gdpResultContent.setGridLinesVisible(true);
 		this.gdpResultContent.setPadding(new Insets(5,5,5,5));
-		this.gdpResultContent.setStyle("-fx-background-color: #329C9C;" +
-  			  							"-fx-background-radius: 5;");
+		this.gdpResultContent.setStyle("-fx-background-color: #F0F0F0;" +
+  			  						   "-fx-background-radius: 5;");
 		this.gdpResultContent.setAlignment(Pos.TOP_CENTER);
 		this.gdpResultContent.setPrefSize(Integer.MAX_VALUE, 400);
 		this.gdpResultContent.setMaxSize(Integer.MAX_VALUE, 400);
