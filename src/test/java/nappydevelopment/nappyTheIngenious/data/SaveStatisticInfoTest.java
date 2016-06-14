@@ -142,7 +142,7 @@ public class SaveStatisticInfoTest {
         }catch(SQLException e){
             e.printStackTrace();
         }
-
+        System.out.println(builder.toString());
         assertTrue(builder.toString().equals("123456789101112"));
 
     }
