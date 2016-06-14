@@ -448,7 +448,8 @@ public class Program extends Application {
 		System.out.println("METHOD setQuestionFilter - filter: " + filter);
 		QuestAnsList a = this.game.getQal().filter(filter);
 		System.out.println(a.size());
-		this.mainStageController.showQuestions(false, this.game.getQal().filter(filter));
+		boolean firstQuestion = (this.game.getNoOfQuestionsPlayer() == 0);
+		this.mainStageController.showQuestions(firstQuestion, this.game.getQal().filter(filter));
 	}
 	
 	public void showCharacterSelection(Stage owner) {

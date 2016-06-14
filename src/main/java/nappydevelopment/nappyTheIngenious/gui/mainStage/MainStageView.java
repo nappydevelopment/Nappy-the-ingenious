@@ -435,6 +435,7 @@ public class MainStageView extends Stage {
 		//Combobox for a list of QuestAnsElement objects:
 		this.cmbQuestions = new ComboBox<QuestAnsElement>();
 		this.cmbQuestions.setEditable(true);
+		//this.cmbQuestions.editorProperty().getValue().setText("");
 		//Width of the combobox and the viewlist is set in the css-file!
 
 		/* This definition create a list cell, this list cell object defines what content

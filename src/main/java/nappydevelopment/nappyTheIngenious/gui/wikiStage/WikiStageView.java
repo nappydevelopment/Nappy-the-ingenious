@@ -30,6 +30,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import nappydevelopment.nappyTheIngenious.GlobalReferences;
 import nappydevelopment.nappyTheIngenious.data.character.Age;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.character.Gender;
@@ -260,6 +261,10 @@ public class WikiStageView extends Stage {
         	//Add current character-gui-elements to the main-container:
         	this.vbxContentPane.getChildren().add(hbxBox);
         }
+        
+        Image imgOriginal = new Image(GlobalReferences.IMAGES_PATH + "wiki/nappy_the_ingenious.png");
+        Image img = Utils.getScaledInstance(imgOriginal, 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, true);
+        res.charNameImageMap.put("Nappy the ingenious", img);
         
 	}
 			
