@@ -15,7 +15,7 @@ public class EastereggSearcher {
             return 2;
         }
         else if(str.equals("nappy")) {
-           nap.add(new NappyStage());
+            nap.add(new NappyStage());
             return 3;
         }
         return 4;
