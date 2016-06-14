@@ -50,12 +50,12 @@ after_success:
   - git push -q https://xnappy:$GITHUB_TOKEN@github.com/nappydevelopment/Nappy-the-ingenious
 
 after_failure:
---- !!str
-"curl -i --user $JIRA_USER:$JIRA_PASS
- -H \"Content-Type: application/json\"
- -H \"Accept: application/json\"
- -X POST -d '{\"fields\": {\"project\":{ \"key\": \"NAP\"},
-   \"summary\": \"Travis Build Error: '\"$TRAVIS_BRANCH\"'\",
-   \"description\": \"The build process of commit: '\"$TRAVIS_COMMIT\"' was not successful. https://travis-ci.org/nappydevelopment/Nappy-the-ingenious/builds/'\"$TRAVIS_BUILD_ID\"'\",
-   \"issuetype\": {\"name\": \"Bug\" } } }
- jira.it.dh-karlsruhe.de:8080/rest/api/2/issue/"
+  - >
+    curl -i --user $JIRA_USER:$JIRA_PASS
+    -H "Content-Type: application/json"
+    -H "Accept: application/json"
+    -X POST -d '{"fields": {"project":{ "key": "NAP"},
+    "summary": "Travis Build Error: '"$TRAVIS_BRANCH"'",
+    "description": "The build process of commit: '"$TRAVIS_COMMIT"' was not successful. https://travis-ci.org/nappydevelopment/Nappy-the-ingenious/builds/'"$TRAVIS_BUILD_ID"'",
+    "issuetype": {"name": "Bug" } } }
+    jira.it.dh-karlsruhe.de:8080/rest/api/2/issue/"

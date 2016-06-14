@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
@@ -23,14 +24,17 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -126,8 +130,56 @@ public class MainStageView extends Stage {
 	//Button btnIKnowTheCharacter; //handled through the btnIdontKnow!
 	HBox hbxAskQuestion;
 	Button btnAskQuestion;
-
-
+	
+	//### Content of the game result ###############################################################
+	
+	VBox vbxResultContent;
+	HBox hbxResultContent;
+	GridPane gdpResultContent;
+	
+	Label lblGameResult;
+	
+	VBox vbxNappy;
+	ImageView imvNappyIcon;
+	Label lblNappy;
+	VBox vbxPlayer;
+	ImageView imvPlayerIcon;
+	Label lblPlayer;
+	
+	HBox hbxGuessedCharacter;
+	Label lblGuessedCharacter;
+	VBox vbxGuessedCharacterNappy;
+	HBox hbxGuessedCharacterNappy;
+	Rectangle recGuessedCharacterNappy;
+	ImagePattern impGuessedCharacterNappy;
+	Label lblGuessedCharacterNappy;
+	VBox vbxGuessedCharacterPlayer;
+	HBox hbxGuessedCharacterPlayer;
+	Rectangle recGuessedCharacterPlayer;
+	ImagePattern impGuessedCharacterPlayer;
+	Label lblGuessedCharacterPlayer;
+	
+	HBox hbxRightGuess;
+	Label lblRightGuess;
+	ImageView imvRightNappy;
+	ImageView imvRightPlayer;
+	
+	HBox hbxNoOfQuestions;
+	Label lblNoOfQuestions;
+	Label lblNoOfQuestionsNappy;
+	Label lblNoOfQuestionsPlayer;
+	
+	HBox hbxWhosWinner;
+	Label lblWhosWinner;
+	
+	HBox hbxWinner;
+	ImageView imvWinner1;
+	ImageView imvWinner2;
+	Label lblWinner;
+	
+	Button btnPlayAgain;
+	Button btnBackToMainView;
+	
 //### CONSTRUCTORS #########################################################################################################################
 
 	/* MainStageView [constructor]: Constructor that creates a new main-stage-view with all gui-components *//**
@@ -135,8 +187,8 @@ public class MainStageView extends Stage {
 	 * @param res
 	 * @param aeh
 	 */
-	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh, EventHandler<WindowEvent> weh) {
-		this.initComponents(res, aeh);
+	public MainStageView(MainStageResources res, EventHandler<ActionEvent> aeh, EventHandler<KeyEvent> keh, EventHandler<WindowEvent> weh) {
+		this.initComponents(res, keh, aeh);
 		this.structureComponents();
 		this.initStage(weh);
 	}
@@ -144,7 +196,7 @@ public class MainStageView extends Stage {
 //### INITAL METHODS #######################################################################################################################
 
 	//Method that initialize the gui-components:
-	private void initComponents(MainStageResources res, EventHandler<ActionEvent> aeh) {
+	private void initComponents(MainStageResources res, EventHandler<KeyEvent> keh, EventHandler<ActionEvent> aeh) {
 
 		//### Initialize components of all views ###################################################
 
@@ -390,6 +442,8 @@ public class MainStageView extends Stage {
 
 		//Combobox for a list of QuestAnsElement objects:
 		this.cmbQuestions = new ComboBox<QuestAnsElement>();
+		this.cmbQuestions.setEditable(true);
+		//this.cmbQuestions.editorProperty().getValue().setText("");
 		//Width of the combobox and the viewlist is set in the css-file!
 
 		/* This definition create a list cell, this list cell object defines what content
@@ -432,7 +486,8 @@ public class MainStageView extends Stage {
 					 @Override
 					 public void updateItem(QuestAnsElement qae, boolean empty) {
 
-						 getListView().setMaxWidth(425);
+						 getListView().setMaxWidth(435);
+						 getListView().setMinWidth(435);
 						 super.updateItem(qae, empty);
 
 						 if (empty) {
@@ -483,10 +538,128 @@ public class MainStageView extends Stage {
 
 		//Set action listener:
 		this.cmbQuestions.setOnAction(aeh);
+		this.cmbQuestions.addEventHandler(KeyEvent.KEY_RELEASED, keh);
+		
+		//### Game result ##########################################################################
+		
+		this.vbxResultContent = new VBox();
+		this.vbxResultContent.setPadding(new Insets(15,15,15,15));
+		this.hbxResultContent = new HBox();
+		this.gdpResultContent = new GridPane();
+		//this.gdpResultContent.setGridLinesVisible(true);
+		this.gdpResultContent.setPadding(new Insets(5,5,20,5));
+		this.gdpResultContent.setAlignment(Pos.TOP_CENTER);
+		this.gdpResultContent.setPrefSize(Integer.MAX_VALUE, 400);
+		this.gdpResultContent.setMaxSize(Integer.MAX_VALUE, 400);
+		this.gdpResultContent.setHgap(15);
+		this.gdpResultContent.setVgap(13);
+		//Set the column-rate:
+		ColumnConstraints gdpResultContentCol1 = new ColumnConstraints();
+		gdpResultContentCol1.setPercentWidth(50);
+		ColumnConstraints gdpResultContentCol2 = new ColumnConstraints();
+		gdpResultContentCol2.setPercentWidth(50);
+		
 
+		this.gdpResultContent.getColumnConstraints().addAll(
+			gdpResultContentCol1,
+			gdpResultContentCol2
+		);
+
+		
+		//Labels:
+		this.lblGameResult = new Label("Spielergebnis");
+		this.lblGameResult.setId("lblGameResult");
+		
+		this.vbxNappy = new VBox(5);
+		this.vbxNappy.setAlignment(Pos.CENTER); 
+		this.imvNappyIcon = new ImageView(GlobalReferences.ICONS_PATH + "32x32/icon.png");
+		this.lblNappy = new Label("Nappy");
+		this.lblNappy.setId("lblNappy");
+		
+		this.vbxPlayer = new VBox(5);
+		this.vbxPlayer.setAlignment(Pos.CENTER);
+		this.imvPlayerIcon = new ImageView(GlobalReferences.ICONS_PATH + "32x32/player.png");
+		this.lblPlayer = new Label();
+		this.lblPlayer.setId("lblPlayer");
+		
+		this.hbxGuessedCharacter = new HBox(5);
+		this.hbxGuessedCharacter.setAlignment(Pos.CENTER);
+		this.lblGuessedCharacter = new Label();
+		this.lblGuessedCharacter.setId("lblGuessedCharacter");
+		this.vbxGuessedCharacterNappy = new VBox(5);
+		this.vbxGuessedCharacterNappy.setAlignment(Pos.CENTER);
+	    this.hbxGuessedCharacterNappy = new HBox();
+	    hbxGuessedCharacterNappy.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          			  "-fx-padding: 3;" +
+	                          			  "-fx-background-color: #FFD90F;" +
+	                          			  "-fx-background-radius: 5;");
+	    hbxGuessedCharacterNappy.setAlignment(Pos.CENTER);
+	    hbxGuessedCharacterNappy.setMaxSize(83, 83);
+	    this.recGuessedCharacterNappy = new Rectangle();
+	    this.recGuessedCharacterNappy.setWidth(80);
+	    this.recGuessedCharacterNappy.setHeight(80);
+		this.lblGuessedCharacterNappy = new Label();
+		this.lblGuessedCharacterNappy.setId("lblGuessedCharacterNappy");
+		this.vbxGuessedCharacterPlayer = new VBox(5);
+		this.vbxGuessedCharacterPlayer.setAlignment(Pos.CENTER);
+	    this.hbxGuessedCharacterPlayer = new HBox();
+	    hbxGuessedCharacterPlayer.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" +
+	                          			  "-fx-padding: 3;" +
+	                          			  "-fx-background-color: #FFD90F;" +
+	                          			  "-fx-background-radius: 5;");
+	    hbxGuessedCharacterPlayer.setAlignment(Pos.CENTER);
+	    hbxGuessedCharacterPlayer.setMaxSize(83, 83);
+	    this.recGuessedCharacterPlayer = new Rectangle();
+	    this.recGuessedCharacterPlayer.setWidth(80);
+	    this.recGuessedCharacterPlayer.setHeight(80);
+		this.lblGuessedCharacterPlayer = new Label();
+		this.lblGuessedCharacterPlayer.setId("lblGuessedCharacterPlayer");
+		
+		this.hbxRightGuess = new HBox(5);
+		this.hbxRightGuess.setAlignment(Pos.CENTER);
+		this.lblRightGuess = new Label();
+		this.lblRightGuess.setId("lblRightGuess");
+		this.imvRightNappy = new ImageView();
+		this.imvRightPlayer = new ImageView();
+		
+		this.hbxNoOfQuestions = new HBox(5);
+		this.hbxNoOfQuestions.setAlignment(Pos.CENTER);
+		
+		this.lblNoOfQuestions = new Label("Anzahl der gebrauchten Fragen:");
+		this.lblNoOfQuestions.setId("lblNoOfQuestions");
+		this.lblNoOfQuestionsNappy = new Label();
+		this.lblNoOfQuestionsNappy.setId("lblNoOfQuestionsNappy");
+		this.lblNoOfQuestionsPlayer = new Label();
+		this.lblNoOfQuestionsPlayer.setId("lblNoOfQuestionsPlayer");
+		
+		
+		this.hbxWhosWinner = new HBox(5);
+		this.hbxWhosWinner.setAlignment(Pos.CENTER);
+		this.lblWhosWinner = new Label();
+		this.hbxWinner = new HBox(5);
+		this.hbxWinner.setAlignment(Pos.CENTER);
+		this.lblWhosWinner.setId("lblWhosWinner");
+		this.imvWinner1 = new ImageView();
+		this.lblWinner = new Label();
+		this.lblWinner.setId("lblWinner");
+		this.imvWinner2 = new ImageView();
+		
+		//Buttons:
+		this.btnPlayAgain = new Button();
+		this.btnPlayAgain.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/restart.png"));
+		this.btnPlayAgain.setPrefSize(250, 40);
+		this.btnPlayAgain.setAlignment(Pos.CENTER);
+		this.btnPlayAgain.setOnAction(aeh);
+		
+		this.btnBackToMainView = new Button();
+		this.btnBackToMainView.setGraphic(new ImageView(GlobalReferences.ICONS_PATH + "32x32/home.png"));
+		this.btnBackToMainView.setAlignment(Pos.CENTER);
+		this.btnBackToMainView.setPrefSize(250, 40);
+		this.btnBackToMainView.setOnAction(aeh);
 	}
-
+	
 	//Method that structure (add components to their parent node) the gui-components:
+	@SuppressWarnings("static-access")
 	private void structureComponents() {
 
 		//### Structure components of all views ####################################################
@@ -567,7 +740,69 @@ public class MainStageView extends Stage {
 
 
 		this.hbxAskQuestion.getChildren().add(this.btnAskQuestion);
-
+		
+		//### Game result ###########################################
+		
+		this.gdpResultContent.add(this.lblGameResult, 0, 0, 2, 1);
+		
+		this.vbxNappy.getChildren().addAll(this.imvNappyIcon, this.lblNappy);
+		this.gdpResultContent.add(this.vbxNappy, 0, 2);
+		this.vbxPlayer.getChildren().addAll(this.imvPlayerIcon, this.lblPlayer);
+		this.gdpResultContent.add(this.vbxPlayer, 1, 2);
+		
+		this.hbxGuessedCharacter.getChildren().addAll(
+				new Line(0.0f, 9.0f, 128.0f, 9.0f),
+				this.lblGuessedCharacter,
+				new Line(0.0f, 9.0f, 128.0f, 9.0f)
+		);
+		this.gdpResultContent.add(this.hbxGuessedCharacter, 0, 3, 2, 1);
+		
+		this.hbxGuessedCharacterNappy.getChildren().add(this.recGuessedCharacterNappy);
+		this.vbxGuessedCharacterNappy.getChildren().addAll(this.hbxGuessedCharacterNappy, this.lblGuessedCharacterNappy);
+		this.hbxGuessedCharacterPlayer.getChildren().add(this.recGuessedCharacterPlayer);
+		this.vbxGuessedCharacterPlayer.getChildren().addAll(this.hbxGuessedCharacterPlayer, this.lblGuessedCharacterPlayer);
+		this.gdpResultContent.add(this.vbxGuessedCharacterNappy, 0, 4);
+		this.gdpResultContent.add(this.vbxGuessedCharacterPlayer, 1, 4);
+		this.hbxRightGuess.getChildren().addAll(
+				new Line(0.0f, 9.0f, 143.0f, 9.0f),
+				this.lblRightGuess,
+				new Line(0.0f, 9.0f, 143.0f, 9.0f)
+		);
+		this.gdpResultContent.add(this.hbxRightGuess, 0, 5, 2, 1);
+		this.gdpResultContent.add(this.imvRightNappy, 0, 6);
+		this.gdpResultContent.add(this.imvRightPlayer, 1, 6);
+		this.hbxNoOfQuestions.getChildren().addAll(
+				new Line(0.0f, 9.0f, 136.0f, 9.0f),
+				this.lblNoOfQuestions,
+				new Line(0.0f, 9.0f, 136.0f, 9.0f)
+		);
+		this.gdpResultContent.add(this.hbxNoOfQuestions, 0, 7, 2, 1);
+		
+		this.gdpResultContent.add(this.lblNoOfQuestionsNappy, 0, 8);
+		this.gdpResultContent.add(this.lblNoOfQuestionsPlayer, 1, 8);
+		this.hbxWhosWinner.getChildren().addAll(
+				new Line(0.0f, 9.0f, 165.0f, 9.0f),
+				this.lblWhosWinner,
+				new Line(0.0f, 9.0f, 165.0f, 9.0f)
+		);
+		this.gdpResultContent.add(this.hbxWhosWinner, 0, 9, 2, 1);
+		
+		this.hbxWinner.getChildren().addAll(this.imvWinner1, this.lblWinner, this.imvWinner2);
+		this.gdpResultContent.add(this.hbxWinner, 0, 10, 2, 1);
+		this.gdpResultContent.setHalignment(this.lblGameResult, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.vbxNappy, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.vbxPlayer, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.imvRightNappy, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.imvRightPlayer, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblNoOfQuestions, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblNoOfQuestionsNappy, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblNoOfQuestionsPlayer, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblRightGuess, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.lblWhosWinner, HPos.CENTER);
+		this.gdpResultContent.setHalignment(this.hbxWinner, HPos.CENTER);
+		this.gdpResultContent.autosize();
+		this.hbxResultContent.getChildren().add(this.gdpResultContent);
+		this.vbxResultContent.getChildren().add(this.hbxResultContent);
 	}
 
 	//Method that initialize the stage (window) settings:

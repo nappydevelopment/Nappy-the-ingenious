@@ -1,19 +1,25 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 /** Size the combo-box drop down list. */
 
+.combo-box .text-field {
+    -fx-prompt-text-fill: #A0A0A0;
+}
+.combo-box .text-field:focused {
+    -fx-prompt-text-fill: #A0A0A0;
+}
 
 /** Size the combo-box button. */
 .combo-box {
-    -fx-pref-width: 425;
-    -fx-min-width: 425;
-    -fx-max-width: 425;
+    -fx-pref-width: 435;
+    -fx-min-width: 435;
+    -fx-max-width: 435;
 }
 
 /** Size the combo-box drop down list. */
 .combo-box-popup > .list-view {
-    -fx-pref-width: 425;
-    -fx-min-width: 425;
-    -fx-max-width: 425;
+    -fx-pref-width: 435;
+    -fx-min-width: 435;
+    -fx-max-width: 435;
 }
 
 #lblQuestion {
@@ -38,3 +44,63 @@
 	-fx-background-color: #FFD90F;
 	-fx-background-radius: 5;
 }
+
+#lblGameResult {
+	-fx-font-size: 26px;
+	-fx-text-fill: orange;
+}
+
+#lblNappy {
+	-fx-font-size: 14px;
+}
+
+#lblPlayer {
+	-fx-font-size: 14px;
+}
+
+#lblGuessedCharacter {
+	-fx-font-size: 15px;
+	-fx-text-fill: orange;
+}
+
+#lblGuessedCharacterNappy {
+	-fx-font-size: 14px;
+}
+
+#lblGuessedCharacterPlayer {
+	-fx-font-size: 14px;
+}
+
+#lblRightGuess {
+	-fx-font-size: 15px;
+	-fx-text-fill: orange;
+}
+
+#lblNoOfQuestions {
+	-fx-font-size: 15px;
+	-fx-text-fill: orange;
+}
+
+#lblNoOfQuestionsNappy {
+	-fx-font-size: 16px;
+}
+
+#lblNoOfQuestionsPlayer {
+	-fx-font-size: 16px;
+}
+
+#lblWhosWinner {
+	-fx-font-size: 15px;
+	-fx-text-fill: orange;
+}
+
+#lblWinner {
+	-fx-font-size: 14px;
+}
+
+#sepGuessedCharacter1 *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
+    -fx-border-color: red;
+}
+

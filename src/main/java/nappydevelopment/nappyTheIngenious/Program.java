@@ -210,7 +210,7 @@ public class Program extends Application {
 	/* finishGameWithStatistics [method]: Method to finish a game and if necessary write a statistics entry *//**
 	 * 
 	 */
-	public void finishGameWithStatistics() {
+	public void finishGameWithStatistics(boolean restart) {
 		
 		//Show dialog to enter the player name:
 		String spielerName = this.mainStageController.showEnterNameDialog();
@@ -228,7 +228,13 @@ public class Program extends Application {
 		this.game = null;
 		
 		//Show start view:
-		this.mainStageController.showStartView();
+		if(restart) {
+			this.startGame();;
+		}
+		else {
+			this.mainStageController.showStartView();
+		}
+		
 	}
 
 	public boolean existAnActiveGame() {
@@ -360,7 +366,12 @@ public class Program extends Application {
 					         	  this.game.getCharacterNappy().getWikiImage(),
 					         	  this.game.getCharacterNappy().getName());
 		}
-		
+
+		//Add the played Character into the statistics
+		if(this.game.isNappyRight() == Answer.YES) {
+			SaveStatisticInfos.createAndSaveCharakter(this.game.getCharacterNappy());
+		}
+
 		//If Player want to play gamemode2:
 		if(playGM2) {
 			//Start gamemode2:
@@ -426,9 +437,19 @@ public class Program extends Application {
 			//Show the new list:
 			this.mainStageController.showQuestions(false, this.game.getQal());
 			
+			
 		} catch(InvalidQuestion|GameHasFinished e){
 			e.printStackTrace();
 		}
+	}
+
+	public void setQuestionFilter(String filter) {
+		//Show the new list:
+		System.out.println("METHOD setQuestionFilter - filter: " + filter);
+		QuestAnsList a = this.game.getQal().filter(filter);
+		System.out.println(a.size());
+		boolean firstQuestion = (this.game.getNoOfQuestionsPlayer() == 0);
+		this.mainStageController.showQuestions(firstQuestion, this.game.getQal().filter(filter));
 	}
 	
 	public void showCharacterSelection(Stage owner) {
@@ -441,6 +462,7 @@ public class Program extends Application {
 			System.out.println(character.getName());
 			if(this.wikiStageController.showConfirmSelectionDialog(character)) {
 				this.wikiStageController.closeView();
+				this.game.setCharacterPlayer(character);
 				try {
 					this.game.setPlayerRight(this.gm2Logic.makeGuess(character));
 					Character nappysChar = this.gm2Logic.endGame();
@@ -451,6 +473,17 @@ public class Program extends Application {
 				}
 			}
 		}
+	}
+	
+	public void showGameResultView() {
+		this.mainStageController.showGameResultView(
+				this.game.getCharacterNappy(), 
+				this.game.isNappyRightBoolean(), 
+				this.game.getNoOfQuestionsNappy(), 
+				this.game.getCharacterPlayer(), 
+				this.game.isPlayerRight(),
+				this.game.getNoOfQuestionsPlayer(),
+				this.game.isWinPlayer());
 	}
 	
 //### MAIN METHOD ##########################################################################################################################
