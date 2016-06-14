@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>nappydevelompent</groupId>
   <artifactId>nappy-the-ingenious</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>1.0.0</version>
   <properties>
     <sonar.host.url>
       http://193.196.7.25
