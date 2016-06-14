@@ -19,6 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -52,6 +53,7 @@ public class MainStageController {
 	protected MainStageView view;
 	protected MainStageResources res;
 	private ViewActionEventHandler aeh;
+	private ViewKeyEventHandler keh;
 	private ViewWindowEventHandler weh;
 	
 //### CONSTRUCTORS #########################################################################################################################
@@ -78,10 +80,11 @@ public class MainStageController {
 		this.res = new MainStageResources();
 		//Initialize the action-event-handler for the view-components:
 		this.aeh = new ViewActionEventHandler();
+		this.keh = new ViewKeyEventHandler();
 		//Initialize the window-event-handler:
 		this.weh = new ViewWindowEventHandler();
 		//Initialize the view:
-		this.view = new MainStageView(this.res, this.aeh, this.weh);
+		this.view = new MainStageView(this.res, this.aeh, this.keh, this.weh);
 		//Set the bindings to the view-components:
 		this.initViewBindings();
 		
@@ -228,13 +231,12 @@ public class MainStageController {
 				
 			}
 			else if(src == view.btnAskQuestion) {
-				
-				MainStageController.this.program.askQuestion(MainStageController.this.view.cmbQuestions.getValue().getQuestion());
+				System.out.println("ACTION-EVENT-HANDLER: event of btnAskQuestion!");
+				MainStageController.this.askQuestion();
 			}
 			else if(src == view.cmbQuestions) {
 				//Adopt the question from the combobox to the label:
 				MainStageController.this.adoptQuestion();
-				//view.cmbQuestions.setCellFactory(value);
 			}
 			else if(src == view.btnPlayAgain) {
 				System.out.println("Play again!");
@@ -252,6 +254,20 @@ public class MainStageController {
 		
 	}
 	
+
+	//Event-Handler that handles all KeyEvents of the view:
+	private class ViewKeyEventHandler implements EventHandler<KeyEvent> {
+
+		@Override
+		public void handle(KeyEvent e) {
+			
+			if(e.getSource() == view.cmbQuestions) {
+				MainStageController.this.applyQuestionFilter();
+			}
+			
+		}
+		
+	}
 	
 	private class ViewWindowEventHandler implements EventHandler<WindowEvent> {
 
@@ -796,6 +812,7 @@ public class MainStageController {
 	 * @param answer
 	 */
 	public void showAnswer(String answer) {
+		System.out.println("METHOD: showAnswer - answer: " + answer);
 		this.view.lblAnswer.setText(answer);
 	}
 	
@@ -809,16 +826,22 @@ public class MainStageController {
 		this.view.cmbQuestions.getItems().addAll(qal);
 		
 		if(isTheFirstQuestion) {
-			System.out.println("Is the first question!");
-			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectAQuestion));
+			System.out.println("METHOD: showQuestions - This is the first question!");
+			this.view.cmbQuestions.setPromptText(this.res.cmbQuestionsTextSelectAQuestion);
 			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
 		}
 		else {
-			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
-			this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
+			System.out.println("METHOD: showQuestions - This is not the first question!");
+			//this.view.cmbQuestions.setValue(new QuestAnsElement(this.res.cmbQuestionsTextSelectNextQuestion));
+			this.view.cmbQuestions.setPromptText(this.res.cmbQuestionsTextSelectNextQuestion);
 		}
 
 		this.view.btnAskQuestion.setDisable(true);
+	}
+	
+	
+	public void applyQuestionFilter() {
+		System.out.println("METHOD: applyQuestionFilter - ");
 	}
 	
 	/* adoptQuestion [method]: Method that shows the selected question of the combobox in the label *//**
@@ -829,17 +852,35 @@ public class MainStageController {
 		if(this.view.cmbQuestions.getItems().isEmpty()) {
 			return;
 		}
-		if(this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectAQuestion &&
-		   this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectNextQuestion) {
-			
-		   this.view.lblInfo.setText(this.view.cmbQuestions.getValue().getQuestion());
-		   this.view.lblAnswer.setText("");
-		   this.view.btnAskQuestion.setDisable(false);
+		//if(this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectAQuestion &&
+		//   this.view.cmbQuestions.getValue().getQuestion() != this.res.cmbQuestionsTextSelectNextQuestion) {
+		if(this.view.cmbQuestions.getValue() instanceof QuestAnsElement) {
+			System.out.println("METHOD: adoptQuestion - This is a correct question!");
+			this.view.lblInfo.setText(this.view.cmbQuestions.getValue().getQuestion());
+			this.view.lblAnswer.setText("");
+			this.view.btnAskQuestion.setDisable(false);
 		}
 		else {
-			//this.view.cmbQuestions.setValue(this.res.cmbQuestionsTextSelectNextQuestion);
+			System.out.println("METHOD: adoptQuestion - This is not a correct question!");
+			System.out.println("METHOD: adoptQuestion - combo-box element: " + this.view.cmbQuestions.getValue());
 			this.view.btnAskQuestion.setDisable(true);
+			this.view.lblInfo.setText(this.res.lblInfoTextPleaseSelectAQuestion);
 		}
+	}
+
+	/* askQuestion [method]: Method that call a program-method to ask the selected question *//**
+	 * 
+	 */
+	private void askQuestion() {
+		
+		if(this.view.cmbQuestions.getValue() instanceof QuestAnsElement) {
+			System.out.println("METHOD: askQuestion - The combo-box element is a question-answer-element");
+			this.program.askQuestion(this.view.cmbQuestions.getValue().getQuestion());
+		}
+		else {
+			System.out.println("METHOD: askQuestion - The combo-box element is not a question-answer-element");
+		}
+
 	}
 	
 	public void showStatusDialogGM2(boolean isPlayerRight, int noOfQuestions, Character character, Character nappysChar) {

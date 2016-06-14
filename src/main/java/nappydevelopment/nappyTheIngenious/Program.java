@@ -437,6 +437,7 @@ public class Program extends Application {
 			//Show the new list:
 			this.mainStageController.showQuestions(false, this.game.getQal());
 			
+			
 		} catch(InvalidQuestion|GameHasFinished e){
 			e.printStackTrace();
 		}
