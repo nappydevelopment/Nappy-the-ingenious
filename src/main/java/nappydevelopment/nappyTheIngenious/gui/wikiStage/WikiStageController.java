@@ -243,7 +243,12 @@ public class WikiStageController {
         	}
         	else {
         		//imgPat = new ImagePattern(Utils.getScaledInstance(curCharacter.getWikiImage(), 90, 90, RenderingHints.VALUE_INTERPOLATION_BICUBIC, 0.80, false));
-        		imgPat = new ImagePattern(res.charNameImageMap.get(curCharacter.getName()));
+				try{
+					imgPat = new ImagePattern(res.charNameImageMap.get(curCharacter.getName()));
+				} catch (NullPointerException e){
+					e.printStackTrace();
+				}
+
         	}
         	
         	Rectangle imgRec = new Rectangle();

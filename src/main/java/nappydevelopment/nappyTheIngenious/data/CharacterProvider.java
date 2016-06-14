@@ -5,6 +5,7 @@ import nappydevelopment.nappyTheIngenious.data.character.*;
 import nappydevelopment.nappyTheIngenious.data.character.Character;
 import nappydevelopment.nappyTheIngenious.data.settings.Language;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.EastereggSearcher;
+import nappydevelopment.nappyTheIngenious.util.eastereggs.NappyInList;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.ShowNelsonOnHaha;
 import nappydevelopment.nappyTheIngenious.util.eastereggs.TonsOfHomer;
 import java.sql.ResultSet;
@@ -17,10 +18,12 @@ public class CharacterProvider{
 	static EastereggSearcher eggs = new EastereggSearcher();
 	static TonsOfHomer toh = new TonsOfHomer();
 	static ShowNelsonOnHaha haha = new ShowNelsonOnHaha();
+	static NappyInList nap = new NappyInList();
 
 	public static EastereggSearcher getEggs(){ return eggs; }
 	public static TonsOfHomer getToh(){ return toh; }
 	public static ShowNelsonOnHaha getHaha(){return haha;}
+	public static NappyInList getNap(){return nap;}
 
 	public static List<Character> getCharacters(){ return getCharacters(""); }
 	public static List<Character> getCharacters(String whereclause){
@@ -64,6 +67,8 @@ public class CharacterProvider{
 			return haha.getThem(list, search);
 		}else if(i == 2) {
 			return toh.getThem(list, search);
+		}else if(i == 3) {
+			return nap.getThem(list, search);
 		}
 
 		out = list.stream()
