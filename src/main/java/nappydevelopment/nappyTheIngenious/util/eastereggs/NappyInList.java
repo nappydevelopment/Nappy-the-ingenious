@@ -13,9 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Marc on 30.05.2016.
- */
 public class NappyInList {
 
     public List<Character> getThem(List<Character> list, CharacterFilter search) {
