@@ -47,6 +47,7 @@
 
 #lblGameResult {
 	-fx-font-size: 26px;
+	-fx-text-fill: orange;
 }
 
 #lblNappy {
@@ -59,6 +60,7 @@
 
 #lblGuessedCharacter {
 	-fx-font-size: 15px;
+	-fx-text-fill: orange;
 }
 
 #lblGuessedCharacterNappy {
@@ -70,11 +72,13 @@
 }
 
 #lblRightGuess {
-	-fx-font-size: 16px;
+	-fx-font-size: 15px;
+	-fx-text-fill: orange;
 }
 
 #lblNoOfQuestions {
 	-fx-font-size: 15px;
+	-fx-text-fill: orange;
 }
 
 #lblNoOfQuestionsNappy {
@@ -87,9 +91,16 @@
 
 #lblWhosWinner {
 	-fx-font-size: 15px;
+	-fx-text-fill: orange;
 }
 
 #lblWinner {
 	-fx-font-size: 14px;
+}
+
+#sepGuessedCharacter1 *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
+    -fx-border-color: red;
 }
 

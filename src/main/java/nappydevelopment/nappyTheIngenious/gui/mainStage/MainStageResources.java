@@ -120,6 +120,7 @@ public class MainStageResources {
 	String statusDialogGM2StatusTextWrong2;
 	String statusDialogGM2StatusTextWrong3;
 
+	String lblWinnerText;
 	//### Images for the menu-bar ##################################################################
 
 	Image mniNewGameIcon;
@@ -333,6 +334,8 @@ public class MainStageResources {
 		this.lblRightGuessText.setValue("Guessed right:");
 		this.lblNoOfQuestionsText.setValue("No of questions:");
 		this.lblWhosWinnerText.setValue("Winner:");
+		
+		this.lblWinnerText = " wins!!!";
 	}
 
 	/* setTextsToGerman [method]: Method that sets all texts of the main-stage to German *//**
@@ -430,6 +433,8 @@ public class MainStageResources {
 		this.lblRightGuessText.setValue("Richtig erraten:");
 		this.lblNoOfQuestionsText.setValue("Anzahl benötigter Fragen:");
 		this.lblWhosWinnerText.setValue("Gewinner:");
+		
+		this.lblWinnerText = " hat gewonnen!!!";
 	}
 	
 	void setBtnYesTextToYes() {
