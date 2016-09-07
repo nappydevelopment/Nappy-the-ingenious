@@ -436,6 +436,102 @@ public class MainStageResources {
 		
 		this.lblWinnerText = " hat gewonnen!!!";
 	}
+
+	protected void setTextsToTurkish() {
+
+		//Menu-Texts:
+		this.mnuGameText.setValue("Oyun");
+		this.mniNewGameText.setValue("Yeni oyun");
+		this.mniAbortGameText.setValue("Oyunu iptal et");
+		this.mniStatisticText.setValue("istatistik");
+		this.mniSettingsText.setValue("ayarlar");
+		this.mniExitText.setValue("çıkış");
+		this.mnuHelpText.setValue("Yardım");
+		this.mniHelpText.setValue("talimatlar");
+		this.mniWikiText.setValue("Wiki");
+		this.mniInfoText.setValue("bilgi");
+
+		//Button-Texts:
+		this.btnNewGameText.setValue("Yeni oyun");
+		this.btnStatisticText.setValue("istatistik");
+		this.btnWikiText.setValue("Wiki");
+		this.btnHelpText.setValue("talimatlar");
+		this.btnYesText.setValue("Evet");
+		this.btnNoText.setValue("Hayir");
+		this.btnIdontKnowText.setValue("Bilmiyorum");
+
+		this.btnAskQuestionText.setValue("Soru sor");
+
+		this.btnPlayAgainText.setValue("tekrar oyna");
+		this.btnBackToMainViewText.setValue("Ana sayfaya geri dön");
+
+		//Abort-Dialog-Texts:
+		this.abortGameDialogTitle = "Nappy, the ingenious";
+		this.abortGameDialogHeaderText = "Oyun iptal edilsin mi?";
+		this.abortGameDialogContentText = "Gerçekten geçerli oyun iptal etmek istiyor musunuz?\n"
+				+ "Uyarı: Iptal edilen oyunlar istatistiklere dahil edilmemiştir !\n\n";
+		this.abortGameDialogBtnApplyText = "Oyunu iptal et";
+		this.abortGameDialogBtnCancelText = "Iptal";
+
+		//Close-Dialog-Texts:
+		this.closeProgramDialogTitle = "Nappy, the ingenious";
+		this.closeProgramDialogHeaderText = "Programı kapansın mı?";
+		this.closeProgramDialogContentText = "Gerçekten çıkmak istiyor musunuz ?\n"
+				+ "Uyarı: Böylece, geçerli oyun iptal edilir!\n\n";
+		this.closeProgramDialogBtnApplyText = "Programı kapat";
+		this.closeProgramDialogBtnCancelText = "Iptal";
+
+		this.enterNameDialogTitle = "Nappy, the ingenious";
+		this.enterNameDialogHeaderText = "Lütfen adınızı yazın!";
+		this.enterNameDialogContentText = "Adınız:";
+		this.enterNameDialogBtnApplyText = "İstatistiklere ekle";
+		this.enterNameDialogBtnCancelText = "Iptal";
+
+		this.statusDialogGM1Title = "Nappy, the ingenious - Oyun Modu 1 durum";
+		this.statusDialogGM1BtnApplyText = "Evet";
+		this.statusDialogGM1BtnCancelText = "Hayir";
+		this.statusDialogGM1BtnOkText = "Tamam";
+		this.statusDialogGM1StatusTextRight1 = "Nappy hat deinen Charakter ";
+		this.statusDialogGM1StatusTextRight2 = " richtig erraten.";
+		this.statusDialogGM1StatusTextRight3 = "Nappy hat dafür ";
+		this.statusDialogGM1StatusTextRight4 = " Fragen gebraucht.";
+		this.statusDialogGM1StatusTextWrong = "Nappy konnte deinen Character nicht richtig erraten.";
+		this.statusDialogGM1Question = "Möchtest du versuchen Nappy zu schlagen und den zweiten Spielmodus spielen?";
+
+		this.statusDialogGM2Title = "Nappy, the ingenious - Oyun Modu 2 durum";
+		this.statusDialogGM2StatusTextRight1 = "Du hast Nappys Charakter ";
+		this.statusDialogGM2StatusTextRight2 = " richtig erraten!";
+		this.statusDialogGM2StatusTextRight3 = "Du hast dafür ";
+		this.statusDialogGM2StatusTextRight4 = " Fragen gebraucht.";
+		this.statusDialogGM2StatusTextWrong1 = "Du hast Nappys Charakter leider nicht richtig erraten!";
+		this.statusDialogGM2StatusTextWrong2 = "Dein Tip ";
+		this.statusDialogGM2StatusTextWrong3 = " ist falsch,\nNappys Charakter ist ";
+
+		this.lblInfoTextIDontKnowYourCharacterText = "Ich kenne deinen Charakter nicht!";
+		this.lblInfoTextIKnowYourCharacter = "Ich denke dein Charakter ist";
+		this.lblInfoTextPleaseSelectAQuestion = "Bitte wähle eine Frage!";
+
+		this.btnYesTextYes = "Ja";
+		this.btnYesTextRight = "Richtig";
+		this.btnNoTextNo = "Nein";
+		this.btnNoTextWrong = "Falsch";
+		this.btnIdontKnowTextIdontKnow = "Ich weiß nicht";
+		this.btnIdontKnowTextContinue = "Fortfahren";
+		this.btnIdontKnowTextIknow = "Ich glaube ich kennen deinen Character";
+
+		this.cmbQuestionsTextSelectAQuestion = "Eine Frage wählen...";
+		this.cmbQuestionsTextSelectNextQuestion = "Die nächste Frage wählen...";
+		this.cmbQuestionsTextYouveAskThisQuestionAlready = "Du hast diese Frage bereits gestellt!";
+
+		this.lblGameResultText.setValue("Spielergebnis");
+		this.lblPlayerText.setValue("Spieler");
+		this.lblGuessedCharacterText.setValue("Erratener Character:");
+		this.lblRightGuessText.setValue("Richtig erraten:");
+		this.lblNoOfQuestionsText.setValue("Anzahl benötigter Fragen:");
+		this.lblWhosWinnerText.setValue("Gewinner:");
+
+		this.lblWinnerText = " hat gewonnen!!!";
+	}
 	
 	void setBtnYesTextToYes() {
 		this.btnYesText.set(this.btnYesTextYes);
