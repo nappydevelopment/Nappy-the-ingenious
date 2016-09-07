@@ -20,6 +20,7 @@ cache:
 branches:
     only:
     - master
+    - Version2
 
 # container-based build:
 sudo: false

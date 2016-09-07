@@ -491,16 +491,16 @@ public class MainStageResources {
 		this.statusDialogGM1BtnApplyText = "Evet";
 		this.statusDialogGM1BtnCancelText = "Hayir";
 		this.statusDialogGM1BtnOkText = "Tamam";
-		this.statusDialogGM1StatusTextRight1 = "Nappy hat deinen Charakter ";
-		this.statusDialogGM1StatusTextRight2 = " richtig erraten.";
+		this.statusDialogGM1StatusTextRight1 = "Nappy senin karaktere ";
+		this.statusDialogGM1StatusTextRight2 = " doğru bildi.";
 		this.statusDialogGM1StatusTextRight3 = "Nappy hat dafür ";
 		this.statusDialogGM1StatusTextRight4 = " Fragen gebraucht.";
 		this.statusDialogGM1StatusTextWrong = "Nappy konnte deinen Character nicht richtig erraten.";
 		this.statusDialogGM1Question = "Möchtest du versuchen Nappy zu schlagen und den zweiten Spielmodus spielen?";
 
 		this.statusDialogGM2Title = "Nappy, the ingenious - Oyun Modu 2 durum";
-		this.statusDialogGM2StatusTextRight1 = "Du hast Nappys Charakter ";
-		this.statusDialogGM2StatusTextRight2 = " richtig erraten!";
+		this.statusDialogGM2StatusTextRight1 = "Sen Nappy'nin karakterine ";
+		this.statusDialogGM2StatusTextRight2 = " doğru bildin!";
 		this.statusDialogGM2StatusTextRight3 = "Du hast dafür ";
 		this.statusDialogGM2StatusTextRight4 = " Fragen gebraucht.";
 		this.statusDialogGM2StatusTextWrong1 = "Du hast Nappys Charakter leider nicht richtig erraten!";
